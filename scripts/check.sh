@@ -3,8 +3,8 @@
 #
 #   sh scripts/check.sh
 #
-# Fails on: status markers other than the five the book admits; internal
-# identifiers (board elements, runs, review findings, decision numbers);
+# Fails on: any status marker (the design is final, so the book and the
+# paper carry none); internal identifiers (board elements, runs, review findings, decision numbers);
 # local paths; names that never appear in the published text. Prints every
 # hit with its file and line. sources/ and editorial/ are not checked: they
 # are working material, not publication.
@@ -34,21 +34,9 @@ hit "local path" '/(Users|home)/[A-Za-z0-9._-]+'
 hit "machine or seat name" '\b(ivmbp|rise1|macbook-iv|rose-air|astra-0[0-9]|orch-[a-z-]+)\b'
 hit "retired name" '([Ss]lopcore|пасек|\bульев?\b|диких? пчёл)'
 
-# Status markers: only the five admitted labels.
-bad=$(grep -noE '⟦[^⟧]*⟧' $files 2>/dev/null | grep -vE ':⟦(работает сегодня|решено|спецификация|предложено|открыто)⟧$')
-if [ -n "$bad" ]; then
-  echo "== unknown status marker"
-  echo "$bad"
-  fail=1
-fi
-
-# TeX status labels: \status{label} takes the same five labels.
-badtex=$(grep -noE '\\status\{[^}]*\}' $files 2>/dev/null | grep -vE ':\\status\{(работает сегодня|решено|спецификация|предложено|открыто)\}$')
-if [ -n "$badtex" ]; then
-  echo "== unknown TeX status label"
-  echo "$badtex"
-  fail=1
-fi
+# Status markers: the final design carries none, in the book or the paper.
+hit "status marker" '⟦[^⟧]*⟧'
+hit "TeX status label" '\\status\{'
 
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do
