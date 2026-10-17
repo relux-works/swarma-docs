@@ -1,0 +1,28 @@
+@startuml overview
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Роутер моделей и его соседи
+actor "Оркестратор" as O
+rectangle "Доска задач\n(допуск, лимиты,\nзапуск, приёмка)" as TB
+package "curator-model-router" {
+  rectangle "Выбор\n(pkg/recommend)\nпланки, бюджеты, правила" as SEL
+  database "Каталог\nBug Hunt + цены" as CAT
+  database "Оверлей\nоператора" as OV
+  database "Свидетельства\n(pkg/evidence)" as EV
+  database "Записи решений" as DEC
+}
+rectangle "agents-management\n(реестр моделей,\nквоты providerquota)" as AM
+cloud "Агентские среды\nCodex · Claude · Muse ·\nлокальный движок" as RT
+O --> TB : задача, роль,\nкласс, сложность
+TB --> SEL : профиль задачи +\nдопущенные кандидаты
+CAT --> SEL
+OV --> SEL
+EV --> SEL
+AM --> SEL : остатки квот
+SEL --> DEC : решение
+SEL --> TB : агент, модель, усилие\n+ id решения
+TB --> RT : запуск через\nобычные ворота
+@enduml

@@ -1,0 +1,25 @@
+@startuml setup-token
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Claude setup-token through executor: CIP-0010 Draft (proposed)
+actor "Operator" as human
+participant "Enrollment" as enroll
+database "Protected per-user store\nunder authentication node" as store
+participant "Plan / fragment" as plan
+participant "Final executor" as exec
+participant "Claude process" as claude
+human -> enroll : Enroll once via protected channel
+enroll -> store : Save credential
+store --> enroll : Opaque source_ref
+enroll -> plan : Reference only
+plan -> exec : source_ref (no token bytes)
+exec -> store : Resolve authorized source_ref
+store --> exec : Credential via protected delivery
+exec -> claude : CLAUDE_CODE_OAUTH_TOKEN at launch
+note over exec,claude
+No per-home login or Keychain dependency.
+Inference only; Remote Control refuses.
+D11 accepts this limit for swarm v0.
+end note
+@enduml

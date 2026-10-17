@@ -1,0 +1,27 @@
+@startuml home-isolation
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Home isolation: shared file vs isolated home-owned login
+left to right direction
+package "shared: supported file-backed adapter" {
+  folder "Managed home A" as a
+  folder "Managed home B" as b
+  file "Native credential file" as n
+  a --> n : credential link
+  b --> n : credential link
+}
+package "isolated: one home-owned login per home" {
+  folder "Managed home C" as c
+  folder "Managed home D" as d
+  database "Login C" as lc
+  database "Login D" as ld
+  c --> lc
+  d --> ld
+}
+note bottom of c
+Claude macOS: always isolated in Curator.
+Muse: isolated/shared admission uses explicit file backend (rc.7).
+Inherited authentication: per-home login unnecessary (CIP-0010 Draft).
+end note
+@enduml

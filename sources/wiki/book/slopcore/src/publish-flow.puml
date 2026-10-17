@@ -1,0 +1,39 @@
+@startuml publish-flow
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 220
+title Публикация и три памяти сети
+hide footbox
+
+actor "Автор\n(браузер)" as A
+participant "Трекер" as T
+participant "Цепочка" as C
+participant "Индексатор" as I
+participant "Куратор 00\n(демон)" as K
+actor "Зритель" as V
+participant "Архивист\n(демон)" as L
+
+== Рабочая память: минуты и часы ==
+A -> A : хэши второй версии, торрент
+A -> T : анонс торрента
+A -> C : запись-указатель с тегами и подписью
+C -> I : блок с записью
+I -> K : указатель в потоке
+K -> T : где пиры?
+K -> A : скачать контент
+note over A, K : автор видит «держат 1, 3, 7 демонов»
+
+== Кратковременная память: дни ==
+K -> K : куратор смотрит и одобряет
+K -> C : категоризация: веса тегов
+K -> V : раздаёт одобренное
+I -> V : лента подписок
+V -> V : раздаёт, пока в кэше браузера
+
+== Долговременная память: месяцы и годы ==
+I -> L : отметки окрестности 1D и 2D
+L -> K : скачать
+L -> L : держит до порога диска,\nвытесняет наименее ценное
+@enduml

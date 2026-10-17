@@ -1,0 +1,42 @@
+@startuml board-components
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+skinparam linetype polyline
+skinparam nodesep 25
+skinparam ranksep 45
+title Компоненты доски «предложено: архитектура доски на платформе»
+
+actor "Человек\n(подтверждает поток)" as HU
+rectangle "Диспетчер\nзапусков" as DISP
+rectangle "Мост\n(провайдер целей)" as BRIDGE
+rectangle "Ёмкость (S3)\nслоты, ворота машины,\nочередь проверок" as CAP
+database "Плейбук\nPlaybook.json в git" as PB
+
+package "Доска" {
+  database "B1. Хранилище задач\nэлементы, записи статусов,\nревизии целей, ресурсы, активность" as STORE
+  rectangle "Правила ядра (kguard)\nK1–K8, проверяются\nв каждой мутации" as KG
+  rectangle "B2. Конфигурация и движок потоков\nзагружает плейбук, версия в силе,\nпереходы становятся предложениями" as FLOW
+  rectangle "Модуль доставки\nнастраиваемые проверки,\nдействия и события разработки" as DELIV
+  rectangle "B3. Роутер ролей\nроль-владелец состояния\nи запрос запуска для неё" as ROUTER
+  rectangle "B4. Спавн\nидемпотентный ключ,\nRUN-* по сверке; сам не исполняет" as SPAWN
+  rectangle "B5. Привязка целей\nпубликует ревизии целей,\nисходы становятся переходами" as GOALS
+  rectangle "B6. Проверки и лимиты\nслоты, ворота, очередь —\nсторона доски для S3" as LIMITS
+}
+
+PB --> FLOW : загрузка, хэш
+HU --> FLOW : подтверждение версии
+FLOW --> KG
+KG --> STORE
+DELIV --> FLOW : плагин
+FLOW --> ROUTER : переход
+ROUTER --> SPAWN : LaunchRequest
+SPAWN --> DISP : dispatch()
+STORE --> GOALS : ревизии целей
+GOALS --> BRIDGE : swarm-plugin/1
+BRIDGE --> GOALS : предложения исходов
+SPAWN --> LIMITS
+LIMITS --> CAP
+@enduml

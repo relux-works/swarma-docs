@@ -1,0 +1,226 @@
+@startuml remote-worker-turn
+' Revision 2026-10-13: accepted architecture-review findings; cumulative integration-baseline review and inert exact-C resources; no rendering or qualification claimed.
+' Revision 2026-10-13: wave-5 zero-egress admission, R-TRANSFER and controlled verification; formats/qualification unpublished.
+' Revision 2026-10-12: R-OPERATOR observer reads; R-WORKPLACE service controls, helper-v1 activation and execution-level stops; Draft, no renderer/qualification evidence.
+title Remote worker turn (revision 8; B boundary shown, disabled until separate provisioner spec/qualification): the harness has no local tools; the relay (harness identity) forwards to the bridge service (bridge identity), which carries every tool call and the mailbox over ONE SSH connection from the donor to our host; our host never connects back
+
+box "Donor machine: harness identity (sandboxed, egress = proxy only)" #WhiteSmoke
+  participant "Harness\n(Claude / Codex / Muse, lockdown plan)" as H
+  participant "swarma-remote-tools\n(stdio relay; no keys, no network)" as MCP
+  participant "Provider proxy" as PX
+end box
+box "Donor machine: bridge identity (keys, audit, cursors)" #WhiteSmoke
+  participant "Bridge service\n(supervisor + SSH client + signer + admission)" as SUP
+end box
+box "Our host" #WhiteSmoke
+  participant "sshd root + relay-only fixed shell\nswarma-rb-exec (service principal; peer UID/generation)" as RB
+  participant "Workplace control state\nservice-owned policy/claims/floors/audit" as WP
+  participant "Dispatcher + root launcher/helper\nstart receipt + journaled exec.stop" as D
+  participant "Untrusted jobs or runner\nworkplace UID; backend shape unpublished" as JOB
+  participant "Bridge\n(broker, mailbox, M3)" as BR
+end box
+participant "Orchestrator" as O
+
+note over H, SUP
+  The role split is enforced by UID/sandbox in B; sandbox only in C; A shares the donor UID,
+  has no OS isolation/egress guarantee, and relies on qualified lockdown with no local tools.
+  Relay has no keys/network in every variant; protocol/backend closed formats are pending.
+end note
+
+== standing connection ==
+SUP -> RB: ssh workplace-user@host with K_ssh + short user-CA certificate;\nhost certificate checked on EVERY connection: pinned host CA, host name, validity, KRL (no TOFU)
+note over SUP, RB: Bridge requests renewal; service authenticates workplace; keeper-held CA signs only its principal; expiry/revocation refuses; retire stops renewal and closes sessions.
+break failed host trust / expired or revoked user certificate / wrong workplace principal
+  SUP -> SUP: refuse connection; no TOFU or alternate trust source
+end
+RB -> WP: reconcile durable claims and admission floors before opening admission
+break missing / restored / unreadable / contradictory claim or floor evidence
+  RB -> RB: keep binding admission closed
+end
+RB --> SUP: hello {versions:[1]} / swarma-rb/1 channel open (bounded CBOR frames, flow credits)
+SUP -> RB: policy.get
+RB --> SUP: workplace policy {tools, write scope, network, limits, env_allow} -> effective tool set
+note right of RB: Match block: root-controlled TrustedUserCAKeys + KRL + workplace principal, no forwarding, no PTY,\nno user rc/env; relay-only fixed shell/forced command by absolute path; no user startup files; reconnect is the donor side's job
+
+== launch ==
+SUP -> SUP: obtain the composed plan from the construction site (agents-management);\ncheck expect_pin, tool_posture=lockdown, permissions=remote-auto, policy generation, qualified tuple;\nvalidate the expanded launch against the generated policy; resolve credential_binding/1
+break unqualified/changed/unreadable executable, wrong pin/posture/permissions/generation or credential binding
+  SUP -> SUP: refuse before exec; no alternate harness/source
+end
+SUP -> H: consume composed plan, launch exact qualified build;\nB: harness UID + sandbox + per-UID egress; C: donor UID + sandbox;\nA: donor UID, no OS confinement, direct provider path; credential per launch (CIP-0010)
+H -> MCP: MCP initialize; tools/list = effective set (policy intersection)
+
+== task arrives / per-round materialization ==
+O -> D: admitted exact B tree archive + manifest digest/write scope/exec profile; task resources
+D -> JOB: distinct materialize execution; verify archive path/kind/mode/content against immutable-B manifest before work; standalone Git
+D -> D: journal archive/resource digests; plan digest covers base/mode-content manifest/write scope/exec profile, exporter/caps/repair budget/cleanup consent
+note over D, JOB
+  Read-only digested task resources next to workspace; dependencies only read-only seeded caches.
+  Zero egress incl. loopback; no proxy; OS exec allowlist, writable areas non-executable.
+  No compiler/linker/transpiler/bundler/test runner/package manager/container/network/harness tools.
+  Full invocation/transitive inputs qualified inert; scripts/imports/plugins/config/startup/env injection refuse locally.
+  D-PATH wrapper excludes direct/indirect heavy-form bypass; unqualified tools use R-VERIFY.
+  R-VERIFY executes candidate code only on another machine in secret-free ephemeral runners.
+end note
+O -> BR: signed task letter (snapshot + resource attachments; rework findings + base C)
+BR -> BR: verify signature, grant, decision guard, fence; mailbox record; cursor++
+BR -> RB: mailbox.notify {message_id, cursor} (advisory)
+RB -> SUP: frame mailbox.notify
+SUP -> RB: mailbox.read {from_cursor}
+RB -> BR: read
+BR --> RB: items + verification records
+RB --> SUP: frames
+SUP -> SUP: DONOR-SIDE ADMISSION: verification record present, target binding = this worker,\nunexpired, not fenced/revoked, delivery mode allowed; dedup by message_id; persist; cursor++
+break absent/invalid verification, wrong binding, expired/fenced/revoked item or disallowed delivery mode
+  SUP -> SUP: refuse input; do not apply a turn
+end
+SUP -> H: next turn through the session-input adapter: "validated message <id>" + snapshot
+SUP -> RB: mailbox.applied {message_id} (application receipt, distinct from the transport reply)
+
+== work ==
+loop each tool call
+  H -> MCP: tools/call bash {cmd, cwd, timeout}
+  MCP -> SUP: forward over the relay socket (peer credentials checked)
+  SUP -> SUP: audit line {tool, args_sha256, bytes, at}; budget counters (trusted side)
+  break tool outside effective policy or wrong local peer
+    SUP --> MCP: error result; audit refusal
+    MCP --> H: unavailable tool
+  end
+  SUP -> RB: frame exec {id, op_key, cmd, cwd, env (env_allow only), timeout_s <= policy, max_output_bytes <= policy, lease_s}
+  RB -> WP: authenticate new-versus-retry admission; binding-generation identity, operation, argument digest
+  break operation/argument mismatch or unseen expired identity below sequence/epoch floor
+    WP --> RB: refuse without mutation (exact codes unpublished)
+    RB --> SUP: refusal
+  end
+  alt existing durable claim
+    WP -> WP: reconcile/observe same effect; never automatically re-execute
+    WP --> RB: retained recorded result or pending / unknown_result
+  else genuinely new operation admitted in current bounded window
+    WP -> WP: admit exec profile; refuse heavy forms, writable executables and out-of-profile calls
+    WP -> WP: durably claim identity + operation + canonical-argument digest BEFORE mutation
+    WP -> D: authorized execution via existing launcher/receipt path; caps and lease service-owned
+    D -> JOB: start under workplace UID; admitted shape/concurrency unpublished
+    JOB --> WP: output and result evidence
+    WP -> WP: persist result + service audit outside workplace UID
+    WP --> RB: stdout/stderr frames (seq), exit
+  end
+  RB --> SUP: frames (output cached separately for 10 min; cache miss never authorizes mutation)
+  SUP --> MCP: result
+  MCP --> H: tool result
+end
+H -> PX: B/C: model API calls through the qualified proxy only
+alt the model requests a built-in tool (Bash, Edit, WebFetch ...)
+  H -> H: harness returns an error tool result (tool not available);\nthe tripwire logs the name after dispatch and may end the turn
+end
+alt SSH channel drops mid-turn
+  SUP -> SUP: pause the turn loop; running turn continues to its deadline;\ntool calls fail with channel_down (retryable); result post queued durably with its op_key
+  SUP -> RB: reconnect with backoff; host certificate/CA/validity/KRL rechecked; catch up from the durable cursor;\nretry keeps original identity/arguments/admission window; reconcile same durable claim;\nretained result or pending / unknown_result, never automatic re-execution
+end
+
+== execution cleanup ==
+opt lease expires / cancel / channel loss after grace
+  RB -> D: journaled execution stop under existing effect ID
+  D -> JOB: exec.stop under published scope; signal and verify same execution process set
+  break absence unknown / contradictory / unavailable
+    D --> RB: retain affected claims; block replay/restart; no process-group-only proof
+  end
+  D --> RB: confirmed execution absence
+end
+note over D, JOB
+  Serialized per-job execution or standing runner shape remains unpublished.
+  Runner per-job cancel is best effort; unknown descendants stop whole runner execution,
+  retaining all affected job claims as unknown; restart requires prior absence + fresh admission.
+end note
+
+== result / round end ==
+H -> MCP: tools/call mailbox_post {binding, text} (offered only when the policy grants it)
+MCP -> SUP: forward
+SUP -> SUP: build the FINAL envelope (canonical bytes; audience/thread from the task record);\nsign with K_sig (D0 variant-specific storage; never sent to the project)
+SUP -> RB: frame mailbox.post {op_key, envelope_bytes, signature}; original admission window on retry
+RB -> WP: authenticate admission; durable binding-generation identity/argument claim before effect
+break conflicting arguments / expired new admission / unresolved existing claim
+  WP --> SUP: refuse or pending / unknown_result; no automatic post
+end
+alt existing conclusive remote post claim
+  WP --> RB: retained result or unknown_result if output unavailable; no second post
+  RB --> SUP: same-effect outcome
+else genuinely new post admitted and claimed before effect
+  WP -> BR: verify K_sig signature, grant, freshness; durable mailbox admission claim
+  BR -> O: carry final bytes UNCHANGED under project carrier authority (first slice, audited) -> outcome proposal
+end
+note over H, O
+  Phase: Draft donor target after slice 0 + project helper v1/workplace qualification; A first, B disabled, C qualified fallback.
+  B proxy identity is bridge UID or a system service; A provider path is direct, no proxy.
+  Bridge-role supervisor owns audit/budgets/cursors/dedup and durable queued results;
+  harness role owns home/scratch; project bridge owns mailbox and project carrier credential;
+  service-principal executor owns policy/caps, execution leases, durable identity/digest claims and admission floors; root sshd owns CA/KRL/relay shell; project keeper/hardware token holds user CA private key.
+  Workplace activation requires helper v1 fw.apply + applied state including loopback, even A/read-only.
+  OS write boundary = workplace UID writable set; task write scope = plan/import bound.
+  R-NET-TOOL: zero egress, loopback denied, no proxy destination; R-EXEC applies.
+  Claims discarded only after identities are permanently inadmissible; persist floor first.
+  R-OBS where applicable: recorded (result/current state), pending, rolled_back,
+  not_recorded (authoritative), unavailable (missing/expired/unreadable), contradictory.
+  Original caller observes under receiver journal serialization; absence never retries.
+  Human operator reads use mandatory swarma-observer without confirmation (R-OPERATOR).
+  Ten-minute output retention is independent of claim retention; no new service.
+  Exact service-account deployment for project bridge/executor, filenames and claim/floor/cache encoding
+  unspecified in spec CIP-0009 D5. rb/1 and workplace-exec/1 are pending design shorthand.
+  [[../CIP-0008-remote-worker-launch-mode.md#recommendation CIP-0008 R3/R5/R9]]
+  [[../CIP-0009-donor-side-deployment-and-bridge.md#recommendation CIP-0009 D0-D5/D12]]
+  [[../../protocol/remote-worker.md#tools-mailbox-and-lifecycle Delivery and reconnect]]
+end note
+
+== R-TRANSFER after final envelope ==
+BR -> O: round-end outcome, not a reviewed commit
+O -> RB: request round fence/export (format unpublished)
+RB -> WP: write-fence round; refuse further tool calls
+RB -> D: account-wide journaled stop / confirm no account processes
+break absence not confirmed
+  D --> O: retain round/export cleanup obligation; no export or home deletion
+end
+D -> JOB: distinct export execution under bounded cleanup consent; fixed environment/no network; no-follow mode/content comparison
+JOB --> D: bounded change set incl. mode-only/type swaps/deletion prior mode OR whole refusal
+break refusal / interrupted / unknown export
+  D --> O: retained obligation; no C; immutable refusal or original pending effect
+  O -> O: current-authority plan-bounded same-workspace repair with new linked effects, or per-act waiver
+end
+D -> D: verify result + every blob; durable outside deletion path; journal complete-content receipt
+break content durability unknown / incomplete
+  D --> O: retained obligation; no deletion
+end
+D -> D: retain delivered content until authenticated import acknowledgement or explicit authorized release
+D --> O: producer DRAFT workspace-result/1 fields; transport/lifecycle gated; current authenticated retrieval
+O -> O: independent immutable repository-B manifest recomputation; base/digest match then deterministic import -> exact C
+O -> O: board recomputes full review delta/sensitive set against trusted integration baseline, distinct from B and verification H
+O -> O: inert exact-C diffs/blobs outside discovery roots; fresh exact-C hunk acknowledgements/verdict; R-VERIFY only for code
+note right of O
+  Retained sensitive changes and unresolved web provenance from unaccepted candidates remain obligations.
+  Bind integration baseline and complete sensitive set to exact C OID; fully reverted sensitive content need not stay flagged.
+  Current run capability class remains factual; rewording alone never clears provenance dependency.
+  Clear by published conservative provenance/removal rule or exact-candidate reviewer resolution;
+  acknowledgement does not make incomplete provenance complete.
+  CIP-0002: candidate files stay data; acceptance never admits control surfaces.
+  Discovery-capable tree entry requires qualified strict-context/ambient-discovery exclusion.
+  [[../CIP-0002-project-context-in-managed-launches.md#operative-summary Review consumer boundary]]
+end note
+alt changes requested
+  O -> BR: signed rework task letter from C + reviewer findings; fresh materialization next round
+  O -> O: retain integration baseline; recompute C2 sensitive/provenance obligations; fresh exact-C2 acknowledgements/verdict
+else accepted
+  O -> O: board signed fast-forward K1/K3; moved base/integration baseline -> refresh + re-review
+end
+note over O, JOB
+  Intermediate export uses same closed write/SSH fences and absence gates.
+  Cleanup consent covers ordinary expiry only, never repair/security holds/retiring-generation launch.
+  Permission classification/intake unpublished; infrastructure failure stays pending, no chmod/privilege increase.
+  Standing discard off; physical claims/receipts distinct; lost replies reconcile without duplicate launch.
+  [[remote-worker-transfer.puml Detailed transfer and refusal/cleanup branches]]
+  No worker network/push/MR access; worker commits/history never imported.
+  R-WATCH one-account freeze/journaled stop; R-ALLSTOP manual hold/range deny/all stops,
+  broker freeze (delivered tokens retain vendor lifetime), host delivery closure/snapshots.
+  Partial/unknown keeps admission closed; explicit recovery; donor channel-down/workplace suspended.
+  Default no web; more resources requested by letter, worker never fetches.
+  Trusted opt-in: qualified provider search or separate donor swarma-web, key never crosses.
+  [[remote-worker-transfer.puml R-TRANSFER round and gates]]
+end note
+@enduml

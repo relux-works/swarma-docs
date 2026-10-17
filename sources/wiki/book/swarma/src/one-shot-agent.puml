@@ -1,0 +1,177 @@
+@startuml one-shot-agent
+' Рисунок X1 книги Swarma, глава 10 «Запуск». Заменяет worker-start и spawn-with-user.
+' Источник: swarma-dispatcher spec/dispatcher.md §§3–7, 9, 14 (v0.9); diagrams/dispatch-lifecycle.puml, reconcile.puml @9297b88f
+' Источник: swarma-user-manager spec/helper.md §§4.3–4.7, 5, 7 (v0.8, R-FD3, R-OUTCOME); diagrams/launch.puml @91a2b5b2
+' Источник: swarma-credential-broker spec/broker.md §§3.1, 6.4, 7, 8, 13.2 (v0.8); diagrams/lease-at-launch.puml @0917469b
+' Источник: curator-agent-launcher SPEC.md §10 (10.1–10.5); diagrams/launch-paths.puml @da54e24b
+' Принято 12.10: удаление дома, служба на сокете, дескрипторы, вердикт отзыва и наблюдение эффектов.
+' Принято 12.10: вывод без звонка брокеру, остановка по всей учётке, таблицы исходов, сеть по политике машины.
+' Принято 13.10: исполнитель после exec не просит и не продлевает аренду; выгрузка рабочей копии до уборки.
+' Решения владельца: D-EXECUTOR, D-PATH, D-WIRE-NAMES, D-IDENTITY (10–11.10).
+' Ни один модуль не реализован; рисунок — вид на черновики спецификаций.
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam sequenceMessageAlign left
+skinparam maxMessageSize 360
+skinparam sequenceBoxBorderColor #999999
+title Разовый агент: план у вызывающего, учётка, привязка, запуск, уборка\n«принято 11.10, выключено до квалификации»
+
+actor "Вызывающий\n(оркестратор или человек,\nсвоя учётка ОС)" as C
+participant "Curator\n(сторона вызывающего)" as CUR
+participant "swarma-dispatcher\n(учётка swarma-dispatcher)" as D
+participant "swarma-user-manager\n(root через sudo)" as UM
+participant "swarma-credential-broker\n(своя служебная учётка)" as B
+participant "swarma-user-launcher\n(root через sudo)" as L
+participant "curator-run\n(учётка worker-<метка>)" as E
+participant "Харнес\n(учётка worker-<метка>)" as H
+participant "Ключник" as K <<только архитектура>>
+
+note over C, K
+  Весь разовый режим: «принято 11.10, выключено до квалификации» (D-EXECUTOR).
+  Путь включается только после публикации версионированного входа curator-run
+  (поправка решения 0021) и квалификации подстановки учётных данных (dispatcher §14).
+end note
+
+== 1. План собирается у вызывающего ==
+C -> CUR: профиль, окружение, задача
+CUR -> CUR: собрать неизменный план: пин профиля, харнес, окружение,\nитоговый PATH (D-PATH: каталог инструментов запуска -> базовый PATH -> каталог-диспетчер);\nдайджест покрывает всё, включая PATH
+CUR --> C: план + дайджест (учётных данных в плане нет)
+note right of CUR
+  Схема плана и прообраз дайджеста:
+  формат не опубликован (SPEC лаунчера §10.1).
+end note
+
+== 2. Допуск у диспетчера ==
+C -> D: dispatch (dispatch-op/1): план, plan_digest, executor curator-run,\ncleanup.retire = on-exit, auth: подпись Ed25519 по домену swarma-dispatcher request/1
+note right of C
+  Сокет /opt/swarma/run/dispatcher/ (dispatch/1) с первого среза;
+  команды через sudo нет. Служба не готова — отказ.
+end note
+D -> D: сначала сверка журнала (§7.1); вызывающий = UID + активное поколение;\nключ связан с ним, подпись верна; цепочка гранта вызывающего\n(agent.spawn, credential.lease); квоты; лист строится; размер плана;\nсетевой профиль по политике машины для профиля Curator — ссылка\nи дайджест фиксируются в input/1 (R-NETBIND); сроки — по водяному знаку (R-TIME)
+D -> B: revocation.check {точная цепочка, контекст prepare}
+B --> D: not_revoked | revoked | unavailable + номер состояния отзывов
+note right of B: Снимок на момент проверки, не грант.\nrevoked и unavailable -> отказ.
+break отказ на подготовке
+  D --> C: типизированный отказ (signature_invalid, grant_unconstructible,\nquota_exceeded, payload_too_large, отзыв …); ничего не создано
+end
+D -> D: записать input/1; заявка на ёмкость
+break ворота ёмкости временно закрыты
+  D --> C: отказ capacity:*; очередь придёт позже на том же сокете,\nи при выходе из неё права и вердикт отзыва проверяются заново
+  note right of D: Превышение квоты (quota_exceeded) и отказ\nпо правам в очередь не ставятся никогда.
+end
+
+== 3. Эффект create: новая учётка ==
+D -> UM: user.create {kind: agent, label}, request_id = E-create
+UM --> D: worker-<метка>, uid, новое поколение, active
+note right of D
+  Перед каждым эффектом — запись намерения в журнал.
+  E-create, E-bind, E-launch, E-stop, E-unbind, E-retire — разные ID
+  из swarma-dispatcher effect/1; повтор эффекта несёт тот же ID.
+  v1 помощника: fw.apply — ещё один отдельный эффект.
+end note
+
+== 4. Эффект bind: привязка в брокере ==
+D -> D: подписать лист agent:<поколение>: глубина 0, только credential.lease;\nпересечение заявки, гранта вызывающего и гранта диспетчера
+D -> B: bind {uid, поколение, цепочка листа, цепочка вызывающего как зависимость,\nпересечение}, request_id = E-bind
+alt привязка отказана после create
+  B --> D: отказ
+  D -> UM: компенсация: user.retire, request_id = E-retire
+  D --> C: failed — только после подтверждённой уборки
+else исход bind неизвестен
+  D -> B: effect.observe {E-bind, операция, дайджест аргументов}
+  B --> D: recorded | pending | rolled_back | not_recorded | unavailable | contradictory
+  note right of D: pending и unavailable — «неизвестно»,\nникогда не «нет».
+else привязка подтверждена
+  B --> D: binding_id; выделение agent/1 -> idle
+end
+
+== 5. Эффект launch: переход в учётку агента ==
+D -> D: под замком заявка исполнения {execution_id, epoch}; run/1;\nнадзиратель зарегистрирован в службе
+D -> B: revocation.check {цепочка, контекст start}
+B --> D: not_revoked
+D -> L: launch.start (swarma-user-manager launch-op/1): поколение, execution_id,\nepoch, executor curator-run, план; request_id = E-launch
+L -> L: 1 вычистить унаследованные дескрипторы > 2; FD3 зарезервирован
+L -> L: 2 взять замок поколения: активно и создано этим диспетчером\n(замок держится до конца смены UID)
+L -> L: 3 исполнитель из одобренного списка, SHA-256 совпал;\nпроверенный дескриптор живёт до exec; дом агента — cwd
+L -> L: 4 план целиком подготовлен на FD3: ограниченные неизменяемые байты,\nтолько чтение (механизм для ОС не опубликован); фиксированное окружение
+L -> L: 5 КВИТАНЦИЯ СТАРТА ПИШЕТ ROOT ПОД ЗАМКОМ, до сброса прав:\nexecution_id, epoch, pid, start_time, boot_id, session_id
+L -> L: 6 доп. группы — пусто, GID, UID; root не вернуть;\nтолько теперь замок поколения отпущен
+L -> E: exec проверенным дескриптором: у программы только 0–2 и FD3 (R-FD3)
+note right of E
+  Вход вида curator-run exec --plan-fd 3 —
+  иллюстрация, грамматика не опубликована.
+end note
+D -> D: надзиратель записывает квитанцию старта; run/1 -> running
+alt ответ лаунчера потерян, старт неясен
+  D -> L: тот же E-launch: записанный результат или execution_already_started
+  note right of D: Сверка по ID эффекта и квитанции.\nВторого старта нет никогда.
+end
+
+== 6. Исполнение: своя аренда, токен только у харнеса ==
+E -> E: проверить план по допущенному дайджесту; ничего не собирать,\nпрофили не разрешать; PATH взять из плана; work/ и tmp/ в доме;\nзащищённая привязка credential_binding/1; чужие источники — отказ
+E -> B: своё новое соединение после смены UID; lease.request
+B -> B: проверки 1–7: UID + активное поколение по журналу помощника, привязка,\nобе цепочки и отзывы, аккаунт, квалификация харнеса, сеть
+B --> E: lease/1 (материал только в этом ответе)
+E -> H: exec харнеса; токен только в его окружении\n(Claude: CLAUDE_CODE_OAUTH_TOKEN; не argv, не файлы, не логи)
+note right of H
+  Codex (личный план) — поздний срез: внешний токен в app-server
+  своей сессии; codex exec в режиме брокера не обслуживается.
+end note
+alt грант вызывающего отозван
+  B -> B: запись отзыва (swarma-credential-broker revocation/1) — до ответа оператору
+  note over E, B
+    E после exec заменён харнесом: ни новой аренды, ни продления он не просит.
+    Следующую аренду просит свежий запуск исполнителя в другом допущенном
+    исполнении и получает отказ lease_caller_revoked; продление бывает только
+    у живущего держателя внешнего токена (Codex, поздний срез).
+  end note
+  note right of B: Уже выданный токен живёт до своего срока\nили отзыва у вендора. У Claude продления нет.
+end
+
+== 7. Конец исполнения ==
+alt отмена во время исполнения
+  C -> D: cancel {run_id}
+  D -> UM: exec.stop {поколение, execution_id}, request_id = E-stop
+else харнес завершился сам (или истёк max_runtime)
+  H --> D: выход процесса (видит надзиратель)
+  D -> UM: exec.stop с E-stop: подтвердить, что потомков не осталось
+end
+UM -> UM: execution_id — последняя квитанция поколения; личность корня совпала;\nTERM всем процессам UID, ожидание, KILL; за период тишины\nне осталось ни одного процесса учётки
+UM --> D: квитанция остановки (remaining: 0)
+note right of D
+  processes_remain или неизвестно: работа «ещё идёт»,
+  продолжение с тем же E-stop и теми же аргументами,
+  ёмкость удерживается, уборка ждёт. Сигналы через sudo не передаются.
+end note
+D -> D: исход в run/1 (exit, cancelled, expired …); ёмкость освобождена
+D --> C: dispatch-result/1: запись с исходом (через status или wait)
+
+== 8. Уборка: отдельные подтверждённые эффекты ==
+opt у выделения есть обязательство выгрузки рабочей копии (R-TRANSFER)
+  D -> UM: отдельное исполнение фиксированной программы выгрузки под UID ребёнка\n(после подтверждённого отсутствия; без сети; код работника не исполняется)
+  UM --> D: квитанция исполнения и результат с дайджестами
+  note right of D
+    Полный результат сохранён вне области удаления — уборка идёт дальше.
+    Отказ, сбой, частичный или неизвестный исход — обязательство удерживается:
+    привязка, учётка, дом и UID не выводятся; ограниченное исправление
+    по текущим полномочиям или снятие обязательства оператором.
+    Контракт рабочего места — диспетчер §5.2 (глава 12).
+  end note
+end
+D -> B: unbind, request_id = E-unbind
+B --> D: подтверждено; аренды привязки закончены
+D -> UM: user.retire {поколение}, request_id = E-retire
+UM -> UM: retiring; остановить процессы UID; дом -> карантин;\nуничтожить ключи; удалить дом целиком пачками;\nудалить учётку; removed. Брокеру не звонит
+note right of UM: Остаются только служебные метаданные\nзакрытой схемы (экспорт выключен до публикации).
+UM --> D: подтверждено
+opt личность зарегистрирована как разовая И интеграция с ключником включена
+  D -> K: отзыв личности — отдельный эффект после вывода учётки (D-IDENTITY)
+  note right of K
+    API ключника не специфицировано (dispatcher §14);
+    интеграция — поздние ворота. Постоянные личности
+    отзывает только оператор подписанной записью.
+  end note
+end
+D -> D: agent/1 -> removed; run/1 терминален только после всех подтверждений
+@enduml

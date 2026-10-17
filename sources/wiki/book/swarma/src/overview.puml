@@ -1,0 +1,94 @@
+@startuml overview
+' Обзорный рисунок: четыре слоя Swarma на одной машине, владение исправлено по решениям 10–11.10.
+' Источник: session-host/architecture.ru.md §0.2–0.4 (индекс контрактов, D-EXECUTOR, карта замен Z1–Z3, Z6)
+' Источник: swarma-dispatcher spec/dispatcher.md §§1, 2, 6, 12 (v0.9) @9297b88f
+' Источник: swarma-user-manager spec/helper.md §§1, 7 (v0.8) @91a2b5b2
+' Источник: swarma-credential-broker spec/broker.md §§3.1, 13.2 (v0.8) @0917469b
+' Источник: swarma-session-host spec/session-host.md §§1, 3.2 (r9) @23b9466d
+' Подробная карта по учёткам ОС — platform-context.puml.
+' Revision v0.12: chapter references and bounded network guarantee (N15 items 5, 11).
+' Source: curator-network-profiles-dev spec/network-profiles.ru.md N15 @89f7895
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Swarma на одной машине: четыре слоя
+
+actor "Владелец\n(клиентское приложение,\nкорневой ключ)" as OW
+
+package "Слой 4. Процессы" {
+  rectangle "Доска\n(задачи, роли, потоки;\nнеобязательный клиент)" as CORE
+}
+
+package "Слой 1. Запуск и удержание" {
+  rectangle "Curator\n(профиль, дом, PATH:\nсобирает план)" as CUR
+  rectangle "Диспетчер «v0»\nслужба на сокете\n(заявки, квоты, ёмкость,\nучёт исполнений, стоп)" as D
+  rectangle "Менеджер учёток (root)\n(создать и вывести учётку,\nвход в учётку агента)" as UM
+  rectangle "Хост сессий «SH2+»\n(служба: метаданные, логи,\nзаборы, ввод)" as SH
+  rectangle "Роутер моделей\nСетевые профили\n(черновики)" as SVC
+}
+
+package "Слой 2. Ввод и вывод" {
+  rectangle "Мост\n(ворота доверия, Mailbox)\n«только архитектура»" as BR #F4F4F4;line.dashed
+  rectangle "Провайдеры носителей\n(Matrix)\n«только архитектура»" as PR #F4F4F4;line.dashed
+}
+
+package "Слой 3. Доверие" {
+  rectangle "Брокер учётных данных «v0»\n(гранты, привязки, аренды)" as CB
+  rectangle "Ключник\n(подписи по UID)\n«только архитектура»" as KK #F4F4F4;line.dashed
+}
+
+package "Учётка агента worker-<метка>: по одной на агента" {
+  rectangle "curator-run «v0»\n(разовое исполнение\nготового плана)" as CR
+  rectangle "Раннер сессии «SH2+»\n(PTY или app-server)" as RN
+  rectangle "Харнес агента\n(кипер, оркестратор, воркер)" as AG
+}
+
+cloud "Носитель\n(Matrix)" as MX
+cloud "Провайдеры моделей" as MP
+node "Машина донора\n(удалённый работник, гл. 12)" as DN
+
+OW --> MX : пишет агентам
+OW --> CUR : запуск
+OW --> CB : гранты, аккаунты
+CORE ..> D : заявка (за воротами)
+CUR --> D : заявка + план
+CUR --> SVC : профиль, привязки
+D --> UM : sudo: учётки, запуск, стоп\n(только диспетчер)
+D --> CB : привязка,\nвердикт отзыва
+UM --> CR : план на FD3
+UM --> RN : план на FD3
+CB --> CR : аренда
+CB --> RN : аренда
+CR --> AG : exec
+RN --> AG : держит
+SH --> D : host_start, host_stop
+SH --> RN : ввод сессии
+BR --> SH : допущенные сообщения
+PR --> BR
+MX --> PR
+AG ..> KK : подпись
+AG --> MP : через прокси профиля
+DN ..> BR : почта работника\n(черновик)
+
+note right of SH
+  Сегодня сессии держит tb-sessiond
+  внутри task-board под учёткой
+  оператора; SH1 выносит его как есть.
+end note
+
+note bottom of CB
+  Аренду получает только сторона агента:
+  curator-run или раннер сессии.
+  Хост сессий и доска брокер в себя
+  не встраивают, а просят диспетчер.
+end note
+note right of MP
+  Сеть v1 — спецификация, не включение.
+  У поколения агента свой слушатель прокси.
+  CONNECT проверяет адресат и адрес,
+  не приложение внутри TLS-туннеля.
+  Подробности — глава 4 «Сеть агента».
+end note
+@enduml

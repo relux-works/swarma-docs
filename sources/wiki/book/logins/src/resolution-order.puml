@@ -1,0 +1,28 @@
+@startuml resolution-order
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Credential resolution order: CIP-0015 / D14 (decided)
+start
+:Resolve authentication source;
+if (Home-owned source?) then (yes)
+  :Resolve machine credential_store selector\ndefault native;
+  :Map store through qualified adapter interface;
+  if (Store supported?) then (yes)
+    :Check isolation admission;
+    if (Isolation admitted?) then (yes)
+      :Choose link strategy\nshared file link or isolated login;
+    else (no)
+      :Refuse (Claude macOS shared:\nenvironment_shared_unsupported);
+      stop
+    endif
+  else (no)
+    :Refuse: do not silently choose another store;
+    stop
+  endif
+else (inherited)
+  :No home-owned login\nCIP-0010 executor delivery is proposed;
+endif
+:Emit metadata and launch settings\nno credential migration or deletion;
+stop
+@enduml

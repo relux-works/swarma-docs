@@ -1,0 +1,42 @@
+@startuml sublayers
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+skinparam linetype polyline
+skinparam nodesep 30
+skinparam ranksep 45
+title Три подслоя подложки и их участники
+
+actor "Автор\n(браузер)" as A
+actor "Зритель\n(браузер)" as V
+actor "Куратор\n(демон)" as K
+actor "Архивист\n(демон)" as L
+
+package "Цепочка: глобальное состояние" {
+  rectangle "Деньги и имена\n(консенсус)" as CONS
+  rectangle "Социальные записи и указатели\n(форма, подпись, оплата)" as SOC
+}
+
+package "Социальный граф" {
+  rectangle "Индексаторы\nленты, графы, веса,\nпоиск, хэш состояния" as IDX
+}
+
+package "P2P-память: BitTorrent и другие транспорты" {
+  rectangle "Трекеры\n(WebSocket и UDP)" as TR
+  cloud "Рои раздачи\n(рабочая, кратковременная\nи долговременная память)" as SW
+}
+
+A --> SOC : указатель с тегами
+A --> SW : раздаёт из вкладки
+SOC --> IDX
+IDX --> V : лента
+IDX --> K : поток указателей
+IDX --> L : отметки окрестности
+V --> SW : тянет и раздаёт,\nпока в кэше
+K --> SW : раздаёт одобренное
+K --> SOC : категоризация
+L --> SW : держит в фоне
+TR .. SW : сигналинг
+@enduml

@@ -1,0 +1,26 @@
+@startuml shadow-spawn
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Теневой спавн через обёртку cmr
+participant "Оркестратор" as O
+participant "cmr spawn\n--mode shadow" as C
+participant "task-board spawn" as TB
+participant "Совет роутера\n(своя группа процессов)" as A
+database "observations.jsonl" as OB
+O -> C : метки + аргументы доски
+C -> TB : точные аргументы, сразу
+activate TB
+C -> A : параллельно, срок 60 с
+activate A
+A -> TB : spawn-preflight (один запрос)
+A --> C : выбор без закрепок\nили типизированная ошибка
+deactivate A
+TB --> C : вывод и код возврата
+deactivate TB
+C -> OB : одна строка: выбор, пара,\nкласс согласия, код доски
+C --> O : код возврата доски
+note over C : ошибка совета никогда\nне мешает запуску
+@enduml

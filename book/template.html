@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="$lang$">
+<head>
+<meta charset="utf-8">
+<title>$pagetitle$</title>
+</head>
+<body>
+<section class="titlepage">
+  <p class="tp-brand">$brand$</p>
+  <p class="tp-title">$title$</p>
+$if(subtitle)$
+  <p class="tp-subtitle">$subtitle$</p>
+$endif$
+$if(author)$
+  <p class="tp-author">$for(author)$$author$$sep$, $endfor$</p>
+$endif$
+  <div class="tp-meta">
+$if(date)$
+    <p class="tp-date">$date$</p>
+$endif$
+$for(notes)$
+    <p class="tp-note">$notes$</p>
+$endfor$
+  </div>
+  <div class="tp-legend">
+    <p class="tp-legend-title">Пометки статуса</p>
+    <p><span class="status now">работает сегодня</span> есть в коде и используется</p>
+    <p><span class="status dec">решено</span> владелец решил; кода может ещё не быть</p>
+    <p><span class="status spec">спецификация</span> описано в черновике спецификации модуля; кода нет</p>
+    <p><span class="status prop">предложено</span> предложение архитектуры, ждёт ревью или решения</p>
+    <p><span class="status open">открыто</span> вопрос не решён</p>
+  </div>
+</section>
+$if(toc)$
+<nav id="TOC" role="doc-toc">
+<p class="toc-title">$toc-title$</p>
+$table-of-contents$
+</nav>
+$endif$
+<main>
+$body$
+</main>
+</body>
+</html>

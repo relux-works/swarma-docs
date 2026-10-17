@@ -1,0 +1,26 @@
+@startuml local-weights
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Отпечаток весов: от импорта до оценки
+participant "Оператор" as OP
+participant "Движок\n(curator-inference-manager)" as EN
+database "engines.toml /\nruntimes.toml" as CF
+participant "Доска" as TB
+participant "Роутер" as R
+OP -> EN : импорт GGUF
+EN -> EN : SHA-256 файла
+EN -> CF : weights.id в описании движка
+OP -> CF : expected_weights_id (закрепка)
+TB -> EN : статус: weights.id, thinking, усилие
+TB -> R : кандидат с тройкой
+R -> R : оценка только при точном\nсовпадении отпечатка и режима
+R --> TB : выбор или «без оценки»
+TB -> EN : запуск
+EN -> EN : пересчёт и сверка трёх значений
+alt расхождение
+  EN --> TB : weights_identity_mismatch
+end
+@enduml

@@ -1,0 +1,31 @@
+@startuml login-locations
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Login locations: measured tool behaviour, 2026-10-14
+rectangle "Claude 2.1.299 / macOS 15" {
+  rectangle "Desktop and its descendants" as desktop
+  rectangle "ssh and its descendants" as ssh
+  database "Per-config-dir Keychain item" as ck
+  file "<home>/.credentials.json (0600)" as cf
+  desktop --> ck
+  ssh --> cf
+  note bottom of cf: Desktop and ssh stores do not see each other.\nNo login Keychain at all: save fails.
+}
+rectangle "Codex CLI 0.153.2" {
+  rectangle "config.toml or invocation -c" as config
+  file "$CODEX_HOME/auth.json" as codexfile
+  database "OS keyring" as ring
+  config --> codexfile : absent setting / file
+  config --> ring : keyring / auto
+}
+rectangle "Muse 1.4.8 / macOS" {
+  database "Global Keychain item" as mk
+  file "$XDG_CONFIG_HOME/muse/auth.json" as mf
+  rectangle "Native default" as native
+  rectangle "TBH_CREDENTIAL_BACKEND=file" as explicit
+  native --> mk
+  native ..> mf : fallback; not guaranteed\nwhen no Keychain exists
+  explicit --> mf : file only (0600)
+}
+@enduml

@@ -1,0 +1,151 @@
+@startuml platform-context
+' Подробная карта главы 02: одна машина и её окружение, сгруппированные по учёткам ОС.
+' Заменяет устаревший src/containers.puml.
+' Источник: session-host/architecture.ru.md §0.2–0.4 (индекс контрактов, решения 10–11.10, карта замен)
+' Источник: swarma-dispatcher spec/dispatcher.md §§1–2, 3.2, 5.2–5.3, 6, 8.3, 12, 14 (v0.9) @9297b88f
+' Источник: swarma-user-manager spec/helper.md §§1, 2–4.0, 4.5, 4.7, 7–8 (v0.8) @91a2b5b2
+' Источник: swarma-credential-broker spec/broker.md §§3–4, 13.2 (v0.8) @0917469b
+' Источник: swarma-session-host spec/session-host.md §§1, 1.1, 3.1–3.3 (r9) @23b9466d
+' Источник: curator-spec CIP-0009 (донор, черновик) — только как одна внешняя коробка, подробности в гл. 12
+' Согласовано с diagrams/components.puml, containers.puml модулей.
+' Возможный кандидат на альбомную страницу.
+' Revision v0.12: chapter references and bounded network guarantee (N15 items 5, 11).
+' Source: curator-network-profiles-dev spec/network-profiles.ru.md N15 @89f7895
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+skinparam linetype polyline
+skinparam nodesep 30
+skinparam ranksep 45
+skinparam ArrowFontSize 11
+skinparam NoteFontSize 11
+skinparam package {
+  BorderColor #555555
+  FontStyle bold
+}
+
+title Swarma на одной машине: учётки ОС, модули и каналы
+
+actor "Владелец" as OW
+rectangle "Клиентское приложение\nвладельца\n(мессенджер носителя)" as APP
+cloud "Сервер носителя\n(Matrix)" as MX
+cloud "Провайдеры\nмоделей" as MP
+node "Машина донора\n(удалённый работник;\nварианты и каналы — гл. 12)" as DONOR
+
+node "Машина: корень платформы /opt/swarma выбирается при установке" as MACHINE {
+
+  package "Учётка человека или оркестратора\n(неуправляемая, закреплена по UID)" as PERSON {
+    rectangle "Curator: CLI curator\nсобирает и проверяет план:\nпрофиль, дом, PATH, привязка\nучётных данных\n(клиент диспетчера curator agent-user\n«v0», CIP-0011 — черновик)" as CUR
+    rectangle "Клиент доски\n(необязательно; task-board)\nцели доски, спавн ролей\n(путь спавна через диспетчер —\nза воротами §14)" as BOARD
+  }
+
+  package "root — только на одну команду\n(sudo без аргументов, закрытые схемы)" as ROOTPKG {
+    rectangle "swarma-user-manager «v0»\nсоздаёт, перечисляет, выводит учётки;\nexec.stop; журнал поколений ledger.json;\n«v1»: файрвол по UID" as UM
+    rectangle "swarma-user-launcher «v0»\nединственный вход в учётку агента,\nвызывает только диспетчер:\nчистка дескрипторов -> замок поколения ->\nплан на FD3 -> квитанция старта (root) ->\nсброс групп, GID, UID -> exec" as UL
+  }
+
+  package "Служебные учётки swarma-<имя>" as SVC {
+    rectangle "swarma-dispatcher «v0»\nзаявки, квоты, ёмкость,\nagent/1 и run/1, уборка, сверка;\nслужба на сокете run/dispatcher/\nс первого среза" as DISP
+    rectangle "swarma-credential-broker «v0»\nаккаунты, гранты v0, отзывы,\nпривязки, аренды; сеть не слушает;\nсокет run/credential-broker/" as CB
+    rectangle "swarma-session-host\nметаданные, логи, квитанции,\nзаборы, очередь ввода;\nсокет run/session-host/" as SH <<SH2+>> #FFF7EC
+  }
+
+  package "Учётки агентов worker-<метка>: по одной на агента" as AGENTS {
+    rectangle "curator-run «принят 11.10, выключен»\nразовый исполнитель:\nпроверяет и исполняет готовый план;\nничего не собирает; сеть — только брокер" as CRUN
+    rectangle "swarma-session-runner\nпроцесс на сессию: держит PTY\nили app-server, клиент аренды" as RUNNER <<SH2+>> #FFF7EC
+    rectangle "Харнес\nClaude Code · Codex\n(под той же учёткой агента)" as HARN
+  }
+
+  package "Только архитектура: модуля нет, учётка не задана" as ARCH {
+    rectangle "Ключник\nключи личностей,\nподпись по UID" as KEEPER <<только архитектура>> #F4F4F4;line.dashed
+    rectangle "Мост сообщений\nс провайдерами носителей:\nворота доверия, Mailbox" as BRIDGE <<только архитектура>> #F4F4F4;line.dashed
+  }
+}
+
+' --- управление: заявки и sudo ---
+OW --> APP : пишет агентам
+OW --> CUR : команды в своей учётке
+CUR --> DISP : подписанная заявка request/1 + план\n(сокет dispatch/1)
+BOARD ..> DISP : заявка на спавн\n(за воротами)
+DISP --> UM : sudo: user.create · user.retire\n· exec.stop · effect.observe
+DISP --> UL : sudo: launch.start\n(план в запросе)
+DISP --> CB : bind · unbind ·\nrevocation.check · effect.observe
+SH ..> DISP : host_start и host_stop по разрешению\nхоста на сессию «SH2+»\n(форматы не опубликованы)
+BOARD ..> SH : цели доски\n(необязательно) «SH2+»
+DISP ..> KEEPER : регистрация разовых личностей\n(поздние ворота §14)
+
+' --- план на дескрипторе 3 ---
+UL -[#1565C0,thickness=3]-> CRUN : <color:#1565C0>план на FD3</color>
+UL -[#1565C0,thickness=3]-> RUNNER : <color:#1565C0>план на FD3 «SH2+»</color>
+
+' --- аренда учётных данных: только агентской стороне ---
+CB -[#2E7D32,dashed,thickness=2]-> CRUN : <color:#2E7D32>аренда: своё соединение</color>\n<color:#2E7D32>после смены UID</color>
+CB -[#2E7D32,dashed,thickness=2]-> RUNNER : <color:#2E7D32>аренда и продления «SH2+»</color>
+CRUN -[#2E7D32,dashed,thickness=2]-> HARN : <color:#2E7D32>exec харнеса с материалом</color>\n<color:#2E7D32>аренды (Claude: в окружении)</color>
+
+' --- ввод сессии ---
+SH -[#E65100,thickness=2]-> RUNNER : <color:#E65100>ввод сессии</color>\n<color:#E65100>(текущая эпоха)</color>
+RUNNER -[#E65100,thickness=2]-> HARN : <color:#E65100>PTY или app-server;</color>\n<color:#E65100>Codex: внешние токены</color>
+BRIDGE -[#E65100,thickness=2]-> SH : <color:#E65100>допущенные сообщения</color>\n<color:#E65100>в очередь ввода</color>
+
+' --- трафик носителя ---
+APP <-[#6A1B9A,dotted,thickness=2]-> MX : <color:#6A1B9A>носитель</color>
+BRIDGE <-[#6A1B9A,dotted,thickness=2]-> MX : <color:#6A1B9A>носитель</color>
+
+' --- прочее ---
+HARN -[#777777]-> MP : запросы к моделям\n(«v1»: через прокси\nсетевого профиля)
+HARN .[#777777].> KEEPER : подпись по UID
+DONOR .[#777777].> MACHINE : исходящее SSH донора\n(CIP-0008/0009 — черновики)
+
+note right of ROOTPKG
+  Остановка — только диспетчер через exec.stop:
+  поколение, исполнение и квитанция сверены,
+  TERM, затем KILL, ответ лишь после
+  подтверждённого отсутствия. Через sudo
+  сигналы не передаются; хост сессий
+  сам сигналов не шлёт.
+end note
+
+note bottom of CB
+  Брокер и хост сессий не передают
+  материал харнесу в обход исполнителя:
+  аренду получает только curator-run
+  или раннер под учёткой агента.
+  Брокер и хост сессий читают журнал
+  поколений напрямую; читаемость —
+  не полномочие.
+end note
+
+note right of PERSON
+  **Сегодня (факт):** tb-sessiond внутри task-board
+  держит сессии под учёткой оператора
+  (PTY Claude, app-server Codex на сессию);
+  SH1 выносит его как есть.
+  Оркестратор может жить и в учётке агента
+  с правом orchestrator (dispatcher §5.2).
+end note
+
+legend right
+  |= Линия |= Канал |
+  | <color:#333333>сплошная</color> | управление: заявки, sudo |
+  | <color:#333333>пунктир</color> | управление позже (SH2+, за воротами) |
+  | <color:#1565C0>**толстая синяя**</color> | план (FD3) |
+  | <color:#2E7D32>зелёный пунктир</color> | аренда учётных данных |
+  | <color:#E65100>оранжевая</color> | ввод сессии |
+  | <color:#6A1B9A>фиолетовые точки</color> | трафик носителя |
+  | <color:#777777>серый пунктир</color> | позднее или вне платформы |
+  Фазы: «v0», «v1», «SH2+», «только архитектура» (пунктирная рамка);
+  светлая заливка — «SH2+».
+  Все модули платформы — черновики дизайна, кода нет.
+  Сегодня есть: Curator с профилями, task-board с tb-sessiond, a2a.
+endlegend
+note right of MP
+  Сеть v1 — спецификация, не включение.
+  У поколения агента свой слушатель прокси.
+  CONNECT проверяет адресат и адрес,
+  не приложение внутри TLS-туннеля.
+  Подробности — глава 4 «Сеть агента».
+end note
+@enduml

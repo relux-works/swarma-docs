@@ -1,0 +1,117 @@
+@startuml platform-storage-layout
+' Рисунок X6 (глава 03): дерево /opt/swarma — владелец, режим, секреты, уборка.
+' Источник: swarma-user-manager spec/helper.md §§4.0, 4.1, 4.3, 4.4, 4.4.1, 4.5, 4.6, 6, 7, 8, 11, 14 (v0.8) @91a2b5b2
+' Источник: swarma-credential-broker spec/broker.md §§4.2, 4.3, 5.3, 12.3, 12.4, 15.1–15.3 (v0.8) @0917469b
+' Источник: swarma-dispatcher spec/dispatcher.md §§3.3, 4.1, 6, 7.2, 8.3, 11 (v0.9) @9297b88f
+' Источник: swarma-session-host spec/session-host.md §3.1 (r9) @23b9466d
+' Второй цикл и F-23, приняты 12.10: F-16 (свой репозиторий в доме), F-27 (политика привязки сети), F-24 (строки служб), F-23 (учётки оператора и наблюдателя).
+' Согласовано с diagrams/storage-layout.puml каждого модуля (M-UM4, M-CB4, M-DP3, M-SH4).
+' Режимы и владельцы показаны только там, где их задаёт спецификация.
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 6
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 20
+skinparam ranksep 30
+skinparam NoteFontSize 11
+skinparam folder {
+  FontSize 12
+}
+
+title Раскладка /opt/swarma: владельцы, режимы и уборка
+
+package "Корень платформы /opt/swarma — root 0755\nвыбирается при установке (например, отдельный том); все пути ниже — от него" as ROOT {
+
+  folder "**libexec/** — root 0755\nswarma-user-manager, swarma-user-launcher,\nswarma-dispatcher; кладёт установщик\nне секреты; пути прочих бинарей\nне специфицированы" as LIBEXEC #FFFFFF
+
+  folder "**etc/** — root 0755\nuser-manager.json: роли, диапазоны UID, архив\napproved-executors.json: пути и SHA-256\nрядом — политика привязки сетевых профилей\nк профилям Curator (имя файла не опубликовано)\nмодуль: swarma-user-manager; метаданные" as ETC #FFFFFF
+
+  folder "**lib/user-manager/** — root\nмодуль: swarma-user-manager" as LIBUM {
+    file "**ledger.json** — root 0644\nвсе поколения навсегда, курсор выделения;\nбез секретов; читают брокер, лаунчер,\nхост сессий; читаемость — не полномочие" as LEDGER #EEF5FB
+    folder "**receipts/**<generation>/<execution_id>.json\nфайлы 0644; пишет лаунчер как root\nдо сброса прав; срок хранения\nне специфицирован (§7)" as RECEIPTS #EEF5FB
+    folder "**applied-state/** — 0644 «v1»\nприменённый файрвол на поколение;\nс ним сверяет аренды брокер" as APPLIED #EEF5FB
+    folder "**journal/** и **lock** — 0700\nшаги до действий, одна\nэксклюзивная блокировка;\nвосстановление в начале вызова" as JOURNAL #EEF5FB
+  }
+
+  folder "**run/** — 0755: каталоги сокетов служб" as RUN {
+    folder "**credential-broker/**\nвладелец — учётка брокера, 0755;\nсокет 0666, право — по UID собеседника" as RUNCB #EEF5FB
+    folder "**dispatcher/**\nсокет службы dispatch/1 с первого среза (F-5);\nимя, владелец и режим не специфицированы" as RUNDP #EEF5FB
+    folder "**session-host/** «SH2+»\nправа публикует хост сессий;\nв helper §4.0 не перечислен" as RUNSH #EEF5FB
+  }
+
+  folder "**services/<учётка>/** — 0700, владелец — служебная учётка\nсоздаёт swarma-user-manager по заявке установщика" as SERVICES {
+    folder "**swarma-credential-broker/** — каталоги 0700\nхранилище секретов: файлы 0600 (токены, вход Codex);\nаккаунты, гранты, отзывы, привязки, аренды без материала;\nжурнал аудита только дописывается\n**СЕКРЕТЫ** · при удалении хранилище остаётся,\nесли оператор не попросит уничтожить (§15.3)" as SVCCB #FDECEA
+    folder "**swarma-dispatcher/state** — 0700\ninput/1, agent/1, run/1, таблица эффектов,\nжурнал, индекс, ёмкость, логи исполнителя;\nзакрытый ключ диспетчера — **секрет**\nротация логов — sweep; сроки не специфицированы" as SVCDP #FDECEA
+    folder "**swarma-session-host/** «SH2+»\nметаданные, логи, стенограммы, квитанции,\nзаборы, очередь ввода; учётных данных нет\nраскладка и сроки не специфицированы (§7)" as SVCSH #EEF5FB
+    folder "**swarma-operator/** — 0700\nкорневой ключ брокера v0, файл 0600 — **секрет**;\nвход: ключ телефона без shell или sudo с паролем;\nсессий агентов нет никогда (F-23)" as SVCOP #FDECEA
+    folder "**swarma-observer/**\nтолько чтение: состояние, гранты,\nучётки, привязки; подписи нет" as SVCOB #EEF5FB
+  }
+
+  folder "**workers/<учётка>/** — 0700, владелец — учётка агента worker-<метка>\nсоздаётся пустым через дескрипторы; ACL родителю нет" as WORKERS {
+    folder "**work/**, **tmp/** (TMPDIR)\nготовит исполнитель под UID агента;\nрепозиторий — самостоятельный, свой .git,\nбез ссылок в дом родителя (F-16)" as WORK #EEF5FB
+    folder "**состояние харнеса**\nуправляемый дом, блокировка нативной сессии;\nфайла учётных данных запуска нет,\nauth.json Codex в доме нет" as HSTATE #EEF5FB
+    file "**ключ вызывающего** (только у оркестратора)\nEd25519, создаётся в доме (dispatcher §3.3)\n**секрет**" as CALLERKEY #FDECEA
+  }
+
+  folder "**quarantine/** — root 0700\nдом переносится сюда при выводе учётки\nна той же ФС, только после проверенной тишины;\nзатем ключи уничтожаются и дом удаляется целиком" as QUAR #EEF5FB
+
+  folder "**archive/** — root 0700\nтолько экспорты служебных метаданных\nзакрытой схемы, файл root 0600 (F-1);\nдомов здесь нет; схема и имена не опубликованы,\nэкспорт выключен до публикации;\nsweep: сначала по сроку (7 сут), потом\nсамые старые до общего лимита" as ARCH #EEF5FB
+}
+
+package "Вне корня: объекты ОС, которыми управляет платформа" as OSPKG {
+  rectangle "**Записи учёток и первичных групп**\nmacOS: локальный узел (dscl);\nLinux: groupadd, useradd\nсоздаёт и удаляет swarma-user-manager;\nхранение — у ОС (§4.3)" as OSREC #F4F4F4;line.dashed
+  rectangle "**Правила sudoers**\nNOPASSWD только swarma-dispatcher -> менеджер\nи лаунчер, без аргументов; оператор — с паролем,\ntimestamp_timeout=0; ставит установщик;\nфайл (например, в /etc/sudoers.d)\nне специфицирован" as SUDO #F4F4F4;line.dashed
+  rectangle "**Службы и таймеры**\nmacOS: LaunchDaemon с UserName;\nLinux: системный юнит systemd с User=\nброкер; служба диспетчера (уборка внутри);\nсуточный root-таймер archive.sweep;\n«SH2+» хост" as UNITS #F4F4F4;line.dashed
+  rectangle "**Файрвол по UID «v1»**\nmacOS: родительский якорь pf помощника\nи якорь на учётку (user <uid>);\nLinux: одна таблица nftables (meta skuid)\nснимается в конце вывода учётки;\nстроки служб: диспетчер и хост — всё закрыто,\nброкер — только прокси (F-24)" as FW #F4F4F4;line.dashed
+  rectangle "**Временные каталоги ОС**\nфайлы учётки в системных tmp\nи её временной области\nудаляются при выводе; UID снова\nвыдаётся, только если их нет" as TMP #F4F4F4;line.dashed
+}
+
+' раскладка: две колонки внутри корня
+LIBEXEC -[hidden]down- ETC
+ETC -[hidden]down- LIBUM
+LIBUM -[hidden]down- RUN
+SERVICES -[hidden]down- WORKERS
+LEDGER -[hidden]down- RECEIPTS
+APPLIED -[hidden]down- JOURNAL
+RUNCB -[hidden]right- RUNDP
+RUNDP -[hidden]right- RUNSH
+SVCCB -[hidden]down- SVCDP
+SVCDP -[hidden]down- SVCSH
+ARCH -[hidden]down- OSREC
+OSREC -[hidden]right- SUDO
+SUDO -[hidden]right- UNITS
+UNITS -[hidden]right- FW
+FW -[hidden]right- TMP
+
+' путь дома при выводе учётки
+WORKERS -[#555555,thickness=2]-> QUAR : вывод учётки:\nсначала тишина
+QUAR -[#555555,thickness=2]-> ARCH : удалить дом;\nэкспорт метаданных
+
+note right of ARCH
+  Дом при выводе удаляется (решение 12.10, F-1).
+  Сохранить дом — отдельная явная операция
+  оператора без гарантии конфиденциальности;
+  её формат не опубликован (helper §§4.4.1, 14).
+  user.retire выбора archive/delete/keep
+  больше не несёт.
+end note
+
+note bottom of OSPKG
+  Журнал аудита помощника — root, одна строка на операцию;
+  путь не специфицирован (helper §§4.0, 4.6).
+  Ключ корня оператора (брокер v0) — в учётке swarma-operator,
+  файл 0600 (broker §4.3, F-23).
+  Все модули — черновики дизайна; на машине этого дерева пока нет.
+end note
+
+legend right
+  |= Заливка |= Что внутри |
+  |<#FFFFFF>      | код и конфигурация |
+  |<#EEF5FB>      | метаданные, без секретов |
+  |<#FDECEA>      | есть секреты |
+  |<#F4F4F4>      | объект ОС вне корня (пунктир) |
+  Фазы: без пометки — «v0»; «v1»; «SH2+».
+endlegend
+@enduml

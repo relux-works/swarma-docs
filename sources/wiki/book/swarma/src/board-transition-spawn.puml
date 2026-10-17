@@ -1,0 +1,100 @@
+@startuml board-transition-spawn
+' Рисунок книги Swarma, глава 13 «Доска». Перерисовка старого board-transition-spawn.
+' Источник: wiki session-host/architecture.ru.md §0 (0.2–0.5), §5.7 (KG), §6 (B1–B5) @4a25636
+' Источник: swarma-session-host spec/session-host.md §§3.5, 3.8 @9e27b3ff
+' Источник: swarma-dispatcher spec/dispatcher.md §14 (строка board spawn path), §§4.4–4.5, 5.3, 8.4 @abd480bc
+' Решения владельца: D-GOALS, D-EXECUTOR (10–11.10). Разовый путь диспетчера — рисунок X1 (one-shot-agent).
+' Доска — необязательный клиент платформы; её части — «предложено (архитектура доски)».
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam sequenceMessageAlign left
+skinparam maxMessageSize 340
+title Переход задачи на доске -> правила ядра -> намерение -> роль -> запуск или цель сессии -> предложение исхода
+
+actor "Оркестратор\nили человек" as Act
+participant "B2 движок потоков" as FE <<предложено>>
+database "B1 хранилище задач\n+ kguard" as TS <<предложено>>
+participant "B3 роутер ролей" as RR <<предложено>>
+participant "Раннер доски, B4 спавн\n(учётка оркестратора\nили доски)" as SP <<предложено>>
+participant "B5 клиент целей доски\n(учётка оркестратора\nили доски)" as BP <<предложено>>
+participant "swarma-dispatcher" as D
+participant "swarma-session-host" as SH <<SH2+>>
+participant "swarma-session-runner\n(worker-<метка>)" as R <<SH2+>>
+participant "Агент: харнес\n(worker-<метка>)" as W
+
+note over Act, BP
+  «предложено (архитектура доски)»: B1–B5, kguard и K1–K8 — архитектура (§5.7, §6),
+  спецификации модуля нет. Платформа работает и без доски: доска — необязательный клиент.
+end note
+
+== Переход и правила ядра ==
+Act -> FE: transition(TASK-42, to = development)
+FE -> TS: get(TASK-42): status to-dev, rev 7
+FE -> FE: версия потока в силе (flow_digest, flow_generation);\nнастраиваемые ограничители потока
+break ограничитель отказал
+  FE --> Act: refused (ограничитель, причина)
+end
+FE -> TS: write_status(TransitionProposal{intent_id, from, to, actor,\nflow_generation, expected_rev 7})
+TS -> TS: kguard: предикаты K1–K8 из kernel-policy/1 в той же транзакции,\nчто бы ни говорил поток; право роли актора на переход
+break K<n> не выполнен, или rev / поколение сменились
+  TS --> FE: refused: K<n> или stale (переоценка под новой версией)
+end
+TS -> TS: StatusRecord (flow_digest, flow_generation) +\nTransitionIntent{intent_id, actions = [spawn.owner], pending}
+TS --> FE: ok, rev 8
+FE -> RR: flow.entered{TASK-42, development, owner_role, flow_digest, flow_generation}
+RR -> RR: роль -> профиль Curator с точным пином (из привязки проекта);\ntask_class из полей элемента
+
+alt разовая роль: запуск агента
+  RR -> SP: spawn(LaunchRequest{request_id = (доска, элемент, transition_rev,\naction_index), profile, expect_pin, task_class, goal из ревизии доски, board_ref})
+  SP -> SP: собрать план у вызывающего (Curator), сравнить пин с expect_pin
+  SP -> D: dispatch: план, plan_digest, board_ref (хранится целиком, непрозрачно),\nподпись swarma-dispatcher request/1
+  note right of SP
+    Раннер доски клиента брокера в себя не встраивает:
+    он просит диспетчер (D-EXECUTOR).
+  end note
+  D -> W: путь рисунка X1: create -> bind -> launch -> curator-run -> аренда -> харнес
+  D --> SP: run_id исполнения диспетчера
+  SP -> TS: привязать RUN-* доски к run_id (это разные ручки); намерение выполнено
+  note right of TS
+    Адаптер доски: ран и попытки доски, наследники при восстановлении,
+    повторяемая доставка выхода — не специфицировано (dispatcher §14).
+  end note
+  W -> W: работает; пишет исход в элемент
+  W -> FE: «готово»: предложение исхода — transition(TASK-42, to = testing,\nактор run, own_element)
+  note right of W: Канал агент -> доска из учётки worker-<метка>:\nне специфицировано.
+  D --> SP: исход run/1 (exit): только факт конца исполнения
+else постоянная сессия со свободным слотом
+  RR -> BP: Assignment{standing: сессия + слот}
+  TS -> TS: goal.revise (CAS): ревизия N цели доски
+  BP -> SH: применить ревизию N цели доски к сессии S\n(своя возможность сессии; пир = UID + активное поколение)
+  SH -> SH: забор S открыт? записать ревизию надёжно
+  SH -> R: на границе хода — ревизия раннеру текущей эпохи
+  R -> W: ревизия во ввод харнеса
+  R --> SH: подтверждение харнеса
+  SH --> BP: applied | deferred | rolled back
+  note right of R
+    D-GOALS: у учётки агента нет права ставить или переписывать цели.
+    Хост работает и без целей, и без доски; цели доски — один из
+    необязательных клиентов общего интерфейса целей.
+    Схема команды и подтверждения цели: формат не опубликован (SH §7).
+  end note
+  W -> BP: «готово»: предложение исхода по ревизии N
+  BP -> FE: transition(TASK-42, to = testing, актор run, own_element)
+end
+
+== Приёмка: решает ядро, а не агент ==
+FE -> FE: оценка под версией потока в силе сейчас (проверка поколения)
+FE -> TS: write_status(TransitionProposal) -> kguard
+alt ограничители и K1–K8 пройдены
+  TS --> FE: принято, rev 9; ревизия цели закрыта
+  FE -> RR: flow.entered{testing, owner_role tester}: следующий владелец — так же
+else отказ (K<n>, ограничитель или устаревший ран)
+  TS --> FE: refused; элемент остаётся, уведомление оркестратору
+end
+note over Act, W
+  Выход исполнения никогда не выполняет барьер завершения доски: wait доски ждёт
+  принятого перехода, а не exit (dispatcher §14, session-host §3.5).
+  Ответ агента «заблокирован» — уведомление оркестратору или человеку, никогда не переход.
+end note
+@enduml

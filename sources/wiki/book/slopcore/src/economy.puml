@@ -1,0 +1,28 @@
+@startuml economy
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam linetype polyline
+skinparam ranksep 40
+title Потоки ценности в подложке (предложение)
+
+rectangle "Эмиссия\nплавный спад + хвост" as E
+rectangle "Плата за имена\nгодовая, по длине" as NF
+rectangle "Минимальная комиссия\nза текстовые записи" as TF
+rectangle "Чаевые\nи приоритет курации" as TIP
+
+rectangle "Майнеры" as M
+rectangle "Сжигание" as BURN
+rectangle "Сервисные узлы\n(фаза 2, 10–15 %)" as SN
+rectangle "Авторы" as AU
+rectangle "Кураторы" as CU
+
+E --> M
+E --> SN : за пройденные проверки
+NF --> BURN : половина
+NF --> M : половина, на сутки блоков
+TF --> M
+TIP --> AU
+TIP --> CU
+@enduml

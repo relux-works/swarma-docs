@@ -1,0 +1,19 @@
+@startuml callers
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Кто может звать роутер
+rectangle "curator-model-router\n(библиотека)" as R
+rectangle "task-board\nшов / обёртка cmr spawn" as TB
+rectangle "Прямые запуски\ncodex exec · muse exec" as EX
+rectangle "Лаунчер Curator\ncurator-run" as CR
+rectangle "Ядро плейбуков Swarma\nи диспетчер запусков" as SW
+rectangle "Пул и удалённые\nработники" as POOL
+TB --> R : работает
+EX ..> R : открыто
+CR ..> R : решено
+SW ..> R : решено
+POOL ..> R : предложено
+@enduml

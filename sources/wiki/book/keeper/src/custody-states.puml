@@ -1,0 +1,43 @@
+@startuml custody-states
+' Рисунок книги кипера, глава 4. Состояния одной передачи ответственности.
+' Источник: curator-keeper spec/keeper.md §10.8 (PR #9 r1): «Передача»,
+' записи custody.dispatched, custody.accepted, custody.first_action.
+' Источник: ревью r1 (sol 2; muse 3): номер передачи handover_id, одна активная
+' передача, отклонение поздних и заменённых квитанций; неудача передачи —
+' не истечение обязательства и обязательство не закрывает.
+' Статус: три шага и правило первого действия — предложено (r1);
+' номер передачи и отдельная неудача — направление второй редакции.
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Одна передача: завершается только первым действием
+
+state "отправлена" as SENT : custody.dispatched\n(handover_id, accept_by, act_by)
+state "принята" as ACC : custody.accepted\n(handover_id)
+state "завершена" as DONE : custody.first_action\n(handover_id, свидетельство)
+state "не удалась" as FAIL : причина: не приняли, не начали,\nотменена, заменена новой
+
+[*] --> SENT
+SENT --> ACC : получатель ответил\nдо accept_by
+SENT --> FAIL : accept_by прошёл
+ACC --> DONE : первое действие\nподтверждено до act_by
+ACC --> FAIL : act_by прошёл
+SENT --> FAIL : отменена или\nзаменена новой
+ACC --> FAIL : отменена или\nзаменена новой
+DONE --> [*] : держатель — новый
+FAIL --> [*] : держатель — прежний;\nнеудача уходит к тому,\nкто стоит над отправившим
+
+note right of SENT
+  До завершения обязанность
+  у прежнего держателя.
+  Ответ «принял» первым
+  действием не считается.
+end note
+
+note right of FAIL
+  Неудача передачи обязательство
+  не закрывает: оно остаётся открытым.
+  Квитанция, пришедшая после неудачи
+  или замены, отклоняется.
+end note
+@enduml

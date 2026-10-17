@@ -1,0 +1,21 @@
+@startuml judgment
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Модель решений встаёт на место оценщика задачи
+rectangle "Задача\nтекст, роль, критерии" as T
+rectangle "Оценщик по рубрике\n(TaskAssessor)" as TA
+rectangle "Бэкенд суждений\nJev или LLM по схеме\n(выбран явно в политике)" as JB
+database "Снимок решения\nзамороженные требования" as SN
+rectangle "Оценщик пригодности\n(локально)" as FE
+rectangle "Селектор\n(чистая функция)" as SEL
+T --> TA
+TA --> JB : один ограниченный вызов
+JB --> TA : Choice · Score · Noul
+TA --> SN
+SN --> FE
+FE --> SEL
+note right of SEL : воспроизводится по снимку\nбез повторного вызова модели
+@enduml

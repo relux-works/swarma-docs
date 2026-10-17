@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[english,russian]{babel}
+\babelfont{rm}{PT Serif}
+\babelfont{sf}{PT Sans}
+\babelfont{tt}[Scale=0.9]{PT Mono}
+\usepackage[a4paper,top=26mm,bottom=26mm,left=29mm,right=29mm]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\linespread{1.04}
+\setlength{\emergencystretch}{1.5em}
+
+\titleformat{\section}{\normalfont\fontsize{12.5}{15}\bfseries}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{14pt plus 2pt minus 2pt}{5pt}
+\titleformat{\subsection}{\normalfont\fontsize{11}{13}\bfseries}{\thesubsection.}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{9pt plus 2pt minus 1pt}{3pt}
+
+\setlist[enumerate]{leftmargin=2.2em,itemsep=1pt,topsep=3pt,parsep=0pt}
+\setlist[itemize]{leftmargin=1.6em,itemsep=1pt,topsep=3pt,parsep=0pt,label=--}
+
+\pagestyle{plain}
+
+\tikzset{
+  box/.style={draw,rectangle,thick,align=center,inner sep=6pt,font=\small},
+  lbl/.style={font=\footnotesize,align=center},
+  arr/.style={-{Latex[length=2.2mm]},thick},
+  darr/.style={{Latex[length=2.2mm]}-{Latex[length=2.2mm]},thick},
+}
+\usepackage{xcolor}
+% Status of a statement, the same five labels as in the book.
+\newcommand{\status}[1]{\textsf{\footnotesize[#1]}}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{17}{21}\selectfont\bfseries Swarma: платформа\\[2pt] для роёв автономных агентов\par}
+\vspace{6pt}
+{\normalsize Рантайм на машинах владельца, протокол совместной разработки\\ и цепочка идентичностей\par}
+\vspace{12pt}
+{\normalsize Алексей Григорьев, Иван Опарин\\
+Relux Works\\
+\href{https://github.com/relux-works}{github.com/relux-works}\par}
+\vspace{4pt}
+{\normalsize Октябрь 2026, четвёртая редакция, версия 4.0\par}
+\end{center}
+
+\vspace{10pt}
+
+\begin{list}{}{\leftmargin=1.2cm\rightmargin=1.2cm}
+\item
+\textbf{Аннотация.} % P1: written by the paper task.
+\end{list}
+
+% P1: sections follow editorial/paper-outline.ru.md.
+\section{Введение}
+
+\end{document}

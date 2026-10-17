@@ -1,0 +1,23 @@
+@startuml seam
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+title Шов внутри task-board spawn
+package "task-board" {
+  rectangle "Явные флаги\nагент · модель · усилие" as FL
+  rectangle "Лестница\nумолчание роли · провайдер ·\nкаталог классов нагрузки" as LAD
+  rectangle "Recommender\n(интерфейс доски)" as REC
+  rectangle "internal/routingadapter" as AD
+  rectangle "Допуск и лимиты\nпроверка и захват пары" as LIM
+  database "RUN: объект routing" as RUN
+}
+rectangle "curator-model-router" as R
+FL --> LIM : явные значения\nобходят роутер
+REC --> LIM : select: порядок роутера
+LAD --> LIM : off / shadow / запасной путь
+REC <-- AD
+AD --> R : единственный импорт
+REC --> RUN : выбор, согласие,\nошибка роутера
+@enduml

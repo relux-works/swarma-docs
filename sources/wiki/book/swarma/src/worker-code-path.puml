@@ -1,0 +1,84 @@
+@startuml worker-code-path
+' Revision: accepted architecture-review findings (2026-10-13). Source only; no rendering or qualification claimed.
+' Рисунок для главы 12: как код из изолированной учётки работника попадает в main.
+' Источник: решение владельца 13.10 (путь R-TRANSFER, волна 5); спецификации волны 5 ещё не приземлены:
+'   диспетчер TASK-261013-2c7dop, менеджер пользователей TASK-261013-3n1ddp, CIP-0009 TASK-261013-vtmjnu.
+' Правила выгрузки и пометок взяты из протокола remote-workplace v2.1, разделы 8 и 10 (worker-jail @0635a513b783).
+' Не опубликованы: формат workspace-result/1, команда импорта доски, контракт раннеров проверки.
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam sequenceMessageAlign left
+skinparam maxMessageSize 300
+skinparam noteTextAlignment left
+title Путь кода работника в main: выгрузка, кандидат, ревью, доработка
+
+participant "Оркестратор\n(доверенный, своя учётка)" as O
+participant "Доска\n(запросы на изменения)" as B
+participant "Диспетчер\n(контракт рабочего места)" as D
+participant "Учётка работника\n(без сети и ключей)" as W
+participant "Раннеры проверки\n(другая машина,\nбез секретов)" as V
+participant "Ревьюер\n(отдельный грант роли;\nдопущенные класс и размещение)" as R
+
+O -> D: запуск от точной базы B: архив дерева B,\nобласть записи, профиль команд
+D -> W: программа раскладки под учёткой работника:\nотдельный репозиторий без хуков, remote и ключей
+W -> W: работа; свой .git и коммиты\nработника не используются
+W --> D: «готово»: итог на доске\nили подписанный конверт
+D -> W: остановка всех процессов учётки\nи проверка, что их не осталось
+D -> W: программа выгрузки под учёткой работника:\nтолько изменения против списка базы, потолки;\nпри нарушении отказ целиком
+D --> O: результат с дайджестами,\nтолько тому, кто заказал запуск
+O -> B: результат — ресурс задачи; импорт:\nдерево на B без хуков и фильтров
+note right of B
+  Отказ: пути в .git, выход за область
+  записи, изменения в .task-board/.
+  Пометка: CI, хуки и автозапуск,
+  .gitattributes, инструкции агентам.
+end note
+B --> O: кандидат C: подписан нашим ключом,\nтрейлеры: работник, запуск, дайджест
+note right of B
+  Review baseline серии — доверенная интеграционная база,
+  отдельно от базы раскладки B и проверочного harness H.
+  Полный delta и пометки пересчитываются против неё;
+  сохранившиеся чувствительные изменения и unresolved
+  web provenance не исчезают при доработке.
+end note
+O -> V: проверка C: сборка и тесты
+V --> B: результаты как данные
+B --> R: exact-C diff/blob: инертные read-only ресурсы\nпо дайджесту вне discovery roots
+note over B, R
+  Производящая личность исключена; членства в круге недостаточно.
+  Local-only и исключение заказчика — открытые политики.
+  Вход в discovery-capable дерево требует qualified strict adapter.
+  Нет автоматической загрузки candidate instructions/hooks/MCP/
+  permissions/skills при startup/reload/nested read/resume/child entry.
+  Подтверждение пометок и принятие C не допускают control surfaces.
+end note
+R -> B: ревью ровно C; baseline, полный набор пометок,\nсвежие подтверждения каждого куска и вердикт связаны с OID C
+alt нужны изменения
+  B --> O: вердикт и замечания
+  O -> D: следующий раунд от C (это уже наш коммит);\nудалённому замечания идут подписанным письмом
+  D -> W: раскладка C заново
+  note over W, O
+    C2 поверх C; полный delta против интеграционной базы,
+    новые exact-C2 подтверждения и вердикт.
+    Web-free запуск не снимает inherited provenance;
+    снятие — conservative rule или exact-C resolution.
+    Base refresh требует повторного ревью.
+  end note
+else принято
+  O -> B: интеграция ровно C подписанной перемоткой\nточной головы (K1, K3), дальше обычный путь в main
+end
+note over D, W
+  Выгрузка обязательна до вывода учётки: дом не удаляется,
+  пока результат не записан или оператор явно не отменил
+  выгрузку, например при компрометации.
+  Relay lifetime и generation-bound ingress creation fence
+  открыты; полный совместный контракт — пакет этапа A.
+end note
+note over O, B
+  Ни один агент не достигает code host.
+  Неагентский performer repository/artifact effects,
+  custody, route/result и per-effect checks открыты;
+  топология — решение владельца, пакет этапа T.
+end note
+@enduml

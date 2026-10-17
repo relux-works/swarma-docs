@@ -1,0 +1,121 @@
+@startuml join-handshake
+' Revision 2026-10-13: accepted architecture-review findings; no rendering or qualification claimed.
+' Revision 2026-10-13: wave-5 zero-egress admission, R-TRANSFER and controlled verification; formats/qualification unpublished.
+' Revision 2026-10-12: R-OPERATOR operator custody/act gate; formats and qualification remain open.
+' Revision 2026-10-12: R-WORKPLACE service controls, helper-v1 activation and execution-level stops; Draft, no renderer/qualification evidence.
+title Join handshake (revision 7): a server challenge, a signed canonical transcript, atomic invitation consumption; anchors: the Web PKI, DNSSEC validated in the client (default), and the invitation's pins (fallback for an environment without a DNSSEC domain)
+
+participant "Human-run init / donor bridge role\n(A/C: donor UID; B: bridge UID)" as C
+database "DNS: system resolver,\nDNS-over-HTTPS as the fallback\n(signatures validated inside the client)" as R
+participant "Join point\n(our host)" as JP
+actor "Operator" as OP
+participant "Registry / key keeper" as T
+participant "swarma-dispatcher (service UID)\nroot swarma-user-manager helper\nproject workplace provisioning" as D
+
+note right of OP
+  R-OPERATOR: project/platform operator acts use no-harness swarma-operator.
+  Phone main: hardware-backed presence-gated operator device key; displayed act signed,
+  pinned-key SSH over tailnet; forced operator command, no shell; canonical binding/no reuse.
+  Terminal fallback: password sudo, timestamp_timeout=0, no NOPASSWD.
+  Widening authenticates + confirms exact content; refuses from an agent session.
+  Narrowing authenticates only; phone revocation is one biometric confirmation.
+  Reads use mandatory swarma-observer without confirmation.
+  Delegated agent acts stay under their own principal/ceiling, never operator UID.
+  Existing record domains/algorithms unchanged; command/record formats and key lifecycle open.
+  [[../CIP-0011-credential-broker-and-agent-users.md#5-curator-broker R-OPERATOR rules and widening list]]
+end note
+
+note over C, T
+  Anchors before first contact:
+  (a) the Web PKI certificate of the join point's domain;
+  (b) default: DNSSEC-secure TXT _swarma.<domain> = root fingerprint, TXT _swarma-ssh-ca.<domain> = our SSH host CA key, TLSA = the join point's TLS key, validated inside the client from the embedded root trust anchor (a closed network brings its own zone trust anchor);
+  (c) the invitation (marketplace deal thread, e-mail, our site) with the same fingerprints and a one-use random code (>= 128 bits): the fallback when the environment has no DNSSEC domain, a cross-check otherwise.
+  Proof of possession: the transcript signed over a SERVER challenge (not a client nonce).
+  No human second channel and nothing for the donor to configure. No step downgrades on failure.
+end note
+
+alt invitation declares no DNSSEC domain (chosen before lookup)
+  C -> C: use invitation root/host-CA/TLS pins; Web PKI required
+else default DNSSEC (open application requires this branch)
+  C -> R: TXT _swarma, TXT _swarma-ssh-ca, TLSA (per environment, not worker)
+  R --> C: records (client validates signatures, not resolver AD bit)
+  C -> C: indeterminate/system DNS missing signatures: retry transport over DoH
+  break mismatch, bogus, failed/malformed read or still indeterminate
+    C -> C: refuse; DNS failure never selects invitation fallback
+  end
+  C -> C: secure; must agree with invitation pins when present
+end
+C -> JP: POST /join/challenge (invited/open enrolment reference; schema pending)\nHTTPS: Web PKI + selected trust pins
+JP -> JP: bound to this enrolment, fresh, within attempt/queue limits?
+JP --> C: server_challenge (5 min)
+C -> C: transcript = canonical CBOR, domain-separated:\n{version, invitation reference when invited, project, role, variant, K_sig, K_enc, K_ssh, server_challenge, client_nonce, expires_at, algorithms}
+C -> JP: HTTPS: Web PKI for the domain, selected DNSSEC/TLSA or declared invitation pins
+C -> JP: POST /join/cert {transcript, sig_K_sig(transcript), code only when invited}
+alt invited
+  JP -> JP: constant-time code check; signature/challenge/expiry; atomic consumption;\ntombstone; same-key retry -> same enrolment, other key -> refuse
+else open application (no code)
+  JP -> JP: signature/challenge/expiry; operator queue; exact binding/retry schema pending
+end
+JP -> JP: per-address/per-invitation/queue limits
+break invalid signature/challenge/expiry, wrong-key retry, invitation limits or full queue
+  JP --> C: refuse; no package
+end
+JP -> OP: show {enrolment reference (schema pending), fingerprint, name, role}
+OP -> OP: check against the donor's signed marketplace card when there is one,\notherwise invitation binding or open application; no voice check
+break operator rejects application
+  OP -> JP: reject
+  JP --> C: refused
+end
+OP -> T: record R-UNTRUSTED at registration/admission; never infer from account name;\ntrusted-circle admission only by operator act, donor opt-ins only\npin K_sig, K_enc, K_ssh; root-signed admission; grants (scope, expiry)
+OP -> D: provision workplace class only with helper v1 enforced/applied networking with denied loopback/no proxy;\nfixed relay shell -> peer UID/generation -> service-principal executor;\nkeeper-held user CA signs only authenticated workplace principal\n(project-side account boundary; separate from donor provisioner)
+OP -> OP: package with host CA + short user certificate/principal, variant/tuple and binding; no carrier credential; AEAD to K_enc with AAD = H(transcript); signed by the operator certificate (root-signed, admission scope/action mapping unpublished; proposal alone grants no authority)
+OP -> JP: release package for this enrolment (reference schema pending)
+C -> JP: POST /join/challenge (collection phase, second challenge; pending schema)
+C -> JP: POST /join/collect {enrolment reference, sig_K_sig(second challenge)}
+JP --> C: package
+C -> C: decrypt with K_enc; verify operator cert chain to the pinned root;\nverify package signature; check AAD; pin our SSH host CA key from the package\nAND cross-check it against DNS (or the invitation)
+
+break invalid package chain/signature/AAD or host-CA mismatch
+  C -> C: refuse package activation; no trust fallback
+end
+
+note over C, T
+  All invitation/transcript/package and join API/error schemas PENDING (protocol/remote-worker.md).
+  Open-domain application has no code; exact identifiers/retry binding pending; operator admission required.
+  Pinned afterwards:
+  on our side K_sig, K_enc, K_ssh in the registry; K_ssh reaches the workplace user only through short certificates of our user CA (TrustedUserCAKeys);
+  on the donor side our root, the operator certificate, our SSH host CA key (@cert-authority), the binding digest, the qualified tuple, the policy generation.
+  Every later message: signed over exact bytes by K_sig on the donor, fresh, replay-checked, grant-checked (ADM).
+  Replay: invited cert meets its tombstone; collection proof/retry format pending; later frame effects rely on durable binding-generation-scoped operation-identity/canonical-argument-digest claims with authenticated admission floors (CIP-0009 D5); connection IDs and the output cache do not authorize retry mutation.
+  Rotation: a new host key gets a new host certificate (no DNS change); a host CA rotation publishes the new key beside the old; operator cert -> root-signed record; K -> operator revocation, user KRL, close sessions + new enrolment.
+  Certificates: host about one year, user about one day (policy examples); donor bridge requests renewal; service authenticates workplace; keeper signs only its principal.
+  Key storage/algorithm admission follows D0; B disabled until separate provisioner contract exists.
+end note
+note over C, T
+  Phase: Draft donor target, A first after slice 0 + project helper v1/workplace qualification; B disabled pending separate provisioner.
+  Curator init: human donor UID; bridge role: A/C donor UID or future B bridge UID.
+  Join point and registry/keeper service UIDs unspecified in spec CIP-0009 D4/D9/D12.
+  Join point owns challenges, queue, atomic invitation tombstones and stored packages;
+  registry/keeper owns public key pins/admission/grants and CA authority;
+  donor bridge owns private keys and protected package/config/CA trust state.
+  Host root owns relay-only fixed shell/sshd CA/KRL policy; service UID owns controls/claims/audit;\n  user CA private key stays with project keeper/hardware token; workplace UID owns no control.
+  Invalid/replayed/wrong-key proof, expired challenge/invitation or queue cap -> refuse.
+  Same-key invited retry recovers same pending enrollment; collection retry format pending.
+  [[../CIP-0009-donor-side-deployment-and-bridge.md#recommendation CIP-0009 D4/D6/D9/D12]]
+  [[../../protocol/remote-worker.md#trust-and-ssh Selected trust and CAs]]
+end note
+
+note over OP, D
+  R-UNTRUSTED: all workplaces untrusted unless operator admits worker to trusted circle.
+  Circle never relaxes zero egress, exec profile, transfer or review on project host.
+  No workplace subscription binding/lease; broker refuses; slice 0/v0 refuse class.
+  R-CEILINGS: host qualified matrix meets class; no OS-name exclusion.
+  R-RANGE-DENY installed before accounts; active precedence probe gates readiness.
+  R-SOCKETS: reachable sockets equal declared set. R-SHARED: no shared services here;
+  public join ingress is on a separate entry host, not the untrusted workplace host.
+  Default donor loop: provider endpoints + our host only, no web/search/fetch.
+  Trusted web options require explicit per-identity opt-in, donor init consent and qualification.
+  No donor-side web server by default; lockdown plan disables provider search inside API.
+end note
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml profile-prepare
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title curator profile prepare P: rc.7 contract (decided)
+start
+:Install profile if absent;
+while (Another participating environment?) is (yes)
+  :Resolve source, store and isolation\ninspect login readiness metadata;
+  if (Home-owned authentication?) then (yes)
+    if (login = absent?) then (yes)
+      if (Isolated and real terminal available?) then (yes)
+        :Run tool-native env login in managed home\nnever capture credential output;
+        :Report readiness result;
+      else (no)
+        :Refuse managed login\nshared: give native-login guidance;
+      endif
+    else (present or unknown)
+      :Keep present; report unknown as unknown\nno automatic login for unknown;
+    endif
+  else (inherited)
+    :No per-home login\nreport source readiness;
+  endif
+endwhile (no)
+:Report readiness table for all environments\npresent / absent / unknown;
+stop
+@enduml

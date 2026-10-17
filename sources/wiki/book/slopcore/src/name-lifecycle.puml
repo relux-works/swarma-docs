@@ -1,0 +1,22 @@
+@startuml name-lifecycle
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Жизнь имени (предложение)
+
+state "Свободно" as FREE
+state "Коммит" as COMMIT
+state "Зарегистрировано" as REG
+state "Отсрочка" as GRACE
+state "Премия" as PREM
+
+[*] --> FREE
+FREE --> COMMIT : хэш имени и соли
+COMMIT --> REG : раскрытие через N блоков\n+ годовая плата по длине
+REG --> REG : обновление записей,\nпередача, продление
+REG --> GRACE : срок истёк
+GRACE --> REG : продление владельцем
+GRACE --> PREM : отсрочка кончилась
+PREM --> REG : новый владелец\nплатит убывающую премию
+PREM --> FREE : премия дошла до нуля
+@enduml

@@ -1,0 +1,126 @@
+@startuml remote-worker-retire
+' Revision 2026-10-13: accepted architecture-review findings; no rendering or qualification claimed.
+' Revision 2026-10-13: wave-5 zero-egress admission, R-TRANSFER and controlled verification; formats/qualification unpublished.
+' Revision 2026-10-12: R-OPERATOR operator custody/act gate; formats and qualification remain open.
+' Revision 2026-10-12: R-WORKPLACE service controls, helper-v1 activation and execution-level stops; Draft, no renderer/qualification evidence.
+title Lifecycle of a remote worker (revision 7; variant-aware cleanup and independent state axes): stop, leave and purge on the donor; suspend, retire and revoke on our side; the identity stays pinned unless revoked
+
+actor "Operator (our side)" as OP
+participant "R-WATCH sampler\nread-only; least OS-required privilege" as Watch
+participant "Broker + session host\nservice-owned all-stop parts" as Services
+participant "Registry / key keeper" as T
+participant "swarma-dispatcher + swarma-user-manager\n(project host; account lifecycle)" as D
+participant "Service-principal bridge + swarma-rb-exec\nroot sshd + relay-only fixed shell" as BR
+actor "Donor (the machine's owner)" as ADM
+participant "curator remote-worker\n(donor bridge role; UID follows variant)" as C
+participant "Separate donor provisioner (B only)\n(binary/schema/rules/removal pending; B disabled)" as PH
+
+note right of OP
+  R-OPERATOR: project/platform operator acts use no-harness swarma-operator.
+  Phone main: hardware-backed presence-gated operator device key; displayed act signed,
+  pinned-key SSH over tailnet; forced operator command, no shell; canonical binding/no reuse.
+  Terminal fallback: password sudo, timestamp_timeout=0, no NOPASSWD.
+  Widening authenticates + confirms exact content; refuses from an agent session.
+  Narrowing authenticates only; phone revocation is one biometric confirmation.
+  Reads use mandatory swarma-observer without confirmation.
+  Delegated agent acts stay under their own principal/ceiling, never operator UID.
+  Existing record domains/algorithms unchanged; command/record formats and key lifecycle open.
+  [[../CIP-0011-credential-broker-and-agent-users.md#5-curator-broker R-OPERATOR rules and widening list]]
+end note
+
+note over OP, PH
+  Independent axes: installation present/purged; donor execution active/stopped/left;
+  project workplace admitted/suspended/retired; signing identity pinned/revoked.
+  A/C share donor UID; B has separate UIDs. Offline purge proves no remote revocation.
+  Stop and revocation marks are persisted BEFORE any process is touched, so a service restart cannot race them.
+  User-certificate revocation/expiry never substitutes for closing established sessions and killing jobs.
+end note
+
+== donor: stop (pause) ==
+ADM -> C: curator remote-worker stop
+C -> C: persist "stopped"; end this worker's harness and descendants (never all donor-UID processes); keep the bridge service and the keys; audit line
+C --> ADM: stopped (run needs valid admission/credentials/qualification)
+
+== donor: leave (retire the workplace, keep the identity) ==
+ADM -> C: curator remote-worker leave
+C -> BR: retire request over the channel (if reachable)
+C -> C: close the channel; keep K_sig, K_enc, K_ssh and the configuration
+C --> ADM: left; "init --rejoin" with a new invitation returns the pinned identity to a newly admitted workplace unless revoked
+
+== project: suspend / retire / revoke ==
+OP -> T: suspend: grants paused
+OP -> BR: suspend: close sessions; keep workplace
+OP -> D: retire workplace
+D -> BR: persist channel/grant revocation; stop renewal; user-certificate KRL; close sessions
+D -> D: journaled exec.stop for workplace executions via receipt/effect;\nconfirm absence under published account-wide stop scope; no process-group-only proof
+break process absence not established
+  D -> D: retain account/egress; reconcile unknown evidence; do not delete home
+end
+D -> BR: write-fence round; refuse further workspace tool calls
+D -> D: before entering retiring: distinct child-UID exporter claim/receipt under bounded original cleanup consent;\nordinary expiry only; security holds require explicit authority, never R-SESSION reuse
+D -> D: digest/size verify result + every blob; durable custody outside deletion path; journal receipt
+break unresolved refusal / interrupted / unknown / incomplete content without explicit operator waiver
+  D -> D: retain obligation; current-authority bounded repair with new linked effects or per-act waiver; no silent discard
+end
+D -> D: recorded complete-content receipt OR explicit operator waiver; then enter retiring;\nretained content requires authenticated import acknowledgement or explicit authorized release
+D -> D: journal declared-key cleanup, then delete workplace home;\nexport service-generated closed-schema metadata only (no agent-controlled strings/names/links/bodies)
+break key cleanup / home deletion / metadata validation failure
+  D -> D: do not release remaining account/egress; journaled recovery; exact format unpublished
+end
+D -> D: confirmed absence + key cleanup + home deletion -> release account and egress rules
+BR -> BR: next frame or envelope from this worker refused (retired); mailbox kept durable
+note right of BR: the donor's connection drops; its bridge reports "retired by project" and pauses
+OP -> T: revoke (only on compromise or departure): root-signed revocation of K_sig, K_enc, K_ssh
+T -> BR: persist revocation; user-certificate KRL; close sessions; stop renewal;\nrevocation record: every frame and envelope from these keys refuses from now on;\na return needs a new key through a new enrolment (rotation is a root-authorized record)
+
+== donor: purge (destroy) ==
+ADM -> C: curator remote-worker purge --confirm
+C -> BR: report purge; ask revocation outcome (if reachable)
+alt channel reachable
+  BR --> C: reported workplace and identity states (independent axes; response schema pending)
+else channel unreachable
+  C -> C: record "channel unreachable; the project side must revoke separately"
+end
+C -> C: stop owned processes; delete keys, locked config, managed home; retain donor-visible audit
+alt A
+  C -> C: remove owned user service/artifacts; preserve donor account and unrelated data
+else C
+  C -> C: remove owned sandbox + user service/artifacts; preserve donor account
+else B (future path, disabled while provisioner contract pending)
+  C -> PH: remove only B-allocated accounts, egress, sandbox, system service\n(exact closed operation format pending; journal/rollback required)
+  PH --> C: removal result
+end
+C --> ADM: variant-owned artifacts removed; printed revocation result or unknown when unreachable
+note over OP, PH
+  Phase: Draft donor target after one-host slice 0 + project helper v1/workplace qualification; A first, B disabled, C fallback.
+  Donor Curator human commands run as donor UID; bridge service owns lifecycle marks,
+  keys/config/audit (A/C donor UID; B bridge UID); harness owns home/scratch.
+  Export cleanup obligation cannot be silently dropped; no launch after retiring.
+  [[remote-worker-transfer.puml Transfer outcomes, repair and cleanup authority]]
+  Separate explicit operator home retention states confidentiality is not guaranteed.
+  Git/accepted outputs have a separate confidentiality policy.
+  Project dispatcher service owns tracking, root user-manager owns account lifecycle;
+  root sshd owns relay shell/user KRL; service executor owns claims/floors/audit;
+  project bridge owns channel/mailbox state; user CA private key stays with keeper/hardware token;
+  registry/keeper owns signed identity revocations. Their exact UIDs/storage formats
+  unspecified in spec CIP-0009 D7/D12. Stop terminates only owned harness descendants.
+  Cleanup cannot release workplace before proven process absence; forward-recovery
+  states unspecified in spec CIP-0009 D7. Local purge never proves remote revocation.
+  [[../CIP-0009-donor-side-deployment-and-bridge.md#recommendation CIP-0009 D7/D12]]
+  [[../../protocol/remote-worker.md#tools-mailbox-and-lifecycle Four independent axes]]
+end note
+
+== R-WATCH / R-ALLSTOP ==
+Watch -> D: hard threshold: one-account freeze + journaled exec.stop (no unjournaled kill)
+D -> BR: close affected jobs/delivery; workplace suspended
+BR --> C: channel drops -> existing channel-down pause; no new donor state
+OP -> D: node-wide narrowing act: phone authentication + one confirmation or terminal fallback; no agent sessions
+D -> D: hold closes admission; range deny-all; every generation account-wide stop/confirmed absence
+D -> Services: broker freezes leases/renewals; session host closes delivery + board snapshots; each journals its part
+note over D, C
+  R-WATCH read-only least-privileged per-UID telemetry; alerts to operator phone.
+  Node-wide stop manual; tokens already delivered retain vendor lifetime.
+  Partial/unknown all-stop keeps admission closed; recovery explicit, no automatic restart.
+  Thresholds/sampler/alerts and act/record formats unpublished.
+end note
+@enduml

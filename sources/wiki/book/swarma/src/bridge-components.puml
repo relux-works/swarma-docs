@@ -1,0 +1,48 @@
+@startuml bridge-components
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+skinparam linetype polyline
+skinparam nodesep 25
+skinparam ranksep 45
+title Компоненты моста «только архитектура: модуля и спецификации нет»
+
+cloud "Matrix\n(носитель)" as MX
+rectangle "Хост сессий\n(swarma-session-host)" as HOST
+rectangle "Агент\n(инструмент inbox)" as AG
+rectangle "Ключник\n(только архитектура)" as KK
+rectangle "Реестр ключей\nи грантов" as REG
+
+package "Мост" {
+  rectangle "Провайдер Matrix\nкомнаты и треды, курсор\nпосле записи, конверты" as PM
+  rectangle "Провайдер целей\nтолько расписание: толчки\nпо целям доски или запуска" as PG
+  rectangle "Наблюдение терминала\nтолько проекция вывода" as PT
+  rectangle "ABI плагинов\nswarm-plugin/1: закреплённые\nисполняемые файлы, ручки, лимиты" as ABI
+  rectangle "Ядро моста\nпривязка провайдеров к сессиям,\nвывод отправителя, постановка хосту" as CORE
+  rectangle "Ворота доверия\nподпись точных байт, личность,\nгрант, свежесть, повтор, привязка" as GATE
+  rectangle "Decision guard\nмалая локальная модель:\nпросьба против грантов адресата" as DG
+  rectangle "Почтовый ящик\nтела с записями проверки;\nвходящие и исходящие" as MB
+  database "Хранилище моста\nзаявки на id, записи допуска,\nзвонки, исходящие, аудит" as ST
+  rectangle "Хвосты (CLI)\npark · post · inbox read;\nсвоих целей нет (D-GOALS);\nтокен сессии = тот же UID" as TAILS
+}
+
+MX --> PM
+PM --> ABI
+PG --> ABI
+PT --> ABI
+ABI --> CORE
+CORE --> GATE : каждое входящее
+GATE --> REG : снимок отзыва
+GATE --> DG : допущено
+DG --> MB : вердикт + отпечаток
+MB --> HOST : звонок (без тела)
+CORE --> ST
+MB --> ST
+AG --> TAILS
+TAILS --> MB : забрать тело
+TAILS --> CORE : post (аудитория, лимит)
+CORE ..> KK : подпись исходящих\n(чьим правом — открыто)
+CORE --> PM : проекция вывода
+@enduml
