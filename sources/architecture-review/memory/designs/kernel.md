@@ -1,6 +1,6 @@
 # Bounded evidence memory: kernel contract
 
-Owner: the memory lane (`ivmbp_swarma-memory_orch`). Status: **draft v0.2, 2026-10-17** (v0.2 adds review 3: snapshot applicability, lineage completeness, declassification evidence, three distinct conflict outcomes, projection exclusion, the normalized input tuple), normative direction for the R7 package (D-007); not a released specification and not implemented. This document consolidates the collective's design and the later inputs into one kernel contract. It changes no meaning of the collective's assembly except where a section says "amends".
+Owner: the memory lane (`ivmbp_swarma-memory_orch`). Status: **draft v0.3, 2026-10-17** (v0.3 adds D-009 issuer-local order in §5.3; v0.2 added review 3: snapshot applicability, lineage completeness, declassification evidence, three distinct conflict outcomes, projection exclusion, the normalized input tuple), normative direction for the R7 package (D-007); not a released specification and not implemented. This document consolidates the collective's design and the later inputs into one kernel contract. It changes no meaning of the collective's assembly except where a section says "amends".
 
 Sources, in precedence order where they differ:
 
@@ -96,6 +96,8 @@ APIs and renderings keep these three distinct; a client may not map one onto ano
 ### 5.3 Decision currentness
 
 For a `decision_record`, the current decision is a projection of the deciding authority's own ordered record (the commit order of a reviewed decision register, the board's revision), cited by exact revision. Memory-side replacements without that authority's receipt stay `proposal`s. Two receipted replacements of one decision with no order between them in the authority's record yield `ambiguous_current`, listing both; neither wins by learned-at time. A decision learned late keeps its authority order, not its arrival order (vectors S28, S29).
+
+**Issuer-local order (D-009, amends: closes R7-055).** The authority order of issuer H is the relation `a ≺_H b` iff `(b, a) ∈ E_H⁺`, where `E_H` keeps only predecessor edges between events whose protected policy authority-event issuer is H (events with no assertion attached count). One all-H path suffices; cross-issuer edges add no order for H; a foreign event is never contracted into a bypass edge; foreign branches never cancel an all-H path. The same relation decides currentness and strict replacement succession. Mixed-issuer graphs are admissible; a missing qualifying path means the order is not established (`ambiguous_current` between the candidates), never an invalid state. Changes confined to foreign parts of the graph never change `≺_H`.
 
 ## 6. Evaluation and views (amends: corpus coverage, premise quality, freshness, availability)
 
