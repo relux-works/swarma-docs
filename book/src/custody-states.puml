@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Передача ответственности: предлагаемое состояние
+title Передача ответственности: состояния
 state "Отправлена" as SENT
 state "Принята" as ACC
 state "Завершена" as DONE

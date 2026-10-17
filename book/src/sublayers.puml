@@ -3,12 +3,12 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 skinparam packageStyle rectangle
-title Swarm Chain: предлагаемое устройство подслоёв
+title Swarm Chain: устройство подслоёв
 actor "Автор" as A
 actor "Читатель" as V
 package "Цепочка" {
-  rectangle "Деньги и имена\nКонсенсус" as CONS
-  rectangle "Социальные записи и указатели\nФорма, подпись, оплата" as SOC
+  rectangle "Деньги, имена и личности\nКонсенсус" as CONS
+  rectangle "Социальные записи, аттестации, указатели\nКонверт: тип, подпись пачки, оплата" as SOC
 }
 package "Социальный граф" {
   rectangle "Индексаторы\nГраф, ленты, поиск и веса" as I

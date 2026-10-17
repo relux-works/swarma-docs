@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Интеграция кандидата: спецификация допуска
+title Интеграция кандидата: допуск
 start
 :построить неизменяемый кандидат I\nнад текущей головой M;
 :после заморозки выбрать ревьювера\nпо политике независимости;

@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Ключник: предлагаемая регистрация и подпись
+title Ключник: регистрация и подпись
 participant "Диспетчер" as D
 participant "Агент" as A
 participant "Ядро ОС" as OS
@@ -26,6 +26,6 @@ else действующая привязка
 end
 note over A, SECRET
   Закрытый ключ агенту не выдаётся.
-  Формат обмена с ключником не опубликован.
+  Точный формат обмена — в спецификации модуля.
 end note
 @enduml

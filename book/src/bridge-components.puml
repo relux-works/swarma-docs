@@ -3,7 +3,7 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 skinparam packageStyle rectangle
-title Мост: предлагаемое разделение обязанностей
+title Мост: разделение обязанностей
 cloud "Matrix\nНоситель" as MX
 package "Мост" {
   rectangle "Провайдер носителя\nСохранить событие до сдвига курсора" as P

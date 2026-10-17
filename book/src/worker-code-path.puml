@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Результат работника: выбранный путь, контракты ещё открыты
+title Результат работника: от рабочего места до продвижения
 participant "Работник" as W
 participant "Диспетчер" as D
 participant "Оркестратор и доска" as B

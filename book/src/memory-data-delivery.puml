@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Память: предлагаемая доставка данных в первом срезе
+title Память: доставка данных в первом срезе
 participant "Агент" as A
 participant "Инструмент памяти" as M
 database "Реестр документов и свидетельств" as D
