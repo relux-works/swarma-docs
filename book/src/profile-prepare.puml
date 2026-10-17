@@ -1,0 +1,27 @@
+@startuml profile-prepare
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Подготовка профиля Swarm Curator: выбранный контракт
+start
+:установить отсутствующий профиль;
+while (есть следующая среда?) is (да)
+  :разрешить источник, хранилище и изоляцию;
+  :проверить метаданные готовности;
+  if (источник принадлежит дому?) then (да)
+    if (логин заведомо отсутствует?) then (да)
+      if (isolated и есть настоящий терминал?) then (да)
+        :нативный вход инструмента в управляемом доме\nбез захвата вывода учётных данных;
+      else (нет)
+        :отказ в управляемом входе;\nдля shared — инструкция нативного входа;
+      endif
+    else (present или unknown)
+      :сохранить present; unknown оставить unknown;
+    endif
+  else (наследуемый)
+    :без входа каждого дома; проверить готовность источника;
+  endif
+endwhile (нет)
+:таблица present / absent / unknown по всем средам;
+stop
+@enduml

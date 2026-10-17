@@ -1,0 +1,21 @@
+@startuml authority-ladder
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Swarm Protocol: спецификация цепочки полномочий
+rectangle "Цель\nПодписана кор-нодой\nОбласть, класс риска и бюджет" as G
+rectangle "Полномочие оркестратора\nПути, типы изменений и лимиты" as C
+rectangle "Задача\nКонтракт с версией и план с digest" as T
+rectangle "Ревизия и кандидат\nДиф внутри write scope задачи" as R
+G -down-> C : только сужение
+C -down-> T : только сужение
+T -down-> R : только сужение
+note right of C
+  Оркестратор декомпозирует полномочия,
+  но не создаёт их.
+end note
+note right of T
+  Валидаторы проверяют вложенность при переходах.
+  Среда сверяет digest плана при вызовах.
+end note
+@enduml

@@ -1,0 +1,31 @@
+@startuml board-components
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam packageStyle rectangle
+title Предлагаемая архитектура доски на Swarm Runtime
+database "Плейбук с версией" as P
+actor "Человек" as H
+package "Доска" {
+  rectangle "Движок потоков" as F
+  rectangle "Правила ядра\nВ каждой мутации" as K
+  database "Задачи, цели и ресурсы" as T
+  rectangle "Роутер ролей" as R
+  rectangle "Запрос запуска" as S
+  rectangle "Клиент целей сессии" as G
+}
+rectangle "Диспетчер" as D
+rectangle "Хост сессий" as HOST
+rectangle "Исполнитель роли" as A
+P --> F
+H --> F : подтверждение версии
+F --> K : предложение перехода
+K --> T : допустимая мутация
+F --> R : следующий владелец роли
+R --> S
+R --> G
+S --> D : доска сама не исполняет
+G --> HOST : ревизия цели
+HOST --> A : цель сессии
+A --> G : исход — предложение перехода
+@enduml

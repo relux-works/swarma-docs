@@ -1,0 +1,23 @@
+@startuml local-weights
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Локальные веса: предлагаемый сквозной путь
+actor "Оператор" as O
+participant "Движок" as E
+database "Конфигурация" as C
+participant "Доска" as B
+participant "Маршрутизатор" as R
+O -> E : импорт файла весов
+E -> E : SHA-256 файла
+E -> C : отпечаток импортированного файла
+O -> C : ожидаемый отпечаток
+B -> R : отпечаток, режим thinking и усилие
+R -> R : применять оценку только при совпадении\nфайла и режима — работает сегодня
+R --> B : выбор или «без оценки»
+B -> E : запрос запуска
+E -> E : сверить ожидаемый, импортированный\nи фактический отпечатки — предложено
+alt значения расходятся
+  E --> B : отказ
+end
+@enduml

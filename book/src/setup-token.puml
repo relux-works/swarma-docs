@@ -1,0 +1,28 @@
+@startuml setup-token
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Предлагаемая доставка наследуемого setup-token
+actor "Оператор" as O
+participant "Подключение источника" as EN
+database "Защищённое хранилище" as S
+participant "План / fragment" as P
+participant "Окончательный исполнитель" as E
+participant "Claude" as C
+O -> EN : завести токен по защищённому каналу
+EN -> S : сохранить материал
+S --> EN : непрозрачная source_ref
+EN -> P : только ссылка
+P -> E : source_ref без байтов токена
+E -> S : разрешить допущенный источник
+alt источник отсутствует, нечитаем или конфликтует
+  E -> E : отказ без запасного логина
+else источник разрешён
+  S --> E : материал по защищённому каналу
+  E -> C : CLAUDE_CODE_OAUTH_TOKEN при запуске
+end
+note over E, C
+  Доставка в Swarm Curator ещё требует реализации.
+  Только inference; Remote Control не поддерживается.
+end note
+@enduml

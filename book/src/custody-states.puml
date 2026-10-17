@@ -1,0 +1,21 @@
+@startuml custody-states
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Передача ответственности: предлагаемое состояние
+state "Отправлена" as SENT
+state "Принята" as ACC
+state "Завершена" as DONE
+state "Не удалась" as FAIL
+[*] --> SENT
+SENT --> ACC : принятие до accept_by
+ACC --> DONE : первое действие подтверждено до act_by
+SENT --> FAIL : срок принятия прошёл;\nотмена или замена
+ACC --> FAIL : срок действия прошёл;\nотмена или замена
+DONE --> [*] : держатель — новый
+FAIL --> [*] : держатель — прежний;\nобязательство открыто
+note right of ACC
+  «Принял» не является первым действием.
+  Поздняя или заменённая квитанция отклоняется.
+end note
+@enduml

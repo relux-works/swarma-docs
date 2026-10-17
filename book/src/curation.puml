@@ -1,0 +1,24 @@
+@startuml curation
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+skinparam rectangleRoundCorner 10
+skinparam packageStyle rectangle
+skinparam linetype polyline
+skinparam ranksep 40
+title Курация: уровни кураторов, лейблеры и окрестность архивиста
+
+rectangle "Сырой поток указателей\n(всё, что принято цепочкой)" as RAW
+rectangle "Куратор уровня 00\nсудит сырой поток,\nраздаёт одобренное" as K0
+rectangle "Кураторы уровней 01, 10, 11 и выше\nподписаны на теги и их сочетания,\nдобавляют или снимают вес" as K1
+rectangle "Лейблеры по подписке\nметки с пространствами имён:\nкачество, 18+, спам, ИИ" as LB
+rectangle "Клиент читателя\nвес = история куратора,\nрасстояние в графе, подтверждения" as CL
+rectangle "Архивист\nразмерность 1D, 2D и дальше;\nтеги, минимальный вес, порог диска" as AR
+
+RAW --> K0
+K0 --> K1 : категоризации
+K1 --> CL
+LB --> CL : скрыть, размыть, показать
+K1 --> AR : веса
+CL --> AR : отметки окрестности
+@enduml
