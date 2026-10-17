@@ -39,9 +39,16 @@ Built only on a concrete need: an admitted private or personal data class, auton
 
 One canonical package: normative prose, closed schemas and executable conformance vectors, owned by the memory lane. The kernel package carries no Swarma terms; the Swarma adapter contract lives in `swarm-platform-architecture` next to `handoff-package`; the book explains the package and integration documents reference it. The package is drafted in this repository under `memory/spec/` and moves to its own repository together with D-002's standalone release. Semantic vectors and protected-deployment checks are reported separately; passing the first is never presented as passing the second.
 
+## D-008. Profiles use case enters the design; one kernel for both scenarios (2026-10-17)
+
+- **Question put:** add to the R7 scope an addendum for subjects and derived views, built from the profiles use case (`inputs/USECASE-PROFILES.ru.md`, reconciled in `notes/usecase-profiles-gaps.md`): attribution roles and current-state projection with freshness in the kernel, derived disclosure and the publication handoff as boundary contracts, vectors on a synthetic profile corpus; the pilot stays on architecture decisions and no real personal data is admitted.
+- **Decision (Ivan, in session):** «Да, вот надо бы, давай все то, что нам прислали сейчас по этому use case, давай оформим это, возьмем это к себе в дизайн, чтобы у нас было ядро, а, в общем, как надо, абстрактное, а, но удовлетворяло конкретным сценарием.»
+- **Meaning:** the kernel stays domain-free with five records; profiles, intents, discovery cards, matching, catalogs and introductions are a domain package and services above it. The kernel gains the envelope roles (subject, issuer, submitter, representation reference, perspective, admission class), domain-schema cardinality and incompatibility rules, revision authority per issuer sequence with expected-version concurrency, named projection rules, freshness, lineage-inherited disclosure with declassification by the policy owner, and the boundary to publication. Real profiles still wait for D-003 and D-006.
+- **Artifact:** `designs/kernel.md` (the consolidated kernel contract, draft v0.1), with vectors S28–S33 and P01–P11.
+
 ## Proposed next steps (not decisions)
 
-- **R7 package** first: closed schemas for the five records, the view disclosure contract, the 17 + 27 vectors as executable fixtures, plus the review-1 gaps (`notes/review-1-gaps.md`: corpus coverage, incompatibility rules, S28/S29, `premise_quality`, source availability states).
+- **R7 package** first, from `designs/kernel.md`: closed schemas for the envelope and the five records, the view disclosure contract, the 17 + 27 vectors as executable fixtures, plus the review-1 gaps (`notes/review-1-gaps.md`: corpus coverage, incompatibility rules, S28/S29, `premise_quality`, source availability states).
 - **Adversarial triad** after the package, under the Codex-only spawn policy: an independent evaluator implementer (`gpt-6.1-sol`, high) that reads only the package, and a divergence-case writer (`gpt-6-astra`, medium); every divergence becomes a package fix or a new vector. The evaluator becomes the core of the pilot's read-only adapter.
 - **Pilot metrics** added to the collective's list: corpus maintenance cost, actualization latency, and a working-task check (does a fresh agent bring back a superseded decision; does it notice the real dependents).
 - **Platform book ch. 09** correction for D-001, through the wiki's PR flow.
