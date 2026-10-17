@@ -42,6 +42,14 @@ if [ -n "$bad" ]; then
   fail=1
 fi
 
+# TeX status labels: \status{label} takes the same five labels.
+badtex=$(grep -noE '\\status\{[^}]*\}' $files 2>/dev/null | grep -vE ':\\status\{(работает сегодня|решено|спецификация|предложено|открыто)\}$')
+if [ -n "$badtex" ]; then
+  echo "== unknown TeX status label"
+  echo "$badtex"
+  fail=1
+fi
+
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do
   [ -e "$f" ] || continue
