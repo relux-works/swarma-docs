@@ -34,6 +34,7 @@ pandoc "${chapters[@]}" \
   --template "$here/template.html" \
   --lua-filter "$here/filters/book.lua" \
   --toc --toc-depth=2 \
+  --section-divs \
   --syntax-highlighting=none \
   --number-sections --number-offset=-1 \
   --metadata lang="$lang" \

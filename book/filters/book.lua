@@ -58,6 +58,37 @@ local function take_marker(inlines, i)
   return nil
 end
 
+-- 4. Russian typesetting: a short preposition, conjunction or particle is
+--    bound to the next word, and an em dash to the word before it, so that
+--    neither is left hanging at the end or start of a line.
+local nbsp = "\u{00A0}"
+local bind_next = {}
+for w in ("в во с со к ко о об обо у и а но на по за из от до не ни ли же бы при для без над под про что как или") :gmatch("%S+") do
+  bind_next[w] = true
+end
+
+local function bind_spaces(inlines)
+  local out = pandoc.List()
+  local n = #inlines
+  for i = 1, n do
+    local el = inlines[i]
+    local prev, nxt = inlines[i - 1], inlines[i + 1]
+    if el.t == "Space" and prev and nxt and prev.t == "Str" and nxt.t == "Str" then
+      local word = pandoc.text.lower(prev.text):gsub("^[«(%[]+", "")
+      if bind_next[word] and not prev.text:find("[%.,;:!?»)]$") then
+        out:insert(pandoc.Str(nbsp))
+      elseif nxt.text:sub(1, 3) == "\u{2014}" then
+        out:insert(pandoc.Str(nbsp))
+      else
+        out:insert(el)
+      end
+    else
+      out:insert(el)
+    end
+  end
+  return out
+end
+
 function Inlines(inlines)
   local out = pandoc.List()
   local i = 1
@@ -75,7 +106,7 @@ function Inlines(inlines)
       i = i + 1
     end
   end
-  return out
+  return bind_spaces(out)
 end
 
 local tall = {

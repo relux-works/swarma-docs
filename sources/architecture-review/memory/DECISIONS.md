@@ -59,6 +59,12 @@ One canonical package: normative prose, closed schemas and executable conformanc
   - Invariant: on admissible states with an unchanged H subgraph, changes confined to foreign parts of the graph never change `≺_H`.
 - **Scope:** R7-055 only. D-001…D-008, single-issuer fixes, protected event attribution and all other checks stand. No cross-authority order adoption, no authority transfer, no new delegation, no local/global switch; a shared multi-authority register would be a separately versioned extension.
 
+## D-010. Identities and delegation bind to the platform identity design (2026-10-18)
+
+- **Question put:** close the open question "concrete bindings of identities, delegation and authority in the adapter" by binding memory to the platform identity design (`notes/identity-binding-proposal.md`): issuer, subject and submitter are identity cells resolved through the owner registry; the representation basis is a registry grant; rotation and revocation follow the cell's spending rules. Taken as a direction for the adapter and the book chapter.
+- **Decision (Ivan, in session):** «да».
+- **Scope:** the Swarma adapter contract only (`spec/adapters/swarma.md`, package 0.2.7-draft); the kernel and its vectors are unchanged. It rests on the recorded owner decisions on identity cells (2026-10-17) and the owner registry (2026-10-18), cited in the note. The derivation of the cell id, including the self-certifying ID, is not part of this decision and stays with its own pending question.
+
 ## Proposed next steps (not decisions)
 
 - **Done 2026-10-17:** the R7 package (`memory/spec/` 0.2.5-draft) and the adversarial collective (seven astra-max seats instead of a triad, by Ivan's order); both evaluators pass 57/57 canonical semantic vectors. R7-055 resolved by D-009; package 0.2.6-draft, both evaluators 66/66. Next: the platform book ch. 09 correction (D-001), then the documentary pilot on 10–30 Swarma decisions.
