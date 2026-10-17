@@ -3,3 +3,5 @@
 paper/*.aux
 paper/*.log
 paper/*.out
+paper/paper.pdf
+book/swarma-book.ru.pdf
