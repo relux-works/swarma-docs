@@ -324,3 +324,20 @@ hr {
   border-top: 0.6pt solid var(--rule);
   margin: 4mm 0;
 }
+
+/* ---------- Parts ---------- */
+
+main h1.part {
+  break-before: page;
+  break-after: page;
+  border-bottom: none;
+  text-align: center;
+  font-size: 26pt;
+  margin: 75mm 0 0;
+  color: var(--accent);
+}
+nav#TOC a[href^="#part-"] {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
