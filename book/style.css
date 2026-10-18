@@ -72,6 +72,9 @@ html {
   line-height: 1.38;
   color: var(--ink);
   hyphens: auto;
+  /* Russian breaks: words of at least 6 letters, at least 3 letters on each side,
+     everywhere — body text, lists and narrow table cells alike. */
+  hyphenate-limit-chars: 6 3 3;
 }
 
 body { margin: 0; }
