@@ -1,6 +1,6 @@
 # Bounded evidence memory: kernel contract
 
-Owner: the memory lane (`ivmbp_swarma-memory_orch`). Status: **draft v0.3, 2026-10-17** (v0.3 adds D-009 issuer-local order in §5.3; v0.2 added review 3: snapshot applicability, lineage completeness, declassification evidence, three distinct conflict outcomes, projection exclusion, the normalized input tuple), normative direction for the R7 package (D-007); not a released specification and not implemented. This document consolidates the collective's design and the later inputs into one kernel contract. It changes no meaning of the collective's assembly except where a section says "amends".
+Owner: the memory lane (`ivmbp_swarma-memory_orch`). Status: **decided design, not implemented (D-023); text v0.3, 2026-10-17** (v0.3 adds D-009 issuer-local order in §5.3; v0.2 added review 3: snapshot applicability, lineage completeness, declassification evidence, three distinct conflict outcomes, projection exclusion, the normalized input tuple), normative direction for the R7 package (D-007); not a released specification and not implemented. This document consolidates the collective's design and the later inputs into one kernel contract. It changes no meaning of the collective's assembly except where a section says "amends".
 
 Sources, in precedence order where they differ:
 

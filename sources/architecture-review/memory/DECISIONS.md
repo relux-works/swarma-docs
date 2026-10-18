@@ -65,7 +65,83 @@ One canonical package: normative prose, closed schemas and executable conformanc
 - **Decision (Ivan, in session):** «да».
 - **Scope:** the Swarma adapter contract only (`spec/adapters/swarma.md`, package 0.2.7-draft); the kernel and its vectors are unchanged. It rests on the recorded owner decisions on identity cells (2026-10-17) and the owner registry (2026-10-18), cited in the note. The derivation of the cell id, including the self-certifying ID, is not part of this decision and stays with its own pending question.
 
+## D-011…D-014. The first working version (2026-10-18)
+
+- **Question put:** the architecture draft `notes/v1-architecture-draft.md`, decisions 1, 2 and 6, plus revising D-006.
+- **Decisions (Ivan, in session, voice transcript):** «Продолжить запись. Да.» (autonomous writing); «D006, тогда надо пересмотреть, да, нам нужно, чтобы память работала автономно»; «Пространство агента, проекты и платформа. Ну, если это про то, что это у нас гид, то да» (it is git); «Про Go один репозиторий … ядро CLI и Skill, э, да, утверждаю».
+
+### D-011. Memory is written autonomously
+
+Agents write memory themselves, from the evidence they see and read; no approval gate. Humans write through the same path under their own identity, or ask an agent to. This replaces the human review gate of D-004 for every space. The epistemic limits stay: attribution to issuer and perspective, no replacement of another issuer's sequence, no adopted decision without the deciding authority's receipt, delivery as data only, and no raw journal intake (D-005).
+
+### D-012. Autonomy does not require the protected service
+
+D-006 no longer counts autonomous writers as a trigger for the protected service. What the service remains for is tied to the v1 trust model (proposed: sensitive data, guaranteed erasure, enforcement before write).
+
+### D-013. Spaces: agent, project, platform, each a git repository
+
+Each space is a git repository with a policy file. Where an agent space is hosted and what happens to it at retirement are proposed separately (`notes/v1-architecture-draft.md`).
+
+### D-014. Go, one repository
+
+One new repository `swarma-memory` in Go: kernel module, the `memory` CLI and the skill. Curator installs the CLI through the skill. Separate modules can be split out later.
+
+## D-015…D-021. Agent memory, session excerpts, keys, sync, trust, conflicts, v1 scope (2026-10-18)
+
+- **Question put:** the second design round in `notes/v1-architecture-draft.md` (agent memory class, promotion, signatures, archive, sync, shared memory, trust model).
+- **Decisions (Ivan, in session, voice transcript):** «ок» (agent memory class); «только кусочек который был записан в сессии должен стать дискретной сущностью … но в идеале сохранять референс на нее в виде идентификатора сессии и индекса сообщения»; «временно, пока вся сварм не готова, да, мы можем агенту выдавать свой ключ. Точнее, агент сам себе генерирует ключ»; «синхронизацию берем»; «Если напираемся на конфликт … выводится на эскалацию, и ответственные за конфликты … разрешают конфликт, дальше работа происходит»; «Про модель доверия … Берем»; on scope: «Пока склоняюсь к тому, что агенты, которые наши, доверенные, имеют память, и мы ей управляем. Агенты приходят, которые со стороны. Наверное, они как бы эфемерные сущности без памяти» with the request to record the questions and risks.
+
+### D-015. Agent memory is its own class
+
+The agent's own working knowledge (observations, choices made in its work, rejected hypotheses) is the class "agent memory", held in the agent space (owner, issuer and perspective = the agent). It is not personal data about people.
+
+### D-016. What comes from a session is a discrete record with a session locator
+
+When an agent records something from a session, the record carries that piece itself (the statement or an admitted non-sensitive excerpt), because the session may be deleted. It also keeps a source reference to the session: runtime, session id and message position (the message id where the runtime has one, otherwise the message index in the session's stored sequence) plus a digest of the message. If the session is later deleted, the record stays and its source becomes unavailable. This is an agent-authored record, not raw journal intake (D-005 stands).
+
+### D-017. Temporary per-agent keys until the key holder exists
+
+Until the platform key holder exists, each agent generates its own signing key and signs its records with it. The key holder replaces this when it arrives.
+
+### D-018. Sync protocol
+
+The engine provides `memory sync`, per-space cursors and `memory changes --since`; the skill tells the agent when to use them: sync and recall at task start, sync before every write, changes at checkpoints and before finishing, write what was learned at the end. A space directory in the platform space maps identities and projects to space locations and access.
+
+### D-019. Trust model of the first version
+
+Every record is signed by its submitter; every reader verifies signature, schema, the space policy and revision authority, and ignores (but reports) records that fail. The protected service stays for sensitive data, guaranteed erasure and enforcement before write.
+
+### D-020. Conflicts that affect further work go to escalation
+
+A conflict between decisions that the current work depends on is not left standing as two parallel views. The work step that depends on it stops and the conflict is escalated to those responsible for resolving it, when they are part of the trusted system; they resolve it with a new decision, and work continues. Memory itself still escalates and wakes no one: the agent or orchestrator that meets the conflict raises it through the platform's escalation path. The resolution supersedes the conflicting decisions under the existing order rules.
+
+### D-021. Scope of the first version (owner's leaning, open questions recorded)
+
+Our own trusted agents have memory, and the owners manage it. Agents that come from outside are ephemeral and have no memory of their own in the first version. The questions and risks this leaves are recorded in `OPEN-QUESTIONS.md`.
+
+## D-022. Memory of external agents follows their identity (2026-10-18)
+
+- **Question put:** a five-step scheme for external agents' memory: identity verified at admission; a local identity; guest writes in the project space; a returning agent sees its earlier records; knowledge stays with the project unless the project owner exports it.
+- **Decision (Ivan, in session):** «Это мне нравится, берем.»
+- **Correction (confirmed below):** steps 2 and 3 as first put (a one-off local identity from our key holder; signatures with that local key) contradict the decided platform design: an external worker does not use our key holder, brings its own keys and signs on the donor side in its bridge (book «Ключи и ключник», «Внешняя личность»), and nothing is signed blind (platform decision 57). The decision is therefore recorded in the platform-compatible form:
+  1. Admission into the project verifies the agent's external identity: public keys and the attestation chain to its owner's root. We never hold its private keys; on our side it has only an authorization context.
+  2. It writes into the project space as a guest; its records are attributed to its identity cell id.
+  3. It signs with its own key on its own side, in the donor bridge, never through a model tool; the bridge receives what it signs in full. First path: memory records inside the signed result export; a bridge message type for mid-task writes is a possible extension.
+  4. A returning agent that proves it is the same identity sees its own earlier records in the project space again (the owner's default grant); memory follows the identity, not the key. Anything beyond that is a policy decision.
+  5. Knowledge about the project stays with the project; giving it to the agent's owner needs a separate export by the project owner's decision.
+- **Scope:** design direction. In the first version external agents still have no memory of their own (D-021).
+- **Correction confirmed (Ivan, in session, 2026-10-18):** «подтверждаю от curator-14» — confirming his «да» given in the swarma-docs lane to the corrected form (the external agent signs with its own key in the donor bridge; its first memory records travel inside the signed result export). D-022 stands in the form above.
+
+## D-023. Memory design is decided design, not implemented (2026-10-18)
+
+- **Question put:** the swarma-docs book counts every former «предложено» item as decided design (owner's rule of 2026-10-18). Does this extend to memory?
+- **Decision (Ivan, in session):** «Решено, не реализовано.» and «если вдруг у нас по результатам наших обсуждений какие-то будут дополнения, мы их внесем в книгу».
+- **Meaning:** every element of the memory design that was marked as proposed (the kernel's data model and semantics, the normative package, the deployment profiles, the delivery and disclosure rules) is decided design, not implemented. Items that are open stay open (`OPEN-QUESTIONS.md`). Further additions from the design discussions go into the book as they are decided.
+- **Next step held by the owner:** the architecture document of the first working version starts only on Ivan's separate go («Дождись моего отдельного Go на архитектуру первой рабочей версии»).
+
 ## Proposed next steps (not decisions)
+
+- **2026-10-18, on Ivan's order** («можно сразу публичный. доска в отдельном репо - в приватном»): public code repository [relux-works/swarma-memory](https://github.com/relux-works/swarma-memory) created with the cleaned package 0.2.7 (c2627bf); private board repository relux-works/swarma-memory-board created with EPIC-261018-sjk2i0 memory-v1, STORY-261018-qlwnsw v1-architecture and STORY-261018-mcdun6 public-repo-bootstrap. The architecture document waits for Ivan's go.
 
 - **Done 2026-10-17:** the R7 package (`memory/spec/` 0.2.5-draft) and the adversarial collective (seven astra-max seats instead of a triad, by Ivan's order); both evaluators pass 57/57 canonical semantic vectors. R7-055 resolved by D-009; package 0.2.6-draft, both evaluators 66/66. Next: the platform book ch. 09 correction (D-001), then the documentary pilot on 10–30 Swarma decisions.
 

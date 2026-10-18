@@ -1,6 +1,8 @@
 # Bounded evidence memory — R7 specification package
 
-Version: **0.2.7-draft**. Status: reviewable specification, not an implemented or
+> **Frozen copy.** From 0.2.7 the canonical package lives in the public repository [relux-works/swarma-memory](https://github.com/relux-works/swarma-memory) under `spec/`, cleaned for public release (no internal decision ids, seat names or private links; AMBIGUITIES.md and BUILD_NOTES.md stay here as design history). Change the package there, not here.
+
+Version: **0.2.7-draft**. Status: decided design specification (D-023), not an implemented or
 security-qualified service. All examples are synthetic or admitted non-sensitive
 architecture examples. There are **52 normative clauses and 74 conformance
 vectors: 66 semantic and 8 protected-deployment checks**.
