@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Подготовка профиля Swarm Curator: выбранный контракт
+title Подготовка профиля Swarma Curator: выбранный контракт
 start
 :установить отсутствующий профиль;
 while (есть следующая среда?) is (да)

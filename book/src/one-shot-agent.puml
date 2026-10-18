@@ -3,7 +3,7 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 title Разовый запуск: транзакция
-participant "Вызывающий / Swarm Curator" as C
+participant "Вызывающий / Swarma Curator" as C
 participant "Диспетчер" as D
 participant "Менеджер пользователей" as U
 participant "Запускатель" as L

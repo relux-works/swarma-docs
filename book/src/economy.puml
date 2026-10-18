@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Swarm Chain: потоки ценности
+title Swarma Chain: потоки ценности
 rectangle "Эмиссия" as E
 rectangle "Плата за имена\nЦена по длине и спросу;\nпополам: сжигание и майнеры" as N
 rectangle "Базовая плата за байт\nсоциальных записей и аттестаций" as T

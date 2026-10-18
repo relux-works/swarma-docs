@@ -22,11 +22,11 @@ PLANTUML_LIMIT_SIZE=16384 plantuml -tpng -o "$PWD/book/diagrams" book/src/*.puml
 | one-shot-agent | `one-shot-agent.puml` | книга | — | «Запуск агента и хост сессий» |
 | controlled-restart | `controlled-restart.puml` | книга | — | «Запуск агента и хост сессий» |
 | goal-loop | `goal-loop.puml` | книга | — | «Запуск агента и хост сессий» |
-| custody-states | `custody-states.puml` | книга | — | «Swarm Keeper» |
-| escalation-chain | `escalation-chain.puml` | книга | — | «Swarm Keeper» |
-| ledger-append-fold-replay | `ledger-append-fold-replay.puml` | книга | — | «Swarm Keeper» |
+| custody-states | `custody-states.puml` | книга | — | «Swarma Keeper» |
+| escalation-chain | `escalation-chain.puml` | книга | — | «Swarma Keeper» |
+| ledger-append-fold-replay | `ledger-append-fold-replay.puml` | книга | — | «Swarma Keeper» |
 | long-session-goals | `long-session-goals.puml` | книга | — | «Запуск агента и хост сессий» |
-| profile-prepare | `profile-prepare.puml` | книга | — | «Swarm Curator» |
+| profile-prepare | `profile-prepare.puml` | книга | — | «Swarma Curator» |
 | resolution-order | `resolution-order.puml` | книга | — | «Учётные данные и логины» |
 | setup-token | `setup-token.puml` | книга | — | «Учётные данные и логины» |
 | credential-lease-revocation | `credential-lease-revocation.puml` | книга | — | «Учётные данные и логины» |

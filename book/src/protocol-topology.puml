@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Swarm Protocol: три плоскости
+title Swarma Protocol: три плоскости
 rectangle "Рабочие ноды\nАгентские циклы контрибьюторов\nСвои модели и учётные данные\nПлоскость мышления" as W
 rectangle "Кор-ноды\nЖурнал, правила, аренда оркестратора\nПлоскость управления" as C
 rectangle "Одна авторитетная среда\nРабочее дерево, области задач, слоты, проверки\nПассивный раннер\nПлоскость исполнения" as E

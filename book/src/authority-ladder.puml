@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Swarm Protocol: цепочка полномочий
+title Swarma Protocol: цепочка полномочий
 rectangle "Цель\nПодписана кор-нодой\nОбласть, класс риска и бюджет" as G
 rectangle "Полномочие оркестратора\nПути, типы изменений и лимиты" as C
 rectangle "Задача\nКонтракт с версией и план с digest" as T

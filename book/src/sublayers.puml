@@ -3,7 +3,7 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 skinparam packageStyle rectangle
-title Swarm Chain: устройство подслоёв
+title Swarma Chain: устройство подслоёв
 actor "Автор" as A
 actor "Читатель" as V
 package "Цепочка" {

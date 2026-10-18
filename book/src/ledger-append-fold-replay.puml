@@ -2,7 +2,7 @@
 !theme plain
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
-title Swarm Keeper: запись и восстановление
+title Swarma Keeper: запись и восстановление
 start
 :получить событие или внутренний триггер;
 if (событие уже записано?) then (да)

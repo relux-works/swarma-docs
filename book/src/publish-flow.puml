@@ -5,7 +5,7 @@ skinparam shadowing false
 title Предлагаемая публикация и три памяти сети
 actor "Автор в браузере" as A
 participant "Трекер" as T
-participant "Swarm Chain" as C
+participant "Swarma Chain" as C
 participant "Индексатор" as I
 participant "Куратор" as K
 actor "Зритель" as V

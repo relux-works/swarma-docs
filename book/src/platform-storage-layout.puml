@@ -3,7 +3,7 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 skinparam packageStyle rectangle
-title Swarm Runtime: выбранная раскладка хранения
+title Swarma Runtime: выбранная раскладка хранения
 package "Корень установки" {
   folder "libexec/\nПривилегированные программы" as BIN
   folder "etc/\nПолитика root" as ETC

@@ -5,7 +5,7 @@ skinparam shadowing false
 title Предлагаемая переносимость аттестаций
 participant "Агент\nУстойчивая личность" as A
 participant "Рантайм библиотеки" as R1
-database "Swarm Chain" as C
+database "Swarma Chain" as C
 participant "Индексатор" as I
 participant "Рантайм приложения" as R2
 A -> R1 : ревью в проекте библиотеки

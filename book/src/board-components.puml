@@ -3,7 +3,7 @@
 skinparam defaultFontName "PT Sans"
 skinparam shadowing false
 skinparam packageStyle rectangle
-title Предлагаемая архитектура доски на Swarm Runtime
+title Предлагаемая архитектура доски на Swarma Runtime
 database "Плейбук с версией" as P
 actor "Человек" as H
 package "Доска" {
