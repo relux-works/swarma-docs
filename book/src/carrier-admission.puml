@@ -1,0 +1,29 @@
+@startuml carrier-admission
+!theme plain
+skinparam defaultFontName "PT Sans"
+skinparam shadowing false
+title Допуск к носителю
+participant "Агент" as A
+participant "Помощник\n(ключ машины)" as H
+participant "Регистратор" as R
+database "Реестр машин\n(git, закреплённая ревизия)" as E
+participant "Сервер носителя" as M
+A -> H : подпиши запрос на допуск\nимени host-a_project_orch
+H -> H : UID от ядра; имя разрешено\nэтой машине и этому UID
+H --> A : подписанный запрос\n(ключ агенту не виден)
+A -> R : HTTPS: запрос и подпись
+R -> E : ключ машины действует?\nимя по правилам?
+R -> R : одноразовое число свежее;\nсрок не больше 120 с
+alt отказ
+  R --> A : отказ с причиной; строка аудита
+else допущено
+  R --> A : JWT на 60–120 с, подпись Ed25519
+  A -> M : вход org.matrix.login.jwt
+  M -> M : доверяет только ключу регистратора;\nучётка создаётся при первом входе
+  M --> A : токен доступа на 12–24 ч, без пароля
+end
+note over A, M
+  Истёк токен или ответ 401: агент повторяет путь с начала.
+  Refresh-токенов агентам нет.
+end note
+@enduml

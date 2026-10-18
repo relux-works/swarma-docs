@@ -19,6 +19,7 @@ PLANTUML_LIMIT_SIZE=16384 plantuml -tpng -o "$PWD/book/diagrams" book/src/*.puml
 | action-namespace-registration | `action-namespace-registration.puml` | книга | — | «Гранты и полномочия» |
 | bridge-components | `bridge-components.puml` | книга | — | «Путь сообщения и мост» |
 | mailbox-delivery | `mailbox-delivery.puml` | книга | — | «Путь сообщения и мост» |
+| carrier-admission | `carrier-admission.puml` | книга | — | «Допуск к носителю» |
 | one-shot-agent | `one-shot-agent.puml` | книга | — | «Запуск агента и хост сессий» |
 | controlled-restart | `controlled-restart.puml` | книга | — | «Запуск агента и хост сессий» |
 | goal-loop | `goal-loop.puml` | книга | — | «Запуск агента и хост сессий» |
