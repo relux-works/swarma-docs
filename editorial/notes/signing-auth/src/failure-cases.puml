@@ -1,0 +1,17 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+participant Носитель as carrier
+participant Ворота as gate
+participant Оператор as person
+carrier -> gate : событие и конверт
+gate -> gate : реестр, срок/отзыв, nonce/ts,\nroom/to, грант — обязательны все
+gate --> person : любая проверка не пройдена → причина отказа
+note over gate : Аудит; допуска и эффекта нет
+@enduml

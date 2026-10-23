@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+participant "Агент А" as a
+participant Keymaker as km
+participant "Мост / Matrix" as matrix
+participant "Агент Б / ворота" as b
+a -> km : байты для swarma-msg
+km -> km : UID от ядра ОС\nактивное поколение
+km --> a : подпись; без закрытого ключа
+a -> matrix : подписанное сообщение
+matrix -> b : те же подписанные байты
+b -> b : цепочка, отзыв, привязки
+b --> a : происхождение A1; данные коллеги
+@enduml

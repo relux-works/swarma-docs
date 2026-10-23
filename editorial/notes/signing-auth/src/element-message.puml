@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+participant Element as element
+participant Matrix as matrix
+participant "Получатель / ворота" as verifier
+element -> matrix : обычное E2EE-сообщение
+matrix -> verifier : событие + сведения об устройстве
+verifier -> verifier : root → master → self-signing → device\nактуальность доверия
+alt проверенная цепочка
+verifier --> element : A1; переписка без конверта Signer
+else цепочка не установлена
+verifier --> element : A1 не установлен; критической команды нет
+end
+@enduml

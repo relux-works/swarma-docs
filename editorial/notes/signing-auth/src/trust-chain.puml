@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam ArrowColor #23466e
+skinparam rectangleBackgroundColor #eef1f5
+skinparam rectangleBorderColor #23466e
+rectangle "Корень оператора\nFIDO + резерв\nне подписывает сообщения" as root
+rectangle "Signer: ключ Mac / iPhone\nназначение + срок\nприсутствие человека" as signer
+rectangle "Корень Keymaker\n↓ удостоверяет\nКлюч агента: swarma-msg" as km
+rectangle "Matrix master\n↓ cross-signing\nself-signing\n↓ cross-signing\nMatrix device (E2EE)" as master
+rectangle "OMEMO device\nкаждый fingerprint" as xmpp
+root --> signer : аттестация
+root --> km : удостоверение
+root --> master : аттестация
+root --> xmpp : аттестация
+@enduml

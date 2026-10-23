@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+participant "Устройство" as device
+actor "Оператор / FIDO-корень" as root
+participant Реестр as registry
+participant Верификатор as verifier
+device -> root : публичный ключ для проверки
+root -> registry : аттестация: ключ, назначение, срок
+registry --> verifier : подписанное состояние
+verifier -> verifier : проверка цепочки и гранта
+== Устройство потеряно ==
+root -> registry : подписанный отзыв
+registry --> verifier : актуальный статус отзыва
+verifier -> verifier : закрыть доверие с момента отзыва
+@enduml

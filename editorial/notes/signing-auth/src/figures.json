@@ -1,0 +1,44 @@
+{
+  "agent-message": {
+    "source": "src/agent-message.puml",
+    "render": "diagrams/agent-message.svg",
+    "source_sha256": "cfd8553392836538a7cb496a324e9ea7496d15c736c13b4e8a521c5bf4b61475",
+    "render_sha256": "127ae28be06a04b4cdeab48bb643c6f149e2c98e2d98b23a5937ba4b117f4564"
+  },
+  "device-lifecycle": {
+    "source": "src/device-lifecycle.puml",
+    "render": "diagrams/device-lifecycle.svg",
+    "source_sha256": "b3ebce9a4ac9bcfbfc9fdfc8790e2661298a2972d6909f4e59c1a4ede12e663c",
+    "render_sha256": "0a44d7bb23f2bcc24b4cf4075898a3e891f7bf39d004eb54be349f7daee18233"
+  },
+  "element-message": {
+    "source": "src/element-message.puml",
+    "render": "diagrams/element-message.svg",
+    "source_sha256": "1af97d1f574438dd11ce85c4f2d876f8f979356756c064ab93c818a7d61e3dd5",
+    "render_sha256": "49a3fe80b0d39c71e2ec2080947590a16fa2f8a637703838b1144ec2af949149"
+  },
+  "failure-cases": {
+    "source": "src/failure-cases.puml",
+    "render": "diagrams/failure-cases.svg",
+    "source_sha256": "ec2b2d3b72d2fb9969f0a6b48df94d0ccac6e0fe96ff2a339cddfd9d6f556f1f",
+    "render_sha256": "0b6b967ebb0ecf48582dedf5041d562c44e0abb147bcc05a2f79d7349bd3703a"
+  },
+  "federated-command": {
+    "source": "src/federated-command.puml",
+    "render": "diagrams/federated-command.svg",
+    "source_sha256": "9b09f5837b281eafa3fbc833bc3dca48717e6badfe37b4d95064572c09ab93bb",
+    "render_sha256": "d93f07f55974ea5a220f48e350b7abf6621ae829145eac0a8385c73537abe5ca"
+  },
+  "phone-command": {
+    "source": "src/phone-command.puml",
+    "render": "diagrams/phone-command.svg",
+    "source_sha256": "fae1671a2fbcb26dcfc8b82335443631ab481bc08549c5e2acaac4ad7018429b",
+    "render_sha256": "f6ba16ae6cb49e3e86506f54fcb4d52006a449193bb2e3b665e47840b6202147"
+  },
+  "trust-chain": {
+    "source": "src/trust-chain.puml",
+    "render": "diagrams/trust-chain.svg",
+    "source_sha256": "0ba9370707a34cab7e8ecd64f34fa3f6ea6cb5f49e8448050a25eb4829311a1d",
+    "render_sha256": "80927699daa9231aa80e172206dd023cff6d968304372d11beae91d4bc82065b"
+  }
+}

@@ -1,0 +1,24 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+actor Оператор as person
+participant "Signer\nна телефоне" as signer
+participant Matrix as matrix
+participant "Агент / ворота" as verifier
+person -> signer : точное действие
+signer -> signer : Face ID → key provider\nподпись без выдачи ключа
+signer -> matrix : тело + конверт
+matrix -> verifier : доставка
+verifier -> verifier : цепочка, отзыв, адрес,\nвремя, nonce, грант
+alt всё установлено
+verifier --> person : допуск → исполнение → результат
+else обязательная проверка не пройдена
+verifier --> person : причина отказа; эффекта нет
+end
+@enduml

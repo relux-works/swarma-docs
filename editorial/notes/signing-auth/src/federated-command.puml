@@ -1,0 +1,23 @@
+@startuml
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam sequenceMessageAlign center
+skinparam shadowing false
+skinparam ParticipantBackgroundColor #eef1f5
+skinparam ParticipantBorderColor #23466e
+skinparam ArrowColor #23466e
+hide footbox
+participant "Signer" as signer
+participant "alpha.example\nMatrix" as alpha
+participant "beta.example\nMatrix" as beta
+participant "Получатель" as verifier
+signer -> alpha : подписанный конверт
+alpha -> beta : федерация; те же байты
+beta -> verifier : доставка в room адресату to
+verifier -> verifier : корневая цепочка, отзыв,\nts, nonce, назначение, грант
+alt всё проверено
+verifier --> signer : допуск и отдельный результат
+else задержка / ключи скрыты / иной сбой
+verifier --> signer : отказ; сервер права не добавляет
+end
+@enduml

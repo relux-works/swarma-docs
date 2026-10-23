@@ -24,6 +24,7 @@
 | `book/ru/` | книга «Swarma», по главе на файл |
 | `book/diagrams/`, `book/src/` | диаграммы книги (PNG) и их исходники PlantUML |
 | `editorial/` | рабочие материалы авторов: имена, стиль, источники, планы пейпера и книги, направление об идентичности и репутации |
+| `editorial/notes/signing-auth/` | отдельная записка «Подписи и аутентификация в Swarma»: русские исходники, объявленные SVG и PDF для ревью; сборка описана в её README |
 | `sources/` | снимки исходных документов на зафиксированных ревизиях; рабочий материал, перед публикацией удаляется |
 | `dist/` | готовые PDF пейпера и книги, которые собирает оркестратор после ревью |
 | `scripts/check.sh` | проверка гигиены текстов: пометки статуса, внутренние идентификаторы, локальные пути, выведенные из оборота имена |
@@ -39,6 +40,7 @@
 | PlantUML | рендер диаграмм из `book/src/` | `plantuml -tpng -o ../diagrams book/src/имя.puml` | `book/diagrams/` |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов | `sh scripts/check.sh` | stdout; ненулевой код при нарушении |
+| platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 
 ## Как идёт работа
 
