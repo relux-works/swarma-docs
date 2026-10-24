@@ -40,7 +40,8 @@
 | WeasyPrint 69+ | книга: HTML → PDF | `book/build.sh` | `book/swarma-book.ru.pdf` |
 | PlantUML | рендер диаграмм из `book/src/` | `plantuml -tpng -o ../diagrams book/src/имя.puml` | `book/diagrams/` |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
-| `scripts/check.sh` | гигиена текстов | `sh scripts/check.sh` | stdout; ненулевой код при нарушении |
+| `scripts/check.sh` | гигиена текстов; пометки только в «Где мы», оговорки о поставке — предупреждения пилота | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
+| Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |
 | platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 
 ## Как идёт работа

@@ -58,11 +58,15 @@ NOTE=editorial/notes/signing-auth
 "$BOOK_SKILL/scripts/platform-book" figures "$NOTE"
 "$BOOK_SKILL/scripts/platform-book" build "$NOTE" "$NOTE/signing-auth.ru.pdf"
 "$BOOK_SKILL/scripts/platform-book" check-pdf "$NOTE/signing-auth.ru.pdf" \
-  --fonts "PT Serif" "PT Sans" "PT Mono"
+  --expected-pages 14 --fonts "PT Serif" "PT Sans" "PT Mono"
 sh scripts/check.sh
+python3 scripts/check-self-test.py
 ```
 
 Для записки принят предел **8–14 страниц**, включая обложку и оглавление.
+Текущая сборка — **14 страниц**. Состояния архитектуры и открытых контрактов
+перенесены в `book/ru/29-gde-my.md`; редакторское правило и три пары примеров —
+в `editorial/notes/target-state-voice-pilot.ru.md`.
 Он проверяется отдельно по результату `check-pdf`. Число страниц и встраивание
 шрифтов не заменяют визуального ревью рисунков, таблиц, кода и переносов.
 
