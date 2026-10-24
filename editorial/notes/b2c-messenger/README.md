@@ -54,7 +54,7 @@ export PLATFORM_BOOK_LIBRARY_PATH=/opt/homebrew/lib
 "$BOOK_SKILL/scripts/platform-book" figures "$NOTE"
 "$BOOK_SKILL/scripts/platform-book" build "$NOTE" "$NOTE/b2c-messenger.ru.pdf"
 "$BOOK_SKILL/scripts/platform-book" check-pdf "$NOTE/b2c-messenger.ru.pdf" \
-  --expected-pages 19 --fonts 'PT Serif' 'PT Sans' 'PT Mono'
+  --expected-pages 23 --fonts 'PT Serif' 'PT Sans' 'PT Mono'
 sh scripts/check.sh
 ```
 
@@ -63,7 +63,7 @@ sh scripts/check.sh
 | `platform-book ready` | Проверить точные версии, загрузку библиотек и hashes шрифтов | Вердикт в stdout |
 | `platform-book figures "$NOTE"` | Проверить восемь пар исходник/render и разрешённые ресурсы | Вердикт в stdout |
 | `platform-book build "$NOTE" "$NOTE/b2c-messenger.ru.pdf"` | Markdown → Pandoc → WeasyPrint с общим книжным оформлением | Проверенный PDF в этом каталоге |
-| `platform-book check-pdf …` | Проверить 19 страниц, наличие текста, семейства и встраивание шрифтов | JSON в stdout; это не визуальная проверка |
+| `platform-book check-pdf …` | Проверить 23 страницы, наличие текста, семейства и встраивание шрифтов | JSON в stdout; это не визуальная проверка |
 | PlantUML **1.2026.6**, Graphviz | `plantuml -tsvg -o ../diagrams "$NOTE"/src/*.puml` | Восемь SVG в `diagrams/`; затем нормализация ниже |
 | Python `hashlib`, `json` | Записать SHA-256 фактических байтов каждой пары | `src/figures.json` |
 | Poppler | `pdftoppm -scale-to 1200 -png "$NOTE/b2c-messenger.ru.pdf" "$SCRATCH/page"`; `pdftotext -layout …` | Временные изображения и извлечённый текст в `$SCRATCH` |
