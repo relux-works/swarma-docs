@@ -1,6 +1,6 @@
 # Проход прозы, часть 3: заметки
 
-Проход по главам 21-28 и 30 (глава 29 не тронута). Ветка `editorial/prose-part-3-261025` от `origin/editorial/target-state-voice-261025` (a9ada4d). Статусы, убранные из глав, лежат в `editorial/notes/status-ledger-part-3.ru.md` (34 строки и раздел "Не переписано").
+Проход по главам 21-28 и 30 (глава 29 не тронута). Ветка `editorial/prose-part-3-261025` от `origin/editorial/target-state-voice-261025` (a9ada4d). Статусы, убранные из глав, лежат в `editorial/notes/status-ledger-part-3.ru.md` (35 строк и раздел "Не переписано").
 
 ## Файлы и счёт
 
