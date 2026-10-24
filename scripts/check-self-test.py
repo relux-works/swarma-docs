@@ -69,13 +69,13 @@ class HygieneTests(unittest.TestCase):
     # Every hedge form, in either case, fails a chapter other than the state
     # chapter; a precise design sentence nearby passes. Lexical, not semantic.
     def test_hedges(self):
-        for phrase in ('пока', 'ещё не', 'в v0', 'не реализовано', 'Пока', 'В v0'):
+        for phrase in ('пока', 'ещё не', 'еще не', 'Еще не', 'в v0', 'не реализовано', 'Пока', 'В v0'):
             with self.subTest(phrase=phrase):
                 self.chapter.write_text('# Example\n\n' + phrase + '\n')
                 r = self.run_check()
                 self.assertEqual(r.returncode, 1, 'planted hedge must fail')
                 self.assertIn('== delivery hedge', r.stdout)
-        self.chapter.write_text('# Example\n\nПроверка отклоняет отозванный грант; покажем v0.3.\n')
+        self.chapter.write_text('# Example\n\nПроверка отклоняет отозванный грант; покажем v0.3; размещение запрещено.\n')
         r = self.run_check()
         self.assertEqual(r.returncode, 0, r.stdout)
         self.assertNotIn('== delivery hedge', r.stdout)
@@ -106,6 +106,10 @@ class HygieneTests(unittest.TestCase):
     # a numeric range passes both ways.
     def test_prose_blacklist(self):
         cases = (('Ключник — служба.', 'dash in prose'), ('Ключник–служба.', 'dash in prose'),
+                 ('Поле `aud`— аудитория.', 'dash in prose'), ('Ключ (агента)— подпись.', 'dash in prose'),
+                 ('— Ключник подписывает.', 'dash in prose'), ('– Ключник подписывает.', 'dash in prose'),
+                 ('Шаги 10—12.', 'dash in prose'), ('Ключник —служба.', 'dash in prose'),
+                 ('Поле `aud`–x.', 'dash in prose'), ('Шаги 10 – 12.', 'dash in prose'),
                  ('Поле «aud».', 'guillemets'),
                  ('Это не очередь, а журнал.', 'antithesis'), ('Стоит отметить, что ключ один.', 'filler opener'),
                  ('Мощная проверка.', 'marketing adjective'))
@@ -118,7 +122,8 @@ class HygieneTests(unittest.TestCase):
                 r = self.run_check(STRICT_PROSE='0')
                 self.assertEqual(r.returncode, 0, r.stdout)
                 self.assertIn('== ' + label + ' (advisory)', r.stdout)
-        self.chapter.write_text('# Example\n\nКлючник подписывает запись; кросс-подпись проверяется в 10-12 шагов.\n')
+        self.chapter.write_text('# Example\n\nКлючник подписывает запись; кросс-подпись проверяется в 10-12 шагов.\n'
+                                'Диапазоны 0–2, L0–L2, 09–21 и 30000–59999 остаются.\n')
         for env in ({}, {'STRICT_PROSE': '0'}, {'STRICT_PROSE': '1'}):
             with self.subTest(env=env):
                 r = self.run_check(**env)
@@ -148,5 +153,24 @@ class HygieneTests(unittest.TestCase):
                 self.assertEqual(r.returncode, 0)
                 self.assertNotIn('editorial notes', r.stdout)
                 other.unlink()
+
+    # The verdict does not depend on the caller's locale: under C and POSIX
+    # settings a clean chapter still passes, and a capitalised Cyrillic hedge
+    # and a guillemet still fail with their labels. Limit: the refusal path for
+    # a host without any UTF-8 locale is not exercised here.
+    def test_caller_locale(self):
+        for env in ({'LC_ALL': 'C'}, {'LC_ALL': '', 'LC_CTYPE': 'C', 'LANG': 'C'}, {'LC_ALL': 'POSIX'}):
+            with self.subTest(env=env):
+                self.chapter.write_text('# Пример\n\nКлючник подписывает запись; шаги 0–2.\n')
+                r = self.run_check(**env)
+                self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+                self.assertNotIn('== ', r.stdout)
+                for text, label in (('Пока ключника нет.', 'delivery hedge'), ('Поле «aud».', 'guillemets'),
+                                    ('Ключник — служба.', 'dash in prose')):
+                    self.chapter.write_text('# Пример\n\n' + text + '\n')
+                    r = self.run_check(**env)
+                    self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+                    self.assertIn('== ' + label + '\n', r.stdout)
+
 
 unittest.main(argv=[__file__])

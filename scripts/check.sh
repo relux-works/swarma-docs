@@ -12,7 +12,27 @@
 # except editorial/notes/*/ru/*.md, which gets an advisory blacklist pass.
 #
 #   STRICT_PROSE=0 sh scripts/check.sh   # report book blacklist hits, do not fail
+#
+# The checks are lexical. A dash is any em dash, and any en dash except in a
+# numeric range whose left side is a digit (0–2, L0–L2, 09–21). A hedge is
+# "пока", "ещё не" (also written "еще не"), "в v0" or "не реализован...";
+# other wordings of the same meaning pass. The checker pins a UTF-8 locale
+# whatever the caller's environment, and refuses to run without one.
 set -u
+
+# Bracket expressions and the case fold below work on characters only under a
+# UTF-8 locale. Take the first one that matches a Cyrillic letter class and
+# folds Cyrillic case; refuse when none does.
+utf8=
+for loc in C.UTF-8 en_US.UTF-8 C.utf8 en_US.utf8; do
+  if printf 'Пока ё\n' | LC_ALL=$loc grep -qiE '^пока [ё]$' 2>/dev/null; then
+    utf8=$loc
+    break
+  fi
+done
+[ -n "$utf8" ] || { echo "check.sh: no UTF-8 locale available (tried C.UTF-8, en_US.UTF-8); refusing" >&2; exit 2; }
+LC_ALL=$utf8
+export LC_ALL
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root" || exit 2
@@ -46,7 +66,7 @@ hit "TeX status label" '\\status\{'
 # Delivery hedges belong to the state chapter only (style.ru.md, "Голос").
 voice_files=$(find book/ru -type f -name '*.md' ! -path 'book/ru/29-gde-my.md' 2>/dev/null | sort)
 if [ -n "$voice_files" ]; then
-  out=$(grep -niE -- '(^|[^[:alpha:]])(пока|ещё[[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])' $voice_files 2>/dev/null)
+  out=$(grep -niE -- '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])' $voice_files 2>/dev/null)
   if [ -n "$out" ]; then
     echo '== delivery hedge'
     echo "$out"
@@ -76,7 +96,7 @@ prose() {
     fi
   fi
 }
-prose "dash in prose" '[[:space:]](—|–)[[:space:]]|[[:alpha:]](—|–)[[:alpha:]]'
+prose "dash in prose" '—|(^|[^0-9])–|–($|[^[:alnum:]])'
 prose "guillemets" '[«»]'
 prose "antithesis" '(не[[:space:]]+просто[[:space:]].*,[[:space:]]+а[[:space:]])|(это[[:space:]]+не[[:space:]].*,[[:space:]]+а[[:space:]])|(речь[[:space:]]+не[[:space:]]+о[[:space:]])'
 prose "filler opener" '(стоит[[:space:]]+отметить|важно[[:space:]]+понимать|давайте[[:space:]]+разбер|в[[:space:]]+современном[[:space:]]+мире)'
