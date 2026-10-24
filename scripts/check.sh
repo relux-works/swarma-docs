@@ -51,6 +51,25 @@ if [ -n "$voice_files" ]; then
   fi
 fi
 
+# Prose blacklist (editorial/style.ru.md, "Чёрный список"). Advisory until the
+# whole-book pass lands; STRICT_PROSE=1 makes every hit fail the check.
+prose_files=$(find book/ru -type f -name '*.md' 2>/dev/null | sort)
+prose() {
+  # $1 label, $2 extended regex (case-insensitive)
+  out=$(grep -niE -- "$2" $prose_files 2>/dev/null)
+  if [ -n "$out" ]; then
+    if [ "${STRICT_PROSE:-0}" = 1 ]; then echo "== $1"; fail=1; else echo "== $1 (advisory)"; fi
+    echo "$out"
+  fi
+}
+if [ -n "$prose_files" ]; then
+  prose "dash in prose" '[[:space:]](—|–)[[:space:]]|[[:alpha:]](—|–)[[:alpha:]]'
+  prose "guillemets" '[«»]'
+  prose "antithesis" '(не[[:space:]]+просто[[:space:]].*,[[:space:]]+а[[:space:]])|(это[[:space:]]+не[[:space:]].*,[[:space:]]+а[[:space:]])|(речь[[:space:]]+не[[:space:]]+о[[:space:]])'
+  prose "filler opener" '(стоит[[:space:]]+отметить|важно[[:space:]]+понимать|давайте[[:space:]]+разбер|в[[:space:]]+современном[[:space:]]+мире)'
+  prose "marketing adjective" '(^|[^[:alpha:]])(мощн[[:alpha:]]*|бесшовн[[:alpha:]]*)($|[^[:alpha:]])'
+fi
+
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do
   [ -e "$f" ] || continue

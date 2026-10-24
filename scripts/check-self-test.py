@@ -95,4 +95,26 @@ class HygieneTests(unittest.TestCase):
         self.assertIn('chapter without a level-1 heading', r.stdout)
 
 
+    # Each prose blacklist pattern is reported as advisory by default and fails
+    # under STRICT_PROSE=1; a clean sentence and a hyphenated word pass both ways.
+    def test_prose_blacklist(self):
+        import os
+        cases = (('Ключник — служба.', 'dash in prose'), ('Поле «aud».', 'guillemets'),
+                 ('Это не очередь, а журнал.', 'antithesis'), ('Стоит отметить, что ключ один.', 'filler opener'),
+                 ('Мощная проверка.', 'marketing adjective'))
+        for text, label in cases:
+            with self.subTest(label=label):
+                self.chapter.write_text('# Example\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0)
+                self.assertIn('== ' + label + ' (advisory)', r.stdout)
+                env = dict(os.environ, STRICT_PROSE='1')
+                r = subprocess.run(['sh', str(self.root / 'scripts/check.sh')], capture_output=True, text=True, env=env)
+                self.assertEqual(r.returncode, 1, 'strict mode must fail on ' + label)
+                self.assertIn('== ' + label, r.stdout)
+        self.chapter.write_text('# Example\n\nКлючник подписывает запись; кросс-подпись проверяется в 10-12 шагов.\n')
+        env = dict(os.environ, STRICT_PROSE='1')
+        r = subprocess.run(['sh', str(self.root / 'scripts/check.sh')], capture_output=True, text=True, env=env)
+        self.assertEqual(r.returncode, 0, r.stdout)
+
 unittest.main(argv=[__file__])
