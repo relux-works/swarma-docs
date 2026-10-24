@@ -1,0 +1,50 @@
+{
+  "domain-agent": {
+    "source": "src/domain-agent.puml",
+    "render": "diagrams/domain-agent.svg",
+    "source_sha256": "409348164c6410b725471c23f69dcf1c7091e5f4536dbbbd40f2cae992c91d60",
+    "render_sha256": "b7f5f3db905d68e1228ca3c1f9e758e295e327c1bd72b6d25f646666686b724f"
+  },
+  "family": {
+    "source": "src/family.puml",
+    "render": "diagrams/family.svg",
+    "source_sha256": "df832f09494b9a2772745de9ad8626ef5b8daee63ab046a7dd3b5bf4cbcd0b61",
+    "render_sha256": "23f0a7ff2ca0d792addd6c65edbd2ed801f3e68d7e3c13efc439f23a0c2c76d1"
+  },
+  "own-agent": {
+    "source": "src/own-agent.puml",
+    "render": "diagrams/own-agent.svg",
+    "source_sha256": "9d7d144ab2227174cb6cbdfa98d8b2e6dd1150dc2a3ba127a23fe0eea2e1d84c",
+    "render_sha256": "4141b654964d9a9be571401515bd848109ab4ad1069c205d93b906ba8c312634"
+  },
+  "pairing": {
+    "source": "src/pairing.puml",
+    "render": "diagrams/pairing.svg",
+    "source_sha256": "3c30136b16dc1fc48b7a9ffb01e3f83afc182cea9fc93e94619786024da92d82",
+    "render_sha256": "13c0af1991762dd92c226aafdfa7fec12208a0bc3856bfb675e2c559421a08e3"
+  },
+  "product-architecture": {
+    "source": "src/product-architecture.puml",
+    "render": "diagrams/product-architecture.svg",
+    "source_sha256": "ebff9595db958ef2b6d55ddd6284ab78d500b0ac20660effab6871812b7b18bc",
+    "render_sha256": "b4e0a532dad494086971e5550929f1e6dd61a7eda0852e9faf15a22b291ec476"
+  },
+  "revocation": {
+    "source": "src/revocation.puml",
+    "render": "diagrams/revocation.svg",
+    "source_sha256": "0c53d7efe77deed848eab6a94435cbe19749572aca8e72b2db2c61db5c27919b",
+    "render_sha256": "1f706c3aaf4ac429bf22d8af43bfc15bb7e201aeab1e881ea88ffe9279f40dc7"
+  },
+  "stranger": {
+    "source": "src/stranger.puml",
+    "render": "diagrams/stranger.svg",
+    "source_sha256": "226966707ff196a2aee8cd91722c856a32426028b7180d6c9473a60395c07140",
+    "render_sha256": "1ef5822afc8381ebb1790ecee7b11baa09dff2d4f25ba82a0e8676f495364f4f"
+  },
+  "two-transports": {
+    "source": "src/two-transports.puml",
+    "render": "diagrams/two-transports.svg",
+    "source_sha256": "4a0f42901f7a91580125b00da58a99ace3f1c510a30c7ca66fa8d9723c7e9d1c",
+    "render_sha256": "41791efa99fdd04d966b65c8e797eb01503724070832fe960156c0feb2daf664"
+  }
+}

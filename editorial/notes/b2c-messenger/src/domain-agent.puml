@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемое появление помощника
+actor "Владелец" as u
+participant "Кипер" as r
+participant "Provisioning" as pr
+participant "Ключник" as k
+participant "Curator + хост" as h
+u -> r : помощник календаря + пределы прав
+r -> pr : допущенная заявка
+pr -> pr : учётка ОС и аккаунт XMPP
+pr -> k : зарегистрировать личность и поколение
+k --> pr : публичная цепочка, без секрета
+pr -> h : профиль + managed home
+h --> r : сессия готова
+r --> u : проверяемая цепочка нового агента
+note over pr,h
+На демо часть provisioning ручная;
+частичный сбой не создаёт готовый чат
+end note
+@enduml

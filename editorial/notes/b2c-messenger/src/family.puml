@@ -1,0 +1,28 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемый семейный доступ
+actor "Владелец Б" as b
+participant "Реестр / verifier Б" as v
+participant "Человек или агент А" as a
+participant "Агент календаря Б" as c
+participant "Узкий API календаря" as k
+b -> v : грант А: только свободные интервалы
+ a -> c : подписанный вопрос о пятнице
+c -> v : проверить ключ, область, срок, отзыв
+v --> c : допуск только к чтению интервалов
+c -> k : свободные интервалы
+k --> c : без названий встреч
+c --> a : подписанный E2EE-ответ
+a -> c : удалить встречу
+c -> v : проверить иное действие
+v --> a : отказ без эффекта
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 18
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam rectangleBackgroundColor #eaf2f5
+skinparam nodesep 25
+skinparam ranksep 22
+title Предлагаемые границы продукта
+top to bottom direction
+rectangle "Телефон / desktop\nUI + Signer + E2EE\nключ за key provider" as c
+rectangle "XMPP-сервер А\nдоставка и архив шифротекста\nметаданные видны" as x
+rectangle "XMPP-сервер Б\nдругой провайдер" as y
+package "Станция владельца" {
+ rectangle "Локальный адаптер\nE2EE + a2a + verifier" as b
+ rectangle "Доверие\nгранты, аттестации, отзыв" as t
+ rectangle "Хост сессий\nкипер и доменные агенты" as h
+ rectangle "Ключник\nагентские подписи" as k
+ rectangle "Curator / Construct\nпрофили и managed homes" as q
+ b -right-> t : проверка
+ b -down-> h : допуск
+ h -right-> k : подпись
+ q -up-> h : запуск
+}
+c -down-> x : E2EE
+x -right-> y : федерация
+x -down-> b : E2EE
+@enduml

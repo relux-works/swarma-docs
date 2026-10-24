@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемая граница критического действия
+actor "Человек" as u
+participant "Клиент / Signer" as c
+participant "Агент" as a
+participant "Verifier / инструмент" as v
+u -> c : обычный вопрос
+c -> a : допущенное сообщение
+alt чтение внутри гранта
+a -> v : разрешённый запрос
+v --> u : результат чтения
+else критическое изменение
+a --> c : предложение точного действия
+c --> u : цель + изменение + адресат
+u -> c : Face ID или отмена
+c -> v : подпись при подтверждении
+v -> v : цепочка + грант + отзыв + повторы
+v --> u : результат исполнения либо отказ
+end
+@enduml

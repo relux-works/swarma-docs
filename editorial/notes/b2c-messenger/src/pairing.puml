@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемая привязка телефона
+actor "Владелец" as u
+participant "Телефон" as p
+participant "Станция / кипер" as s
+participant "Корневая церемония" as r
+p -> p : отдельный ключ устройства
+s --> p : QR: начало привязки
+p <--> s : обмен для одной попытки
+p --> u : показать SAS
+s --> u : показать SAS
+alt совпадает и владелец согласен
+u -> r : удостоверить ключ и назначение
+r --> p : проверяемая аттестация
+p -> p : закрепить корень и OMEMO fingerprint
+else несовпадение / отмена
+p -> p : закрыть попытку без полномочий
+end
+@enduml

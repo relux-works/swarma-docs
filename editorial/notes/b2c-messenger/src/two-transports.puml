@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Одна проверка, два носителя
+left to right direction
+rectangle "Командная комната\nMatrix" as m
+rectangle "Личный разговор\nXMPP" as x
+rectangle "Провайдеры a2a\nточные подписанные байты" as a
+rectangle "Verifier\nключ + грант + отзыв" as v
+rectangle "Допущенный ввод\nв хост сессий" as s
+m --> a
+x --> a
+a --> v
+v --> s : только после допуска
+@enduml

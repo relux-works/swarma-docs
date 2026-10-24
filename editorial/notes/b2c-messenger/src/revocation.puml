@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемый отзыв до следующего действия
+actor "Владелец / резерв" as u
+participant "Реестр" as r
+participant "Verifier" as v
+participant "Старое устройство" as p
+participant "Исполнитель" as e
+u -> r : подписанный отзыв ключа / гранта
+r --> v : проверяемое обновление
+p -> v : команда после отзыва
+v -> v : проверить актуальность и повторы
+v --> p : отказ
+note over v,e : никакого эффекта
+u -> r : отдельно обновить E2EE и вход
+note over r,v
+При недоступном статусе отзыва
+новое критическое действие закрыто
+end note
+@enduml

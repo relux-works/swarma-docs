@@ -1,0 +1,28 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName PT Sans
+skinparam defaultFontSize 16
+skinparam shadowing false
+skinparam ArrowColor #28566b
+skinparam sequenceParticipantBackgroundColor #eaf2f5
+skinparam sequenceLifeLineBorderColor #9daeb5
+skinparam sequenceMessageAlign center
+hide footbox
+title Предлагаемый допуск незнакомого контакта
+participant "Неизвестный ключ" as x
+participant "Вход запросов" as i
+actor "Владелец" as u
+participant "Verifier / агент" as a
+x -> i : запрос контакта
+i -> i : лимиты; не доставлять в промпт
+i --> u : неподтверждённые данные
+alt отказ / ключ не проверен
+u -> i : отклонить
+note over i,a : агент не получает поручение
+else ключ проверен и владелец согласен
+u -> a : отдельный узкий грант
+x -> a : новый подписанный запрос
+a -> a : проверить конкретное действие
+end
+@enduml
