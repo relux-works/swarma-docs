@@ -1,0 +1,128 @@
+# Profile preparation as a decision flowchart. Content follows
+# profile-prepare.puml (every step, question and branch label) and the chapter
+# "Swarma Curator". The .puml while loop over the environments is drawn as one
+# "for each environment" step whose branches all feed the final table, so the
+# figure has no four back edges; the loop is named in that step. The .puml
+# title words "выбранный контракт" are a status and are left out.
+layout = "graph"
+direction = "TB"
+same_rank = [["inherit", "absent"], ["keep", "iso"]]
+alt = "Подготовка профиля: присутствующий логин сохраняется, неизвестный не считается отсутствующим, вход запускается только для допустимого отдельного дома."
+
+[theme.space]
+graph_ranksep = 0.3
+
+[nodes.start]
+shape = "start"
+
+[nodes.install]
+role = "service"
+name = "Установить отсутствующий профиль"
+
+[nodes.each]
+role = "service"
+name = "Для каждой участвующей среды"
+text = "разрешить источник, хранилище и изоляцию; проверить метаданные готовности"
+
+[nodes.own]
+role = "neutral"
+name = "Источник принадлежит дому?"
+
+[nodes.inherit]
+role = "service"
+name = "Без входа в каждый дом"
+text = "проверить готовность источника"
+
+[nodes.absent]
+role = "neutral"
+name = "Логин заведомо отсутствует?"
+
+[nodes.keep]
+role = "service"
+name = "Сохранить `present`"
+text = "`unknown` оставить `unknown`"
+
+[nodes.iso]
+role = "neutral"
+name = "`isolated` и есть настоящий терминал?"
+
+[nodes.login]
+role = "service"
+name = "Нативный вход инструмента в управляемом доме"
+text = "без захвата вывода учётных данных"
+
+[nodes.refuse]
+role = "alert"
+name = "Отказ в управляемом входе"
+text = "для `shared` инструкция нативного входа"
+
+[nodes.table]
+role = "service"
+name = "Таблица по всем средам"
+text = "`present`, `absent` или `unknown` у каждой"
+
+[nodes.end]
+shape = "end"
+
+[[links]]
+from = "start"
+to = "install"
+
+[[links]]
+from = "install"
+to = "each"
+
+[[links]]
+from = "each"
+to = "own"
+
+[[links]]
+from = "own"
+to = "inherit"
+label = "наследуемый"
+
+[[links]]
+from = "own"
+to = "absent"
+label = "да"
+
+[[links]]
+from = "absent"
+to = "keep"
+label = "`present` или `unknown`"
+
+[[links]]
+from = "absent"
+to = "iso"
+label = "да"
+
+[[links]]
+from = "iso"
+to = "login"
+label = "да"
+
+[[links]]
+from = "iso"
+to = "refuse"
+label = "нет"
+color = "alert"
+
+[[links]]
+from = "inherit"
+to = "table"
+
+[[links]]
+from = "keep"
+to = "table"
+
+[[links]]
+from = "login"
+to = "table"
+
+[[links]]
+from = "refuse"
+to = "table"
+
+[[links]]
+from = "table"
+to = "end"

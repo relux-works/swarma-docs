@@ -1,0 +1,137 @@
+# Escalation of an open commitment as a decision flowchart. Content follows
+# escalation-chain.puml and the chapter "Swarma Keeper": every step, question
+# and outcome of the .puml; the record names `skipped_to` and `awaiting_human`
+# come from the chapter. The .puml legend went into the node texts: the
+# ladder of steps into the "next step" node, the "вижу" rule into the decision
+# question. The two "next step" boxes of the .puml are one node here, so both
+# loops come back to it. The .puml title word "Предлагаемая" is a status and
+# is left out. The end rings of the .puml stops are left out to fit the
+# tall box: the three outcome boxes end their branches.
+layout = "graph"
+direction = "TB"
+alt = "Эскалация: идёт вверх по цепочке, пропускает недоступных и останавливается у человека, оставляя работу открытой."
+
+[theme.space]
+graph_ranksep = 0.25
+
+[nodes.start]
+shape = "start"
+
+[nodes.trigger]
+role = "service"
+name = "Срок прошёл, держатель пропал или передача не удалась"
+
+[nodes.open_q]
+role = "neutral"
+name = "Эпизод уже открыт?"
+
+[nodes.add]
+role = "service"
+name = "Добавить причину"
+text = "второй подъём не начинается"
+
+[nodes.open]
+role = "service"
+name = "Открыть эпизод и записать маршрут"
+
+[nodes.next]
+role = "service"
+name = "Следующая ступень"
+text = "первая над держателем; ступени: оркестратор, кипер продукта, мета-кипер, человек-владелец"
+
+[nodes.away_q]
+role = "neutral"
+name = "Получатель недоступен и это не человек?"
+
+[nodes.ask]
+role = "service"
+name = "Записать шаг и адресный вопрос со сроком"
+
+[nodes.skip]
+role = "service"
+name = "Записать пропуск `skipped_to`"
+text = "без передачи ответственности"
+
+[nodes.human_q]
+role = "neutral"
+name = "Получатель: человек?"
+
+[nodes.wait]
+role = "human"
+name = "Ожидание человека"
+text = "`awaiting_human`; работа открыта"
+
+[nodes.decided_q]
+role = "neutral"
+name = "Решение получено к сроку шага?"
+text = 'подтверждение "вижу" решением не считается'
+
+[nodes.close]
+role = "service"
+name = "Закрыть эпизод"
+
+[[links]]
+from = "start"
+to = "trigger"
+
+[[links]]
+from = "trigger"
+to = "open_q"
+
+[[links]]
+from = "open_q"
+to = "add"
+label = "да"
+
+[[links]]
+from = "open_q"
+to = "open"
+label = "нет"
+
+[[links]]
+from = "open"
+to = "next"
+
+[[links]]
+from = "next"
+to = "away_q"
+
+[[links]]
+from = "away_q"
+to = "ask"
+label = "нет"
+
+[[links]]
+from = "away_q"
+to = "skip"
+label = "да"
+
+[[links]]
+from = "skip"
+to = "next"
+constraint = false
+
+[[links]]
+from = "ask"
+to = "human_q"
+
+[[links]]
+from = "human_q"
+to = "wait"
+label = "да"
+
+[[links]]
+from = "human_q"
+to = "decided_q"
+label = "нет"
+
+[[links]]
+from = "decided_q"
+to = "close"
+label = "да"
+
+[[links]]
+from = "decided_q"
+to = "next"
+label = "нет"
+constraint = false

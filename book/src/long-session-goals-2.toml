@@ -1,0 +1,75 @@
+# Long session: who owns what, part 2 of 2: the runner holds the harness and takes input. Split from the whole
+# sequence (long-session-goals.puml) at the runner's start; step numbers stay
+# those of the whole sequence. Content follows the .puml and the chapter
+# "Запуск агента и хост сессий"; the OS accounts stay in the participant
+# descriptions, as in the .puml.
+# Left out of the .puml note: the pointer to the session host specification
+# (the chapter carries it) and the line about today's deployment (a delivery
+# status, it lives in the status chapter).
+layout = "sequence"
+alt = "Долгая сессия, ввод: раннер под UID агента держит PTY или app-server, а очередью ввода владеет хост сессий."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 180
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+text = "служебная учётка"
+
+[nodes.runner]
+role = "service"
+name = "Раннер"
+text = "учётка агента"
+
+[nodes.harness]
+role = "agent"
+name = "Харнес"
+text = "та же учётка агента"
+
+[nodes.broker]
+role = "key"
+name = "Брокер"
+
+[[seq]]
+from = "runner"
+to = "broker"
+step = 5
+label = "собственное соединение для аренды"
+
+[[seq]]
+from = "runner"
+to = "harness"
+step = 6
+label = "держать PTY или app-server"
+
+[[seq]]
+from = "runner"
+to = "host"
+step = 7
+label = "регистрация текущей эпохи контроллера"
+
+[[seq]]
+from = "host"
+to = "host"
+step = 8
+label = "допуск, очередь и забор"
+
+[[seq]]
+from = "host"
+to = "runner"
+step = 9
+label = "ввод текущей эпохи на границе хода"
+
+[[seq]]
+from = "runner"
+to = "harness"
+step = 10
+label = "единственный путь ввода"
+
+[[seq]]
+note = "Старая эпоха не даёт права доставлять ввод."
+over = ["host", "runner"]

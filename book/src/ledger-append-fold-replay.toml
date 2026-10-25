@@ -1,0 +1,162 @@
+# Swarma Keeper ledger: append and recovery as two decision flows side by
+# side. Content follows ledger-append-fold-replay.puml (every step, question
+# and outcome of both flows) and the chapter "Swarma Keeper"; the sequence
+# number is named `seq`, as in the chapter.
+layout = "graph"
+direction = "TB"
+alt = "Журнал Swarma Keeper: состояние выводится из порядка записей, а новая работа начинается после восстановления последствий."
+
+[nodes.start]
+shape = "start"
+
+[nodes.event]
+role = "service"
+name = "Получить событие или внутренний триггер"
+
+[nodes.dup]
+role = "neutral"
+name = "Событие уже записано?"
+
+[nodes.keep]
+role = "service"
+name = "Не менять состояние"
+
+[nodes.valid]
+role = "neutral"
+name = "Переход допустим?"
+
+[nodes.number]
+role = "service"
+name = "Присвоить `seq` и метаданные"
+
+[nodes.reject]
+role = "alert"
+name = "Отклонить"
+text = "без расходования номера"
+
+[nodes.append]
+role = "service"
+name = "Атомарно дописать запись"
+
+[nodes.fold]
+role = "service"
+name = "Свернуть записи по `seq`"
+
+[nodes.end_keep]
+shape = "end"
+
+[nodes.end_reject]
+shape = "end"
+
+[nodes.end_fold]
+shape = "end"
+
+[nodes.rstart]
+shape = "start"
+
+[nodes.recover]
+role = "service"
+name = "Восстановление"
+text = "после старта или сжатия контекста"
+
+[nodes.tail]
+role = "service"
+name = "Отбросить оборванную последнюю запись"
+
+[nodes.refold]
+role = "service"
+name = "Свернуть весь журнал"
+
+[nodes.effects]
+role = "service"
+name = "Дописать недостающие последствия"
+text = "со ссылкой на прежнюю причину"
+
+[nodes.notify]
+role = "service"
+name = "Дослать уведомления без квитанции"
+text = "с теми же номерами"
+
+[nodes.work]
+role = "service"
+name = "Начать новую работу"
+
+[nodes.end_work]
+shape = "end"
+
+[[links]]
+from = "start"
+to = "event"
+
+[[links]]
+from = "event"
+to = "dup"
+
+[[links]]
+from = "dup"
+to = "keep"
+label = "да"
+
+[[links]]
+from = "dup"
+to = "valid"
+label = "нет"
+
+[[links]]
+from = "valid"
+to = "number"
+label = "да"
+
+[[links]]
+from = "valid"
+to = "reject"
+label = "нет"
+color = "alert"
+
+[[links]]
+from = "number"
+to = "append"
+
+[[links]]
+from = "append"
+to = "fold"
+
+[[links]]
+from = "keep"
+to = "end_keep"
+
+[[links]]
+from = "reject"
+to = "end_reject"
+
+[[links]]
+from = "fold"
+to = "end_fold"
+
+[[links]]
+from = "rstart"
+to = "recover"
+
+[[links]]
+from = "recover"
+to = "tail"
+
+[[links]]
+from = "tail"
+to = "refold"
+
+[[links]]
+from = "refold"
+to = "effects"
+
+[[links]]
+from = "effects"
+to = "notify"
+
+[[links]]
+from = "notify"
+to = "work"
+
+[[links]]
+from = "work"
+to = "end_work"

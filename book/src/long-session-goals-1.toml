@@ -1,0 +1,56 @@
+# Long session: who owns what, part 1 of 2: the dispatcher starts the runner. Split from the whole
+# sequence (long-session-goals.puml) at the runner's start; step numbers stay
+# those of the whole sequence. Content follows the .puml and the chapter
+# "Запуск агента и хост сессий"; the OS accounts stay in the participant
+# descriptions, as in the .puml.
+layout = "sequence"
+alt = "Долгая сессия, запуск: хост сессий просит исполнение, диспетчер владеет запуском, запускатель сбрасывает права до учётки агента."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 180
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+text = "служебная учётка"
+
+[nodes.disp]
+role = "service"
+name = "Диспетчер"
+
+[nodes.launcher]
+role = "service"
+name = "Запускатель"
+text = "root только до смены UID"
+
+[nodes.runner]
+role = "service"
+name = "Раннер"
+text = "учётка агента"
+
+[[seq]]
+from = "host"
+to = "disp"
+step = 1
+label = "запрос исполнения для сессии"
+
+[[seq]]
+from = "disp"
+to = "launcher"
+step = 2
+label = "одобренный исполнитель и план"
+
+[[seq]]
+from = "launcher"
+to = "launcher"
+step = 3
+label = "квитанция старта; смена групп, GID и UID"
+
+[[seq]]
+from = "launcher"
+to = "runner"
+step = 4
+label = "`exec` с готовым планом"

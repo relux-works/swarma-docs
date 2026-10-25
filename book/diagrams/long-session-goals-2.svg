@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="668.4" height="602.6" viewBox="0 0 668.4 602.6">
+<title>Долгая сессия, ввод: раннер под UID агента держит PTY или app-server, а очередью ввода владеет хост сессий.</title>
+<rect width="668.4" height="602.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(74 0)">
+<line x1="0" y1="70.9" x2="0" y2="578.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="205.7" y1="70.9" x2="205.7" y2="578.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="370.6" y1="70.9" x2="370.6" y2="578.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="520.3" y1="45.4" x2="520.3" y2="578.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node host -->
+<rect x="-74" y="0" width="148" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="host"/>
+<text x="-46.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<text x="-58" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">служебная учётка</tspan></text>
+<!-- node runner -->
+<rect x="145.4" y="0" width="120.6" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="runner"/>
+<text x="177" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Раннер</tspan></text>
+<text x="161.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка агента</tspan></text>
+<!-- node harness -->
+<rect x="290.8" y="0" width="159.5" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="harness"/>
+<text x="342.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Харнес</tspan></text>
+<text x="306.8" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">та же учётка агента</tspan></text>
+<!-- node broker -->
+<rect x="470.3" y="0" width="100" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="broker"/>
+<text x="491.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер</tspan></text>
+<!-- message runner -> broker -->
+<path d="M 207.7 161.4 L 512.3 161.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="runner" data-to="broker" data-edge="m0"/>
+<polygon points="518.3,161.4 508.3,156.9 508.3,165.9" fill="#3a3f47"/>
+<rect x="305.8" y="94.9" width="114.3" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="318.8" cy="105.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="315.1" y="110.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="333.8" y="110.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">собственное</tspan></text>
+<text x="333.8" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">соединение</tspan></text>
+<text x="333.8" y="149.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для аренды</tspan></text>
+</g>
+<!-- message runner -> harness -->
+<path d="M 207.7 228.4 L 362.6 228.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="runner" data-to="harness" data-edge="m1"/>
+<polygon points="368.6,228.4 358.6,223.9 358.6,232.9" fill="#3a3f47"/>
+<rect x="224" y="181.4" width="128.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="237" cy="192.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="233.4" y="196.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="252" y="196.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">держать PTY</tspan></text>
+<text x="252" y="216.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">или app-server</tspan></text>
+</g>
+<!-- message runner -> host -->
+<path d="M 203.7 295.4 L 8 295.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="runner" data-to="host" data-edge="m2"/>
+<polygon points="2,295.4 12,299.9 12,290.9" fill="#3a3f47"/>
+<rect x="16" y="248.4" width="173.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="29" cy="259.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="263.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="44" y="263.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрация текущей</tspan></text>
+<text x="44" y="283.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">эпохи контроллера</tspan></text>
+</g>
+<!-- self host -->
+<path d="M 2 319.4 L 32 319.4 L 32 368.4 L 9 368.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="host" data-edge="m3"/>
+<polygon points="3,368.4 13,372.9 13,363.9" fill="#3a3f47"/>
+<rect x="40" y="323.4" width="139.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="53" cy="334.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="338.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="68" y="338.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуск, очередь</tspan></text>
+<text x="68" y="358.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и забор</tspan></text>
+</g>
+<!-- message host -> runner -->
+<path d="M 2 431.4 L 197.7 431.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="runner" data-edge="m4"/>
+<polygon points="203.7,431.4 193.7,426.9 193.7,435.9" fill="#3a3f47"/>
+<rect x="19.7" y="384.4" width="166.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="32.7" cy="395.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="29" y="399.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="47.7" y="399.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ввод текущей эпохи</tspan></text>
+<text x="47.7" y="419.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на границе хода</tspan></text>
+</g>
+<!-- message runner -> harness -->
+<path d="M 207.7 498.4 L 362.6 498.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="runner" data-to="harness" data-edge="m5"/>
+<polygon points="368.6,498.4 358.6,493.9 358.6,502.9" fill="#3a3f47"/>
+<rect x="221.7" y="451.4" width="132.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="225.7" y="453.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="230.2" y="466.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="255.4" y="466.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">единственный</tspan></text>
+<text x="255.4" y="486.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">путь ввода</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="518.4" width="325.7" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="-35.3" y="543.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Старая эпоха не даёт права доставлять ввод.</tspan></text>
+</g>
+</g>
+</svg>

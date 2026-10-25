@@ -1,0 +1,82 @@
+# One-shot launch, part 2 of 2: start under the agent UID and clean-up. Split
+# from the whole transaction (one-shot-agent.puml) at the start of the launch;
+# step numbers stay those of the whole transaction. The status line of the
+# .puml note (path qualification) is left out: the delivery status lives in the
+# status chapter.
+layout = "sequence"
+alt = "Разовый запуск, исполнение: запускатель сбрасывает права, аренду исполнитель получает уже под UID агента, диспетчер сверяет эффекты."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 180
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.disp]
+role = "service"
+name = "Диспетчер"
+
+[nodes.launcher]
+role = "service"
+name = "Запускатель"
+
+[nodes.exec]
+role = "agent"
+name = "Исполнитель"
+text = "под UID агента"
+
+[nodes.broker]
+role = "key"
+name = "Брокер учётных данных"
+
+[[seq]]
+from = "disp"
+to = "launcher"
+step = 6
+label = "запустить одобренный исполнитель с планом"
+
+[[seq]]
+from = "launcher"
+to = "launcher"
+step = 7
+label = "квитанция старта под root;\nсброс групп, GID и UID"
+
+[[seq]]
+from = "launcher"
+to = "exec"
+step = 8
+label = "план на дескрипторе 3;\n`exec`"
+
+[[seq]]
+from = "exec"
+to = "broker"
+step = 9
+label = "собственное соединение; запрос аренды"
+
+[[seq]]
+from = "broker"
+to = "exec"
+step = 10
+label = "разрешённый материал"
+
+[[seq]]
+from = "exec"
+to = "exec"
+step = 11
+label = "запустить харнес"
+
+[[seq]]
+from = "exec"
+to = "disp"
+step = 12
+label = "результат исполнения"
+
+[[seq]]
+from = "disp"
+to = "disp"
+step = 13
+label = "сверить эффекты и провести уборку"
+
+[[seq]]
+note = "При потере ответа сверяют тот же эффект.\nНеизвестный исход не разрешает новый запуск."
+over = ["disp", "broker"]

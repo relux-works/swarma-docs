@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840.7" height="796.1" viewBox="0 0 840.7 796.1">
+<title>Журнал Swarma Keeper: состояние выводится из порядка записей, а новая работа начинается после восстановления последствий.</title>
+<rect width="840.7" height="796.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- graphviz 14.0.4 -->
+<!-- node start -->
+<circle cx="187.1" cy="11" r="11" fill="#3a3f47" class="box" data-id="start"/>
+<!-- node event -->
+<rect x="81.9" y="60.1" width="210.5" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="event"/>
+<text x="97.9" y="86.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получить событие или</tspan></text>
+<text x="108.8" y="109.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">внутренний триггер</tspan></text>
+<!-- node dup -->
+<rect x="77.1" y="178.6" width="220.2" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="dup"/>
+<text x="93.1" y="204.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Событие уже записано?</tspan></text>
+<!-- node keep -->
+<rect x="0" y="295.7" width="198.3" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="keep"/>
+<text x="16" y="321.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Не менять состояние</tspan></text>
+<!-- node valid -->
+<rect x="220.8" y="295.7" width="188.8" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="valid"/>
+<text x="236.8" y="321.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Переход допустим?</tspan></text>
+<!-- node number -->
+<rect x="160.8" y="413.9" width="152.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="number"/>
+<text x="176.8" y="440" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Присвоить</tspan><tspan x="265.1" font-family="PT Mono, monospace" font-weight="bold">seq</tspan></text>
+<text x="181" y="463.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и метаданные</tspan></text>
+<!-- node reject -->
+<rect x="335.2" y="412.8" width="203.9" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="reject"/>
+<text x="395.6" y="438.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отклонить</tspan></text>
+<text x="351.2" y="467.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без расходования номера</tspan></text>
+<!-- node append -->
+<rect x="115" y="556.9" width="244.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="append"/>
+<text x="131" y="583" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Атомарно дописать запись</tspan></text>
+<!-- node fold -->
+<rect x="125.3" y="663.7" width="223.6" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="fold"/>
+<text x="141.3" y="689.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Свернуть записи по</tspan><tspan x="300.6" font-family="PT Mono, monospace" font-weight="bold">seq</tspan></text>
+<!-- node end_keep -->
+<circle cx="99.1" cy="448.3" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_keep"/>
+<circle cx="99.1" cy="448.3" r="6.5" fill="#3a3f47"/>
+<!-- node end_reject -->
+<circle cx="437.1" cy="579.6" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_reject"/>
+<circle cx="437.1" cy="579.6" r="6.5" fill="#3a3f47"/>
+<!-- node end_fold -->
+<circle cx="237.1" cy="759.1" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_fold"/>
+<circle cx="237.1" cy="759.1" r="6.5" fill="#3a3f47"/>
+<!-- node rstart -->
+<circle cx="686.1" cy="11" r="11" fill="#3a3f47" class="box" data-id="rstart"/>
+<!-- node recover -->
+<rect x="555.5" y="59" width="261.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="recover"/>
+<text x="622.2" y="85.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Восстановление</tspan></text>
+<text x="571.5" y="113.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">после старта или сжатия контекста</tspan></text>
+<!-- node tail -->
+<rect x="577.6" y="166.9" width="217" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="tail"/>
+<text x="593.6" y="193" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отбросить оборванную</tspan></text>
+<text x="611.6" y="216.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">последнюю запись</tspan></text>
+<!-- node refold -->
+<rect x="582.5" y="295.7" width="207.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="refold"/>
+<text x="598.5" y="321.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Свернуть весь журнал</tspan></text>
+<!-- node effects -->
+<rect x="560.6" y="401.1" width="251" height="94.3" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="effects"/>
+<text x="592" y="427.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Дописать недостающие</tspan></text>
+<text x="636.7" y="450.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">последствия</tspan></text>
+<text x="576.6" y="479.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">со ссылкой на прежнюю причину</tspan></text>
+<!-- node notify -->
+<rect x="582.8" y="532.4" width="206.7" height="94.3" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="notify"/>
+<text x="598.8" y="558.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Дослать уведомления</tspan></text>
+<text x="628.8" y="581.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без квитанции</tspan></text>
+<text x="618.9" y="610.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">с теми же номерами</tspan></text>
+<!-- node work -->
+<rect x="585.9" y="663.7" width="200.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="work"/>
+<text x="601.9" y="689.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Начать новую работу</tspan></text>
+<!-- node end_work -->
+<circle cx="686.1" cy="759.1" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_work"/>
+<circle cx="686.1" cy="759.1" r="6.5" fill="#3a3f47"/>
+<!-- link start -> event -->
+<path d="M 187.1 22.3 C 187.1 30.1 187.1 41.2 187.1 52.3 L 187.1 53.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="start" data-to="event" data-edge="e0"/>
+<polygon points="187.1,59.6 191.6,49.6 182.6,49.6" fill="#3a3f47"/>
+<!-- link event -> dup -->
+<path d="M 187.1 129.2 C 187.1 142.6 187.1 157.9 187.1 170.9 L 187.1 172.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="event" data-to="dup" data-edge="e1"/>
+<polygon points="187.1,178.2 191.6,168.2 182.6,168.2" fill="#3a3f47"/>
+<!-- link dup -> keep -->
+<path d="M 170.2 224.5 C 156.1 243 135.9 269.4 120.6 289.3 L 119.7 290.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dup" data-to="keep" data-edge="e2"/>
+<polygon points="116.1,295.3 125.7,290.1 118.6,284.6" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="161.6" y="260.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link dup -> valid -->
+<path d="M 211.8 224.5 C 232.7 243.3 262.7 270.3 285 290.3 L 286.1 291.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dup" data-to="valid" data-edge="e3"/>
+<polygon points="290.5,295.3 286.1,285.2 280.1,291.9" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="263.5" y="259.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link valid -> number -->
+<path d="M 301.7 341.4 C 290.7 359.4 274.8 385.5 261.5 407.3 L 260.8 408.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="valid" data-to="number" data-edge="e4"/>
+<polygon points="257.7,413.6 266.7,407.4 259.1,402.7" fill="#3a3f47"/>
+<g class="label" data-edge="e4">
+<text x="302.6" y="367.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link valid -> reject -->
+<path d="M 336.1 341.4 C 353.3 359.4 378.1 385.4 398.9 407.2 L 399.9 408.2" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="valid" data-to="reject" data-edge="e5"/>
+<polygon points="404.1,412.6 400.4,402.2 393.9,408.5" fill="#c8285f"/>
+<g class="label" data-edge="e5">
+<text x="394" y="387.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link number -> append -->
+<path d="M 237.1 482.9 C 237.1 503.4 237.1 529.3 237.1 549 L 237.1 550.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="number" data-to="append" data-edge="e6"/>
+<polygon points="237.1,556.5 241.6,546.5 232.6,546.5" fill="#3a3f47"/>
+<!-- link append -> fold -->
+<path d="M 237.1 602.5 C 237.1 618.1 237.1 639 237.1 656 L 237.1 657.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="append" data-to="fold" data-edge="e7"/>
+<polygon points="237.1,663.5 241.6,653.5 232.6,653.5" fill="#3a3f47"/>
+<!-- link keep -> end_keep -->
+<path d="M 99.1 341.4 C 99.1 365.6 99.1 404.3 99.1 427.6 L 99.1 428.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keep" data-to="end_keep" data-edge="e8"/>
+<polygon points="99.1,434.9 103.6,424.9 94.6,424.9" fill="#3a3f47"/>
+<!-- link reject -> end_reject -->
+<path d="M 437.1 483.9 C 437.1 507.9 437.1 539.1 437.1 559 L 437.1 560.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="reject" data-to="end_reject" data-edge="e9"/>
+<polygon points="437.1,566.2 441.6,556.2 432.6,556.2" fill="#3a3f47"/>
+<!-- link fold -> end_fold -->
+<path d="M 237.1 709.4 C 237.1 718.7 237.1 729.4 237.1 738.4 L 237.1 739.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="fold" data-to="end_fold" data-edge="e10"/>
+<polygon points="237.1,745.8 241.6,735.8 232.6,735.8" fill="#3a3f47"/>
+<!-- link rstart -> recover -->
+<path d="M 686.1 22.3 C 686.1 29.8 686.1 40.4 686.1 51.1 L 686.1 52.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="rstart" data-to="recover" data-edge="e11"/>
+<polygon points="686.1,58.5 690.6,48.5 681.6,48.5" fill="#3a3f47"/>
+<!-- link recover -> tail -->
+<path d="M 686.1 130.4 C 686.1 139.6 686.1 149.6 686.1 159.1 L 686.1 160.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="recover" data-to="tail" data-edge="e12"/>
+<polygon points="686.1,166.6 690.6,156.6 681.6,156.6" fill="#3a3f47"/>
+<!-- link tail -> refold -->
+<path d="M 686.1 235.9 C 686.1 252.3 686.1 271.9 686.1 287.8 L 686.1 289.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="tail" data-to="refold" data-edge="e13"/>
+<polygon points="686.1,295.2 690.6,285.2 681.6,285.2" fill="#3a3f47"/>
+<!-- link refold -> effects -->
+<path d="M 686.1 341.4 C 686.1 355.8 686.1 375.2 686.1 393.5 L 686.1 394.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="refold" data-to="effects" data-edge="e14"/>
+<polygon points="686.1,400.7 690.6,390.7 681.6,390.7" fill="#3a3f47"/>
+<!-- link effects -> notify -->
+<path d="M 686.1 495.6 C 686.1 505 686.1 515.1 686.1 524.8 L 686.1 526.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="effects" data-to="notify" data-edge="e15"/>
+<polygon points="686.1,532.1 690.6,522.1 681.6,522.1" fill="#3a3f47"/>
+<!-- link notify -> work -->
+<path d="M 686.1 627.2 C 686.1 636.9 686.1 646.9 686.1 655.8 L 686.1 657.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="notify" data-to="work" data-edge="e16"/>
+<polygon points="686.1,663.3 690.6,653.3 681.6,653.3" fill="#3a3f47"/>
+<!-- link work -> end_work -->
+<path d="M 686.1 709.4 C 686.1 718.7 686.1 729.4 686.1 738.4 L 686.1 739.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="work" data-to="end_work" data-edge="e17"/>
+<polygon points="686.1,745.8 690.6,735.8 681.6,735.8" fill="#3a3f47"/>
+</g>
+</svg>

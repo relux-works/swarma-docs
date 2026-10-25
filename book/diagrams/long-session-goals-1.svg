@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="747.5" height="433.9" viewBox="0 0 747.5 433.9">
+<title>Долгая сессия, запуск: хост сессий просит исполнение, диспетчер владеет запуском, запускатель сбрасывает права до учётки агента.</title>
+<rect width="747.5" height="433.9" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(74 0)">
+<line x1="0" y1="70.9" x2="0" y2="409.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="190.2" y1="45.4" x2="190.2" y2="409.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="384.8" y1="90.4" x2="384.8" y2="409.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="589.2" y1="70.9" x2="589.2" y2="409.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node host -->
+<rect x="-74" y="0" width="148" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="host"/>
+<text x="-46.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<text x="-58" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">служебная учётка</tspan></text>
+<!-- node disp -->
+<rect x="132.1" y="0" width="116.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="disp"/>
+<text x="148.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
+<!-- node launcher -->
+<rect x="320.4" y="0" width="128.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="launcher"/>
+<text x="336.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запускатель</tspan></text>
+<text x="347.8" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">root только</tspan></text>
+<text x="339.7" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">до смены UID</tspan></text>
+<!-- node runner -->
+<rect x="528.9" y="0" width="120.6" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="runner"/>
+<text x="560.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Раннер</tspan></text>
+<text x="544.9" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка агента</tspan></text>
+<!-- message host -> disp -->
+<path d="M 2 161.4 L 182.2 161.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="disp" data-edge="m0"/>
+<polygon points="188.2,161.4 178.2,156.9 178.2,165.9" fill="#3a3f47"/>
+<rect x="16" y="114.4" width="158.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="29" cy="125.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="129.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="44" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос исполнения</tspan></text>
+<text x="44" y="149.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для сессии</tspan></text>
+</g>
+<!-- message disp -> launcher -->
+<path d="M 192.2 228.4 L 376.8 228.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="launcher" data-edge="m1"/>
+<polygon points="382.8,228.4 372.8,223.9 372.8,232.9" fill="#3a3f47"/>
+<rect x="206.2" y="181.4" width="162.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="219.2" cy="192.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="215.5" y="196.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="234.2" y="196.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одобренный</tspan></text>
+<text x="234.2" y="216.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнитель и план</tspan></text>
+</g>
+<!-- self launcher -->
+<path d="M 386.8 252.4 L 416.8 252.4 L 416.8 320.9 L 393.8 320.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="launcher" data-to="launcher" data-edge="m2"/>
+<polygon points="387.8,320.9 397.8,325.4 397.8,316.4" fill="#3a3f47"/>
+<rect x="424.8" y="256.4" width="138.4" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="437.8" cy="267.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="434.1" y="271.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="452.8" y="271.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">квитанция</tspan></text>
+<text x="452.8" y="291.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">старта; смена</tspan></text>
+<text x="452.8" y="310.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">групп, GID и UID</tspan></text>
+</g>
+<!-- message launcher -> runner -->
+<path d="M 386.8 383.9 L 581.2 383.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="launcher" data-to="runner" data-edge="m3"/>
+<polygon points="587.2,383.9 577.2,379.4 577.2,388.4" fill="#3a3f47"/>
+<rect x="417.9" y="336.9" width="138.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="430.9" cy="347.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="427.2" y="352.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="445.9" y="352.1" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">exec</tspan><tspan x="485.7" font-family="PT Sans, sans-serif" font-weight="bold">с готовым</tspan></text>
+<text x="445.9" y="371.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">планом</tspan></text>
+</g>
+</g>
+</g>
+</svg>

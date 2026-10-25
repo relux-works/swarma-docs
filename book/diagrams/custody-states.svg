@@ -25,7 +25,7 @@
 <circle cx="358.8" cy="473.6" r="6.5" fill="#3a3f47"/>
 <!-- note acc -->
 <rect x="225.9" y="164.4" width="177.8" height="92.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_acc"/>
-<text x="249.7" y="187.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">"Принял" не является</tspan></text>
+<text x="258.1" y="187.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">"Беру" не является</tspan></text>
 <text x="255.3" y="205.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">первым действием.</tspan></text>
 <text x="237.9" y="224.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Поздняя или заменённая</tspan></text>
 <text x="242.7" y="242.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">квитанция отклоняется.</tspan></text>

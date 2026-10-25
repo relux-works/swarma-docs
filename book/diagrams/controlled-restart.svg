@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700.3" height="874.7" viewBox="0 0 700.3 874.7">
+<title>Контролируемый перезапуск: забор закрыт до сверки исполнения и доставки, неизвестный исход остаётся неизвестным.</title>
+<rect width="700.3" height="874.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- graphviz 14.0.4 -->
+<!-- node start -->
+<circle cx="129.2" cy="11" r="11" fill="#3a3f47" class="box" data-id="start"/>
+<!-- node auth -->
+<rect x="19.6" y="59" width="219.1" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="auth"/>
+<text x="35.6" y="85.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверить полномочие</tspan></text>
+<text x="73.1" y="108.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на перезапуск</tspan></text>
+<!-- node fence -->
+<rect x="30.1" y="164.8" width="198.2" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="fence"/>
+<text x="46.1" y="190.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Закрыть и сохранить</tspan></text>
+<text x="72.2" y="214.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">забор допуска</tspan></text>
+<!-- node park -->
+<rect x="25" y="270.6" width="208.3" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="park"/>
+<text x="41" y="296.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Припарковать сессию,</tspan></text>
+<text x="49" y="320.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить передачу</tspan></text>
+<!-- node stop -->
+<rect x="0" y="376.4" width="258.3" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="stop"/>
+<text x="16" y="402.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Через диспетчер остановить</tspan></text>
+<text x="53.7" y="425.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">старое исполнение</tspan></text>
+<!-- node gone -->
+<rect x="2" y="482.2" width="254.3" height="68.8" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="gone"/>
+<text x="53.4" y="508.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отсутствие старого</tspan></text>
+<text x="18" y="531.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнения подтверждено?</tspan></text>
+<!-- node refuse -->
+<rect x="31.8" y="611" width="194.8" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="refuse"/>
+<text x="47.8" y="637.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ или ожидание</tspan></text>
+<text x="85.4" y="665.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">забор закрыт</tspan></text>
+<!-- node plan -->
+<rect x="319" y="59" width="234.2" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="plan"/>
+<text x="335" y="85.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подготовить и проверить</tspan></text>
+<text x="371.8" y="108.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">план преемника</tspan></text>
+<!-- node launch -->
+<rect x="335.5" y="164.8" width="201.4" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="launch"/>
+<text x="351.5" y="190.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запустить преемника</tspan></text>
+<text x="370.4" y="214.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">через диспетчер</tspan></text>
+<!-- node epoch -->
+<rect x="323.2" y="270.6" width="225.9" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="epoch"/>
+<text x="379" y="296.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сверить эпоху</tspan></text>
+<text x="339.2" y="320.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">контроллера и привязки</tspan></text>
+<!-- node outcomes -->
+<rect x="342.1" y="376.4" width="188.1" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="outcomes"/>
+<text x="372" y="402.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сверить исходы</tspan></text>
+<text x="358.1" y="425.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">удержанного ввода</tspan></text>
+<!-- node unres -->
+<rect x="310.3" y="493.9" width="251.7" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="unres"/>
+<text x="326.3" y="520" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Есть неразрешимый исход?</tspan></text>
+<!-- node unknown -->
+<rect x="290.4" y="611" width="119.4" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="unknown"/>
+<text x="312.4" y="637.1" font-size="18" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">unknown</tspan></text>
+<text x="306.4" y="665.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">забор закрыт</tspan></text>
+<!-- node norepeat -->
+<rect x="431.7" y="612.1" width="233" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="norepeat"/>
+<text x="449.5" y="638.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Не повторять одобрения</tspan></text>
+<text x="447.7" y="661.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и управляющие эффекты</tspan></text>
+<!-- node open -->
+<rect x="420" y="718.9" width="256.2" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="open"/>
+<text x="436" y="745" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Открыть забор и доставлять</tspan></text>
+<text x="468.3" y="768.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">очередь по порядку</tspan></text>
+<!-- node end_ok -->
+<circle cx="548.2" cy="837.7" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_ok"/>
+<circle cx="548.2" cy="837.7" r="6.5" fill="#3a3f47"/>
+<!-- node end_refuse -->
+<circle cx="129.2" cy="753.3" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_refuse"/>
+<circle cx="129.2" cy="753.3" r="6.5" fill="#3a3f47"/>
+<!-- node end_unknown -->
+<circle cx="350.2" cy="753.3" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_unknown"/>
+<circle cx="350.2" cy="753.3" r="6.5" fill="#3a3f47"/>
+<!-- link start -> auth -->
+<path d="M 129.2 22.2 C 129.2 29.7 129.2 40.4 129.2 51.2 L 129.2 52.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="start" data-to="auth" data-edge="e0"/>
+<polygon points="129.2,58.6 133.7,48.6 124.7,48.6" fill="#3a3f47"/>
+<!-- link auth -> fence -->
+<path d="M 129.2 128.1 C 129.2 137.3 129.2 147.3 129.2 156.8 L 129.2 158.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="auth" data-to="fence" data-edge="e1"/>
+<polygon points="129.2,164.3 133.7,154.3 124.7,154.3" fill="#3a3f47"/>
+<!-- link fence -> park -->
+<path d="M 129.2 233.9 C 129.2 243.1 129.2 253.1 129.2 262.6 L 129.2 264.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="fence" data-to="park" data-edge="e2"/>
+<polygon points="129.2,270.1 133.7,260.1 124.7,260.1" fill="#3a3f47"/>
+<!-- link park -> stop -->
+<path d="M 129.2 339.7 C 129.2 348.9 129.2 358.9 129.2 368.4 L 129.2 369.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="park" data-to="stop" data-edge="e3"/>
+<polygon points="129.2,375.9 133.7,365.9 124.7,365.9" fill="#3a3f47"/>
+<!-- link stop -> gone -->
+<path d="M 129.2 445.5 C 129.2 454.7 129.2 464.7 129.2 474.2 L 129.2 475.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="stop" data-to="gone" data-edge="e4"/>
+<polygon points="129.2,481.7 133.7,471.7 124.7,471.7" fill="#3a3f47"/>
+<!-- link gone -> plan -->
+<path d="M 228.1 481.9 C 244 472.3 258.7 460.3 269.2 445.2 C 313.7 381.1 271.3 346.8 288.2 270.6 C 298.9 222.1 293.4 203.8 324.2 164.8 C 334 152.4 346.6 141.6 359.9 132.3 L 361 131.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gone" data-to="plan" data-edge="e5"/>
+<polygon points="366,128.2 355.2,130.1 360.2,137.5" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="292.5" y="310" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link gone -> refuse -->
+<path d="M 129.2 551.2 C 129.2 567.3 129.2 586.6 129.2 603.6 L 129.2 604.8" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="gone" data-to="refuse" data-edge="e6"/>
+<polygon points="129.2,610.8 133.7,600.8 124.7,600.8" fill="#c8285f"/>
+<g class="label" data-edge="e6">
+<text x="137.2" y="584.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет или неизвестно</tspan></text>
+</g>
+<!-- link plan -> launch -->
+<path d="M 436.2 128.1 C 436.2 137.3 436.2 147.3 436.2 156.8 L 436.2 158.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="plan" data-to="launch" data-edge="e7"/>
+<polygon points="436.2,164.3 440.7,154.3 431.7,154.3" fill="#3a3f47"/>
+<!-- link launch -> epoch -->
+<path d="M 436.2 233.9 C 436.2 243.1 436.2 253.1 436.2 262.6 L 436.2 264.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="launch" data-to="epoch" data-edge="e8"/>
+<polygon points="436.2,270.1 440.7,260.1 431.7,260.1" fill="#3a3f47"/>
+<!-- link epoch -> outcomes -->
+<path d="M 436.2 339.7 C 436.2 348.9 436.2 358.9 436.2 368.4 L 436.2 369.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="epoch" data-to="outcomes" data-edge="e9"/>
+<polygon points="436.2,375.9 440.7,365.9 431.7,365.9" fill="#3a3f47"/>
+<!-- link outcomes -> unres -->
+<path d="M 436.2 445.5 C 436.2 458.7 436.2 473.6 436.2 486.3 L 436.2 487.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="outcomes" data-to="unres" data-edge="e10"/>
+<polygon points="436.2,493.5 440.7,483.5 431.7,483.5" fill="#3a3f47"/>
+<!-- link unres -> unknown -->
+<path d="M 421.4 539.6 C 409.4 557.5 392 583.2 377.5 604.8 L 376.8 605.8" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="unres" data-to="unknown" data-edge="e11"/>
+<polygon points="373.5,610.8 382.8,605 375.3,600" fill="#c8285f"/>
+<g class="label" data-edge="e11">
+<text x="415.2" y="575.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link unres -> norepeat -->
+<path d="M 455.4 539.6 C 471.4 557.9 494.7 584.4 513.9 606.3 L 514.7 607.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="unres" data-to="norepeat" data-edge="e12"/>
+<polygon points="518.6,611.8 515.4,601.3 508.7,607.2" fill="#3a3f47"/>
+<g class="label" data-edge="e12">
+<text x="519" y="597.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link norepeat -> open -->
+<path d="M 548.2 681.2 C 548.2 690.8 548.2 701.2 548.2 711.2 L 548.2 712.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="norepeat" data-to="open" data-edge="e13"/>
+<polygon points="548.2,718.6 552.7,708.6 543.7,708.6" fill="#3a3f47"/>
+<!-- link open -> end_ok -->
+<path d="M 548.2 787.8 C 548.2 797.8 548.2 808.4 548.2 817.1 L 548.2 818.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="open" data-to="end_ok" data-edge="e14"/>
+<polygon points="548.2,824.6 552.7,814.6 543.7,814.6" fill="#3a3f47"/>
+<!-- link refuse -> end_refuse -->
+<path d="M 129.2 682.4 C 129.2 699.2 129.2 718.7 129.2 732.8 L 129.2 734.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="refuse" data-to="end_refuse" data-edge="e15"/>
+<polygon points="129.2,740.1 133.7,730.1 124.7,730.1" fill="#3a3f47"/>
+<!-- link unknown -> end_unknown -->
+<path d="M 350.2 682.4 C 350.2 699.2 350.2 718.7 350.2 732.8 L 350.2 734.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="unknown" data-to="end_unknown" data-edge="e16"/>
+<polygon points="350.2,740.1 354.7,730.1 345.7,730.1" fill="#3a3f47"/>
+</g>
+</svg>

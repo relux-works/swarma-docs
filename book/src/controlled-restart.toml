@@ -1,0 +1,153 @@
+# Controlled restart as a decision flowchart. Content follows
+# controlled-restart.puml (every step, question and outcome) and the chapter
+# "Запуск агента и хост сессий"; the .puml title word "Предлагаемый" is a
+# status and is left out.
+layout = "graph"
+direction = "TB"
+same_rank = [["auth", "plan"], ["fence", "launch"], ["park", "epoch"], ["stop", "outcomes"], ["gone", "unres"]]
+alt = "Контролируемый перезапуск: забор закрыт до сверки исполнения и доставки, неизвестный исход остаётся неизвестным."
+
+[nodes.start]
+shape = "start"
+
+[nodes.auth]
+role = "service"
+name = "Проверить полномочие на перезапуск"
+
+[nodes.fence]
+role = "service"
+name = "Закрыть и сохранить забор допуска"
+
+[nodes.park]
+role = "service"
+name = "Припарковать сессию, сохранить передачу"
+
+[nodes.stop]
+role = "service"
+name = "Через диспетчер остановить старое исполнение"
+
+[nodes.gone]
+role = "neutral"
+name = "Отсутствие старого исполнения подтверждено?"
+
+[nodes.refuse]
+role = "alert"
+name = "Отказ или ожидание"
+text = "забор закрыт"
+
+[nodes.plan]
+role = "service"
+name = "Подготовить и проверить план преемника"
+
+[nodes.launch]
+role = "service"
+name = "Запустить преемника через диспетчер"
+
+[nodes.epoch]
+role = "service"
+name = "Сверить эпоху контроллера и привязки"
+
+[nodes.outcomes]
+role = "service"
+name = "Сверить исходы удержанного ввода"
+
+[nodes.unres]
+role = "neutral"
+name = "Есть неразрешимый исход?"
+
+[nodes.unknown]
+role = "alert"
+name = "`unknown`"
+text = "забор закрыт"
+
+[nodes.norepeat]
+role = "service"
+name = "Не повторять одобрения и управляющие эффекты"
+
+[nodes.open]
+role = "service"
+name = "Открыть забор и доставлять очередь по порядку"
+
+[nodes.end_ok]
+shape = "end"
+
+[nodes.end_refuse]
+shape = "end"
+
+[nodes.end_unknown]
+shape = "end"
+
+[[links]]
+from = "start"
+to = "auth"
+
+[[links]]
+from = "auth"
+to = "fence"
+
+[[links]]
+from = "fence"
+to = "park"
+
+[[links]]
+from = "park"
+to = "stop"
+
+[[links]]
+from = "stop"
+to = "gone"
+
+[[links]]
+from = "gone"
+to = "plan"
+label = "да"
+constraint = false
+
+[[links]]
+from = "gone"
+to = "refuse"
+label = "нет или неизвестно"
+color = "alert"
+
+[[links]]
+from = "plan"
+to = "launch"
+
+[[links]]
+from = "launch"
+to = "epoch"
+
+[[links]]
+from = "epoch"
+to = "outcomes"
+
+[[links]]
+from = "outcomes"
+to = "unres"
+
+[[links]]
+from = "unres"
+to = "unknown"
+label = "да"
+color = "alert"
+
+[[links]]
+from = "unres"
+to = "norepeat"
+label = "нет"
+
+[[links]]
+from = "norepeat"
+to = "open"
+
+[[links]]
+from = "open"
+to = "end_ok"
+
+[[links]]
+from = "refuse"
+to = "end_refuse"
+
+[[links]]
+from = "unknown"
+to = "end_unknown"

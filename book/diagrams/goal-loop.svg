@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="867.6" height="754.7" viewBox="0 0 867.6 754.7">
+<title>Цикл цели: цель задаёт вызывающий или доска, провайдер только подталкивает сессию, а исход проверяется отдельно.</title>
+<rect width="867.6" height="754.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(70.3 0)">
+<line x1="0" y1="68.8" x2="0" y2="730.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="150.2" y1="68.8" x2="150.2" y2="730.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="317.7" y1="45.4" x2="317.7" y2="730.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="516.2" y1="45.4" x2="516.2" y2="730.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="719" y1="68.8" x2="719" y2="730.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node caller -->
+<rect x="-70.3" y="0" width="140.7" height="68.8" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="caller"/>
+<text x="-54.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Вызывающий</tspan></text>
+<text x="-39.4" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">или доска</tspan></text>
+<!-- node provider -->
+<rect x="90.3" y="0" width="119.8" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="provider"/>
+<text x="106.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Провайдер</tspan></text>
+<text x="126.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">целей</tspan></text>
+<!-- node host -->
+<rect x="255.2" y="0" width="125.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="host"/>
+<text x="271.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<!-- node agent -->
+<rect x="466.2" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="494.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<!-- node verify -->
+<rect x="664.7" y="0" width="108.6" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="verify"/>
+<text x="680.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверка</tspan></text>
+<text x="691.1" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исхода</tspan></text>
+<!-- message caller -> host -->
+<path d="M 2 139.8 L 309.7 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="caller" data-to="host" data-edge="m0"/>
+<polygon points="315.7,139.8 305.7,135.3 305.7,144.3" fill="#3a3f47"/>
+<rect x="98.8" y="92.8" width="120.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="111.8" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="108.1" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="126.8" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">задать цель</tspan></text>
+<text x="126.8" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и её ревизию</tspan></text>
+</g>
+<!-- message host -> provider -->
+<path d="M 315.7 206.8 L 158.2 206.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="provider" data-edge="m1"/>
+<polygon points="152.2,206.8 162.2,211.3 162.2,202.3" fill="#3a3f47"/>
+<rect x="166.2" y="159.8" width="135.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="179.2" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="175.5" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="194.2" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">состояние цели</tspan></text>
+<text x="194.2" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для расписания</tspan></text>
+</g>
+<!-- message provider -> host -->
+<path d="M 152.2 273.8 L 309.7 273.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="provider" data-to="host" data-edge="m2"/>
+<polygon points="315.7,273.8 305.7,269.3 305.7,278.3" fill="#3a3f47"/>
+<rect x="167.8" y="226.8" width="132.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="180.8" cy="237.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="177.1" y="242.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="195.8" y="242.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подталкивание</tspan></text>
+<text x="195.8" y="261.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по расписанию</tspan></text>
+</g>
+<!-- self host -->
+<path d="M 319.7 297.8 L 349.7 297.8 L 349.7 346.8 L 326.7 346.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="host" data-edge="m3"/>
+<polygon points="320.7,346.8 330.7,351.3 330.7,342.3" fill="#3a3f47"/>
+<rect x="357.7" y="301.8" width="132.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="370.7" cy="312.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="367" y="317.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="385.7" y="317.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">очередь</tspan></text>
+<text x="385.7" y="336.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и допуск ввода</tspan></text>
+</g>
+<!-- message host -> agent -->
+<path d="M 319.7 429.3 L 508.2 429.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="agent" data-edge="m4"/>
+<polygon points="514.2,429.3 504.2,424.8 504.2,433.8" fill="#3a3f47"/>
+<rect x="346.8" y="362.8" width="140.4" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="359.8" cy="373.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="356.1" y="378.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="374.8" y="378.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">короткое</tspan></text>
+<text x="374.8" y="397.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подталкивание</tspan></text>
+<text x="374.8" y="417.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на границе хода</tspan></text>
+</g>
+<!-- self agent -->
+<path d="M 518.2 453.3 L 548.2 453.3 L 548.2 502.3 L 525.2 502.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="agent" data-edge="m5"/>
+<polygon points="519.2,502.3 529.2,506.8 529.2,497.8" fill="#3a3f47"/>
+<rect x="556.2" y="457.3" width="136.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="569.2" cy="468.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="565.5" y="472.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="584.2" y="472.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выполнить</tspan></text>
+<text x="584.2" y="492.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">следующий шаг</tspan></text>
+</g>
+<!-- message agent -> verify -->
+<path d="M 518.2 565.3 L 711 565.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="verify" data-edge="m6"/>
+<polygon points="717,565.3 707,560.8 707,569.8" fill="#3a3f47"/>
+<rect x="540.1" y="518.3" width="155.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="553.1" cy="529" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="549.4" y="533.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="568.1" y="533.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предложить исход</tspan></text>
+<text x="568.1" y="553" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с основаниями</tspan></text>
+</g>
+<!-- message verify -> caller -->
+<path d="M 717 632.3 L 8 632.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="verify" data-to="caller" data-edge="m7"/>
+<polygon points="2,632.3 12,636.8 12,627.8" fill="#3a3f47"/>
+<rect x="277.1" y="585.3" width="164.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="290.1" cy="596" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="286.4" y="600.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="305.1" y="600.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверенный исход</tspan></text>
+<text x="305.1" y="620" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">или замечания</tspan></text>
+</g>
+<!-- note -->
+<rect x="90.2" y="652.3" width="486" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="159.9" y="677.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Провайдер не владеет целью и не принимает результат.</tspan></text>
+<text x="194.2" y="695.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Сессия может работать без цели и без доски.</tspan></text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,84 @@
+# Session goal loop. Content follows goal-loop.puml and the chapter "Запуск
+# агента и хост сессий"; the .puml title word "Предлагаемый" is a status and
+# is left out. The .puml dashed returns are plain messages here: in the house
+# style a dashed arrow means a step that may not happen.
+layout = "sequence"
+alt = "Цикл цели: цель задаёт вызывающий или доска, провайдер только подталкивает сессию, а исход проверяется отдельно."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 180
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.caller]
+role = "agent"
+name = "Вызывающий или доска"
+
+[nodes.provider]
+role = "service"
+name = "Провайдер целей"
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[nodes.verify]
+role = "service"
+name = "Проверка исхода"
+
+[[seq]]
+from = "caller"
+to = "host"
+step = 1
+label = "задать цель и её ревизию"
+
+[[seq]]
+from = "host"
+to = "provider"
+step = 2
+label = "состояние цели для расписания"
+
+[[seq]]
+from = "provider"
+to = "host"
+step = 3
+label = "подталкивание по расписанию"
+
+[[seq]]
+from = "host"
+to = "host"
+step = 4
+label = "очередь и допуск ввода"
+
+[[seq]]
+from = "host"
+to = "agent"
+step = 5
+label = "короткое подталкивание на границе хода"
+
+[[seq]]
+from = "agent"
+to = "agent"
+step = 6
+label = "выполнить следующий шаг"
+
+[[seq]]
+from = "agent"
+to = "verify"
+step = 7
+label = "предложить исход с основаниями"
+
+[[seq]]
+from = "verify"
+to = "caller"
+step = 8
+label = "проверенный исход или замечания"
+
+[[seq]]
+note = "Провайдер не владеет целью и не принимает результат.\nСессия может работать без цели и без доски."
+over = ["provider", "agent"]

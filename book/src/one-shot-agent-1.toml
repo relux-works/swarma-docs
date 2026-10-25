@@ -1,0 +1,61 @@
+# One-shot launch, part 1 of 2: request, account and binding. Split from the
+# whole transaction (one-shot-agent.puml) at the start of the launch; step
+# numbers stay those of the whole transaction. Content follows the .puml and
+# the chapter "Запуск агента и хост сессий": the caller builds the plan through
+# Swarma Curator; the dispatcher checks signature, grants, revocation, quota and
+# capacity (chapter wording, wider than the .puml "полномочия").
+layout = "sequence"
+alt = "Разовый запуск, заявка: план готовит вызывающий, диспетчер проверяет заявку, создаёт поколение учётки и привязывает права."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.caller]
+role = "agent"
+name = "Вызывающий"
+text = "через Swarma Curator"
+
+[nodes.disp]
+role = "service"
+name = "Диспетчер"
+
+[nodes.users]
+role = "service"
+name = "Менеджер пользователей"
+
+[nodes.broker]
+role = "key"
+name = "Брокер учётных данных"
+
+[[seq]]
+from = "caller"
+to = "caller"
+step = 1
+label = "собрать и проверить готовый план"
+
+[[seq]]
+from = "caller"
+to = "disp"
+step = 2
+label = "подписанная заявка и план"
+
+[[seq]]
+from = "disp"
+to = "disp"
+step = 3
+label = "проверить подпись, гранты, отзыв, квоты и ёмкость"
+
+[[seq]]
+from = "disp"
+to = "users"
+step = 4
+label = "создать активное поколение учётки"
+
+[[seq]]
+from = "disp"
+to = "broker"
+step = 5
+label = "привязать права к поколению"
