@@ -1,5 +1,5 @@
 # Publication, part 2 of 2: short-term and long-term memory. Split from
-# publish-flow-v2 at its second divider; step numbers stay those of the whole flow.
+# the whole flow (fixtures/publish-flow-full) at its second divider; step numbers stay those of the whole flow.
 
 layout = "sequence"
 alt = "Публикация, кратковременная и долговременная память: кураторы и зрители раздают файл, архивисты хранят его по своей политике."

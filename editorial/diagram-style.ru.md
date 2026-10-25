@@ -97,7 +97,7 @@ python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.
 3. Каждая часть может уплотнить исходник ключами `[theme.space]`: `seq_node_width = 130`, `seq_label_width` от 150 до 170, `seq_self_width = 170`, `seq_column_gap = 20`. Других ключей для этого не нужно.
 4. Каждая часть проходит `--require-fit tall` (или `normal`), прежде чем заменить прежний рисунок. Если часть не проходит и с уплотнением, она делится ещё раз.
 
-Образцы: `remote-worker-turn-donor-v2` и `remote-worker-turn-ours-v2` (по границе машины), `publish-flow-1-v2` и `publish-flow-2-v2` (по второму разделителю).
+Образцы: `remote-worker-turn-donor` и `remote-worker-turn-ours` (по границе машины), `publish-flow-1` и `publish-flow-2` (по второму разделителю); целые последовательности лежат в `scripts/diagram-kit/fixtures/` как проверка конструкций.
 
 ## Исходник
 

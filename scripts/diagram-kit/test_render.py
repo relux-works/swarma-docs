@@ -695,7 +695,7 @@ class ConstructTests(Base):
     # labels sit in the gap between the donor's and our container. Divider
     # pills and frame condition labels keep clear of the borders too.
     def test_cross_boundary_labels_clear(self):
-        src = (ROOT / "book/src/remote-worker-turn-v2.toml").read_text(encoding="utf-8")
+        src = (ROOT / "scripts/diagram-kit/fixtures/remote-worker-turn-full.toml").read_text(encoding="utf-8")
         for text in (SEQ_FULL, src):
             with self.subTest(source=text[:30]):
                 svg, _ = self.render_ok(text)
@@ -1033,20 +1033,29 @@ class PrintTests(Base):
             self.assertEqual(render.main([str(self.src(many)), str(out), "--require-fit", "tall"]), 3)
 
 
-class PilotTests(Base):
-    # Claim: every committed -v2 source renders through schema and lint, and
-    # its committed SVG is byte-identical to a fresh render (graph pilots need
-    # the pinned Graphviz and are skipped without it).
-    def test_pilots_fresh(self):
-        sources = sorted(ROOT.glob("book/src/*-v2.toml")) + sorted(ROOT.glob("editorial/notes/*/src/*-v2.toml"))
+class FigureTests(Base):
+    # Claim: every committed book figure source (book/src/*.toml) and every
+    # -v2 pilot of a note renders through schema and lint, and its committed
+    # SVG is byte-identical to a fresh render (graph figures need the pinned
+    # Graphviz and are skipped without it). The whole-flow fixtures in
+    # fixtures/ render through schema and lint too; the book uses their halves.
+    def test_figures_fresh(self):
+        sources = sorted(ROOT.glob("book/src/*.toml")) + sorted(ROOT.glob("editorial/notes/*/src/*-v2.toml"))
         self.assertGreaterEqual(len(sources), 7)
         for src in sources:
             with self.subTest(src=src.name):
                 if render.load_source(src).get("layout") == "graph" and not PINNED:
-                    self.skipTest("graph pilot needs the pinned Graphviz")
+                    self.skipTest("graph figure needs the pinned Graphviz")
                 svg = render.render(src)
                 committed = src.parent.parent / "diagrams" / (src.stem + ".svg")
                 self.assertEqual(svg, committed.read_text(encoding="utf-8"), f"{committed} is stale")
+
+    def test_fixtures_render(self):
+        fixtures = sorted((ROOT / "scripts/diagram-kit/fixtures").glob("*.toml"))
+        self.assertEqual(len(fixtures), 2)
+        for src in fixtures:
+            with self.subTest(src=src.name):
+                self.assertIn("<svg", render.render(src))
 
 
 if __name__ == "__main__":

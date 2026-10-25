@@ -4,9 +4,9 @@
 --    cleanly on GitHub; in the book it becomes a coloured badge
 --    <span class="status dec">решено</span>. A marker may span several words
 --    (⟦работает сегодня⟧) and may carry punctuation before or after it.
--- 2. Diagram sizes. Tall diagrams get the class "tall" so that the
---    stylesheet lets them use the full page height.
--- 3. Landscape figures, see below.
+-- 2. Landscape figures, see below. Tall diagrams carry the class {.tall}
+--    in the chapter link itself; the stylesheet lets them use the full
+--    page height, and book/check-figures.sh holds them to that box.
 
 local status_class = {
   ["работает сегодня"] = "now",
@@ -109,20 +109,7 @@ function Inlines(inlines)
   return bind_spaces(out)
 end
 
-local tall = {
-  ["bridge-components"] = true,
-  ["board-components"] = true,
-}
-
-function Image(img)
-  local name = img.src:match("([^/]+)%.png$")
-  if name and tall[name] then
-    img.classes:insert("tall")
-  end
-  return img
-end
-
--- 3. Landscape figures. An image marked {.landscape} puts its whole figure
+-- 2. Landscape figures. An image marked {.landscape} puts its whole figure
 --    on a landscape page (the stylesheet selects the page by the class).
 function Figure(fig)
   local landscape = false

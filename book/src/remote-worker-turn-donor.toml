@@ -1,5 +1,5 @@
 # A remote worker's turn, part 1 of 2: the donor's side up to our SSH entry.
-# Split from remote-worker-turn-v2 along the container boundary; step numbers
+# Split from the whole turn (fixtures/remote-worker-turn-full) along the container boundary; step numbers
 # stay those of the whole turn. Density keys from editorial/diagram-style.ru.md.
 
 layout = "sequence"

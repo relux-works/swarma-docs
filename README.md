@@ -25,14 +25,14 @@
 | `paper/paper.tex` | пейпер «Swarma: платформа для роёв автономных агентов», 10–12 страниц; продолжает работу «Разработка программного обеспечения роем автономных агентов над единой средой исполнения» (редакции 1–3.3) |
 | `paper/model/` | исполняемая модель фрагмента интеграции: исчерпывающий перебор состояний в заданных границах |
 | `book/ru/` | книга «Swarma», по главе на файл |
-| `book/diagrams/`, `book/src/` | диаграммы книги (PNG) и их исходники PlantUML |
+| `book/diagrams/`, `book/src/` | диаграммы книги (SVG) и их исходники TOML для `scripts/diagram-kit/` |
 | `editorial/` | рабочие материалы авторов: имена, стиль, источники, планы пейпера и книги, направление об идентичности и репутации |
 | `editorial/notes/signing-auth/` | отдельная записка «Подписи и аутентификация в Swarma»: русские исходники, объявленные SVG и PDF для ревью; сборка описана в её README |
 | `editorial/research/` | исследования архитектурных вариантов; [язык ядра Swarm Signer](editorial/research/signer-core-language.md): Go, Rust и Swift, источники и границы проверки |
 | `sources/` | снимки исходных документов на зафиксированных ревизиях; рабочий материал, перед публикацией удаляется |
 | `dist/` | готовые PDF пейпера и книги, которые собирает оркестратор после ревью |
 | `scripts/check.sh` | проверка гигиены текстов: пометки статуса, внутренние идентификаторы, локальные пути, выведенные из оборота имена |
-| `editorial/diagram-style.ru.md`, `scripts/diagram-kit/` | единый стиль диаграмм: правила, тема и генератор SVG; пилотные рисунки с суффиксом `-v2` лежат рядом с прежними |
+| `editorial/diagram-style.ru.md`, `scripts/diagram-kit/` | единый стиль диаграмм: правила, тема и генератор SVG; все рисунки книги нарисованы им, пилоты записки о подписях носят суффикс `-v2` |
 
 ## Инструменты
 
@@ -42,12 +42,13 @@
 | Python 3.9+ | прогон модели фрагмента интеграции | `make -C paper model` | stdout |
 | pandoc 3.x | книга: Markdown → HTML, оглавление, нумерация | через `book/build.sh` | временный каталог |
 | WeasyPrint 69+ | книга: HTML → PDF | `book/build.sh` | `book/swarma-book.ru.pdf` |
-| PlantUML | рендер диаграмм из `book/src/` | `plantuml -tpng -o ../diagrams book/src/имя.puml` | `book/diagrams/` |
+| PlantUML | исходники рисунков записки о подписях (рендер через `platform-book figures`) и пробник стиля | см. `editorial/notes/signing-auth/README.md` | `editorial/notes/signing-auth/diagrams/` |
+| `book/check-figures.sh` (Graphviz 14.0.4) | рисунки книги: у каждой ссылки исходник и строка манифеста, рендер свежий и проходит `--require-fit` для своего поля | `bash book/check-figures.sh` | stdout; ненулевой код при нарушении |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов; пометки только в «Где мы», оговорки о поставке — предупреждения пилота | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
 | Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |
 | `scripts/diagram-kit/render.py` (Python 3.11+, Graphviz 14.0.4 для раскладки `graph`, `rsvg-convert` для PNG) | диаграммы в едином стиле из TOML; проверяет исходник по схеме и геометрию рисунка; `--report` печатает самый мелкий кегль в поле рисунка книги, `--require-fit tall` завершает с кодом 3, если рисунок не помещается, `--draft` пишет SVG с нарушением для просмотра | `python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.svg --report` | SVG рядом с исходником; PNG по `--png` |
-| `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора, контрольные закладки для lint, свежесть пилотов `-v2` | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
+| `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора, контрольные закладки для lint, свежесть всех рисунков книги и пилотов `-v2` | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
 | `scripts/diagram-kit/probe/run.sh` (D2, PlantUML, Mermaid CLI, WeasyPrint, `pdftoppm`; чего нет, пропускается) | воспроизводит сравнение инструментов из `editorial/notes/diagram-style-notes.ru.md` | `sh scripts/diagram-kit/probe/run.sh` | `.temp/diagram-probe/` |
 | platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 

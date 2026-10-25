@@ -1,4 +1,4 @@
-# Publication, part 1 of 2: working memory. Split from publish-flow-v2 at its
+# Publication, part 1 of 2: working memory. Split from the whole flow (fixtures/publish-flow-full) at its
 # second divider; step numbers stay those of the whole flow.
 
 layout = "sequence"
