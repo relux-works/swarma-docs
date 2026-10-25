@@ -1,0 +1,74 @@
+# Delivery of an inherited setup-token, part 2 of 2: launch. Content follows
+# setup-token.puml and chapter "Учётные данные и логины"; split from the whole
+# flow at the hand-over to the plan, step numbers stay those of the whole flow.
+# The delivery-status sentence of the source's note is dropped (book voice:
+# status lives in the state chapter); the note keeps the mechanism limit. A
+# branch keeps the number of the step it replaces.
+layout = "sequence"
+alt = "Доставка setup-token, запуск: секрет извлекает окончательный исполнитель перед запуском Claude."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.plan]
+role = "neutral"
+name = "План и fragment"
+
+[nodes.store]
+role = "store"
+name = "Защищённое хранилище"
+
+[nodes.executor]
+role = "service"
+name = "Окончательный исполнитель"
+
+[nodes.claude]
+role = "agent"
+name = "Claude"
+
+[[seq]]
+from = "plan"
+to = "executor"
+step = 5
+label = "`source_ref` без байтов токена"
+
+[[seq]]
+from = "executor"
+to = "store"
+step = 6
+label = "разрешить допущенный источник"
+
+[[seq]]
+alt = "источник отсутствует, нечитаем или конфликтует"
+
+[[seq]]
+from = "executor"
+to = "executor"
+step = 7
+label = "отказ без запасного логина"
+color = "alert"
+
+[[seq]]
+else = "источник разрешён"
+
+[[seq]]
+from = "store"
+to = "executor"
+step = 7
+label = "материал по защищённому каналу"
+
+[[seq]]
+from = "executor"
+to = "claude"
+step = 8
+label = "`CLAUDE_CODE_OAUTH_TOKEN` при запуске"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Только inference; Remote Control не поддерживается."
+over = ["executor", "claude"]

@@ -1,0 +1,81 @@
+# First contact of a donor, part 1 of 2: trust anchors and proof of
+# possession. Content follows join-handshake.puml and chapter "Удалённое
+# рабочее место"; the chapter wins on names: the donor side is the donor's
+# bridge, the endpoint is the join point ("точка присоединения"), the
+# transcript is written in Russian. The source's title ("proposed") is dropped.
+# The whole sequence is 974 x 1334 px (4.6 pt in the tall box), so it is split
+# where the join point hands the claim to the operator; the source has no
+# divider, each caption names its part. Step numbers stay those of the whole
+# flow. The else branch replaces steps 1 and 2 and carries number 1.
+layout = "sequence"
+alt = "Первый контакт, проверка якорей: мост донора проверяет якоря доверия и подписывает challenge точки присоединения."
+
+[nodes.bridge]
+role = "service"
+name = "Мост донора"
+
+
+[nodes.dns]
+role = "external"
+name = "DNS"
+
+
+[nodes.join]
+role = "service"
+name = "Точка присоединения"
+
+
+[[seq]]
+alt = "заранее выбран домен с DNSSEC"
+
+[[seq]]
+from = "bridge"
+to = "dns"
+step = 1
+label = "получить якоря доверия"
+
+[[seq]]
+from = "bridge"
+to = "bridge"
+step = 2
+label = "проверить DNSSEC внутри клиента и согласованность с приглашением"
+
+[[seq]]
+note = "Ошибка DNS не включает запасной путь."
+on = "bridge"
+
+[[seq]]
+else = "заранее объявлено отсутствие DNSSEC-домена"
+
+[[seq]]
+from = "bridge"
+to = "bridge"
+step = 1
+label = "использовать закрепления приглашения; Web PKI обязателен"
+
+[[seq]]
+end = true
+
+[[seq]]
+from = "bridge"
+to = "join"
+step = 3
+label = "HTTPS с проверкой выбранных якорей"
+
+[[seq]]
+from = "join"
+to = "bridge"
+step = 4
+label = "challenge сервера"
+
+[[seq]]
+from = "bridge"
+to = "join"
+step = 5
+label = "подписанный канонический транскрипт и одноразовый код при приглашении"
+
+[[seq]]
+from = "join"
+to = "join"
+step = 6
+label = "подпись, свежесть и привязка; атомарное использование приглашения"

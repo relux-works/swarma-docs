@@ -1,0 +1,61 @@
+# First contact of a donor, part 2 of 2: admission. Content follows
+# join-handshake.puml and chapter "Удалённое рабочее место"; split where the
+# join point hands the claim to the operator (see part 1), step numbers stay
+# those of the whole flow. The dash of the source's note became a full
+# sentence (book voice).
+layout = "sequence"
+alt = "Первый контакт, допуск: мост донора получает пакет допуска только после решения оператора."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.bridge]
+role = "service"
+name = "Мост донора"
+
+
+[nodes.join]
+role = "service"
+name = "Точка присоединения"
+
+
+[nodes.operator]
+role = "human"
+name = "Оператор"
+
+
+[nodes.registry]
+role = "store"
+name = "Реестр ключей"
+
+
+[[seq]]
+from = "join"
+to = "operator"
+step = 7
+label = "заявка и подтверждённый ключ"
+
+[[seq]]
+from = "operator"
+to = "registry"
+step = 8
+label = "проверить основание личности; закрепить ключи и выдать узкий допуск"
+
+[[seq]]
+from = "join"
+to = "bridge"
+step = 9
+label = "зашифрованный подписанный пакет допуска"
+
+[[seq]]
+from = "bridge"
+to = "bridge"
+step = 10
+label = "проверить цепочку, подпись и SSH CA"
+
+[[seq]]
+note = "Ошибка проверки останавливает путь без понижения доверия. Точные форматы первого контакта задаёт спецификация модуля."
+over = ["bridge", "registry"]

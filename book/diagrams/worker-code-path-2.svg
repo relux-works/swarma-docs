@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="694.3" height="565.6" viewBox="0 0 694.3 565.6">
+<title>Путь кода работника, кандидат: допущенный результат становится нашим кандидатом и проходит ревью точной ревизии до интеграции.</title>
+<rect width="694.3" height="565.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(98.5 0)">
+<line x1="0" y1="45.4" x2="0" y2="541.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="317" y1="70.9" x2="317" y2="541.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="511.9" y1="45.4" x2="511.9" y2="541.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node board -->
+<rect x="-98.5" y="0" width="196.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="board"/>
+<text x="-82.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор и доска</tspan></text>
+<!-- node runners -->
+<rect x="205.4" y="0" width="223.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="runners"/>
+<text x="241.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Раннеры проверки</tspan></text>
+<text x="221.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без секретов, другая машина</tspan></text>
+<!-- node reviewer -->
+<rect x="456.6" y="0" width="110.5" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="reviewer"/>
+<text x="472.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ревьювер</tspan></text>
+<!-- self board -->
+<path d="M 2 98.9 L 32 98.9 L 32 147.9 L 9 147.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="board" data-to="board" data-edge="m0"/>
+<polygon points="3,147.9 13,152.4 13,143.4" fill="#3a3f47"/>
+<rect x="40" y="102.9" width="208.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="53" cy="113.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="118.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="68" y="118.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">импорт без хуков</tspan></text>
+<text x="68" y="137.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и фильтров; наш кандидат</tspan></text>
+</g>
+<!-- message board -> runners -->
+<path d="M 2 191.4 L 309 191.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="board" data-to="runners" data-edge="m1"/>
+<polygon points="315,191.4 305,186.9 305,195.9" fill="#3a3f47"/>
+<rect x="56.8" y="163.9" width="203.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="69.8" cy="174.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="66.1" y="179.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="84.8" y="179.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сборка и тесты кандидата</tspan></text>
+</g>
+<!-- message runners -> board -->
+<path d="M 315 238.9 L 8 238.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="runners" data-to="board" data-edge="m2"/>
+<polygon points="2,238.9 12,243.4 12,234.4" fill="#3a3f47"/>
+<rect x="55" y="211.4" width="207.1" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="68" cy="222.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="64.3" y="226.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="83" y="226.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">свидетельства как данные</tspan></text>
+</g>
+<!-- message board -> reviewer -->
+<path d="M 2 305.9 L 503.9 305.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="board" data-to="reviewer" data-edge="m3"/>
+<polygon points="509.9,305.9 499.9,301.4 499.9,310.4" fill="#3a3f47"/>
+<rect x="169.9" y="258.9" width="172" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="173.9" y="260.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="178.4" y="274.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="203.7" y="274.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инертные diff и blob</tspan></text>
+<text x="203.7" y="293.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">точного кандидата</tspan></text>
+</g>
+<!-- message reviewer -> board -->
+<path d="M 509.9 372.9 L 8 372.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="reviewer" data-to="board" data-edge="m4"/>
+<polygon points="2,372.9 12,377.4 12,368.4" fill="#3a3f47"/>
+<rect x="147.7" y="325.9" width="216.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="151.7" y="327.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="156.2" y="341.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="181.4" y="341.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт по кандидату</tspan></text>
+<text x="181.4" y="360.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и полному набору пометок</tspan></text>
+</g>
+<!-- self board -->
+<path d="M 2 396.9 L 32 396.9 L 32 465.4 L 9 465.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="board" data-to="board" data-edge="m5"/>
+<polygon points="3,465.4 13,469.9 13,460.9" fill="#3a3f47"/>
+<rect x="40" y="400.9" width="251" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="44" y="402.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="48.5" y="416.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="73.7" y="416.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">при доработке: новый кандидат</tspan></text>
+<text x="73.7" y="435.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и новое ревью; при принятии:</tspan></text>
+<text x="73.7" y="455.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">интеграция точной головы</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="481.4" width="631.9" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="52.9" y="506.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Кандидат не получает права загрузить инструкции, хуки или MCP.</tspan></text>
+</g>
+</g>
+</svg>

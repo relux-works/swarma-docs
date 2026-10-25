@@ -1,0 +1,77 @@
+# A worker's result, part 1 of 2: stop and export. Content follows
+# worker-code-path.puml and chapter "Удалённое рабочее место". The whole
+# sequence is 895 x 1422 px (4.4 pt in the tall box), so it is split where the
+# dispatcher hands the result to the board; the board is in both parts, step
+# numbers stay those of the whole flow, and the source's note is split by the
+# part it explains. The source's title is dropped. A branch keeps the number
+# of the step it replaces.
+layout = "sequence"
+alt = "Путь кода работника, выгрузка: результат выгружается после остановки всех процессов, запрещённые пути отклоняют выгрузку целиком."
+
+[nodes.worker]
+role = "agent"
+name = "Работник"
+
+[nodes.dispatcher]
+role = "service"
+name = "Диспетчер"
+
+[nodes.board]
+role = "service"
+name = "Оркестратор и доска"
+
+[[seq]]
+from = "dispatcher"
+to = "worker"
+step = 1
+label = "раскладка точной базы и области записи"
+
+[[seq]]
+from = "worker"
+to = "worker"
+step = 2
+label = "изменение дерева в своей учётке"
+
+[[seq]]
+from = "worker"
+to = "dispatcher"
+step = 3
+label = "предложение результата"
+
+[[seq]]
+from = "dispatcher"
+to = "worker"
+step = 4
+label = "остановка всех процессов и подтверждение тишины"
+
+[[seq]]
+from = "dispatcher"
+to = "worker"
+step = 5
+label = "ограниченная выгрузка изменений"
+
+[[seq]]
+alt = "запрещённые пути или нарушение пределов"
+
+[[seq]]
+from = "dispatcher"
+to = "board"
+step = 6
+label = "отказ в выгрузке целиком"
+color = "alert"
+
+[[seq]]
+else = "результат допустим"
+
+[[seq]]
+from = "dispatcher"
+to = "board"
+step = 6
+label = "результат с дайджестами заказчику"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Дом не удаляют до сохранения результата или явной отмены выгрузки."
+over = ["worker", "board"]

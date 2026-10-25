@@ -1,0 +1,48 @@
+# Delivery of an inherited setup-token, part 1 of 2: enrolment. Content
+# follows setup-token.puml and chapter "Учётные данные и логины". The whole
+# sequence (six participants) is 1094 px wide even with the density keys, so
+# it is split at the hand-over to the plan: the plan is in both parts, step
+# numbers stay those of the whole flow. The source's title ("proposed") is
+# dropped (book voice).
+layout = "sequence"
+alt = "Доставка setup-token, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка."
+
+[nodes.operator]
+role = "human"
+name = "Оператор"
+
+[nodes.enroll]
+role = "service"
+name = "Подключение источника"
+
+[nodes.store]
+role = "store"
+name = "Защищённое хранилище"
+
+[nodes.plan]
+role = "neutral"
+name = "План и fragment"
+
+[[seq]]
+from = "operator"
+to = "enroll"
+step = 1
+label = "завести токен по защищённому каналу"
+
+[[seq]]
+from = "enroll"
+to = "store"
+step = 2
+label = "сохранить материал"
+
+[[seq]]
+from = "store"
+to = "enroll"
+step = 3
+label = "непрозрачная `source_ref`"
+
+[[seq]]
+from = "enroll"
+to = "plan"
+step = 4
+label = "только ссылка"

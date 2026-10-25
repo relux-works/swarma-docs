@@ -1,0 +1,68 @@
+# Task transition and role launch, part 1 of 2: the transition check. Content
+# follows board-transition-spawn.puml and chapter "Доска задач и процесс". The
+# whole sequence has six participants (1129 x 1049 px with the density keys,
+# 5.5 pt in the tall box), so it is
+# split after the kernel accepts the transition (the source has no divider;
+# each caption names its part); the flow engine and the store are in both
+# parts, step numbers stay those of the whole flow. The source's title
+# ("proposed") is dropped. A branch keeps the number of the step it replaces.
+layout = "sequence"
+alt = "Переход, проверка: доска проверяет версию процесса и правила ядра в одной транзакции и при отказе состояния не меняет."
+
+[nodes.proposer]
+role = "agent"
+name = "Оркестратор или человек"
+
+[nodes.flow]
+role = "service"
+name = "Движок потоков"
+
+[nodes.kernel]
+role = "store"
+name = "Хранилище и правила ядра"
+
+[[seq]]
+from = "proposer"
+to = "flow"
+step = 1
+label = "предложение перехода"
+
+[[seq]]
+from = "flow"
+to = "flow"
+step = 2
+label = "версия процесса и настраиваемые проверки"
+
+[[seq]]
+from = "flow"
+to = "kernel"
+step = 3
+label = "ожидаемая ревизия и предложение"
+
+[[seq]]
+from = "kernel"
+to = "kernel"
+step = 4
+label = "правила ядра и право роли в той же транзакции"
+
+[[seq]]
+alt = "отказ или устаревшая ревизия"
+
+[[seq]]
+from = "kernel"
+to = "proposer"
+step = 5
+label = "отказ; состояние не меняется"
+color = "alert"
+
+[[seq]]
+else = "переход принят"
+
+[[seq]]
+from = "kernel"
+to = "kernel"
+step = 5
+label = "статус и намерение дальнейшего действия"
+
+[[seq]]
+end = true

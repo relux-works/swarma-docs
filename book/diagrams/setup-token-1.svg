@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="865.9" height="308.9" viewBox="0 0 865.9 308.9">
+<title>Доставка setup-token, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка.</title>
+<rect width="865.9" height="308.9" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.2 0)">
+<line x1="0" y1="45.4" x2="0" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="227.3" y1="45.4" x2="227.3" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="484" y1="45.4" x2="484" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="707.4" y1="45.4" x2="707.4" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node operator -->
+<rect x="-54.2" y="0" width="108.3" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="operator"/>
+<text x="-38.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оператор</tspan></text>
+<!-- node enroll -->
+<rect x="113.7" y="0" width="227.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="enroll"/>
+<text x="129.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подключение источника</tspan></text>
+<!-- node store -->
+<rect x="368.9" y="0" width="230.1" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="store"/>
+<text x="384.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Защищённое хранилище</tspan></text>
+<!-- node plan -->
+<rect x="627" y="0" width="160.7" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="plan"/>
+<text x="643" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">План и fragment</tspan></text>
+<!-- message operator -> enroll -->
+<path d="M 2 116.4 L 219.3 116.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="operator" data-to="enroll" data-edge="m0"/>
+<polygon points="225.3,116.4 215.3,111.9 215.3,120.9" fill="#3a3f47"/>
+<rect x="16" y="69.4" width="195.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="29" cy="80.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="84.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="44" y="84.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">завести токен</tspan></text>
+<text x="44" y="104.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по защищённому каналу</tspan></text>
+</g>
+<!-- message enroll -> store -->
+<path d="M 229.3 163.9 L 476 163.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="enroll" data-to="store" data-edge="m1"/>
+<polygon points="482,163.9 472,159.4 472,168.4" fill="#3a3f47"/>
+<rect x="272.5" y="136.4" width="166.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="285.5" cy="147.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="281.8" y="151.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="300.5" y="151.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить материал</tspan></text>
+</g>
+<!-- message store -> enroll -->
+<path d="M 482 211.4 L 235.3 211.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="store" data-to="enroll" data-edge="m2"/>
+<polygon points="229.3,211.4 239.3,215.9 239.3,206.9" fill="#3a3f47"/>
+<rect x="246.5" y="183.9" width="218.2" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="259.5" cy="194.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="255.8" y="199.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="274.5" y="199.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">непрозрачная</tspan><tspan x="370.8" font-family="PT Mono, monospace" font-weight="bold">source_ref</tspan></text>
+</g>
+<!-- message enroll -> plan -->
+<path d="M 229.3 258.9 L 699.4 258.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="enroll" data-to="plan" data-edge="m3"/>
+<polygon points="705.4,258.9 695.4,254.4 695.4,263.4" fill="#3a3f47"/>
+<rect x="404" y="231.4" width="126.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="417" cy="242.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="413.4" y="246.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="432" y="246.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только ссылка</tspan></text>
+</g>
+</g>
+</g>
+</svg>

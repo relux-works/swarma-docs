@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="813.9" height="733.2" viewBox="0 0 813.9 733.2">
+<title>Первый контакт, проверка якорей: мост донора проверяет якоря доверия и подписывает challenge точки присоединения.</title>
+<rect width="813.9" height="733.2" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(66.9 0)">
+<line x1="0" y1="45.4" x2="0" y2="709.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="331.1" y1="45.4" x2="331.1" y2="709.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="619.8" y1="45.4" x2="619.8" y2="709.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="-44" y="69.4" width="399.1" height="330.3" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="294.5" x2="355.1" y2="294.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="76.4" width="215.6" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="90.7" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">заранее выбран домен с DNSSEC</tspan></text>
+<rect x="-36" y="299.5" width="303.3" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="313.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">заранее объявлено отсутствие DNSSEC-домена</tspan></text>
+<!-- node bridge -->
+<rect x="-66.9" y="0" width="133.8" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="bridge"/>
+<text x="-50.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мост донора</tspan></text>
+<!-- node dns -->
+<rect x="281.1" y="0" width="100" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="dns"/>
+<text x="314.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">DNS</tspan></text>
+<!-- node join -->
+<rect x="516.7" y="0" width="206.3" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="join"/>
+<text x="532.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Точка присоединения</tspan></text>
+<!-- message bridge -> dns -->
+<path d="M 2 133.1 L 323.1 133.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="dns" data-edge="m0"/>
+<polygon points="329.1,133.1 319.1,128.6 319.1,137.6" fill="#3a3f47"/>
+<rect x="68.5" y="105.6" width="194.1" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="81.5" cy="116.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="77.8" y="121" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="96.5" y="120.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">получить якоря доверия</tspan></text>
+</g>
+<!-- self bridge -->
+<path d="M 2 157.1 L 32 157.1 L 32 206.1 L 9 206.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="bridge" data-edge="m1"/>
+<polygon points="3,206.1 13,210.6 13,201.6" fill="#3a3f47"/>
+<rect x="40" y="161.1" width="265.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="53" cy="171.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="176.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="68" y="176.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить DNSSEC внутри клиента</tspan></text>
+<text x="68" y="195.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и согласованность с приглашением</tspan></text>
+</g>
+<!-- note -->
+<rect x="10" y="222.1" width="181.8" height="56.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="22" y="245.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Ошибка DNS не включает</tspan></text>
+<text x="56.2" y="263.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">запасной путь.</tspan></text>
+<!-- self bridge -->
+<path d="M 2 334.7 L 32 334.7 L 32 383.7 L 9 383.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="bridge" data-edge="m3"/>
+<polygon points="3,383.7 13,388.2 13,379.2" fill="#3a3f47"/>
+<rect x="40" y="338.7" width="261.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="53" cy="349.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="354.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="68" y="353.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">использовать закрепления</tspan></text>
+<text x="68" y="373.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">приглашения; Web PKI обязателен</tspan></text>
+</g>
+<!-- message bridge -> join -->
+<path d="M 2 460.7 L 611.8 460.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="join" data-edge="m4"/>
+<polygon points="617.8,460.7 607.8,456.2 607.8,465.2" fill="#3a3f47"/>
+<rect x="229.7" y="413.7" width="160.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="242.7" cy="424.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="239" y="429.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="257.7" y="428.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">HTTPS с проверкой</tspan></text>
+<text x="257.7" y="448.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выбранных якорей</tspan></text>
+</g>
+<!-- message join -> bridge -->
+<path d="M 617.8 508.2 L 8 508.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="join" data-to="bridge" data-edge="m5"/>
+<polygon points="2,508.2 12,512.7 12,503.7" fill="#3a3f47"/>
+<rect x="234.3" y="480.7" width="151.1" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="247.3" cy="491.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="243.7" y="496.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="262.3" y="495.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">challenge сервера</tspan></text>
+</g>
+<!-- message bridge -> join -->
+<path d="M 2 594.7 L 611.8 594.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="join" data-edge="m6"/>
+<polygon points="617.8,594.7 607.8,590.2 607.8,599.2" fill="#3a3f47"/>
+<rect x="201" y="528.2" width="217.8" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="214" cy="539" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="210.3" y="543.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="229" y="543.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный канонический</tspan></text>
+<text x="229" y="563" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">транскрипт и одноразовый</tspan></text>
+<text x="229" y="582.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">код при приглашении</tspan></text>
+</g>
+<!-- self join -->
+<path d="M 617.8 618.7 L 587.8 618.7 L 587.8 687.2 L 610.8 687.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="join" data-to="join" data-edge="m7"/>
+<polygon points="616.8,687.2 606.8,682.7 606.8,691.7" fill="#3a3f47"/>
+<rect x="357.1" y="622.7" width="222.7" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="370.1" cy="633.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="366.4" y="638.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="385.1" y="638" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись, свежесть</tspan></text>
+<text x="385.1" y="657.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и привязка; атомарное</tspan></text>
+<text x="385.1" y="677" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">использование приглашения</tspan></text>
+</g>
+</g>
+</g>
+</svg>

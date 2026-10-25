@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="798" height="543.2" viewBox="0 0 798 543.2">
+<title>Первый контакт, допуск: мост донора получает пакет допуска только после решения оператора.</title>
+<rect width="798" height="543.2" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(66.9 0)">
+<line x1="0" y1="45.4" x2="0" y2="519.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="234.3" y1="68.8" x2="234.3" y2="519.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="425.8" y1="45.4" x2="425.8" y2="519.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="632.3" y1="45.4" x2="632.3" y2="519.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node bridge -->
+<rect x="-66.9" y="0" width="133.8" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="bridge"/>
+<text x="-50.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мост донора</tspan></text>
+<!-- node join -->
+<rect x="156.8" y="0" width="155.1" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="join"/>
+<text x="210.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Точка</tspan></text>
+<text x="172.8" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">присоединения</tspan></text>
+<!-- node operator -->
+<rect x="371.6" y="0" width="108.3" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="operator"/>
+<text x="387.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оператор</tspan></text>
+<!-- node registry -->
+<rect x="557.5" y="0" width="149.5" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="573.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр ключей</tspan></text>
+<!-- message join -> operator -->
+<path d="M 236.3 159.3 L 417.8 159.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="join" data-to="operator" data-edge="m0"/>
+<polygon points="423.8,159.3 413.8,154.8 413.8,163.8" fill="#3a3f47"/>
+<rect x="250.3" y="92.8" width="159.5" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="263.3" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="259.6" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="278.3" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">заявка</tspan></text>
+<text x="278.3" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и подтверждённый</tspan></text>
+<text x="278.3" y="147.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключ</tspan></text>
+</g>
+<!-- message operator -> registry -->
+<path d="M 427.8 265.3 L 624.3 265.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="operator" data-to="registry" data-edge="m1"/>
+<polygon points="630.3,265.3 620.3,260.8 620.3,269.8" fill="#3a3f47"/>
+<rect x="441.8" y="179.3" width="174.5" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="454.8" cy="190.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="451.1" y="194.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="469.8" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить основание</tspan></text>
+<text x="469.8" y="214.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">личности; закрепить</tspan></text>
+<text x="469.8" y="233.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключи и выдать</tspan></text>
+<text x="469.8" y="253.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">узкий допуск</tspan></text>
+</g>
+<!-- message join -> bridge -->
+<path d="M 232.3 351.8 L 8 351.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="join" data-to="bridge" data-edge="m2"/>
+<polygon points="2,351.8 12,356.3 12,347.3" fill="#3a3f47"/>
+<rect x="46.2" y="285.3" width="141.9" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="59.2" cy="296.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="55.5" y="300.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="74.2" y="300.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">зашифрованный</tspan></text>
+<text x="74.2" y="320.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный</tspan></text>
+<text x="74.2" y="339.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пакет допуска</tspan></text>
+</g>
+<!-- self bridge -->
+<path d="M 2 375.8 L 32 375.8 L 32 424.8 L 9 424.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="bridge" data-edge="m3"/>
+<polygon points="3,424.8 13,429.3 13,420.3" fill="#3a3f47"/>
+<rect x="40" y="379.8" width="168.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="44" y="381.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="48.5" y="395.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="73.7" y="395.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить цепочку,</tspan></text>
+<text x="73.7" y="414.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись и SSH CA</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="440.8" width="752.3" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="122.1" y="466.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Ошибка проверки останавливает путь без понижения доверия.</tspan></text>
+<text x="114.5" y="484.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Точные форматы первого контакта задаёт спецификация модуля.</tspan></text>
+</g>
+</g>
+</svg>

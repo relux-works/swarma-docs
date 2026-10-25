@@ -1,0 +1,105 @@
+# Credential resolution order. Content follows resolution-order.puml and
+# chapter "Учётные данные и логины": source, store, isolation, then the link
+# strategy. Each action of the source and the question after it share one
+# neutral question box (the action is its description) so the flow fits the
+# tall box; refusals end the flow and sit beside their question. The macOS
+# refusal names its code from the chapter (`environment_shared_unsupported`).
+# Dashes of the source became colons.
+layout = "graph"
+direction = "TB"
+same_rank = [["q_adapter", "no_store"], ["q_iso", "no_iso"]]
+alt = "Порядок разрешения учётных данных: источник, хранилище и допустимость изоляции проверяются до выбора ссылки."
+
+[nodes.start]
+shape = "start"
+
+[nodes.q_home]
+role = "neutral"
+name = "Источник принадлежит дому?"
+text = "определить источник аутентификации"
+
+[nodes.inherited]
+role = "service"
+name = "Наследуемый источник"
+text = "без собственного логина дома; доставка исполнителю через брокер"
+
+[nodes.q_adapter]
+role = "neutral"
+name = "Адаптер поддерживает хранилище?"
+text = "разрешить машинный выбор хранилища"
+
+[nodes.no_store]
+role = "alert"
+name = "Отказ"
+text = "без скрытой подмены хранилища"
+
+[nodes.q_iso]
+role = "neutral"
+name = "Изоляция допустима?"
+text = "проверить допустимость изоляции"
+
+[nodes.no_iso]
+role = "alert"
+name = "Отказ"
+text = "например, Claude на macOS в `shared`: `environment_shared_unsupported`"
+
+[nodes.link]
+role = "service"
+name = "Стратегия ссылки"
+text = "`shared`: ссылка на общий файл;\n`isolated`: собственный логин дома"
+
+[nodes.meta]
+role = "service"
+name = "Метаданные и настройки запуска"
+text = "без миграции и удаления учётных данных"
+
+[nodes.end]
+shape = "end"
+
+[[links]]
+from = "start"
+to = "q_home"
+
+[[links]]
+from = "q_home"
+to = "q_adapter"
+label = "да"
+
+[[links]]
+from = "q_home"
+to = "inherited"
+label = "нет: наследуемый"
+
+[[links]]
+from = "q_adapter"
+to = "q_iso"
+label = "да"
+
+[[links]]
+from = "q_adapter"
+to = "no_store"
+label = "нет"
+color = "alert"
+
+[[links]]
+from = "q_iso"
+to = "link"
+label = "да"
+
+[[links]]
+from = "q_iso"
+to = "no_iso"
+label = "нет"
+color = "alert"
+
+[[links]]
+from = "link"
+to = "meta"
+
+[[links]]
+from = "inherited"
+to = "meta"
+
+[[links]]
+from = "meta"
+to = "end"

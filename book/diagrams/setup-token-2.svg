@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="781.9" height="643.4" viewBox="0 0 781.9 643.4">
+<title>Доставка setup-token, запуск: секрет извлекает окончательный исполнитель перед запуском Claude.</title>
+<rect width="781.9" height="643.4" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(80.3 0)">
+<line x1="0" y1="45.4" x2="0" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="168.2" y1="68.8" x2="168.2" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="346.5" y1="68.8" x2="346.5" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="617.5" y1="45.4" x2="617.5" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="124.2" y="246.3" width="517.4" height="298.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="124.2" y1="355.5" x2="641.5" y2="355.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="132.2" y="253.3" width="316" height="20.2" fill="#ffffff" class="plate"/>
+<text x="138.2" y="267.6" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">источник отсутствует, нечитаем или конфликтует</tspan></text>
+<rect x="132.2" y="360.5" width="132.1" height="20.2" fill="#ffffff" class="plate"/>
+<text x="138.2" y="374.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">источник разрешён</tspan></text>
+<!-- node plan -->
+<rect x="-80.3" y="0" width="160.7" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="plan"/>
+<text x="-64.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">План и fragment</tspan></text>
+<!-- node store -->
+<rect x="100.3" y="0" width="135.7" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="store"/>
+<text x="116.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Защищённое</tspan></text>
+<text x="123.2" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хранилище</tspan></text>
+<!-- node executor -->
+<rect x="268" y="0" width="157.1" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="executor"/>
+<text x="284" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Окончательный</tspan></text>
+<text x="296.4" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнитель</tspan></text>
+<!-- node claude -->
+<rect x="567.5" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="claude"/>
+<text x="591.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Claude</tspan></text>
+<!-- message plan -> executor -->
+<path d="M 2 139.8 L 338.5 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="plan" data-to="executor" data-edge="m0"/>
+<polygon points="344.5,139.8 334.5,135.3 334.5,144.3" fill="#3a3f47"/>
+<rect x="99.3" y="92.8" width="147.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="112.3" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="108.6" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="127.3" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">source_ref</tspan><tspan x="221.1" font-family="PT Sans, sans-serif" font-weight="bold">без</tspan></text>
+<text x="127.3" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">байтов токена</tspan></text>
+</g>
+<!-- message executor -> store -->
+<path d="M 344.5 226.3 L 176.2 226.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="store" data-edge="m1"/>
+<polygon points="170.2,226.3 180.2,230.8 180.2,221.8" fill="#3a3f47"/>
+<rect x="198.4" y="159.8" width="117.9" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="211.4" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="207.7" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="226.4" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">разрешить</tspan></text>
+<text x="226.4" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущенный</tspan></text>
+<text x="226.4" y="214.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">источник</tspan></text>
+</g>
+<!-- self executor -->
+<path d="M 348.5 286.5 L 378.5 286.5 L 378.5 335.5 L 355.5 335.5" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="executor" data-to="executor" data-edge="m2"/>
+<polygon points="349.5,335.5 359.5,340 359.5,331" fill="#c8285f"/>
+<rect x="386.5" y="290.5" width="146.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="399.5" cy="301.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="395.9" y="305.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="414.5" y="305.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ без</tspan></text>
+<text x="414.5" y="325.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запасного логина</tspan></text>
+</g>
+<!-- message store -> executor -->
+<path d="M 170.2 458.2 L 338.5 458.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="store" data-to="executor" data-edge="m3"/>
+<polygon points="344.5,458.2 334.5,453.7 334.5,462.7" fill="#3a3f47"/>
+<rect x="184.2" y="391.7" width="146.4" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="197.2" cy="402.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="193.5" y="407.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="212.2" y="406.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">материал</tspan></text>
+<text x="212.2" y="426.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по защищённому</tspan></text>
+<text x="212.2" y="445.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">каналу</tspan></text>
+</g>
+<!-- message executor -> claude -->
+<path d="M 348.5 525.2 L 609.5 525.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="claude" data-edge="m4"/>
+<polygon points="615.5,525.2 605.5,520.7 605.5,529.7" fill="#3a3f47"/>
+<rect x="362.5" y="478.2" width="239" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="375.5" cy="489" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="371.9" y="493.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="390.5" y="493.5" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">CLAUDE_CODE_OAUTH_TOKEN</tspan></text>
+<text x="390.5" y="513" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">при запуске</tspan></text>
+</g>
+<!-- note -->
+<rect x="286.5" y="559.2" width="391" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="316.7" y="584.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Только inference; Remote Control не поддерживается.</tspan></text>
+</g>
+</g>
+</svg>

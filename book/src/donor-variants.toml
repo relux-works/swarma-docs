@@ -1,0 +1,69 @@
+# Donor machine deployment variants. Content follows donor-variants.puml and
+# the variant table of chapter "Удалённое рабочее место"; the variant names
+# (locked launch, two accounts, sandbox) come from the chapter, which wins.
+# Variants are deployment options (role neutral); the model provider is
+# external, the project side is ours. Three variants to two targets cannot be
+# drawn without crossings, so each egress label names its variant letter.
+layout = "graph"
+direction = "LR"
+same_rank = [["a", "b", "c"], ["provider", "project"]]
+
+alt = "Варианты развёртывания донора: без разделения UID, с отдельными учётками и с песочницей; у каждого своя граница защиты."
+
+[theme.space]
+graph_ranksep = 1.6
+
+[nodes.a]
+role = "neutral"
+name = "A: запертый запуск"
+text = "без административной установки; один UID донора; границы ОС между мостом и харнесом нет"
+
+[nodes.b]
+role = "neutral"
+name = "B: две учётные записи"
+text = "мост под служебным UID, харнес под рабочим; граница чтения и файрвол по UID; нужен компонент привилегированной подготовки"
+
+[nodes.c]
+role = "neutral"
+name = "C: песочница"
+text = "без администратора; один UID, харнес ограничен песочницей ОС; нужна квалификация границы каждой платформы"
+
+[nodes.provider]
+role = "external"
+name = "Провайдер модели"
+
+[nodes.project]
+role = "service"
+name = "Проектная сторона"
+text = "изолированное рабочее место; принудительная сеть и квалификация"
+note = "Варианты не заменяют квалификацию проектного рабочего места. Неизвестное покрытие границы не считается допуском."
+
+[[links]]
+from = "a"
+to = "provider"
+label = "A: нет гарантии закрытого egress ОС"
+
+[[links]]
+from = "b"
+to = "provider"
+label = "B: только допущенный прокси"
+
+[[links]]
+from = "c"
+to = "provider"
+label = "C: квалифицированный прокси"
+
+[[links]]
+from = "a"
+to = "project"
+label = "SSH от донора"
+
+[[links]]
+from = "b"
+to = "project"
+label = "SSH от донора"
+
+[[links]]
+from = "c"
+to = "project"
+label = "SSH от донора"

@@ -1,0 +1,115 @@
+# Board architecture on Swarma Runtime. Content follows board-components.puml
+# and chapter "Доска задач и процесс". The source's title ("proposed") is
+# dropped; the dash in the last label became a colon. The board is a process
+# boundary (role service); the source has no order, so no steps are numbered.
+layout = "graph"
+direction = "TB"
+alt = "Архитектура доски: плейбук задаёт процесс, правила ядра ограничивают каждое изменение состояния."
+
+[groups.board]
+label = "Доска"
+role = "service"
+
+[nodes.playbook]
+role = "store"
+name = "Плейбук с версией"
+
+[nodes.human]
+role = "human"
+name = "Человек"
+
+[nodes.flow]
+group = "board"
+role = "service"
+name = "Движок потоков"
+
+[nodes.kernel]
+group = "board"
+role = "service"
+name = "Правила ядра"
+text = "в каждой мутации"
+
+[nodes.tasks]
+group = "board"
+role = "store"
+name = "Задачи, цели и ресурсы"
+
+[nodes.router]
+group = "board"
+role = "service"
+name = "Роутер ролей"
+
+[nodes.spawn]
+group = "board"
+role = "service"
+name = "Запрос запуска"
+
+[nodes.goals]
+group = "board"
+role = "service"
+name = "Клиент целей сессии"
+
+[nodes.dispatcher]
+role = "service"
+name = "Диспетчер"
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+
+[nodes.actor]
+role = "agent"
+name = "Исполнитель роли"
+
+[[links]]
+from = "playbook"
+to = "flow"
+
+[[links]]
+from = "human"
+to = "flow"
+label = "подтверждение версии"
+
+[[links]]
+from = "flow"
+to = "kernel"
+label = "предложение перехода"
+
+[[links]]
+from = "kernel"
+to = "tasks"
+label = "допустимая мутация"
+
+[[links]]
+from = "flow"
+to = "router"
+label = "следующий владелец роли"
+
+[[links]]
+from = "router"
+to = "spawn"
+
+[[links]]
+from = "router"
+to = "goals"
+
+[[links]]
+from = "spawn"
+to = "dispatcher"
+label = "доска сама не исполняет"
+
+[[links]]
+from = "goals"
+to = "host"
+label = "ревизия цели"
+
+[[links]]
+from = "host"
+to = "actor"
+label = "цель сессии"
+
+[[links]]
+from = "actor"
+to = "goals"
+label = "исход:\nпредложение перехода"
+constraint = false

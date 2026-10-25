@@ -1,0 +1,60 @@
+# A worker's result, part 2 of 2: candidate and review, after the export was
+# admitted (the else branch of part 1, named by the caption). Content follows
+# worker-code-path.puml and chapter "Удалённое рабочее место"; split at the
+# hand-over to the board (see part 1), step numbers stay those of the whole
+# flow. Dashes became colons, "diff/blob" became "diff и blob".
+layout = "sequence"
+alt = "Путь кода работника, кандидат: допущенный результат становится нашим кандидатом и проходит ревью точной ревизии до интеграции."
+
+[nodes.board]
+role = "service"
+name = "Оркестратор и доска"
+
+[nodes.runners]
+role = "service"
+name = "Раннеры проверки"
+text = "без секретов, другая машина"
+
+[nodes.reviewer]
+role = "agent"
+name = "Ревьювер"
+
+[[seq]]
+from = "board"
+to = "board"
+step = 7
+label = "импорт без хуков и фильтров; наш кандидат"
+
+[[seq]]
+from = "board"
+to = "runners"
+step = 8
+label = "сборка и тесты кандидата"
+
+[[seq]]
+from = "runners"
+to = "board"
+step = 9
+label = "свидетельства как данные"
+
+[[seq]]
+from = "board"
+to = "reviewer"
+step = 10
+label = "инертные diff и blob точного кандидата"
+
+[[seq]]
+from = "reviewer"
+to = "board"
+step = 11
+label = "вердикт по кандидату и полному набору пометок"
+
+[[seq]]
+from = "board"
+to = "board"
+step = 12
+label = "при доработке: новый кандидат и новое ревью; при принятии: интеграция точной головы"
+
+[[seq]]
+note = "Кандидат не получает права загрузить инструкции, хуки или MCP."
+over = ["board", "reviewer"]

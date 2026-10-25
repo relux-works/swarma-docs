@@ -1,0 +1,68 @@
+# Task transition and role launch, part 2 of 2: launch and outcome, after the
+# kernel accepted the transition (the else branch of part 1, named by the
+# caption). Content follows board-transition-spawn.puml and chapter "Доска
+# задач и процесс"; split after acceptance (see part 1), step numbers stay
+# those of the whole flow. "Диспетчер / хост сессий" is written as
+# "Диспетчер или хост сессий", as the chapter describes the two launch paths.
+layout = "sequence"
+alt = "Переход, запуск роли: доска назначает владельца состояния и отдельно проверяет предложенный агентом исход."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.flow]
+role = "service"
+name = "Движок потоков"
+
+[nodes.kernel]
+role = "store"
+name = "Хранилище и правила ядра"
+
+[nodes.router]
+role = "service"
+name = "Роутер ролей"
+
+[nodes.launcher]
+role = "service"
+name = "Диспетчер или хост сессий"
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[[seq]]
+from = "flow"
+to = "router"
+step = 6
+label = "назначить владельца состояния"
+
+[[seq]]
+from = "router"
+to = "launcher"
+step = 7
+label = "запрос запуска или ревизия цели сессии"
+
+[[seq]]
+from = "launcher"
+to = "agent"
+step = 8
+label = "исполнение роли"
+
+[[seq]]
+from = "agent"
+to = "flow"
+step = 9
+label = "предложение исхода"
+
+[[seq]]
+from = "flow"
+to = "kernel"
+step = 10
+label = "новая проверка перехода под текущей версией"
+
+[[seq]]
+note = "Конец процесса не является принятым исходом задачи."
+over = ["kernel", "agent"]

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="776" height="990.6" viewBox="0 0 776 990.6">
+<title>Порядок разрешения учётных данных: источник, хранилище и допустимость изоляции проверяются до выбора ссылки.</title>
+<rect width="776" height="990.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- graphviz 14.0.4 -->
+<!-- node start -->
+<circle cx="188" cy="11" r="11" fill="#3a3f47" class="box" data-id="start"/>
+<!-- node q_home -->
+<rect x="92.3" y="59" width="191.4" height="113.8" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q_home"/>
+<text x="150.8" y="85.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Источник</tspan></text>
+<text x="108.3" y="108.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">принадлежит дому?</tspan></text>
+<text x="118" y="137.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">определить источник</tspan></text>
+<text x="134.1" y="156.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">аутентификации</tspan></text>
+<!-- node inherited -->
+<rect x="0" y="364.6" width="218" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="inherited"/>
+<text x="16" y="390.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Наследуемый источник</tspan></text>
+<text x="27.2" y="419.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без собственного логина</tspan></text>
+<text x="59.2" y="438.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">дома; доставка</tspan></text>
+<text x="19.4" y="458.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">исполнителю через брокер</tspan></text>
+<!-- node q_adapter -->
+<rect x="158" y="232.8" width="218.1" height="113.8" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q_adapter"/>
+<text x="174" y="258.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Адаптер поддерживает</tspan></text>
+<text x="218" y="282.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хранилище?</tspan></text>
+<text x="194.7" y="310.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">разрешить машинный</tspan></text>
+<text x="207.2" y="330.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">выбор хранилища</tspan></text>
+<!-- node no_store -->
+<rect x="428" y="254.3" width="253.9" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="no_store"/>
+<text x="532.5" y="280.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ</tspan></text>
+<text x="444" y="308.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без скрытой подмены хранилища</tspan></text>
+<!-- node q_iso -->
+<rect x="137.9" y="502.3" width="260.1" height="70.9" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q_iso"/>
+<text x="181.2" y="528.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Изоляция допустима?</tspan></text>
+<text x="153.9" y="556.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">проверить допустимость изоляции</tspan></text>
+<!-- node no_iso -->
+<rect x="450" y="492.5" width="302" height="90.4" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="no_iso"/>
+<text x="578.5" y="518.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ</tspan></text>
+<text x="472.3" y="547.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">например, Claude на macOS в</tspan><tspan x="672.4" font-family="PT Mono, monospace">shared</tspan><tspan x="726.4" font-family="PT Sans, sans-serif">:</tspan></text>
+<text x="466" y="566.7" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">environment_shared_unsupported</tspan></text>
+<!-- node link -->
+<rect x="141.3" y="642.9" width="247.4" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="link"/>
+<text x="195.4" y="669" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Стратегия ссылки</tspan></text>
+<text x="157.3" y="697.6" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">shared</tspan><tspan x="211.3" font-family="PT Sans, sans-serif">: ссылка на общий файл;</tspan></text>
+<text x="227.4" y="717.1" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">isolated</tspan><tspan x="299.4" font-family="PT Sans, sans-serif">:</tspan></text>
+<text x="183.2" y="736.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">собственный логин дома</tspan></text>
+<!-- node meta -->
+<rect x="18.4" y="789.8" width="199.2" height="113.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="meta"/>
+<text x="67.9" y="815.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Метаданные</tspan></text>
+<text x="37.5" y="839.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и настройки запуска</tspan></text>
+<text x="34.4" y="867.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без миграции и удаления</tspan></text>
+<text x="64.5" y="887.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётных данных</tspan></text>
+<!-- node end -->
+<circle cx="118" cy="953.6" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end"/>
+<circle cx="118" cy="953.6" r="6.5" fill="#3a3f47"/>
+<!-- link start -> q_home -->
+<path d="M 188 22.2 C 188 29.5 188 39.9 188 51.2 L 188 52.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="start" data-to="q_home" data-edge="e0"/>
+<polygon points="188,58.6 192.5,48.6 183.5,48.6" fill="#3a3f47"/>
+<!-- link q_home -> q_adapter -->
+<path d="M 230.4 173 C 233.9 178.9 237.2 184.9 240 190.8 C 245.1 201.7 249.4 213.7 253 225.5 L 253.3 226.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q_home" data-to="q_adapter" data-edge="e1"/>
+<polygon points="255,232.4 256.5,221.5 247.9,224" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="258.8" y="212.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link q_home -> inherited -->
+<path d="M 118.3 173 C 114.3 178.6 110.7 184.6 108 190.8 C 84.9 243.5 88.4 309.9 95.7 357.4 L 95.9 358.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q_home" data-to="inherited" data-edge="e2"/>
+<polygon points="96.9,364.5 99.7,354 90.8,355.4" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="111.9" y="207.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет: наследуемый</tspan></text>
+</g>
+<!-- link q_adapter -> q_iso -->
+<path d="M 267.2 346.8 C 267.4 391.8 267.7 454 267.8 494.7 L 267.8 496.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q_adapter" data-to="q_iso" data-edge="e3"/>
+<polygon points="267.9,502.1 272.3,492.1 263.3,492.1" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="275.6" y="422.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link q_adapter -> no_store -->
+<path d="M 376.3 289.7 C 390.8 289.7 405.8 289.7 420.6 289.7 L 421.9 289.7" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="q_adapter" data-to="no_store" data-edge="e4"/>
+<polygon points="427.9,289.7 417.9,285.2 417.9,294.2" fill="#c8285f"/>
+<g class="label" data-edge="e4">
+<text x="391.8" y="278.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link q_iso -> link -->
+<path d="M 267.3 573.4 C 267 591.6 266.6 614.3 266.2 635.3 L 266.1 636.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q_iso" data-to="link" data-edge="e5"/>
+<polygon points="266,642.7 270.7,632.7 261.7,632.6" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="274.8" y="617.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link q_iso -> no_iso -->
+<path d="M 398.2 537.7 C 412.7 537.7 427.6 537.7 442.4 537.7 L 443.6 537.7" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="q_iso" data-to="no_iso" data-edge="e6"/>
+<polygon points="449.6,537.7 439.6,533.2 439.6,542.2" fill="#c8285f"/>
+<g class="label" data-edge="e6">
+<text x="413.7" y="526.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link link -> meta -->
+<path d="M 210.7 753.1 C 200.4 763.4 189.6 774.2 179.2 784.6 L 178.3 785.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="link" data-to="meta" data-edge="e7"/>
+<polygon points="174.1,789.7 184.3,785.8 178,779.5" fill="#3a3f47"/>
+<!-- link inherited -> meta -->
+<path d="M 110.2 474.8 C 111.8 553.4 114.9 698.5 116.7 782 L 116.7 783.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="inherited" data-to="meta" data-edge="e8"/>
+<polygon points="116.8,789.4 121.1,779.3 112.1,779.5" fill="#3a3f47"/>
+<!-- link meta -> end -->
+<path d="M 118 903.9 C 118 914.3 118 924.6 118 933 L 118 934.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="meta" data-to="end" data-edge="e9"/>
+<polygon points="118,940.5 122.5,930.5 113.5,930.5" fill="#3a3f47"/>
+</g>
+</svg>
