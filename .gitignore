@@ -7,3 +7,7 @@ paper/paper.pdf
 book/swarma-book.ru.pdf
 paper/status-appendix.pdf
 __pycache__/
+paper/platform/*.aux
+paper/platform/*.log
+paper/platform/*.out
+paper/platform/platform.pdf

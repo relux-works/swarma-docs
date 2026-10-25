@@ -8,7 +8,9 @@
 # local paths; names that never appear in the published text; delivery
 # hedges in book chapters outside the state chapter; the prose blacklist of
 # editorial/style.ru.md in book chapters and in the signing note
-# (editorial/notes/signing-auth/ru/*.md). Prints every hit with its file and
+# (editorial/notes/signing-auth/ru/*.md); the same blacklist, hedges and
+# readiness wording in TeX form for the platform paper (paper/platform/*.tex).
+# Prints every hit with its file and
 # line. sources/ and editorial/ are working material and are not checked,
 # except editorial/notes/*/ru/*.md: the signing note's blacklist is blocking,
 # the other notes get an advisory blacklist pass.
@@ -104,6 +106,32 @@ prose "guillemets" '[«»]'
 prose "antithesis" '(не[[:space:]]+просто[[:space:]].*,[[:space:]]+а[[:space:]])|(это[[:space:]]+не[[:space:]].*,[[:space:]]+а[[:space:]])|(речь[[:space:]]+не[[:space:]]+о[[:space:]])'
 prose "filler opener" '(стоит[[:space:]]+отметить|важно[[:space:]]+понимать|давайте[[:space:]]+разбер|в[[:space:]]+современном[[:space:]]+мире)'
 prose "marketing adjective" '(^|[^[:alpha:]])(мощн[[:alpha:]]*|бесшовн[[:alpha:]]*)($|[^[:alpha:]])'
+
+# The platform paper (paper/platform/*.tex) is written in the finished-platform
+# voice and follows the same prose rules in TeX form: a dash is a Unicode dash
+# as above, "---" anywhere, or "--" outside a range whose left side is a digit
+# (2--18, П1--П8 and L0--L2 pass); guillemets are Unicode or babel "<<"/">>"
+# or \guillemot...; delivery hedges are the book's; readiness wording is
+# "работает сегодня", "не построен...", "в разработке" or "в планах".
+# Every hit is printed with its file name, even for a single file.
+# Blocking unless STRICT_PROSE=0. Other TeX under paper/ is not scanned here.
+platform_files=$(find paper/platform -type f -name '*.tex' 2>/dev/null | sort)
+platform() {
+  # $1 label, $2 extended regex (case-insensitive)
+  [ -n "$platform_files" ] || return 0
+  out=$(grep -HniE -- "$2" $platform_files 2>/dev/null)
+  if [ -n "$out" ]; then
+    if [ "${STRICT_PROSE:-1}" = 0 ]; then echo "== platform paper: $1 (advisory)"; else echo "== platform paper: $1"; fail=1; fi
+    printf '%s\n' "$out"
+  fi
+}
+platform "dash in prose" '—|(^|[^0-9])–|–($|[^[:alnum:]])|---|(^|[^0-9])--|--($|[^[:alnum:]])'
+platform "guillemets" '[«»]|<<|>>|\\guillemot'
+platform "antithesis" '(не[[:space:]]+просто[[:space:]].*,[[:space:]]+а[[:space:]])|(это[[:space:]]+не[[:space:]].*,[[:space:]]+а[[:space:]])|(речь[[:space:]]+не[[:space:]]+о[[:space:]])'
+platform "filler opener" '(стоит[[:space:]]+отметить|важно[[:space:]]+понимать|давайте[[:space:]]+разбер|в[[:space:]]+современном[[:space:]]+мире)'
+platform "marketing adjective" '(^|[^[:alpha:]])(мощн[[:alpha:]]*|бесшовн[[:alpha:]]*)($|[^[:alpha:]])'
+platform "delivery hedge" '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])'
+platform "readiness wording" '(работает[[:space:]]+сегодня|не[[:space:]]+построен[[:alpha:]]*|в[[:space:]]+разработке|в[[:space:]]+планах)'
 
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do

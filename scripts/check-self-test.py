@@ -190,6 +190,48 @@ class HygieneTests(unittest.TestCase):
                 self.assertNotIn('== guillemets\n', r.stdout)
                 other.unlink()
 
+    # Each platform-paper rule fails a planted TeX line in paper/platform/ with
+    # its own label and file:line, and is only reported under STRICT_PROSE=0; a
+    # clean TeX line with digit ranges, П1--П8, L0--L2, hyphenated words, the
+    # verb "планирует" and a TikZ "to" path passes. Limit: lexical; the same hits in other TeX under
+    # paper/ or in a non-.tex file under paper/platform/ are not scanned by it.
+    def test_platform_paper(self):
+        doc = self.root / 'paper/platform/platform.tex'
+        doc.parent.mkdir(parents=True)
+        cases = (('Ключник --- служба.', 'dash in prose'), ('Ключник -- служба.', 'dash in prose'),
+                 ('Поле~--- аудитория.', 'dash in prose'), ('Ключник — служба.', 'dash in prose'),
+                 ('Шаги a--b.', 'dash in prose'), ('Поле «aud».', 'guillemets'), ('Поле <<aud>>.', 'guillemets'),
+                 ('Поле \\guillemotleft aud.', 'guillemets'),
+                 ('Это не очередь, а журнал.', 'antithesis'), ('Стоит отметить, что ключ один.', 'filler opener'),
+                 ('Мощная проверка.', 'marketing adjective'), ('Пока ключника нет.', 'delivery hedge'),
+                 ('Кода ещё не написано.', 'delivery hedge'), ('Ключник работает сегодня.', 'readiness wording'),
+                 ('Ключник в планах.', 'readiness wording'), ('Цепочка не построена.', 'readiness wording'),
+                 ('Брокер в разработке.', 'readiness wording'))
+        for text, label in cases:
+            with self.subTest(text=text):
+                doc.write_text('\\section{Пример}\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, 'platform paper must fail on ' + label)
+                self.assertIn('== platform paper: ' + label + '\n', r.stdout)
+                self.assertIn('paper/platform/platform.tex:2:', r.stdout)
+                r = self.run_check(STRICT_PROSE='0')
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertIn('== platform paper: ' + label + ' (advisory)', r.stdout)
+        doc.write_text('\\section{Пример}\nОркестратор планирует работу; шаги 2--18, П1--П8, L0--L2 и [5,70--7,22]; '
+                       'кросс-подпись.\n\\draw[arr] (a) to node{UID} (b);\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertNotIn('== ', r.stdout)
+        doc.unlink()
+        for name in ('paper/other.tex', 'paper/platform/notes.md'):
+            with self.subTest(name=name):
+                other = self.root / name
+                other.write_text('# Other\n\\section{Пример}\nКлючник --- служба; поле <<aud>>; работает сегодня.\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertNotIn('platform paper', r.stdout)
+                other.unlink()
+
     # The verdict does not depend on the caller's locale: under C and POSIX
     # settings a clean chapter still passes, and a capitalised Cyrillic hedge
     # and a guillemet still fail with their labels. Limit: the refusal path for
