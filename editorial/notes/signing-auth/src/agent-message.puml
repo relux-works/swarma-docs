@@ -11,11 +11,11 @@ participant "Агент А" as a
 participant Keymaker as km
 participant "Мост / Matrix" as matrix
 participant "Агент Б / ворота" as b
-a -> km : байты для swarma-msg
-km -> km : UID от ядра ОС\nактивное поколение
+a -> km : swarma-msg/2 + 0x0a + CCJ-1
+km -> km : UID от ядра ОС\nпоколение, текущая аттестация
 km --> a : подпись; без закрытого ключа
 a -> matrix : подписанное сообщение
 matrix -> b : те же подписанные байты
-b -> b : цепочка, отзыв, привязки
+b -> b : аттестация, отзыв,\nroom/to, body_sha256
 b --> a : происхождение A1; данные коллеги
 @enduml

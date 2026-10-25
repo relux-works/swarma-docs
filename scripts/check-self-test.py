@@ -154,6 +154,42 @@ class HygieneTests(unittest.TestCase):
                 self.assertNotIn('editorial notes', r.stdout)
                 other.unlink()
 
+    # The signing note in editorial/notes/signing-auth/ru/ is blocking: each
+    # planted blacklist pattern fails with the book label and is only reported
+    # under STRICT_PROSE=0, a clean note passes, and a hit in another note or
+    # outside that ru/ directory stays advisory or unscanned.
+    def test_signing_note_blacklist(self):
+        note = self.root / 'editorial/notes/signing-auth/ru/01-note.md'
+        note.parent.mkdir(parents=True)
+        cases = (('Ключник — служба.', 'dash in prose'), ('Поле «aud».', 'guillemets'),
+                 ('Это не очередь, а журнал.', 'antithesis'), ('Стоит отметить, что ключ один.', 'filler opener'),
+                 ('Мощная проверка.', 'marketing adjective'))
+        for text, label in cases:
+            with self.subTest(text=text):
+                note.write_text('# Note\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, 'signing note must fail on ' + label)
+                self.assertIn('== ' + label + '\n', r.stdout)
+                self.assertIn('editorial/notes/signing-auth/ru/01-note.md:3:', r.stdout)
+                self.assertNotIn('in editorial notes', r.stdout)
+                r = self.run_check(STRICT_PROSE='0')
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertIn('== ' + label + ' (advisory)', r.stdout)
+        note.write_text('# Note\n\nКлючник подписывает запись; шаги 0–2, кросс-подпись.\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertNotIn('== ', r.stdout)
+        for name in ('editorial/notes/other/ru/01-note.md', 'editorial/notes/signing-auth/README.md',
+                     'editorial/notes/signing-auth/en/01-note.md'):
+            with self.subTest(name=name):
+                other = self.root / name
+                other.parent.mkdir(parents=True, exist_ok=True)
+                other.write_text('# Other\n\nПоле «aud» — подпись.\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertNotIn('== guillemets\n', r.stdout)
+                other.unlink()
+
     # The verdict does not depend on the caller's locale: under C and POSIX
     # settings a clean chapter still passes, and a capitalised Cyrillic hedge
     # and a guillemet still fail with their labels. Limit: the refusal path for

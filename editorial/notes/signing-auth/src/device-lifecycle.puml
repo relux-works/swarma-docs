@@ -8,15 +8,15 @@ skinparam ParticipantBorderColor #23466e
 skinparam ArrowColor #23466e
 hide footbox
 participant "Устройство" as device
-actor "Оператор / FIDO-корень" as root
+actor "Оператор / корень" as root
 participant Реестр as registry
 participant Верификатор as verifier
 device -> root : публичный ключ для проверки
-root -> registry : аттестация: ключ, назначение, срок
-registry --> verifier : подписанное состояние
+root -> registry : аттестация: P-256, роли, срок
+registry --> verifier : журнал, контрольная точка, свежесть
 verifier -> verifier : проверка цепочки и гранта
 == Устройство потеряно ==
-root -> registry : подписанный отзыв
-registry --> verifier : актуальный статус отзыва
-verifier -> verifier : закрыть доверие с момента отзыва
+root -> registry : новый полный снимок отзывов
+registry --> verifier : снимок не старше 60 с
+verifier -> verifier : отвергать ключ с момента from
 @enduml

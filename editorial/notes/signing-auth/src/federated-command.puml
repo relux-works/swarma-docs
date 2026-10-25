@@ -14,7 +14,7 @@ participant "Получатель" as verifier
 signer -> alpha : подписанный конверт
 alpha -> beta : федерация; те же байты
 beta -> verifier : доставка в room адресату to
-verifier -> verifier : корневая цепочка, отзыв,\nts, nonce, назначение, грант
+verifier -> verifier : корень владельца, отзыв,\niat/exp, id, назначение, грант
 alt всё проверено
 verifier --> signer : допуск и отдельный результат
 else задержка / ключи скрыты / иной сбой

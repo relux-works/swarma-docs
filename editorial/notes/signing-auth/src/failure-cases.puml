@@ -11,7 +11,7 @@ participant Носитель as carrier
 participant Ворота as gate
 participant Оператор as person
 carrier -> gate : событие и конверт
-gate -> gate : реестр, срок/отзыв, nonce/ts,\nroom/to, грант — обязательны все
+gate -> gate : свежесть, срок, отзыв, iat/exp,\nroom/to, повтор, грант: обязательны все
 gate --> person : любая проверка не пройдена → причина отказа
 note over gate : Аудит; допуска и эффекта нет
 @enduml

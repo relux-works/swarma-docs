@@ -2,14 +2,14 @@
   "agent-message": {
     "source": "src/agent-message.puml",
     "render": "diagrams/agent-message.svg",
-    "source_sha256": "cfd8553392836538a7cb496a324e9ea7496d15c736c13b4e8a521c5bf4b61475",
-    "render_sha256": "127ae28be06a04b4cdeab48bb643c6f149e2c98e2d98b23a5937ba4b117f4564"
+    "source_sha256": "a8ea1e1e6c1d6afb9b5addbdf9de8e33c622f8b2997fc38da157bf1b2325bfbd",
+    "render_sha256": "c8daf85b4ae08940fb56c605130e5a04b741c7114c8c7227b9861b228afa1536"
   },
   "device-lifecycle": {
     "source": "src/device-lifecycle.puml",
     "render": "diagrams/device-lifecycle.svg",
-    "source_sha256": "b3ebce9a4ac9bcfbfc9fdfc8790e2661298a2972d6909f4e59c1a4ede12e663c",
-    "render_sha256": "0a44d7bb23f2bcc24b4cf4075898a3e891f7bf39d004eb54be349f7daee18233"
+    "source_sha256": "fe9733f04e51463a4a209c04c29e781bac3c4f0dcd4d3063b5988053d14ed146",
+    "render_sha256": "a89fb8f5e2be638c7987234398a369fcbc855a78ae5045652435d6b01eeaf641"
   },
   "element-message": {
     "source": "src/element-message.puml",
@@ -20,25 +20,25 @@
   "failure-cases": {
     "source": "src/failure-cases.puml",
     "render": "diagrams/failure-cases.svg",
-    "source_sha256": "ec2b2d3b72d2fb9969f0a6b48df94d0ccac6e0fe96ff2a339cddfd9d6f556f1f",
-    "render_sha256": "0b6b967ebb0ecf48582dedf5041d562c44e0abb147bcc05a2f79d7349bd3703a"
+    "source_sha256": "dbd9c56e514e066b2b57789810d4644ff8efbd7039ad77e80014382a2c7f4d9c",
+    "render_sha256": "872f88ce5e88de9a1176b049d59029c22559f47c1ff6990291801827d447cba9"
   },
   "federated-command": {
     "source": "src/federated-command.puml",
     "render": "diagrams/federated-command.svg",
-    "source_sha256": "9b09f5837b281eafa3fbc833bc3dca48717e6badfe37b4d95064572c09ab93bb",
-    "render_sha256": "d93f07f55974ea5a220f48e350b7abf6621ae829145eac0a8385c73537abe5ca"
+    "source_sha256": "1e3474476751af651f355da90c16c8f53268fa4183953183c46a9e726d1bbda9",
+    "render_sha256": "b97d9189440c7d17819c98e2dcc4dd0f5ff748a4a49edd6edc9bec62ae297759"
   },
   "phone-command": {
     "source": "src/phone-command.puml",
     "render": "diagrams/phone-command.svg",
-    "source_sha256": "fae1671a2fbcb26dcfc8b82335443631ab481bc08549c5e2acaac4ad7018429b",
-    "render_sha256": "f6ba16ae6cb49e3e86506f54fcb4d52006a449193bb2e3b665e47840b6202147"
+    "source_sha256": "d4eb96fb955c9effb1efe08fc74d0b3719b3c0c7f0ddbf8c34e1882893cd8108",
+    "render_sha256": "c304970fb9de2f2056adb88f8cf180fa91952f270f453e9ba3a126efaf027c9f"
   },
   "trust-chain": {
     "source": "src/trust-chain.puml",
     "render": "diagrams/trust-chain.svg",
-    "source_sha256": "587a021c0b671387298a273a287203164aab96df8aad3194909d9d4c6fddbdd4",
-    "render_sha256": "475ebb4b90f8e81230e4aed39d91df4dddb09c70263dc4fbffaf7a99ae65cf83"
+    "source_sha256": "d9f32d8204eff4686e89ed87ad096cccad68c2358616765cd281b052551a1f96",
+    "render_sha256": "fa4714f8767796c584c1148b45773eb0dd57425103ca0d92788701f693377fd7"
   }
 }

@@ -12,10 +12,10 @@ participant "Signer\nна телефоне" as signer
 participant Matrix as matrix
 participant "Агент / ворота" as verifier
 person -> signer : точное действие
-signer -> signer : Face ID → key provider\nподпись без выдачи ключа
-signer -> matrix : тело + конверт
+signer -> signer : Face ID, P-256 в Secure Enclave\nподпись без выдачи ключа
+signer -> matrix : operator-act/1 в событии
 matrix -> verifier : доставка
-verifier -> verifier : цепочка, отзыв, адрес,\nвремя, nonce, грант
+verifier -> verifier : аттестация, отзыв, владелец,\nвремя, action_id, грант
 alt всё установлено
 verifier --> person : допуск → исполнение → результат
 else обязательная проверка не пройдена

@@ -7,13 +7,16 @@ skinparam roundcorner 8
 skinparam ArrowColor #23466e
 skinparam rectangleBackgroundColor #eef1f5
 skinparam rectangleBorderColor #23466e
-rectangle "Корень оператора\nFIDO + резерв\nне подписывает сообщения" as root
-rectangle "Signer: ключ Mac / iPhone\nSecure Enclave: P-256/ECDSA\nназначение + срок; присутствие" as signer
-rectangle "Корень Keymaker\n↓ удостоверяет\nswarma-msg: Ed25519" as km
-rectangle "Matrix master\n↓ cross-signing\nself-signing\n↓ cross-signing\nMatrix device (E2EE)" as master
+rectangle "Корень оператора\nаппаратный FIDO-ключ\nсообщений не подписывает" as root
+rectangle "Ключ устройства\nSecure Enclave: P-256 low-S\nроли act, approver; срок" as device
+rectangle "Matrix master\n↓ self-signing\n↓ device (E2EE)" as master
 rectangle "OMEMO device\nкаждый fingerprint" as xmpp
-root --> signer : аттестация
-root --> km : удостоверение
+rectangle "Корень аттестаций\nключника" as km
+rectangle "Ключ агента\nswarma-msg: Ed25519\nсрок до 24 ч" as agent
+rectangle "Корень реестра\nснимки отзывов агентов,\nконтрольные точки, свежесть" as registry
+root --> device : аттестация
 root --> master : аттестация
 root --> xmpp : аттестация
+km --> agent : аттестация
+registry --> agent : отзыв
 @enduml

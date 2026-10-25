@@ -7,9 +7,11 @@
 # (board elements, runs, review findings, decision numbers);
 # local paths; names that never appear in the published text; delivery
 # hedges in book chapters outside the state chapter; the prose blacklist of
-# editorial/style.ru.md in book chapters. Prints every hit with its file and
+# editorial/style.ru.md in book chapters and in the signing note
+# (editorial/notes/signing-auth/ru/*.md). Prints every hit with its file and
 # line. sources/ and editorial/ are working material and are not checked,
-# except editorial/notes/*/ru/*.md, which gets an advisory blacklist pass.
+# except editorial/notes/*/ru/*.md: the signing note's blacklist is blocking,
+# the other notes get an advisory blacklist pass.
 #
 #   STRICT_PROSE=0 sh scripts/check.sh   # report book blacklist hits, do not fail
 #
@@ -75,10 +77,11 @@ if [ -n "$voice_files" ]; then
 fi
 
 # Prose blacklist (editorial/style.ru.md, "Чёрный список"). Blocking for book
-# chapters; STRICT_PROSE=0 turns those hits into reports. Editorial notes in
-# editorial/notes/*/ru/ are always advisory until their own pass lands.
-prose_files=$(find book/ru -type f -name '*.md' 2>/dev/null | sort)
-note_files=$(find editorial/notes -mindepth 3 -maxdepth 3 -type f -path 'editorial/notes/*/ru/*.md' 2>/dev/null | sort)
+# chapters and for the signing note in editorial/notes/signing-auth/ru/;
+# STRICT_PROSE=0 turns those hits into reports. Other editorial notes in
+# editorial/notes/*/ru/ stay advisory until their own pass lands.
+prose_files=$(find book/ru editorial/notes/signing-auth/ru -type f -name '*.md' 2>/dev/null | sort)
+note_files=$(find editorial/notes -mindepth 3 -maxdepth 3 -type f -path 'editorial/notes/*/ru/*.md' ! -path 'editorial/notes/signing-auth/ru/*' 2>/dev/null | sort)
 prose() {
   # $1 label, $2 extended regex (case-insensitive)
   if [ -n "$prose_files" ]; then
