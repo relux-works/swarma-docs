@@ -1,0 +1,20 @@
+flowchart TB
+  op["**Оператор**"]:::human
+  subgraph phone["ТЕЛЕФОН ОПЕРАТОРА"]
+    signer["**Signer**
+    Face ID → key provider; подпись без выдачи ключа"]:::key
+  end
+  mx["**Matrix**
+  доставляет тело и конверт"]:::external
+  gate["**Ворота агента**
+  цепочка, отзыв, адрес, время, nonce, грант"]:::service
+  op -->|"① точное действие"| signer
+  signer -->|"② тело + конверт"| mx
+  mx -->|"③ доставка"| gate
+  gate -->|"④ допуск или отказ"| mx
+  mx -->|"⑤ результат"| op
+  classDef human fill:#f1f2f4,stroke:#8b929c,stroke-width:2px
+  classDef key fill:#fff8e1,stroke:#a8740a,stroke-width:2px
+  classDef external fill:#fff2e6,stroke:#d9690f,stroke-width:2px
+  classDef service fill:#ebf2ff,stroke:#2f6fdb,stroke-width:2px
+  style phone fill:#ffffff,stroke:#a8740a,stroke-width:2px,stroke-dasharray:8 6,color:#8f6208

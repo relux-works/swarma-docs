@@ -44,8 +44,9 @@
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов; пометки только в «Где мы», оговорки о поставке — предупреждения пилота | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
 | Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |
-| `scripts/diagram-kit/render.py` (Python 3.11+, Graphviz для раскладки `graph`, `rsvg-convert` для PNG) | диаграммы в едином стиле из TOML; `--report` печатает кегль в поле рисунка книги | `python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.svg --report` | SVG рядом с исходником; PNG по `--png` |
-| `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
+| `scripts/diagram-kit/render.py` (Python 3.11+, Graphviz 14.0.4 для раскладки `graph`, `rsvg-convert` для PNG) | диаграммы в едином стиле из TOML; проверяет исходник по схеме и геометрию рисунка; `--report` печатает самый мелкий кегль в поле рисунка книги, `--require-fit tall` завершает с кодом 3, если рисунок не помещается, `--draft` пишет SVG с нарушением для просмотра | `python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.svg --report` | SVG рядом с исходником; PNG по `--png` |
+| `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора, контрольные закладки для lint, свежесть пилотов `-v2` | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
+| `scripts/diagram-kit/probe/run.sh` (D2, PlantUML, Mermaid CLI, WeasyPrint, `pdftoppm`; чего нет, пропускается) | воспроизводит сравнение инструментов из `editorial/notes/diagram-style-notes.ru.md` | `sh scripts/diagram-kit/probe/run.sh` | `.temp/diagram-probe/` |
 | platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 
 ## Как идёт работа

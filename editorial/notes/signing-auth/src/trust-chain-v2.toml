@@ -3,6 +3,7 @@
 # Source: ru/01-keys.md and src/trust-chain.puml.
 layout = "graph"
 direction = "TB"
+uniform_width = true   # the Matrix chain is one column
 alt = "От закреплённого корня к ключам разных назначений"
 
 [groups.carriers]
@@ -30,16 +31,19 @@ name = "Ключ агента"
 text = "`swarma-msg`: Ed25519; у агента секрета нет"
 
 [nodes.master]
+column = "matrix"
 group = "carriers"
 role = "external"
 name = "Matrix master"
 
 [nodes.selfsigning]
+column = "matrix"
 group = "carriers"
 role = "external"
 name = "Matrix self-signing"
 
 [nodes.device]
+column = "matrix"
 group = "carriers"
 role = "external"
 name = "Matrix device"

@@ -1,0 +1,46 @@
+@startuml
+' Sequence probe: grant-issue-and-check in PlantUML with the house style
+' (roles, PT Sans, step numbers, condition frames), for comparison with the
+' kit's book/src/grant-issue-and-check-v2.toml.
+<style>
+root { FontName "PT Sans"; FontSize 15; FontColor #1f2328 }
+participant { LineThickness 2; RoundCorner 24; FontSize 18; FontStyle bold }
+actor { LineThickness 2; FontSize 18; FontStyle bold }
+database { LineThickness 2; FontSize 18; FontStyle bold }
+arrow { LineColor #3a3f47; LineThickness 2; FontSize 15; FontStyle bold }
+lifeLine { LineColor #c3c8cf; LineStyle 4-5 }
+group { LineColor #868e99; LineStyle 7-5; LineThickness 1.5 }
+groupHeader { FontColor #868e99; FontSize 14; FontStyle bold; LineColor #868e99 }
+note { BackgroundColor #f6f7f9; LineColor #d5d9df; FontSize 14; FontColor #4b5260 }
+.human { BackgroundColor #f1f2f4; LineColor #8b929c }
+.agent { BackgroundColor #f3effd; LineColor #7c4ddb }
+.store { BackgroundColor #e7f5f1; LineColor #11826d }
+.service { BackgroundColor #ebf2ff; LineColor #2f6fdb }
+</style>
+skinparam shadowing false
+hide footbox
+hide stereotype
+autonumber "<b>0</b>"
+participant "Владелец" as O <<human>>
+participant "Оркестратор" as A <<agent>>
+participant "Реестр грантов\nи отзывов" as R <<store>>
+participant "Исполнитель действия" as E <<service>>
+O -> R : подписанный грант оркестратору
+A -> R : подписанный дочерний грант
+R -> R : цепочка до корня; действия и цели: подмножество;\nсрок не длиннее; глубина в пределах
+alt дочерний грант шире родительского
+  R -[#c8285f]> A : отказ
+else только ослабление
+  autonumber 4
+  R -> R : сохранить цепочку
+end
+A -> E : запрос действия с основаниями
+E -> R : подписи, условия, сроки, актуальный отзыв
+alt право подтверждено
+  E -> E : выполнить в пределах права
+else право не подтверждено
+  autonumber 7
+  E -[#c8285f]> A : отказ
+end
+note over A, E : Вызывающий не выносит вердикт о своём запросе.
+@enduml

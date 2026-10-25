@@ -1,0 +1,129 @@
+# Publication and the three memories of the network. Content follows
+# publish-flow.puml; its sections are dividers.
+layout = "sequence"
+alt = "Указатель идёт в цепочку, а файл проходит от браузерной раздачи к кураторам и архивистам по их выбору."
+
+[nodes.author]
+role = "human"
+name = "Автор в браузере"
+
+[nodes.tracker]
+role = "external"
+name = "Трекер"
+
+[nodes.chain]
+role = "store"
+name = "Swarma Chain"
+
+[nodes.indexer]
+role = "service"
+name = "Индексатор"
+
+[nodes.curator]
+role = "service"
+name = "Куратор"
+
+[nodes.viewer]
+role = "human"
+name = "Зритель"
+
+[nodes.archivist]
+role = "service"
+name = "Архивист"
+
+[[seq]]
+divider = "Рабочая память"
+
+[[seq]]
+from = "author"
+to = "tracker"
+step = 1
+label = "анонс торрента"
+
+[[seq]]
+from = "author"
+to = "chain"
+step = 2
+label = "подписанный указатель с тегами"
+
+[[seq]]
+from = "chain"
+to = "indexer"
+step = 3
+label = "запись в блоке"
+
+[[seq]]
+from = "indexer"
+to = "curator"
+step = 4
+label = "указатель в потоке"
+
+[[seq]]
+from = "curator"
+to = "tracker"
+step = 5
+label = "найти пиров"
+
+[[seq]]
+from = "curator"
+to = "author"
+step = 6
+label = "скачать контент"
+
+[[seq]]
+divider = "Кратковременная память"
+
+[[seq]]
+from = "curator"
+to = "curator"
+step = 7
+label = "просмотреть и одобрить"
+
+[[seq]]
+from = "curator"
+to = "chain"
+step = 8
+label = "категоризация"
+
+[[seq]]
+from = "curator"
+to = "viewer"
+step = 9
+label = "раздавать одобренное"
+
+[[seq]]
+from = "indexer"
+to = "viewer"
+step = 10
+label = "лента подписок"
+
+[[seq]]
+from = "viewer"
+to = "viewer"
+step = 11
+label = "раздавать, пока контент в кэше"
+
+[[seq]]
+divider = "Долговременная память"
+
+[[seq]]
+from = "indexer"
+to = "archivist"
+step = 12
+label = "отметки выбранной окрестности"
+
+[[seq]]
+from = "archivist"
+to = "curator"
+step = 13
+label = "скачать"
+
+[[seq]]
+from = "archivist"
+to = "archivist"
+step = 14
+label = "хранить до предела диска по политике"
+
+[[seq]]
+note = "Без заинтересованных держателей файл может исчезнуть.\nЗапись в цепочке не является обещанием вечного хранения."
+over = ["author", "archivist"]

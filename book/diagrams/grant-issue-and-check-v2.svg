@@ -1,105 +1,127 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="989.7" height="857.8" viewBox="0 0 989.7 857.8">
+<svg xmlns="http://www.w3.org/2000/svg" width="883.7" height="869.3" viewBox="0 0 883.7 869.3">
 <title>Цепочка грантов: передать можно только часть прав, а проверяет её исполнитель действия</title>
-<rect width="989.7" height="857.8" fill="#ffffff"/>
-<g transform="translate(16 16)">
-<g transform="translate(60.3 0)">
-<line x1="0" y1="45.4" x2="0" y2="825.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="172.6" y1="45.4" x2="172.6" y2="825.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="433.5" y1="68.8" x2="433.5" y2="825.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="785.6" y1="45.4" x2="785.6" y2="825.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<!-- frame -->
-<rect x="128.6" y="295.8" width="522.6" height="173.4" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5"/>
-<line x1="128.6" y1="383.5" x2="651.2" y2="383.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
-<!-- frame -->
-<rect x="128.6" y="578.2" width="681" height="173.4" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5"/>
-<line x1="128.6" y1="667.9" x2="809.6" y2="667.9" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
-<rect x="136.6" y="302.8" width="239.5" height="20.2" fill="#ffffff"/>
-<text x="142.6" y="317.1" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">дочерний грант шире родительского</tspan></text>
-<rect x="136.6" y="388.5" width="129.2" height="20.2" fill="#ffffff"/>
-<text x="142.6" y="402.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только ослабление</tspan></text>
-<rect x="136.6" y="585.2" width="142.4" height="20.2" fill="#ffffff"/>
-<text x="142.6" y="599.5" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">право подтверждено</tspan></text>
-<rect x="136.6" y="672.9" width="160.6" height="20.2" fill="#ffffff"/>
-<text x="142.6" y="687.2" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">право не подтверждено</tspan></text>
+<rect width="883.7" height="869.3" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.3 0)">
+<line x1="0" y1="45.4" x2="0" y2="845.3" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="148.6" y1="45.4" x2="148.6" y2="845.3" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="409.5" y1="68.8" x2="409.5" y2="845.3" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="699.6" y1="45.4" x2="699.6" y2="845.3" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="104.6" y="295.8" width="526.6" height="173.4" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="104.6" y1="383.5" x2="631.2" y2="383.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<!-- frame alt -->
+<rect x="104.6" y="597.7" width="619" height="173.4" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="104.6" y1="687.4" x2="723.6" y2="687.4" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="112.6" y="302.8" width="239.5" height="20.2" fill="#ffffff" class="plate"/>
+<text x="118.6" y="317.1" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">дочерний грант шире родительского</tspan></text>
+<rect x="112.6" y="388.5" width="129.2" height="20.2" fill="#ffffff" class="plate"/>
+<text x="118.6" y="402.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только ослабление</tspan></text>
+<rect x="112.6" y="604.7" width="142.4" height="20.2" fill="#ffffff" class="plate"/>
+<text x="118.6" y="619" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">право подтверждено</tspan></text>
+<rect x="112.6" y="692.4" width="160.6" height="20.2" fill="#ffffff" class="plate"/>
+<text x="118.6" y="706.7" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">право не подтверждено</tspan></text>
 <!-- node owner -->
-<rect x="-60.3" y="0" width="120.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2"/>
+<rect x="-54.3" y="0" width="108.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
 <text x="-38.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
 <!-- node orch -->
-<rect x="100.3" y="0" width="144.6" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2"/>
-<text x="122.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор</tspan></text>
+<rect x="82.3" y="0" width="132.6" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="orch"/>
+<text x="98.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор</tspan></text>
 <!-- node registry -->
-<rect x="309.5" y="0" width="247.9" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2"/>
-<text x="373.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр грантов</tspan></text>
-<text x="393.6" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и отзывов</tspan></text>
+<rect x="333.7" y="0" width="151.5" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="349.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр грантов</tspan></text>
+<text x="369.6" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и отзывов</tspan></text>
 <!-- node executor -->
-<rect x="673.9" y="0" width="223.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
-<text x="695.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исполнитель действия</tspan></text>
+<rect x="593.8" y="0" width="211.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="executor"/>
+<text x="609.8" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исполнитель действия</tspan></text>
 <!-- message owner -> registry -->
-<path d="M 2 120.3 L 425.5 120.3" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="431.5,120.3 421.5,115.8 421.5,124.8" fill="#3a3f47"/>
-<rect x="90" y="92.8" width="253.6" height="21.5" fill="#ffffff"/>
-<circle cx="103" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="99.6" y="107.9" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
-<text x="118" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный грант оркестратору</tspan></text>
+<path d="M 2 120.3 L 401.5 120.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m0"/>
+<polygon points="407.5,120.3 397.5,115.8 397.5,124.8" fill="#3a3f47"/>
+<rect x="78" y="92.8" width="253.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="91" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="87.3" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="106" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный грант оркестратору</tspan></text>
+</g>
 <!-- message orch -> registry -->
-<path d="M 174.6 167.8 L 425.5 167.8" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="431.5,167.8 421.5,163.3 421.5,172.3" fill="#3a3f47"/>
-<rect x="188.6" y="140.3" width="228.8" height="21.5" fill="#ffffff"/>
-<circle cx="201.6" cy="151.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="198.2" y="155.4" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="216.6" y="155.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный дочерний грант</tspan></text>
+<path d="M 150.6 167.8 L 401.5 167.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="orch" data-to="registry" data-edge="m1"/>
+<polygon points="407.5,167.8 397.5,163.3 397.5,172.3" fill="#3a3f47"/>
+<rect x="164.6" y="140.3" width="228.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="177.6" cy="151.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="174" y="155.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="192.6" y="155.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный дочерний грант</tspan></text>
+</g>
 <!-- self registry -->
-<path d="M 435.5 191.8 L 465.5 191.8 L 465.5 279.8 L 442.5 279.8" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="436.5,279.8 446.5,284.3 446.5,275.3" fill="#3a3f47"/>
-<circle cx="486.5" cy="206.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="483.1" y="210.9" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="501.5" y="211.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">цепочка до корня; действия</tspan></text>
-<text x="501.5" y="230.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и цели: подмножество;</tspan></text>
-<text x="501.5" y="250.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">срок не длиннее; глубина в</tspan></text>
-<text x="501.5" y="269.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пределах</tspan></text>
+<path d="M 411.5 191.8 L 441.5 191.8 L 441.5 279.8 L 418.5 279.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m2"/>
+<polygon points="412.5,279.8 422.5,284.3 422.5,275.3" fill="#3a3f47"/>
+<rect x="449.5" y="195.8" width="218.2" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="462.5" cy="206.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="458.8" y="211.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="477.5" y="211.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">цепочка до корня; действия</tspan></text>
+<text x="477.5" y="230.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и цели: подмножество;</tspan></text>
+<text x="477.5" y="250.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">срок не длиннее;</tspan></text>
+<text x="477.5" y="269.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">глубина в пределах</tspan></text>
+</g>
 <!-- message registry -> orch -->
-<path d="M 431.5 359.5 L 180.6 359.5" fill="none" stroke="#c8285f" stroke-width="2"/>
-<polygon points="174.6,359.5 184.6,364 184.6,355" fill="#c8285f"/>
-<rect x="269.3" y="332" width="67.6" height="21.5" fill="#ffffff"/>
-<circle cx="282.3" cy="342.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="278.9" y="347.1" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="297.3" y="347.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+<path d="M 407.5 359.5 L 156.6 359.5" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registry" data-to="orch" data-edge="m3"/>
+<polygon points="150.6,359.5 160.6,364 160.6,355" fill="#c8285f"/>
+<rect x="245.3" y="332" width="67.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="258.3" cy="342.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="254.6" y="347.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="273.3" y="347.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+</g>
 <!-- self registry -->
-<path d="M 435.5 423.7 L 465.5 423.7 L 465.5 453.2 L 442.5 453.2" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="436.5,453.2 446.5,457.7 446.5,448.7" fill="#3a3f47"/>
-<circle cx="486.5" cy="438.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="483.1" y="442.8" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="501.5" y="442.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить цепочку</tspan></text>
+<path d="M 411.5 423.7 L 441.5 423.7 L 441.5 453.2 L 418.5 453.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m4"/>
+<polygon points="412.5,453.2 422.5,457.7 422.5,448.7" fill="#3a3f47"/>
+<rect x="449.5" y="427.7" width="157.7" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="462.5" cy="438.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="458.8" y="443.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="477.5" y="442.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить цепочку</tspan></text>
+</g>
 <!-- message orch -> executor -->
-<path d="M 174.6 510.7 L 777.6 510.7" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="783.6,510.7 773.6,506.2 773.6,515.2" fill="#3a3f47"/>
-<rect x="357.9" y="483.2" width="242.4" height="21.5" fill="#ffffff"/>
-<circle cx="370.9" cy="493.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="367.5" y="498.3" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="385.9" y="498.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос действия с основаниями</tspan></text>
+<path d="M 150.6 510.7 L 691.6 510.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="orch" data-to="executor" data-edge="m5"/>
+<polygon points="697.6,510.7 687.6,506.2 687.6,515.2" fill="#3a3f47"/>
+<rect x="302.9" y="483.2" width="242.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="315.9" cy="493.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="312.2" y="498.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="330.9" y="498.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос действия с основаниями</tspan></text>
+</g>
 <!-- message executor -> registry -->
-<path d="M 783.6 558.2 L 441.5 558.2" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="435.5,558.2 445.5,562.7 445.5,553.7" fill="#3a3f47"/>
-<rect x="449.5" y="530.7" width="320.1" height="21.5" fill="#ffffff"/>
-<circle cx="462.5" cy="541.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="459.1" y="545.8" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
-<text x="477.5" y="546" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписи, условия, сроки, актуальный отзыв</tspan></text>
+<path d="M 697.6 577.7 L 417.5 577.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="registry" data-edge="m6"/>
+<polygon points="411.5,577.7 421.5,582.2 421.5,573.2" fill="#3a3f47"/>
+<rect x="456.5" y="530.7" width="196.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="469.5" cy="541.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="465.8" y="546.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="484.5" y="546" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписи, условия, сроки,</tspan></text>
+<text x="484.5" y="565.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">актуальный отзыв</tspan></text>
+</g>
 <!-- self executor -->
-<path d="M 783.6 618.4 L 753.6 618.4 L 753.6 647.9 L 776.6 647.9" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="782.6,647.9 772.6,643.4 772.6,652.4" fill="#3a3f47"/>
-<circle cx="534.5" cy="633.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="531.1" y="637.5" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="549.5" y="637.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выполнить в пределах права</tspan></text>
+<path d="M 697.6 637.9 L 667.6 637.9 L 667.6 667.4 L 690.6 667.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="executor" data-edge="m7"/>
+<polygon points="696.6,667.4 686.6,662.9 686.6,671.9" fill="#3a3f47"/>
+<rect x="435.5" y="641.9" width="224.1" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="448.5" cy="652.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="444.8" y="657.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="463.5" y="657.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выполнить в пределах права</tspan></text>
+</g>
 <!-- message executor -> orch -->
-<path d="M 783.6 731.6 L 180.6 731.6" fill="none" stroke="#c8285f" stroke-width="2"/>
-<polygon points="174.6,731.6 184.6,736.1 184.6,727.1" fill="#c8285f"/>
-<rect x="445.3" y="704.1" width="67.6" height="21.5" fill="#ffffff"/>
-<circle cx="458.3" cy="714.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="454.9" y="719.2" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="473.3" y="719.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+<path d="M 697.6 751.1 L 156.6 751.1" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="executor" data-to="orch" data-edge="m8"/>
+<polygon points="150.6,751.1 160.6,755.6 160.6,746.6" fill="#c8285f"/>
+<rect x="390.3" y="723.6" width="67.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<circle cx="403.3" cy="734.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="399.6" y="739" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="418.3" y="738.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+</g>
 <!-- note -->
-<rect x="112.6" y="765.6" width="733" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2"/>
-<text x="132.9" y="790.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Вызывающий не выносит вердикт о своём запросе. Общая архитектура грантов шире реализуемого брокера v0.</tspan></text>
+<rect x="88.6" y="785.1" width="671" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="266" y="810.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Вызывающий не выносит вердикт о своём запросе.</tspan></text>
 </g>
 </g>
 </svg>

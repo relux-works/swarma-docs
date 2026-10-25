@@ -3,6 +3,7 @@
 layout = "graph"
 direction = "TB"
 same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
+uniform_width = true   # the main column and the side column each keep one width
 alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности"
 
 [groups.bridge]

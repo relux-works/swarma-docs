@@ -1,0 +1,66 @@
+# Custody handover states. Content follows custody-states.puml: the note sits
+# beside the accepted state, both final states keep their labels; the dashes
+# in those labels became colons and the quotes straight, by the prose rules.
+layout = "graph"
+direction = "TB"
+alt = "Передача: ответственность остаётся у прежнего держателя до подтверждения первого действия получателя."
+
+[nodes.start]
+shape = "start"
+
+[nodes.sent]
+role = "service"
+name = "Отправлена"
+
+[nodes.acc]
+role = "service"
+name = "Принята"
+note = '"Принял" не является первым действием. Поздняя или заменённая квитанция отклоняется.'
+
+[nodes.done]
+role = "service"
+name = "Завершена"
+
+[nodes.fail]
+role = "alert"
+name = "Не удалась"
+
+[nodes.end_done]
+shape = "end"
+
+[nodes.end_fail]
+shape = "end"
+
+[[links]]
+from = "start"
+to = "sent"
+
+[[links]]
+from = "sent"
+to = "acc"
+label = "принятие до `accept_by`"
+
+[[links]]
+from = "acc"
+to = "done"
+label = "первое действие подтверждено до `act_by`"
+
+[[links]]
+from = "sent"
+to = "fail"
+label = "срок принятия прошёл;\nотмена или замена"
+
+[[links]]
+from = "acc"
+to = "fail"
+label = "срок действия прошёл;\nотмена или замена"
+
+[[links]]
+from = "done"
+to = "end_done"
+label = "держатель: новый"
+
+[[links]]
+from = "fail"
+to = "end_fail"
+label = "держатель: прежний;\nобязательство открыто"

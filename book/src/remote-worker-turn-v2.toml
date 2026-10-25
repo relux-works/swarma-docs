@@ -1,0 +1,136 @@
+# A remote worker's turn. Content follows remote-worker-turn.puml: the donor's
+# machine and our side are participant containers; every call goes over the
+# one outgoing SSH connection of the donor.
+layout = "sequence"
+alt = "Удалённый ход: модель работает у донора, а команды и почта идут по одному SSH-каналу к исполнителю на нашей стороне."
+
+[groups.donor]
+label = "Машина донора"
+role = "external"
+
+[groups.ours]
+label = "Наша сторона"
+role = "service"
+
+[nodes.harness]
+group = "donor"
+role = "agent"
+name = "Харнес и модель"
+
+[nodes.relay]
+group = "donor"
+role = "service"
+name = "Stdio relay"
+
+[nodes.bridge]
+group = "donor"
+role = "service"
+name = "Мост донора"
+
+[nodes.ssh]
+group = "ours"
+role = "service"
+name = "Вход SSH и проверка допуска"
+
+[nodes.executor]
+group = "ours"
+role = "service"
+name = "Исполнитель"
+
+[nodes.workspace]
+group = "ours"
+role = "neutral"
+name = "Рабочее место"
+
+[nodes.mailbox]
+group = "ours"
+role = "store"
+name = "Почтовый ящик"
+
+[[seq]]
+from = "bridge"
+to = "ssh"
+step = 1
+label = "одно исходящее SSH-соединение донора"
+
+[[seq]]
+from = "harness"
+to = "relay"
+step = 2
+label = "запрос инструмента"
+
+[[seq]]
+from = "relay"
+to = "bridge"
+step = 3
+label = "передать запрос без локального исполнения"
+
+[[seq]]
+from = "bridge"
+to = "ssh"
+step = 4
+label = "команда по тому же соединению"
+
+[[seq]]
+from = "ssh"
+to = "ssh"
+step = 5
+label = "проверить допуск и привязку рабочего места"
+
+[[seq]]
+from = "ssh"
+to = "executor"
+step = 6
+label = "допущенный запрос"
+
+[[seq]]
+from = "executor"
+to = "workspace"
+step = 7
+label = "команда в границах рабочего места"
+
+[[seq]]
+from = "workspace"
+to = "executor"
+step = 8
+label = "вывод"
+
+[[seq]]
+from = "executor"
+to = "ssh"
+step = 9
+label = "результат"
+
+[[seq]]
+from = "ssh"
+to = "bridge"
+step = 10
+label = "результат по тому же соединению"
+
+[[seq]]
+from = "bridge"
+to = "relay"
+step = 11
+label = "результат"
+
+[[seq]]
+from = "relay"
+to = "harness"
+step = 12
+label = "вывод инструмента"
+
+[[seq]]
+from = "bridge"
+to = "ssh"
+step = 13
+label = "почта по тому же соединению"
+
+[[seq]]
+from = "ssh"
+to = "mailbox"
+step = 14
+label = "почтовый обмен"
+
+[[seq]]
+note = "На доноре нет локальных инструментов харнеса.\nНаша сторона не подключается обратно к донору.\nСквозной путь требует квалификации обеих сторон."
+over = ["harness", "mailbox"]

@@ -1,5 +1,7 @@
 # Trust boundaries of a command sent through two federated Matrix servers.
-# Source: ru/08-federation.md and src/federated-command.puml.
+# Source: ru/08-federation.md and src/federated-command.puml. Step 4 has two
+# outcomes, as in the source: admission with a separate result, or refusal
+# (alert colour) when anything fails; both keep the number of the step.
 layout = "stack"
 alt = "Федерация перевозит событие, получатель устанавливает доверие"
 
@@ -10,6 +12,8 @@ role = "key"
 [groups.federation]
 label = "Серверы доставки"
 role = "external"
+note = "Федерация полномочий не даёт."
+note_side = "left"
 
 [groups.recipient]
 label = "Сторона получателя"
@@ -25,7 +29,7 @@ text = "подписывает назначение и тело"
 group = "federation"
 role = "external"
 name = "alpha.example"
-text = "Matrix-сервер отправителя; полномочий не даёт"
+text = "Matrix-сервер отправителя"
 
 [nodes.beta]
 group = "federation"
@@ -62,4 +66,11 @@ label = "доставка в комнату адресату `to`"
 from = "verifier"
 to = "signer"
 step = 4
-label = "допуск и результат или отказ"
+label = "всё проверено: допуск и отдельный результат"
+
+[[links]]
+from = "verifier"
+to = "signer"
+step = 4
+label = "задержка, ключи скрыты или иной сбой: отказ; сервер права не добавляет"
+color = "alert"

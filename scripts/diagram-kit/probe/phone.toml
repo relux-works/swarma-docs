@@ -1,0 +1,58 @@
+layout = "stack"
+title = "Команда с телефона"
+caption = "Оператор подтверждает точное действие; ворота агента проверяют подпись и грант."
+
+[groups.phone]
+label = "Телефон оператора"
+role = "key"
+
+[nodes.op]
+role = "human"
+name = "Оператор"
+
+[nodes.signer]
+role = "key"
+group = "phone"
+name = "Signer"
+text = "Face ID → key provider; подпись без выдачи ключа"
+
+[nodes.mx]
+role = "external"
+name = "Matrix"
+text = "доставляет тело и конверт"
+
+[nodes.gate]
+role = "service"
+name = "Ворота агента"
+text = "цепочка, отзыв, адрес, время, `nonce`, грант"
+
+[[links]]
+from = "op"
+to = "signer"
+step = 1
+label = "точное действие"
+
+[[links]]
+from = "signer"
+to = "mx"
+step = 2
+label = "тело + конверт"
+via = "Matrix\nE2EE"
+
+[[links]]
+from = "mx"
+to = "gate"
+step = 3
+label = "доставка"
+
+[[links]]
+from = "gate"
+to = "mx"
+step = 4
+label = "допуск или отказ"
+
+[[links]]
+from = "mx"
+to = "op"
+step = 5
+label = "результат"

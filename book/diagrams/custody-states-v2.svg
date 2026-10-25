@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="649.7" height="510.6" viewBox="0 0 649.7 510.6">
+<title>Передача: ответственность остаётся у прежнего держателя до подтверждения первого действия получателя.</title>
+<rect width="649.7" height="510.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- graphviz 14.0.4 -->
+<!-- node start -->
+<circle cx="290.8" cy="11" r="11" fill="#3a3f47" class="box" data-id="start"/>
+<!-- node sent -->
+<rect x="227.9" y="59" width="125.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="sent"/>
+<text x="243.9" y="85.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отправлена</tspan></text>
+<!-- node acc -->
+<rect x="82.8" y="188.1" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="acc"/>
+<text x="99.7" y="214.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Принята</tspan></text>
+<!-- node done -->
+<rect x="0" y="336.2" width="119.7" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="done"/>
+<text x="16" y="362.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Завершена</tspan></text>
+<!-- node fail -->
+<rect x="298.8" y="336.2" width="120" height="45.4" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="fail"/>
+<text x="314.8" y="362.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Не удалась</tspan></text>
+<!-- node end_done -->
+<circle cx="59.8" cy="473.6" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_done"/>
+<circle cx="59.8" cy="473.6" r="6.5" fill="#3a3f47"/>
+<!-- node end_fail -->
+<circle cx="358.8" cy="473.6" r="12" fill="#ffffff" stroke="#3a3f47" stroke-width="2" class="box" data-id="end_fail"/>
+<circle cx="358.8" cy="473.6" r="6.5" fill="#3a3f47"/>
+<!-- note acc -->
+<rect x="225.9" y="164.4" width="177.8" height="92.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_acc"/>
+<text x="249.7" y="187.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">"Принял" не является</tspan></text>
+<text x="255.3" y="205.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">первым действием.</tspan></text>
+<text x="237.9" y="224.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Поздняя или заменённая</tspan></text>
+<text x="242.7" y="242.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">квитанция отклоняется.</tspan></text>
+<path d="M 182.8 210.8 L 225.9 210.8" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="acc" data-to="note_acc"/>
+<!-- link start -> sent -->
+<path d="M 290.8 22.4 C 290.8 30.2 290.8 41.1 290.8 51.4 L 290.8 52.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="start" data-to="sent" data-edge="e0"/>
+<polygon points="290.8,58.8 295.3,48.8 286.3,48.8" fill="#3a3f47"/>
+<!-- link sent -> acc -->
+<path d="M 263.3 104.8 C 236.2 126.7 194.8 160 165.9 183.2 L 165 183.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="sent" data-to="acc" data-edge="e1"/>
+<polygon points="160.3,187.7 170.9,184.9 165.3,177.9" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="243.7" y="138.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">принятие до</tspan><tspan x="329.8" font-family="PT Mono, monospace" font-weight="bold">accept_by</tspan></text>
+</g>
+<!-- link acc -> done -->
+<path d="M 96.2 233.8 C 82 244.3 67.5 258.4 59.8 275.2 C 52.3 291.8 52.2 312.2 54 328.6 L 54.2 329.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="acc" data-to="done" data-edge="e2"/>
+<polygon points="55,335.8 58.2,325.3 49.2,326.5" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="63.9" y="291.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">первое действие</tspan></text>
+<text x="63.9" y="311" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтверждено до</tspan><tspan x="184.8" font-family="PT Mono, monospace" font-weight="bold">act_by</tspan></text>
+</g>
+<!-- link sent -> fail -->
+<path d="M 354.1 87.3 C 378.3 92.4 403.9 102.6 419.8 122.4 C 474.3 190.5 476.4 243.3 431.8 318.2 C 428.9 323.1 425.2 327.4 420.9 331.2 L 420 332" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="sent" data-to="fail" data-edge="e3"/>
+<polygon points="415.3,335.8 425.9,333 420.3,326" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="471.1" y="212.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">срок принятия прошёл;</tspan></text>
+<text x="471.1" y="232" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отмена или замена</tspan></text>
+</g>
+<!-- link acc -> fail -->
+<path d="M 172.6 233.9 C 203.2 251 240.8 272.3 243.8 275.2 C 259.8 290.8 253.1 303.4 269.8 318.2 C 276.5 324.1 284.2 329.2 292.2 333.7 L 293.1 334.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="acc" data-to="fail" data-edge="e4"/>
+<polygon points="298.4,337 291.6,328.3 287.4,336.3" fill="#3a3f47"/>
+<g class="label" data-edge="e4">
+<text x="273.8" y="291.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">срок действия прошёл;</tspan></text>
+<text x="273.8" y="311" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отмена или замена</tspan></text>
+</g>
+<!-- link done -> end_done -->
+<path d="M 59.8 381.9 C 59.8 402.6 59.8 433.3 59.8 453.1 L 59.8 454.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="done" data-to="end_done" data-edge="e5"/>
+<polygon points="59.8,460.4 64.3,450.4 55.3,450.4" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="67.8" y="426.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">держатель: новый</tspan></text>
+</g>
+<!-- link fail -> end_fail -->
+<path d="M 358.8 381.9 C 358.8 402.6 358.8 433.3 358.8 453.1 L 358.8 454.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="fail" data-to="end_fail" data-edge="e6"/>
+<polygon points="358.8,460.4 363.3,450.4 354.3,450.4" fill="#3a3f47"/>
+<g class="label" data-edge="e6">
+<text x="366.8" y="416.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">держатель: прежний;</tspan></text>
+<text x="366.8" y="435.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">обязательство открыто</tspan></text>
+</g>
+</g>
+</svg>

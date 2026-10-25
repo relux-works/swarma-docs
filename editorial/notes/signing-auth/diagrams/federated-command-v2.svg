@@ -1,64 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="664.2" height="621.9" viewBox="0 0 664.2 621.9">
+<svg xmlns="http://www.w3.org/2000/svg" width="866.8" height="613.9" viewBox="0 0 866.8 613.9">
 <title>Федерация перевозит событие, получатель устанавливает доверие</title>
-<rect width="664.2" height="621.9" fill="#ffffff"/>
-<g transform="translate(16 16)">
+<rect width="866.8" height="613.9" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(172.1 0)">
 <!-- group sender -->
-<rect x="0" y="0" width="580.2" height="123" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="0" y="0" width="568.2" height="123" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="sender"/>
 <!-- group federation -->
-<rect x="0" y="173" width="580.2" height="243.9" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="0" y="173" width="568.2" height="243.9" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="federation"/>
 <!-- group recipient -->
-<rect x="0" y="466.9" width="580.2" height="123" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="0" y="466.9" width="568.2" height="123" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="recipient"/>
 <!-- node signer -->
-<rect x="18" y="37.7" width="544.2" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2"/>
-<text x="265.4" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Signer</tspan></text>
-<text x="184.3" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">подписывает назначение и тело</tspan></text>
+<rect x="18" y="37.7" width="532.2" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="signer"/>
+<text x="259.4" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Signer</tspan></text>
+<text x="178.3" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">подписывает назначение и тело</tspan></text>
 <!-- node alpha -->
-<rect x="18" y="210.7" width="544.2" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2"/>
-<text x="233.5" y="236.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">alpha.example</tspan></text>
-<text x="130.2" y="265.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Matrix-сервер отправителя; полномочий не даёт</tspan></text>
+<rect x="18" y="210.7" width="532.2" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="alpha"/>
+<text x="227.5" y="236.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">alpha.example</tspan></text>
+<text x="195.2" y="265.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Matrix-сервер отправителя</tspan></text>
 <!-- node beta -->
-<rect x="18" y="331.6" width="544.2" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2"/>
-<text x="237.8" y="357.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">beta.example</tspan></text>
-<text x="40" y="386.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Matrix-сервер получателя; может задержать, скрыть или повторить событие</tspan></text>
+<rect x="18" y="331.6" width="532.2" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="beta"/>
+<text x="231.8" y="357.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">beta.example</tspan></text>
+<text x="34" y="386.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Matrix-сервер получателя; может задержать, скрыть или повторить событие</tspan></text>
 <!-- node verifier -->
-<rect x="18" y="504.6" width="544.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
-<text x="244.2" y="530.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель</tspan></text>
-<text x="106.9" y="559.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корневая цепочка, отзыв,</tspan><tspan x="277.7" font-family="PT Mono, monospace">ts</tspan><tspan x="295.7" font-family="PT Sans, sans-serif">,</tspan><tspan x="302.7" font-family="PT Mono, monospace">nonce</tspan><tspan x="347.7" font-family="PT Sans, sans-serif">, назначение, грант</tspan></text>
+<rect x="18" y="504.6" width="532.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="verifier"/>
+<text x="238.2" y="530.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель</tspan></text>
+<text x="100.9" y="559.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корневая цепочка, отзыв,</tspan><tspan x="271.7" font-family="PT Mono, monospace">ts</tspan><tspan x="289.7" font-family="PT Sans, sans-serif">,</tspan><tspan x="296.7" font-family="PT Mono, monospace">nonce</tspan><tspan x="341.7" font-family="PT Sans, sans-serif">, назначение, грант</tspan></text>
 <!-- link signer -> alpha -->
-<path d="M 290.1 108.6 L 290.1 204.7" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="290.1,210.7 294.6,200.7 285.6,200.7" fill="#3a3f47"/>
-<circle cx="311.1" cy="148" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="307.7" y="152.3" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
-<text x="326.1" y="152.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный конверт</tspan></text>
-<!-- link alpha -> beta -->
-<path d="M 290.1 281.6 L 290.1 325.6" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="290.1,331.6 294.6,321.6 285.6,321.6" fill="#3a3f47"/>
-<circle cx="311.1" cy="306.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="307.7" y="310.9" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="326.1" y="311.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">те же байты</tspan></text>
-<text x="186.1" y="310.5" font-size="13" fill="#868e99" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ФЕДЕРАЦИЯ</tspan></text>
-<!-- link beta -> verifier -->
-<path d="M 290.1 402.5 L 290.1 498.6" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="290.1,504.6 294.6,494.6 285.6,494.6" fill="#3a3f47"/>
-<circle cx="311.1" cy="441.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="307.7" y="446.2" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="326.1" y="446.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доставка в комнату адресату</tspan><tspan x="521.3" font-family="PT Mono, monospace" font-weight="bold">to</tspan></text>
-<!-- side link verifier -> signer -->
-<path d="M 562.2 545.7 L 598.2 545.7 L 598.2 67.5 L 568.2 67.5" fill="none" stroke="#3a3f47" stroke-width="2"/>
-<polygon points="562.2,67.5 572.2,72 572.2,63" fill="#3a3f47"/>
-<g transform="translate(625.7 415.1) rotate(-90)">
-<circle cx="9" cy="-9.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="5.6" y="-5.4" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="24" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуск и результат или отказ</tspan></text>
+<path d="M 284.1 108.6 L 284.1 204.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="alpha" data-edge="e0"/>
+<polygon points="284.1,210.7 288.6,200.7 279.6,200.7" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<circle cx="305.1" cy="148" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="301.4" y="152.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="320.1" y="152.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный конверт</tspan></text>
 </g>
+<!-- link alpha -> beta -->
+<path d="M 284.1 281.6 L 284.1 325.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="alpha" data-to="beta" data-edge="e1"/>
+<polygon points="284.1,331.6 288.6,321.6 279.6,321.6" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<circle cx="305.1" cy="306.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="301.4" y="311.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="320.1" y="311.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">те же байты</tspan></text>
+</g>
+<text x="180.1" y="310.5" font-size="13" fill="#868e99" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ФЕДЕРАЦИЯ</tspan></text>
+<!-- link beta -> verifier -->
+<path d="M 284.1 402.5 L 284.1 498.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="beta" data-to="verifier" data-edge="e2"/>
+<polygon points="284.1,504.6 288.6,494.6 279.6,494.6" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<circle cx="305.1" cy="441.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="301.4" y="446.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="320.1" y="446.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доставка в комнату адресату</tspan><tspan x="515.3" font-family="PT Mono, monospace" font-weight="bold">to</tspan></text>
+</g>
+<!-- side link verifier -> signer -->
+<path d="M 550.2 528.2 L 586.2 528.2 L 586.2 85 L 556.2 85" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="verifier" data-to="signer" data-edge="e3"/>
+<polygon points="550.2,85 560.2,89.5 560.2,80.5" fill="#3a3f47"/>
+<g transform="translate(613.7 471.8) rotate(-90)" class="label" data-edge="e3">
+<circle cx="9" cy="-9.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="5.3" y="-5.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="24" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">всё проверено: допуск и отдельный результат</tspan></text>
+</g>
+<!-- side link verifier -> signer -->
+<path d="M 550.2 551.9 L 623.7 551.9 L 623.7 61.3 L 556.2 61.3" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="verifier" data-to="signer" data-edge="e4"/>
+<polygon points="550.2,61.3 560.2,65.8 560.2,56.8" fill="#c8285f"/>
+<g transform="translate(670.7 449.7) rotate(-90)" class="label" data-edge="e4">
+<circle cx="9" cy="-29.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="5.3" y="-24.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="24" y="-24.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">задержка, ключи скрыты или иной</tspan></text>
+<text x="24" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сбой: отказ; сервер права не добавляет</tspan></text>
+</g>
+<!-- note federation -->
+<rect x="-172.1" y="266.8" width="152.1" height="56.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_federation"/>
+<text x="-130.7" y="290.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Федерация</tspan></text>
+<text x="-160.1" y="308.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">полномочий не даёт.</tspan></text>
+<path d="M 0 294.9 L -20 294.9" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="federation" data-to="note_federation"/>
 <!-- group label sender -->
-<rect x="12" y="10" width="194.4" height="18.9" fill="#ffffff"/>
+<rect x="12" y="10" width="194.4" height="18.9" fill="#ffffff" class="plate"/>
 <text x="18" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СТОРОНА ОТПРАВИТЕЛЯ</tspan></text>
 <!-- group label federation -->
-<rect x="12" y="183" width="164.9" height="18.9" fill="#ffffff"/>
+<rect x="12" y="183" width="164.9" height="18.9" fill="#ffffff" class="plate"/>
 <text x="18" y="197.3" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СЕРВЕРЫ ДОСТАВКИ</tspan></text>
 <!-- group label recipient -->
-<rect x="12" y="476.9" width="184.5" height="18.9" fill="#ffffff"/>
+<rect x="12" y="476.9" width="184.5" height="18.9" fill="#ffffff" class="plate"/>
 <text x="18" y="491.2" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СТОРОНА ПОЛУЧАТЕЛЯ</tspan></text>
+</g>
 </g>
 </svg>

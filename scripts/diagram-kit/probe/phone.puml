@@ -1,0 +1,27 @@
+@startuml
+<style>
+root { FontName "PT Sans"; FontSize 18; FontColor #1f2328; LineThickness 2 }
+rectangle { RoundCorner 20; LineThickness 2 }
+.human { BackgroundColor #f1f2f4; LineColor #8a919c }
+.key { BackgroundColor #fff8e1; LineColor #a8740a }
+.service { BackgroundColor #eaf1ff; LineColor #2f6fdb }
+.external { BackgroundColor #fff1e6; LineColor #d9730d }
+.boundary { BackgroundColor transparent; LineColor #a8740a; LineStyle 6-4; FontColor #a8740a; FontSize 15 }
+arrow { LineColor #3a3f47; LineThickness 2; FontSize 16; FontStyle bold }
+</style>
+skinparam shadowing false
+skinparam rectangleBorderThickness 2
+top to bottom direction
+rectangle "**Оператор**" as op <<human>>
+rectangle "Т Е Л Е Ф О Н   О П Е Р А Т О Р А" as phone <<boundary>> {
+  rectangle "**Signer**\nFace ID → key provider; подпись без выдачи ключа" as signer <<key>>
+}
+rectangle "**Matrix**\nдоставляет тело и конверт" as mx <<external>>
+rectangle "**Ворота агента**\nцепочка, отзыв, адрес, время, <font:PT Mono>nonce</font>, грант" as gate <<service>>
+op --> signer : ① точное действие
+signer --> mx : ② тело + конверт
+mx --> gate : ③ доставка
+gate --> mx : ④ допуск или отказ
+mx --> op : ⑤ результат
+hide stereotype
+@enduml

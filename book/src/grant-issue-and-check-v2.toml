@@ -1,5 +1,7 @@
 # Grants: issue, narrowing and check. Content follows grant-issue-and-check.puml;
-# a branch keeps the number of the step it replaces.
+# a branch keeps the number of the step it replaces. The line break in step 3
+# follows the source; the note keeps only the mechanism (the delivery status
+# lives in the status chapter).
 layout = "sequence"
 alt = "Цепочка грантов: передать можно только часть прав, а проверяет её исполнитель действия"
 
@@ -35,7 +37,7 @@ label = "подписанный дочерний грант"
 from = "registry"
 to = "registry"
 step = 3
-label = "цепочка до корня; действия и цели: подмножество; срок не длиннее; глубина в пределах"
+label = "цепочка до корня; действия и цели: подмножество;\nсрок не длиннее; глубина в пределах"
 
 [[seq]]
 alt = "дочерний грант шире родительского"
@@ -94,5 +96,5 @@ color = "alert"
 end = true
 
 [[seq]]
-note = "Вызывающий не выносит вердикт о своём запросе. Общая архитектура грантов шире реализуемого брокера v0."
+note = "Вызывающий не выносит вердикт о своём запросе."
 over = ["orch", "executor"]

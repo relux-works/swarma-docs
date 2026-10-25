@@ -15,18 +15,19 @@ text = 15
 label = 15
 protocol = 13
 group = 13
-step = 12
+step = 13
 note = 14
 
 [space]
-pad = 16               # around the whole figure
-box_pad_x = 22
+pad = 12               # around the whole figure
+box_pad_x = 16
 box_pad_y = 11
 box_radius = 12
 box_stroke = 2
 box_max_width = 560    # stack layout: widest box column
-node_text_width = 230  # graph and sequence layouts: wrap width of node text
-min_box_width = 120
+node_text_width = 230  # graph layout: wrap width of node text
+seq_node_width = 200   # sequence layout: wrap width of participant text
+min_box_width = 100
 group_pad = 18
 group_radius = 16
 group_stroke = 2
@@ -34,17 +35,23 @@ group_dash = "8 6"
 group_label_gap = 10
 letter_spacing = 0.16  # em, uppercase group and protocol labels
 gap_min = 50           # stack layout: free space between rows
-label_max_width = 260
+label_max_width = 260  # stack and graph: wrap width of arrow labels
+seq_label_width = 260  # sequence: wrap width of message labels
+seq_self_width = 260   # sequence: wrap width of self-message labels
 pair_min_dx = 34       # stack layout: half distance between paired arrows
 lane = 34              # stack layout: side-link lane width
 arrow_stroke = 2
 arrow_head = 10
 step_radius = 9
 line_height = 1.3
-seq_column_gap = 40
+seq_column_gap = 28
 seq_row_gap = 12
-graph_nodesep = 0.4    # inches, Graphviz
+graph_nodesep = 0.3    # inches, Graphviz
 graph_ranksep = 0.5
+note_width = 220       # wrap width of a note beside an element, padding included
+note_gap = 20          # length of the connector from an element to its note
+frame_dash = "7 5"     # sequence: alt frame
+opt_dash = "1 5"       # sequence: opt frame, dotted with round caps
 
 # Print budget: the book sets figures in a 167 x 98 mm box (167 x 168 mm with
 # the `tall` class). render.py --report prints the description text size a

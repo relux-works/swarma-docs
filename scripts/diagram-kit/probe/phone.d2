@@ -1,0 +1,28 @@
+...@theme.d2
+direction: down
+
+op: Оператор {class: human}
+phone: Телефон оператора {
+  class: boundary
+  signer: |md
+    **Signer**
+
+    Face ID → key provider; подпись без выдачи ключа
+  | {class: key; shape: rectangle}
+}
+mx: |md
+  **Matrix**
+
+  доставляет тело и конверт
+| {class: external; shape: rectangle}
+gate: |md
+  **Ворота агента**
+
+  цепочка, отзыв, адрес, время, `nonce`, грант
+| {class: service; shape: rectangle}
+
+op -> phone.signer: ① точное действие {class: step}
+phone.signer -> mx: ② тело + конверт {class: step}
+mx -> gate: ③ доставка {class: step}
+gate -> mx: ④ допуск или отказ {class: step}
+mx -> op: ⑤ результат {class: step}
