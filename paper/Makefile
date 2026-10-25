@@ -4,7 +4,7 @@
 #   make clean
 TECTONIC ?= tectonic
 
-paper.pdf: paper.tex
+paper.pdf: paper.tex references.bib
 	$(TECTONIC) -X compile paper.tex
 
 model:
