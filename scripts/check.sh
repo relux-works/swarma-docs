@@ -6,8 +6,9 @@
 # Fails on: status markers outside the state chapter; internal identifiers
 # (board elements, runs, review findings, decision numbers);
 # local paths; names that never appear in the published text; delivery
-# hedges in book chapters outside the state chapter; the prose blacklist of
-# editorial/style.ru.md in book chapters and in the signing note
+# hedges in book chapters outside the state chapter and in the chain paper
+# (paper/chain/*.tex); the prose blacklist of editorial/style.ru.md in book
+# chapters, in the chain paper and in the signing note
 # (editorial/notes/signing-auth/ru/*.md); the same blacklist, hedges and
 # readiness wording in TeX form for the platform paper (paper/platform/*.tex),
 # where \measured{...} exempts a measurement or availability fact from the
@@ -70,7 +71,8 @@ marker_files=$(find book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! 
 hit "TeX status label" '\\status\{'
 
 # Delivery hedges belong to the state chapter only (style.ru.md, "Голос").
-voice_files=$(find book/ru -type f -name '*.md' ! -path 'book/ru/29-gde-my.md' 2>/dev/null | sort)
+# The chain paper (paper/chain/*.tex) is held to the same voice.
+voice_files=$(find book/ru paper/chain -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' 2>/dev/null | sort)
 if [ -n "$voice_files" ]; then
   out=$(grep -niE -- '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])' $voice_files 2>/dev/null)
   if [ -n "$out" ]; then
@@ -81,10 +83,11 @@ if [ -n "$voice_files" ]; then
 fi
 
 # Prose blacklist (editorial/style.ru.md, "Чёрный список"). Blocking for book
-# chapters and for the signing note in editorial/notes/signing-auth/ru/;
+# chapters, the chain paper (paper/chain/*.tex) and the signing note in
+# editorial/notes/signing-auth/ru/;
 # STRICT_PROSE=0 turns those hits into reports. Other editorial notes in
 # editorial/notes/*/ru/ stay advisory until their own pass lands.
-prose_files=$(find book/ru editorial/notes/signing-auth/ru -type f -name '*.md' 2>/dev/null | sort)
+prose_files=$( { find book/ru editorial/notes/signing-auth/ru -type f -name '*.md'; find paper/chain -type f -name '*.tex'; } 2>/dev/null | sort)
 note_files=$(find editorial/notes -mindepth 3 -maxdepth 3 -type f -path 'editorial/notes/*/ru/*.md' ! -path 'editorial/notes/signing-auth/ru/*' 2>/dev/null | sort)
 prose() {
   # $1 label, $2 extended regex (case-insensitive)
