@@ -1,0 +1,71 @@
+# Who holds history and how a light client reads. Content follows
+# history-holders.puml and the sections "Кто сохраняет историю" and "Лёгкое
+# чтение и проверяемый индекс" of chapter "Цепочка: устройство". The source's
+# package "Хранители истории" was a grouping, not a trust boundary, so it is
+# not drawn as a container; the three holders keep their own boxes. Dashes
+# and guillemets of the source became commas and straight quotes; "(индекс
+# платный продукт)" follows the chapter: the indexer sells the computed index.
+layout = "graph"
+alt = "Лёгкий клиент получает заголовки и фильтры отдельно от исторических сегментов и услуг индексаторов."
+direction = "TB"
+same_rank = [["indexer", "archivist", "service"]]
+
+[nodes.client]
+role = "service"
+name = "Лёгкий клиент"
+
+[nodes.full]
+role = "store"
+name = "Полные узлы"
+text = "заголовки, тела, снимки; сегменты только свежие"
+
+[nodes.indexer]
+role = "store"
+name = "Индексаторы"
+text = "вся история и вычисленный индекс, который они продают"
+
+[nodes.archivist]
+role = "store"
+name = "Архивисты"
+text = "старые сегменты как торренты по политике своей окрестности"
+
+[nodes.service]
+role = "store"
+name = "Сервисные узлы"
+text = "вторая фаза: оплата за проверку хранения случайного сегмента"
+
+[[links]]
+from = "client"
+to = "full"
+label = "заголовки от checkpoint\nи фильтры"
+
+[[links]]
+from = "client"
+to = "archivist"
+label = "совпавшие сегменты\nи доказательство Меркла"
+
+[[links]]
+from = "client"
+to = "indexer"
+label = "поиск, \"что обсуждают\",\nпервая загрузка"
+
+[[links]]
+from = "client"
+to = "indexer"
+label = "сверка хэшей состояния\nнескольких индексаторов"
+style = "dashed"
+
+[[links]]
+from = "full"
+to = "indexer"
+label = "новые блоки"
+
+[[links]]
+from = "full"
+to = "archivist"
+label = "новые блоки"
+
+[[links]]
+from = "full"
+to = "service"
+label = "новые блоки"

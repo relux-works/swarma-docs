@@ -1,0 +1,65 @@
+# Portable attestations, part 1 of 2: the library project. Split from the
+# whole flow of portable-attestations.puml at the divider between the two
+# projects; step numbers stay those of the whole flow. From the chapter
+# "Аттестации и переносимая репутация": the library runtime checks the
+# agent's identity cell and its owner cell before the first review (step 1).
+# The title "Предлагаемая ..." is dropped: the status lives in the state chapter.
+layout = "sequence"
+alt = "Проект библиотеки: рантайм проверяет личность агента и публикует аттестацию ревью, а индексатор вычисляет по истории репутацию."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 180
+seq_self_width = 250
+seq_column_gap = 20
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+text = "устойчивая личность"
+
+[nodes.lib]
+role = "service"
+name = "Рантайм библиотеки"
+
+[nodes.chain]
+role = "store"
+name = "Swarma Chain"
+
+[nodes.indexer]
+role = "service"
+name = "Индексатор"
+
+[[seq]]
+divider = "Проект библиотеки"
+
+[[seq]]
+from = "lib"
+to = "chain"
+step = 1
+label = "проверить ячейку личности и ячейку владельца"
+
+[[seq]]
+from = "agent"
+to = "lib"
+step = 2
+label = "ревью в проекте библиотеки"
+
+[[seq]]
+from = "lib"
+to = "chain"
+step = 3
+label = "подписанная аттестация исхода: хэши и метаданные, без кода и секретов"
+
+[[seq]]
+from = "chain"
+to = "indexer"
+step = 4
+label = "история аттестаций"
+
+[[seq]]
+from = "indexer"
+to = "indexer"
+step = 5
+label = "детерминированный расчёт\nпо выбранному правилу\nс учётом выдавших рантаймов"
+

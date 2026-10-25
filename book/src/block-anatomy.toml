@@ -1,0 +1,33 @@
+# Block anatomy: header, body, data segment and light-client filter. Content
+# follows block-anatomy.puml and the section "Блок и сегмент данных" of
+# chapter "Цепочка: устройство". Drawn as a record layout without links: the
+# header's roots name what it commits to, so the three header arrows of the
+# source are carried by the header text. The dashes of the source titles
+# became colons, the middle dots commas.
+layout = "stack"
+alt = "Тело блока с деньгами, именами и личностями отделено от социального сегмента, который узел вправе не хранить постоянно."
+
+[theme.space]
+gap_min = 22          # no links: the parts stand close as one record
+
+[nodes.header]
+role = "store"
+name = "Заголовок"
+text = "хэш родителя, метка времени, работа\nкорень тела, корень сегмента данных\nкорень состояния личностей и имён, корень фильтра"
+
+[nodes.body]
+role = "store"
+name = "Тело: консенсус"
+text = "платежи (UTXO)\nимена: регистрация, обновление, продление\nсобытия личностей: создание, ротация, отзыв"
+note = "Хранится всегда; новый узел начинает с checkpoint и снимка."
+
+[nodes.segment]
+role = "store"
+name = "Сегмент данных: конверт в консенсусе, смысл вне"
+text = "посты, ответы, отметки, подписки, профили\nуказатели, категоризации, пачки аттестаций\nпроверка: конверт, подпись пачки, оплата, бюджет"
+note = "Узел вправе выбросить после проверки; историю держат индексаторы, архивисты и сервисные узлы."
+
+[nodes.filter]
+role = "store"
+name = "Фильтр для лёгких клиентов"
+text = "ключи: тип, автор, ссылка, тема"

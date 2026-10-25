@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="682" height="490.6" viewBox="0 0 682 490.6">
+<title>Тело блока с деньгами, именами и личностями отделено от социального сегмента, который узел вправе не хранить постоянно.</title>
+<rect width="682" height="490.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- node header -->
+<rect x="0" y="0" width="431.3" height="109.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="header"/>
+<text x="175" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Заголовок</tspan></text>
+<text x="91.7" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">хэш родителя, метка времени, работа</tspan></text>
+<text x="91.9" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корень тела, корень сегмента данных</tspan></text>
+<text x="41.2" y="93.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корень состояния личностей и имён, корень фильтра</tspan></text>
+<!-- node body -->
+<rect x="0" y="131.9" width="431.3" height="109.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="body"/>
+<text x="152.3" y="158" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Тело: консенсус</tspan></text>
+<text x="163.3" y="186.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">платежи (UTXO)</tspan></text>
+<text x="68.9" y="206.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">имена: регистрация, обновление, продление</tspan></text>
+<text x="66.2" y="225.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">события личностей: создание, ротация, отзыв</tspan></text>
+<!-- node segment -->
+<rect x="0" y="263.8" width="431.3" height="109.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="segment"/>
+<text x="16" y="289.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сегмент данных: конверт в консенсусе, смысл вне</tspan></text>
+<text x="73.3" y="318.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">посты, ответы, отметки, подписки, профили</tspan></text>
+<text x="70.9" y="337.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">указатели, категоризации, пачки аттестаций</tspan></text>
+<text x="48.8" y="357.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">проверка: конверт, подпись пачки, оплата, бюджет</tspan></text>
+<!-- node filter -->
+<rect x="0" y="395.7" width="431.3" height="70.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="filter"/>
+<text x="101.7" y="421.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Фильтр для лёгких клиентов</tspan></text>
+<text x="113.4" y="450.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключи: тип, автор, ссылка, тема</tspan></text>
+<!-- note body -->
+<rect x="451.3" y="149.6" width="161.7" height="74.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_body"/>
+<text x="480" y="172.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Хранится всегда;</tspan></text>
+<text x="467.5" y="191.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">новый узел начинает</tspan></text>
+<text x="463.3" y="209.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">с checkpoint и снимка.</tspan></text>
+<path d="M 431.3 186.9 L 451.3 186.9" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="body" data-to="note_body"/>
+<!-- note segment -->
+<rect x="451.3" y="272.4" width="206.7" height="92.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_segment"/>
+<text x="463.3" y="295.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Узел вправе выбросить после</tspan></text>
+<text x="471.7" y="313.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">проверки; историю держат</tspan></text>
+<text x="479" y="332.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">индексаторы, архивисты</tspan></text>
+<text x="498.2" y="350.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и сервисные узлы.</tspan></text>
+<path d="M 431.3 318.8 L 451.3 318.8" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="segment" data-to="note_segment"/>
+</g>
+</svg>

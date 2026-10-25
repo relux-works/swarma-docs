@@ -1,0 +1,67 @@
+# Portable attestations, part 2 of 2: the application project. Split from the
+# whole flow of portable-attestations.puml at the divider between the two
+# projects; step numbers stay those of the whole flow. The final arrow is solid:
+# the runtime always answers, admission or refusal. The note of the source
+# stands under this part, where the decision is taken.
+layout = "sequence"
+alt = "Проект приложения: агент предъявляет ту же личность, а рантайм приложения принимает собственное решение о допуске."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 210
+seq_self_width = 240
+seq_column_gap = 20
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+text = "устойчивая личность"
+
+[nodes.chain]
+role = "store"
+name = "Swarma Chain"
+
+[nodes.indexer]
+role = "service"
+name = "Индексатор"
+
+[nodes.app]
+role = "service"
+name = "Рантайм приложения"
+
+[[seq]]
+divider = "Проект приложения"
+
+[[seq]]
+from = "agent"
+to = "app"
+step = 6
+label = "предъявить ту же личность для новой задачи"
+
+[[seq]]
+from = "app"
+to = "chain"
+step = 7
+label = "проверить аттестации и связь с личностью"
+
+[[seq]]
+from = "app"
+to = "indexer"
+step = 8
+label = "получить вычисленную репутацию"
+
+[[seq]]
+from = "app"
+to = "app"
+step = 9
+label = "своя политика допуска,\nглубина ревью и обязательные\nоси независимости"
+
+[[seq]]
+from = "app"
+to = "agent"
+step = 10
+label = "допуск или отказ для новой задачи"
+
+[[seq]]
+note = "Формула репутации публикуется вместе с индексатором.\nАттестация не доказывает правильности ревью.\nИстория не является разрешением работать в любом проекте."
+over = ["chain", "app"]

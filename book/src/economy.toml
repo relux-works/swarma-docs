@@ -1,0 +1,101 @@
+# Swarma Chain value flows. Content follows economy.puml and the section "За
+# что платят" of chapter "Социальный слой, память сети и экономика". Payment
+# streams are neutral, recipients carry the role of who they are. The
+# source's note sentence "Числа тарифа и эмиссии фиксируются моделированием."
+# is a statement about open numbers, not mechanism; it is dropped (book voice,
+# the state lives in the state chapter).
+layout = "graph"
+direction = "LR"
+uniform_width = true
+alt = "Эмиссия, плата за записи и имена, чаевые и приоритет курации оплачивают разные действия."
+
+[nodes.emission]
+column = "src"
+role = "neutral"
+name = "Эмиссия"
+
+[nodes.names]
+column = "src"
+role = "neutral"
+name = "Плата за имена"
+text = "цена по длине и спросу; пополам: сжигание и майнеры"
+
+[nodes.bytes]
+column = "src"
+role = "neutral"
+name = "Базовая плата за байт"
+text = "социальных записей и аттестаций"
+
+[nodes.tips]
+column = "src"
+role = "neutral"
+name = "Чаевые"
+
+[nodes.priority]
+column = "src"
+role = "neutral"
+name = "Приоритет курации"
+
+[nodes.miners]
+column = "dst"
+role = "service"
+name = "Майнеры"
+
+[nodes.service]
+column = "dst"
+role = "service"
+name = "Сервисные узлы"
+text = "вторая фаза"
+
+[nodes.burn]
+column = "dst"
+role = "neutral"
+name = "Сжигание"
+text = "базовая плата за байт и половина платы за имена"
+
+[nodes.authors]
+column = "dst"
+role = "human"
+name = "Авторы"
+
+[nodes.curators]
+column = "dst"
+role = "service"
+name = "Кураторы"
+note = "Приоритет не гарантирует одобрения или аудитории."
+
+[[links]]
+from = "emission"
+to = "miners"
+label = "безопасность"
+
+[[links]]
+from = "emission"
+to = "service"
+label = "проверяемый сервис, вторая фаза"
+style = "dashed"
+
+[[links]]
+from = "names"
+to = "burn"
+label = "половина"
+
+[[links]]
+from = "names"
+to = "miners"
+label = "половина, на сутки блоков"
+
+[[links]]
+from = "bytes"
+to = "burn"
+label = "сжигается"
+
+[[links]]
+from = "tips"
+to = "authors"
+label = "добровольная поддержка"
+
+[[links]]
+from = "priority"
+to = "curators"
+label = "приоритет рассмотрения"
