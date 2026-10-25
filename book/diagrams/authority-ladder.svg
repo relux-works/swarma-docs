@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="630.6" height="457.6" viewBox="0 0 630.6 457.6">
+<title>Цепочка полномочий: цель ограничивает оркестратора, задача ограничивает исполнение, ревизия остаётся внутри области записи.</title>
+<rect width="630.6" height="457.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- node goal -->
+<rect x="0" y="0" width="384.8" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="goal"/>
+<text x="172.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Цель</tspan></text>
+<text x="16" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">подписана кор-нодой; область, класс риска и бюджет</tspan></text>
+<!-- node cap -->
+<rect x="0" y="120.9" width="384.8" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="cap"/>
+<text x="86.8" y="147" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Полномочие оркестратора</tspan></text>
+<text x="87.4" y="175.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">пути, типы изменений и лимиты</tspan></text>
+<!-- node task -->
+<rect x="0" y="241.8" width="384.8" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="task"/>
+<text x="164.6" y="267.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Задача</tspan></text>
+<text x="58.1" y="296.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">контракт с версией и план с дайджестом</tspan></text>
+<!-- node rev -->
+<rect x="0" y="362.7" width="384.8" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="rev"/>
+<text x="113.4" y="388.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ревизия и кандидат</tspan></text>
+<text x="72.5" y="417.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">дифф внутри области записи задачи</tspan></text>
+<!-- link goal -> cap -->
+<path d="M 192.4 70.9 L 192.4 114.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="goal" data-to="cap" data-edge="e0"/>
+<polygon points="192.4,120.9 196.9,110.9 187.9,110.9" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="204.4" y="100.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только сужение</tspan></text>
+</g>
+<!-- link cap -> task -->
+<path d="M 192.4 191.8 L 192.4 235.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="cap" data-to="task" data-edge="e1"/>
+<polygon points="192.4,241.8 196.9,231.8 187.9,231.8" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="204.4" y="221.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только сужение</tspan></text>
+</g>
+<!-- link task -> rev -->
+<path d="M 192.4 312.7 L 192.4 356.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="task" data-to="rev" data-edge="e2"/>
+<polygon points="192.4,362.7 196.9,352.7 187.9,352.7" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="204.4" y="342.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только сужение</tspan></text>
+</g>
+<!-- note cap -->
+<rect x="404.8" y="128.2" width="201.1" height="56.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_cap"/>
+<text x="417.8" y="151.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Оркестратор декомпозирует</tspan></text>
+<text x="416.8" y="169.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">полномочия и не создаёт их.</tspan></text>
+<path d="M 384.8 156.4 L 404.8 156.4" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="cap" data-to="note_cap"/>
+<!-- note task -->
+<rect x="404.8" y="230.8" width="201.8" height="92.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_task"/>
+<text x="433.5" y="254.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Валидаторы проверяют</tspan></text>
+<text x="416.8" y="272.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">вложенность при переходах.</tspan></text>
+<text x="430.8" y="290.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Среда сверяет дайджест</tspan></text>
+<text x="445.6" y="308.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">плана при вызовах.</tspan></text>
+<path d="M 384.8 277.2 L 404.8 277.2" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="task" data-to="note_task"/>
+</g>
+</svg>

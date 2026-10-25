@@ -1,0 +1,109 @@
+# Candidate integration: admission. Content follows candidate-integration.puml
+# and chapter "Оркестратор по аренде и цикл задачи". The legend's two sentences
+# became notes beside the collection step and the admission question; the quotes are straight. The
+# admission runs down the left column, the integration down the right one; the
+# start and end markers of the source are dropped, every path ends in an outcome.
+# Step names are shortened to fit the print box; their content is unchanged.
+layout = "graph"
+direction = "TB"
+same_rank = [["build", "record"], ["reviewer", "fresh"], ["collect", "q2"]]
+alt = "Интеграция продвигает точную голову к неизменяемому кандидату только с адресованными ему одобрением и аттестациями."
+
+[nodes.build]
+column = "left"
+role = "service"
+name = "Построить кандидат `I`"
+text = "неизменяемый, над текущей головой `M`"
+
+[nodes.reviewer]
+column = "left"
+role = "service"
+name = "Выбрать ревьювера"
+text = "после заморозки, по политике независимости"
+
+[nodes.collect]
+column = "left"
+role = "service"
+name = "Собрать одобрение и аттестации"
+text = "для `I`, контракта, политики и окружения"
+note = "Одобрение ревизии не заменяет одобрение кандидата."
+
+[nodes.q1]
+column = "left"
+role = "neutral"
+name = "Все свойства пройдены и адреса совпадают?"
+note = "Успешный процесс не доказывает отсутствие смысловых дефектов."
+
+[nodes.record]
+column = "right"
+role = "service"
+name = "Запись интеграции"
+text = "совершена для `(M, I)`"
+
+[nodes.fresh]
+column = "right"
+role = "service"
+name = "Проверка среды"
+text = "актуальность авторизации"
+
+[nodes.q2]
+column = "right"
+role = "neutral"
+name = "Голова всё ещё `M`?"
+
+[nodes.cas]
+role = "service"
+name = "Голова `M` → `I`"
+text = "атомарный compare-and-set"
+
+[nodes.stale]
+role = "alert"
+name = "Отказ"
+text = "новый кандидат над новой головой и повторное ревью"
+
+[nodes.none]
+column = "left"
+role = "alert"
+name = "Интеграции нет"
+text = "доработка или проверка"
+
+[[links]]
+from = "build"
+to = "reviewer"
+
+[[links]]
+from = "reviewer"
+to = "collect"
+
+[[links]]
+from = "collect"
+to = "q1"
+
+[[links]]
+from = "q1"
+to = "record"
+label = "да"
+constraint = false
+
+[[links]]
+from = "q1"
+to = "none"
+label = "нет, включая \"не установлено\""
+
+[[links]]
+from = "record"
+to = "fresh"
+
+[[links]]
+from = "fresh"
+to = "q2"
+
+[[links]]
+from = "q2"
+to = "cas"
+label = "да"
+
+[[links]]
+from = "q2"
+to = "stale"
+label = "нет"

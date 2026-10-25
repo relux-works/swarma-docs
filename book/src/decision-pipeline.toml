@@ -1,0 +1,135 @@
+# The router's path for one decision. Content follows decision-pipeline.puml
+# (formerly an upstream copy, now a book figure) and chapter "Модели и деньги".
+# Steps 1-4 run down the left column, steps 5-7 down the right one. The
+# chapter's wording wins for ties ("стабильный порядок при равенстве") and
+# the result fields; the separators "·" became commas.
+layout = "graph"
+direction = "TB"
+same_rank = [["c1", "c5"], ["c2", "c6"], ["c3", "c7"], ["c4", "q2"], ["q1", "decision", "refusal"]]
+uniform_width = true
+alt = "Маршрутизатор по очереди применяет допуск, закрепки, правила, качество и бюджет и возвращает решение или явный отказ."
+
+[nodes.profile]
+role = "neutral"
+name = "Профиль задачи"
+text = "роль, класс, сложность, бюджет, закрепки"
+
+[nodes.c1]
+column = "left"
+role = "service"
+name = "1. Кандидаты"
+text = "допуск доски для роли, пересечённый с доступными парами"
+
+[nodes.c2]
+column = "left"
+role = "service"
+name = "2. Закрепки"
+text = "явные среда, модель и effort вызывающего"
+
+[nodes.c3]
+column = "left"
+role = "service"
+name = "3. Постоянные правила"
+text = "с областью по сложности и деликатности"
+
+[nodes.c4]
+column = "left"
+role = "service"
+name = "4. Качество"
+text = "индекс кода, замер ревью, общий индекс"
+
+[nodes.q1]
+column = "left"
+role = "neutral"
+name = "Качество известно?"
+
+[nodes.excluded]
+column = "left"
+role = "alert"
+name = "Исключить из автовыбора"
+
+[nodes.c5]
+column = "right"
+role = "service"
+name = "5. Ступень S, A, B, C"
+text = "и планка сложности"
+
+[nodes.c6]
+column = "right"
+role = "service"
+name = "6. Цена"
+text = "прайс, effort, класс оплаты"
+
+[nodes.c7]
+column = "right"
+role = "service"
+name = "7. Цель сложности и режим бюджета"
+text = "стабильный порядок при равенстве"
+
+[nodes.q2]
+column = "right"
+role = "neutral"
+name = "Есть подходящие?"
+
+[nodes.decision]
+role = "service"
+name = "Решение"
+text = "конфигурация, альтернативы, причины, id"
+
+[nodes.refusal]
+role = "alert"
+name = "Отказ"
+text = "`no_qualified_candidate`"
+
+[[links]]
+from = "profile"
+to = "c1"
+
+[[links]]
+from = "c1"
+to = "c2"
+
+[[links]]
+from = "c2"
+to = "c3"
+
+[[links]]
+from = "c3"
+to = "c4"
+
+[[links]]
+from = "c4"
+to = "q1"
+
+[[links]]
+from = "q1"
+to = "excluded"
+label = "нет"
+
+[[links]]
+from = "q1"
+to = "c5"
+label = "да"
+constraint = false
+
+[[links]]
+from = "c5"
+to = "c6"
+
+[[links]]
+from = "c6"
+to = "c7"
+
+[[links]]
+from = "c7"
+to = "q2"
+
+[[links]]
+from = "q2"
+to = "decision"
+label = "да"
+
+[[links]]
+from = "q2"
+to = "refusal"
+label = "нет"

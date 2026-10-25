@@ -1,0 +1,98 @@
+# The operator's action boundary, part 1 of 2: the phone path. Split from the
+# whole sequence of operator-phone.puml at the "Запасной путь" divider; part 2 holds the
+# fallback and read-only paths. Content follows the source and chapter
+# "Оператор и интерфейсы"; the chapter wins on the recipient: the operator
+# command passes the action to the broker ("Служба платформы" in the source).
+# The biometric confirmation is a physical action on the device (dashed, alert).
+layout = "sequence"
+alt = "Операторский путь с телефона: команда выдаёт точное действие, телефон показывает его и подписывает после биометрии, команда сверяет подпись и передаёт действие брокеру."
+
+[theme.space]
+seq_node_width = 150
+seq_label_width = 190
+seq_self_width = 190
+seq_column_gap = 20
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.phone]
+role = "key"
+name = "Телефон"
+text = "неэкспортируемый ключ"
+
+[nodes.command]
+role = "service"
+name = "Узкая операторская команда"
+
+[nodes.broker]
+role = "service"
+name = "Брокер"
+
+
+[[seq]]
+from = "owner"
+to = "phone"
+step = 1
+label = "выбрать действие"
+
+[[seq]]
+from = "phone"
+to = "command"
+step = 2
+label = "SSH по tailnet, без shell"
+
+[[seq]]
+from = "command"
+to = "phone"
+step = 3
+label = "точное содержание действия"
+
+[[seq]]
+from = "phone"
+to = "owner"
+step = 4
+label = "показать кому, что и до какого срока"
+
+[[seq]]
+from = "owner"
+to = "phone"
+step = 5
+label = "подтвердить биометрией"
+style = "dashed"
+color = "alert"
+
+[[seq]]
+from = "phone"
+to = "phone"
+step = 6
+label = "подписать это действие"
+
+[[seq]]
+from = "phone"
+to = "command"
+step = 7
+label = "подписанная запись"
+
+[[seq]]
+from = "command"
+to = "command"
+step = 8
+label = "проверить по закреплённому ключу"
+
+[[seq]]
+from = "command"
+to = "broker"
+step = 9
+label = "действие с основанием"
+
+[[seq]]
+from = "broker"
+to = "owner"
+step = 10
+label = "результат"
+
+[[seq]]
+note = "Агентские сессии не работают под операторской учёткой.\nКлюч телефона: QR-сопряжение, второе устройство обязательно."
+over = ["phone", "broker"]

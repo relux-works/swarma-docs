@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="814.5" height="802" viewBox="0 0 814.5 802">
+<title>Доставка памяти явным результатом инструмента: данные приходят с происхождением и отдельной проверкой права использования.</title>
+<rect width="814.5" height="802" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(60 0)">
+<line x1="0" y1="45.4" x2="0" y2="778" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="215.9" y1="45.4" x2="215.9" y2="778" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="429.7" y1="68.8" x2="429.7" y2="778" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="640.2" y1="68.8" x2="640.2" y2="778" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="-44" y="246.3" width="497.7" height="402.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="353.5" x2="453.7" y2="353.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="253.3" width="160.6" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="267.6" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">право не подтверждено</tspan></text>
+<rect x="-36" y="358.5" width="79.9" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="372.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">разрешено</tspan></text>
+<!-- node agent -->
+<rect x="-50" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="-22" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<!-- node tool -->
+<rect x="122.3" y="0" width="187.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="tool"/>
+<text x="138.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Инструмент памяти</tspan></text>
+<!-- node registry -->
+<rect x="337.4" y="0" width="184.5" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="353.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр документов</tspan></text>
+<text x="369.9" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и свидетельств</tspan></text>
+<!-- node check -->
+<rect x="549.9" y="0" width="180.6" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="check"/>
+<text x="565.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверка текущих</tspan></text>
+<text x="591.6" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">разрешений</tspan></text>
+<!-- message agent -> tool -->
+<path d="M 2 139.8 L 207.9 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="tool" data-edge="m0"/>
+<polygon points="213.9,139.8 203.9,135.3 203.9,144.3" fill="#3a3f47"/>
+<rect x="29" y="92.8" width="157.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="42" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="38.3" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="57" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">явный запрос</tspan></text>
+<text x="57" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в контексте задачи</tspan></text>
+</g>
+<!-- message tool -> check -->
+<path d="M 217.9 226.3 L 632.2 226.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="tool" data-to="check" data-edge="m1"/>
+<polygon points="638.2,226.3 628.2,221.8 628.2,230.8" fill="#3a3f47"/>
+<rect x="350.5" y="159.8" width="155.1" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="363.5" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="359.8" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="378.5" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">разрешено читать,</tspan></text>
+<text x="378.5" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">использовать</tspan></text>
+<text x="378.5" y="214.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и раскрывать?</tspan></text>
+</g>
+<!-- message tool -> agent -->
+<path d="M 213.9 329.5 L 8 329.5" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="tool" data-to="agent" data-edge="m2"/>
+<polygon points="2,329.5 12,334 12,325" fill="#c8285f"/>
+<rect x="24.3" y="282.5" width="167.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="37.3" cy="293.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="33.6" y="297.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="52.3" y="297.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ без раскрытия</tspan></text>
+<text x="52.3" y="317.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">скрытых данных</tspan></text>
+</g>
+<!-- message tool -> registry -->
+<path d="M 217.9 475.7 L 421.7 475.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="tool" data-to="registry" data-edge="m3"/>
+<polygon points="427.7,475.7 417.7,471.2 417.7,480.2" fill="#3a3f47"/>
+<rect x="245.8" y="389.7" width="154" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="258.8" cy="400.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="255.1" y="405.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="273.8" y="404.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ограниченное</tspan></text>
+<text x="273.8" y="424.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">представление</tspan></text>
+<text x="273.8" y="443.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по именованному</tspan></text>
+<text x="273.8" y="463.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">правилу с версией</tspan></text>
+</g>
+<!-- message registry -> tool -->
+<path d="M 427.7 562.2 L 223.9 562.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="tool" data-edge="m4"/>
+<polygon points="217.9,562.2 227.9,566.7 227.9,557.7" fill="#3a3f47"/>
+<rect x="236.7" y="495.7" width="172.1" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="249.7" cy="506.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="246" y="511.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="264.7" y="511" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">данные</tspan></text>
+<text x="264.7" y="530.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с происхождением</tspan></text>
+<text x="264.7" y="550" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и временным срезом</tspan></text>
+</g>
+<!-- message tool -> agent -->
+<path d="M 213.9 629.2 L 8 629.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="tool" data-to="agent" data-edge="m5"/>
+<polygon points="2,629.2 12,633.7 12,624.7" fill="#3a3f47"/>
+<rect x="16" y="582.2" width="183.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="29" cy="593" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="597.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="44" y="597.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат инструмента</tspan></text>
+<text x="44" y="617" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с пометкой</tspan><tspan x="121.6" font-family="PT Mono, monospace" font-weight="bold">data</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="663.2" width="549.7" height="96.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="74.2" y="688.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Снимок в начале сессии приходит отдельным</tspan></text>
+<text x="59.4" y="706.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">блоком данных, в инструкции память не попадает.</tspan></text>
+<text x="44.6" y="724.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Подпись конверта не делает содержимое инструкцией.</tspan></text>
+<text x="16.5" y="743.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Следующая доставка требует актуальной проверки разрешений.</tspan></text>
+</g>
+</g>
+</svg>

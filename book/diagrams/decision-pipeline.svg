@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="922.7" viewBox="0 0 744 922.7">
+<title>Маршрутизатор по очереди применяет допуск, закрепки, правила, качество и бюджет и возвращает решение или явный отказ.</title>
+<rect width="744" height="922.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- graphviz 14.0.4 -->
+<!-- node profile -->
+<rect x="28.4" y="0" width="183.2" height="90.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="profile"/>
+<text x="54.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Профиль задачи</tspan></text>
+<text x="44.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">роль, класс, сложность,</tspan></text>
+<text x="61.1" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">бюджет, закрепки</tspan></text>
+<!-- node c1 -->
+<rect x="0" y="127.4" width="239.9" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c1"/>
+<text x="65.8" y="153.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1. Кандидаты</tspan></text>
+<text x="62.9" y="182.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">допуск доски для</tspan></text>
+<text x="53" y="201.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">роли, пересечённый</tspan></text>
+<text x="48.3" y="221.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">с доступными парами</tspan></text>
+<!-- node c2 -->
+<rect x="0" y="274.3" width="239.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c2"/>
+<text x="73.3" y="300.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2. Закрепки</tspan></text>
+<text x="51.4" y="329" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">явные среда, модель</tspan></text>
+<text x="48.1" y="348.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и effort вызывающего</tspan></text>
+<!-- node c3 -->
+<rect x="0" y="413.4" width="239.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c3"/>
+<text x="27.3" y="439.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3. Постоянные правила</tspan></text>
+<text x="37.1" y="468.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">с областью по сложности</tspan></text>
+<text x="69.3" y="487.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и деликатности</tspan></text>
+<!-- node c4 -->
+<rect x="0" y="552.5" width="239.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c4"/>
+<text x="74.2" y="578.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4. Качество</tspan></text>
+<text x="56.4" y="607.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">индекс кода, замер</tspan></text>
+<text x="49.2" y="626.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ревью, общий индекс</tspan></text>
+<!-- node q1 -->
+<rect x="0" y="725.4" width="239.9" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q1"/>
+<text x="42.2" y="751.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Качество известно?</tspan></text>
+<!-- node excluded -->
+<rect x="0" y="853.3" width="239.9" height="45.4" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="excluded"/>
+<text x="16" y="879.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исключить из автовыбора</tspan></text>
+<!-- node c5 -->
+<rect x="470.8" y="146.9" width="206.4" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c5"/>
+<text x="496.8" y="173" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5. Ступень S, A, B, C</tspan></text>
+<text x="508.4" y="201.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и планка сложности</tspan></text>
+<!-- node c6 -->
+<rect x="470.8" y="284.1" width="206.4" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c6"/>
+<text x="544.4" y="310.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6. Цена</tspan></text>
+<text x="486.8" y="338.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">прайс, effort, класс оплаты</tspan></text>
+<!-- node c7 -->
+<rect x="470.8" y="401.7" width="206.4" height="113.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="c7"/>
+<text x="500.5" y="427.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7. Цель сложности</tspan></text>
+<text x="502.4" y="451.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и режим бюджета</tspan></text>
+<text x="506.1" y="479.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">стабильный порядок</tspan></text>
+<text x="526.5" y="499.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">при равенстве</tspan></text>
+<!-- node q2 -->
+<rect x="470.8" y="575" width="206.4" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q2"/>
+<text x="500.4" y="601.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Есть подходящие?</tspan></text>
+<!-- node decision -->
+<rect x="261.7" y="702.9" width="206.5" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="decision"/>
+<text x="329.6" y="729" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Решение</tspan></text>
+<text x="316.9" y="757.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">конфигурация,</tspan></text>
+<text x="277.7" y="777.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">альтернативы, причины, id</tspan></text>
+<!-- node refusal -->
+<rect x="490" y="712.7" width="230" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="refusal"/>
+<text x="582.4" y="738.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ</tspan></text>
+<text x="506" y="767.3" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">no_qualified_candidate</tspan></text>
+<!-- link profile -> c1 -->
+<path d="M 120 90.8 C 120 100.1 120 110.1 120 119.9 L 120 121.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="profile" data-to="c1" data-edge="e0"/>
+<polygon points="120,127.4 124.5,117.4 115.5,117.4" fill="#3a3f47"/>
+<!-- link c1 -> c2 -->
+<path d="M 120 237.6 C 120 247.1 120 256.9 120 266.4 L 120 267.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c1" data-to="c2" data-edge="e1"/>
+<polygon points="120,273.8 124.5,263.8 115.5,263.8" fill="#3a3f47"/>
+<!-- link c2 -> c3 -->
+<path d="M 120 365 C 120 378.1 120 392.5 120 406 L 120 407.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c2" data-to="c3" data-edge="e2"/>
+<polygon points="120,413.3 124.5,403.3 115.5,403.3" fill="#3a3f47"/>
+<!-- link c3 -> c4 -->
+<path d="M 120 504.1 C 120 517.2 120 531.6 120 545 L 120 546.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c3" data-to="c4" data-edge="e3"/>
+<polygon points="120,552.4 124.5,542.4 115.5,542.4" fill="#3a3f47"/>
+<!-- link c4 -> q1 -->
+<path d="M 120 643.2 C 120 667.3 120 696.3 120 717.5 L 120 719" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c4" data-to="q1" data-edge="e4"/>
+<polygon points="120,725 124.5,715 115.5,715" fill="#3a3f47"/>
+<!-- link q1 -> excluded -->
+<path d="M 120 771.1 C 120 791.7 120 822.7 120 845.5 L 120 846.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q1" data-to="excluded" data-edge="e5"/>
+<polygon points="120,852.9 124.5,842.9 115.5,842.9" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="128" y="827.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+<!-- link q1 -> c5 -->
+<path d="M 154.8 725 C 183.1 705.7 222.8 675.8 251 642.9 C 373.3 499.8 337.7 417.5 460 274.3 C 476.2 255.3 496.9 237.4 516.2 222.6 L 517.3 221.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q1" data-to="c5" data-edge="e6"/>
+<polygon points="522.1,218.1 511.4,220.6 516.8,227.7" fill="#3a3f47"/>
+<g class="label" data-edge="e6">
+<text x="372.3" y="451.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link c5 -> c6 -->
+<path d="M 574 218.2 C 574 236 574 257.8 574 276.5 L 574 277.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c5" data-to="c6" data-edge="e7"/>
+<polygon points="574,283.8 578.5,273.8 569.5,273.8" fill="#3a3f47"/>
+<!-- link c6 -> c7 -->
+<path d="M 574 355.1 C 574 367 574 380.6 574 394 L 574 395.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c6" data-to="c7" data-edge="e8"/>
+<polygon points="574,401.4 578.5,391.4 569.5,391.4" fill="#3a3f47"/>
+<!-- link c7 -> q2 -->
+<path d="M 574 515.8 C 574 533.4 574 552.2 574 567.2 L 574 568.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c7" data-to="q2" data-edge="e9"/>
+<polygon points="574,574.7 578.5,564.7 569.5,564.7" fill="#3a3f47"/>
+<!-- link q2 -> decision -->
+<path d="M 543.1 620.6 C 514.5 641 470.7 672 433.8 698.2 L 432.8 698.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="decision" data-edge="e10"/>
+<polygon points="427.9,702.4 438.7,700.3 433.5,693" fill="#3a3f47"/>
+<g class="label" data-edge="e10">
+<text x="477.8" y="644" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+</g>
+<!-- link q2 -> refusal -->
+<path d="M 578.5 620.6 C 583.2 642.8 590.5 677.7 596.2 705.3 L 596.5 706.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="refusal" data-edge="e11"/>
+<polygon points="597.7,712.5 600.1,701.7 591.3,703.6" fill="#3a3f47"/>
+<g class="label" data-edge="e11">
+<text x="599.7" y="679" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+</g>
+</g>
+</svg>

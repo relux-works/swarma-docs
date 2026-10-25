@@ -1,0 +1,54 @@
+# The operator's action boundary, part 2 of 2: the terminal fallback and the
+# read-only account. Split from the whole sequence of operator-phone.puml at its
+# "Запасной путь" divider; step numbers stay those of the whole sequence. The broker
+# replaces "Служба платформы" of the source, as in part 1.
+layout = "sequence"
+alt = "Запасной путь и чтение: терминал подтверждает то же узкое действие паролем, а учётка наблюдателя только читает."
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.command]
+role = "service"
+name = "Узкая операторская команда"
+
+[nodes.broker]
+role = "service"
+name = "Брокер"
+
+[[seq]]
+divider = "Запасной путь"
+
+[[seq]]
+from = "owner"
+to = "command"
+step = 11
+label = "терминал: `sudo` с паролем, без кэша"
+
+[[seq]]
+from = "command"
+to = "owner"
+step = 12
+label = "показать действие для подтверждения"
+
+[[seq]]
+from = "owner"
+to = "command"
+step = 13
+label = "подтвердить"
+
+[[seq]]
+from = "command"
+to = "broker"
+step = 14
+label = "то же узкое действие"
+
+[[seq]]
+divider = "Чтение"
+
+[[seq]]
+from = "owner"
+to = "broker"
+step = 15
+label = "отдельная учётка наблюдателя, только чтение"

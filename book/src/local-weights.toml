@@ -1,0 +1,100 @@
+# Local weights end to end. Content follows local-weights.puml and chapter
+# "Модели и деньги": the chapter's terms win ("режим мышления", effort), and
+# step 9 keeps the source wording ("фактический" is the fingerprint recomputed
+# over the opened file, as the chapter says). The one-branch alt of the source
+# is an opt frame.
+layout = "sequence"
+alt = "Локальные веса: отпечаток связывает оценку с файлом весов, а движок отдельно сверяет фактический файл перед запуском."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 150
+seq_column_gap = 20
+
+[nodes.operator]
+role = "human"
+name = "Оператор"
+
+[nodes.engine]
+role = "service"
+name = "Движок"
+
+[nodes.config]
+role = "store"
+name = "Конфигурация"
+
+[nodes.board]
+role = "service"
+name = "Доска"
+
+[nodes.router]
+role = "service"
+name = "Маршрутизатор"
+
+[[seq]]
+from = "operator"
+to = "engine"
+step = 1
+label = "импорт файла весов"
+
+[[seq]]
+from = "engine"
+to = "engine"
+step = 2
+label = "SHA-256 файла"
+
+[[seq]]
+from = "engine"
+to = "config"
+step = 3
+label = "отпечаток импортированного файла"
+
+[[seq]]
+from = "operator"
+to = "config"
+step = 4
+label = "ожидаемый отпечаток"
+
+[[seq]]
+from = "board"
+to = "router"
+step = 5
+label = "отпечаток, режим мышления и effort"
+
+[[seq]]
+from = "router"
+to = "router"
+step = 6
+label = "применять оценку только при совпадении файла и режима"
+
+[[seq]]
+from = "router"
+to = "board"
+step = 7
+label = "выбор или \"без оценки\""
+
+[[seq]]
+from = "board"
+to = "engine"
+step = 8
+label = "запрос запуска"
+
+[[seq]]
+from = "engine"
+to = "engine"
+step = 9
+label = "сверить ожидаемый, импортированный и фактический отпечатки"
+
+[[seq]]
+opt = "значения расходятся"
+
+[[seq]]
+from = "engine"
+to = "board"
+step = 10
+label = "отказ"
+color = "alert"
+
+[[seq]]
+end = true

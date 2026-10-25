@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="542" height="515.2" viewBox="0 0 542 515.2">
+<title>Запасной путь и чтение: терминал подтверждает то же узкое действие паролем, а учётка наблюдателя только читает.</title>
+<rect width="542" height="515.2" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.3 0)">
+<line x1="0" y1="45.4" x2="0" y2="491.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="203.1" y1="68.8" x2="203.1" y2="491.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="413.7" y1="45.4" x2="413.7" y2="491.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node owner -->
+<rect x="-54.3" y="0" width="108.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
+<text x="-38.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
+<!-- node command -->
+<rect x="108.1" y="0" width="189.9" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="command"/>
+<text x="124.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Узкая операторская</tspan></text>
+<text x="169" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команда</tspan></text>
+<!-- node broker -->
+<rect x="363.7" y="0" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="broker"/>
+<text x="385" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер</tspan></text>
+<!-- divider -->
+<line x1="-54.3" y1="106.9" x2="463.7" y2="106.9" stroke="#868e99" stroke-width="1.2"/>
+<rect x="148.9" y="92.8" width="115.8" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="162.9" y="111.1" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запасной путь</tspan></text>
+<!-- message owner -> command -->
+<path d="M 2 188 L 195.1 188" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="command" data-edge="m1"/>
+<polygon points="201.1,188 191.1,183.5 191.1,192.5" fill="#3a3f47"/>
+<rect x="16" y="141" width="171.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<rect x="20" y="142.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="24.5" y="156.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="49.7" y="156.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">терминал:</tspan><tspan x="120.9" font-family="PT Mono, monospace" font-weight="bold">sudo</tspan></text>
+<text x="49.7" y="175.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с паролем, без кэша</tspan></text>
+</g>
+<!-- message command -> owner -->
+<path d="M 201.1 255 L 8 255" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="command" data-to="owner" data-edge="m2"/>
+<polygon points="2,255 12,259.5 12,250.5" fill="#3a3f47"/>
+<rect x="16.7" y="208" width="169.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<rect x="20.7" y="209.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.2" y="223.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="50.4" y="223.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">показать действие</tspan></text>
+<text x="50.4" y="242.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для подтверждения</tspan></text>
+</g>
+<!-- message owner -> command -->
+<path d="M 2 302.5 L 195.1 302.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="command" data-edge="m3"/>
+<polygon points="201.1,302.5 191.1,298 191.1,307" fill="#3a3f47"/>
+<rect x="40.4" y="275" width="122.2" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="44.4" y="276.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="48.9" y="290.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="74.2" y="290.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтвердить</tspan></text>
+</g>
+<!-- message command -> broker -->
+<path d="M 205.1 350 L 405.7 350" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="command" data-to="broker" data-edge="m4"/>
+<polygon points="411.7,350 401.7,345.5 401.7,354.5" fill="#3a3f47"/>
+<rect x="219.1" y="322.5" width="178.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="223.1" y="324.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="227.6" y="337.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="252.8" y="337.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">то же узкое действие</tspan></text>
+</g>
+<!-- divider -->
+<line x1="-54.3" y1="384.1" x2="463.7" y2="384.1" stroke="#868e99" stroke-width="1.2"/>
+<rect x="171" y="370" width="71.7" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="185" y="388.3" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Чтение</tspan></text>
+<!-- message owner -> broker -->
+<path d="M 2 465.2 L 405.7 465.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="broker" data-edge="m6"/>
+<polygon points="411.7,465.2 401.7,460.7 401.7,469.7" fill="#3a3f47"/>
+<rect x="93.7" y="418.2" width="226.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="97.7" y="419.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="102.2" y="433.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="127.4" y="433.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отдельная учётка</tspan></text>
+<text x="127.4" y="452.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">наблюдателя, только чтение</tspan></text>
+</g>
+</g>
+</g>
+</svg>

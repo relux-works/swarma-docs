@@ -1,0 +1,78 @@
+# Memory delivered as an explicit tool result. Content follows
+# memory-data-delivery.puml and chapter "Память агентов". The source title's
+# "первый срез" is a delivery status and is gone. Where the source note says
+# memory is never added automatically at launch, the chapter wins: a start-of-
+# session snapshot arrives as a separate data block and never as instructions.
+# "классификация data" follows the chapter's term "пометка `data`".
+layout = "sequence"
+alt = "Доставка памяти явным результатом инструмента: данные приходят с происхождением и отдельной проверкой права использования."
+
+[theme.space]
+seq_node_width = 170
+seq_label_width = 200
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[nodes.tool]
+role = "service"
+name = "Инструмент памяти"
+
+[nodes.registry]
+role = "store"
+name = "Реестр документов и свидетельств"
+
+[nodes.check]
+role = "service"
+name = "Проверка текущих разрешений"
+
+[[seq]]
+from = "agent"
+to = "tool"
+step = 1
+label = "явный запрос в контексте задачи"
+
+[[seq]]
+from = "tool"
+to = "check"
+step = 2
+label = "разрешено читать, использовать и раскрывать?"
+
+[[seq]]
+alt = "право не подтверждено"
+
+[[seq]]
+from = "tool"
+to = "agent"
+step = 3
+label = "отказ без раскрытия скрытых данных"
+color = "alert"
+
+[[seq]]
+else = "разрешено"
+
+[[seq]]
+from = "tool"
+to = "registry"
+step = 3
+label = "ограниченное представление по именованному правилу с версией"
+
+[[seq]]
+from = "registry"
+to = "tool"
+step = 4
+label = "данные с происхождением и временным срезом"
+
+[[seq]]
+from = "tool"
+to = "agent"
+step = 5
+label = "результат инструмента с пометкой `data`"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Снимок в начале сессии приходит отдельным блоком данных, в инструкции память не попадает.\nПодпись конверта не делает содержимое инструкцией.\nСледующая доставка требует актуальной проверки разрешений."
+over = ["agent", "registry"]

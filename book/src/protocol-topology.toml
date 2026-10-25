@@ -1,0 +1,54 @@
+# Swarma Protocol: three planes. Content follows protocol-topology.puml and
+# chapter "Модель протокола". The source's two-way link between core and
+# worker nodes is drawn as two links: assignments, verdicts and continuation
+# go to the workers, revisions come back. The contributors' machines are a
+# boundary in the external role, as the chapter places worker nodes there.
+layout = "graph"
+direction = "TB"
+alt = "Топология Swarma Protocol: рабочие ноды предлагают действия, кор-ноды подтверждают допустимость записей, единая пассивная среда исполняет разрешённое."
+
+[groups.contrib]
+label = "Машины контрибьюторов"
+role = "external"
+
+[nodes.work]
+group = "contrib"
+role = "agent"
+name = "Рабочие ноды"
+text = "агентские циклы контрибьюторов, свои модели и учётные данные; плоскость мышления"
+
+[nodes.core]
+role = "service"
+name = "Кор-ноды"
+text = "журнал, правила, аренда оркестратора; плоскость управления"
+
+[nodes.env]
+role = "service"
+name = "Одна авторитетная среда"
+text = "рабочее дерево, области задач, слоты, проверки, пассивный раннер; плоскость исполнения"
+note = "Через сеть идут команды, вывод, хэши и подписи.\nСреда не переносится к контрибьютору.\nПодписи не доказывают содержательное качество кода."
+
+[[links]]
+from = "core"
+to = "work"
+label = "назначения, вердикты,\nпродолжение работы"
+
+[[links]]
+from = "work"
+to = "core"
+label = "ревизии"
+
+[[links]]
+from = "core"
+to = "env"
+label = "совершённые записи с QC"
+
+[[links]]
+from = "work"
+to = "env"
+label = "удалённые команды\nв границах задачи"
+
+[[links]]
+from = "env"
+to = "work"
+label = "вывод и свидетельства"

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="845.7" height="775.6" viewBox="0 0 845.7 775.6">
+<title>Операторский путь с телефона: команда выдаёт точное действие, телефон показывает его и подписывает после биометрии, команда сверяет подпись и передаёт действие брокеру.</title>
+<rect width="845.7" height="775.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.3 0)">
+<line x1="0" y1="45.4" x2="0" y2="751.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="187.8" y1="90.4" x2="187.8" y2="751.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="443.3" y1="92.2" x2="443.3" y2="751.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="707.4" y1="45.4" x2="707.4" y2="751.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node owner -->
+<rect x="-54.3" y="0" width="108.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
+<text x="-38.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
+<!-- node phone -->
+<rect x="109.1" y="0" width="157.4" height="90.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="phone"/>
+<text x="153" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Телефон</tspan></text>
+<text x="125.1" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">неэкспортируемый</tspan></text>
+<text x="171.4" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ</tspan></text>
+<!-- node command -->
+<rect x="373.1" y="0" width="140.5" height="92.2" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="command"/>
+<text x="420.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Узкая</tspan></text>
+<text x="389.1" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">операторская</tspan></text>
+<text x="409.2" y="72.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команда</tspan></text>
+<!-- node broker -->
+<rect x="657.4" y="0" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="broker"/>
+<text x="678.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер</tspan></text>
+<!-- message owner -> phone -->
+<path d="M 2 143.7 L 179.8 143.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="phone" data-edge="m0"/>
+<polygon points="185.8,143.7 175.8,139.2 175.8,148.2" fill="#3a3f47"/>
+<rect x="18.1" y="116.2" width="151.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="31.1" cy="126.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="27.4" y="131.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="46.1" y="131.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выбрать действие</tspan></text>
+</g>
+<!-- message phone -> command -->
+<path d="M 189.8 191.2 L 435.3 191.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="command" data-edge="m1"/>
+<polygon points="441.3,191.2 431.3,186.7 431.3,195.7" fill="#3a3f47"/>
+<rect x="221.8" y="163.7" width="187.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="234.8" cy="174.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="231.1" y="179.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="249.8" y="178.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH по tailnet, без shell</tspan></text>
+</g>
+<!-- message command -> phone -->
+<path d="M 441.3 258.2 L 195.8 258.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="command" data-to="phone" data-edge="m2"/>
+<polygon points="189.8,258.2 199.8,262.7 199.8,253.7" fill="#3a3f47"/>
+<rect x="234.6" y="211.2" width="161.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="247.6" cy="221.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="243.9" y="226.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="262.6" y="226.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">точное содержание</tspan></text>
+<text x="262.6" y="245.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действия</tspan></text>
+</g>
+<!-- message phone -> owner -->
+<path d="M 185.8 325.2 L 8 325.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="owner" data-edge="m3"/>
+<polygon points="2,325.2 12,329.7 12,320.7" fill="#3a3f47"/>
+<rect x="16" y="278.2" width="155.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="29" cy="288.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="293.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="44" y="293.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">показать кому, что</tspan></text>
+<text x="44" y="312.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и до какого срока</tspan></text>
+</g>
+<!-- message owner -> phone -->
+<path d="M 2 392.2 L 179.8 392.2" fill="none" stroke="#c8285f" stroke-width="2" stroke-dasharray="6 5" class="edge" data-from="owner" data-to="phone" data-edge="m4"/>
+<polygon points="185.8,392.2 175.8,387.7 175.8,396.7" fill="#c8285f"/>
+<rect x="35.7" y="345.2" width="116.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="48.7" cy="355.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="45" y="360.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="63.7" y="360.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтвердить</tspan></text>
+<text x="63.7" y="379.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">биометрией</tspan></text>
+</g>
+<!-- self phone -->
+<path d="M 189.8 416.2 L 219.8 416.2 L 219.8 445.7 L 196.8 445.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="phone" data-edge="m5"/>
+<polygon points="190.8,445.7 200.8,450.2 200.8,441.2" fill="#3a3f47"/>
+<rect x="227.8" y="420.2" width="189.5" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="240.8" cy="430.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="237.1" y="435.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="255.8" y="435.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписать это действие</tspan></text>
+</g>
+<!-- message phone -> command -->
+<path d="M 189.8 489.2 L 435.3 489.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="command" data-edge="m6"/>
+<polygon points="441.3,489.2 431.3,484.7 431.3,493.7" fill="#3a3f47"/>
+<rect x="232.8" y="461.7" width="165.5" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="245.8" cy="472.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="242.2" y="477.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="260.8" y="476.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная запись</tspan></text>
+</g>
+<!-- self command -->
+<path d="M 445.3 513.2 L 475.3 513.2 L 475.3 562.2 L 452.3 562.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="command" data-to="command" data-edge="m7"/>
+<polygon points="446.3,562.2 456.3,566.7 456.3,557.7" fill="#3a3f47"/>
+<rect x="483.3" y="517.2" width="198.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="496.3" cy="528" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="492.6" y="532.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="511.3" y="532.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить</tspan></text>
+<text x="511.3" y="552" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по закреплённому ключу</tspan></text>
+</g>
+<!-- message command -> broker -->
+<path d="M 445.3 605.7 L 699.4 605.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="command" data-to="broker" data-edge="m8"/>
+<polygon points="705.4,605.7 695.4,601.2 695.4,610.2" fill="#3a3f47"/>
+<rect x="482.3" y="578.2" width="186" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<circle cx="495.3" cy="589" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="491.6" y="593.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="510.3" y="593.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действие с основанием</tspan></text>
+</g>
+<!-- message broker -> owner -->
+<path d="M 705.4 653.2 L 8 653.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="broker" data-to="owner" data-edge="m9"/>
+<polygon points="2,653.2 12,657.7 12,648.7" fill="#3a3f47"/>
+<rect x="302.6" y="625.7" width="102.2" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m9">
+<rect x="306.6" y="627.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="311.1" y="641.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="336.4" y="641" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат</tspan></text>
+</g>
+<!-- note -->
+<rect x="127.8" y="673.2" width="639.6" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="269.4" y="698.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Агентские сессии не работают под операторской учёткой.</tspan></text>
+<text x="247" y="716.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Ключ телефона: QR-сопряжение, второе устройство обязательно.</tspan></text>
+</g>
+</g>
+</svg>
