@@ -1,3 +1,5 @@
+# Former source: one-shot-agent.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # One-shot launch, part 1 of 2: request, account and binding. Split from the
 # whole transaction (one-shot-agent.puml) at the start of the launch; step
 # numbers stay those of the whole transaction. Content follows the .puml and

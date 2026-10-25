@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="815" height="588.1" viewBox="0 0 815 588.1">
+<svg xmlns="http://www.w3.org/2000/svg" width="815" height="509.9" viewBox="0 0 815 509.9">
 <title>Проект библиотеки: рантайм проверяет личность агента и публикует аттестацию ревью, а индексатор вычисляет по истории репутацию.</title>
-<rect width="815" height="588.1" fill="#ffffff"/>
+<rect width="815" height="509.9" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(52.8 0)">
-<line x1="0" y1="90.4" x2="0" y2="564.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="173.8" y1="68.8" x2="173.8" y2="564.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="372.8" y1="45.4" x2="372.8" y2="564.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="675.5" y1="45.4" x2="675.5" y2="564.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="90.4" x2="0" y2="485.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="173.8" y1="68.8" x2="173.8" y2="485.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="372.8" y1="45.4" x2="372.8" y2="485.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="675.5" y1="45.4" x2="675.5" y2="485.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node agent -->
 <rect x="-52.8" y="0" width="105.5" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
 <text x="-22" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
@@ -22,62 +22,58 @@
 <!-- node indexer -->
 <rect x="612.7" y="0" width="125.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="indexer"/>
 <text x="628.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Индексатор</tspan></text>
-<!-- divider -->
-<line x1="-52.8" y1="128.5" x2="738.2" y2="128.5" stroke="#868e99" stroke-width="1.2"/>
-<rect x="263.8" y="114.4" width="147.8" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
-<text x="277.8" y="132.7" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проект библиотеки</tspan></text>
 <!-- message lib -> chain -->
-<path d="M 175.8 229.1 L 364.8 229.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="lib" data-to="chain" data-edge="m1"/>
-<polygon points="370.8,229.1 360.8,224.6 360.8,233.6" fill="#3a3f47"/>
-<rect x="196.4" y="162.6" width="153.7" height="60.5" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m1">
-<circle cx="209.4" cy="173.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="205.8" y="178" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
-<text x="224.4" y="177.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить ячейку</tspan></text>
-<text x="224.4" y="197.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">личности и ячейку</tspan></text>
-<text x="224.4" y="216.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">владельца</tspan></text>
+<path d="M 175.8 180.9 L 364.8 180.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="lib" data-to="chain" data-edge="m0"/>
+<polygon points="370.8,180.9 360.8,176.4 360.8,185.4" fill="#3a3f47"/>
+<rect x="196.4" y="114.4" width="153.7" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="209.4" cy="125.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="205.8" y="129.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="224.4" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить ячейку</tspan></text>
+<text x="224.4" y="149.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">личности и ячейку</tspan></text>
+<text x="224.4" y="168.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">владельца</tspan></text>
 </g>
 <!-- message agent -> lib -->
-<path d="M 2 296.1 L 165.8 296.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="lib" data-edge="m2"/>
-<polygon points="171.8,296.1 161.8,291.6 161.8,300.6" fill="#3a3f47"/>
-<rect x="16" y="249.1" width="141.8" height="41" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m2">
-<circle cx="29" cy="259.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="25.3" y="264.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="44" y="264.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ревью в проекте</tspan></text>
-<text x="44" y="283.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">библиотеки</tspan></text>
+<path d="M 2 241.9 L 165.8 241.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="lib" data-edge="m1"/>
+<polygon points="171.8,241.9 161.8,237.4 161.8,246.4" fill="#3a3f47"/>
+<rect x="16" y="194.9" width="141.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="29" cy="205.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="210.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="44" y="210.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ревью в проекте</tspan></text>
+<text x="44" y="229.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">библиотеки</tspan></text>
 </g>
 <!-- message lib -> chain -->
-<path d="M 175.8 402.1 L 364.8 402.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="lib" data-to="chain" data-edge="m3"/>
-<polygon points="370.8,402.1 360.8,397.6 360.8,406.6" fill="#3a3f47"/>
-<rect x="189.8" y="316.1" width="167" height="80" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m3">
-<circle cx="202.8" cy="326.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="199.1" y="331.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="217.8" y="331.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная</tspan></text>
-<text x="217.8" y="350.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация исхода:</tspan></text>
-<text x="217.8" y="370.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэши и метаданные,</tspan></text>
-<text x="217.8" y="389.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без кода и секретов</tspan></text>
+<path d="M 175.8 341.9 L 364.8 341.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="lib" data-to="chain" data-edge="m2"/>
+<polygon points="370.8,341.9 360.8,337.4 360.8,346.4" fill="#3a3f47"/>
+<rect x="189.8" y="255.9" width="167" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="202.8" cy="266.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="199.1" y="271.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="217.8" y="271.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная</tspan></text>
+<text x="217.8" y="290.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация исхода:</tspan></text>
+<text x="217.8" y="310.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэши и метаданные,</tspan></text>
+<text x="217.8" y="329.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без кода и секретов</tspan></text>
 </g>
 <!-- message chain -> indexer -->
-<path d="M 374.8 449.6 L 667.5 449.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="chain" data-to="indexer" data-edge="m4"/>
-<polygon points="673.5,449.6 663.5,445.1 663.5,454.1" fill="#3a3f47"/>
-<rect x="443.5" y="422.1" width="161.2" height="21.5" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m4">
-<circle cx="456.5" cy="432.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="452.9" y="437.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="471.5" y="437.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">история аттестаций</tspan></text>
+<path d="M 374.8 383.4 L 667.5 383.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="chain" data-to="indexer" data-edge="m3"/>
+<polygon points="673.5,383.4 663.5,378.9 663.5,387.9" fill="#3a3f47"/>
+<rect x="443.5" y="355.9" width="161.2" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="456.5" cy="366.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="452.9" y="371.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="471.5" y="371.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">история аттестаций</tspan></text>
 </g>
 <!-- self indexer -->
-<path d="M 673.5 473.6 L 643.5 473.6 L 643.5 542.1 L 666.5 542.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="indexer" data-to="indexer" data-edge="m5"/>
-<polygon points="672.5,542.1 662.5,537.6 662.5,546.6" fill="#3a3f47"/>
-<rect x="398.8" y="477.6" width="236.7" height="60.5" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m5">
-<circle cx="411.8" cy="488.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="408.1" y="493" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="426.8" y="492.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">детерминированный расчёт</tspan></text>
-<text x="426.8" y="512.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по выбранному правилу</tspan></text>
-<text x="426.8" y="531.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с учётом выдавших рантаймов</tspan></text>
+<path d="M 673.5 401.4 L 643.5 401.4 L 643.5 469.9 L 666.5 469.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="indexer" data-to="indexer" data-edge="m4"/>
+<polygon points="672.5,469.9 662.5,465.4 662.5,474.4" fill="#3a3f47"/>
+<rect x="398.8" y="405.4" width="236.7" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="411.8" cy="416.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="408.1" y="420.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="426.8" y="420.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">детерминированный расчёт</tspan></text>
+<text x="426.8" y="440.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по выбранному правилу</tspan></text>
+<text x="426.8" y="459.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с учётом выдавших рантаймов</tspan></text>
 </g>
 </g>
 </g>

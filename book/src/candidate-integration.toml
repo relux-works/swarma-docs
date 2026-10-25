@@ -1,6 +1,11 @@
+# Former source: candidate-integration.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Candidate integration: admission. Content follows candidate-integration.puml
 # and chapter "Оркестратор по аренде и цикл задачи". The legend's two sentences
-# became notes beside the collection step and the admission question; the quotes are straight. The
+# became notes: the first beside the collection step, the second, about the
+# whole flow, beside its successful end (the chapter's table: a done
+# compare-and-set gives no guarantee against a semantic defect). The quotes
+# are straight. The
 # admission runs down the left column, the integration down the right one; the
 # start and end markers of the source are dropped, every path ends in an outcome.
 # Step names are shortened to fit the print box; their content is unchanged.
@@ -32,7 +37,6 @@ note = "Одобрение ревизии не заменяет одобрени
 column = "left"
 role = "neutral"
 name = "Все свойства пройдены и адреса совпадают?"
-note = "Успешный процесс не доказывает отсутствие смысловых дефектов."
 
 [nodes.record]
 column = "right"
@@ -55,6 +59,7 @@ name = "Голова всё ещё `M`?"
 role = "service"
 name = "Голова `M` → `I`"
 text = "атомарный compare-and-set"
+note = "Успешный процесс не доказывает отсутствие смысловых дефектов."
 
 [nodes.stale]
 role = "alert"

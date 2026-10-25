@@ -7,24 +7,24 @@
 <!-- group board -->
 <rect x="8" y="95.4" width="650" height="352.7" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="board"/>
 <!-- node playbook -->
-<rect x="71.9" y="0" width="180.2" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="playbook"/>
-<text x="87.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Плейбук с версией</tspan></text>
+<rect x="69.9" y="0" width="180.2" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="playbook"/>
+<text x="85.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Плейбук с версией</tspan></text>
 <!-- node human -->
-<rect x="274" y="0" width="100" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="human"/>
-<text x="291" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Человек</tspan></text>
+<rect x="272" y="0" width="100" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="human"/>
+<text x="289" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Человек</tspan></text>
 <!-- node flow -->
-<rect x="161.6" y="148.4" width="162.8" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="flow"/>
-<text x="177.6" y="174.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Движок потоков</tspan></text>
+<rect x="159.6" y="148.4" width="162.8" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="flow"/>
+<text x="175.6" y="174.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Движок потоков</tspan></text>
 <!-- node kernel -->
-<rect x="66.5" y="253.8" width="151" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="kernel"/>
-<text x="87.1" y="279.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Правила ядра</tspan></text>
-<text x="82.5" y="308.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">в каждой мутации</tspan></text>
+<rect x="63.5" y="253.8" width="151" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="kernel"/>
+<text x="84.1" y="279.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Правила ядра</tspan></text>
+<text x="79.5" y="308.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">в каждой мутации</tspan></text>
 <!-- node tasks -->
 <rect x="26.1" y="384.7" width="219.7" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="tasks"/>
 <text x="42.1" y="410.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Задачи, цели и ресурсы</tspan></text>
 <!-- node router -->
-<rect x="274.4" y="266.5" width="139.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="router"/>
-<text x="290.4" y="292.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Роутер ролей</tspan></text>
+<rect x="239" y="266.5" width="210.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="router"/>
+<text x="255" y="292.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Маршрутизатор ролей</tspan></text>
 <!-- node spawn -->
 <rect x="267.9" y="384.7" width="152.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="spawn"/>
 <text x="283.9" y="410.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запрос запуска</tspan></text>
@@ -41,31 +41,31 @@
 <rect x="453.2" y="603.5" width="177.5" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="actor"/>
 <text x="469.2" y="629.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исполнитель роли</tspan></text>
 <!-- link playbook -> flow -->
-<path d="M 174.1 45.6 C 188.3 71.2 211.7 113.5 227.2 141.6 L 227.9 142.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="playbook" data-to="flow" data-edge="e0"/>
-<polygon points="230.8,148 229.9,137.1 222,141.5" fill="#3a3f47"/>
+<path d="M 172.1 45.6 C 186.3 71.2 209.7 113.5 225.2 141.6 L 225.9 142.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="playbook" data-to="flow" data-edge="e0"/>
+<polygon points="228.8,148 227.9,137.1 220,141.5" fill="#3a3f47"/>
 <!-- link human -> flow -->
-<path d="M 311.9 45.6 C 297.7 71.2 274.3 113.5 258.8 141.6 L 258.1 142.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="human" data-to="flow" data-edge="e1"/>
-<polygon points="255.2,148 264,141.5 256.1,137.1" fill="#3a3f47"/>
+<path d="M 309.9 45.6 C 295.7 71.2 272.3 113.5 256.8 141.6 L 256.1 142.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="human" data-to="flow" data-edge="e1"/>
+<polygon points="253.2,148 262,141.5 254.1,137.1" fill="#3a3f47"/>
 <g class="label" data-edge="e1">
-<text x="303.9" y="79.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтверждение версии</tspan></text>
+<text x="301.9" y="79.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтверждение версии</tspan></text>
 </g>
 <!-- link flow -> kernel -->
-<path d="M 170.2 194.3 C 162.9 199.1 156.2 204.8 151 211.8 C 143.7 221.6 140.5 234.1 139.3 246.1 L 139.2 247.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="kernel" data-edge="e2"/>
-<polygon points="138.9,253.5 144,243.8 135,243.3" fill="#3a3f47"/>
+<path d="M 168.8 194.1 C 161.2 198.9 154.3 204.7 149 211.8 C 141.7 221.5 138.3 234 137 246.1 L 136.9 247.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="kernel" data-edge="e2"/>
+<polygon points="136.4,253.5 141.6,243.9 132.7,243.2" fill="#3a3f47"/>
 <g class="label" data-edge="e2">
-<text x="155.1" y="228.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предложение перехода</tspan></text>
+<text x="153.1" y="228.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предложение перехода</tspan></text>
 </g>
 <!-- link kernel -> tasks -->
-<path d="M 140.2 325.1 C 139.3 341.6 138.3 361.2 137.5 377 L 137.4 378.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="kernel" data-to="tasks" data-edge="e3"/>
-<polygon points="137.1,384.4 142.1,374.6 133.2,374.2" fill="#3a3f47"/>
+<path d="M 138.1 325.1 C 137.7 341.6 137.2 361.2 136.8 377 L 136.7 378.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="kernel" data-to="tasks" data-edge="e3"/>
+<polygon points="136.6,384.4 141.3,374.5 132.3,374.3" fill="#3a3f47"/>
 <g class="label" data-edge="e3">
-<text x="147.4" y="355.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допустимая мутация</tspan></text>
+<text x="145.7" y="358.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допустимая мутация</tspan></text>
 </g>
 <!-- link flow -> router -->
-<path d="M 295.9 194.1 C 303.7 199.1 311.1 204.9 317 211.8 C 328.4 225.1 335.1 243.6 339 259 L 339.3 260.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="router" data-edge="e4"/>
-<polygon points="340.7,266.3 342.8,255.6 334,257.6" fill="#3a3f47"/>
+<path d="M 293.8 194.2 C 301.6 199.2 309 205 315 211.8 C 326.8 225.2 334 243.9 338.3 259.4 L 338.5 260.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="router" data-edge="e4"/>
+<polygon points="340,266.3 341.9,255.5 333.2,257.8" fill="#3a3f47"/>
 <g class="label" data-edge="e4">
-<text x="347" y="254" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">следующий владелец роли</tspan></text>
+<text x="347.1" y="256.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">следующий владелец роли</tspan></text>
 </g>
 <!-- link router -> spawn -->
 <path d="M 344 312.4 C 344 330.7 344 356.9 344 377 L 344 378.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="router" data-to="spawn" data-edge="e5"/>

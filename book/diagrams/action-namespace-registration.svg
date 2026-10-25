@@ -1,126 +1,127 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="833.4" height="875.1" viewBox="0 0 833.4 875.1">
+<svg xmlns="http://www.w3.org/2000/svg" width="839.5" height="838.5" viewBox="0 0 839.5 838.5">
 <title>Реестр действий: имя действия связывается со схемой и обработчиком до того, как его можно использовать в гранте или команде.</title>
-<rect width="833.4" height="875.1" fill="#ffffff"/>
+<rect width="839.5" height="838.5" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(63.5 0)">
-<line x1="0" y1="45.4" x2="0" y2="851.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="160.1" y1="68.8" x2="160.1" y2="851.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="414" y1="68.8" x2="414" y2="851.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="666.2" y1="45.4" x2="666.2" y2="851.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="45.4" x2="0" y2="814.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="166.2" y1="92.2" x2="166.2" y2="814.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="420.1" y1="68.8" x2="420.1" y2="814.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="672.4" y1="45.4" x2="672.4" y2="814.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- frame alt -->
-<rect x="116.1" y="315.3" width="525.9" height="192.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
-<line x1="116.1" y1="424.5" x2="642" y2="424.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
-<rect x="124.1" y="322.3" width="157.4" height="20.2" fill="#ffffff" class="plate"/>
-<text x="130.1" y="336.6" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрация допустима</tspan></text>
-<rect x="124.1" y="429.5" width="113.6" height="20.2" fill="#ffffff" class="plate"/>
-<text x="130.1" y="443.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вне полномочий</tspan></text>
+<rect x="122.2" y="320.7" width="525.9" height="180.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="122.2" y1="423.9" x2="648.2" y2="423.9" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="130.2" y="327.7" width="157.4" height="20.2" fill="#ffffff" class="plate"/>
+<text x="136.2" y="342" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрация допустима</tspan></text>
+<rect x="130.2" y="428.9" width="113.6" height="20.2" fill="#ffffff" class="plate"/>
+<text x="136.2" y="443.2" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вне полномочий</tspan></text>
 <!-- node handler -->
 <rect x="-63.5" y="0" width="126.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="handler"/>
 <text x="-47.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Обработчик</tspan></text>
 <!-- node owner -->
-<rect x="83.5" y="0" width="153.3" height="68.8" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
-<text x="105.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец или</tspan></text>
-<text x="99.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">администратор</tspan></text>
+<rect x="83.5" y="0" width="165.6" height="92.2" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
+<text x="111.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец или</tspan></text>
+<text x="99.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">делегированный</tspan></text>
+<text x="105.6" y="72.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">администратор</tspan></text>
 <!-- node registry -->
-<rect x="361.4" y="0" width="105.2" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
-<text x="387.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр</tspan></text>
-<text x="377.4" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действий</tspan></text>
+<rect x="367.5" y="0" width="105.2" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="393.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр</tspan></text>
+<text x="383.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действий</tspan></text>
 <!-- node gate -->
-<rect x="586.5" y="0" width="159.4" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="gate"/>
-<text x="602.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ворота доверия</tspan></text>
+<rect x="592.7" y="0" width="159.4" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="gate"/>
+<text x="608.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ворота доверия</tspan></text>
 <!-- message handler -> registry -->
-<path d="M 2 139.8 L 406 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="handler" data-to="registry" data-edge="m0"/>
-<polygon points="412,139.8 402,135.3 402,144.3" fill="#3a3f47"/>
-<rect x="123.9" y="92.8" width="166.2" height="41" fill="#ffffff" class="plate"/>
+<path d="M 2 163.2 L 412.1 163.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="handler" data-to="registry" data-edge="m0"/>
+<polygon points="418.1,163.2 408.1,158.7 408.1,167.7" fill="#3a3f47"/>
+<rect x="127" y="116.2" width="166.2" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m0">
-<circle cx="136.9" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="133.2" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
-<text x="151.9" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">манифест: действия</tspan></text>
-<text x="151.9" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и схемы аргументов</tspan></text>
+<circle cx="140" cy="126.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="136.3" y="131.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="155" y="131.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">манифест: действия</tspan></text>
+<text x="155" y="150.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и схемы аргументов</tspan></text>
 </g>
 <!-- message owner -> registry -->
-<path d="M 162.1 206.8 L 406 206.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m1"/>
-<polygon points="412,206.8 402,202.3 402,211.3" fill="#3a3f47"/>
-<rect x="185.3" y="159.8" width="203.5" height="41" fill="#ffffff" class="plate"/>
+<path d="M 168.2 224.2 L 412.1 224.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m1"/>
+<polygon points="418.1,224.2 408.1,219.7 408.1,228.7" fill="#3a3f47"/>
+<rect x="191.5" y="177.2" width="203.5" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
-<circle cx="198.3" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="194.6" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="213.3" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная регистрация</tspan></text>
-<text x="213.3" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пространства имён</tspan></text>
+<circle cx="204.5" cy="187.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="200.8" y="192.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="219.5" y="192.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная регистрация</tspan></text>
+<text x="219.5" y="211.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пространства имён</tspan></text>
 </g>
 <!-- self registry -->
-<path d="M 416 230.8 L 446 230.8 L 446 299.3 L 423 299.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m2"/>
-<polygon points="417,299.3 427,303.8 427,294.8" fill="#3a3f47"/>
-<rect x="454" y="234.8" width="186.2" height="60.5" fill="#ffffff" class="plate"/>
+<path d="M 422.1 242.2 L 452.1 242.2 L 452.1 310.7 L 429.1 310.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m2"/>
+<polygon points="423.1,310.7 433.1,315.2 433.1,306.2" fill="#3a3f47"/>
+<rect x="460.1" y="246.2" width="186.2" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
-<circle cx="467" cy="245.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="463.3" y="250.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="482" y="250.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить полномочия</tspan></text>
-<text x="482" y="269.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и допустимый префикс</tspan></text>
-<text x="482" y="289.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрирующего</tspan></text>
+<circle cx="473.1" cy="256.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="469.5" y="261.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="488.1" y="261.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить полномочия</tspan></text>
+<text x="488.1" y="280.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и допустимый префикс</tspan></text>
+<text x="488.1" y="300.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрирующего</tspan></text>
 </g>
 <!-- self registry -->
-<path d="M 416 355.5 L 446 355.5 L 446 404.5 L 423 404.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m3"/>
-<polygon points="417,404.5 427,409 427,400" fill="#3a3f47"/>
-<rect x="454" y="359.5" width="164" height="41" fill="#ffffff" class="plate"/>
+<path d="M 422.1 360.9 L 452.1 360.9 L 452.1 409.9 L 429.1 409.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registry" data-to="registry" data-edge="m3"/>
+<polygon points="423.1,409.9 433.1,414.4 433.1,405.4" fill="#3a3f47"/>
+<rect x="460.1" y="364.9" width="164" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="467" cy="370.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="463.3" y="374.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="482" y="374.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">связать имя,</tspan></text>
-<text x="482" y="394.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">схему и обработчик</tspan></text>
+<circle cx="473.1" cy="375.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="469.5" y="380.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="488.1" y="380.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">связать имя,</tspan></text>
+<text x="488.1" y="399.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">схему и обработчик</tspan></text>
 </g>
 <!-- message registry -> owner -->
-<path d="M 412 488.2 L 168.1 488.2" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registry" data-to="owner" data-edge="m4"/>
-<polygon points="162.1,488.2 172.1,492.7 172.1,483.7" fill="#c8285f"/>
-<rect x="253.3" y="460.7" width="67.6" height="21.5" fill="#ffffff" class="plate"/>
+<path d="M 418.1 487.6 L 174.2 487.6" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registry" data-to="owner" data-edge="m4"/>
+<polygon points="168.2,487.6 178.2,492.1 178.2,483.1" fill="#c8285f"/>
+<rect x="259.4" y="460.1" width="67.6" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m4">
-<circle cx="266.3" cy="471.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="262.6" y="476.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="281.3" y="475.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+<circle cx="272.4" cy="470.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="268.7" y="475.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="287.4" y="475.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
 </g>
 <!-- message owner -> registry -->
-<path d="M 162.1 569.2 L 406 569.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m5"/>
-<polygon points="412,569.2 402,564.7 402,573.7" fill="#3a3f47"/>
-<rect x="176.1" y="522.2" width="221.9" height="41" fill="#ffffff" class="plate"/>
+<path d="M 168.2 562.6 L 412.1 562.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m5"/>
+<polygon points="418.1,562.6 408.1,558.1 408.1,567.1" fill="#3a3f47"/>
+<rect x="182.2" y="515.6" width="221.9" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m5">
-<circle cx="189.1" cy="533" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="185.4" y="537.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="204.1" y="537.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">грант с зарегистрированным</tspan></text>
-<text x="204.1" y="557" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действием</tspan></text>
+<circle cx="195.2" cy="526.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="191.6" y="531" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="210.2" y="530.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">грант с зарегистрированным</tspan></text>
+<text x="210.2" y="550.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действием</tspan></text>
 </g>
 <!-- message gate -> registry -->
-<path d="M 664.2 636.2 L 422 636.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="registry" data-edge="m6"/>
-<polygon points="416,636.2 426,640.7 426,631.7" fill="#3a3f47"/>
-<rect x="447.7" y="589.2" width="184.8" height="41" fill="#ffffff" class="plate"/>
+<path d="M 670.4 623.6 L 428.1 623.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="registry" data-edge="m6"/>
+<polygon points="422.1,623.6 432.1,628.1 432.1,619.1" fill="#3a3f47"/>
+<rect x="453.9" y="576.6" width="184.8" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m6">
-<circle cx="460.7" cy="600" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="457" y="604.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
-<text x="475.7" y="604.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">найти схему</tspan></text>
-<text x="475.7" y="624" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и обработчик команды</tspan></text>
+<circle cx="466.9" cy="587.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="463.2" y="592" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="481.9" y="591.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">найти схему</tspan></text>
+<text x="481.9" y="611.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и обработчик команды</tspan></text>
 </g>
 <!-- self gate -->
-<path d="M 664.2 660.2 L 634.2 660.2 L 634.2 709.2 L 657.2 709.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="gate" data-edge="m7"/>
-<polygon points="663.2,709.2 653.2,704.7 653.2,713.7" fill="#3a3f47"/>
-<rect x="450.4" y="664.2" width="175.8" height="41" fill="#ffffff" class="plate"/>
+<path d="M 670.4 641.6 L 640.4 641.6 L 640.4 690.6 L 663.4 690.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="gate" data-edge="m7"/>
+<polygon points="669.4,690.6 659.4,686.1 659.4,695.1" fill="#3a3f47"/>
+<rect x="456.5" y="645.6" width="175.8" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m7">
-<circle cx="463.4" cy="675" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="459.7" y="679.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="478.4" y="679.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить аргументы</tspan></text>
-<text x="478.4" y="699" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и цепочку грантов</tspan></text>
+<circle cx="469.5" cy="656.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="465.8" y="661" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="484.5" y="660.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить аргументы</tspan></text>
+<text x="484.5" y="680.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и цепочку грантов</tspan></text>
 </g>
 <!-- message gate -> handler -->
-<path d="M 664.2 752.7 L 8 752.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="handler" data-edge="m8"/>
-<polygon points="2,752.7 12,757.2 12,748.2" fill="#3a3f47"/>
-<rect x="245.7" y="725.2" width="174.8" height="21.5" fill="#ffffff" class="plate"/>
+<path d="M 670.4 728.1 L 8 728.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="handler" data-edge="m8"/>
+<polygon points="2,728.1 12,732.6 12,723.6" fill="#3a3f47"/>
+<rect x="248.8" y="700.6" width="174.8" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m8">
-<circle cx="258.7" cy="736" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="255" y="740.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
-<text x="273.7" y="740.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущенная команда</tspan></text>
+<circle cx="261.8" cy="711.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="258.1" y="716" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="276.8" y="715.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущенная команда</tspan></text>
 </g>
 <!-- note -->
-<rect x="354" y="772.7" width="372.2" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="380.4" y="798" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Незарегистрированное действие не получает грант.</tspan></text>
-<text x="397.1" y="816.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Текст просьбы не создаёт нового полномочия.</tspan></text>
+<rect x="360.1" y="742.1" width="372.2" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="386.6" y="767.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Незарегистрированное действие не получает грант.</tspan></text>
+<text x="403.2" y="785.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Текст просьбы не создаёт нового полномочия.</tspan></text>
 </g>
 </g>
 </svg>

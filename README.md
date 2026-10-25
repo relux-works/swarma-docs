@@ -41,15 +41,15 @@
 | tectonic 0.17 (движок XeTeX) | сборка пейпера; пакеты подтягивает сам | `make -C paper` | `paper/paper.pdf` |
 | Python 3.9+ | прогон модели фрагмента интеграции | `make -C paper model` | stdout |
 | pandoc 3.x | книга: Markdown → HTML, оглавление, нумерация | через `book/build.sh` | временный каталог |
-| WeasyPrint 69+ | книга: HTML → PDF | `book/build.sh` | `book/swarma-book.ru.pdf` |
+| WeasyPrint 69+ | книга: HTML → PDF; сборка сначала гоняет `book/check-figures.sh`, проход рендера без Graphviz 14.0.4 валит её (`BOOK_SKIP_FIGURE_RENDER=1` пропускает его для черновика) | `book/build.sh` | `book/swarma-book.ru.pdf` |
 | PlantUML | исходники рисунков записки о подписях (рендер через `platform-book figures`) и пробник стиля | см. `editorial/notes/signing-auth/README.md` | `editorial/notes/signing-auth/diagrams/` |
-| `book/check-figures.sh` (Graphviz 14.0.4) | рисунки книги: у каждой ссылки исходник и строка манифеста, рендер свежий и проходит `--require-fit` для своего поля | `bash book/check-figures.sh` | stdout; ненулевой код при нарушении |
+| `book/check-figures.sh` (Graphviz 14.0.4 для прохода рендера) | рисунки книги: структурный проход (у каждой ссылки исходник и строка манифеста, класс поля совпадает со столбцом «Поле») и проход рендера (рендер свежий и проходит `--require-fit` для своего поля); вызывается из `book/build.sh` | `bash book/check-figures.sh [--structural \| --render]` | stdout; ненулевой код при нарушении |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов; пометки только в «Где мы», оговорки о поставке — предупреждения пилота | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
 | Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |
 | `scripts/diagram-kit/render.py` (Python 3.11+, Graphviz 14.0.4 для раскладки `graph`, `rsvg-convert` для PNG) | диаграммы в едином стиле из TOML; проверяет исходник по схеме и геометрию рисунка; `--report` печатает самый мелкий кегль в поле рисунка книги, `--require-fit tall` завершает с кодом 3, если рисунок не помещается, `--draft` пишет SVG с нарушением для просмотра | `python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.svg --report` | SVG рядом с исходником; PNG по `--png` |
 | `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора, контрольные закладки для lint, свежесть всех рисунков книги и пилотов `-v2` | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
-| `scripts/diagram-kit/probe/run.sh` (D2, PlantUML, Mermaid CLI, WeasyPrint, `pdftoppm`; чего нет, пропускается) | воспроизводит сравнение инструментов из `editorial/notes/diagram-style-notes.ru.md` | `sh scripts/diagram-kit/probe/run.sh` | `.temp/diagram-probe/` |
+| `scripts/diagram-kit/probe/run.sh` (D2, PlantUML, Mermaid CLI, WeasyPrint, `pdftoppm`; чего нет, пропускается) | воспроизводит сравнение инструментов из `editorial/notes/diagram-style-notes.ru.md`; сбой рендера генератора даёт код 1 | `sh scripts/diagram-kit/probe/run.sh` | `.temp/diagram-probe/` |
 | platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 
 ## Как идёт работа

@@ -1,3 +1,5 @@
+# Former source: protocol-topology.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Swarma Protocol: three planes. Content follows protocol-topology.puml and
 # chapter "Модель протокола". The source's two-way link between core and
 # worker nodes is drawn as two links: assignments, verdicts and continuation
@@ -26,7 +28,7 @@ text = "журнал, правила, аренда оркестратора; п�
 role = "service"
 name = "Одна авторитетная среда"
 text = "рабочее дерево, области задач, слоты, проверки, пассивный раннер; плоскость исполнения"
-note = "Через сеть идут команды, вывод, хэши и подписи.\nСреда не переносится к контрибьютору.\nПодписи не доказывают содержательное качество кода."
+note = "Через сеть идут команды, вывод, хэши и подписи; среда к контрибьютору не переносится.\nПодписи не доказывают содержательное качество кода."
 
 [[links]]
 from = "core"

@@ -1,3 +1,5 @@
+# Former source: join-handshake.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # First contact of a donor, part 2 of 2: admission. Content follows
 # join-handshake.puml and chapter "Удалённое рабочее место"; split where the
 # join point hands the claim to the operator (see part 1), step numbers stay

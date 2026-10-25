@@ -1,3 +1,5 @@
+# Former source: long-session-goals.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Long session: who owns what, part 2 of 2: the runner holds the harness and takes input. Split from the whole
 # sequence (long-session-goals.puml) at the runner's start; step numbers stay
 # those of the whole sequence. Content follows the .puml and the chapter

@@ -5,6 +5,12 @@
 #   book/build.sh ru OUT   writes the PDF to OUT instead
 #
 # Needs pandoc 3.x and WeasyPrint 69+, and the PT Serif, PT Sans and PT Mono fonts.
+#
+# The figures are checked first (book/check-figures.sh): the structural pass
+# always runs, the render pass (fresh and fitting SVGs) needs the Graphviz the
+# diagram kit pins and fails the build otherwise. BOOK_SKIP_FIGURE_RENDER=1
+# skips only the render pass, with a warning. An image WeasyPrint cannot load
+# also fails the build.
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -21,6 +27,16 @@ chapters=("$src"/[0-9][0-9]-*.md)
 if (( ${#chapters[@]} == 0 )); then
   echo "build.sh: no chapters in $src" >&2
   exit 1
+fi
+
+bash "$here/check-figures.sh" --structural || { echo "build.sh: figure check failed" >&2; exit 1; }
+if [ "${BOOK_SKIP_FIGURE_RENDER:-}" = 1 ]; then
+  echo "build.sh: WARNING: BOOK_SKIP_FIGURE_RENDER=1, figure freshness and fit are not checked" >&2
+else
+  bash "$here/check-figures.sh" --render || {
+    echo "build.sh: figure render check failed (BOOK_SKIP_FIGURE_RENDER=1 skips it for a draft)" >&2
+    exit 1
+  }
 fi
 
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/swarma-book.XXXXXX")"
@@ -42,9 +58,17 @@ pandoc "${chapters[@]}" \
 
 # Relative image paths in the chapters (../diagrams/…) resolve against the
 # chapter directory.
+# WeasyPrint only logs an image it cannot load; that fails the build here,
+# and the PDF is moved to OUT only after a clean run.
 weasyprint \
   --base-url "$src/" \
   --stylesheet "$here/style.css" \
-  "$tmp/note.html" "$out"
+  "$tmp/note.html" "$tmp/book.pdf" 2> "$tmp/weasyprint.log" || { cat "$tmp/weasyprint.log" >&2; exit 1; }
+cat "$tmp/weasyprint.log" >&2
+if grep -q 'Failed to load image' "$tmp/weasyprint.log"; then
+  echo "build.sh: an image failed to load; $out is left unchanged" >&2
+  exit 1
+fi
+mv "$tmp/book.pdf" "$out"
 
 echo "$out"

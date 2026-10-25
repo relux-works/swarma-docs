@@ -1,18 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="841.8" height="497" viewBox="0 0 841.8 497">
+<svg xmlns="http://www.w3.org/2000/svg" width="794.7" height="458" viewBox="0 0 794.7 458">
 <title>Регистрация у ключника: диспетчер связывает личность и путь деривации с UID и активным поколением учётки.</title>
-<rect width="841.8" height="497" fill="#ffffff"/>
+<rect width="794.7" height="458" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(58.1 0)">
 <!-- group keeper -->
-<rect x="375.4" y="0" width="384.2" height="473" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="keeper"/>
+<rect x="438.4" y="0" width="274.2" height="434" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="keeper"/>
 <!-- group label keeper -->
-<rect x="387.4" y="10" width="170.3" height="18.9" fill="#ffffff" class="plate"/>
-<text x="393.4" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ГРАНИЦА КЛЮЧНИКА</tspan></text>
-<line x1="0" y1="83.1" x2="0" y2="465" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="128.1" y1="83.1" x2="128.1" y2="465" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="256.8" y1="106.5" x2="256.8" y2="465" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="445" y1="83.1" x2="445" y2="465" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="667.6" y1="83.1" x2="667.6" y2="465" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<rect x="450.4" y="10" width="170.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="456.4" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ГРАНИЦА КЛЮЧНИКА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="426" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="128.1" y1="83.1" x2="128.1" y2="426" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="256.8" y1="106.5" x2="256.8" y2="426" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="507.9" y1="83.1" x2="507.9" y2="426" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node dispatcher -->
 <rect x="-58.1" y="37.7" width="116.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="dispatcher"/>
 <text x="-42.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
@@ -24,53 +23,48 @@
 <text x="230" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр</tspan></text>
 <text x="214.1" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколений</tspan></text>
 <!-- node keeper -->
-<rect x="393.4" y="37.7" width="103" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="keeper"/>
-<text x="409.4" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключник</tspan></text>
-<!-- node master -->
-<rect x="593.6" y="37.7" width="148.1" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="master"/>
-<text x="609.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мастер-секрет</tspan></text>
+<rect x="456.4" y="37.7" width="103" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="keeper"/>
+<text x="472.4" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключник</tspan></text>
 <!-- message dispatcher -> keeper -->
-<path d="M 2 216.5 L 437 216.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dispatcher" data-to="keeper" data-edge="m0"/>
-<polygon points="443,216.5 433,212 433,221" fill="#3a3f47"/>
-<rect x="113.1" y="130.5" width="149.3" height="80" fill="#ffffff" class="plate"/>
+<path d="M 2 197 L 499.9 197" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dispatcher" data-to="keeper" data-edge="m0"/>
+<polygon points="505.9,197 495.9,192.5 495.9,201.5" fill="#3a3f47"/>
+<rect x="134.5" y="130.5" width="169.3" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m0">
-<circle cx="126.1" cy="141.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="122.4" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
-<text x="141.1" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">зарегистрировать</tspan></text>
-<text x="141.1" y="165.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">личность и путь</tspan></text>
-<text x="141.1" y="184.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для UID</tspan></text>
-<text x="141.1" y="204.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и поколения</tspan></text>
+<circle cx="147.5" cy="141.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="143.9" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="162.5" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">зарегистрировать</tspan></text>
+<text x="162.5" y="165.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">личность и путь</tspan></text>
+<text x="162.5" y="184.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для UID и поколения</tspan></text>
 </g>
 <!-- message keeper -> kernel -->
-<path d="M 443 283.5 L 136.1 283.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="kernel" data-edge="m1"/>
-<polygon points="130.1,283.5 140.1,288 140.1,279" fill="#3a3f47"/>
-<rect x="187.6" y="236.5" width="128.4" height="41" fill="#ffffff" class="plate"/>
+<path d="M 505.9 264 L 136.1 264" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="kernel" data-edge="m1"/>
+<polygon points="130.1,264 140.1,268.5 140.1,259.5" fill="#3a3f47"/>
+<rect x="219" y="217" width="128.4" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
-<circle cx="200.6" cy="247.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="196.9" y="251.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="215.6" y="251.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить UID</tspan></text>
-<text x="215.6" y="271.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">диспетчера</tspan></text>
+<circle cx="232" cy="227.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="228.4" y="232.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="247" y="232.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить UID</tspan></text>
+<text x="247" y="251.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">диспетчера</tspan></text>
 </g>
 <!-- message keeper -> registry -->
-<path d="M 443 370 L 264.8 370" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="registry" data-edge="m2"/>
-<polygon points="258.8,370 268.8,374.5 268.8,365.5" fill="#3a3f47"/>
-<rect x="264.8" y="303.5" width="102.6" height="60.5" fill="#ffffff" class="plate"/>
+<path d="M 505.9 331 L 264.8 331" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="registry" data-edge="m2"/>
+<polygon points="258.8,331 268.8,335.5 268.8,326.5" fill="#3a3f47"/>
+<rect x="264.8" y="284" width="165.5" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
-<circle cx="277.8" cy="314.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="274.1" y="318.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="292.8" y="318.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить</tspan></text>
-<text x="292.8" y="338.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">активное</tspan></text>
-<text x="292.8" y="357.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколение</tspan></text>
+<circle cx="277.8" cy="294.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="274.1" y="299.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="292.8" y="299.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить активное</tspan></text>
+<text x="292.8" y="318.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколение</tspan></text>
 </g>
 <!-- self keeper -->
-<path d="M 447 394 L 477 394 L 477 443 L 454 443" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="keeper" data-edge="m3"/>
-<polygon points="448,443 458,447.5 458,438.5" fill="#3a3f47"/>
-<rect x="485" y="398" width="156.7" height="41" fill="#ffffff" class="plate"/>
+<path d="M 509.9 355 L 539.9 355 L 539.9 404 L 516.9 404" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="keeper" data-edge="m3"/>
+<polygon points="510.9,404 520.9,408.5 520.9,399.5" fill="#3a3f47"/>
+<rect x="547.9" y="359" width="156.7" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="498" cy="408.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="494.3" y="413.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="513" y="413.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить</tspan></text>
-<text x="513" y="432.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязку личности</tspan></text>
+<circle cx="560.9" cy="369.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="557.2" y="374.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="575.9" y="374.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сохранить</tspan></text>
+<text x="575.9" y="393.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязку личности</tspan></text>
 </g>
 </g>
 </g>

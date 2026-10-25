@@ -1,15 +1,17 @@
+# Former source: keeper-sign.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Keeper registration and signing, part 1 of 2: registration. Content follows
 # keeper-sign.puml (steps 1-4) and the chapter "Ключи и ключник". Split from
 # the whole sequence between registration and signing. The key boundary holds
-# the keeper and its master secret, as in part 2: the master secret takes no
-# step here, but a container around the keeper alone puts the self-message
-# label on the border. Density keys from editorial/diagram-style.ru.md.
+# the keeper alone: the master secret takes no step in registration and
+# appears in part 2. The generator widens a one-participant container under
+# its self-message label. Density keys from editorial/diagram-style.ru.md.
 layout = "sequence"
 alt = "Регистрация у ключника: диспетчер связывает личность и путь деривации с UID и активным поколением учётки."
 
 [theme.space]
 seq_node_width = 130
-seq_label_width = 150
+seq_label_width = 170
 seq_self_width = 170
 seq_column_gap = 20
 
@@ -33,11 +35,6 @@ name = "Реестр поколений"
 group = "keeper"
 role = "key"
 name = "Ключник"
-
-[nodes.master]
-group = "keeper"
-role = "key"
-name = "Мастер-секрет"
 
 [[seq]]
 from = "dispatcher"

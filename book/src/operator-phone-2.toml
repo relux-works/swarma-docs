@@ -1,7 +1,10 @@
+# Former source: operator-phone.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # The operator's action boundary, part 2 of 2: the terminal fallback and the
 # read-only account. Split from the whole sequence of operator-phone.puml at its
 # "Запасной путь" divider; step numbers stay those of the whole sequence. The broker
-# replaces "Служба платформы" of the source, as in part 1.
+# replaces "Служба платформы" of the source, as in part 1. Every arrow from
+# the owner is a physical action of a person on a device and is dashed.
 layout = "sequence"
 alt = "Запасной путь и чтение: терминал подтверждает то же узкое действие паролем, а учётка наблюдателя только читает."
 
@@ -25,6 +28,7 @@ from = "owner"
 to = "command"
 step = 11
 label = "терминал: `sudo` с паролем, без кэша"
+style = "dashed"
 
 [[seq]]
 from = "command"
@@ -37,6 +41,7 @@ from = "owner"
 to = "command"
 step = 13
 label = "подтвердить"
+style = "dashed"
 
 [[seq]]
 from = "command"
@@ -52,3 +57,4 @@ from = "owner"
 to = "broker"
 step = 15
 label = "отдельная учётка наблюдателя, только чтение"
+style = "dashed"

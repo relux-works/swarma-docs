@@ -1,3 +1,5 @@
+# Former source: block-anatomy.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Block anatomy: header, body, data segment and light-client filter. Content
 # follows block-anatomy.puml and the section "Блок и сегмент данных" of
 # chapter "Цепочка: устройство". Drawn as a record layout without links: the

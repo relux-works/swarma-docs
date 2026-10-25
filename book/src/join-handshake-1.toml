@@ -1,3 +1,5 @@
+# Former source: join-handshake.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # First contact of a donor, part 1 of 2: trust anchors and proof of
 # possession. Content follows join-handshake.puml and chapter "Удалённое
 # рабочее место"; the chapter wins on names: the donor side is the donor's

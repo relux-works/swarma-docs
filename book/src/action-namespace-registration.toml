@@ -1,10 +1,13 @@
+# Former source: action-namespace-registration.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Action registry: a handler publishes its manifest, the owner binds a
 # namespace to it, and only then grants and commands may use the name.
 # Content follows action-namespace-registration.puml. Deviations, by the
 # chapter "Гранты и полномочия": the handler's declaration is called a
-# manifest, and "уполномоченный агент" becomes "администратор": the chapter
-# speaks of a delegated administrator holding registry.actions.register
-# (the full term made the header three lines and the figure miss the box). The puml title
+# manifest, and "уполномоченный агент" becomes "делегированный
+# администратор", the chapter's term for the holder of
+# registry.actions.register; seq_row_gap 6 keeps the taller header in the
+# tall box. The puml title
 # ("Предлагаемый словарь действий") carried a status and is dropped.
 layout = "sequence"
 alt = "Реестр действий: имя действия связывается со схемой и обработчиком до того, как его можно использовать в гранте или команде."
@@ -14,6 +17,7 @@ seq_node_width = 130
 seq_label_width = 240
 seq_self_width = 240
 seq_column_gap = 20
+seq_row_gap = 6
 
 [nodes.handler]
 role = "service"
@@ -21,7 +25,7 @@ name = "Обработчик"
 
 [nodes.owner]
 role = "human"
-name = "Владелец или администратор"
+name = "Владелец или делегированный администратор"
 
 [nodes.registry]
 role = "store"

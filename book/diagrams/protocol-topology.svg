@@ -27,9 +27,9 @@
 <!-- note env -->
 <rect x="449.1" y="427.8" width="217.8" height="129.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_env"/>
 <text x="479.1" y="451.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Через сеть идут команды,</tspan></text>
-<text x="484.8" y="469.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">вывод, хэши и подписи.</tspan></text>
-<text x="489.9" y="487.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Среда не переносится</tspan></text>
-<text x="504.4" y="505.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">к контрибьютору.</tspan></text>
+<text x="484.6" y="469.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">вывод, хэши и подписи;</tspan></text>
+<text x="486.2" y="487.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">среда к контрибьютору</tspan></text>
+<text x="508.8" y="505.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не переносится.</tspan></text>
 <text x="483.3" y="523.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Подписи не доказывают</tspan></text>
 <text x="461.1" y="542.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">содержательное качество кода.</tspan></text>
 <path d="M 406 492.4 L 449.1 492.4" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="env" data-to="note_env"/>

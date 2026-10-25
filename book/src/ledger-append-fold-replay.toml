@@ -1,3 +1,5 @@
+# Former source: ledger-append-fold-replay.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Swarma Keeper ledger: append and recovery as two decision flows side by
 # side. Content follows ledger-append-fold-replay.puml (every step, question
 # and outcome of both flows) and the chapter "Swarma Keeper"; the sequence

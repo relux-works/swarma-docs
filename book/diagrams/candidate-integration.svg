@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="946.2" height="696.9" viewBox="0 0 946.2 696.9">
+<svg xmlns="http://www.w3.org/2000/svg" width="945.2" height="696.9" viewBox="0 0 945.2 696.9">
 <title>Интеграция продвигает точную голову к неизменяемому кандидату только с адресованными ему одобрением и аттестациями.</title>
-<rect width="946.2" height="696.9" fill="#ffffff"/>
+<rect width="945.2" height="696.9" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <!-- graphviz 14.0.4 -->
 <!-- node build -->
@@ -24,25 +24,25 @@
 <text x="16" y="488.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Все свойства пройдены</tspan></text>
 <text x="26" y="511.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и адреса совпадают?</tspan></text>
 <!-- node record -->
-<rect x="619.4" y="9.7" width="184" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="record"/>
-<text x="636.3" y="35.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запись интеграции</tspan></text>
-<text x="635.4" y="64.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">совершена для</tspan><tspan x="738.4" font-family="PT Mono, monospace">(M,</tspan><tspan x="769.4" font-family="PT Mono, monospace">I)</tspan></text>
+<rect x="659.4" y="9.7" width="184" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="record"/>
+<text x="676.3" y="35.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запись интеграции</tspan></text>
+<text x="675.4" y="64.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">совершена для</tspan><tspan x="778.4" font-family="PT Mono, monospace">(M,</tspan><tspan x="809.4" font-family="PT Mono, monospace">I)</tspan></text>
 <!-- node fresh -->
-<rect x="608.8" y="137.1" width="205.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="fresh"/>
-<text x="646.1" y="163.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверка среды</tspan></text>
-<text x="624.8" y="191.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">актуальность авторизации</tspan></text>
+<rect x="648.8" y="137.1" width="205.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="fresh"/>
+<text x="686.1" y="163.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверка среды</tspan></text>
+<text x="664.8" y="191.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">актуальность авторизации</tspan></text>
 <!-- node q2 -->
-<rect x="622.5" y="312" width="177.9" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q2"/>
-<text x="638.5" y="338.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Голова всё ещё</tspan><tspan x="765.4" font-family="PT Mono, monospace" font-weight="bold">M</tspan><tspan x="776.2" font-family="PT Sans, sans-serif" font-weight="bold">?</tspan></text>
+<rect x="662.5" y="312" width="177.9" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="q2"/>
+<text x="678.5" y="338.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Голова всё ещё</tspan><tspan x="805.4" font-family="PT Mono, monospace" font-weight="bold">M</tspan><tspan x="816.2" font-family="PT Sans, sans-serif" font-weight="bold">?</tspan></text>
 <!-- node cas -->
-<rect x="466.6" y="461.4" width="217.7" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="cas"/>
-<text x="525" y="487.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Голова</tspan><tspan x="584.4" font-family="PT Mono, monospace" font-weight="bold">M</tspan><tspan x="599.7" font-family="PT Mono, monospace" font-weight="bold">→</tspan><tspan x="615.1" font-family="PT Mono, monospace" font-weight="bold">I</tspan></text>
-<text x="482.6" y="516" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">атомарный compare-and-set</tspan></text>
+<rect x="240.6" y="461.4" width="217.7" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="cas"/>
+<text x="299" y="487.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Голова</tspan><tspan x="358.4" font-family="PT Mono, monospace" font-weight="bold">M</tspan><tspan x="373.7" font-family="PT Mono, monospace" font-weight="bold">→</tspan><tspan x="389.1" font-family="PT Mono, monospace" font-weight="bold">I</tspan></text>
+<text x="256.6" y="516" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">атомарный compare-and-set</tspan></text>
 <!-- node stale -->
-<rect x="706.7" y="451.6" width="215.5" height="90.4" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="stale"/>
-<text x="791.9" y="477.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ</tspan></text>
-<text x="725.5" y="506.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">новый кандидат над новой</tspan></text>
-<text x="722.7" y="525.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">головой и повторное ревью</tspan></text>
+<rect x="705.7" y="451.6" width="215.5" height="90.4" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="stale"/>
+<text x="790.9" y="477.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отказ</tspan></text>
+<text x="724.5" y="506.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">новый кандидат над новой</tspan></text>
+<text x="721.7" y="525.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">головой и повторное ревью</tspan></text>
 <!-- node none -->
 <rect x="12.3" y="602" width="194.3" height="70.9" rx="12" fill="#fdeef3" stroke="#c8285f" stroke-width="2" class="box" data-id="none"/>
 <text x="47.3" y="628.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Интеграции нет</tspan></text>
@@ -53,12 +53,12 @@
 <text x="290.1" y="338.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не заменяет</tspan></text>
 <text x="258.8" y="357.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">одобрение кандидата.</tspan></text>
 <path d="M 203.2 334.7 L 246.8 334.7" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="collect" data-to="note_collect"/>
-<!-- note q1 -->
-<rect x="262.4" y="459.5" width="181.9" height="74.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_q1"/>
-<text x="294.9" y="482.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Успешный процесс</tspan></text>
-<text x="274.4" y="501" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не доказывает отсутствие</tspan></text>
-<text x="286.6" y="519.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">смысловых дефектов.</tspan></text>
-<path d="M 218.8 496.8 L 262.4 496.8" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="q1" data-to="note_q1"/>
+<!-- note cas -->
+<rect x="501.4" y="459.5" width="181.9" height="74.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_cas"/>
+<text x="533.9" y="482.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Успешный процесс</tspan></text>
+<text x="513.4" y="501" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не доказывает отсутствие</tspan></text>
+<text x="525.6" y="519.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">смысловых дефектов.</tspan></text>
+<path d="M 458.2 496.8 L 501.4 496.8" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="cas" data-to="note_cas"/>
 <!-- link build -> reviewer -->
 <path d="M 109.4 90.8 C 109.4 100.2 109.4 110.2 109.4 119.9 L 109.4 121.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="build" data-to="reviewer" data-edge="e0"/>
 <polygon points="109.4,127.2 113.9,117.2 104.9,117.2" fill="#3a3f47"/>
@@ -69,10 +69,10 @@
 <path d="M 109.4 391.7 C 109.4 412.4 109.4 435.5 109.4 454.6 L 109.4 456" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="collect" data-to="q1" data-edge="e2"/>
 <polygon points="109.4,462 113.9,452 104.9,452" fill="#3a3f47"/>
 <!-- link q1 -> record -->
-<path d="M 215.4 462 C 301.7 434.1 410.8 398.2 419.4 391.6 C 532 305.8 498.6 228.8 597.4 127.4 C 612.4 112 630.7 97.5 648.1 85.2 L 649.1 84.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q1" data-to="record" data-edge="e3"/>
-<polygon points="654,81.1 643.3,83.1 648.4,90.5" fill="#3a3f47"/>
+<path d="M 200 461.9 C 209.9 458.4 219.9 454.9 229.4 451.6 C 313.2 423 346 441.1 419.4 391.6 C 545.6 306.5 526 231.2 637.4 127.4 C 653.5 112.4 672.6 97.8 690.4 85.2 L 691.5 84.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q1" data-to="record" data-edge="e3"/>
+<polygon points="696.4,81.1 685.6,83.1 690.8,90.5" fill="#3a3f47"/>
 <g class="label" data-edge="e3">
-<text x="535.4" y="247.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+<text x="563.1" y="245.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
 </g>
 <!-- link q1 -> none -->
 <path d="M 109.4 531.4 C 109.4 550.4 109.4 574.3 109.4 594.5 L 109.4 595.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q1" data-to="none" data-edge="e4"/>
@@ -81,22 +81,22 @@
 <text x="117.4" y="576.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет, включая "не установлено"</tspan></text>
 </g>
 <!-- link record -> fresh -->
-<path d="M 711.4 81.1 C 711.4 96.2 711.4 114 711.4 129.8 L 711.4 130.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="record" data-to="fresh" data-edge="e5"/>
-<polygon points="711.4,136.9 715.9,126.9 706.9,126.9" fill="#3a3f47"/>
+<path d="M 751.4 81.1 C 751.4 96.2 751.4 114 751.4 129.8 L 751.4 130.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="record" data-to="fresh" data-edge="e5"/>
+<polygon points="751.4,136.9 755.9,126.9 746.9,126.9" fill="#3a3f47"/>
 <!-- link fresh -> q2 -->
-<path d="M 711.4 208.3 C 711.4 237.1 711.4 277.5 711.4 304.6 L 711.4 305.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="fresh" data-to="q2" data-edge="e6"/>
-<polygon points="711.4,311.8 715.9,301.8 706.9,301.8" fill="#3a3f47"/>
+<path d="M 751.4 208.3 C 751.4 237.1 751.4 277.5 751.4 304.6 L 751.4 305.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="fresh" data-to="q2" data-edge="e6"/>
+<polygon points="751.4,311.8 755.9,301.8 746.9,301.8" fill="#3a3f47"/>
 <!-- link q2 -> cas -->
-<path d="M 692.8 357.6 C 671.5 382.7 636.2 424.3 609.8 455.3 L 608.9 456.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="cas" data-edge="e7"/>
-<polygon points="605,461 614.9,456.3 608.1,450.4" fill="#3a3f47"/>
+<path d="M 695.9 357.8 C 630.9 383.7 522 427.1 443.6 458.3 L 442.7 458.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="cas" data-edge="e7"/>
+<polygon points="437.1,460.9 448.1,461.4 444.7,453" fill="#3a3f47"/>
 <g class="label" data-edge="e7">
-<text x="663.4" y="416.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
+<text x="560" y="394.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">да</tspan></text>
 </g>
 <!-- link q2 -> stale -->
-<path d="M 725.5 357.6 C 739.9 380 762.8 415.6 781.7 445 L 782.5 446.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="stale" data-edge="e8"/>
-<polygon points="785.7,451.2 784.1,440.3 776.5,445.2" fill="#3a3f47"/>
+<path d="M 759.9 357.6 C 768.5 379.8 782.1 415 793.5 444.3 L 794 445.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="q2" data-to="stale" data-edge="e8"/>
+<polygon points="796.1,451.2 796.7,440.2 788.3,443.5" fill="#3a3f47"/>
 <g class="label" data-edge="e8">
-<text x="786.8" y="435.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
+<text x="798" y="430.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет</tspan></text>
 </g>
 </g>
 </svg>

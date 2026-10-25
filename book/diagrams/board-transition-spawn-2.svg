@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="862.3" height="492.5" viewBox="0 0 862.3 492.5">
+<svg xmlns="http://www.w3.org/2000/svg" width="871.7" height="492.5" viewBox="0 0 871.7 492.5">
 <title>Переход, запуск роли: доска назначает владельца состояния и отдельно проверяет предложенный агентом исход.</title>
-<rect width="862.3" height="492.5" fill="#ffffff"/>
+<rect width="871.7" height="492.5" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(50 0)">
 <line x1="0" y1="68.8" x2="0" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="183.2" y1="68.8" x2="183.2" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="349.9" y1="45.4" x2="349.9" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="550.5" y1="68.8" x2="550.5" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="728.3" y1="45.4" x2="728.3" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="359.3" y1="68.8" x2="359.3" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="559.9" y1="68.8" x2="559.9" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="737.7" y1="45.4" x2="737.7" y2="468.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node flow -->
 <rect x="-50" y="0" width="100" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="flow"/>
 <text x="-31.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Движок</tspan></text>
@@ -17,52 +17,53 @@
 <text x="137.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хранилище</tspan></text>
 <text x="122.1" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и правила ядра</tspan></text>
 <!-- node router -->
-<rect x="280.3" y="0" width="139.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="router"/>
-<text x="296.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Роутер ролей</tspan></text>
+<rect x="280.3" y="0" width="157.9" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="router"/>
+<text x="296.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Маршрутизатор</tspan></text>
+<text x="335.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ролей</tspan></text>
 <!-- node launcher -->
-<rect x="475.7" y="0" width="149.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="launcher"/>
-<text x="491.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер или</tspan></text>
-<text x="504.9" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хост сессий</tspan></text>
+<rect x="485" y="0" width="149.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="launcher"/>
+<text x="501" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер или</tspan></text>
+<text x="514.3" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хост сессий</tspan></text>
 <!-- node agent -->
-<rect x="678.3" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
-<text x="706.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<rect x="687.7" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="715.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
 <!-- message flow -> router -->
-<path d="M 2 139.8 L 341.9 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="router" data-edge="m0"/>
-<polygon points="347.9,139.8 337.9,135.3 337.9,144.3" fill="#3a3f47"/>
-<rect x="88.7" y="92.8" width="172.4" height="41" fill="#ffffff" class="plate"/>
+<path d="M 2 139.8 L 351.3 139.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="router" data-edge="m0"/>
+<polygon points="357.3,139.8 347.3,135.3 347.3,144.3" fill="#3a3f47"/>
+<rect x="93.4" y="92.8" width="172.4" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m0">
-<circle cx="101.7" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="98" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
-<text x="116.7" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">назначить владельца</tspan></text>
-<text x="116.7" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">состояния</tspan></text>
+<circle cx="106.4" cy="103.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="102.7" y="108.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="121.4" y="108.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">назначить владельца</tspan></text>
+<text x="121.4" y="127.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">состояния</tspan></text>
 </g>
 <!-- message router -> launcher -->
-<path d="M 351.9 206.8 L 542.5 206.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="router" data-to="launcher" data-edge="m1"/>
-<polygon points="548.5,206.8 538.5,202.3 538.5,211.3" fill="#3a3f47"/>
-<rect x="365.9" y="159.8" width="168.6" height="41" fill="#ffffff" class="plate"/>
+<path d="M 361.3 206.8 L 551.9 206.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="router" data-to="launcher" data-edge="m1"/>
+<polygon points="557.9,206.8 547.9,202.3 547.9,211.3" fill="#3a3f47"/>
+<rect x="375.3" y="159.8" width="168.6" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
-<circle cx="378.9" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="375.2" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="393.9" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос запуска или</tspan></text>
-<text x="393.9" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ревизия цели сессии</tspan></text>
+<circle cx="388.3" cy="170.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="384.6" y="175.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="403.3" y="175.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос запуска или</tspan></text>
+<text x="403.3" y="194.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ревизия цели сессии</tspan></text>
 </g>
 <!-- message launcher -> agent -->
-<path d="M 552.5 254.3 L 720.3 254.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="launcher" data-to="agent" data-edge="m2"/>
-<polygon points="726.3,254.3 716.3,249.8 716.3,258.8" fill="#3a3f47"/>
-<rect x="566.5" y="226.8" width="145.8" height="21.5" fill="#ffffff" class="plate"/>
+<path d="M 561.9 254.3 L 729.7 254.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="launcher" data-to="agent" data-edge="m2"/>
+<polygon points="735.7,254.3 725.7,249.8 725.7,258.8" fill="#3a3f47"/>
+<rect x="575.9" y="226.8" width="145.8" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
-<circle cx="579.5" cy="237.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="575.8" y="242.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
-<text x="594.5" y="242.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнение роли</tspan></text>
+<circle cx="588.9" cy="237.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="585.2" y="242.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="603.9" y="242.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнение роли</tspan></text>
 </g>
 <!-- message agent -> flow -->
-<path d="M 726.3 301.8 L 8 301.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="flow" data-edge="m3"/>
+<path d="M 735.7 301.8 L 8 301.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="flow" data-edge="m3"/>
 <polygon points="2,301.8 12,306.3 12,297.3" fill="#3a3f47"/>
-<rect x="278" y="274.3" width="172.2" height="21.5" fill="#ffffff" class="plate"/>
+<rect x="282.7" y="274.3" width="172.2" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="291" cy="285.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="287.4" y="289.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
-<text x="306" y="289.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предложение исхода</tspan></text>
+<circle cx="295.7" cy="285.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="292" y="289.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="310.7" y="289.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предложение исхода</tspan></text>
 </g>
 <!-- message flow -> kernel -->
 <path d="M 2 388.3 L 175.2 388.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="flow" data-to="kernel" data-edge="m4"/>
@@ -76,8 +77,8 @@
 <text x="49.7" y="376.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">текущей версией</tspan></text>
 </g>
 <!-- note -->
-<rect x="123.2" y="408.3" width="665.1" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="283.7" y="433.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Конец процесса не является принятым исходом задачи.</tspan></text>
+<rect x="123.2" y="408.3" width="674.5" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="288.4" y="433.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Конец процесса не является принятым исходом задачи.</tspan></text>
 </g>
 </g>
 </svg>

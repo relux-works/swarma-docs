@@ -1,9 +1,12 @@
+# Former source: history-holders.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Who holds history and how a light client reads. Content follows
 # history-holders.puml and the sections "Кто сохраняет историю" and "Лёгкое
 # чтение и проверяемый индекс" of chapter "Цепочка: устройство". The source's
 # package "Хранители истории" was a grouping, not a trust boundary, so it is
-# not drawn as a container; the three holders keep their own boxes. Dashes
-# and guillemets of the source became commas and straight quotes; "(индекс
+# not drawn as a container (the guide: a list of holders without a common
+# boundary, unlike the sublayers of the sublayers figure); the three holders
+# keep their own boxes. Dashes and guillemets of the source became commas and straight quotes; "(индекс
 # платный продукт)" follows the chapter: the indexer sells the computed index.
 layout = "graph"
 alt = "Лёгкий клиент получает заголовки и фильтры отдельно от исторических сегментов и услуг индексаторов."

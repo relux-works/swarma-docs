@@ -1,3 +1,5 @@
+# Former source: sublayers.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Swarma Chain sublayers: the chain orders records, p2p memory carries the
 # content, the social graph steers its spread. Content follows sublayers.puml
 # and the section "Три подслоя с разными обязательствами" of chapter
@@ -5,7 +7,9 @@
 # border of an obligation (consensus, no storage guarantee, steering). The
 # container roles follow who controls the zone: the chain is a store, the
 # social graph is run by participants' programs, p2p memory is outside any
-# one owner's control.
+# one owner's control. The guide names a sublayer with its own obligations
+# a boundary; history-holders, a list of holders without a common boundary,
+# has none.
 layout = "graph"
 direction = "TB"
 same_rank = [["cons", "soc"], ["indexer", "curator"]]

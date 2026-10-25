@@ -1,10 +1,15 @@
+# Former source: escalation-chain.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Escalation of an open commitment as a decision flowchart. Content follows
 # escalation-chain.puml and the chapter "Swarma Keeper": every step, question
 # and outcome of the .puml; the record names `skipped_to` and `awaiting_human`
 # come from the chapter. The .puml legend went into the node texts: the
 # ladder of steps into the "next step" node, the "вижу" rule into the decision
 # question. The two "next step" boxes of the .puml are one node here, so both
-# loops come back to it. The .puml title word "Предлагаемая" is a status and
+# loops come back to it. The fifth .puml condition, `repeat while (нужна
+# следующая ступень)`, is folded into that loop back: its exit is
+# unreachable, because the ladder ends at the human owner and the human's step
+# stops the flow. The .puml title word "Предлагаемая" is a status and
 # is left out. The end rings of the .puml stops are left out to fit the
 # tall box: the three outcome boxes end their branches.
 layout = "graph"

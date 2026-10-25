@@ -24,7 +24,7 @@
 <rect x="657.4" y="0" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="broker"/>
 <text x="678.7" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер</tspan></text>
 <!-- message owner -> phone -->
-<path d="M 2 143.7 L 179.8 143.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="phone" data-edge="m0"/>
+<path d="M 2 143.7 L 179.8 143.7" fill="none" stroke="#3a3f47" stroke-width="2" stroke-dasharray="6 5" class="edge" data-from="owner" data-to="phone" data-edge="m0"/>
 <polygon points="185.8,143.7 175.8,139.2 175.8,148.2" fill="#3a3f47"/>
 <rect x="18.1" y="116.2" width="151.6" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m0">

@@ -1,8 +1,10 @@
 # Mail delivery, part 1 of 2: admission at the trust gates. Content follows
-# mailbox-delivery.puml and the chapter "Путь сообщения и мост". Split from
-# the whole sequence after step 4: the admitted branch hands the body to the
-# decision guard, where part 2 starts with the same step 4. The puml title
-# ("Предлагаемая доставка почты") carried a status and is dropped.
+# the former mailbox-delivery.puml (removed in the book diagram wave) and the
+# chapter "Путь сообщения и мост". Split from the whole sequence after step 4:
+# part 2 repeats the two branches that reach the session host, the
+# metadata-only call of step 5 and the admitted body of step 4, so its queue
+# frame covers both calls. The puml title ("Предлагаемая доставка почты")
+# carried a status and is dropped.
 layout = "sequence"
 alt = "Допуск почты: неподписанное тело удерживается в карантине, отказ не доставляется, допущенное тело идёт к decision guard."
 

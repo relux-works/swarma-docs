@@ -1,3 +1,5 @@
+# Former source: curation.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Curation: curator levels, labelers and the archivist's neighbourhood.
 # Content follows curation.puml (formerly an upstream copy, now a book figure)
 # and the sections "Граф решает, что помнит сеть" and "Окрестность архивиста"

@@ -1,3 +1,5 @@
+# Former source: setup-token.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Delivery of an inherited setup-token, part 1 of 2: enrolment. Content
 # follows setup-token.puml and chapter "Учётные данные и логины". The whole
 # sequence (six participants) is 1094 px wide even with the density keys, so

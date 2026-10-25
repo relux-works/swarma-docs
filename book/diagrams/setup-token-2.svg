@@ -82,7 +82,7 @@
 </g>
 <!-- note -->
 <rect x="286.5" y="559.2" width="391" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="316.7" y="584.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Только inference; Remote Control не поддерживается.</tspan></text>
+<text x="335.1" y="584.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Только inference; Remote Control его отвергает.</tspan></text>
 </g>
 </g>
 </svg>

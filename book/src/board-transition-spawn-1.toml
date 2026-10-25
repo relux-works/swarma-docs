@@ -1,3 +1,5 @@
+# Former source: board-transition-spawn.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Task transition and role launch, part 1 of 2: the transition check. Content
 # follows board-transition-spawn.puml and chapter "Доска задач и процесс". The
 # whole sequence has six participants (1129 x 1049 px with the density keys,
@@ -7,7 +9,7 @@
 # parts, step numbers stay those of the whole flow. The source's title
 # ("proposed") is dropped. A branch keeps the number of the step it replaces.
 layout = "sequence"
-alt = "Переход, проверка: доска проверяет версию процесса и правила ядра в одной транзакции и при отказе состояния не меняет."
+alt = "Переход, проверка: доска сверяет версию процесса, затем в одной транзакции проверяет правила ядра и право роли и при отказе состояния не меняет."
 
 [nodes.proposer]
 role = "agent"

@@ -1,8 +1,11 @@
+# Former source: decision-pipeline.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # The router's path for one decision. Content follows decision-pipeline.puml
 # (formerly an upstream copy, now a book figure) and chapter "Модели и деньги".
 # Steps 1-4 run down the left column, steps 5-7 down the right one. The
-# chapter's wording wins for ties ("стабильный порядок при равенстве") and
-# the result fields; the separators "·" became commas.
+# chapter's wording wins for ties ("стабильный порядок при равенстве"),
+# "среда", "effort" and "деликатность"; the result fields follow the puml.
+# The separators "·" became commas.
 layout = "graph"
 direction = "TB"
 same_rank = [["c1", "c5"], ["c2", "c6"], ["c3", "c7"], ["c4", "q2"], ["q1", "decision", "refusal"]]

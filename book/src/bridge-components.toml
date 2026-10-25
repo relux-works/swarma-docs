@@ -1,3 +1,5 @@
+# Former source: bridge-components.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Bridge components: the carrier provider, trust gates, mailbox and session
 # host split the work. Content follows bridge-components.puml; the store's
 # description follows the chapter table ("Хранилище": admission records,
@@ -6,7 +8,7 @@ layout = "graph"
 direction = "TB"
 same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
 uniform_width = true   # the main column and the side column each keep one width
-alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности"
+alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности."
 
 [groups.bridge]
 label = "Мост"

@@ -20,7 +20,7 @@ name = "Харнес и модель"
 [nodes.relay]
 group = "donor"
 role = "service"
-name = "Stdio relay"
+name = "Реле инструментов"
 
 [nodes.bridge]
 group = "donor"

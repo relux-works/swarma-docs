@@ -1,10 +1,14 @@
+# Former source: resolution-order.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Credential resolution order. Content follows resolution-order.puml and
 # chapter "Учётные данные и логины": source, store, isolation, then the link
 # strategy. Each action of the source and the question after it share one
 # neutral question box (the action is its description) so the flow fits the
 # tall box; refusals end the flow and sit beside their question. The macOS
 # refusal names its code from the chapter (`environment_shared_unsupported`).
-# Dashes of the source became colons.
+# Dashes of the source became colons. The inherited source's delivery follows
+# the chapter, not the puml's "через брокер": the home gets an opaque
+# reference and the final executor extracts the value from the protected store.
 layout = "graph"
 direction = "TB"
 same_rank = [["q_adapter", "no_store"], ["q_iso", "no_iso"]]
@@ -21,7 +25,7 @@ text = "определить источник аутентификации"
 [nodes.inherited]
 role = "service"
 name = "Наследуемый источник"
-text = "без собственного логина дома; доставка исполнителю через брокер"
+text = "без собственного логина дома; исполнитель извлекает значение по ссылке из хранилища"
 
 [nodes.q_adapter]
 role = "neutral"

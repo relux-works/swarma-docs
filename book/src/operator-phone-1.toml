@@ -1,9 +1,13 @@
+# Former source: operator-phone.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # The operator's action boundary, part 1 of 2: the phone path. Split from the
 # whole sequence of operator-phone.puml at the "Запасной путь" divider; part 2 holds the
 # fallback and read-only paths. Content follows the source and chapter
 # "Оператор и интерфейсы"; the chapter wins on the recipient: the operator
 # command passes the action to the broker ("Служба платформы" in the source).
-# The biometric confirmation is a physical action on the device (dashed, alert).
+# Every arrow from the owner is a physical action of a person on a device
+# and is dashed (editorial/diagram-style.ru.md); the biometric confirmation
+# is the touch of the key and also carries the alert accent.
 layout = "sequence"
 alt = "Операторский путь с телефона: команда выдаёт точное действие, телефон показывает его и подписывает после биометрии, команда сверяет подпись и передаёт действие брокеру."
 
@@ -36,6 +40,7 @@ from = "owner"
 to = "phone"
 step = 1
 label = "выбрать действие"
+style = "dashed"
 
 [[seq]]
 from = "phone"

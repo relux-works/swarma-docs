@@ -1,3 +1,5 @@
+# Former source: board-transition-spawn.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Task transition and role launch, part 2 of 2: launch and outcome, after the
 # kernel accepted the transition (the else branch of part 1, named by the
 # caption). Content follows board-transition-spawn.puml and chapter "Доска
@@ -23,7 +25,7 @@ name = "Хранилище и правила ядра"
 
 [nodes.router]
 role = "service"
-name = "Роутер ролей"
+name = "Маршрутизатор ролей"
 
 [nodes.launcher]
 role = "service"

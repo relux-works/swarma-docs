@@ -5,11 +5,13 @@
 #
 # Two probes: a stack figure (a command from the phone: phone.toml, phone.d2
 # with theme.d2, phone.mmd with mermaid.json, phone.puml) and a sequence
-# (grants: book/src/grant-issue-and-check-v2.toml and seq.puml, PlantUML with
+# (grants: book/src/grant-issue-and-check.toml and seq.puml, PlantUML with
 # the house style). Every tool found on PATH renders its sources to SVG; each
 # SVG is then put through WeasyPrint the way the book is built, and the PDF
 # page is rasterised with pdftoppm, so a tool whose SVG breaks in the book
-# shows it. A missing tool is reported and skipped; nothing is installed.
+# shows it. A missing optional tool is reported and skipped; nothing is
+# installed. The kit is not optional: if either kit render fails, the probe
+# exits 1.
 #
 # Tools: python3 (the kit), d2, plantuml, mmdc (Mermaid CLI; set MMDC_CHROME
 # to a Chrome binary when puppeteer has no browser of its own), weasyprint,
@@ -20,16 +22,23 @@ here=$(cd "$(dirname "$0")" && pwd)
 root=$(cd "$here/../../.." && pwd)
 out=${1:-"$root/.temp/diagram-probe"}
 mkdir -p "$out"
+out=$(cd "$out" && pwd)
 cd "$here" || exit 2
 
 have() { command -v "$1" >/dev/null 2>&1; }
 note() { printf '%s\n' "$*" | tee -a "$out/versions.txt"; }
 : > "$out/versions.txt"
 
+kit_failed=0
+kit() {
+  python3 "$root/scripts/diagram-kit/render.py" "$1" "$2" --report > "$out/kit.log" 2>&1
+  status=$?
+  tee -a "$out/versions.txt" < "$out/kit.log"
+  [ "$status" = 0 ] || { note "kit: render of $1 failed"; kit_failed=1; }
+}
 note "kit: $(python3 --version 2>&1); graphviz: $(dot -V 2>&1)"
-python3 "$root/scripts/diagram-kit/render.py" phone.toml "$out/phone-kit.svg" --report | tee -a "$out/versions.txt"
-python3 "$root/scripts/diagram-kit/render.py" "$root/book/src/grant-issue-and-check-v2.toml" "$out/seq-kit.svg" --report \
-  | tee -a "$out/versions.txt"
+kit phone.toml "$out/phone-kit.svg"
+kit "$root/book/src/grant-issue-and-check.toml" "$out/seq-kit.svg"
 
 if have d2; then
   note "d2: $(d2 --version 2>&1)"
@@ -81,3 +90,4 @@ else
   note "weasyprint or pdftoppm: not found, book check skipped"
 fi
 echo "probe: outputs in $out"
+exit "$kit_failed"

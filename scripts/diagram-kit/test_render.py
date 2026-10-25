@@ -12,6 +12,7 @@ import io
 import pathlib
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -711,6 +712,52 @@ class ConstructTests(Base):
         crossing = [p["r"] for p in g["plates"] if p["r"][0] > donor[2] and p["r"][2] < ours[0]]
         self.assertEqual(len(crossing), 4)
 
+    # Claim (book wave review, P3-8): a participant alone in its container
+    # loops its self-message to the right, and the container widens so the
+    # label plate lies inside it, in a middle column and in the last column;
+    # the next participant's header stays outside the widened container.
+    # Limit: checks plate and header geometry, not the loop path itself.
+    def test_self_message_in_one_participant_container(self):
+        base = """
+layout = "sequence"
+[groups.kg]
+label = "Граница"
+role = "key"
+[nodes.x]
+role = "service"
+name = "Диспетчер"
+[nodes.k]
+group = "kg"
+role = "key"
+name = "Ключник"
+%s
+[[seq]]
+from = "x"
+to = "k"
+step = 1
+label = "зарегистрировать"
+[[seq]]
+from = "k"
+to = "k"
+step = 2
+label = "сохранить привязку личности и пути деривации"
+"""
+        tail = '[nodes.y]\nrole = "store"\nname = "Реестр"\n'
+        for name, text in (("middle", base % tail), ("last", base % "")):
+            with self.subTest(column=name):
+                g = geo(self.render_ok(text)[0])
+                grp = next(x["r"] for x in g["groups"] if x["id"] == "kg")
+                plates = [p["r"] for p in g["plates"]]
+                self.assertTrue(plates)
+                for r in plates:
+                    r = render.grow(r, 2)
+                    self.assertFalse(render.overlap(r, grp) and not render.within(r, grp), (grp, r))
+                label = max(plates, key=lambda r: r[0])
+                self.assertTrue(render.within(label, grp))
+                boxes = {x["id"]: x["r"] for x in g["boxes"]}
+                if "y" in boxes:
+                    self.assertFalse(render.overlap(boxes["y"], grp))
+
     # Claim: a note over participants on both sides of a container border is
     # drawn under the containers, clear of every border; such a note followed
     # by a message is refused, and a note over one container stays in its row
@@ -1049,6 +1096,50 @@ class FigureTests(Base):
                 svg = render.render(src)
                 committed = src.parent.parent / "diagrams" / (src.stem + ".svg")
                 self.assertEqual(svg, committed.read_text(encoding="utf-8"), f"{committed} is stale")
+
+    # Claim (book wave review, P2-5 and P3-14): the structural pass of
+    # book/check-figures.sh, which book/build.sh runs before every build,
+    # passes on a copy of the book and fails with the intended message for a
+    # chapter link without a source, a figure linked with and without
+    # {.tall}, and a manifest "Поле" that differs from the link class.
+    # Limit: runs on a copy of the committed book; the render pass (freshness
+    # and fit) is covered by test_figures_fresh and the planted controls in
+    # the wave notes.
+    def test_check_figures_structural(self):
+        def copy():
+            tmp = pathlib.Path(tempfile.mkdtemp(dir=self.dir))
+            for sub in ("ru", "src", "diagrams"):
+                shutil.copytree(ROOT / "book" / sub, tmp / "book" / sub)
+            shutil.copy(ROOT / "book/check-figures.sh", tmp / "book")
+            return tmp
+
+        def run(tmp):
+            return subprocess.run(["bash", str(tmp / "book/check-figures.sh"), "--structural"],
+                                  capture_output=True, text=True)
+
+        clean = run(copy())
+        self.assertEqual(clean.returncode, 0, clean.stdout + clean.stderr)
+        self.assertIn("figures: structural ok", clean.stdout)
+        def append(t, text):
+            with (t / "book/ru/02-swarma-celikom.md").open("a", encoding="utf-8") as f:
+                f.write(text)
+
+        plants = {
+            "missing source: src/nope.toml": lambda t: append(t, "\n![Нет](../diagrams/nope.svg)\n"),
+            "linked both with and without {.tall}: economy.svg":
+                lambda t: append(t, "\n![Ещё раз](../diagrams/economy.svg){.tall}\n"),
+            "manifest box differs from the link class: economy": lambda t: (t / "book/src/MANIFEST.md").write_text(
+                (t / "book/src/MANIFEST.md").read_text(encoding="utf-8").replace(
+                    "| economy | `economy.toml` | книга | — | обычное |", "| economy | `economy.toml` | книга | — | tall |"),
+                encoding="utf-8"),
+        }
+        for want, plant in plants.items():
+            with self.subTest(plant=want):
+                tmp = copy()
+                plant(tmp)
+                r = run(tmp)
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn(want, r.stdout)
 
     def test_fixtures_render(self):
         fixtures = sorted((ROOT / "scripts/diagram-kit/fixtures").glob("*.toml"))

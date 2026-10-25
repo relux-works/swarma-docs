@@ -1,9 +1,18 @@
+# Former source: grant-issue-and-check.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Grants: issue, narrowing and check. Content follows grant-issue-and-check.puml;
 # a branch keeps the number of the step it replaces. The line break in step 3
 # follows the source; the note keeps only the mechanism (the delivery status
-# lives in the status chapter).
+# lives in the status chapter). Step 2 has an agent sign a child grant, which
+# only the broker v0 contract allows (chapter "Гранты и полномочия": the
+# parent orchestrator signs the new one's caller grant; in the general grant
+# language an agent key is never the issuer of a link), so the note scopes the
+# figure with those two mechanism sentences.
 layout = "sequence"
-alt = "Цепочка грантов: передать можно только часть прав, а проверяет её исполнитель действия"
+alt = "Цепочка грантов: передать можно только часть прав, а проверяет её исполнитель действия."
+
+[theme.space]
+seq_row_gap = 6
 
 [nodes.owner]
 role = "human"
@@ -96,5 +105,5 @@ color = "alert"
 end = true
 
 [[seq]]
-note = "Вызывающий не выносит вердикт о своём запросе."
+note = "Дочерний грант оркестратор подписывает по контракту брокера v0;\nв общем языке грантов ключ агента издателем звена не бывает.\nВызывающий не выносит вердикт о своём запросе."
 over = ["orch", "executor"]

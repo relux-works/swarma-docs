@@ -1,8 +1,11 @@
+# Former source: setup-token.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Delivery of an inherited setup-token, part 2 of 2: launch. Content follows
 # setup-token.puml and chapter "Учётные данные и логины"; split from the whole
 # flow at the hand-over to the plan, step numbers stay those of the whole flow.
 # The delivery-status sentence of the source's note is dropped (book voice:
-# status lives in the state chapter); the note keeps the mechanism limit. A
+# status lives in the state chapter); the note keeps the mechanism limit in the
+# chapter's words ("Remote Control его отвергает"). A
 # branch keeps the number of the step it replaces.
 layout = "sequence"
 alt = "Доставка setup-token, запуск: секрет извлекает окончательный исполнитель перед запуском Claude."
@@ -70,5 +73,5 @@ label = "`CLAUDE_CODE_OAUTH_TOKEN` при запуске"
 end = true
 
 [[seq]]
-note = "Только inference; Remote Control не поддерживается."
+note = "Только inference; Remote Control его отвергает."
 over = ["executor", "claude"]

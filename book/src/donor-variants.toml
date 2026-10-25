@@ -1,9 +1,13 @@
+# Former source: donor-variants.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Donor machine deployment variants. Content follows donor-variants.puml and
 # the variant table of chapter "Удалённое рабочее место"; the variant names
 # (locked launch, two accounts, sandbox) come from the chapter, which wins.
 # Variants are deployment options (role neutral); the model provider is
 # external, the project side is ours. Three variants to two targets cannot be
 # drawn without crossings, so each egress label names its variant letter.
+# The variants are declared B, A, C: with that input order Graphviz stacks
+# them A, B, C from the top, the reading order of the chapter's table.
 layout = "graph"
 direction = "LR"
 same_rank = [["a", "b", "c"], ["provider", "project"]]
@@ -13,15 +17,15 @@ alt = "Варианты развёртывания донора: без разд
 [theme.space]
 graph_ranksep = 1.6
 
-[nodes.a]
-role = "neutral"
-name = "A: запертый запуск"
-text = "без административной установки; один UID донора; границы ОС между мостом и харнесом нет"
-
 [nodes.b]
 role = "neutral"
 name = "B: две учётные записи"
 text = "мост под служебным UID, харнес под рабочим; граница чтения и файрвол по UID; нужен компонент привилегированной подготовки"
+
+[nodes.a]
+role = "neutral"
+name = "A: запертый запуск"
+text = "без административной установки; один UID донора; границы ОС между мостом и харнесом нет"
 
 [nodes.c]
 role = "neutral"

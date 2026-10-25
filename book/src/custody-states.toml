@@ -1,8 +1,11 @@
+# Former source: custody-states.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Custody handover states. Content follows custody-states.puml: the note sits
 # beside the accepted state, both final states keep their labels; the dashes
 # in those labels became colons and the quotes straight, by the prose rules.
 # The note quotes the reply "Беру" as the chapter does (the .puml says
-# "Принял"; the chapter wins).
+# "Принял"; the chapter wins), and the late receipt follows the chapter: a
+# late receipt of a failed or replaced handover is refused.
 layout = "graph"
 direction = "TB"
 alt = "Передача: ответственность остаётся у прежнего держателя до подтверждения первого действия получателя."
@@ -17,7 +20,7 @@ name = "Отправлена"
 [nodes.acc]
 role = "service"
 name = "Принята"
-note = '"Беру" не является первым действием. Поздняя или заменённая квитанция отклоняется.'
+note = '"Беру" не является первым действием. Поздняя квитанция по неудавшейся или заменённой передаче отклоняется.'
 
 [nodes.done]
 role = "service"

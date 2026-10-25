@@ -1,3 +1,5 @@
+# Former source: economy.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Swarma Chain value flows. Content follows economy.puml and the section "За
 # что платят" of chapter "Социальный слой, память сети и экономика". Payment
 # streams are neutral, recipients carry the role of who they are. The

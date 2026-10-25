@@ -21,7 +21,7 @@
 <rect x="148.9" y="92.8" width="115.8" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
 <text x="162.9" y="111.1" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Запасной путь</tspan></text>
 <!-- message owner -> command -->
-<path d="M 2 188 L 195.1 188" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="command" data-edge="m1"/>
+<path d="M 2 188 L 195.1 188" fill="none" stroke="#3a3f47" stroke-width="2" stroke-dasharray="6 5" class="edge" data-from="owner" data-to="command" data-edge="m1"/>
 <polygon points="201.1,188 191.1,183.5 191.1,192.5" fill="#3a3f47"/>
 <rect x="16" y="141" width="171.1" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
@@ -41,7 +41,7 @@
 <text x="50.4" y="242.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">для подтверждения</tspan></text>
 </g>
 <!-- message owner -> command -->
-<path d="M 2 302.5 L 195.1 302.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="command" data-edge="m3"/>
+<path d="M 2 302.5 L 195.1 302.5" fill="none" stroke="#3a3f47" stroke-width="2" stroke-dasharray="6 5" class="edge" data-from="owner" data-to="command" data-edge="m3"/>
 <polygon points="201.1,302.5 191.1,298 191.1,307" fill="#3a3f47"/>
 <rect x="40.4" y="275" width="122.2" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
@@ -63,7 +63,7 @@
 <rect x="171" y="370" width="71.7" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
 <text x="185" y="388.3" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Чтение</tspan></text>
 <!-- message owner -> broker -->
-<path d="M 2 465.2 L 405.7 465.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="broker" data-edge="m6"/>
+<path d="M 2 465.2 L 405.7 465.2" fill="none" stroke="#3a3f47" stroke-width="2" stroke-dasharray="6 5" class="edge" data-from="owner" data-to="broker" data-edge="m6"/>
 <polygon points="411.7,465.2 401.7,460.7 401.7,469.7" fill="#3a3f47"/>
 <rect x="93.7" y="418.2" width="226.3" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m6">

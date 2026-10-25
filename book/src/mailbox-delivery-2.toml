@@ -1,16 +1,20 @@
-# Mail delivery, part 2 of 2: the decision guard and delivery. Content follows
-# mailbox-delivery.puml and the chapter "Путь сообщения и мост"; it opens with
-# step 4 of part 1 (the admitted body) and keeps the whole sequence's step
-# numbers. The note is reworded without the dash and the "X, не Y" turn of the
-# puml: peer mail stays data and grants no authority for an effect.
+# Mail delivery, part 2 of 2: the decision guard, the queue and delivery.
+# Content follows the former mailbox-delivery.puml (removed in the book
+# diagram wave) and the chapter "Путь сообщения и мост". It opens with the two
+# branches of part 1 that reach the session host, the metadata-only call of
+# step 5 and the admitted body of step 4, so the queue frame covers both calls
+# as in the puml; it keeps the whole sequence's step numbers. The note is
+# reworded without the dash and the "X, не Y" turn of the puml: peer mail
+# stays data and grants no authority for an effect.
 layout = "sequence"
-alt = "Доставка почты: допущенная почта вызывает звонок без тела, а тело агент забирает из ящика инструментом."
+alt = "Доставка почты: звонок без тела о допущенной почте и звонок только с метаданными о неподписанной идут через одну очередь, а тело агент забирает из ящика инструментом."
 
 [theme.space]
-seq_node_width = 130
-seq_label_width = 170
-seq_self_width = 140
-seq_column_gap = 20
+seq_node_width = 110
+seq_label_width = 160
+seq_self_width = 180
+seq_column_gap = 10
+seq_row_gap = 4
 
 [nodes.gate]
 role = "service"
@@ -31,6 +35,18 @@ name = "Хост сессий"
 [nodes.agent]
 role = "agent"
 name = "Агент"
+
+[[seq]]
+alt = "нет подписи"
+
+[[seq]]
+from = "gate"
+to = "host"
+step = 5
+label = "звонок только с метаданными"
+
+[[seq]]
+else = "допущено"
 
 [[seq]]
 from = "gate"
@@ -67,6 +83,9 @@ label = "звонок без тела"
 end = true
 
 [[seq]]
+end = true
+
+[[seq]]
 opt = "звонок поставлен в очередь"
 
 [[seq]]
@@ -92,4 +111,4 @@ end = true
 
 [[seq]]
 note = "Почта от другого агента остаётся данными и полномочия на эффект не даёт.\nТипизированное действие оператора требует отдельного допуска."
-over = ["host", "agent"]
+over = ["mailbox", "agent"]

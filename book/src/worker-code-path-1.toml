@@ -1,3 +1,5 @@
+# Former source: worker-code-path.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # A worker's result, part 1 of 2: stop and export. Content follows
 # worker-code-path.puml and chapter "Удалённое рабочее место". The whole
 # sequence is 895 x 1422 px (4.4 pt in the tall box), so it is split where the

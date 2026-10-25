@@ -1,3 +1,5 @@
+# Former source: memory-data-delivery.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Memory delivered as an explicit tool result. Content follows
 # memory-data-delivery.puml and chapter "Память агентов". The source title's
 # "первый срез" is a delivery status and is gone. Where the source note says
@@ -74,5 +76,5 @@ label = "результат инструмента с пометкой `data`"
 end = true
 
 [[seq]]
-note = "Снимок в начале сессии приходит отдельным блоком данных, в инструкции память не попадает.\nПодпись конверта не делает содержимое инструкцией.\nСледующая доставка требует актуальной проверки разрешений."
+note = "Снимок в начале сессии приходит отдельным блоком данных; подпись конверта не делает содержимое инструкцией.\nСледующая доставка требует актуальной проверки разрешений."
 over = ["agent", "registry"]

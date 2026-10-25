@@ -1,3 +1,5 @@
+# Former source: board-components.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Board architecture on Swarma Runtime. Content follows board-components.puml
 # and chapter "Доска задач и процесс". The source's title ("proposed") is
 # dropped; the dash in the last label became a colon. The board is a process
@@ -37,7 +39,7 @@ name = "Задачи, цели и ресурсы"
 [nodes.router]
 group = "board"
 role = "service"
-name = "Роутер ролей"
+name = "Маршрутизатор ролей"
 
 [nodes.spawn]
 group = "board"

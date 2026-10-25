@@ -1,7 +1,7 @@
 @startuml
 ' Sequence probe: grant-issue-and-check in PlantUML with the house style
 ' (roles, PT Sans, step numbers, condition frames), for comparison with the
-' kit's book/src/grant-issue-and-check-v2.toml.
+' kit's book/src/grant-issue-and-check.toml.
 <style>
 root { FontName "PT Sans"; FontSize 15; FontColor #1f2328 }
 participant { LineThickness 2; RoundCorner 24; FontSize 18; FontStyle bold }

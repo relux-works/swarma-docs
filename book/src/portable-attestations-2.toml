@@ -1,6 +1,10 @@
+# Former source: portable-attestations.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Portable attestations, part 2 of 2: the application project. Split from the
-# whole flow of portable-attestations.puml at the divider between the two
-# projects; step numbers stay those of the whole flow. The final arrow is solid:
+# whole flow of portable-attestations.puml by phase, where the library
+# project ends and the application project begins (the whole figure was too
+# tall; the puml has no divider there, so none is drawn); step numbers stay
+# those of the whole flow. The final arrow is solid:
 # the runtime always answers, admission or refusal. The note of the source
 # stands under this part, where the decision is taken.
 layout = "sequence"
@@ -28,9 +32,6 @@ name = "Индексатор"
 [nodes.app]
 role = "service"
 name = "Рантайм приложения"
-
-[[seq]]
-divider = "Проект приложения"
 
 [[seq]]
 from = "agent"

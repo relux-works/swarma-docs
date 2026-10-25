@@ -1284,10 +1284,17 @@ def layout_sequence(kit, d, opts):
     def same(i, j):
         return 0 <= j < len(ids) and gof[j] is not None and gof[j] == gof[i]
 
+    def alone(a):
+        """The participant is the only member of its container."""
+        return gof[a] is not None and not same(a, a - 1) and not same(a, a + 1)
+
     def self_left(a):
         """A self-message loops right, except in the last column and where a
         container border is on the right and a neighbour of the same
-        container on the left."""
+        container on the left. A participant alone in its container always
+        loops right: the container widens under the label instead."""
+        if alone(a):
+            return False
         if a == len(ids) - 1 and a > 0:
             return True
         return gof[a] is not None and not same(a, a + 1) and same(a, a - 1)
@@ -1310,7 +1317,9 @@ def layout_sequence(kit, d, opts):
             lab = kit.step_label(it.get("step"), it.get("label", ""), max_width=wrap)
             prepared.append(("msg", it, a, b, lab))
             need = loop_w + loop_gap + lab["w"] + 30
-            if a == b and not self_left(a) and a < len(ids) - 1:
+            if a == b and alone(a):
+                pass  # the container widens under the label below
+            elif a == b and not self_left(a) and a < len(ids) - 1:
                 gaps[a] = max(gaps[a], need)
             elif a == b and a > 0:
                 # The last column loops to the left, so the figure does not grow sideways.
@@ -1392,6 +1401,24 @@ def layout_sequence(kit, d, opts):
                 ext[g] = deficit
                 if c1 < len(ids) - 1:
                     gaps[c1] += deficit
+    # A container with one participant also widens under the labels of that
+    # participant's self-messages, so a label never sits on its border.
+    for g in groups:
+        cols = [i for i, x in enumerate(gof) if x == g]
+        if len(cols) != 1:
+            continue
+        a = cols[0]
+        half = models[ids[a]]["w"] / 2 + gp
+        for kind, it, a2, b2, lab in prepared:
+            if kind != "msg" or a2 != a or b2 != a:
+                continue
+            need = loop_w + loop_gap + lab["w"] + 4 + border_margin - half
+            if need > ext.get(g, 0):
+                ext[g] = need
+        if a < len(ids) - 1:
+            nxt = gp if gof[a + 1] else 0
+            want = half + ext.get(g, 0) + nxt + s["seq_column_gap"] + models[ids[a + 1]]["w"] / 2
+            gaps[a] = max(gaps[a], want)
     xs = positions()
 
     def borders(xs):

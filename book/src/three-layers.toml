@@ -1,3 +1,5 @@
+# Former source: three-layers.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Swarma's three layers and the links between them. Content follows
 # three-layers.puml: three layer boxes top to bottom, two labelled links and
 # the note beside layer 0. The puml title becomes the chapter caption.

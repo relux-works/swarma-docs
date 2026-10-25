@@ -14,7 +14,7 @@
 <rect x="596.8" y="10" width="129.4" height="18.9" fill="#ffffff" class="plate"/>
 <text x="602.8" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НАША СТОРОНА</tspan></text>
 <line x1="0" y1="106.5" x2="0" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="153.4" y1="83.1" x2="153.4" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="153.4" y1="106.5" x2="153.4" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="326.6" y1="83.1" x2="326.6" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="663.3" y1="129.9" x2="663.3" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node harness -->
@@ -22,8 +22,9 @@
 <text x="-28.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Харнес</tspan></text>
 <text x="-36.7" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и модель</tspan></text>
 <!-- node relay -->
-<rect x="95.9" y="37.7" width="114.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="relay"/>
-<text x="111.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Stdio relay</tspan></text>
+<rect x="82.3" y="37.7" width="142.2" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="relay"/>
+<text x="134.5" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реле</tspan></text>
+<text x="98.3" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инструментов</tspan></text>
 <!-- node bridge -->
 <rect x="259.7" y="37.7" width="133.8" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="bridge"/>
 <text x="275.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мост донора</tspan></text>

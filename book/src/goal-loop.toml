@@ -1,3 +1,5 @@
+# Former source: goal-loop.puml, removed from book/src/ in the book
+# diagram wave; it remains in the repository history.
 # Session goal loop. Content follows goal-loop.puml and the chapter "Запуск
 # агента и хост сессий"; the .puml title word "Предлагаемый" is a status and
 # is left out. The .puml dashed returns are plain messages here: in the house
