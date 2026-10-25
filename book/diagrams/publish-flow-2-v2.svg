@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="859.1" height="751.7" viewBox="0 0 859.1 751.7">
+<title>Публикация, кратковременная и долговременная память: кураторы и зрители раздают файл, архивисты хранят его по своей политике.</title>
+<rect width="859.1" height="751.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(70.6 0)">
+<line x1="0" y1="45.4" x2="0" y2="727.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="153.3" y1="45.4" x2="153.3" y2="727.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="286.1" y1="45.4" x2="286.1" y2="727.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="468.3" y1="45.4" x2="468.3" y2="727.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="704.5" y1="45.4" x2="704.5" y2="727.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node chain -->
+<rect x="-70.6" y="0" width="141.2" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="chain"/>
+<text x="-54.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Chain</tspan></text>
+<!-- node indexer -->
+<rect x="90.6" y="0" width="125.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="indexer"/>
+<text x="106.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Индексатор</tspan></text>
+<!-- node curator -->
+<rect x="236.1" y="0" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="curator"/>
+<text x="253.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Куратор</tspan></text>
+<!-- node viewer -->
+<rect x="418.3" y="0" width="100" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="viewer"/>
+<text x="436.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Зритель</tspan></text>
+<!-- node archivist -->
+<rect x="651.5" y="0" width="106.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="archivist"/>
+<text x="667.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Архивист</tspan></text>
+<!-- divider -->
+<line x1="-70.6" y1="83.5" x2="764.5" y2="83.5" stroke="#868e99" stroke-width="1.2"/>
+<rect x="259.4" y="69.4" width="185.6" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="273.4" y="87.7" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кратковременная память</tspan></text>
+<!-- self curator -->
+<path d="M 288.1 121.6 L 318.1 121.6 L 318.1 170.6 L 295.1 170.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="curator" data-to="curator" data-edge="m1"/>
+<polygon points="289.1,170.6 299.1,175.1 299.1,166.1" fill="#3a3f47"/>
+<rect x="326.1" y="125.6" width="116.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="339.1" cy="136.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="335.4" y="141" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="354.1" y="140.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">просмотреть</tspan></text>
+<text x="354.1" y="160.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и одобрить</tspan></text>
+</g>
+<!-- message curator -> chain -->
+<path d="M 284.1 214.1 L 8 214.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="curator" data-to="chain" data-edge="m2"/>
+<polygon points="2,214.1 12,218.6 12,209.6" fill="#3a3f47"/>
+<rect x="78.7" y="186.6" width="128.7" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="91.7" cy="197.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="88" y="202" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="106.7" y="201.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">категоризация</tspan></text>
+</g>
+<!-- message curator -> viewer -->
+<path d="M 288.1 281.1 L 460.3 281.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="curator" data-to="viewer" data-edge="m3"/>
+<polygon points="466.3,281.1 456.3,276.6 456.3,285.6" fill="#3a3f47"/>
+<rect x="321.1" y="234.1" width="112.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="334.1" cy="244.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="330.4" y="249.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="349.1" y="249.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">раздавать</tspan></text>
+<text x="349.1" y="268.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одобренное</tspan></text>
+</g>
+<!-- message indexer -> viewer -->
+<path d="M 155.3 328.6 L 460.3 328.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="indexer" data-to="viewer" data-edge="m4"/>
+<polygon points="466.3,328.6 456.3,324.1 456.3,333.1" fill="#3a3f47"/>
+<rect x="240.2" y="301.1" width="141.2" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="244.2" y="302.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="248.7" y="316.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="273.9" y="316.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">лента подписок</tspan></text>
+</g>
+<!-- self viewer -->
+<path d="M 470.3 352.6 L 500.3 352.6 L 500.3 401.6 L 477.3 401.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="viewer" data-to="viewer" data-edge="m5"/>
+<polygon points="471.3,401.6 481.3,406.1 481.3,397.1" fill="#3a3f47"/>
+<rect x="508.3" y="356.6" width="142.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="512.3" y="358.4" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="516.8" y="372" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="542.1" y="371.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">раздавать, пока</tspan></text>
+<text x="542.1" y="391.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">контент в кэше</tspan></text>
+</g>
+<!-- divider -->
+<line x1="-70.6" y1="431.7" x2="764.5" y2="431.7" stroke="#868e99" stroke-width="1.2"/>
+<rect x="262.6" y="417.6" width="179.4" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="276.6" y="435.9" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Долговременная память</tspan></text>
+<!-- message indexer -> archivist -->
+<path d="M 155.3 512.8 L 696.5 512.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="indexer" data-to="archivist" data-edge="m7"/>
+<polygon points="702.5,512.8 692.5,508.3 692.5,517.3" fill="#3a3f47"/>
+<rect x="344.3" y="465.8" width="169.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<rect x="348.3" y="467.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="352.8" y="481.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="378" y="481" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отметки выбранной</tspan></text>
+<text x="378" y="500.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">окрестности</tspan></text>
+</g>
+<!-- message archivist -> curator -->
+<path d="M 702.5 560.3 L 294.1 560.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="archivist" data-to="curator" data-edge="m8"/>
+<polygon points="288.1,560.3 298.1,564.8 298.1,555.8" fill="#3a3f47"/>
+<rect x="451.5" y="532.8" width="87.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<rect x="455.5" y="534.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="460" y="548.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="485.2" y="548" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">скачать</tspan></text>
+</g>
+<!-- self archivist -->
+<path d="M 702.5 584.3 L 672.5 584.3 L 672.5 633.3 L 695.5 633.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="archivist" data-to="archivist" data-edge="m9"/>
+<polygon points="701.5,633.3 691.5,628.8 691.5,637.8" fill="#3a3f47"/>
+<rect x="494.3" y="588.3" width="170.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m9">
+<rect x="498.3" y="590" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="502.8" y="603.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="528.1" y="603.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хранить до предела</tspan></text>
+<text x="528.1" y="623" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">диска по политике</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="649.3" width="824.5" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="172.1" y="674.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Без заинтересованных держателей файл может исчезнуть.</tspan></text>
+<text x="165" y="692.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Запись в цепочке не является обещанием вечного хранения.</tspan></text>
+</g>
+</g>
+</svg>

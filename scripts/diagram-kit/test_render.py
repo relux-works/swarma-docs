@@ -492,6 +492,11 @@ class ThemeTests(Base):
             "theme.space.line_height: must be greater than zero": "[theme.space]\nline_height = 0\n",
             "override only [theme.space]": '[theme.font]\nsans = "Comic Sans"\n',
             "theme.space.frame_dash": '[theme.space]\nframe_dash = "x"\n',
+            "theme.space.pad: must be at most 2000": "[theme.space]\npad = 1e308\n",
+            "theme.space.seq_label_width: must be at most 2000": "[theme.space]\nseq_label_width = 2001\n",
+            "theme.space.line_height: must be at most 4": "[theme.space]\nline_height = 4.5\n",
+            "theme.space.letter_spacing: must be at most 4": "[theme.space]\nletter_spacing = 10\n",
+            "theme.space.graph_ranksep: must be at most 20": "[theme.space]\ngraph_ranksep = 1e9\n",
         }
         for reason, tail in probes.items():
             with self.subTest(reason=reason):
@@ -501,6 +506,10 @@ class ThemeTests(Base):
     # control: the override mechanism is not simply disabled).
     def test_space_override_accepted(self):
         svg, _ = self.render_ok(STACK + '\n[theme.space]\ngroup_dash = "4 4"\npad = 20\n')
+        self.assertIn('width="', svg)
+        self.assertNotIn("inf", svg)
+        # The bounds themselves are allowed (boundary positive control).
+        self.render_ok(STACK + '\n[theme.space]\nline_height = 4\ngap_min = 2000\n')
         self.assertIn('stroke-dasharray="4 4"', svg)
         self.assertNotIn('stroke-dasharray="8 6"', svg)
 
@@ -643,21 +652,32 @@ class ConstructTests(Base):
         bad = SEQ_FULL.replace('[[seq]]\nalt = "внутреннее условие"', '[[seq]]\ndivider = "внутри"\n[[seq]]\nalt = "внутреннее условие"')
         self.refused(bad, "a divider cannot sit inside alt")
 
-    # Claim: a note on one participant sits beside its lifeline (right by
-    # default, left on request) and inside the alt branch that holds it.
+    # Claim: a note on one participant sits beside its lifeline inside the
+    # enclosing alt frame and inside the participant's container. b is the
+    # last participant of its container, so a note asked on the right moves
+    # to the left, ending 10 px before b's lifeline; on a (first of the same
+    # container) the right side is kept (positive control). A note on the
+    # only participant of a container is refused: either side covers a border.
     def test_note_on_participant_in_alt(self):
         svg, root = self.render_ok(SEQ_FULL)
         g = geo(svg)
         note = g["notes"][0]["r"]
         frames = [f["r"] for f in g["frames"]]
         self.assertTrue(any(render.within(note, f) for f in frames))
+        left = next(x["r"] for x in g["groups"] if x["id"] == "left")
+        self.assertTrue(render.within(note, left))
         bline = [l for l in root.iter(SVG + "line") if l.get("stroke-dasharray") == "4 5"]
         xs = sorted(float(l.get("x1")) for l in bline)
-        # lifeline of b is the second one; the note starts 10 px right of it
-        self.assertAlmostEqual(note[0] - (xs[1] + self.pad_shift(root)), 10, delta=1)
+        shift = self.pad_shift(root)
+        # lifeline of b is the second one; the note ends 10 px left of it
+        self.assertAlmostEqual((xs[1] + shift) - note[2], 10, delta=1)
         svg2, _ = self.render_ok(SEQ_FULL.replace('on = "b"', 'on = "b"\nside = "left"'))
-        note2 = geo(svg2)["notes"][0]["r"]
-        self.assertLess(note2[2], note[0])
+        self.assertAlmostEqual(geo(svg2)["notes"][0]["r"][2], note[2], delta=1)
+        svg3, root3 = self.render_ok(SEQ_FULL.replace('on = "b"', 'on = "a"'))
+        note3 = geo(svg3)["notes"][0]["r"]
+        xs3 = sorted(float(l.get("x1")) for l in root3.iter(SVG + "line") if l.get("stroke-dasharray") == "4 5")
+        self.assertAlmostEqual(note3[0] - (xs3[0] + self.pad_shift(root3)), 10, delta=1)
+        self.refused(SEQ_FULL.replace('on = "b"', 'on = "c"'), "the note on c would cover the border of right")
         self.refused(SEQ_FULL.replace('on = "b"', 'on = "zz"'), "unknown node 'zz'")
 
     def pad_shift(self, root):
@@ -668,6 +688,44 @@ class ConstructTests(Base):
             if m:
                 shift += float(m.group(1))
         return shift
+
+    # Claim (review r2, P2-2): where a message crosses container borders its
+    # label plate lies between two borders, never on one; this holds for the
+    # four cross-machine messages of the remote-worker-turn pilot, whose
+    # labels sit in the gap between the donor's and our container. Divider
+    # pills and frame condition labels keep clear of the borders too.
+    def test_cross_boundary_labels_clear(self):
+        src = (ROOT / "book/src/remote-worker-turn-v2.toml").read_text(encoding="utf-8")
+        for text in (SEQ_FULL, src):
+            with self.subTest(source=text[:30]):
+                svg, _ = self.render_ok(text)
+                g = geo(svg)
+                for grp in g["groups"]:
+                    for p in g["plates"]:
+                        r = render.grow(p["r"], 2)
+                        self.assertFalse(render.overlap(r, grp["r"]) and not render.within(r, grp["r"]),
+                                         (grp["id"], p["r"]))
+        g = geo(self.render_ok(src)[0])
+        donor = next(x["r"] for x in g["groups"] if x["id"] == "donor")
+        ours = next(x["r"] for x in g["groups"] if x["id"] == "ours")
+        crossing = [p["r"] for p in g["plates"] if p["r"][0] > donor[2] and p["r"][2] < ours[0]]
+        self.assertEqual(len(crossing), 4)
+
+    # Claim: a note over participants on both sides of a container border is
+    # drawn under the containers, clear of every border; such a note followed
+    # by a message is refused, and a note over one container stays in its row
+    # (positive control).
+    def test_note_across_containers(self):
+        src = SEQ_FULL + '[[seq]]\nnote = "Общее примечание."\nover = ["a", "d"]\n'
+        svg, _ = self.render_ok(src)
+        g = geo(svg)
+        note = next(n["r"] for n in g["notes"] if n["r"][3] - n["r"][1] < 60 and n["r"][2] - n["r"][0] > 300)
+        self.assertGreater(note[1], max(x["r"][3] for x in g["groups"]))
+        self.refused(src + '[[seq]]\nfrom = "a"\nto = "b"\nlabel = "ещё"\n', "spans a container border")
+        svg2, _ = self.render_ok(SEQ_FULL + '[[seq]]\nnote = "Слева."\nover = ["a", "b"]\n')
+        g2 = geo(svg2)
+        left = next(x["r"] for x in g2["groups"] if x["id"] == "left")
+        self.assertTrue(any(render.within(n["r"], left) for n in g2["notes"] if n["r"][2] - n["r"][0] > 100))
 
     # Claim: an opt frame is drawn dotted with round caps and an alt frame
     # dashed, so the kinds differ; else inside opt and opt without end are
@@ -692,15 +750,26 @@ class ConstructTests(Base):
         self.assertEqual(len(inner), 1)
 
     # Claim: a self-message in a middle column loops to the right; in the last
-    # column it loops to the left, so the figure does not grow sideways.
+    # column it loops to the left; at the right edge of a container with a
+    # neighbour inside it loops to the left, so its label stays inside.
     def test_self_message_direction(self):
-        svg, root = self.render_ok(SEQ_FULL)
+        svg, root = self.render_ok(SEQ_FULL.replace('from = "b"\nto = "b"', 'from = "a"\nto = "a"'))
         g = geo(svg)
-        loop = next(e for e in g["edges"] if e["from"] == e["to"] == "b")
+        loop = next(e for e in g["edges"] if e["from"] == e["to"] == "a")
         self.assertGreater(max(p[0] for p in loop["pts"]), loop["pts"][0][0] + 20)
         svg2, _ = self.render_ok(SEQUENCE)
         loop2 = next(e for e in geo(svg2)["edges"] if e["from"] == e["to"] == "b")
         self.assertLess(min(p[0] for p in loop2["pts"]), loop2["pts"][0][0] - 20)
+        # b is the last participant of its container: the loop and its label
+        # turn left and stay inside the container.
+        svg3, _ = self.render_ok(SEQ_FULL)
+        g3 = geo(svg3)
+        loop3 = next(e for e in g3["edges"] if e["from"] == e["to"] == "b")
+        self.assertLess(min(p[0] for p in loop3["pts"]), loop3["pts"][0][0] - 20)
+        left = next(x["r"] for x in g3["groups"] if x["id"] == "left")
+        plate = next(p["r"] for p in g3["plates"] if render.hit(p["r"], (p["r"][0] + 1, p["r"][1] + 1))
+                     and any(t["s"].endswith("проверка") and render.within(t["r"], p["r"], 1.5) for t in g3["texts"]))
+        self.assertTrue(render.within(plate, left))
 
     # Claim: a stack note sits beside its node (right) or its group (left) on
     # a connector, outside the column; a note on a side that carries a return
@@ -895,6 +964,31 @@ class LintTests(Base):
         """Move the first tagged label 120 px down, away from its arrow."""
         m = re.search(r'<g class="label" data-edge="e0">.*?\n</g>', svg, flags=re.S)
         return svg[:m.start()] + '<g transform="translate(0 120)">' + m.group(0) + "</g>" + svg[m.end():]
+
+    # Claim (review r2, P2-2): a label plate, a note or a divider pill on a
+    # container border, and an alt frame edge along one, are reported; the
+    # clean sequence with containers passes (positive control), and a plate
+    # or note fully inside a container is not reported (near-miss control).
+    def test_lint_plate_and_note_on_boundary(self):
+        svg, _ = self.render_ok(SEQ_FULL)
+        self.assertEqual(render.lint(svg, KIT), [])
+        g = geo(svg)
+        left = next(x["r"] for x in g["groups"] if x["id"] == "left")
+        bx, ymid = left[2], (left[1] + left[3]) / 2
+        cases = {
+            "a label plate covers a boundary":
+                f'<rect x="{bx - 30}" y="{ymid}" width="60" height="18" fill="#ffffff" class="plate"/>',
+            "a note covers a boundary":
+                f'<rect x="{bx - 40}" y="{ymid + 40}" width="80" height="30" rx="10" class="note"/>',
+            "a frame edge runs along a boundary":
+                f'<rect x="{left[0] + 20}" y="{ymid}" width="{bx - left[0] - 19}" height="40" fill="none" class="frame"/>',
+        }
+        for reason, extra in cases.items():
+            with self.subTest(reason=reason):
+                probs = render.lint(self.planted(svg, extra), KIT)
+                self.assertTrue(any(reason in p for p in probs), probs)
+        inside = (f'<rect x="{bx - 90}" y="{left[3] - 30}" width="40" height="10" fill="#ffffff" class="plate"/>')
+        self.assertFalse(any("boundary" in p for p in render.lint(self.planted(svg, inside), KIT)))
 
     # Claim: a planted overlap makes render() itself fail, so the lint gates
     # the render and is not only a separate tool.

@@ -1,0 +1,89 @@
+# Publication, part 2 of 2: short-term and long-term memory. Split from
+# publish-flow-v2 at its second divider; step numbers stay those of the whole flow.
+
+layout = "sequence"
+alt = "Публикация, кратковременная и долговременная память: кураторы и зрители раздают файл, архивисты хранят его по своей политике."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 170
+seq_column_gap = 20
+
+[nodes.chain]
+role = "store"
+name = "Swarma Chain"
+
+[nodes.indexer]
+role = "service"
+name = "Индексатор"
+
+[nodes.curator]
+role = "service"
+name = "Куратор"
+
+[nodes.viewer]
+role = "human"
+name = "Зритель"
+
+[nodes.archivist]
+role = "service"
+name = "Архивист"
+
+[[seq]]
+divider = "Кратковременная память"
+
+[[seq]]
+from = "curator"
+to = "curator"
+step = 7
+label = "просмотреть и одобрить"
+
+[[seq]]
+from = "curator"
+to = "chain"
+step = 8
+label = "категоризация"
+
+[[seq]]
+from = "curator"
+to = "viewer"
+step = 9
+label = "раздавать одобренное"
+
+[[seq]]
+from = "indexer"
+to = "viewer"
+step = 10
+label = "лента подписок"
+
+[[seq]]
+from = "viewer"
+to = "viewer"
+step = 11
+label = "раздавать, пока контент в кэше"
+
+[[seq]]
+divider = "Долговременная память"
+
+[[seq]]
+from = "indexer"
+to = "archivist"
+step = 12
+label = "отметки выбранной окрестности"
+
+[[seq]]
+from = "archivist"
+to = "curator"
+step = 13
+label = "скачать"
+
+[[seq]]
+from = "archivist"
+to = "archivist"
+step = 14
+label = "хранить до предела диска по политике"
+
+[[seq]]
+note = "Без заинтересованных держателей файл может исчезнуть.\nЗапись в цепочке не является обещанием вечного хранения."
+over = ["chain", "archivist"]

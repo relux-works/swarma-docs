@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="785.8" height="537.4" viewBox="0 0 785.8 537.4">
+<title>Удалённый ход, наша сторона: вход SSH проверяет допуск, исполнитель работает в границах рабочего места.</title>
+<rect width="785.8" height="537.4" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(78.5 0)">
+<!-- group ours -->
+<rect x="-78.5" y="0" width="761.8" height="513.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="ours"/>
+<!-- group label ours -->
+<rect x="-66.5" y="10" width="129.4" height="18.9" fill="#ffffff" class="plate"/>
+<text x="-60.5" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НАША СТОРОНА</tspan></text>
+<line x1="0" y1="129.9" x2="0" y2="505.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="216.6" y1="83.1" x2="216.6" y2="505.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="413.7" y1="83.1" x2="413.7" y2="505.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="586.6" y1="83.1" x2="586.6" y2="505.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node ssh -->
+<rect x="-60.5" y="37.7" width="121" height="92.2" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="ssh"/>
+<text x="-37.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Вход SSH</tspan></text>
+<text x="-44.5" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и проверка</tspan></text>
+<text x="-31.8" y="110.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуска</tspan></text>
+<!-- node executor -->
+<rect x="149.3" y="37.7" width="134.5" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="executor"/>
+<text x="165.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исполнитель</tspan></text>
+<!-- node workspace -->
+<rect x="339.4" y="37.7" width="148.6" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="workspace"/>
+<text x="355.4" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Рабочее место</tspan></text>
+<!-- node mailbox -->
+<rect x="508" y="37.7" width="157.3" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="mailbox"/>
+<text x="524" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Почтовый ящик</tspan></text>
+<!-- self ssh -->
+<path d="M 2 157.9 L 32 157.9 L 32 226.4 L 9 226.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="ssh" data-to="ssh" data-edge="m0"/>
+<polygon points="3,226.4 13,230.9 13,221.9" fill="#3a3f47"/>
+<rect x="40" y="161.9" width="150.6" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="53" cy="172.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="177.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="68" y="177.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить допуск</tspan></text>
+<text x="68" y="196.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и привязку</tspan></text>
+<text x="68" y="216.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">рабочего места</tspan></text>
+</g>
+<!-- message ssh -> executor -->
+<path d="M 2 269.9 L 208.6 269.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="ssh" data-to="executor" data-edge="m1"/>
+<polygon points="214.6,269.9 204.6,265.4 204.6,274.4" fill="#3a3f47"/>
+<rect x="25.2" y="242.4" width="166.3" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="38.2" cy="253.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="34.5" y="257.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="53.2" y="257.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущенный запрос</tspan></text>
+</g>
+<!-- message executor -> workspace -->
+<path d="M 218.6 336.9 L 405.7 336.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="workspace" data-edge="m2"/>
+<polygon points="411.7,336.9 401.7,332.4 401.7,341.4" fill="#3a3f47"/>
+<rect x="232.6" y="289.9" width="165.1" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="245.6" cy="300.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="241.9" y="305.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="260.6" y="305.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команда в границах</tspan></text>
+<text x="260.6" y="324.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">рабочего места</tspan></text>
+</g>
+<!-- message workspace -> executor -->
+<path d="M 411.7 384.4 L 224.6 384.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="workspace" data-to="executor" data-edge="m3"/>
+<polygon points="218.6,384.4 228.6,388.9 228.6,379.9" fill="#3a3f47"/>
+<rect x="278" y="356.9" width="74.3" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="291" cy="367.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="287.3" y="372.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="306" y="372.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вывод</tspan></text>
+</g>
+<!-- message executor -> ssh -->
+<path d="M 214.6 431.9 L 8 431.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="executor" data-to="ssh" data-edge="m4"/>
+<polygon points="2,431.9 12,436.4 12,427.4" fill="#3a3f47"/>
+<rect x="60.1" y="404.4" width="96.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="73.1" cy="415.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="69.4" y="419.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="88.1" y="419.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат</tspan></text>
+</g>
+<!-- message ssh -> mailbox -->
+<path d="M 2 479.4 L 578.6 479.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="ssh" data-to="mailbox" data-edge="m5"/>
+<polygon points="584.6,479.4 574.6,474.9 574.6,483.9" fill="#3a3f47"/>
+<rect x="219.6" y="451.9" width="147.5" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="223.6" y="453.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="228.1" y="467.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="253.3" y="467.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">почтовый обмен</tspan></text>
+</g>
+</g>
+</g>
+</svg>

@@ -1,92 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="858.3" height="638.1" viewBox="0 0 858.3 638.1">
-<title>От закреплённого корня к ключам разных назначений</title>
-<rect width="858.3" height="638.1" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="681.6" height="674.9" viewBox="0 0 681.6 674.9">
+<title>От закреплённых корней к ключам разных назначений</title>
+<rect width="681.6" height="674.9" fill="#ffffff"/>
 <g transform="translate(12 12)">
-<g transform="translate(-8 0)">
 <!-- graphviz 14.0.4 -->
 <!-- group carriers -->
-<rect x="8" y="171.4" width="391" height="442.7" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="carriers"/>
+<rect x="363.8" y="328.4" width="293.8" height="234" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="carriers"/>
 <!-- node root -->
-<rect x="374.4" y="0" width="193.3" height="109.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="root"/>
-<text x="398.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Корень оператора</tspan></text>
-<text x="422.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">FIDO + резерв;</tspan></text>
-<text x="390.4" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">подписывает аттестации</tspan></text>
-<text x="391" y="93.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и отзывы, не сообщения</tspan></text>
-<!-- node signer -->
-<rect x="417" y="169.9" width="220" height="109.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="signer"/>
-<text x="433.2" y="196" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ устройства Signer</tspan></text>
-<text x="433" y="224.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Secure Enclave Mac / iPhone:</tspan></text>
-<text x="435.6" y="244.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">P-256/ECDSA; назначение +</tspan></text>
-<text x="468" y="263.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">срок; присутствие</tspan></text>
+<rect x="0" y="474" width="257.8" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="root"/>
+<text x="56.1" y="500.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Корень оператора</tspan></text>
+<text x="29.5" y="528.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">аппаратный ключ у владельца</tspan></text>
 <!-- node km -->
-<rect x="659.3" y="179.7" width="171.4" height="90.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="km"/>
-<text x="675.3" y="205.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Корень Keymaker</tspan></text>
-<text x="697.9" y="234.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">мастер-секрет</tspan></text>
-<text x="678.2" y="253.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и выводимые ключи</tspan></text>
-<!-- node agentkey -->
-<rect x="649.9" y="339.8" width="190.1" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agentkey"/>
-<text x="695.9" y="365.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ агента</tspan></text>
-<text x="665.9" y="394.4" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">swarma-msg</tspan><tspan x="755.9" font-family="PT Sans, sans-serif">: Ed25519;</tspan></text>
-<text x="678.3" y="413.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">у агента секрета нет</tspan></text>
-<!-- node master -->
-<rect x="26.4" y="202.2" width="177.3" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="master"/>
-<text x="61.2" y="228.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Matrix master</tspan></text>
-<!-- node selfsigning -->
-<rect x="26.4" y="362.3" width="177.3" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="selfsigning"/>
-<text x="42.4" y="388.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Matrix self-signing</tspan></text>
+<rect x="0" y="201.3" width="257.8" height="94.3" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="km"/>
+<text x="54" y="227.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Корень аттестаций</tspan></text>
+<text x="90.1" y="250.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключника</tspan></text>
+<text x="42.1" y="279.3" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">только аттестации агентов</tspan></text>
+<!-- node registry -->
+<rect x="0" y="318" width="257.8" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="registry"/>
+<text x="74.3" y="344.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ реестра</tspan></text>
+<text x="49" y="372.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">снимки отзывов агентов</tspan></text>
+<!-- node grantroot -->
+<rect x="0" y="63" width="257.8" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="grantroot"/>
+<text x="66.9" y="89.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Корень грантов</tspan></text>
+<text x="89.2" y="117.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">у владельца</tspan></text>
 <!-- node device -->
-<rect x="26.4" y="490.2" width="177.3" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="device"/>
-<text x="63" y="516.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Matrix device</tspan></text>
-<text x="59.8" y="544.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">участвует в E2EE</tspan></text>
+<rect x="381.8" y="580" width="257.8" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="device"/>
+<text x="443.9" y="606.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ устройства</tspan></text>
+<text x="413.7" y="634.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Secure Enclave: P-256 с low-S</tspan></text>
+<!-- node master -->
+<rect x="381.8" y="381" width="257.8" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="master"/>
+<text x="457" y="407.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Matrix master</tspan></text>
+<text x="397.8" y="435.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">cross-signing: self-signing</tspan><tspan x="569.3" font-family="PT Mono, monospace">→</tspan><tspan x="582.3" font-family="PT Sans, sans-serif">device</tspan></text>
 <!-- node omemo -->
-<rect x="225.5" y="189.4" width="155" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="omemo"/>
-<text x="245" y="215.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">OMEMO device</tspan></text>
-<text x="241.5" y="244.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">каждый fingerprint</tspan></text>
-<!-- link root -> signer -->
-<path d="M 489 110 C 494.6 126.8 500.9 145.5 506.6 162.8 L 507 163.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="signer" data-edge="e0"/>
-<polygon points="508.9,169.6 510,158.7 501.5,161.5" fill="#3a3f47"/>
+<rect x="381.8" y="474" width="257.8" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="omemo"/>
+<text x="452.7" y="500.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">OMEMO device</tspan></text>
+<text x="476.6" y="528.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">fingerprint</tspan></text>
+<!-- node agent -->
+<rect x="381.8" y="209.2" width="257.8" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="461.6" y="235.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ агента</tspan></text>
+<text x="452.9" y="263.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Ed25519, до 24 ч;</tspan></text>
+<text x="444" y="283.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">у агента секрета нет</tspan></text>
+<!-- node grantsvc -->
+<rect x="381.8" y="0" width="257.8" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="grantsvc"/>
+<text x="450" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервис грантов</tspan></text>
+<text x="422" y="54.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">под родительским грантом</tspan></text>
+<!-- node grants -->
+<rect x="381.8" y="93" width="257.8" height="70.9" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="grants"/>
+<text x="482.4" y="119.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Гранты</tspan></text>
+<text x="479.2" y="147.6" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">grant/1</tspan></text>
+<!-- link root -> device -->
+<path d="M 258.2 545.3 C 295.6 555.7 336.6 567.1 374.4 577.7 L 375.6 578" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="device" data-edge="e0"/>
+<polygon points="381.4,579.6 373,572.6 370.6,581.3" fill="#3a3f47"/>
 <g class="label" data-edge="e0">
-<text x="514.6" y="156.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
-</g>
-<!-- link root -> km -->
-<path d="M 559.6 110.2 C 593.9 131.2 632.8 155.1 666.1 175.5 L 667.2 176.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="km" data-edge="e1"/>
-<polygon points="672.3,179.3 666.1,170.2 661.4,177.9" fill="#3a3f47"/>
-<g class="label" data-edge="e1">
-<text x="611.4" y="130.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">удостоверение</tspan></text>
-</g>
-<!-- link km -> agentkey -->
-<path d="M 745 270.3 C 745 289.4 745 311.9 745 331.8 L 745 333.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="km" data-to="agentkey" data-edge="e2"/>
-<polygon points="745,339.3 749.5,329.3 740.5,329.3" fill="#3a3f47"/>
-<g class="label" data-edge="e2">
-<text x="753" y="314.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">удостоверяет</tspan></text>
+<text x="274.3" y="538.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
 </g>
 <!-- link root -> master -->
-<path d="M 374 92.6 C 347.2 103.4 318.2 115.6 292 127.9 C 256.3 144.6 248.6 151.1 214 169.9 C 197 179.1 178.3 189.3 161.9 198.2 L 160.7 198.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="master" data-edge="e3"/>
-<polygon points="155.4,201.8 166.4,200.9 162.1,193" fill="#3a3f47"/>
-<g class="label" data-edge="e3">
-<text x="284.4" y="88" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
-</g>
-<!-- link master -> selfsigning -->
-<path d="M 115 247.8 C 115 275.6 115 323.5 115 354.5 L 115 355.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="master" data-to="selfsigning" data-edge="e4"/>
-<polygon points="115,361.9 119.5,351.9 110.5,351.9" fill="#3a3f47"/>
-<g class="label" data-edge="e4">
-<text x="123" y="316.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">cross-signing</tspan></text>
-</g>
-<!-- link selfsigning -> device -->
-<path d="M 115 408 C 115 427.9 115 457.8 115 482.4 L 115 483.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="selfsigning" data-to="device" data-edge="e5"/>
-<polygon points="115,489.8 119.5,479.8 110.5,479.8" fill="#3a3f47"/>
-<g class="label" data-edge="e5">
-<text x="123" y="463.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">cross-signing</tspan></text>
+<path d="M 258.2 478 C 295.6 468.9 336.6 458.8 374.4 449.6 L 375.6 449.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="master" data-edge="e1"/>
+<polygon points="381.4,447.9 370.6,445.9 372.8,454.6" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="286.1" y="442.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
 </g>
 <!-- link root -> omemo -->
-<path d="M 416.9 110 C 392.9 134 365.2 161.7 343.1 183.7 L 342.2 184.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="omemo" data-edge="e6"/>
-<polygon points="337.9,188.9 348.2,185.1 341.8,178.7" fill="#3a3f47"/>
+<path d="M 258.2 509.4 C 295.5 509.4 336.2 509.4 373.9 509.4 L 375.4 509.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="root" data-to="omemo" data-edge="e2"/>
+<polygon points="381.4,509.4 371.4,504.9 371.4,514" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="279.9" y="498.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
+</g>
+<!-- link km -> agent -->
+<path d="M 258.2 250.5 C 295.5 251.1 336.2 251.7 373.9 252.3 L 375.4 252.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="km" data-to="agent" data-edge="e3"/>
+<polygon points="381.4,252.4 371.5,247.8 371.3,256.8" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="279.9" y="239.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
+</g>
+<!-- link registry -> agent -->
+<path d="M 258.2 320 C 295.6 310.3 336.6 299.6 374.4 289.7 L 375.6 289.4" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registry" data-to="agent" data-edge="e4"/>
+<polygon points="381.4,287.9 370.6,286.1 372.9,294.8" fill="#c8285f"/>
+<g class="label" data-edge="e4">
+<text x="302.6" y="286.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отзыв</tspan></text>
+</g>
+<!-- link grantroot -> grantsvc -->
+<path d="M 258.2 77.2 C 295.6 71 336.6 64.2 374.4 57.9 L 375.5 57.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grantroot" data-to="grantsvc" data-edge="e5"/>
+<polygon points="381.4,56.7 370.8,53.9 372.3,62.8" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="280.2" y="50.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
+</g>
+<!-- link grantroot -> grants -->
+<path d="M 258.2 108.6 C 295.6 111.5 336.6 114.8 374.4 117.8 L 375.4 117.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grantroot" data-to="grants" data-edge="e6"/>
+<polygon points="381.4,118.3 371.8,113 371.1,122" fill="#3a3f47"/>
 <g class="label" data-edge="e6">
-<text x="401.1" y="144.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
+<text x="288.9" y="100" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись</tspan></text>
 </g>
 <!-- group label carriers -->
-<rect x="20" y="585.2" width="159.6" height="18.9" fill="#ffffff" class="plate"/>
-<text x="26" y="599.6" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">КЛЮЧИ НОСИТЕЛЕЙ</tspan></text>
-</g>
+<rect x="375.8" y="338.4" width="159.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="381.8" y="352.8" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">КЛЮЧИ НОСИТЕЛЕЙ</tspan></text>
 </g>
 </svg>

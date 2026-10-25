@@ -24,7 +24,7 @@
 <!-- node verifier -->
 <rect x="18" y="504.6" width="532.2" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="verifier"/>
 <text x="238.2" y="530.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель</tspan></text>
-<text x="100.9" y="559.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корневая цепочка, отзыв,</tspan><tspan x="271.7" font-family="PT Mono, monospace">ts</tspan><tspan x="289.7" font-family="PT Sans, sans-serif">,</tspan><tspan x="296.7" font-family="PT Mono, monospace">nonce</tspan><tspan x="341.7" font-family="PT Sans, sans-serif">, назначение, грант</tspan></text>
+<text x="94.1" y="559.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">корень владельца, отзыв,</tspan><tspan x="264.3" font-family="PT Mono, monospace">iat</tspan><tspan x="291.3" font-family="PT Sans, sans-serif">/</tspan><tspan x="296.6" font-family="PT Mono, monospace">exp</tspan><tspan x="323.6" font-family="PT Sans, sans-serif">,</tspan><tspan x="330.5" font-family="PT Mono, monospace">id</tspan><tspan x="348.5" font-family="PT Sans, sans-serif">, назначение, грант</tspan></text>
 <!-- link signer -> alpha -->
 <path d="M 284.1 108.6 L 284.1 204.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="alpha" data-edge="e0"/>
 <polygon points="284.1,210.7 288.6,200.7 279.6,200.7" fill="#3a3f47"/>

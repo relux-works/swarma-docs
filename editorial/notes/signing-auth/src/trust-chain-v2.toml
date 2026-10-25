@@ -1,10 +1,13 @@
-# Key hierarchy: from the pinned operator root to keys of different purposes.
-# Arrows mean attestation, never the transfer of private material.
-# Source: ru/01-keys.md and src/trust-chain.puml.
+# Key hierarchy: four pairwise distinct pinned roots and the keys they vouch
+# for. Arrows mean attestation, a signature or a revocation, never the
+# transfer of private material.
+# Source: ru/01-keys.md and src/trust-chain.puml. The registry node is named
+# "Ключ реестра", as in the table of ru/01-keys.md and in the book.
 layout = "graph"
-direction = "TB"
-uniform_width = true   # the Matrix chain is one column
-alt = "От закреплённого корня к ключам разных назначений"
+direction = "LR"       # roots on the left: four branches side by side do not fit one print width
+uniform_width = true
+alt = "От закреплённых корней к ключам разных назначений"
+same_rank = [["root", "km", "registry", "grantroot"]]
 
 [groups.carriers]
 label = "Ключи носителей"
@@ -13,62 +16,59 @@ role = "external"
 [nodes.root]
 role = "key"
 name = "Корень оператора"
-text = "FIDO + резерв; подписывает аттестации и отзывы, не сообщения"
-
-[nodes.signer]
-role = "key"
-name = "Ключ устройства Signer"
-text = "Secure Enclave Mac / iPhone: P-256/ECDSA; назначение + срок; присутствие"
+text = "аппаратный ключ у владельца"
 
 [nodes.km]
 role = "key"
-name = "Корень Keymaker"
-text = "мастер-секрет и выводимые ключи"
+name = "Корень аттестаций ключника"
+text = "только аттестации агентов"
 
-[nodes.agentkey]
-role = "agent"
-name = "Ключ агента"
-text = "`swarma-msg`: Ed25519; у агента секрета нет"
+[nodes.registry]
+role = "key"
+name = "Ключ реестра"
+text = "снимки отзывов агентов"
+
+[nodes.grantroot]
+role = "key"
+name = "Корень грантов"
+text = "у владельца"
+
+[nodes.device]
+role = "key"
+name = "Ключ устройства"
+text = "Secure Enclave: P-256 с low-S"
 
 [nodes.master]
-column = "matrix"
 group = "carriers"
 role = "external"
 name = "Matrix master"
-
-[nodes.selfsigning]
-column = "matrix"
-group = "carriers"
-role = "external"
-name = "Matrix self-signing"
-
-[nodes.device]
-column = "matrix"
-group = "carriers"
-role = "external"
-name = "Matrix device"
-text = "участвует в E2EE"
+text = "cross-signing: self-signing → device"
 
 [nodes.omemo]
 group = "carriers"
 role = "external"
 name = "OMEMO device"
-text = "каждый fingerprint"
+text = "fingerprint"
+
+[nodes.agent]
+role = "agent"
+name = "Ключ агента"
+text = "Ed25519, до 24 ч; у агента секрета нет"
+
+[nodes.grantsvc]
+role = "service"
+name = "Сервис грантов"
+text = "под родительским грантом"
+
+[nodes.grants]
+role = "neutral"
+name = "Гранты"
+text = "`grant/1`"
 
 [[links]]
 from = "root"
-to = "signer"
+to = "device"
 label = "аттестация"
-
-[[links]]
-from = "root"
-to = "km"
-label = "удостоверение"
-
-[[links]]
-from = "km"
-to = "agentkey"
-label = "удостоверяет"
 
 [[links]]
 from = "root"
@@ -76,16 +76,27 @@ to = "master"
 label = "аттестация"
 
 [[links]]
-from = "master"
-to = "selfsigning"
-label = "cross-signing"
-
-[[links]]
-from = "selfsigning"
-to = "device"
-label = "cross-signing"
-
-[[links]]
 from = "root"
 to = "omemo"
 label = "аттестация"
+
+[[links]]
+from = "km"
+to = "agent"
+label = "аттестация"
+
+[[links]]
+from = "registry"
+to = "agent"
+label = "отзыв"
+color = "alert"
+
+[[links]]
+from = "grantroot"
+to = "grantsvc"
+label = "аттестация"
+
+[[links]]
+from = "grantroot"
+to = "grants"
+label = "подпись"

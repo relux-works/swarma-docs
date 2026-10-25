@@ -208,12 +208,28 @@ for _k in ("line_height", "step_radius", "arrow_head", "note_width", "seq_node_w
            "seq_self_width", "label_max_width", "node_text_width", "box_max_width", "min_box_width"):
     SPACE_SCHEMA[_k] = t_pos
 
+
+def bounded(check, limit):
+    """A finite value can still be absurd: 1e308 px renders an `inf` figure."""
+    def t(path, v):
+        check(path, v)
+        if v > limit:
+            raise DiagramError(f"{path}: must be at most {fmt(limit)}, got {v!r}")
+    return t
+
+
+# Pixels up to 2000, the em and ratio keys up to 4, Graphviz inches up to 20.
+SPACE_LIMITS = {k: 2000 for k, t in SPACE_SCHEMA.items() if t in (t_num, t_pos)}
+SPACE_LIMITS.update(line_height=4, letter_spacing=4, graph_nodesep=20, graph_ranksep=20)
+for _k, _limit in SPACE_LIMITS.items():
+    SPACE_SCHEMA[_k] = bounded(SPACE_SCHEMA[_k], _limit)
+
 THEME_SCHEMA = {
     "font": {"sans": t_font, "mono": t_font, "fallback": t_font},
-    "size": {k: t_pos for k in ("title", "caption", "name", "text", "label", "protocol", "group", "step",
+    "size": {k: bounded(t_pos, 200) for k in ("title", "caption", "name", "text", "label", "protocol", "group", "step",
                                  "note")},
     "space": SPACE_SCHEMA,
-    "print": {k: t_pos for k in ("box_width_mm", "box_height_mm", "tall_height_mm", "min_print_pt")},
+    "print": {k: bounded(t_pos, 2000) for k in ("box_width_mm", "box_height_mm", "tall_height_mm", "min_print_pt")},
     "color": {k: t_color for k in ("background", "ink", "text", "muted", "line", "lifeline", "note_fill",
                                     "note_stroke")},
 }
@@ -1263,6 +1279,18 @@ def layout_sequence(kit, d, opts):
         if cols != list(range(cols[0], cols[-1] + 1)):
             raise DiagramError(f"groups.{g}: list its participants next to each other")
     loop_w, loop_gap = 32, 12  # self-message loop width and gap to its label
+    border_margin = 8          # free space between a plate or note and a container border
+
+    def same(i, j):
+        return 0 <= j < len(ids) and gof[j] is not None and gof[j] == gof[i]
+
+    def self_left(a):
+        """A self-message loops right, except in the last column and where a
+        container border is on the right and a neighbour of the same
+        container on the left."""
+        if a == len(ids) - 1 and a > 0:
+            return True
+        return gof[a] is not None and not same(a, a + 1) and same(a, a - 1)
 
     # Column gaps start from the header widths and the containers, and widen
     # for message labels.
@@ -1282,7 +1310,7 @@ def layout_sequence(kit, d, opts):
             lab = kit.step_label(it.get("step"), it.get("label", ""), max_width=wrap)
             prepared.append(("msg", it, a, b, lab))
             need = loop_w + loop_gap + lab["w"] + 30
-            if a == b and a < len(ids) - 1:
+            if a == b and not self_left(a) and a < len(ids) - 1:
                 gaps[a] = max(gaps[a], need)
             elif a == b and a > 0:
                 # The last column loops to the left, so the figure does not grow sideways.
@@ -1308,16 +1336,38 @@ def layout_sequence(kit, d, opts):
             prepared.append(("end", it, None, None, None))
         elif kind == "note":
             if "on" in it:
-                prepared.append(("note_on", it, col[it["on"]], it.get("side", "right"), kit.note_model(it["note"])))
+                a, side, nm = col[it["on"]], it.get("side", "right"), kit.note_model(it["note"])
+                if gof[a] is not None:
+                    # The note stays inside the participant's container: it
+                    # moves to the side of a neighbour from the same container.
+                    fits = {"right": same(a, a + 1), "left": same(a, a - 1)}
+                    if not fits[side]:
+                        side = "left" if side == "right" else "right"
+                    if not fits[side]:
+                        raise DiagramError(f"seq[{k}]: the note on {it['on']} would cover the border of "
+                                           f"{gof[a]}; a container needs a second participant to hold it")
+                    i = a if side == "right" else a - 1
+                    gaps[i] = max(gaps[i], nm["w"] + 10 + border_margin)
+                prepared.append(("note_on", it, a, side, nm))
             else:
                 over = [col[x] for x in it.get("over", [ids[0], ids[-1]])]
-                prepared.append(("note", it, min(over), max(over), None))
+                lo, hi = min(over), max(over)
+                # A note over participants on both sides of a container border
+                # would hide that border; it goes under the containers instead.
+                inside = set(gof[lo:hi + 1])
+                cross = any(g in inside and (len(inside) > 1 or any(x == g for x in gof[:lo] + gof[hi + 1:]))
+                            for g in groups)
+                prepared.append(("note", it, lo, hi, "foot" if cross else None))
         elif kind == "divider":
             if frames:
                 raise DiagramError(f"seq[{k}]: a divider cannot sit inside {frames[-1]}")
             prepared.append(("divider", it, None, None, kit.text(it["divider"], z["note"], bold=True).wrap(10_000)))
     if frames:
         raise DiagramError(f"{frames[-1]} without end")
+    foot_at = next((k for k, p in enumerate(prepared) if p[0] == "note" and p[4] == "foot"), None)
+    if foot_at is not None and any(p[0] != "note" or p[4] != "foot" for p in prepared[foot_at:]):
+        raise DiagramError(f"seq: the note {prepared[foot_at][1]['note'][:30]!r} spans a container border; "
+                           "narrow its `over` to one side or put it after the last message")
 
     def positions():
         xs = [0.0]
@@ -1344,6 +1394,58 @@ def layout_sequence(kit, d, opts):
                     gaps[c1] += deficit
     xs = positions()
 
+    def borders(xs):
+        """Container border x positions, each with the column it moves with."""
+        out = []
+        for g in groups:
+            cols = [i for i, x in enumerate(gof) if x == g]
+            c0, c1 = cols[0], cols[-1]
+            out.append((xs[c0] - models[ids[c0]]["w"] / 2 - gp, c0))
+            out.append((xs[c1] + models[ids[c1]]["w"] / 2 + gp + ext.get(g, 0), c1))
+        return out
+
+    def segments(a, b, xs):
+        """Stretches of a message between the container borders it crosses."""
+        lo, hi = min(a, b), max(a, b)
+        pts = sorted([(xs[lo], lo)] + [(x, c) for x, c in borders(xs) if xs[lo] < x < xs[hi]] + [(xs[hi], hi)])
+        return [(p, q, cp, cq) for (p, cp), (q, cq) in zip(pts, pts[1:])]
+
+    def clear_x(want, w, lo, hi):
+        """Left edge nearest to `want` for a plate of width `w` inside
+        [lo, hi] that keeps clear of every container border."""
+        free = [(lo, hi)]
+        for x, _ in borders(xs):
+            free = [part for p, q in free for part in ((p, min(q, x - border_margin)), (max(p, x + border_margin), q))
+                    if part[1] > part[0]]
+        best = None
+        for p, q in free:
+            if q - p >= w:
+                x = min(max(want, p), q - w)
+                if best is None or abs(x - want) < abs(best - want):
+                    best = x
+        # Nothing fits: the plate starts after the last border, and the
+        # caller widens what holds it.
+        return best if best is not None else (free[-1][0] if free else want)
+
+    # A message label crossing a container border sits between two borders,
+    # never on one: the gap of the longest stretch that can grow widens until
+    # the label fits there.
+    for _ in range(4 * len(prepared) + 4):
+        grown = False
+        for kind, it, a, b, lab in prepared:
+            if kind != "msg" or a == b:
+                continue
+            segs = segments(a, b, xs)
+            need = lab["w"] + 8 + 2 * border_margin
+            if len(segs) == 1 or any(q - p >= need for p, q, _, _ in segs):
+                continue
+            free = [sg for sg in segs if sg[2] < sg[3]]
+            p, q, cp, cq = max(free, key=lambda sg: sg[1] - sg[0])
+            gaps[cq - 1] += need - (q - p)
+            xs, grown = positions(), True
+        if not grown:
+            break
+
     band = (s["group_label_gap"] + z["group"] * s["line_height"] + gp * 0.6) if groups else 0
     head_h = max(m["h"] for m in models.values())
 
@@ -1355,7 +1457,7 @@ def layout_sequence(kit, d, opts):
             lab = extra
             if a == b:
                 hgt = max(lab["h"], 16) + 10
-                left = a == len(ids) - 1 and a > 0
+                left = self_left(a)
                 e = (xs[a] - loop_w - loop_gap - lab["w"] - 4, xs[a]) if left else \
                     (xs[a], xs[a] + loop_w + loop_gap + lab["w"] + 4)
                 rows.append(("self", it, a, lab, y, e))
@@ -1378,6 +1480,8 @@ def layout_sequence(kit, d, opts):
             f["y1"] = y
             done_frames.append(f)
             y += 14
+            continue
+        elif kind == "note" and extra == "foot":
             continue
         elif kind == "note":
             t = kit.text(it["note"], z["note"], color=kit.c["text"])
@@ -1414,6 +1518,16 @@ def layout_sequence(kit, d, opts):
         body.append(kit.group_svg(grp, x0, 0, x1 - x0, box_bottom, g, group_labels))
         lo_x, hi_x = min(lo_x, x0), max(hi_x, x1)
     body.extend(group_labels)
+    fy = box_bottom + 12
+    for kind, it, a, b, extra in prepared:
+        if kind == "note" and extra == "foot":
+            t = kit.text(it["note"], z["note"], color=kit.c["text"])
+            t.wrap(max(xs[b] - xs[a] + 88, 240))
+            w = max(xs[b] - xs[a] + 120, t.width + 32)
+            cx = (xs[a] + xs[b]) / 2
+            rows.append(("note", it, None, {"t": t, "w": w, "h": t.height + 24}, fy, (cx - w / 2, cx + w / 2)))
+            fy += t.height + 24 + s["seq_row_gap"]
+    foot_bottom = fy - s["seq_row_gap"] if fy > box_bottom + 12 else box_bottom
 
     for i, n in enumerate(ids):
         body.append(el("line", x1=xs[i], y1=band + models[n]["h"], x2=xs[i], y2=bottom, stroke=kit.c["lifeline"],
@@ -1422,12 +1536,34 @@ def layout_sequence(kit, d, opts):
     # Frames: alt dashed, opt dotted, wrapping their rows; condition labels
     # sit on a plate above the lifelines.
     plates = []
-    for f in sorted(done_frames, key=lambda f: f["depth"]):
+    # Geometry first, innermost frames first, so an outer frame can grow
+    # around an inner one that grew for its label.
+    for f in sorted(done_frames, key=lambda f: -f["depth"]):
         ex = [r[5] for r in f["rows"] if r[5]] or [(xs[0], xs[-1])]
         inset = 14 * f["depth"]
         x0 = min(e[0] for e in ex) - 44 + inset
         x1 = max(e[1] for e in ex) + 24 - inset
         x1 = max(x1, x0 + max([f["label"].width] + [t.width for _, t in f["elses"]]) + 40)
+        for g in done_frames:
+            if g["depth"] > f["depth"] and f["y0"] <= g["y0"] and g["y1"] <= f["y1"]:
+                x1 = max(x1, g["x1"] + 14)
+        # Condition labels keep clear of container borders; a frame too
+        # narrow for that grows to the right.
+        labels = [(f["y0"] + 8, f["label"])] + [(ey + 6, et) for ey, et in f["elses"]]
+        f["placed"] = []
+        for ly, lt in labels:
+            px = clear_x(x0 + 8, lt.width + 12, x0 + 8, x1 - 8)
+            x1 = max(x1, px + lt.width + 12 + 8)
+            f["placed"].append((px, ly, lt))
+        # A frame edge never runs along a container border.
+        for b, _ in borders(xs):
+            if abs(x0 - b) < border_margin:
+                x0 = b - border_margin
+            if abs(x1 - b) < border_margin:
+                x1 = b + border_margin
+        f["x0"], f["x1"] = x0, x1
+    for f in sorted(done_frames, key=lambda f: f["depth"]):
+        x0, x1 = f["x0"], f["x1"]
         lo_x, hi_x = min(lo_x, x0), max(hi_x, x1)
         opt = f["kind"] == "opt"
         body.append(f"<!-- frame {f['kind']} -->")
@@ -1435,15 +1571,13 @@ def layout_sequence(kit, d, opts):
                        stroke=kit.c["muted"], stroke_width=2 if opt else 1.5,
                        stroke_dasharray=s["opt_dash"] if opt else s["frame_dash"],
                        stroke_linecap="round" if opt else None, class_="frame", data_kind=f["kind"]))
-        labels = [(f["y0"] + 8, f["label"])]
         for ey, et in f["elses"]:
             body.append(el("line", x1=x0, y1=ey, x2=x1, y2=ey, stroke=kit.c["muted"], stroke_width=1.2,
                            stroke_dasharray="4 4"))
-            labels.append((ey + 6, et))
-        for ly, lt in labels:
-            plates.append(el("rect", x=x0 + 8, y=ly - 1, width=lt.width + 12, height=lt.height + 2,
+        for px, ly, lt in f["placed"]:
+            plates.append(el("rect", x=px, y=ly - 1, width=lt.width + 12, height=lt.height + 2,
                              fill=kit.c["background"], class_="plate"))
-            plates.append(lt.svg(x0 + 14, ly, anchor="start", color=kit.c["muted"]))
+            plates.append(lt.svg(px + 6, ly, anchor="start", color=kit.c["muted"]))
     body.extend(plates)
 
     for i, n in enumerate(ids):
@@ -1465,7 +1599,10 @@ def layout_sequence(kit, d, opts):
             body.append(f"<!-- message {it['from']} -> {it['to']} -->")
             body.append(kit.arrow([(xa + sgn * 2, yy), (xb - sgn * 2, yy)], color=color, dashed=dashed,
                                   meta={"data_from": it["from"], "data_to": it["to"], "data_edge": f"m{k}"}))
-            lx, ly = (xa + xb) / 2 - lab["w"] / 2, yy - lab["h"] - 7
+            segs = segments(a, b, xs)
+            fit = [sg for sg in segs if sg[1] - sg[0] >= lab["w"] + 8 + 2 * border_margin] or segs
+            p, q, _, _ = max(fit, key=lambda sg: sg[1] - sg[0])
+            lx, ly = (p + q) / 2 - lab["w"] / 2, yy - lab["h"] - 7
             body.append(el("rect", x=lx - 4, y=ly - 1, width=lab["w"] + 8, height=lab["h"] + 2,
                            fill=kit.c["background"], class_="plate"))
             body.append(kit.step_label_svg(lab, lx, ly, edge=f"m{k}"))
@@ -1495,6 +1632,8 @@ def layout_sequence(kit, d, opts):
             cy = yy + h / 2
             cx = (xs[0] + xs[-1]) / 2
             w = t.width + 28
+            # The pill moves to the nearest place clear of every container border.
+            cx = clear_x(cx - w / 2, w, lo_x, hi_x) + w / 2
             body.append("<!-- divider -->")
             body.append(el("line", x1=lo_x, y1=cy, x2=hi_x, y2=cy, stroke=kit.c["muted"], stroke_width=1.2))
             body.append(el("rect", x=cx - w / 2, y=yy, width=w, height=h, rx=h / 2, fill=kit.c["note_fill"],
@@ -1502,7 +1641,7 @@ def layout_sequence(kit, d, opts):
             body.append(t.svg(cx, yy + 5, color=kit.c["ink"]))
 
     bb = Bounds()
-    bb.add(lo_x, 0, hi_x, box_bottom)
+    bb.add(lo_x, 0, hi_x, foot_bottom)
     return bb.wrap("\n".join(body))
 
 
@@ -1962,13 +2101,29 @@ def lint(svg, kit):
                 probs.append(f"{name(a) if ka != 'plate' else 'a label plate'} overlaps "
                              f"{name(b) if kb != 'plate' else 'a label plate'}")
 
-    # Boxes, step numbers and free text keep clear of boundary and frame lines.
+    # Boxes, step numbers, free text, label plates, notes and divider pills
+    # keep clear of boundary and frame lines: an opaque plate or note on a
+    # container border hides the very point where data crosses it.
     for frame in G["groups"] + G["frames"]:
-        for item in G["boxes"] + steps + free:
-            r = grow(item["r"], 2)
-            if overlap(r, frame["r"]) and not within(r, frame["r"]):
-                what = "a step number" if item in steps else name(item)
-                probs.append(f"{what} crosses a boundary")
+        for kind, items in (("box", G["boxes"]), ("step", steps), ("text", free), ("plate", G["plates"]),
+                            ("note", G["notes"])):
+            for item in items:
+                r = grow(item["r"], 2)
+                if overlap(r, frame["r"]) and not within(r, frame["r"]):
+                    what = {"step": "a step number", "plate": "a label plate",
+                            "note": "a note"}.get(kind) or name(item)
+                    probs.append(f"{what} covers a boundary" if kind in ("plate", "note")
+                                 else f"{what} crosses a boundary")
+
+    # A frame edge does not run along a boundary line, where the two would
+    # read as one.
+    for frame in G["frames"]:
+        f = frame["r"]
+        for group in G["groups"]:
+            g = group["r"]
+            if min(f[3], g[3]) - max(f[1], g[1]) > 0 and \
+                    any(abs(a - b) < 4 for a in (f[0], f[2]) for b in (g[0], g[2])):
+                probs.append("a frame edge runs along a boundary")
 
     # Arrows do not run through labels, plates, notes or boxes other than their ends.
     for e in G["edges"]:
