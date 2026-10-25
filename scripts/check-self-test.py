@@ -131,16 +131,18 @@ class HygieneTests(unittest.TestCase):
                 self.assertNotIn('== ', r.stdout)
 
     # The chain paper paper/chain/*.tex is held to the book voice: a planted
-    # dash, guillemet, antithesis or delivery hedge fails with its label, a
-    # clean sentence passes, and the same text in another paper file stays
-    # outside these two checks. Limit: TeX dashes written as -- or --- are
-    # not detected; the check sees only the Unicode characters.
+    # dash, guillemet, antithesis or delivery hedge fails with its label, and
+    # so does a TeX dash (---, spaced --) or \guillemot quote; a clean sentence
+    # with a numeric range and a TikZ path passes, and the same text in another
+    # paper file stays outside these checks. Limit: an unspaced word--word dash
+    # and babel shorthands other than "< and "> are not detected.
     def test_chain_paper(self):
         chain = self.root / 'paper/chain/chain.tex'
         chain.parent.mkdir(parents=True)
         cases = (('Ключник — служба.', 'dash in prose'), ('Поле «aud».', 'guillemets'),
                  ('Это не очередь, а журнал.', 'antithesis'), ('Пока цепочки нет.', 'delivery hedge'),
-                 ('Узел ещё не проверяет.', 'delivery hedge'))
+                 ('Узел ещё не проверяет.', 'delivery hedge'), ('Ключник --- служба.', 'TeX dash or quote'),
+                 ('Ключник -- служба.', 'TeX dash or quote'), ('Поле \\guillemotleft aud.', 'TeX dash or quote'))
         for text, label in cases:
             with self.subTest(text=text):
                 chain.write_text('\\section{Пример}\n' + text + '\n')
@@ -148,12 +150,13 @@ class HygieneTests(unittest.TestCase):
                 self.assertEqual(r.returncode, 1, 'chain paper must fail on ' + label)
                 self.assertIn('== ' + label + '\n', r.stdout)
                 self.assertIn('paper/chain/chain.tex:2:', r.stdout)
-        chain.write_text('\\section{Пример}\nУзел проверяет пачку; шаги 0–2, кросс-подпись.\n')
+        chain.write_text('\\section{Пример}\nУзел проверяет пачку; шаги 0–2, страницы 136--163, кросс-подпись.\n'
+                         '\\draw[arr] (a) -- (b);\n')
         r = self.run_check()
         self.assertEqual(r.returncode, 0, r.stdout)
         self.assertNotIn('== ', r.stdout)
         other = self.root / 'paper/other.tex'
-        other.write_text('\\section{Пример}\nПока ключник — служба «aud».\n')
+        other.write_text('\\section{Пример}\nПока ключник — служба «aud» --- да.\n')
         r = self.run_check()
         self.assertEqual(r.returncode, 0, r.stdout)
         self.assertNotIn('== ', r.stdout)

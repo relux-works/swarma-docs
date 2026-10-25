@@ -2,7 +2,7 @@
 % new entries were verified against primary records (see editorial/notes/paper-chain-10-notes.ru.md).
 
 @misc{swarmabook,
-  author       = {{Алексей Григорьев} and {Иван Опарин}},
+  author       = {{Алексей Григорьев, Иван Опарин}},
   title        = {Swarma. Платформа для роёв {ИИ}-агентов: от одной машины до открытой сети},
   howpublished = {Книга, версия 1.4.1, рукопись},
   note         = {Не опубликована},
@@ -10,7 +10,7 @@
 }
 
 @misc{swarmapaper,
-  author       = {{Алексей Григорьев} and {Иван Опарин}},
+  author       = {{Алексей Григорьев, Иван Опарин}},
   title        = {Swarma: проверяемые границы доверия для роёв автономных агентов},
   howpublished = {Работа, версия 6.0.1, рукопись},
   note         = {Не опубликована},
@@ -33,6 +33,7 @@
   title     = {The {EigenTrust} Algorithm for Reputation Management in {P2P} Networks},
   booktitle = {Twelfth International Conference on World Wide Web ({WWW} '03)},
   publisher = {{ACM}},
+  pages     = {640--651},
   year      = {2003},
   doi       = {10.1145/775152.775242}
 }
@@ -54,6 +55,7 @@
   title     = {Sybilproof Reputation Mechanisms},
   booktitle = {2005 {ACM} {SIGCOMM} Workshop on Economics of Peer-to-Peer Systems ({P2PECON} '05)},
   publisher = {{ACM}},
+  pages     = {128--132},
   year      = {2005},
   doi       = {10.1145/1080192.1080202}
 }
@@ -537,4 +539,42 @@
   pages     = {306--316},
   year      = {2004},
   doi       = {10.1007/978-3-540-28628-8_19}
+}
+
+@techreport{sphincsr3,
+  author      = {Aumasson, Jean-Philippe and Bernstein, Daniel J. and Beullens, Ward and Dobraunig, Christoph and Eichlseder, Maria and Fluhrer, Scott and Gazdag, Stefan-Lukas and H{\"u}lsing, Andreas and Kampanakis, Panos and K{\"o}lbl, Stefan and Lange, Tanja and Lauridsen, Martin M. and Mendel, Florian and Niederhagen, Ruben and Rechberger, Christian and Rijneveld, Joost and Schwabe, Peter and Westerbaan, Bas},
+  title       = {{SPHINCS}$^+$: Submission to the {NIST} Post-Quantum Project, v.3.1},
+  institution = {sphincs.org},
+  type        = {Specification},
+  note        = {Section 10, Tables 4, 6 and 7: single core of a 3.1~GHz Intel Xeon E3-1220 (Haswell). \url{https://sphincs.org/data/sphincs+-r3.1-specification.pdf}. Accessed 2026-10-25},
+  month       = jun,
+  year        = {2022}
+}
+
+@misc{sidetree,
+  author       = {Buchner, Daniel and Steele, Orie and Ronda, Troy},
+  title        = {Sidetree v1.0.1},
+  howpublished = {\url{https://identity.foundation/sidetree/spec/}},
+  note         = {Decentralized Identity Foundation, ratified specification. Accessed 2026-10-25}
+}
+
+@misc{ion,
+  author       = {{Decentralized Identity Foundation}},
+  title        = {{ION}: A Public, Permissionless, Decentralized Identifier Network on {Bitcoin}},
+  howpublished = {\url{https://github.com/decentralized-identity/ion}},
+  note         = {Implements the Sidetree protocol as a Layer 2 overlay on Bitcoin. Accessed 2026-10-25}
+}
+
+@misc{handshake,
+  author       = {{Handshake Project}},
+  title        = {Handshake: Notes on the Design of the Initial Reference Implementation},
+  howpublished = {\url{https://handshake.org/files/handshake.txt}},
+  note         = {Untitled design notes; covenants on UTXO outputs, blinded BID and REVEAL. Accessed 2026-10-25}
+}
+
+@misc{eas,
+  author       = {{Ethereum Attestation Service}},
+  title        = {{EAS} Contracts: A Free and Open Protocol for On-Chain Attestations on {EVM} Compatible Blockchains},
+  howpublished = {\url{https://github.com/ethereum-attestation-service/eas-contracts}},
+  note         = {SchemaRegistry and EAS contracts. Accessed 2026-10-25}
 }

@@ -157,6 +157,20 @@ platform_readiness() {
 }
 platform_readiness "readiness wording" '(^|[^[:alpha:]])(работает[[:space:]]+сегодня|не[[:space:]]+построен[[:alpha:]]*|в[[:space:]]+разработке|в[[:space:]]+планах|не[[:space:]]+настро[[:alpha:]]*|не[[:space:]]+настраива[[:alpha:]]*|не[[:space:]]+опубликован[[:alpha:]]*|не[[:space:]]+публику[[:alpha:]]*|не[[:space:]]+развёрнут[[:alpha:]]*|не[[:space:]]+готов[[:alpha:]]*|планиру(ется|ются|ем)|запланирован[[:alpha:]]*|буд(ет|ут)|в[[:space:]]+будущем|прототип[[:alpha:]]*|предстоит|появ(ится|ятся))($|[^[:alpha:]])'
 
+# TeX ligature dashes and babel quote shorthands in the chain paper: the
+# Unicode checks above do not see `---`, a spaced `--`, `\guillemot...`,
+# `<<`/`>>` or `"<`/`">`. Numeric ranges (`136--163`) pass; TikZ path lines
+# (`\draw`) are skipped because `--` is their path operator.
+chain_tex=$(find paper/chain -type f -name '*.tex' 2>/dev/null | sort)
+if [ -n "$chain_tex" ]; then
+  out=$(grep -HnE -- '(---|[[:space:]]--[[:space:]]|\\guillemot|<<|>>|"<|">)' $chain_tex 2>/dev/null | grep -v '\\draw')
+  if [ -n "$out" ]; then
+    echo '== TeX dash or quote'
+    echo "$out"
+    fail=1
+  fi
+fi
+
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do
   [ -e "$f" ] || continue
