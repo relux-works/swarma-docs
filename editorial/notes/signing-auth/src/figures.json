@@ -38,7 +38,7 @@
   "trust-chain": {
     "source": "src/trust-chain.puml",
     "render": "diagrams/trust-chain.svg",
-    "source_sha256": "d9f32d8204eff4686e89ed87ad096cccad68c2358616765cd281b052551a1f96",
-    "render_sha256": "fa4714f8767796c584c1148b45773eb0dd57425103ca0d92788701f693377fd7"
+    "source_sha256": "eefaeca44d760468a0e2d72b18af7056258d56f771c3ea74ddde1becb2bcbd61",
+    "render_sha256": "14778c784e03a10eaa75dbb1360a587be47359416f35e103b5e42bffdecbda72"
   }
 }

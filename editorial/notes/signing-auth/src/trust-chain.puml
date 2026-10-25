@@ -1,22 +1,28 @@
 @startuml
-left to right direction
+top to bottom direction
 skinparam defaultFontName PT Sans
 skinparam defaultFontSize 18
 skinparam shadowing false
 skinparam roundcorner 8
+skinparam nodesep 45
 skinparam ArrowColor #23466e
 skinparam rectangleBackgroundColor #eef1f5
 skinparam rectangleBorderColor #23466e
-rectangle "Корень оператора\nаппаратный FIDO-ключ\nсообщений не подписывает" as root
-rectangle "Ключ устройства\nSecure Enclave: P-256 low-S\nроли act, approver; срок" as device
-rectangle "Matrix master\n↓ self-signing\n↓ device (E2EE)" as master
-rectangle "OMEMO device\nкаждый fingerprint" as xmpp
+rectangle "Корень оператора\nаппаратный ключ" as root
 rectangle "Корень аттестаций\nключника" as km
-rectangle "Ключ агента\nswarma-msg: Ed25519\nсрок до 24 ч" as agent
-rectangle "Корень реестра\nснимки отзывов агентов,\nконтрольные точки, свежесть" as registry
+rectangle "Корень реестра" as registry
+rectangle "Корень грантов" as grantroot
+rectangle "Ключ устройства\nP-256 low-S" as device
+rectangle "Matrix master\n↓ self-signing\n↓ device" as master
+rectangle "OMEMO\nfingerprint" as xmpp
+rectangle "Ключ агента\nEd25519, до 24 ч" as agent
+rectangle "Сервис грантов\nпод родительским\nгрантом" as grantsvc
+rectangle "Гранты\ngrant/1" as grants
 root --> device : аттестация
 root --> master : аттестация
 root --> xmpp : аттестация
 km --> agent : аттестация
 registry --> agent : отзыв
+grantroot --> grantsvc : аттестация
+grantroot --> grants : подпись
 @enduml
