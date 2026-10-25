@@ -6,3 +6,4 @@ paper/*.out
 paper/paper.pdf
 book/swarma-book.ru.pdf
 paper/status-appendix.pdf
+__pycache__/

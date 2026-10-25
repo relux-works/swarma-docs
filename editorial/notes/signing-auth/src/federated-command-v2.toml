@@ -1,0 +1,65 @@
+# Trust boundaries of a command sent through two federated Matrix servers.
+# Source: ru/08-federation.md and src/federated-command.puml.
+layout = "stack"
+alt = "Федерация перевозит событие, получатель устанавливает доверие"
+
+[groups.sender]
+label = "Сторона отправителя"
+role = "key"
+
+[groups.federation]
+label = "Серверы доставки"
+role = "external"
+
+[groups.recipient]
+label = "Сторона получателя"
+role = "service"
+
+[nodes.signer]
+group = "sender"
+role = "key"
+name = "Signer"
+text = "подписывает назначение и тело"
+
+[nodes.alpha]
+group = "federation"
+role = "external"
+name = "alpha.example"
+text = "Matrix-сервер отправителя; полномочий не даёт"
+
+[nodes.beta]
+group = "federation"
+role = "external"
+name = "beta.example"
+text = "Matrix-сервер получателя; может задержать, скрыть или повторить событие"
+
+[nodes.verifier]
+group = "recipient"
+role = "service"
+name = "Получатель"
+text = "корневая цепочка, отзыв, `ts`, `nonce`, назначение, грант"
+
+[[links]]
+from = "signer"
+to = "alpha"
+step = 1
+label = "подписанный конверт"
+
+[[links]]
+from = "alpha"
+to = "beta"
+step = 2
+label = "те же байты"
+via = "федерация"
+
+[[links]]
+from = "beta"
+to = "verifier"
+step = 3
+label = "доставка в комнату адресату `to`"
+
+[[links]]
+from = "verifier"
+to = "signer"
+step = 4
+label = "допуск и результат или отказ"

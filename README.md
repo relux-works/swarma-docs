@@ -30,6 +30,7 @@
 | `sources/` | снимки исходных документов на зафиксированных ревизиях; рабочий материал, перед публикацией удаляется |
 | `dist/` | готовые PDF пейпера и книги, которые собирает оркестратор после ревью |
 | `scripts/check.sh` | проверка гигиены текстов: пометки статуса, внутренние идентификаторы, локальные пути, выведенные из оборота имена |
+| `editorial/diagram-style.ru.md`, `scripts/diagram-kit/` | единый стиль диаграмм: правила, тема и генератор SVG; пилотные рисунки с суффиксом `-v2` лежат рядом с прежними |
 
 ## Инструменты
 
@@ -43,6 +44,8 @@
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов; пометки только в «Где мы», оговорки о поставке — предупреждения пилота | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
 | Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |
+| `scripts/diagram-kit/render.py` (Python 3.11+, Graphviz для раскладки `graph`, `rsvg-convert` для PNG) | диаграммы в едином стиле из TOML; `--report` печатает кегль в поле рисунка книги | `python3 scripts/diagram-kit/render.py book/src/имя.toml book/diagrams/имя.svg --report` | SVG рядом с исходником; PNG по `--png` |
+| `scripts/diagram-kit/test_render.py` | положительные и отрицательные проверки генератора | `python3 scripts/diagram-kit/test_render.py` | stdout; временные файлы удаляются |
 | platform-book | сборка отдельной записки о подписях; закреплённая ревизия и команды в `editorial/notes/signing-auth/README.md` | `platform-book ready`, `figures`, `build`, `check-pdf` | `editorial/notes/signing-auth/signing-auth.ru.pdf` |
 
 ## Как идёт работа

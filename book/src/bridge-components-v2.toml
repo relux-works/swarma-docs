@@ -1,0 +1,122 @@
+# Bridge components: the carrier provider, trust gates, mailbox and session
+# host split the work. Content follows bridge-components.puml.
+layout = "graph"
+direction = "TB"
+same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
+alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности"
+
+[groups.bridge]
+label = "Мост"
+role = "service"
+
+[nodes.mx]
+role = "external"
+name = "Matrix"
+text = "носитель"
+
+[nodes.provider]
+column = "main"
+group = "bridge"
+role = "service"
+name = "Провайдер носителя"
+text = "сохраняет событие до сдвига курсора"
+
+[nodes.core]
+column = "main"
+group = "bridge"
+role = "service"
+name = "Ядро моста"
+text = "привязки провайдеров к сессиям"
+
+[nodes.gate]
+column = "main"
+group = "bridge"
+role = "service"
+name = "Ворота доверия"
+text = "детерминированная проверка"
+
+[nodes.guard]
+column = "main"
+group = "bridge"
+role = "service"
+name = "Decision guard"
+text = "только сужение допуска"
+
+[nodes.mailbox]
+column = "main"
+group = "bridge"
+role = "store"
+name = "Почтовый ящик"
+text = "тела и записи проверки"
+
+[nodes.store]
+group = "bridge"
+role = "store"
+name = "Хранилище"
+text = "очереди и аудит"
+
+[nodes.host]
+column = "side"
+role = "service"
+name = "Хост сессий"
+text = "единственный ввод"
+
+[nodes.agent]
+column = "side"
+role = "agent"
+name = "Агент"
+text = "читает тело инструментом"
+
+[[links]]
+from = "mx"
+to = "provider"
+step = 1
+
+[[links]]
+from = "provider"
+to = "core"
+step = 2
+
+[[links]]
+from = "core"
+to = "gate"
+step = 3
+
+[[links]]
+from = "gate"
+to = "guard"
+step = 4
+label = "допущенное"
+
+[[links]]
+from = "guard"
+to = "mailbox"
+step = 5
+label = "если разрешена доставка"
+
+[[links]]
+from = "mailbox"
+to = "host"
+step = 6
+label = "звонок без тела"
+
+[[links]]
+from = "host"
+to = "agent"
+step = 7
+label = "уведомление на границе хода"
+
+[[links]]
+from = "agent"
+to = "mailbox"
+step = 8
+label = "чтение"
+constraint = false
+
+[[links]]
+from = "core"
+to = "store"
+
+[[links]]
+from = "mailbox"
+to = "store"

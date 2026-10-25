@@ -1,0 +1,98 @@
+# Grants: issue, narrowing and check. Content follows grant-issue-and-check.puml;
+# a branch keeps the number of the step it replaces.
+layout = "sequence"
+alt = "Цепочка грантов: передать можно только часть прав, а проверяет её исполнитель действия"
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.orch]
+role = "agent"
+name = "Оркестратор"
+
+[nodes.registry]
+role = "store"
+name = "Реестр грантов и отзывов"
+
+[nodes.executor]
+role = "service"
+name = "Исполнитель действия"
+
+[[seq]]
+from = "owner"
+to = "registry"
+step = 1
+label = "подписанный грант оркестратору"
+
+[[seq]]
+from = "orch"
+to = "registry"
+step = 2
+label = "подписанный дочерний грант"
+
+[[seq]]
+from = "registry"
+to = "registry"
+step = 3
+label = "цепочка до корня; действия и цели: подмножество; срок не длиннее; глубина в пределах"
+
+[[seq]]
+alt = "дочерний грант шире родительского"
+
+[[seq]]
+from = "registry"
+to = "orch"
+step = 4
+label = "отказ"
+color = "alert"
+
+[[seq]]
+else = "только ослабление"
+
+[[seq]]
+from = "registry"
+to = "registry"
+step = 4
+label = "сохранить цепочку"
+
+[[seq]]
+end = true
+
+[[seq]]
+from = "orch"
+to = "executor"
+step = 5
+label = "запрос действия с основаниями"
+
+[[seq]]
+from = "executor"
+to = "registry"
+step = 6
+label = "подписи, условия, сроки, актуальный отзыв"
+
+[[seq]]
+alt = "право подтверждено"
+
+[[seq]]
+from = "executor"
+to = "executor"
+step = 7
+label = "выполнить в пределах права"
+
+[[seq]]
+else = "право не подтверждено"
+
+[[seq]]
+from = "executor"
+to = "orch"
+step = 7
+label = "отказ"
+color = "alert"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Вызывающий не выносит вердикт о своём запросе. Общая архитектура грантов шире реализуемого брокера v0."
+over = ["orch", "executor"]

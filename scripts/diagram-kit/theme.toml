@@ -1,0 +1,108 @@
+# House diagram theme. Every colour, size and spacing the renderer uses is
+# set here; diagram sources name roles, never colours.
+# The meaning of each role is fixed in editorial/diagram-style.ru.md.
+
+[font]
+sans = "PT Sans"
+mono = "PT Mono"
+fallback = "sans-serif"
+
+[size]
+title = 22
+caption = 15
+name = 18
+text = 15
+label = 15
+protocol = 13
+group = 13
+step = 12
+note = 14
+
+[space]
+pad = 16               # around the whole figure
+box_pad_x = 22
+box_pad_y = 11
+box_radius = 12
+box_stroke = 2
+box_max_width = 560    # stack layout: widest box column
+node_text_width = 230  # graph and sequence layouts: wrap width of node text
+min_box_width = 120
+group_pad = 18
+group_radius = 16
+group_stroke = 2
+group_dash = "8 6"
+group_label_gap = 10
+letter_spacing = 0.16  # em, uppercase group and protocol labels
+gap_min = 50           # stack layout: free space between rows
+label_max_width = 260
+pair_min_dx = 34       # stack layout: half distance between paired arrows
+lane = 34              # stack layout: side-link lane width
+arrow_stroke = 2
+arrow_head = 10
+step_radius = 9
+line_height = 1.3
+seq_column_gap = 40
+seq_row_gap = 12
+graph_nodesep = 0.4    # inches, Graphviz
+graph_ranksep = 0.5
+
+# Print budget: the book sets figures in a 167 x 98 mm box (167 x 168 mm with
+# the `tall` class). render.py --report prints the description text size a
+# figure gets there; below min_print_pt it does not go into the book.
+[print]
+box_width_mm = 167
+box_height_mm = 98
+tall_height_mm = 168
+min_print_pt = 7
+
+[color]
+background = "#ffffff"
+ink = "#1f2328"        # names, step labels
+text = "#4b5260"       # descriptions
+muted = "#868e99"      # protocol labels, captions, conditions
+line = "#3a3f47"       # arrows
+lifeline = "#c3c8cf"
+note_fill = "#f6f7f9"
+note_stroke = "#d5d9df"
+
+# Role palette: stroke is the saturated border, fill a pale tint of the same
+# hue, label the colour of a group label drawn in this role.
+[role.human]
+stroke = "#8b929c"
+fill = "#f1f2f4"
+label = "#5f6670"
+
+[role.agent]
+stroke = "#7c4ddb"
+fill = "#f3effd"
+label = "#6a3fc8"
+
+[role.service]
+stroke = "#2f6fdb"
+fill = "#ebf2ff"
+label = "#2a62c4"
+
+[role.store]
+stroke = "#11826d"
+fill = "#e7f5f1"
+label = "#0e6f5d"
+
+[role.key]
+stroke = "#a8740a"
+fill = "#fff8e1"
+label = "#8f6208"
+
+[role.external]
+stroke = "#d9690f"
+fill = "#fff2e6"
+label = "#b9580b"
+
+[role.alert]
+stroke = "#c8285f"
+fill = "#fdeef3"
+label = "#b0204f"
+
+[role.neutral]
+stroke = "#8b929c"
+fill = "#f6f7f9"
+label = "#5f6670"

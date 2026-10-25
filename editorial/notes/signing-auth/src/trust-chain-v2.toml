@@ -1,0 +1,87 @@
+# Key hierarchy: from the pinned operator root to keys of different purposes.
+# Arrows mean attestation, never the transfer of private material.
+# Source: ru/01-keys.md and src/trust-chain.puml.
+layout = "graph"
+direction = "TB"
+alt = "От закреплённого корня к ключам разных назначений"
+
+[groups.carriers]
+label = "Ключи носителей"
+role = "external"
+
+[nodes.root]
+role = "key"
+name = "Корень оператора"
+text = "FIDO + резерв; подписывает аттестации и отзывы, не сообщения"
+
+[nodes.signer]
+role = "key"
+name = "Ключ устройства Signer"
+text = "Secure Enclave Mac / iPhone: P-256/ECDSA; назначение + срок; присутствие"
+
+[nodes.km]
+role = "key"
+name = "Корень Keymaker"
+text = "мастер-секрет и выводимые ключи"
+
+[nodes.agentkey]
+role = "agent"
+name = "Ключ агента"
+text = "`swarma-msg`: Ed25519; у агента секрета нет"
+
+[nodes.master]
+group = "carriers"
+role = "external"
+name = "Matrix master"
+
+[nodes.selfsigning]
+group = "carriers"
+role = "external"
+name = "Matrix self-signing"
+
+[nodes.device]
+group = "carriers"
+role = "external"
+name = "Matrix device"
+text = "участвует в E2EE"
+
+[nodes.omemo]
+group = "carriers"
+role = "external"
+name = "OMEMO device"
+text = "каждый fingerprint"
+
+[[links]]
+from = "root"
+to = "signer"
+label = "аттестация"
+
+[[links]]
+from = "root"
+to = "km"
+label = "удостоверение"
+
+[[links]]
+from = "km"
+to = "agentkey"
+label = "удостоверяет"
+
+[[links]]
+from = "root"
+to = "master"
+label = "аттестация"
+
+[[links]]
+from = "master"
+to = "selfsigning"
+label = "cross-signing"
+
+[[links]]
+from = "selfsigning"
+to = "device"
+label = "cross-signing"
+
+[[links]]
+from = "root"
+to = "omemo"
+label = "аттестация"

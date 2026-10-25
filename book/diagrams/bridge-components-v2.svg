@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="886" height="841.9" viewBox="0 0 886 841.9">
+<title>Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности</title>
+<rect width="886" height="841.9" fill="#ffffff"/>
+<g transform="translate(16 16)">
+<!-- group bridge -->
+<rect x="8" y="8" width="509" height="681" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6"/>
+<!-- node provider -->
+<rect x="53.9" y="61" width="208.3" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
+<text x="75.9" y="87.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Провайдер носителя</tspan></text>
+<text x="95.3" y="115.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сохраняет событие</tspan></text>
+<text x="97.8" y="135.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">до сдвига курсора</tspan></text>
+<!-- node core -->
+<rect x="26.2" y="209.4" width="263.7" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
+<text x="112.7" y="235.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ядро моста</tspan></text>
+<text x="48.2" y="264.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">привязки провайдеров к сессиям</tspan></text>
+<!-- node gate -->
+<rect x="36.3" y="338.3" width="243.4" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
+<text x="94.3" y="364.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ворота доверия</tspan></text>
+<text x="58.3" y="393" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">детерминированная проверка</tspan></text>
+<!-- node guard -->
+<rect x="56.3" y="469.2" width="203.4" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
+<text x="100.9" y="495.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Decision guard</tspan></text>
+<text x="78.3" y="523.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">только сужение допуска</tspan></text>
+<!-- node mailbox -->
+<rect x="57.6" y="600.1" width="200.8" height="70.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2"/>
+<text x="95.3" y="626.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Почтовый ящик</tspan></text>
+<text x="79.6" y="654.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">тела и записи проверки</tspan></text>
+<!-- node store -->
+<rect x="347" y="209.4" width="151.9" height="70.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2"/>
+<text x="377.1" y="235.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хранилище</tspan></text>
+<text x="369" y="264.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">очереди и аудит</tspan></text>
+<!-- node mx -->
+<rect x="535" y="70.8" width="120" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2"/>
+<text x="569.9" y="96.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Matrix</tspan></text>
+<text x="565.4" y="125.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">носитель</tspan></text>
+<!-- node host -->
+<rect x="535.4" y="600.1" width="173.3" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2"/>
+<text x="575.5" y="626.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<text x="557.4" y="654.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">единственный ввод</tspan></text>
+<!-- node agent -->
+<rect x="513.6" y="739" width="216.9" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2"/>
+<text x="600" y="765.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<text x="535.6" y="793.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">читает тело инструментом</tspan></text>
+<!-- link mx -> provider -->
+<path d="M 534.5 106.2 C 466.3 106.2 353.9 106.2 269.7 106.2 L 268.4 106.2" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="262.4,106.2 272.4,110.7 272.4,101.7" fill="#3a3f47"/>
+<circle cx="395.6" cy="92.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="392.2" y="96.5" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<!-- link provider -> core -->
+<path d="M 158 151.6 C 158 167.8 158 186.1 158 202.1 L 158 203.2" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="158,209.2 162.5,199.2 153.5,199.2" fill="#3a3f47"/>
+<circle cx="171" cy="180.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="167.6" y="184.7" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<!-- link core -> gate -->
+<path d="M 158 280.5 C 158 296.1 158 314.5 158 330.8 L 158 332.1" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="158,338.1 162.5,328.1 153.5,328.1" fill="#3a3f47"/>
+<circle cx="171" cy="309.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="167.6" y="313.6" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<!-- link gate -> guard -->
+<path d="M 158 409.6 C 158 425.5 158 444.5 158 461.2 L 158 462.7" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="158,468.7 162.5,458.7 153.5,458.7" fill="#3a3f47"/>
+<circle cx="171.1" cy="439.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="167.7" y="443.5" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="186.1" y="443.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущенное</tspan></text>
+<!-- link guard -> mailbox -->
+<path d="M 158 540.5 C 158 556.4 158 575.4 158 592.1 L 158 593.6" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="158,599.6 162.5,589.6 153.5,589.6" fill="#3a3f47"/>
+<circle cx="171.1" cy="570.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="167.6" y="574.4" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="186.1" y="574.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">если разрешена доставка</tspan></text>
+<!-- link mailbox -> host -->
+<path d="M 258.7 635.5 C 338.6 635.5 449.5 635.5 527.7 635.5 L 529.2 635.5" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="535.2,635.5 525.2,631 525.2,640" fill="#3a3f47"/>
+<circle cx="341.7" cy="620.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="338.3" y="624.9" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="356.7" y="625" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">звонок без тела</tspan></text>
+<!-- link host -> agent -->
+<path d="M 622 671.5 C 622 689.6 622 712 622 731.2 L 622 732.6" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="622,738.6 626.5,728.6 617.5,728.6" fill="#3a3f47"/>
+<circle cx="634.8" cy="709" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="631.4" y="713.3" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="649.8" y="713.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">уведомление на границе хода</tspan></text>
+<!-- link agent -> mailbox -->
+<path d="M 513.4 741.4 C 438.8 719.4 340.2 690.3 265.8 668.4 L 264.4 668" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="258.7,666.3 267,673.4 269.5,664.8" fill="#3a3f47"/>
+<circle cx="444.4" cy="709" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="441" y="713.3" font-size="12" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="459.4" y="713.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">чтение</tspan></text>
+<!-- link core -> store -->
+<path d="M 290.2 244.9 C 306.6 244.9 322.9 244.9 339.3 244.9 L 340.8 244.9" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="346.8,244.9 336.8,240.4 336.8,249.4" fill="#3a3f47"/>
+<!-- link mailbox -> store -->
+<path d="M 258.6 619.8 C 304 611.1 350.8 598.5 366 582.1 C 441.2 500.7 436.9 358.6 429.2 288 L 429 286.6" fill="none" stroke="#3a3f47" stroke-width="2"/>
+<polygon points="428.3,280.6 425,291.1 433.9,290.1" fill="#3a3f47"/>
+<!-- group label bridge -->
+<rect x="20" y="18" width="52" height="18.9" fill="#ffffff"/>
+<text x="26" y="32.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МОСТ</tspan></text>
+</g>
+</svg>
