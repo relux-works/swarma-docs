@@ -232,6 +232,49 @@ class HygieneTests(unittest.TestCase):
                 self.assertNotIn('platform paper', r.stdout)
                 other.unlink()
 
+    # The broadened readiness rule fails each planted status form in
+    # paper/platform/ with its label and file:line, in either case; the same
+    # phrase wrapped in \\measured{...} passes, while an unwrapped readiness
+    # form on the same line still fails, and \\measured{...} does not exempt
+    # its argument from the dash, guillemet or delivery-hedge rules. Verbs and
+    # limits that only look similar ("планирует", "не позже", "будто",
+    # "готовность") pass. Limit: lexical; other wordings of a readiness claim
+    # pass, and nested braces inside \\measured{...} are not stripped.
+    def test_platform_readiness_measured(self):
+        doc = self.root / 'paper/platform/platform.tex'
+        doc.parent.mkdir(parents=True)
+        forms = ('Допуск не настроен.', 'Допуск не настраивался.', 'Формат не опубликован.',
+                 'Формат не публикуется.', 'Служба не развёрнута.', 'Мост не готов.',
+                 'Выпуск планируется.', 'Мы планируем выпуск.', 'Цепочка запланирована.',
+                 'Мост будет проверять.', 'Службы будут работать.', 'В будущем мост проверит.',
+                 'Есть прототип моста.', 'Предстоит написать мост.', 'Мост появится.',
+                 'НЕ ОПУБЛИКОВАН формат.')
+        for text in forms:
+            with self.subTest(text=text):
+                doc.write_text('\\section{Пример}\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, 'planted readiness form must fail: ' + text)
+                self.assertIn('== platform paper: readiness wording\n', r.stdout)
+                self.assertIn('paper/platform/platform.tex:2:', r.stdout)
+        doc.write_text('\\section{Пример}\nЗаписи \\measured{не опубликованы}; допуск \\measured{не настраивался}.\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertNotIn('== ', r.stdout)
+        for text, label in (('Записи \\measured{не опубликованы}, а мост будет готов.', 'readiness wording'),
+                            ('Записи \\measured{не опубликованы --- журнал}.', 'dash in prose'),
+                            ('Записи \\measured{не опубликованы <<aud>>}.', 'guillemets'),
+                            ('Записи \\measured{пока не опубликованы}.', 'delivery hedge')):
+            with self.subTest(text=text):
+                doc.write_text('\\section{Пример}\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn('== platform paper: ' + label + '\n', r.stdout)
+        doc.write_text('\\section{Пример}\nОркестратор планирует работу не позже 300~с, будто сам; '
+                       'готовность логина проверена.\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertNotIn('== ', r.stdout)
+
     # The verdict does not depend on the caller's locale: under C and POSIX
     # settings a clean chapter still passes, and a capitalised Cyrillic hedge
     # and a guillemet still fail with their labels. Limit: the refusal path for

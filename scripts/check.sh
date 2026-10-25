@@ -9,7 +9,9 @@
 # hedges in book chapters outside the state chapter; the prose blacklist of
 # editorial/style.ru.md in book chapters and in the signing note
 # (editorial/notes/signing-auth/ru/*.md); the same blacklist, hedges and
-# readiness wording in TeX form for the platform paper (paper/platform/*.tex).
+# readiness wording in TeX form for the platform paper (paper/platform/*.tex),
+# where \measured{...} exempts a measurement or availability fact from the
+# readiness rule only.
 # Prints every hit with its file and
 # line. sources/ and editorial/ are working material and are not checked,
 # except editorial/notes/*/ru/*.md: the signing note's blacklist is blocking,
@@ -112,7 +114,15 @@ prose "marketing adjective" '(^|[^[:alpha:]])(мощн[[:alpha:]]*|бесшов�
 # as above, "---" anywhere, or "--" outside a range whose left side is a digit
 # (2--18, П1--П8 and L0--L2 pass); guillemets are Unicode or babel "<<"/">>"
 # or \guillemot...; delivery hedges are the book's; readiness wording is
-# "работает сегодня", "не построен...", "в разработке" or "в планах".
+# "работает сегодня", "не построен...", "в разработке", "в планах",
+# "не настро..."/"не настраива...", "не опубликован..."/"не публику...",
+# "не развёрнут...", "не готов...", "планируется"/"планируются"/"планируем",
+# "запланирован...", "будет"/"будут", "в будущем", "прототип...", "предстоит"
+# and "появится"/"появятся". A phrase that states a measurement condition or
+# the availability of an artifact is wrapped in \measured{...} in the TeX
+# source; the readiness rule ignores that argument (one brace level) and every
+# other rule still scans it. The rule is lexical: other wordings of a
+# readiness claim pass, and the final judgement stays with the reviewer.
 # Every hit is printed with its file name, even for a single file.
 # Blocking unless STRICT_PROSE=0. Other TeX under paper/ is not scanned here.
 platform_files=$(find paper/platform -type f -name '*.tex' 2>/dev/null | sort)
@@ -131,7 +141,18 @@ platform "antithesis" '(не[[:space:]]+просто[[:space:]].*,[[:space:]]+а
 platform "filler opener" '(стоит[[:space:]]+отметить|важно[[:space:]]+понимать|давайте[[:space:]]+разбер|в[[:space:]]+современном[[:space:]]+мире)'
 platform "marketing adjective" '(^|[^[:alpha:]])(мощн[[:alpha:]]*|бесшовн[[:alpha:]]*)($|[^[:alpha:]])'
 platform "delivery hedge" '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])'
-platform "readiness wording" '(работает[[:space:]]+сегодня|не[[:space:]]+построен[[:alpha:]]*|в[[:space:]]+разработке|в[[:space:]]+планах)'
+platform_readiness() {
+  # $1 label, $2 extended regex (case-insensitive); \measured{...} arguments removed first
+  [ -n "$platform_files" ] || return 0
+  out=$(for f in $platform_files; do
+    sed -E 's/\\measured\{[^{}]*\}//g' "$f" | grep -niE -- "$2" | sed "s|^|$f:|"
+  done)
+  if [ -n "$out" ]; then
+    if [ "${STRICT_PROSE:-1}" = 0 ]; then echo "== platform paper: $1 (advisory)"; else echo "== platform paper: $1"; fail=1; fi
+    printf '%s\n' "$out"
+  fi
+}
+platform_readiness "readiness wording" '(^|[^[:alpha:]])(работает[[:space:]]+сегодня|не[[:space:]]+построен[[:alpha:]]*|в[[:space:]]+разработке|в[[:space:]]+планах|не[[:space:]]+настро[[:alpha:]]*|не[[:space:]]+настраива[[:alpha:]]*|не[[:space:]]+опубликован[[:alpha:]]*|не[[:space:]]+публику[[:alpha:]]*|не[[:space:]]+развёрнут[[:alpha:]]*|не[[:space:]]+готов[[:alpha:]]*|планиру(ется|ются|ем)|запланирован[[:alpha:]]*|буд(ет|ут)|в[[:space:]]+будущем|прототип[[:alpha:]]*|предстоит|появ(ится|ятся))($|[^[:alpha:]])'
 
 # Every book chapter starts with one level-1 heading (after front matter in 00).
 for f in book/ru/[0-9][0-9]*.md; do
