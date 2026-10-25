@@ -219,3 +219,140 @@ check.sh: ok (38 files)
 ```
 
 Выше этой строки `check.sh` печатает только отчётные (advisory) срабатывания в `editorial/notes/signing-auth/ru/`, чужих файлах, которые эта задача не трогает; код выхода 0.
+
+
+## r2: доработка после ревью r1
+
+Ревью r1 вернуло changes_requested на 6260159: P1 6, P2 7, P3 7. Ветка та же, от 6260159; origin/main с тех пор менял только записку о подписях, книга и пейпер на main не менялись (`git diff --stat cedd7bb origin/main -- book paper` пуст), поэтому сверка с книгой 1.4 остаётся в силе.
+
+| Показатель | Значение |
+| --- | --- |
+| Страниц A4 вместе с литературой | 12 (`pdfinfo`: Pages 12, A4) |
+| Источников в списке литературы | 51 (42 прежних и 9 новых), все процитированы |
+| Таблиц / рисунков | 3 / 1 |
+| Исправлено | 20 из 20, из них F15 частично |
+| Не согласен | 1 (часть F15, ниже) |
+| Сборка `make -B -C paper` | exit 0, без overfull и undefined |
+| `make -C paper model` | 1090 состояний без нарушения, четыре контрпримера |
+| `sh scripts/check.sh` | `check.sh: ok (38 files)`, exit 0 |
+
+### По находкам
+
+- F1 (P1): строка табл. 1 разделена на три: реестр на узле доверия "решено", протокол и сервер свидетеля "предложено", хранитель контрольной точки вне узла "открыто" (книга, глава "Где мы", строки WC1); в подпись таблицы добавлено значение "открыто"; в G4 допущение о свидетеле со ссылкой на его статус.
+- F2 (P1): G3 теперь против П1 и П5 без ключа реестра; добавлены допущения (процесс подписи и узел не скомпрометированы, свидетель честен и опрашивается при записи свежести) и предел: с ключом реестра снимок с отзывом можно не публиковать, и срок не ограничен; против этого только обнаружение по G4.
+- F3 (P1): П4 определён как root на одной машине из нескольких при корнях, ключе оператора и узле доверия вне её; "Вне рамок" согласовано с П4; G6 переименована в "Учётки на носителе ограничены меткой машины"; добавлен абзац "Захваченная машина (П4)": мастер-секрет, ключи вызывающих и программный корень брокера v0 на машине, поэтому G1, G7 и G2 в области брокера для установки не держатся; что остаётся вне машины (книга, "Ключи и ключник", таблицы секретов и ролей).
+- F4 (P1): строки 1-2 табл. 2 переписаны на согласие реализаций на конечном корпусе, "однозначность и полнота спецификации" и "однозначность контракта" перенесены в "Чего не показывает"; начало раздела 6 переписано так же.
+- F5 (P1): утверждение "дешева для служб хоста" заменено на "Стоимость эталонной проверки одной записи", в результат добавлены выделения памяти; "мало рядом с ходом модели" удалено; в 6.4 названы профиль выделений и около 165 сообщений в секунду на поток при медиане 6,04 мс (1/6,04 мс), с оговоркой, что оптимизированная реализация не измерялась.
+- F6 (P1): новый абзац "Системная защита агентов от инъекций" в разделе 7: Dual LLM, CaMeL, FIDES, Progent, IsolateGPT, шаблоны проектирования; общее (детерминированный допуск, модель только сужает) и отличие (проверка у исполнителя за границей процесса, личность от ядра, гранты между машинами и владельцами с ограниченным сроком отзыва, удержание станцией). Ссылки проверены (таблица ниже).
+- F7 (P2): правило издателя ограничено общим языком грантов, в 4.2 названо исключение контракта брокера v0 с глубинами 2 и 1 (книга, "Гранты и полномочия"); в G2 предел: захваченный оркестратор передаёт подмножество прав новым оркестраторам в пределах глубины и четырёх конвертов, отзыв отрезает и их. Слова ревьювера о контрподписи диспетчера в текст не вошли: книга её так не называет.
+- F8 (P2): порог L2 приписан византийскому кворуму Malkhi и Reiter, совпадение с 2f+1 из PBFT названо при n=3f+1; L1 описан как большинство при честном секвенсере; вывод обоих порогов отнесён к книге.
+- F9 (P2): в табл. 1 добавлены "Подпись сообщений ключником | решено | кода нет", "Контракт swarma-msg/2 | предложено", "Журнал ключевых событий в реестре до Swarma Chain | предложено"; строка ключника уточнена до "ядро и регистрация".
+- F10 (P2): раздел 5 открывается тем, что это аргументы дизайна, и называет состояние механизмов каждой G по табл. 1; в разделе 3 перечислена доверенная база (службы хоста, узла доверия и вне хоста), мост отдельно назван допущением как разборщик ввода П3 под общей служебной учёткой.
+- F11 (P2): "нижняя граница" ограничена числами задач, записей и находок; медиана, доля первых раундов и соотношение вердиктов названы не границами; добавлены доля разбора (104 из 318) и смещение выборки; сказано, что доска рабочая и записи не опубликованы.
+- F12 (P2): абзац "Доступность артефактов" в разделе 6: ревизии библиотеки (без имени репозитория, только организация), `relux-works/swarma-memory` на 763e024, `docs/root-qualification-evidence.md` в `relux-works/swarma-user-manager`, модель при исходниках работы; обвязка и отчёт замеров, записи ревью и книга названы неопубликованными; книга добавлена в литературу как рукопись версии 1.4. Имя репозитория библиотеки не названо: оно совпадает с кодовым именем, которое `names.ru.md` запрещает; это решение оркестратора или владельца.
+- F13 (P2): "на глубоких моделях [tufano2021], на предобученных [tufano2022, codereviewer]"; tufano2022 добавлен.
+- F14 (P3): абзац П6 говорит, что против П6 ни одна G сегодня не держится; миграция корней названа "хэш-подписи" по книге с перечнем корней, SLH-DSA отнесена к ключам Swarma Chain ("спроектированы").
+- F15 (P3), частично: chubby получил страницы 335-350 (сверено по колонтитулу PDF USENIX, последняя страница 350, 16 страниц); ucan закреплён за коммитом 8072f3f с пометкой, что тега нет; заголовок `references.bib` указывает на эту записку; gvisor в тексте назван сторонней работой об измерении стоимости. Остальное в "Не согласен".
+- F16 (P3): "у агентов там нет root"; терминальный запасной путь с паролем sudo без кэша; деактивация учёток "где этого требует квалифицированный путь сервера"; свежее чтение головы у свидетеля в 4.2; в заключении названы мастер-секрет, источник времени, доверенная база и целостность среды проекта.
+- F17 (P3): вклад 4 и табл. 2 говорят о квалификационном наборе с 11 из 11 проверок; в 6.2 сказано, что это не самоквалификация раздела 4 (нет аттестации по 42 гарантиям, ячейки PENDING-VERIFY). Расхождение главы 29 книги с публичными запусками передаётся редакторам (было и в 6.0).
+- F18 (P3): "в одном потоке Go" в аннотации и заключении, в 6.4 сказано, что `GOMAXPROCS=1` ядра не закрепляет; полный прогон Python отнесён к репозиторию, наш повтор к библиотеке.
+- F19 (P3): Swarma Curator определён как модуль рантайма, который собирает окружение агентов; Change Request как запись доски (запрос на изменение); decision guard как локальная модель, оценивающая смысл сообщения.
+- F20 (P3): в 4.5 записи `enrollment/1` подписывает офлайновый издатель регистраций владельца, как в 4.1 и в таблице ролей книги ("решено"). Расхождение глав "Ключи и ключник" и "Допуск к носителю" передаётся редакторам: вторая называет ключ владельца с телефона.
+
+### Не согласен
+
+- F15, страницы pbft, eigentrust, sybilproof. Ревью: "Page ranges are missing for pbft (173–186), chubby (335–350), eigentrust (640–651) and sybilproof (128–132)". Из первичных источников подтвердились только страницы chubby. Crossref для eigentrust и sybilproof даёт лишь первую страницу (640 и 128), страница OSDI'99 у USENIX диапазона не даёт, PDF через неё не открылся, DBLP и Semantic Scholar не ответили (ошибка и 429). Правило брифа "cite only what you can identify precisely" не позволяет переносить диапазоны со слов ревью; записи оставлены без диапазонов.
+- F15, площадка autogen. Ревью: "autogen appeared at COLM 2024. Cite the venue, or keep arXiv deliberately." Оставлен arXiv сознательно: первичная запись OpenReview через API не вернулась, а её название по индексу ("...Conversations") расходится с arXiv.
+
+### Поправка к ревью
+
+У IsolateGPT ревью называет авторов "Wu, Cecchetti and Xiao". Crossref (doi 10.14722/ndss.2025.241131) и страница NDSS дают Yuhao Wu, Franziska Roesner, Tadayoshi Kohno, Ning Zhang, Umar Iqbal и название "IsolateGPT: An Execution Isolation Architecture for LLM-Based Agentic Systems"; запись следует им.
+
+### Новые источники
+
+| key | citation | verified how | status |
+| --- | --- | --- | --- |
+| swarmabook | А. Григорьев, И. Опарин. Swarma. Платформа для роёв ИИ-агентов: от одной машины до открытой сети. Книга, версия 1.4, рукопись, 2026. | `book/ru/00-dlya-kogo.md`, front matter (title, subtitle, authors, "октябрь 2026 · версия 1.4") | VERIFIED, помечена неопубликованной |
+| byzquorum | D. Malkhi, M. Reiter. Byzantine Quorum Systems. Distributed Computing 11(4):203–213, 1998. doi:10.1007/s004460050050 | https://api.crossref.org/works/10.1007/s004460050050 | VERIFIED |
+| tufano2022 | R. Tufano, S. Masiero, A. Mastropaolo, L. Pascarella, D. Poshyvanyk, G. Bavota. Using Pre-Trained Models to Boost Code Review Automation. ICSE 2022, pp. 2291–2302. doi:10.1145/3510003.3510621 | https://api.crossref.org/works/10.1145/3510003.3510621 | VERIFIED |
+| duallm | S. Willison. The Dual LLM pattern for building AI assistants that can resist prompt injection. Blog post, 25 April 2023. | https://simonwillison.net/2023/Apr/25/dual-llm-pattern/ (title, "25th April 2023") | VERIFIED |
+| camel | E. Debenedetti, I. Shumailov, T. Fan, J. Hayes, N. Carlini, D. Fabian, C. Kern, C. Shi, A. Terzis, F. Tramèr. Defeating Prompt Injections by Design. arXiv:2503.18813, 2025. | https://export.arxiv.org/api/query?id_list=2503.18813 (authors, title, abstract on capabilities and policies at tool calls) | VERIFIED |
+| designpatterns | L. Beurer-Kellner et al. (14 authors). Design Patterns for Securing LLM Agents against Prompt Injections. arXiv:2506.08837, 2025. | https://export.arxiv.org/api/query?id_list=2506.08837 | VERIFIED |
+| isolategpt | Y. Wu, F. Roesner, T. Kohno, N. Zhang, U. Iqbal. IsolateGPT: An Execution Isolation Architecture for LLM-Based Agentic Systems. NDSS 2025. doi:10.14722/ndss.2025.241131 | Crossref bibliographic query (DOI record); https://www.ndss-symposium.org/ndss-paper/isolategpt-an-execution-isolation-architecture-for-llm-based-agentic-systems/ (title, author list) | VERIFIED. Crossref title omits "Agentic"; the entry follows the NDSS page. |
+| progent | T. Shi, J. He, Z. Wang, H. Li, L. Wu, W. Guo, D. Song. Progent: Securing AI Agents with Privilege Control. arXiv:2504.11703, 2025. | https://export.arxiv.org/api/query?id_list=2504.11703 | VERIFIED |
+| fides | M. Costa, B. Köpf, A. Kolluri, A. Paverd, M. Russinovich, A. Salem, S. Tople, L. Wutschitz, S. Zanella-Béguelin. Securing AI Agents with Information-Flow Control. arXiv:2505.23643, 2025. | https://export.arxiv.org/api/query?id_list=2505.23643 (abstract names the planner Fides) | VERIFIED |
+
+Изменения прежних записей: chubby получила `pages = {335--350}`; ucan `note` закреплён за коммитом 8072f3f (README на этом коммите называет себя "Version 1.0.0", тега с этой версией нет); у fips205 `type` сокращён до FIPS; у sybil убраны редакторы тома, у miller2006 адрес, у трёх веб-записей пометка "Accessed" там, где дата публикации уже есть; у booktitle убрано "Proceedings of the". Это сокращение вёрстки, идентификация записей не меняется.
+
+### Вёрстка
+
+Новые абзацы, строки таблицы 1 и девять источников дали 14 страниц. Возвращено к 12: поля 20 мм вместо 22 мм, стиль литературы `abbrv` вместо `plain` (инициалы, месяц сокращён; книга записана с именами в фигурных скобках, чтобы BibTeX не резал кириллицу), межабзацный интервал 3 pt вместо 3,5 pt, отступы заголовков на 1-2 pt меньше, рис. 1 сжат по вертикали до 0,88, таблицы 1 и 2 расширены под новое поле, и текст сокращён без потери утверждений: перечни операций ключника, форматов записей, лимитов cgroup и шагов самоквалификации свёрнуты в одну фразу, убраны повторы в разделах 7 и 8. Правило "граф ожиданий каждой службы не содержит циклов" из 4.4 убрано вместе с перечнями: свидетельства для него нет (см. "Что снято и почему"). Все 12 страниц просмотрены как изображения (`pdftoppm` 75 dpi): наложений нет, таблицы и рис. 1 читаются, литература заканчивается на с. 12.
+
+### Передаётся редакторам книги
+
+- Глава "Где мы": контракты менеджера пользователей и запускателя "кода нет" против публичных квалификационных запусков (F17).
+- Подписант `enrollment/1`: офлайновый издатель ("Ключи и ключник") или ключ владельца с телефона ("Допуск к носителю") (F20).
+- Имя репозитория библиотеки подписанных записей в пейпере: сейчас названа только организация; назвать репозиторий значит снять запрет `names.ru.md` на кодовое имя (F12).
+
+### Дословный вывод r2
+
+`make -B -C paper`:
+
+```text
+tectonic -X compile paper.tex
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/PTSerif.ttc`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/PTSans.ttc`; build may not be reproducible in other environments
+warning: accessing absolute path `/System/Library/Fonts/Supplemental/PTMono.ttc`; build may not be reproducible in other environments
+warning: paper.tex:234: Underfull \hbox (badness 2662) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 1803) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 2181) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 10000) in paragraph at lines 233--234
+note: Running BibTeX on paper.aux ...
+note: Rerunning TeX because bibtex was run ...
+warning: paper.tex:234: Underfull \hbox (badness 2662) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 1803) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 2181) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 10000) in paragraph at lines 233--234
+warning: paper.bbl:41: Underfull \hbox (badness 7925) in paragraph at lines 36--41
+note: Rerunning TeX because "paper.aux" changed ...
+warning: paper.tex:234: Underfull \hbox (badness 2662) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 1803) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 2181) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 10000) in paragraph at lines 233--234
+warning: paper.bbl:41: Underfull \hbox (badness 7925) in paragraph at lines 36--41
+note: Rerunning TeX because "paper.aux" changed ...
+warning: paper.tex:234: Underfull \hbox (badness 2662) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 1803) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 2181) in paragraph at lines 233--234
+warning: paper.tex:234: Underfull \hbox (badness 10000) in paragraph at lines 233--234
+warning: paper.bbl:41: Underfull \hbox (badness 7925) in paragraph at lines 36--41
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `paper.pdf` (169.1982421875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)
+exit 0
+```
+
+`make -C paper model`:
+
+```text
+python3 -I model/integration-fragment-model.py
+full rules: reachable states=1090, violation=None
+without cas     : states explored=84, violation=record applied twice
+   trace: submit(A) -> build_candidate(A) -> attest(A) -> propose(A) -> deliver(A) -> deliver(A)
+without epoch   : states explored=82, violation=record from a stale lease epoch advanced main
+   trace: submit(A) -> build_candidate(A) -> attest(A) -> propose(A) -> epoch_change -> deliver(A)
+without contract: states explored=71, violation=attestation references a superseded contract version
+   trace: submit(A) -> build_candidate(A) -> attest(A) -> change_contract(A) -> propose(A) -> deliver(A)
+without bind_I  : states explored=490, violation=attestation made on a different base than the integrated candidate
+   trace: submit(A) -> build_candidate(A) -> attest(A) -> propose(A) -> submit(B) -> build_candidate(B) -> attest(B) -> deliver(A) -> build_candidate(B) -> propose(B) -> deliver(B)
+exit 0
+```
+
+`sh scripts/check.sh` (последняя строка; выше только отчётные срабатывания в чужих записках `editorial/notes/signing-auth/ru/`):
+
+```text
+check.sh: ok (38 files)
+```
