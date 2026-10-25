@@ -1,0 +1,105 @@
+# Chapter "Внешние эффекты, остановка и федерация", section on a working
+# federation: two owners, each with its runtime and its trust node, a shared
+# project on Swarma Protocol and Matrix federation between the owners'
+# homeservers (owner request of 2026-10-25, the picture of two companies).
+# One direction is drawn: an agent of owner B acts in owner A's runtime, and
+# A checks the envelope against B's registry. The other direction is
+# symmetric; the chapter text says so.
+layout = "graph"
+direction = "TB"
+same_rank = [["tn_b", "rt_b"], ["rt_a", "tn_a"], ["env", "pool"]]
+alt = "Работающая федерация: у каждого владельца свой рантайм и свой узел доверия, конверт агента B идёт через федерацию Matrix, рантайм A проверяет его по свежему снимку реестра B, а общий проект ведёт журнал с кворумом кор-нод обоих владельцев."
+
+[groups.own_b]
+label = "Владелец B"
+role = "service"
+
+[groups.own_a]
+label = "Владелец A"
+role = "service"
+
+[groups.proj]
+label = "Общий проект"
+role = "neutral"
+
+[nodes.tn_b]
+group = "own_b"
+role = "store"
+name = "Узел доверия B"
+text = "реестр, подписант, свидетель"
+
+[nodes.rt_b]
+group = "own_b"
+role = "service"
+name = "Рантайм B"
+text = "ключник подписывает конверт агента B"
+
+[nodes.mx]
+role = "external"
+name = "Matrix"
+text = "домашние серверы владельцев в федерации"
+
+[nodes.rt_a]
+group = "own_a"
+role = "service"
+name = "Рантайм A"
+text = "ворота проверяют подпись, грант и свежесть"
+
+[nodes.tn_a]
+group = "own_a"
+role = "store"
+name = "Узел доверия A"
+text = "реестр, подписант, свидетель"
+
+[nodes.log]
+group = "proj"
+role = "store"
+name = "Журнал проекта"
+text = "кворум кор-нод A и B, аренда оркестратора"
+
+[nodes.env]
+group = "proj"
+role = "service"
+name = "Среда проекта"
+text = "контракт задачи, правила валидаторов"
+
+[nodes.pool]
+group = "proj"
+role = "service"
+name = "Публичный пул"
+text = "исполняет в ВМ без ключей платформы"
+
+[[links]]
+from = "rt_b"
+to = "mx"
+label = "`swarm-envelope/2`"
+
+[[links]]
+from = "mx"
+to = "rt_a"
+label = "конверт агента B"
+
+[[links]]
+from = "tn_b"
+to = "rt_a"
+label = "свежий снимок\nреестра B"
+
+[[links]]
+from = "tn_a"
+to = "rt_a"
+label = "гранты A"
+
+[[links]]
+from = "rt_a"
+to = "log"
+label = "подпись кор-ноды A"
+
+[[links]]
+from = "log"
+to = "env"
+label = "совершённые записи"
+
+[[links]]
+from = "env"
+to = "pool"
+label = "чужой код"

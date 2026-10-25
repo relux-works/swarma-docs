@@ -58,6 +58,7 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | protocol-topology | `protocol-topology.toml` | книга | — | tall | Модель протокола |
 | authority-ladder | `authority-ladder.toml` | книга | — | обычное | Контракт задачи и правила валидаторов |
 | candidate-integration | `candidate-integration.toml` | книга | — | tall | Оркестратор по аренде и цикл задачи |
+| federation-picture | `federation-picture.toml` | книга | — | tall | Внешние эффекты, остановка и федерация |
 | portable-attestations-1 | `portable-attestations-1.toml` | книга | — | обычное | Аттестации и переносимая репутация |
 | portable-attestations-2 | `portable-attestations-2.toml` | книга | — | tall | Аттестации и переносимая репутация |
 | sublayers | `sublayers.toml` | книга | — | tall | Цепочка: устройство |
