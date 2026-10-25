@@ -1,0 +1,31 @@
+# Swarma's three layers and the links between them. Content follows
+# three-layers.puml: three layer boxes top to bottom, two labelled links and
+# the note beside layer 0. The puml title becomes the chapter caption.
+layout = "stack"
+alt = "Swarma: три слоя платформы и связи между ними."
+
+[nodes.l2]
+role = "service"
+name = "Слой 2. Swarma Runtime"
+text = "Агенты на машинах одного владельца.\nПользователи ОС, ключи, гранты, сообщения, сессии, рабочие места"
+
+[nodes.l1]
+role = "service"
+name = "Слой 1. Swarma Protocol"
+text = "Независимые владельцы, одна авторитетная среда исполнения.\nЖурнал с кворумом, оркестратор по аренде, независимое ревью"
+
+[nodes.l0]
+role = "store"
+name = "Слой 0. Swarma Chain"
+text = "Деньги, имена, личности, аттестации, социальные записи, указатели на контент"
+note = "Принятие записи не доказывает правильности ревью.\nХэш контента не гарантирует его наличия."
+
+[[links]]
+from = "l2"
+to = "l1"
+label = "узлы и рабочие места для участников протокола"
+
+[[links]]
+from = "l1"
+to = "l0"
+label = "общие личности и аттестации"

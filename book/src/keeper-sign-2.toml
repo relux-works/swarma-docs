@@ -1,0 +1,101 @@
+# Keeper registration and signing, part 2 of 2: signing. Content follows
+# keeper-sign.puml (steps 5-11) and the chapter "Ключи и ключник"; step numbers
+# stay those of the whole sequence. The keeper and its master secret share one
+# key boundary. The note keeps the mechanism; the pointer to the module
+# specification stays in the chapter text.
+layout = "sequence"
+alt = "Ключник выбирает личность по UID собеседника и активному поколению учётки и возвращает подпись, не отдавая закрытого ключа."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.keeper]
+label = "Граница ключника"
+role = "key"
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[nodes.kernel]
+role = "neutral"
+name = "Ядро ОС"
+
+[nodes.registry]
+role = "store"
+name = "Реестр поколений"
+
+[nodes.keeper]
+group = "keeper"
+role = "key"
+name = "Ключник"
+
+[nodes.secret]
+group = "keeper"
+role = "key"
+name = "Мастер-секрет"
+
+[[seq]]
+from = "agent"
+to = "keeper"
+step = 5
+label = "`sign(bytes)`"
+
+[[seq]]
+from = "kernel"
+to = "keeper"
+step = 6
+label = "UID собеседника"
+
+[[seq]]
+from = "keeper"
+to = "registry"
+step = 7
+label = "поколение этого UID активно?"
+
+[[seq]]
+from = "keeper"
+to = "keeper"
+step = 8
+label = "регистрация действует, личность не отозвана?"
+
+[[seq]]
+alt = "проверка не пройдена"
+
+[[seq]]
+from = "keeper"
+to = "agent"
+step = 9
+label = "отказ"
+color = "alert"
+
+[[seq]]
+else = "действующая привязка"
+
+[[seq]]
+from = "keeper"
+to = "secret"
+step = 9
+label = "вывести ключ внутри защищённой границы"
+
+[[seq]]
+from = "keeper"
+to = "keeper"
+step = 10
+label = "подписать; аудит и ограничение частоты"
+
+[[seq]]
+from = "keeper"
+to = "agent"
+step = 11
+label = "подпись"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Закрытый ключ агенту не выдаётся."
+over = ["agent", "secret"]

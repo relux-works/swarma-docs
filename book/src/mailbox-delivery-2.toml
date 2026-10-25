@@ -1,0 +1,95 @@
+# Mail delivery, part 2 of 2: the decision guard and delivery. Content follows
+# mailbox-delivery.puml and the chapter "Путь сообщения и мост"; it opens with
+# step 4 of part 1 (the admitted body) and keeps the whole sequence's step
+# numbers. The note is reworded without the dash and the "X, не Y" turn of the
+# puml: peer mail stays data and grants no authority for an effect.
+layout = "sequence"
+alt = "Доставка почты: допущенная почта вызывает звонок без тела, а тело агент забирает из ящика инструментом."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 140
+seq_column_gap = 20
+
+[nodes.gate]
+role = "service"
+name = "Ворота доверия"
+
+[nodes.guard]
+role = "service"
+name = "Decision guard"
+
+[nodes.mailbox]
+role = "store"
+name = "Почтовый ящик"
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[[seq]]
+from = "gate"
+to = "guard"
+step = 4
+label = "тело и запись проверки"
+
+[[seq]]
+alt = "guard недоступен или отказал"
+
+[[seq]]
+from = "guard"
+to = "mailbox"
+step = 5
+label = "отказ в доставке"
+color = "alert"
+
+[[seq]]
+else = "guard разрешил"
+
+[[seq]]
+from = "guard"
+to = "mailbox"
+step = 5
+label = "тело и вердикт"
+
+[[seq]]
+from = "mailbox"
+to = "host"
+step = 6
+label = "звонок без тела"
+
+[[seq]]
+end = true
+
+[[seq]]
+opt = "звонок поставлен в очередь"
+
+[[seq]]
+from = "host"
+to = "host"
+step = 7
+label = "долговечная очередь; повторный допуск перед доставкой, открытый забор"
+
+[[seq]]
+from = "host"
+to = "agent"
+step = 8
+label = "звонок на границе хода"
+
+[[seq]]
+from = "agent"
+to = "mailbox"
+step = 9
+label = "забрать тело инструментом"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Почта от другого агента остаётся данными и полномочия на эффект не даёт.\nТипизированное действие оператора требует отдельного допуска."
+over = ["host", "agent"]

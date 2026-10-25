@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="882.2" height="814.1" viewBox="0 0 882.2 814.1">
+<title>Ключник выбирает личность по UID собеседника и активному поколению учётки и возвращает подпись, не отдавая закрытого ключа.</title>
+<rect width="882.2" height="814.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(60 0)">
+<!-- group keeper -->
+<rect x="406" y="0" width="392.2" height="735.9" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="keeper"/>
+<!-- group label keeper -->
+<rect x="418" y="10" width="170.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="424" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ГРАНИЦА КЛЮЧНИКА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="727.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="120" y1="83.1" x2="120" y2="727.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="248.7" y1="106.5" x2="248.7" y2="727.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="475.5" y1="83.1" x2="475.5" y2="727.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="706.2" y1="83.1" x2="706.2" y2="727.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="-44" y="381" width="774.2" height="326.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="468.7" x2="730.2" y2="468.7" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="388" width="151.5" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="402.3" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверка не пройдена</tspan></text>
+<rect x="-36" y="473.7" width="155.7" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="488" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действующая привязка</tspan></text>
+<!-- node agent -->
+<rect x="-50" y="37.7" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="-22" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<!-- node kernel -->
+<rect x="70" y="37.7" width="100" height="45.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="kernel"/>
+<text x="86.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ядро ОС</tspan></text>
+<!-- node registry -->
+<rect x="190" y="37.7" width="117.4" height="68.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="221.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр</tspan></text>
+<text x="206" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколений</tspan></text>
+<!-- node keeper -->
+<rect x="424" y="37.7" width="103" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="keeper"/>
+<text x="440" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключник</tspan></text>
+<!-- node secret -->
+<rect x="632.1" y="37.7" width="148.1" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="secret"/>
+<text x="648.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мастер-секрет</tspan></text>
+<!-- message agent -> keeper -->
+<path d="M 2 158 L 467.5 158" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="keeper" data-edge="m0"/>
+<polygon points="473.5,158 463.5,153.5 463.5,162.5" fill="#3a3f47"/>
+<rect x="137.5" y="130.5" width="131" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="150.5" cy="141.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="146.8" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="165.5" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">sign(bytes)</tspan></text>
+</g>
+<!-- message kernel -> keeper -->
+<path d="M 122 205.5 L 467.5 205.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="kernel" data-to="keeper" data-edge="m1"/>
+<polygon points="473.5,205.5 463.5,201 463.5,210" fill="#3a3f47"/>
+<rect x="191.5" y="178" width="143" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="204.5" cy="188.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="200.8" y="193.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="219.5" y="193.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">UID собеседника</tspan></text>
+</g>
+<!-- message keeper -> registry -->
+<path d="M 473.5 272.5 L 256.7 272.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="registry" data-edge="m2"/>
+<polygon points="250.7,272.5 260.7,277 260.7,268" fill="#3a3f47"/>
+<rect x="256.7" y="225.5" width="141.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="269.7" cy="236.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="266" y="240.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="284.7" y="240.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколение этого</tspan></text>
+<text x="284.7" y="260.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">UID активно?</tspan></text>
+</g>
+<!-- self keeper -->
+<path d="M 477.5 296.5 L 507.5 296.5 L 507.5 365 L 484.5 365" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="keeper" data-edge="m3"/>
+<polygon points="478.5,365 488.5,369.5 488.5,360.5" fill="#3a3f47"/>
+<rect x="515.5" y="300.5" width="164.6" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="528.5" cy="311.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="524.8" y="315.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="543.5" y="315.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">регистрация</tspan></text>
+<text x="543.5" y="335.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действует, личность</tspan></text>
+<text x="543.5" y="354.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">не отозвана?</tspan></text>
+</g>
+<!-- message keeper -> agent -->
+<path d="M 473.5 444.7 L 8 444.7" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="keeper" data-to="agent" data-edge="m4"/>
+<polygon points="2,444.7 12,449.2 12,440.2" fill="#c8285f"/>
+<rect x="169.2" y="417.2" width="67.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="182.2" cy="427.9" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="178.5" y="432.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="197.2" y="432.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+</g>
+<!-- message keeper -> secret -->
+<path d="M 477.5 551.9 L 698.2 551.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="secret" data-edge="m5"/>
+<polygon points="704.2,551.9 694.2,547.4 694.2,556.4" fill="#3a3f47"/>
+<rect x="502" y="504.9" width="177.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="515" cy="515.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="511.3" y="520.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="530" y="520.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вывести ключ внутри</tspan></text>
+<text x="530" y="539.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">защищённой границы</tspan></text>
+</g>
+<!-- self keeper -->
+<path d="M 477.5 575.9 L 507.5 575.9 L 507.5 644.4 L 484.5 644.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="keeper" data-edge="m6"/>
+<polygon points="478.5,644.4 488.5,648.9 488.5,639.9" fill="#3a3f47"/>
+<rect x="515.5" y="579.9" width="151.7" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="519.5" y="581.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="524" y="595.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="549.3" y="595.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписать; аудит</tspan></text>
+<text x="549.3" y="614.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и ограничение</tspan></text>
+<text x="549.3" y="634.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">частоты</tspan></text>
+</g>
+<!-- message keeper -> agent -->
+<path d="M 473.5 687.9 L 8 687.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="agent" data-edge="m7"/>
+<polygon points="2,687.9 12,692.4 12,683.4" fill="#3a3f47"/>
+<rect x="156.9" y="660.4" width="92.3" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<rect x="160.9" y="662.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="165.4" y="675.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="190.6" y="675.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="747.9" width="826.2" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="243.6" y="773.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Закрытый ключ агенту не выдаётся.</tspan></text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,94 @@
+# Carrier admission, part 2 of 2: registrar and carrier server. Content
+# follows carrier-admission.puml (steps 4-10) and the chapter "Допуск к
+# носителю"; step numbers stay those of the whole sequence. Where the puml and
+# the chapter disagree the chapter wins: the pass lives exactly 120 s (puml:
+# 60-120 s) and the access token 24 h (puml: 12-24 h). The note keeps the
+# restart rule and the absence of refresh tokens. The machine container is
+# drawn in part 1, where the helper stands next to the agent.
+layout = "sequence"
+alt = "Допуск к носителю: агент не держит ни общего секрета, ни пароля; сервер носителя доверяет только ключу регистратора."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 200
+seq_self_width = 200
+seq_column_gap = 20
+
+[nodes.agent]
+role = "agent"
+name = "Агент"
+
+[nodes.registrar]
+role = "service"
+name = "Регистратор"
+
+[nodes.registry]
+role = "store"
+name = "Реестр машин"
+text = "git, закреплённая ревизия"
+
+[nodes.server]
+role = "external"
+name = "Сервер носителя"
+
+[[seq]]
+from = "agent"
+to = "registrar"
+step = 4
+label = "HTTPS: запрос и подпись"
+
+[[seq]]
+from = "registrar"
+to = "registry"
+step = 5
+label = "ключ машины действует? имя по правилам?"
+
+[[seq]]
+from = "registrar"
+to = "registrar"
+step = 6
+label = "одноразовое число свежее; срок не больше 120 с"
+
+[[seq]]
+alt = "отказ"
+
+[[seq]]
+from = "registrar"
+to = "agent"
+step = 7
+label = "отказ с причиной; строка аудита"
+color = "alert"
+
+[[seq]]
+else = "допущено"
+
+[[seq]]
+from = "registrar"
+to = "agent"
+step = 7
+label = "JWT на 120 с, подпись Ed25519"
+
+[[seq]]
+from = "agent"
+to = "server"
+step = 8
+label = "вход `org.matrix.login.jwt`"
+
+[[seq]]
+from = "server"
+to = "server"
+step = 9
+label = "доверяет только ключу регистратора; учётка создаётся при первом входе"
+
+[[seq]]
+from = "server"
+to = "agent"
+step = 10
+label = "токен доступа на 24 ч, без пароля"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Истёк токен или сервер ответил 401: агент повторяет путь с начала.\nRefresh-токенов агентам нет."
+over = ["agent", "server"]

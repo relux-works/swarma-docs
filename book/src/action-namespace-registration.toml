@@ -1,0 +1,100 @@
+# Action registry: a handler publishes its manifest, the owner binds a
+# namespace to it, and only then grants and commands may use the name.
+# Content follows action-namespace-registration.puml. Deviations, by the
+# chapter "Гранты и полномочия": the handler's declaration is called a
+# manifest, and "уполномоченный агент" becomes "администратор": the chapter
+# speaks of a delegated administrator holding registry.actions.register
+# (the full term made the header three lines and the figure miss the box). The puml title
+# ("Предлагаемый словарь действий") carried a status and is dropped.
+layout = "sequence"
+alt = "Реестр действий: имя действия связывается со схемой и обработчиком до того, как его можно использовать в гранте или команде."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 240
+seq_self_width = 240
+seq_column_gap = 20
+
+[nodes.handler]
+role = "service"
+name = "Обработчик"
+
+[nodes.owner]
+role = "human"
+name = "Владелец или администратор"
+
+[nodes.registry]
+role = "store"
+name = "Реестр действий"
+
+[nodes.gate]
+role = "service"
+name = "Ворота доверия"
+
+[[seq]]
+from = "handler"
+to = "registry"
+step = 1
+label = "манифест: действия и схемы аргументов"
+
+[[seq]]
+from = "owner"
+to = "registry"
+step = 2
+label = "подписанная регистрация пространства имён"
+
+[[seq]]
+from = "registry"
+to = "registry"
+step = 3
+label = "проверить полномочия\nи допустимый префикс регистрирующего"
+
+[[seq]]
+alt = "регистрация допустима"
+
+[[seq]]
+from = "registry"
+to = "registry"
+step = 4
+label = "связать имя, схему и обработчик"
+
+[[seq]]
+else = "вне полномочий"
+
+[[seq]]
+from = "registry"
+to = "owner"
+step = 4
+label = "отказ"
+color = "alert"
+
+[[seq]]
+end = true
+
+[[seq]]
+from = "owner"
+to = "registry"
+step = 5
+label = "грант с зарегистрированным действием"
+
+[[seq]]
+from = "gate"
+to = "registry"
+step = 6
+label = "найти схему и обработчик команды"
+
+[[seq]]
+from = "gate"
+to = "gate"
+step = 7
+label = "проверить аргументы и цепочку грантов"
+
+[[seq]]
+from = "gate"
+to = "handler"
+step = 8
+label = "допущенная команда"
+
+[[seq]]
+note = "Незарегистрированное действие не получает грант.\nТекст просьбы не создаёт нового полномочия."
+over = ["registry", "gate"]

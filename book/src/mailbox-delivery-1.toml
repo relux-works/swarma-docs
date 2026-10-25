@@ -1,0 +1,88 @@
+# Mail delivery, part 1 of 2: admission at the trust gates. Content follows
+# mailbox-delivery.puml and the chapter "Путь сообщения и мост". Split from
+# the whole sequence after step 4: the admitted branch hands the body to the
+# decision guard, where part 2 starts with the same step 4. The puml title
+# ("Предлагаемая доставка почты") carried a status and is dropped.
+layout = "sequence"
+alt = "Допуск почты: неподписанное тело удерживается в карантине, отказ не доставляется, допущенное тело идёт к decision guard."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 140
+seq_column_gap = 20
+
+[nodes.provider]
+role = "service"
+name = "Провайдер носителя"
+
+[nodes.gate]
+role = "service"
+name = "Ворота доверия"
+
+[nodes.guard]
+role = "service"
+name = "Decision guard"
+
+[nodes.mailbox]
+role = "store"
+name = "Почтовый ящик"
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+
+[[seq]]
+from = "provider"
+to = "provider"
+step = 1
+label = "сохранить событие на диск,\nзатем сдвинуть курсор"
+
+[[seq]]
+from = "provider"
+to = "gate"
+step = 2
+label = "точные байты конверта"
+
+[[seq]]
+from = "gate"
+to = "gate"
+step = 3
+label = "подпись, класс ключа, грант,\nсвежесть, повторы и привязка"
+
+[[seq]]
+alt = "нет подписи"
+
+[[seq]]
+from = "gate"
+to = "mailbox"
+step = 4
+label = "удержать тело в карантине"
+
+[[seq]]
+from = "gate"
+to = "host"
+step = 5
+label = "звонок только с метаданными"
+
+[[seq]]
+else = "подпись неверна или иная проверка провалена"
+
+[[seq]]
+from = "gate"
+to = "mailbox"
+step = 4
+label = "квитанция отказа и аудит; доставки нет"
+color = "alert"
+
+[[seq]]
+else = "допущено"
+
+[[seq]]
+from = "gate"
+to = "guard"
+step = 4
+label = "тело и запись проверки"
+
+[[seq]]
+end = true

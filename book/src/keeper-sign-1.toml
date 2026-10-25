@@ -1,0 +1,65 @@
+# Keeper registration and signing, part 1 of 2: registration. Content follows
+# keeper-sign.puml (steps 1-4) and the chapter "Ключи и ключник". Split from
+# the whole sequence between registration and signing. The key boundary holds
+# the keeper and its master secret, as in part 2: the master secret takes no
+# step here, but a container around the keeper alone puts the self-message
+# label on the border. Density keys from editorial/diagram-style.ru.md.
+layout = "sequence"
+alt = "Регистрация у ключника: диспетчер связывает личность и путь деривации с UID и активным поколением учётки."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.keeper]
+label = "Граница ключника"
+role = "key"
+
+[nodes.dispatcher]
+role = "service"
+name = "Диспетчер"
+
+[nodes.kernel]
+role = "neutral"
+name = "Ядро ОС"
+
+[nodes.registry]
+role = "store"
+name = "Реестр поколений"
+
+[nodes.keeper]
+group = "keeper"
+role = "key"
+name = "Ключник"
+
+[nodes.master]
+group = "keeper"
+role = "key"
+name = "Мастер-секрет"
+
+[[seq]]
+from = "dispatcher"
+to = "keeper"
+step = 1
+label = "зарегистрировать\nличность и путь\nдля UID и поколения"
+
+[[seq]]
+from = "keeper"
+to = "kernel"
+step = 2
+label = "проверить UID диспетчера"
+
+[[seq]]
+from = "keeper"
+to = "registry"
+step = 3
+label = "проверить активное поколение"
+
+[[seq]]
+from = "keeper"
+to = "keeper"
+step = 4
+label = "сохранить привязку личности"
+

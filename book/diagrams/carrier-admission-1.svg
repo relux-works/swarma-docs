@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="456.9" height="373.6" viewBox="0 0 456.9 373.6">
+<title>Допуск к носителю на машине агента: помощник подписывает запрос ключом машины, а сам ключ агенту не виден.</title>
+<rect width="456.9" height="373.6" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(68 0)">
+<!-- group machine -->
+<rect x="-68" y="0" width="432.9" height="349.6" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="machine"/>
+<!-- group label machine -->
+<rect x="-56" y="10" width="139" height="18.9" fill="#ffffff" class="plate"/>
+<text x="-50" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА АГЕНТА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="341.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="285.3" y1="108.6" x2="285.3" y2="341.6" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node agent -->
+<rect x="-50" y="37.7" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="-22" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<!-- node helper -->
+<rect x="223.7" y="37.7" width="123.2" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="helper"/>
+<text x="242.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Помощник</tspan></text>
+<text x="239.7" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ машины</tspan></text>
+<!-- message agent -> helper -->
+<path d="M 2 179.6 L 277.3 179.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="helper" data-edge="m0"/>
+<polygon points="283.3,179.6 273.3,175.1 273.3,184.1" fill="#3a3f47"/>
+<rect x="18.3" y="132.6" width="248.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="31.3" cy="143.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="27.6" y="148" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="46.3" y="147.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпиши запрос на допуск</tspan></text>
+<text x="46.3" y="167.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">имени</tspan><tspan x="92.1" font-family="PT Mono, monospace" font-weight="bold">host-a_project_orch</tspan></text>
+</g>
+<!-- self helper -->
+<path d="M 283.3 203.6 L 253.3 203.6 L 253.3 252.6 L 276.3 252.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="helper" data-to="helper" data-edge="m1"/>
+<polygon points="282.3,252.6 272.3,248.1 272.3,257.1" fill="#3a3f47"/>
+<rect x="26" y="207.6" width="219.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="39" cy="218.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="35.3" y="223" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="54" y="222.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">UID от ядра; имя разрешено</tspan></text>
+<text x="54" y="242.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">этой машине и этому UID</tspan></text>
+</g>
+<!-- message helper -> agent -->
+<path d="M 283.3 315.6 L 8 315.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="helper" data-to="agent" data-edge="m2"/>
+<polygon points="2,315.6 12,320.1 12,311.1" fill="#3a3f47"/>
+<rect x="55.2" y="268.6" width="174.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="68.2" cy="279.4" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="64.6" y="284" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="83.2" y="283.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный запрос;</tspan></text>
+<text x="83.2" y="303.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключ агенту не виден</tspan></text>
+</g>
+</g>
+</g>
+</svg>

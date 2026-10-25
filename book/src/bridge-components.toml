@@ -1,5 +1,7 @@
 # Bridge components: the carrier provider, trust gates, mailbox and session
-# host split the work. Content follows bridge-components.puml.
+# host split the work. Content follows bridge-components.puml; the store's
+# description follows the chapter table ("Хранилище": admission records,
+# outbox and audit), where the puml said "очереди и аудит".
 layout = "graph"
 direction = "TB"
 same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
@@ -54,7 +56,7 @@ text = "тела и записи проверки"
 group = "bridge"
 role = "store"
 name = "Хранилище"
-text = "очереди и аудит"
+text = "записи допуска, исходящие и аудит"
 
 [nodes.host]
 column = "side"
