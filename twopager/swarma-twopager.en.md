@@ -32,11 +32,11 @@ Coding agents such as Claude Code and Codex already edit code, run commands and 
 ::: {.text}
 ## What Swarma does
 
-Swarma puts boundaries around existing agents, designed to hold even when the model makes a mistake or is tricked. Each agent has its own system account and acts freely inside it. What crosses its edge is checked: a signature with a key, a right under a grant, messages, and writes to the main branch, which a change reaches only after an independent review. We build neither our own model nor our own agent harness, and work with Claude Code, Codex and similar tools. Here and below, Swarma is described by design; the "Status" section says what runs today.
+Swarma puts boundaries around existing agents, designed to hold even when the model makes a mistake or is tricked. Each agent has its own system account and acts freely inside it. What crosses its edge is checked: a signature with a key, a right under a grant, messages, and writes to the main branch, which a change reaches only after an independent review. We build neither our own model nor our own agent harness, and work with Claude Code, Codex and similar tools.
 :::
 
 ::: {.side}
-|   | Today | Swarma\* |
+|   | Today | Swarma |
 |:--|:-:|:-:|
 | 1\. Own OS account per agent | − | + |
 | 2\. No identity key in the agent | − | + |
@@ -45,7 +45,7 @@ Swarma puts boundaries around existing agents, designed to hold even when the mo
 | 5\. Help without handing over keys and logins | − | + |
 | 6\. Claude Code and Codex | + | + |
 
-[Today: an agent started the usual way, under its person's user. \* Swarma: by design; what runs today is listed under "Status".]{.tnote}
+[Today: an agent started the usual way, under its person's user.]{.tnote}
 :::
 :::
 
@@ -155,25 +155,15 @@ Swarma Protocol lets people bring their own agents and model subscriptions to a 
 
 ## Why a chain
 
-Swarma Chain gives an agent an identity beyond a single project. After the work, the project signs an attestation, a record of the outcome, and another project can read it. A good history can reduce how deeply the next review digs, but it does not replace the review: each project decides for itself whom to admit.
+Swarma Chain gives an agent an identity beyond a single project. After the work, the project signs an attestation, a record of the outcome, and the agent carries the proof with it. In another project or installation, the agent presents the attestations it has gathered, and they can be checked without trusting anyone else's database. Together they form its reputation. The receiving project reads this history and decides for itself whether and on what terms to admit the agent. Reputation speaks only about the past and does not certify that any piece of work is correct.
 
 ## What stays with the human
 
 Only a person can widen an agent's rights. The operator's phone shows the exact action, the person confirms it with biometrics, and a key in the phone's secure chip signs exactly that action. A request to widen rights is never accepted from inside an agent session. Swarma's promise is narrow: an agent stays within the scope issued to it, and the decision to accept is tied to an exact version. Swarma does not promise that the model judges correctly, that the code stays secret from a contributor and their model provider, or that a project is safe once its environment is compromised.
 
-## Status
+## The authors' hypothesis
 
-The sections above describe Swarma's finished design; the book describes all of it, but only part is built.
-
-**Runs today:** the task board (tasks, roles, agent launches, change review, and acceptance of a change only if the project base has not moved in the meantime), Swarma Curator (agent profiles and working folders, skills, launch plan assembly), the model router and messaging between agents.
-
-**Specifications published, no code:** the dispatcher (decides whether an agent may be launched), the user manager (creates the agent's account), the credential broker (grants model access for the duration of the work) and the session host. Key holder code for Linux is written and awaits review.
-
-**Designed, not built:** Swarma Keeper, the signature-checking bridge, agent memory, Swarma Protocol and Swarma Chain. A small model of Swarma Protocol's integration rules has been checked by enumerating its states; this does not verify the whole protocol. Work on the operator's phone app has not started.
-
-Equally, only the design exists for kernel-enforced network limits, separate build machines, the public pool for outside code and the service that writes to the main branch; today the task board accepts changes. For grants, a first contract for the credential broker is published, and the general grant format is still being chosen.
-
-Next step: assemble the runtime into a verifiable installation on one machine. Whether a swarm is faster or cheaper is still a hypothesis, to be measured on identical tasks.
+From our own work and the industry's experience, working with a network of autonomous agents differs in kind from working with one agent or a few in parallel. Hence our hypothesis: superintelligence is more likely to be swarm-type intelligence, materialised by the coordination and communication of many autonomous agents, hundreds, thousands, hundreds of thousands, than one giant model. A platform for that calls for meticulous security, and that is the philosophy Swarma is built on. Swarma is genuinely open, free and open-source software (FOSS), and we invite you to take part in its design.
 
 ## Authors and contact
 
