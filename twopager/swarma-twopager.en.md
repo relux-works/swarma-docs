@@ -1,6 +1,7 @@
 ---
-title: "Swarma: a platform for swarms of AI agents"
-subtitle: "AI agents work as a team, and a program checks each of their actions against an issued permission"
+title: "Swarma"
+subtitle: "Swarma: an open platform for secure coordination and communication of AI agents"
+byline: "An open agent infrastructure product by Relux Works"
 lang: en
 site: "swarma.si"
 ---
@@ -31,7 +32,7 @@ Coding agents such as Claude Code and Codex already edit code, run commands and 
 ::: {.text}
 ## What Swarma does
 
-Swarma puts boundaries around existing agents, and the boundaries hold even when the model makes a mistake or is tricked. Each agent has its own system account and its own signed permission. Messages are checked before they reach the agent, and a change is accepted only after an independent review. We build neither our own model nor our own agent program: Swarma works with Claude Code, Codex and similar tools. Here and below, Swarma is described by design, as it will be. Only part of it runs today; the "Status" section on page 2 says which part.
+Swarma puts boundaries around existing agents, designed to hold even when the model makes a mistake or is tricked. Each agent has its own system account and acts freely inside it. What crosses its edge is checked: a signature with a key, a right under a grant, messages, and writes to the main branch, which a change reaches only after an independent review. We build neither our own model nor our own agent, and work with Claude Code, Codex and similar tools. Here and below, Swarma is described by design; the "Status" section says what runs today.
 :::
 
 ::: {.side}
@@ -75,7 +76,7 @@ Each autonomous agent runs as a separate user of the operating system. The syste
 </div>
 ```
 
-An agent never gets its identity key: a separate service, the key holder (Swarma Keyholder), signs on its behalf. Every action needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator, the agent that hands out work, cannot give a helper more than it received. The service that performs the action checks the grant.
+An agent never gets its identity key: a separate service, the key holder (Swarma Keyholder), signs on its behalf. An action beyond its account, such as launching a helper or getting model access, needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator, the agent that hands out work, cannot give a helper more than it received. The service that performs the action checks the grant.
 :::
 
 ::: {.feat}
@@ -156,7 +157,7 @@ Swarma Chain gives an agent an identity beyond a single project. After the work,
 
 ## What stays with the human
 
-Only a person can widen an agent's rights. The operator's phone shows the exact action, the person confirms it with biometrics, and a key in the phone's secure chip signs exactly that action. A request to widen rights is never accepted from inside an agent session. Swarma's promise is narrow: every action stays within its issued limits, and the decision to accept is tied to an exact version. Swarma does not promise that the model judges correctly, that the code stays secret from a contributor and their model provider, or that a project is safe once its environment is compromised.
+Only a person can widen an agent's rights. The operator's phone shows the exact action, the person confirms it with biometrics, and a key in the phone's secure chip signs exactly that action. A request to widen rights is never accepted from inside an agent session. Swarma's promise is narrow: an agent stays within the scope issued to it, and the decision to accept is tied to an exact version. Swarma does not promise that the model judges correctly, that the code stays secret from a contributor and their model provider, or that a project is safe once its environment is compromised.
 
 ## Status
 

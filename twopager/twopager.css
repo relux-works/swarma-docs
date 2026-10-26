@@ -24,6 +24,8 @@ h1, h2, h3 {
 .head { margin-bottom: 6pt; }
 .title { font-size: 23pt; line-height: 1.1; margin-bottom: 4pt; }
 .subtitle { font-size: 9.6pt; margin: 0; text-align: left; }
+.tline { display: flex; justify-content: space-between; align-items: baseline; }
+.byline { font: 8.4pt "PT Sans", sans-serif; color: #555; margin: 0; }
 
 h2 { font-size: 12.5pt; margin: 0 0 3pt 0; }
 h3 { font-size: 10.6pt; margin: 0 0 3pt 0; }
