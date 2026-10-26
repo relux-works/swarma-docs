@@ -1,14 +1,20 @@
-# Chapter "Внешние эффекты, остановка и федерация", section on a working
-# federation: two owners, each with its runtime and its trust node, a shared
-# project on Swarma Protocol and Matrix federation between the owners'
-# homeservers (owner request of 2026-10-25, the picture of two companies).
-# One direction is drawn: an agent of owner B acts in owner A's runtime, and
-# A checks the envelope against B's registry. The other direction is
-# symmetric; the chapter text says so.
+# Chapter "Внешние эффекты, остановка и федерация", section on the owner
+# federation: two owners, each with its runtime, its trust node and its core
+# node, a shared project on Swarma Protocol and Matrix federation between the
+# owners' homeservers (owner request of 2026-10-25, the picture of two
+# companies). One direction is drawn: an agent of owner B acts in owner A's
+# runtime, and A checks the envelope against B's registry. The other direction
+# is symmetric; the chapter text says so. The project part shows what the
+# protocol adds to the pairwise path: a journal signed by a quorum of both
+# owners' core nodes, the orchestrator role held by lease and the reviewer
+# chosen deterministically. The core nodes are drawn inside the project they
+# serve, named by owner. The public pool runs on its own dedicated machines,
+# outside the project (CIP-0026); it sits beside owner A's row only to keep
+# the figure inside the tall box.
 layout = "graph"
 direction = "TB"
-same_rank = [["tn_b", "rt_b"], ["rt_a", "tn_a"], ["env", "pool"]]
-alt = "Работающая федерация: у каждого владельца свой рантайм и свой узел доверия, конверт агента B идёт через федерацию Matrix, рантайм A проверяет его по свежему снимку реестра B, а общий проект ведёт журнал с кворумом кор-нод обоих владельцев."
+same_rank = [["tn_b", "rt_b"], ["rt_a", "tn_a", "pool"], ["core_b", "core_a"], ["log", "roles"]]
+alt = "Федерация владельцев: у каждого владельца свой рантайм и свой узел доверия, конверт агента B идёт через федерацию Matrix, рантайм A проверяет его по свежему снимку реестра B, а общий проект ведёт журнал с кворумом кор-нод обоих владельцев, оркестратор по аренде и детерминированный выбор ревьювера."
 
 [groups.own_b]
 label = "Владелец B"
@@ -34,6 +40,12 @@ role = "service"
 name = "Рантайм B"
 text = "ключник подписывает конверт агента B"
 
+[nodes.core_b]
+group = "proj"
+role = "service"
+name = "Кор-нода B"
+text = "проверяет правила и подписывает запись"
+
 [nodes.mx]
 role = "external"
 name = "Matrix"
@@ -51,23 +63,28 @@ role = "store"
 name = "Узел доверия A"
 text = "реестр, подписант, свидетель"
 
+[nodes.core_a]
+group = "proj"
+role = "service"
+name = "Кор-нода A"
+text = "проверяет правила и подписывает запись"
+
 [nodes.log]
 group = "proj"
 role = "store"
 name = "Журнал проекта"
-text = "кворум кор-нод A и B, аренда оркестратора"
+text = "запись совершена по кворуму кор-нод A и B"
 
-[nodes.env]
+[nodes.roles]
 group = "proj"
-role = "service"
-name = "Среда проекта"
-text = "контракт задачи, правила валидаторов"
+role = "agent"
+name = "Роли проекта"
+text = "оркестратор по аренде, ревьювер по хэшу блока"
 
 [nodes.pool]
-group = "proj"
 role = "service"
 name = "Публичный пул"
-text = "исполняет в ВМ без ключей платформы"
+text = "выделенные машины без ключей платформы"
 
 [[links]]
 from = "rt_b"
@@ -91,15 +108,26 @@ label = "гранты A"
 
 [[links]]
 from = "rt_a"
+to = "core_a"
+label = "принятое действие"
+
+[[links]]
+from = "core_a"
 to = "log"
-label = "подпись кор-ноды A"
+label = "подпись A"
+
+[[links]]
+from = "core_b"
+to = "log"
+label = "подпись B"
 
 [[links]]
 from = "log"
-to = "env"
-label = "совершённые записи"
+to = "roles"
+label = "аренда, выбор"
 
 [[links]]
-from = "env"
+from = "roles"
 to = "pool"
+constraint = false
 label = "чужой код"
