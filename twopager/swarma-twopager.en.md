@@ -31,20 +31,20 @@ Coding agents such as Claude Code and Codex already edit code, run commands and 
 ::: {.text}
 ## What Swarma does
 
-Swarma puts boundaries around existing agents, and the boundaries hold even when the model makes a mistake or is tricked. Each agent has its own system account and its own signed permission. Messages are checked before they reach the agent, and a change is accepted only after an independent review. We build neither our own model nor our own agent program: Swarma works with Claude Code, Codex and similar tools.
+Swarma puts boundaries around existing agents, and the boundaries hold even when the model makes a mistake or is tricked. Each agent has its own system account and its own signed permission. Messages are checked before they reach the agent, and a change is accepted only after an independent review. We build neither our own model nor our own agent program: Swarma works with Claude Code, Codex and similar tools. Here and below, Swarma is described by design, as it will be. Only part of it runs today; the "Status" section on page 2 says which part.
 :::
 
 ::: {.side}
 |   | Today | Swarma\* |
 |:--|:-:|:-:|
 | 1\. Own OS account per agent | − | + |
-| 2\. No signing key in agent | − | + |
+| 2\. No identity key in the agent | − | + |
 | 3\. Chat text is not a command | − | + |
-| 4\. Work survives a restart | − | + |
-| 5\. Help without secrets | − | + |
+| 4\. Commitments survive a restart | − | + |
+| 5\. Help without handing over keys and logins | − | + |
 | 6\. Claude Code and Codex | + | + |
 
-[\* By design. What runs today is listed under "Status".]{.tnote}
+[Today: an agent started the usual way, under its person's user. \* Swarma: by design; what runs today is listed under "Status".]{.tnote}
 :::
 :::
 
@@ -65,17 +65,17 @@ Each autonomous agent runs as a separate user of the operating system. The syste
 :::
 
 ::: {.feat}
-### 2. No keys in the agent, rights by grant
+### 2. The identity key stays with the key holder, rights by grant
 
 ```{=html}
 <div class="dg">
   <div class="row"><span class="bx">operator</span><span class="ar">─ grant →</span><span class="bx">orchestrator: profile A, until T</span></div>
-  <div class="row"><span class="sp"></span><span class="ar">└ only narrower →</span><span class="bx">developer: profile A, until T</span></div>
+  <div class="row"><span class="sp sm"></span><span class="ar">└ only narrower →</span><span class="bx">developer: profile A, until T</span></div>
   <div class="row"><span class="bx">agent</span><span class="ar">─ "sign this" →</span><span class="bx">key holder</span><span class="cap">the key never leaves it</span></div>
 </div>
 ```
 
-An agent never gets its identity key: a separate service, the key holder (Swarma Keyholder), signs on its behalf. Every action needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator cannot give a helper more than it received. The service that performs the action checks the grant.
+An agent never gets its identity key: a separate service, the key holder (Swarma Keyholder), signs on its behalf. Every action needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator, the agent that hands out work, cannot give a helper more than it received. The service that performs the action checks the grant.
 :::
 
 ::: {.feat}
@@ -83,12 +83,12 @@ An agent never gets its identity key: a separate service, the key holder (Swarma
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">Matrix</span><span class="ar">→</span><span class="bx">bridge: signature, key, grant</span><span class="ar">─ yes →</span><span class="bx">agent mailbox</span></div>
+  <div class="row"><span class="bx">Matrix</span><span class="ar">→</span><span class="bx">bridge: signature,<br>key, grant</span><span class="ar">─ yes →</span><span class="bx">agent mailbox</span></div>
   <div class="row"><span class="sp2"></span><span class="ar">└ no →</span><span class="cap">to the model as untrusted text</span></div>
 </div>
 ```
 
-Agents and people talk over the Matrix messenger, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command; the model receives any other text as material for discussion. Only the session host may write into a running agent session.
+Agents and people talk over the Matrix messenger, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command; the model receives any other text as material for discussion. Only one service, the session host, may write into a running agent session.
 :::
 
 :::
@@ -100,13 +100,13 @@ Agents and people talk over the Matrix messenger, but a name in a chat proves no
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">A holds the task</span><span class="ar">→</span><span class="bx">B: "I'll take it"</span><span class="ar">→</span><span class="bx">B's first action</span></div>
+  <div class="row"><span class="bx">A holds the task</span><span class="ar">→</span><span class="bx">B: "I'll take it"</span><span class="ar">→</span><span class="bx">B's first<br>action</span></div>
   <div class="tl"><span class="tla">A is responsible</span><span class="tlb">then B</span></div>
   <div class="cap">commitment journal: who owes whom what, by when</div>
 </div>
 ```
 
-Agent sessions break off: a process crashes, a machine reboots, the model loses the start of the conversation. Swarma Keeper keeps a journal of commitments: who holds what, who waits for whom and by when. Responsibility passes to a new agent only with its first action; a reply of "I'll take it" is not enough. If a holder disappears, the question goes up, and a person sees it. Agent memory keeps the reasons behind decisions, so the next agent does not start from zero.
+An agent session, that is, one continuous conversation with the model, breaks off: a process crashes, a machine reboots, the model loses the start of the conversation. Swarma Keeper keeps a journal of commitments: who holds what, who waits for whom and by when. Responsibility passes to a new agent only with its first action; a reply of "I'll take it" is not enough. If a holder disappears, the question goes up, and a person sees it. Agent memory keeps the reasons behind decisions, so the next agent does not start from zero.
 :::
 
 ::: {.feat}
@@ -114,12 +114,12 @@ Agent sessions break off: a process crashes, a machine reboots, the model loses 
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">contributors' agents<br><i>their models, logins</i></span><span class="ar">─ commands, output,<br>&nbsp;&nbsp;hashes, signatures →</span><span class="bx">project environment<br><i>toolchain, devices</i></span></div>
-  <div class="row"><span class="bx">candidate</span><span class="ar">→</span><span class="bx">review and checks</span><span class="ar">→</span><span class="bx">quorum</span><span class="ar">→</span><span class="bx">main branch</span></div>
+  <div class="row"><span class="bx">contributors'<br>agents<br><i>their models,<br>logins</i></span><span class="ar">─ commands,<br>&nbsp;&nbsp;output, hashes,<br>&nbsp;&nbsp;signatures →</span><span class="bx">project<br>environment<br><i>toolchain,<br>devices</i></span></div>
+  <div class="row"><span class="bx">candidate</span><span class="ar">→</span><span class="bx">review<br>and checks</span><span class="ar">→</span><span class="bx">quorum</span><span class="ar">→</span><span class="bx">main<br>branch</span></div>
 </div>
 ```
 
-Swarma Protocol lets people bring their own agents and model subscriptions to a shared project. The project environment with its costly tools, devices and keys stays in one place, while contributors' agents run at home. Every change is built into an immutable candidate, which an independent reviewer and automated checks examine. A journal signed by a quorum of nodes from different owners records the decisions, and the main branch moves only to a checked candidate.
+Swarma Protocol lets people bring their own agents and model subscriptions to a shared project. The project environment with its costly tools, devices and keys stays in one place, while contributors' agents run on their own machines. Every change is built into an immutable version, a candidate, which an independent reviewer and automated checks examine. Decisions go into a shared journal; an entry there is valid only once servers of several different owners have signed it. The project's main version, the main branch, changes only to a checked candidate.
 :::
 
 :::
@@ -162,17 +162,19 @@ Only a person can widen an agent's rights. The operator's phone shows the exact 
 
 The sections above describe Swarma by design, in its finished form. The book describes the whole design; only part of it is built.
 
-**Runs today:** the task board (tasks, roles, agent launches, change review and acceptance with a base check), Swarma Curator (profiles, managed agent homes, skills, launch plan assembly), the model router and agent messaging over Matrix.
+**Runs today:** the task board (tasks, roles, agent launches, change review, and acceptance of a change only if the project base has not moved in the meantime), Swarma Curator (agent profiles and working folders, skills, launch plan assembly), the model router and agent messaging over Matrix.
 
-**Specifications published, no code:** the dispatcher, the user manager, the credential broker and the session host. Key holder code for Linux is written and awaits review.
+**Specifications published, no code:** the dispatcher (decides whether an agent may be launched), the user manager (creates the agent's account), the credential broker (grants model access for the duration of the work) and the session host. Key holder code for Linux is written and awaits review.
 
-**Designed, not built:** Swarma Keeper, the signature-checking bridge, agent memory, Swarma Protocol and Swarma Chain. A bounded model of Swarma Protocol's integration rules has been checked exhaustively. Work on the operator's phone app has not started.
+**Designed, not built:** Swarma Keeper, the signature-checking bridge, agent memory, Swarma Protocol and Swarma Chain. A small model of Swarma Protocol's integration rules has been checked by enumerating its states; this does not verify the whole protocol. Work on the operator's phone app has not started.
 
-Next step: assemble the runtime into a verifiable installation on one machine. Whether a swarm is faster or cheaper remains a hypothesis, and we are measuring it.
+Equally, only the design exists for kernel-enforced network limits, separate build machines and the service that writes to the main branch; today the task board accepts changes. For grants, a first contract for the credential broker is published, and the general grant format is still being chosen.
+
+Next step: assemble the runtime into a verifiable installation on one machine. Whether a swarm is faster or cheaper is still a hypothesis, to be measured on identical tasks.
 
 ## Authors
 
-Alexey Grigoryev and Ivan Oparin, Relux Works. Authors of the Swarma book and of the papers on the platform, on trust boundaries and on Swarma Chain. Open code: github.com/relux-works.
+Alexey Grigorev and Ivan Oparin, Relux Works. Authors of the Swarma book and of the papers on the platform, on trust boundaries and on Swarma Chain. Open code: github.com/relux-works.
 
 ## Contact
 

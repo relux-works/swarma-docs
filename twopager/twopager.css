@@ -21,12 +21,12 @@ h1, h2, h3 {
   break-after: avoid;
 }
 
-.head { margin-bottom: 8pt; }
+.head { margin-bottom: 6pt; }
 .title { font-size: 23pt; line-height: 1.1; margin-bottom: 4pt; }
 .subtitle { font-size: 9.6pt; margin: 0; text-align: left; }
 
 h2 { font-size: 12.5pt; margin: 0 0 3pt 0; }
-h3 { font-size: 10.6pt; margin: 0 0 4pt 0; }
+h3 { font-size: 10.6pt; margin: 0 0 3pt 0; }
 
 /* Pages */
 .p1 { break-after: page; }
@@ -36,9 +36,11 @@ h3 { font-size: 10.6pt; margin: 0 0 4pt 0; }
   display: flex;
   gap: 7mm;
   align-items: flex-start;
-  margin-bottom: 5pt;
+  margin-bottom: 3pt;
 }
 .band > .text { flex: 0 0 51%; }
+/* The first band's figure is narrow, so its text takes more of the width. */
+.p1 > .band:first-child > .text { flex-basis: 62%; }
 .band > .side { flex: 1 1 0; padding-top: 12pt; }
 
 /* Comparison table */
@@ -58,18 +60,19 @@ tbody tr { border-top: 0.4pt solid #ddd; }
   display: flex;
   gap: 7mm;
   border-top: 0.6pt solid #bbb;
-  padding-top: 7pt;
+  padding-top: 6pt;
 }
 .fcol { flex: 1 1 0; }
-.feat { margin-bottom: 6pt; break-inside: avoid; }
+.feat { margin-bottom: 4pt; break-inside: avoid; }
+.fcol > .feat:last-child { margin-bottom: 0; }
 .feat p { font-size: 8.7pt; line-height: 1.28; }
 .feat p { margin-bottom: 0; }
 
 /* Monospaced box diagrams */
 .dg {
-  font: 6.9pt/1.25 "PT Mono", monospace;
+  font: 7.3pt/1.25 "PT Mono", monospace;
   color: #222;
-  margin: 2pt 0 5pt 0;
+  margin: 2pt 0 4pt 0;
 }
 .dg .row { display: flex; align-items: center; gap: 3pt; margin: 0 0 2.5pt 0; }
 .dg .bx {
@@ -81,8 +84,9 @@ tbody tr { border-top: 0.4pt solid #ddd; }
 }
 .dg .bx i { font-style: normal; color: #666; }
 .dg .ar { color: #444; white-space: nowrap; }
-.dg .cap { color: #555; font-size: 6.6pt; }
+.dg .cap { color: #555; font-size: 7pt; }
 .dg .sp { display: inline-block; width: 46pt; }
+.dg .sp.sm { width: 28pt; }
 .dg .sp2 { display: inline-block; width: 34pt; }
 .dg .frame {
   border: 0.6pt dashed #888;
