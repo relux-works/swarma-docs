@@ -141,6 +141,8 @@ Swarma Protocol lets people bring their own agents and model subscriptions to a 
 6. A separate service puts the change into the main branch on a signed request for the exact candidate. Neither the agent nor the orchestrator can write to the main branch.
 :::
 
+**Arbitrary code in builds.** Builds and tests run the change's own code: build scripts, tests, dependencies, so in effect any code. That is why single-use runners do this work: dependencies are fetched beforehand without running that code, and the build has no network. Code from outside runs in the public pool, each job in a single-use isolated run on dedicated machines that hold no platform keys or authority. Only the service from step 6 writes to the main branch, and changes to the build, dependencies or checks need two independent reviews or a core-team member's approval.
+
 ```{=html}
 <div class="dg layers">
   <div class="lrow"><span class="bx ln">Swarma Runtime · layer 2</span><span class="ld">agents on one owner's machines: accounts, keys, grants, messages, sessions</span></div>
@@ -161,7 +163,7 @@ Only a person can widen an agent's rights. The operator's phone shows the exact 
 
 ## Status
 
-The sections above describe Swarma by design, in its finished form. The book describes the whole design; only part of it is built.
+The sections above describe Swarma's finished design; the book describes all of it, but only part is built.
 
 **Runs today:** the task board (tasks, roles, agent launches, change review, and acceptance of a change only if the project base has not moved in the meantime), Swarma Curator (agent profiles and working folders, skills, launch plan assembly), the model router and messaging between agents.
 
@@ -169,16 +171,12 @@ The sections above describe Swarma by design, in its finished form. The book des
 
 **Designed, not built:** Swarma Keeper, the signature-checking bridge, agent memory, Swarma Protocol and Swarma Chain. A small model of Swarma Protocol's integration rules has been checked by enumerating its states; this does not verify the whole protocol. Work on the operator's phone app has not started.
 
-Equally, only the design exists for kernel-enforced network limits, separate build machines and the service that writes to the main branch; today the task board accepts changes. For grants, a first contract for the credential broker is published, and the general grant format is still being chosen.
+Equally, only the design exists for kernel-enforced network limits, separate build machines, the public pool for outside code and the service that writes to the main branch; today the task board accepts changes. For grants, a first contract for the credential broker is published, and the general grant format is still being chosen.
 
 Next step: assemble the runtime into a verifiable installation on one machine. Whether a swarm is faster or cheaper is still a hypothesis, to be measured on identical tasks.
 
-## Authors
+## Authors and contact
 
-Alexey Grigorev and Ivan Oparin, Relux Works. Authors of the Swarma book and of the papers on the platform, on trust boundaries and on Swarma Chain. Open code: github.com/relux-works.
-
-## Contact
-
-ivan@swarma.si
+Alexey Grigorev and Ivan Oparin, Relux Works. Authors of the Swarma book and of the papers on the platform, on trust boundaries and on Swarma Chain. Open code: github.com/relux-works. Contact: ivan@swarma.si
 
 :::
