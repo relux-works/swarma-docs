@@ -26,6 +26,7 @@
 | `paper/model/` | исполняемая модель фрагмента интеграции: исчерпывающий перебор состояний в заданных границах |
 | `book/ru/` | книга «Swarma», по главе на файл |
 | `book/diagrams/`, `book/src/` | диаграммы книги (SVG) и их исходники TOML для `scripts/diagram-kit/` |
+| `twopager/` | двухстраничник «Swarma: платформа для роёв ИИ-агентов» простым языком: русский исходник (источник правды), английская версия, стиль A4 и PDF обеих версий |
 | `editorial/` | рабочие материалы авторов: имена, стиль, источники, планы пейпера и книги, направление об идентичности и репутации |
 | `editorial/notes/signing-auth/` | отдельная записка «Подписи и аутентификация в Swarma»: русские исходники, объявленные SVG и PDF для ревью; сборка описана в её README |
 | `editorial/research/` | исследования архитектурных вариантов; [язык ядра Swarma Signer](editorial/research/signer-core-language.md): Go, Rust и Swift, источники и границы проверки |
@@ -42,6 +43,7 @@
 | Python 3.9+ | прогон модели фрагмента интеграции | `make -C paper model` | stdout |
 | pandoc 3.x | книга: Markdown → HTML, оглавление, нумерация | через `book/build.sh` | временный каталог |
 | WeasyPrint 69+ | книга: HTML → PDF; сборка сначала гоняет `book/check-figures.sh`, проход рендера без Graphviz 14.0.4 валит её (`BOOK_SKIP_FIGURE_RENDER=1` пропускает его для черновика) | `book/build.sh` | `book/swarma-book.ru.pdf` |
+| `twopager/build.sh` (pandoc 3.x, WeasyPrint 69+, `pdfinfo`) | двухстраничник: Markdown → HTML → PDF тем же путём, что книга; сборка падает, если в PDF не ровно две страницы | `bash twopager/build.sh [ru\|en]` | `twopager/swarma-twopager.{ru,en}.pdf` |
 | PlantUML | исходники рисунков записки о подписях (рендер через `platform-book figures`) и пробник стиля | см. `editorial/notes/signing-auth/README.md` | `editorial/notes/signing-auth/diagrams/` |
 | `book/check-figures.sh` (Graphviz 14.0.4 для прохода рендера) | рисунки книги: структурный проход (у каждой ссылки исходник и строка манифеста, класс поля совпадает со столбцом «Поле») и проход рендера (рендер свежий и проходит `--require-fit` для своего поля); вызывается из `book/build.sh` | `bash book/check-figures.sh [--structural \| --render]` | stdout; ненулевой код при нарушении |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
