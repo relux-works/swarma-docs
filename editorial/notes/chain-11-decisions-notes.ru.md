@@ -135,3 +135,24 @@ OK
 | `sh book/build.sh ru .temp/chain-11-r3/book-check.pdf` (book-01.log) | 0 | `figures: structural ok`, `figures: render ok`, 293 страницы |
 | `sh scripts/check.sh` | 0 | `check.sh: ok (41 files)` |
 | `python3 -I scripts/check-self-test.py` (selftest-01.log) | 0 | `Ran 11 tests ... OK` |
+
+## Ревизия r4
+
+Повторное ревью r2 приняло ветку (ACCEPT) с четырьмя находками N1–N4; оркестратор передал все четыре писателю, включая диаграмму.
+
+- N1. `book/src/block-anatomy.toml`: в заголовке корень MMR над всеми предыдущими заголовками, корень состояния назван как в главе 26:79 ("набор UTXO, имена и личности"); в теле события личностей перечисляют трату родителем и приостановку. `book/diagrams/block-anatomy.svg` перерисован генератором, `--require-fit normal` проходит, растр проверен.
+- N2. При ASERT цель меняется с каждым блоком, поэтому каждый узел MMR фиксирует суммарную работу своего поддерева, и FlyClient выбирает заголовки по доле работы. Оркестратор назвал это частью решения 74, нового решения нет. Внесено в chain 1.1 (раздел 11 и смежные работы), главу 26 и запись 74 журнала. Формат узла MMR текст не задаёт; в заголовке по-прежнему один 64-байтный корень, размер не меняется.
+- N3. Глава 24: "Счётчик закрывает повтор траты родителем."
+- N4. Глава 26: 94 % теперь отсылает к табл. 6 работы о Swarma Chain. Бриф называл "таблицу 1", но в chain 1.1 таблица 1 перечисляет участников, а строка 94,1 % стоит в табл. 6 (штраф поздней ветки).
+
+### Вывод проверок r4
+
+Логи в `.temp/r4/`.
+
+| Команда | Код | Результат |
+| --- | ---: | --- |
+| `make -C paper/chain` (chain-build-01.log) | 0 | 19 страниц, overfull/undefined: 0; `dist/swarma-chain-1.1.ru.pdf` обновлён |
+| `sh book/build.sh ru .temp/r4/book` (book-build-01.log) | 0 | `figures: structural ok`, `figures: render ok`, 293 страницы |
+| `bash book/check-figures.sh` | 0 | `figures: ok` |
+| `sh scripts/check.sh` | 0 | `check.sh: ok (41 files)` |
+| `python3 -I scripts/check-self-test.py` | 0 | `OK` |
