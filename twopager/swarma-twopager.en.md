@@ -38,7 +38,7 @@ Swarma puts boundaries around existing agents, and the boundaries hold even when
 |   | Today | Swarma\* |
 |:--|:-:|:-:|
 | 1\. Own OS account per agent | − | + |
-| 2\. Agent cannot read keys | − | + |
+| 2\. No signing key in agent | − | + |
 | 3\. Chat text is not a command | − | + |
 | 4\. Work survives a restart | − | + |
 | 5\. Help without secrets | − | + |
@@ -75,7 +75,7 @@ Each autonomous agent runs as a separate user of the operating system. The syste
 </div>
 ```
 
-An agent holds no keys of its own: a separate service, the key holder (Swarma Keyholder), signs on its behalf. Every action needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator cannot give a helper more than it received. The service that performs the action checks the grant.
+An agent never gets its identity key: a separate service, the key holder (Swarma Keyholder), signs on its behalf. Every action needs a grant, a signed permission: what to do, on what and until when. When an agent hands work on, it can only narrow its rights, so an orchestrator cannot give a helper more than it received. The service that performs the action checks the grant.
 :::
 
 ::: {.feat}
