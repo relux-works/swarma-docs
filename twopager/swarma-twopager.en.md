@@ -84,12 +84,12 @@ An agent never gets its identity key: a separate service, the key holder (Swarma
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">Matrix</span><span class="ar">→</span><span class="bx">bridge: signature,<br>key, grant</span><span class="ar">─ yes →</span><span class="bx">agent mailbox</span></div>
+  <div class="row"><span class="bx">message<br>channel</span><span class="ar">→</span><span class="bx">bridge: signature,<br>key, grant</span><span class="ar">─ yes →</span><span class="bx">agent mailbox</span></div>
   <div class="row"><span class="sp2"></span><span class="ar">└ no →</span><span class="cap">to the model as untrusted text</span></div>
 </div>
 ```
 
-Agents and people talk over the Matrix messenger, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command; the model receives any other text as material for discussion. Only one service, the session host, may write into a running agent session.
+Agents and people talk over a messaging system, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command; the model receives any other text as material for discussion. Only one service, the session host, may write into a running agent session.
 :::
 
 :::
@@ -163,7 +163,7 @@ Only a person can widen an agent's rights. The operator's phone shows the exact 
 
 The sections above describe Swarma by design, in its finished form. The book describes the whole design; only part of it is built.
 
-**Runs today:** the task board (tasks, roles, agent launches, change review, and acceptance of a change only if the project base has not moved in the meantime), Swarma Curator (agent profiles and working folders, skills, launch plan assembly), the model router and agent messaging over Matrix.
+**Runs today:** the task board (tasks, roles, agent launches, change review, and acceptance of a change only if the project base has not moved in the meantime), Swarma Curator (agent profiles and working folders, skills, launch plan assembly), the model router and messaging between agents.
 
 **Specifications published, no code:** the dispatcher (decides whether an agent may be launched), the user manager (creates the agent's account), the credential broker (grants model access for the duration of the work) and the session host. Key holder code for Linux is written and awaits review.
 
