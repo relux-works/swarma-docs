@@ -75,3 +75,31 @@ python3 scripts/check-self-test.py                     # Ran 11 tests, OK
 tectonic -X compile platform.tex (копия)               # rc=0, 21 страница
 tectonic -X compile paper.tex (копия)                  # rc=0, 13 страниц (было 12)
 ```
+
+## Ревизия r3
+
+Основание: ответ оркестратора книги на вопрос r2 о пуле (26 октября 2026), записан уточнением r3 в `editorial/decisions.ru.md`. Ветка перенесена rebase с подписью на `origin/main` @ `bdfa7d3` (ветка цепочки с b2660cb и bdfa7d3); конфликтов нет, правки обеих сторон в главах 24, 26 и `editorial/decisions.ru.md` сохранены.
+
+CIP-0026 определяет пул через "ephemeral isolated executions" и на ВМ не обязывается. Текст сужен: пул запускает каждое задание в одноразовом изолированном исполнении на выделенных машинах; свежая ВМ на задание (Firecracker на выделенных машинах с Linux) названа предварительным направлением основы, которое проходит квалификацию, а не решением. Остальное из r2 без изменений.
+
+| Файл | Что |
+| --- | --- |
+| `book/ru/04-polzovatel-i-set.md` | Абзац о пуле в разделе классов: одноразовое изолированное исполнение, ВМ на задание как направление. |
+| `book/ru/22-effekty-ostanovka-federaciya.md` | Раздел пула: то же; фраза о гостевой системе стала условной ("если исполнение идёт в виртуальной машине"), в примере "захватит гостевую систему" заменено на "вырвется из своего исполнения". |
+| `book/ru/29-gde-my.md` | Строка "Публичный пул: контракт класса" называет направление основы; строка класса ВМ больше не называет пул первым классом на одноразовых ВМ. Статусы прежние. |
+| `book/ru/30-slovar.md` | Статья "Класс изоляции": то же. |
+| `paper/paper.tex`, `paper/platform/platform.tex` | Раздел станции и смежные работы: то же. |
+| `editorial/paper-outline.ru.md`, `editorial/decisions.ru.md` | План пейпера выровнен; уточнение r3. |
+
+Рисунок федерации пул как ВМ не показывает ("выделенные машины без ключей платформы") и не менялся.
+
+Проверки r3 (после rebase на `bdfa7d3`):
+
+```
+bash book/build.sh ru .temp/fedr3/swarma-book.ru.pdf   # rc=0, figures: structural ok, render ok, 301 страница
+bash book/check-figures.sh                             # figures: ok
+sh scripts/check.sh                                    # check.sh: ok (41 files)
+python3 scripts/check-self-test.py                     # Ran 11 tests, OK
+tectonic -X compile platform.tex (копия)               # rc=0, 21 страница
+tectonic -X compile paper.tex (копия)                  # rc=0, 13 страниц
+```
