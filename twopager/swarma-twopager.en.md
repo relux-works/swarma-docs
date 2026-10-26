@@ -18,7 +18,7 @@ From our own work and the industry's experience, working with a network of auton
 ::: {.text}
 ## The world today
 
-Coding agents such as Claude Code and Codex already edit code, run commands and read test output on their own. To the computer, such an agent is just another program of the person who started it, with the same files, keys and passwords. If a command's output or a message carries someone else's instruction, the model may follow it, and everything then depends on the model's own good sense. The more agents run side by side, the harder it is to say who is acting now, what they are allowed to do and who answers for the result.
+Coding agents such as Claude Code and Codex already edit code, run commands and read test output on their own. By default, such an agent runs as a program of the person who started it, with that person's files, keys and passwords. Vendor sandboxes narrow what a single session can do, but the agent inside still acts on the person's behalf with the person's access, and the sandbox knows nothing about other agents or machines. If a command's output or a message carries someone else's instruction, the model may follow it, and everything then depends on the model's own good sense. The more agents run side by side, the harder it is to say who is acting now, what they are allowed to do and who answers for the result.
 :::
 
 ::: {.side}
