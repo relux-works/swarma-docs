@@ -1,6 +1,6 @@
 ---
 title: "Swarma"
-subtitle: "Swarma: an open platform for secure coordination and communication of AI agents"
+subtitle: "Secure agent coordination and communication platform"
 byline: "An open agent infrastructure product by Relux Works"
 lang: en
 site: "swarma.si"
@@ -32,7 +32,7 @@ Coding agents such as Claude Code and Codex already edit code, run commands and 
 ::: {.text}
 ## What Swarma does
 
-Swarma puts boundaries around existing agents, designed to hold even when the model makes a mistake or is tricked. Each agent has its own system account and acts freely inside it. What crosses its edge is checked: a signature with a key, a right under a grant, messages, and writes to the main branch, which a change reaches only after an independent review. We build neither our own model nor our own agent, and work with Claude Code, Codex and similar tools. Here and below, Swarma is described by design; the "Status" section says what runs today.
+Swarma puts boundaries around existing agents, designed to hold even when the model makes a mistake or is tricked. Each agent has its own system account and acts freely inside it. What crosses its edge is checked: a signature with a key, a right under a grant, messages, and writes to the main branch, which a change reaches only after an independent review. We build neither our own model nor our own agent harness, and work with Claude Code, Codex and similar tools. Here and below, Swarma is described by design; the "Status" section says what runs today.
 :::
 
 ::: {.side}
