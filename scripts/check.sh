@@ -63,7 +63,7 @@ hit "review finding number" '(^|[^A-Za-z0-9-])F-[0-9]{2,3}([^0-9]|$)'
 hit "decision number" '(^|[^A-Za-z0-9-])D-0[0-9]{2}([^0-9]|$)'
 hit "local path" '/(Users|home)/[A-Za-z0-9._-]+'
 hit "machine or seat name" '\b(ivmbp|rise1|macbook-iv|rose-air|astra-0[0-9]|orch-[a-z-]+)\b'
-hit "retired name" '([Ss]lopcore|пасек|\bульев?\b|диких? пчёл)'
+hit "retired name" '([Ss]lopcore|пасек|\bульев?\b|диких? пчёл|Seraph|\bKeymaker\b|\bSwarm (Runtime|Protocol|Chain|Keeper|Curator|Signer)\b)'
 
 # Only the state chapter may carry markers, including split or unmatched ones.
 marker_files=$(find book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' 2>/dev/null | sort)
