@@ -1,0 +1,79 @@
+# a2a module structure: the parts of the program and the three places of
+# state. Content follows the chapter "Устройство модуля" (tables "Части
+# программы" and "Три места состояния"): the program runs under the agent's OS
+# account, talks to the carrier as a client, keeps delivery state in private
+# files and wakes the session through adapters beside the message core. The
+# wake path itself is the figure a2a-wake; the module repository, the third
+# place of state, stays in the chapter table.
+layout = "graph"
+direction = "TB"
+same_rank = [["wake", "client", "files"]]
+alt = "Устройство a2a: программа под пользователем ОС агента обращается к носителю как клиент, хранит состояние доставки в частных файлах и будит сессию через адаптеры пробуждения."
+
+[groups.account]
+label = "Пользователь ОС агента"
+role = "agent"
+
+[groups.program]
+label = "Программа a2a"
+role = "service"
+parent = "account"
+
+[nodes.session]
+group = "account"
+role = "agent"
+name = "Сессия агента"
+text = "вызывает команды как инструмент"
+
+[nodes.wake]
+group = "program"
+role = "service"
+name = "Адаптеры пробуждения"
+text = "звонок сессии без текста собеседника"
+
+[nodes.cli]
+group = "program"
+role = "service"
+name = "Команды"
+text = "протокол: личности, посты, почта, подписки"
+
+[nodes.client]
+group = "program"
+role = "service"
+name = "Клиент носителя"
+text = "токен только в заголовке"
+
+[nodes.files]
+group = "account"
+role = "store"
+name = "Частные файлы"
+text = "курсор, почтовый ящик, квитанции, аренда"
+
+[nodes.carrier]
+role = "external"
+name = "Носитель"
+text = "сообщения, подписки, карточки, вложения"
+
+[[links]]
+from = "session"
+to = "cli"
+label = "команды и хуки"
+
+[[links]]
+from = "cli"
+to = "wake"
+label = "есть почта"
+
+[[links]]
+from = "cli"
+to = "client"
+
+[[links]]
+from = "client"
+to = "carrier"
+via = "HTTPS"
+
+[[links]]
+from = "cli"
+to = "files"
+

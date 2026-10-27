@@ -4,6 +4,13 @@
 #   book/build.sh          builds book/swarma-book.ru.pdf from book/ru/
 #   book/build.sh ru OUT   writes the PDF to OUT instead
 #
+# BOOK_ROOT=DIR builds another book with the same kit: chapters from DIR/ru/,
+# figures checked against DIR/src/ and DIR/diagrams/, and DIR/style.css, when
+# present, applied after book/style.css. Without OUT the PDF goes to
+# DIR/BOOK_PDF_NAME.ru.pdf (BOOK_PDF_NAME defaults to the directory name).
+# a2a-book/build.sh is the wrapper for the a2a book. Without BOOK_ROOT the
+# build is the platform book's, unchanged.
+#
 # Needs pandoc 3.x and WeasyPrint 69+, and the PT Serif, PT Sans and PT Mono fonts.
 #
 # The figures are checked first (book/check-figures.sh): the structural pass
@@ -15,8 +22,20 @@ set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 lang="${1:-ru}"
-src="$here/$lang"
-out="${2:-$here/swarma-book.$lang.pdf}"
+if [ -n "${BOOK_ROOT:-}" ]; then
+  root="$(cd "$BOOK_ROOT" && pwd)"
+  name="${BOOK_PDF_NAME:-$(basename "$root")}"
+else
+  root="$here"
+  name="swarma-book"
+fi
+export BOOK_ROOT="$root"
+src="$root/$lang"
+out="${2:-$root/$name.$lang.pdf}"
+stylesheets=(--stylesheet "$here/style.css")
+if [ "$root" != "$here" ] && [ -f "$root/style.css" ]; then
+  stylesheets+=(--stylesheet "$root/style.css")
+fi
 
 for tool in pandoc weasyprint; do
   command -v "$tool" >/dev/null || { echo "build.sh: $tool not found" >&2; exit 1; }
@@ -62,7 +81,7 @@ pandoc "${chapters[@]}" \
 # and the PDF is moved to OUT only after a clean run.
 weasyprint \
   --base-url "$src/" \
-  --stylesheet "$here/style.css" \
+  "${stylesheets[@]}" \
   "$tmp/note.html" "$tmp/book.pdf" 2> "$tmp/weasyprint.log" || { cat "$tmp/weasyprint.log" >&2; exit 1; }
 cat "$tmp/weasyprint.log" >&2
 if grep -q 'Failed to load image' "$tmp/weasyprint.log"; then

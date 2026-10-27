@@ -25,7 +25,7 @@
 | `paper/paper.tex` | пейпер «Swarma: платформа для роёв автономных агентов», 10–12 страниц; продолжает работу «Разработка программного обеспечения роем автономных агентов над единой средой исполнения» (редакции 1–3.3) |
 | `paper/model/` | исполняемая модель фрагмента интеграции: исчерпывающий перебор состояний в заданных границах |
 | `book/ru/` | книга «Swarma», по главе на файл |
-| `a2a-book/ru/` | небольшая книга «a2a» об архитектуре модуля обмена сообщениями агентов, по главе на файл; план в `editorial/a2a-book-outline.ru.md`, сборки пока нет |
+| `a2a-book/ru/` | небольшая книга «a2a» об архитектуре модуля обмена сообщениями агентов, по главе на файл; план в `editorial/a2a-book-outline.ru.md`; исходники рисунков в `a2a-book/src/`, рендеры в `a2a-book/diagrams/` |
 | `book/diagrams/`, `book/src/` | диаграммы книги (SVG) и их исходники TOML для `scripts/diagram-kit/` |
 | `twopager/` | двухстраничник «Swarma: платформа для роёв ИИ-агентов» простым языком: русский исходник (источник правды), английская версия, стиль A4 и PDF обеих версий |
 | `editorial/` | рабочие материалы авторов: имена, стиль, источники, планы пейпера и книги, направление об идентичности и репутации |
@@ -47,6 +47,7 @@
 | `twopager/build.sh` (pandoc 3.x, WeasyPrint 69+, `pdfinfo`) | двухстраничник: Markdown → HTML → PDF тем же путём, что книга; сборка падает, если в PDF не ровно две страницы | `bash twopager/build.sh [ru\|en]` | `twopager/swarma-twopager.{ru,en}.pdf` |
 | PlantUML | исходники рисунков записки о подписях (рендер через `platform-book figures`) и пробник стиля | см. `editorial/notes/signing-auth/README.md` | `editorial/notes/signing-auth/diagrams/` |
 | `book/check-figures.sh` (Graphviz 14.0.4 для прохода рендера) | рисунки книги: структурный проход (у каждой ссылки исходник и строка манифеста, класс поля совпадает со столбцом «Поле») и проход рендера (рендер свежий и проходит `--require-fit` для своего поля); вызывается из `book/build.sh` | `bash book/check-figures.sh [--structural \| --render]` | stdout; ненулевой код при нарушении |
+| `a2a-book/build.sh` (pandoc 3.x, WeasyPrint 69+, Graphviz 14.0.4 для прохода рендера) | книга «a2a»: обёртка над `book/build.sh` с `BOOK_ROOT=a2a-book`; рисунки проверяются по `a2a-book/src/MANIFEST.md`, `a2a-book/style.css` меняет колонтитул; сборка книги Swarma без `BOOK_ROOT` не меняется | `bash a2a-book/build.sh [ru [OUT]]`; рисунки отдельно `BOOK_ROOT=a2a-book bash book/check-figures.sh` | `a2a-book/a2a-book.ru.pdf` |
 | шрифты PT Serif, PT Sans, PT Mono | текст, заголовки, код | системные | — |
 | `scripts/check.sh` | гигиена текстов книги, книги «a2a» и пейпера; пометки и оговорки о поставке только в главах «Где мы» (`book/ru/29-gde-my.md`, `a2a-book/ru/09-gde-my.md`) | `sh scripts/check.sh` | stdout; ненулевой код при блокирующем нарушении |
 | Python 3, `scripts/check-self-test.py` | положительные и отрицательные проверки гигиены на изолированных примерах | `python3 scripts/check-self-test.py` | stdout/stderr; временные примеры в `.temp/` удаляются |

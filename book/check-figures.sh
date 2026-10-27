@@ -5,6 +5,10 @@
 #   bash book/check-figures.sh --structural  structural pass only (no Graphviz)
 #   bash book/check-figures.sh --render      render pass only
 #
+# BOOK_ROOT=DIR checks another book that uses this kit (chapters in DIR/ru/,
+# sources and manifest in DIR/src/, renders in DIR/diagrams/); by default the
+# platform book in book/ is checked.
+#
 # Structural pass:
 #  - every diagram a chapter references has a source in src/ and a manifest row
 #    (a PNG needs src/<name>.puml, an SVG needs src/<name>.toml);
@@ -21,8 +25,8 @@
 # The render pass needs the Graphviz version the diagram kit pins
 # (GRAPHVIZ_PIN in render.py) and refuses up front on any other version.
 set -euo pipefail
-here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-kit="$here/../scripts/diagram-kit/render.py"
+kit="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/scripts/diagram-kit/render.py"
+here="$(cd "${BOOK_ROOT:-$(dirname "${BASH_SOURCE[0]}")}" && pwd)"
 manifest="$here/src/MANIFEST.md"
 structural=1
 render=1

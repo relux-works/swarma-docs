@@ -1,0 +1,91 @@
+# a2a wake path: from the mailbox through the shared notification interval to
+# the three doorbell paths and the session; the session host owns waking and
+# the session registry. Content follows the chapter "Пробуждение":
+# hooks add the fixed template, the native Codex path starts an empty turn
+# with the fixed `doorbell` tool output, the terminal path types one fixed
+# line after two qualified empty observations and a readiness check; all
+# three share one 30-second window per identity. The agent pulls the text
+# itself with `a2a inbox`. The launcher, in Swarma Runtime the session host,
+# binds the native path and sets its gates; the terminal binding is set by the
+# session itself, so the host has no link to it.
+layout = "graph"
+direction = "TB"
+same_rank = [["hooks", "tmux", "native"], ["spacing", "host"]]
+alt = "Пробуждение в a2a: почтовый ящик звонит через общий интервал уведомлений одним из трёх путей, хуками среды, родным входом Codex или терминальной привязкой; пробуждение и реестр сессий принадлежат хосту сессий, а текст агент забирает сам."
+
+[nodes.mailbox]
+role = "store"
+name = "Почтовый ящик"
+text = "непрочитанные записи личности"
+
+[nodes.spacing]
+role = "service"
+name = "Интервал уведомлений"
+text = "одно окно 30 секунд на личность, резерв до звонка"
+
+[nodes.hooks]
+role = "service"
+name = "Хуки среды"
+text = "шаблон в контексте или в причине остановки"
+
+[nodes.native]
+role = "service"
+name = "Родной вход Codex"
+text = "пустой ход с выводом инструмента `doorbell`"
+
+[nodes.tmux]
+role = "service"
+name = "Терминальная привязка"
+text = "два пустых наблюдения и готовность среды"
+
+[nodes.host]
+role = "service"
+name = "Хост сессий"
+text = "владелец пробуждения и реестра сессий"
+
+[nodes.session]
+role = "agent"
+name = "Сессия агента"
+text = "текст забирает командой `a2a inbox`"
+
+[[links]]
+from = "mailbox"
+to = "spacing"
+step = 1
+label = "счётчики"
+
+[[links]]
+from = "spacing"
+to = "hooks"
+step = 2
+
+[[links]]
+from = "spacing"
+to = "native"
+step = 2
+
+[[links]]
+from = "spacing"
+to = "tmux"
+step = 2
+
+[[links]]
+from = "hooks"
+to = "session"
+step = 3
+
+[[links]]
+from = "native"
+to = "session"
+step = 3
+
+[[links]]
+from = "tmux"
+to = "session"
+step = 3
+
+[[links]]
+from = "host"
+to = "native"
+label = "привязка и ворота"
+

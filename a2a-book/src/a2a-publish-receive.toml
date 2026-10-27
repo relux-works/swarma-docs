@@ -1,0 +1,108 @@
+# a2a publication and receive path with the mailbox and receipts. Content
+# follows the chapters "Устройство модуля" (sections "Путь публикации" and
+# "Путь приёма") and "Почтовый ящик, входящие и квитанции": the event id is
+# the proof of publication; the consumer saves and flushes the batch before it
+# moves the cursor; the doorbell carries counts only; the receipt is written
+# only after `a2a inbox` has written its output.
+layout = "sequence"
+alt = "Публикация и приём в a2a: идентификатор события доказывает публикацию, потребитель сохраняет пачку в почтовый ящик до сдвига курсора, звонок несёт только счётчики, а квитанция ставится после записи вывода входящих."
+
+[theme.space]
+seq_node_width = 110
+seq_label_width = 150
+seq_self_width = 150
+seq_column_gap = 10
+seq_row_gap = 4
+
+[groups.recipient]
+label = "Пользователь ОС адресата"
+role = "agent"
+
+[nodes.post]
+role = "agent"
+name = "Отправитель"
+
+[nodes.carrier]
+role = "external"
+name = "Носитель"
+
+[nodes.a2a]
+group = "recipient"
+role = "service"
+name = "a2a"
+
+[nodes.mailbox]
+group = "recipient"
+role = "store"
+name = "Ящик"
+
+[nodes.session]
+group = "recipient"
+role = "agent"
+name = "Сессия"
+
+[[seq]]
+divider = "публикация"
+
+[[seq]]
+from = "post"
+to = "carrier"
+step = 1
+label = "`a2a post` с заголовком"
+
+[[seq]]
+from = "carrier"
+to = "post"
+step = 2
+label = "идентификатор события"
+
+[[seq]]
+divider = "приём"
+
+[[seq]]
+from = "a2a"
+to = "carrier"
+step = 3
+label = "синхронизация с курсора"
+
+[[seq]]
+from = "carrier"
+to = "a2a"
+step = 4
+label = "пачка событий"
+
+[[seq]]
+from = "a2a"
+to = "mailbox"
+step = 5
+label = "события личности, затем `fsync`"
+
+[[seq]]
+from = "a2a"
+to = "a2a"
+step = 6
+label = "курсор после сброса"
+
+[[seq]]
+from = "a2a"
+to = "session"
+step = 7
+label = "звонок: счётчики без текста"
+
+[[seq]]
+from = "session"
+to = "a2a"
+step = 8
+label = "`a2a inbox`"
+
+[[seq]]
+from = "a2a"
+to = "session"
+step = 9
+label = "записи в рамке недоверенных данных"
+
+[[seq]]
+from = "a2a"
+to = "mailbox"
+step = 10
+label = "квитанция после записи вывода"
