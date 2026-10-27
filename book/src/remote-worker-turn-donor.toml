@@ -1,10 +1,11 @@
 # A remote worker's turn, part 1 of 2: the donor's side up to our SSH entry.
 # Split from the whole turn (fixtures/remote-worker-turn-full) along the container boundary; step numbers
 # stay those of the whole turn. Density keys from editorial/diagram-style.ru.md.
-# The note's last line follows the donor paragraph of chapter "Удалённое
-# рабочее место": donor credentials stay with the donor, outside the harness
-# boundary in B and C; with a readable token the provider proxy only fixes the
-# route and the harness gets the donor's token.
+# Two notes of two sentences each: the path limits, then credential custody
+# from the donor paragraph of chapter "Удалённое рабочее место": donor
+# credentials and their holder stay with the donor, outside the harness
+# boundary in B and C; with a readable token the harness gets the donor's
+# token. A row gap of 8 keeps the extra note inside the tall box.
 
 layout = "sequence"
 alt = "Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему SSH-соединению донора."
@@ -14,6 +15,7 @@ seq_node_width = 130
 seq_label_width = 150
 seq_self_width = 170
 seq_column_gap = 20
+seq_row_gap = 8
 
 [groups.donor]
 label = "Машина донора"
@@ -92,5 +94,9 @@ step = 13
 label = "почта по тому же соединению"
 
 [[seq]]
-note = "На доноре нет локальных инструментов харнеса.\nНаша сторона не подключается обратно к донору.\nСквозной путь требует квалификации обеих сторон.\nУчётные данные провайдера остаются у донора. В режиме без секретов у агента их держатель в B и C стоит вне квалифицированной границы харнеса; в режиме с читаемым токеном харнес получает токен донора."
+note = "На доноре нет локальных инструментов харнеса, а наша сторона не подключается к донору обратно. Сквозной путь требует квалификации обеих сторон."
+over = ["harness", "ssh"]
+
+[[seq]]
+note = "Учётные данные провайдера и их держатель остаются у донора. В режиме без секретов у агента держатель в B и C стоит вне квалифицированной границы харнеса, а в режиме с читаемым токеном харнес получает токен донора."
 over = ["harness", "ssh"]

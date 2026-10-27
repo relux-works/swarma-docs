@@ -9,16 +9,19 @@
 # The variants are declared B, A, C: with that input order Graphviz stacks
 # them A, B, C from the top, the reading order of the chapter's table.
 # Credential custody follows the chapter's secret-free paragraph: in B the
-# donor's credential holder runs under another UID than the harness, in C it
-# stays outside the harness sandbox, A is outside the mode's guarantee. The
-# note on the provider names the routing-only case: with a readable token the
-# B and C proxy only constrains the route and the harness still gets the
-# donor's token.
+# bridge and the donor's credential holder run under other UIDs than the
+# harness, in C the holder stays outside the harness sandbox. Descriptions keep
+# to two lines, so the rest moves out: A being outside the mode's guarantee and
+# C's per-platform boundary qualification go to the caption; administrator
+# rights, the UID firewall and read boundary stay in the chapter's variant
+# table. The note on the provider names the routing-only case: with a readable
+# token the B and C proxy only constrains the route and the harness still gets
+# the donor's token.
 layout = "graph"
 direction = "LR"
 same_rank = [["a", "b", "c"], ["provider", "project"]]
 
-alt = "Варианты развёртывания донора: без разделения UID, с отдельными учётками и с песочницей; у каждого своя граница защиты."
+alt = "Варианты развёртывания донора: без разделения UID, с отдельными учётками и с песочницей; у каждого своя граница защиты, вариант A вне гарантии режима без секретов у агента, а границу C квалифицируют на каждой платформе."
 
 [theme.space]
 graph_ranksep = 1.6
@@ -26,17 +29,17 @@ graph_ranksep = 1.6
 [nodes.b]
 role = "neutral"
 name = "B: две учётные записи"
-text = "мост под служебным UID, харнес под рабочим, держатель учётных данных под другим UID, чем харнес; файрвол и граница чтения по UID; нужна привилегированная подготовка"
+text = "мост и держатель учётных данных\nне под UID харнеса"
 
 [nodes.a]
 role = "neutral"
 name = "A: запертый запуск"
-text = "без административной установки; один UID донора, границы ОС нет; вне гарантии режима без секретов у агента"
+text = "без администратора; один UID,\nграницы ОС нет"
 
 [nodes.c]
 role = "neutral"
 name = "C: песочница"
-text = "без администратора; один UID, харнес в песочнице ОС, держатель учётных данных за её пределами; граница квалифицируется на каждой платформе"
+text = "харнес в песочнице ОС, держатель\nучётных данных вне её"
 
 [nodes.provider]
 role = "external"

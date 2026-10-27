@@ -7,10 +7,9 @@
 # Credential custody follows the chapter: the messaging service holds only its
 # own carrier credentials; raw leased values never reach the bridge, and it
 # matches against them only through a separately approved matching boundary.
-# No such boundary is selected, so none is drawn. The carrier provider's
-# description states the custody rule and the caption adds that the bridge
-# receives no raw leased values (a note on a node displaces this graph's
-# layout and breaks the fit).
+# No such boundary is selected, so none is drawn. The custody rule lives in
+# the caption: the provider's description keeps to two lines, and a note on a
+# node displaces this graph's layout and breaks the fit.
 layout = "graph"
 direction = "TB"
 same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
@@ -31,7 +30,7 @@ column = "main"
 group = "bridge"
 role = "service"
 name = "Провайдер носителя"
-text = "сохраняет событие до сдвига курсора; держит только учётные данные носителя"
+text = "сохраняет событие до сдвига курсора"
 
 [nodes.core]
 column = "main"
