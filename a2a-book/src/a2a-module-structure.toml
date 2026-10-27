@@ -2,13 +2,13 @@
 # state. Content follows the chapter "Устройство модуля" (tables "Части
 # программы" and "Три места состояния"): the program runs under the agent's OS
 # account, talks to the carrier as a client, keeps delivery state in private
-# files and wakes the session through adapters beside the message core. The
-# wake path itself is the figure a2a-wake; the module repository, the third
+# files and hands the news of mail to the wake adapters beside the message
+# core. The path from the adapters to the session is the figure a2a-wake; the module repository, the third
 # place of state, stays in the chapter table.
 layout = "graph"
 direction = "TB"
 same_rank = [["wake", "client", "files"]]
-alt = "Устройство a2a: программа под пользователем ОС агента обращается к носителю как клиент, хранит состояние доставки в частных файлах и будит сессию через адаптеры пробуждения."
+alt = "Устройство a2a: программа под пользователем ОС агента обращается к носителю как клиент, хранит состояние доставки в частных файлах и передаёт весть о почте адаптерам пробуждения."
 
 [groups.account]
 label = "Пользователь ОС агента"

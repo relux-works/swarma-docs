@@ -6,12 +6,12 @@
 # line after two qualified empty observations and a readiness check; all
 # three share one 30-second window per identity. The agent pulls the text
 # itself with `a2a inbox`. The launcher, in Swarma Runtime the session host,
-# binds the native path and sets its gates; the terminal binding is set by the
-# session itself, so the host has no link to it.
+# binds the native path and sets its gates; the binding of the terminal path
+# is set by the session itself, so the host has no link to it.
 layout = "graph"
 direction = "TB"
 same_rank = [["hooks", "tmux", "native"], ["spacing", "host"]]
-alt = "Пробуждение в a2a: почтовый ящик звонит через общий интервал уведомлений одним из трёх путей, хуками среды, родным входом Codex или терминальной привязкой; пробуждение и реестр сессий принадлежат хосту сессий, а текст агент забирает сам."
+alt = "Пробуждение в a2a: почтовый ящик звонит через общий интервал уведомлений одним из трёх путей, хуками среды, родным входом Codex или терминальным путём; пробуждение и реестр сессий принадлежат хосту сессий, а текст агент забирает сам."
 
 [nodes.mailbox]
 role = "store"
@@ -35,7 +35,7 @@ text = "пустой ход с выводом инструмента `doorbell`"
 
 [nodes.tmux]
 role = "service"
-name = "Терминальная привязка"
+name = "Терминальный путь"
 text = "два пустых наблюдения и готовность среды"
 
 [nodes.host]
