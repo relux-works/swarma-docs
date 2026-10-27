@@ -39,7 +39,7 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | setup-token-2 | `setup-token-2.toml` | книга | — | tall | Учётные данные и логины |
 | credential-lease-revocation-1 | `credential-lease-revocation-1.toml` | книга | — | обычное | Учётные данные и логины |
 | credential-lease-revocation-2 | `credential-lease-revocation-2.toml` | книга | — | tall | Учётные данные и логины |
-| credential-lease-revocation-3 | `credential-lease-revocation-3.toml` | книга | — | обычное | Учётные данные и логины |
+| credential-lease-revocation-3 | `credential-lease-revocation-3.toml` | книга | — | tall | Учётные данные и логины |
 | donor-variants | `donor-variants.toml` | книга | — | обычное | Удалённое рабочее место |
 | join-handshake-1 | `join-handshake-1.toml` | книга | — | tall | Удалённое рабочее место |
 | join-handshake-2 | `join-handshake-2.toml` | книга | — | tall | Удалённое рабочее место |

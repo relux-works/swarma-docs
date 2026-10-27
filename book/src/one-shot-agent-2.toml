@@ -5,8 +5,11 @@
 # step numbers stay those of the whole transaction. The status line of the
 # .puml note (path qualification) is left out: the delivery status lives in the
 # status chapter.
+# The sequence shows delivery with a readable token, as the chapter caption
+# says; a note after steps 9-10 names what replaces them in the secret-free
+# mode (chapters "Запуск агента и хост сессий" and "Учётные данные и логины").
 layout = "sequence"
-alt = "Разовый запуск, исполнение: запускатель сбрасывает права, аренду исполнитель получает уже под UID агента, диспетчер сверяет эффекты."
+alt = "Разовый запуск, исполнение в режиме с читаемым токеном: запускатель сбрасывает права, аренду исполнитель получает уже под UID агента, диспетчер сверяет эффекты."
 
 [theme.space]
 seq_node_width = 130
@@ -60,6 +63,10 @@ from = "broker"
 to = "exec"
 step = 10
 label = "разрешённый материал"
+
+[[seq]]
+note = "В режиме без секретов у агента шагов 9 и 10 нет: харнес получает заглушку, аренду держит шлюз учётных данных."
+over = ["exec", "broker"]
 
 [[seq]]
 from = "exec"

@@ -4,11 +4,18 @@
 # host split the work. Content follows bridge-components.puml; the store's
 # description follows the chapter table ("Хранилище": admission records,
 # outbox and audit), where the puml said "очереди и аудит".
+# Credential custody follows the chapter: the messaging service holds only its
+# own carrier credentials; raw leased values never reach the bridge, and it
+# matches against them only through a separately approved matching boundary.
+# No such boundary is selected, so none is drawn. The carrier provider's
+# description states the custody rule and the caption adds that the bridge
+# receives no raw leased values (a note on a node displaces this graph's
+# layout and breaks the fit).
 layout = "graph"
 direction = "TB"
 same_rank = [["mx", "provider"], ["core", "store"], ["mailbox", "host"]]
 uniform_width = true   # the main column and the side column each keep one width
-alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности."
+alt = "Мост: провайдер носителя, ворота доверия, почтовый ящик и хост сессий разделяют обязанности; служба сообщений держит только учётные данные носителя, а сырых значений арендованных учётных данных мост не получает."
 
 [groups.bridge]
 label = "Мост"
@@ -24,7 +31,7 @@ column = "main"
 group = "bridge"
 role = "service"
 name = "Провайдер носителя"
-text = "сохраняет событие до сдвига курсора"
+text = "сохраняет событие до сдвига курсора; держит только учётные данные носителя"
 
 [nodes.core]
 column = "main"

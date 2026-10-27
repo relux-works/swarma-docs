@@ -1,6 +1,10 @@
 # A remote worker's turn, part 1 of 2: the donor's side up to our SSH entry.
 # Split from the whole turn (fixtures/remote-worker-turn-full) along the container boundary; step numbers
 # stay those of the whole turn. Density keys from editorial/diagram-style.ru.md.
+# The note's last line follows the donor paragraph of chapter "Удалённое
+# рабочее место": donor credentials stay with the donor, outside the harness
+# boundary in B and C; with a readable token the provider proxy only fixes the
+# route and the harness gets the donor's token.
 
 layout = "sequence"
 alt = "Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему SSH-соединению донора."
@@ -88,5 +92,5 @@ step = 13
 label = "почта по тому же соединению"
 
 [[seq]]
-note = "На доноре нет локальных инструментов харнеса.\nНаша сторона не подключается обратно к донору.\nСквозной путь требует квалификации обеих сторон."
+note = "На доноре нет локальных инструментов харнеса.\nНаша сторона не подключается обратно к донору.\nСквозной путь требует квалификации обеих сторон.\nУчётные данные провайдера остаются у донора. В режиме без секретов у агента их держатель в B и C стоит вне квалифицированной границы харнеса; в режиме с читаемым токеном харнес получает токен донора."
 over = ["harness", "ssh"]

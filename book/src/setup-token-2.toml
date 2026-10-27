@@ -7,8 +7,10 @@
 # status lives in the state chapter); the note keeps the mechanism limit in the
 # chapter's words ("Remote Control его отвергает"). A
 # branch keeps the number of the step it replaces.
+# The flow is the readable-token delivery; the note names the recipients in
+# the secret-free mode (chapter "Учётные данные и логины").
 layout = "sequence"
-alt = "Доставка setup-token, запуск: секрет извлекает окончательный исполнитель перед запуском Claude."
+alt = "Доставка setup-token в режиме с читаемым токеном, запуск: секрет извлекает окончательный исполнитель перед запуском Claude."
 
 [theme.space]
 seq_node_width = 130
@@ -73,5 +75,5 @@ label = "`CLAUDE_CODE_OAUTH_TOKEN` при запуске"
 end = true
 
 [[seq]]
-note = "Только inference; Remote Control его отвергает."
+note = "Только inference; Remote Control его отвергает. В режиме без секретов у агента исполнитель токена не извлекает: Claude получает заглушку, а токен в аренду получает шлюз учётных данных."
 over = ["executor", "claude"]

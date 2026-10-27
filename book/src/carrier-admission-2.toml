@@ -7,6 +7,10 @@
 # 60-120 s) and the access token 24 h (puml: 12-24 h). The note keeps the
 # restart rule and the absence of refresh tokens. The machine container is
 # drawn in part 1, where the helper stands next to the agent.
+# Custody follows the chapter: the carrier client of the agent's identity, the
+# bridge instance under the messaging service account, presents the pass and
+# holds the access token; the agent process never receives it. The participant
+# "Агент" is the agent's identity on the carrier side, as in the chapter.
 layout = "sequence"
 alt = "Допуск к носителю: агент не держит ни общего секрета, ни пароля; сервер носителя доверяет только ключу регистратора."
 
@@ -15,10 +19,12 @@ seq_node_width = 130
 seq_label_width = 200
 seq_self_width = 200
 seq_column_gap = 20
+seq_row_gap = 9
 
 [nodes.agent]
 role = "agent"
 name = "Агент"
+text = "личность на носителе"
 
 [nodes.registrar]
 role = "service"
@@ -86,11 +92,11 @@ label = "доверяет только ключу регистратора; уч
 from = "server"
 to = "agent"
 step = 10
-label = "токен доступа на 24 ч, без пароля"
+label = "клиенту носителя: токен доступа на 24 ч, без пароля"
 
 [[seq]]
 end = true
 
 [[seq]]
-note = "Истёк токен или сервер ответил 401: агент повторяет путь с начала.\nRefresh-токенов агентам нет."
+note = "Пропуск предъявляет и токен держит клиент носителя под учёткой сообщений; процесс агента токена не получает. Истёк токен или ответ 401: путь с начала. Refresh-токенов нет."
 over = ["agent", "server"]

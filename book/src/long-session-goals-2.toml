@@ -8,6 +8,10 @@
 # Left out of the .puml note: the pointer to the session host specification
 # (the chapter carries it) and the line about today's deployment (a delivery
 # status, it lives in the status chapter).
+# Step 5 depends on the credential mode (chapter "Запуск агента и хост
+# сессий"): with a readable token the runner leases from the broker; in the
+# secret-free mode it holds only a placeholder and the credential gateway holds
+# and renews the real token. Both branches keep step number 5.
 layout = "sequence"
 alt = "Долгая сессия, ввод: раннер под UID агента держит PTY или app-server, а очередью ввода владеет хост сессий."
 
@@ -37,10 +41,25 @@ role = "key"
 name = "Брокер"
 
 [[seq]]
+alt = "режим с читаемым токеном"
+
+[[seq]]
 from = "runner"
 to = "broker"
 step = 5
-label = "собственное соединение для аренды"
+label = "собственное соединение для аренды и продления"
+
+[[seq]]
+else = "режим без секретов у агента"
+
+[[seq]]
+from = "runner"
+to = "runner"
+step = 5
+label = "только заглушка; аренду держит и продлевает шлюз учётных данных"
+
+[[seq]]
+end = true
 
 [[seq]]
 from = "runner"

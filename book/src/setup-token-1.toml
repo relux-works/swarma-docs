@@ -6,8 +6,12 @@
 # it is split at the hand-over to the plan: the plan is in both parts, step
 # numbers stay those of the whole flow. The source's title ("proposed") is
 # dropped (book voice).
+# The flow is the readable-token delivery (the Claude environment channel of
+# chapter "Учётные данные и логины"); the note names the recipient in the
+# secret-free mode, where the token is enrolled at the broker and leased only
+# to the credential gateway.
 layout = "sequence"
-alt = "Доставка setup-token, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка."
+alt = "Доставка setup-token в режиме с читаемым токеном, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка."
 
 [nodes.operator]
 role = "human"
@@ -48,3 +52,7 @@ from = "enroll"
 to = "plan"
 step = 4
 label = "только ссылка"
+
+[[seq]]
+note = "В режиме без секретов у агента токен заводят у брокера, и в аренду его получает только шлюз учётных данных."
+over = ["operator", "plan"]
