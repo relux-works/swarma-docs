@@ -8,8 +8,9 @@
 # install-services. Swarma Updater has no authority: the three root
 # one-operation programs (metadata committer, applier, boot reconciler)
 # change the installation, and only under an act the operator signs on the
-# phone (stated in the node, not drawn: the phone is outside this view). Which service is the admission owner during an update is open, so
-# this view draws no admission link. No order, so no step numbers.
+# phone (stated in the node, not drawn: the phone is outside this view).
+# Which service is the admission owner during an update is open, so this
+# view draws no admission link. No order, so no step numbers.
 layout = "graph"
 direction = "TB"
 uniform_width = true
