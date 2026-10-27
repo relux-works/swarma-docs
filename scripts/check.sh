@@ -4,7 +4,7 @@
 #   sh scripts/check.sh
 #
 # Fails on: status markers outside the state chapter; internal identifiers
-# (board elements, runs, review findings, decision numbers);
+# (board elements, runs, review findings, decision numbers, arbiter rulings);
 # local paths; names that never appear in the published text; delivery
 # hedges in book chapters outside the state chapter and in the chain paper
 # (paper/chain/*.tex); the prose blacklist of editorial/style.ru.md in book
@@ -61,6 +61,7 @@ hit() {
 }
 
 hit "board, run or review identifier" '\b(TASK|STORY|EPIC|BUG|RUN|SES)-[0-9]{6}-[0-9a-z]{6}\b'
+hit "arbiter ruling identifier" '\b(ac|tb)-R[0-9]+\b'
 hit "review finding number" '(^|[^A-Za-z0-9-])F-[0-9]{2,3}([^0-9]|$)'
 hit "decision number" '(^|[^A-Za-z0-9-])D-0[0-9]{2}([^0-9]|$)'
 hit "local path" '/(Users|home)/[A-Za-z0-9._-]+'

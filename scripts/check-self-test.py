@@ -139,6 +139,21 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('chapter without a level-1 heading', r.stdout)
 
+    # Arbiter ruling ids of the a2a ruling log fail a chapter; words that only
+    # contain the same letters pass. Lexical, not semantic.
+    def test_ruling_identifier(self):
+        for text in ('Постановление ac-R11 и правило.', 'tb-R108'):
+            with self.subTest(text=text):
+                self.chapter.write_text('# Example\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn('== arbiter ruling identifier', r.stdout)
+        for text in ('Флаг `-R` и постановление арбитра.', 'fac-R11', 'ac-Rx'):
+            with self.subTest(text=text):
+                self.chapter.write_text('# Example\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0, r.stdout)
+
 
     # Each prose blacklist pattern fails a book chapter by default and is only
     # reported under STRICT_PROSE=0; a clean sentence with a hyphenated word and
