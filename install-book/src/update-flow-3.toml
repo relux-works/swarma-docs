@@ -1,0 +1,69 @@
+# One update, part 3 of 5: first admission of the act and the window.
+# Content follows chapter "Как обновляется Swarma" (sections
+# "Акт оператора", "Обновление в окне обслуживания", "Прерывание и забор
+# операции"). The operation fence is recorded at intent (step 14). The
+# admission owner closes new starts; the operator, not the applier, signs the
+# "blocked for update" record for the affected sessions. Step numbers
+# continue update-flow-2.
+layout = "sequence"
+alt = "Обновление, часть 3: допуск акта и окно обслуживания. Номера сообщений продолжают вторую часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 170
+seq_column_gap = 20
+seq_row_gap = 8
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.phone]
+role = "key"
+name = "Телефон оператора"
+
+[nodes.applier]
+group = "host"
+role = "service"
+name = "Применитель"
+
+[nodes.admission]
+group = "host"
+role = "service"
+name = "Владелец допуска"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Затронутые службы"
+
+[[seq]]
+from = "phone"
+to = "applier"
+step = 13
+label = "одноразовый акт"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 14
+label = "первый допуск: намерение, открытая операция, забор операции"
+
+[[seq]]
+from = "admission"
+to = "admission"
+step = 15
+label = "новые старты закрыты"
+
+[[seq]]
+from = "phone"
+to = "services"
+step = 16
+label = "запись \"заблокирован на обновление\""
+
+[[seq]]
+from = "services"
+to = "applier"
+step = 17
+label = "остановка подтверждена"

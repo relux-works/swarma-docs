@@ -1,18 +1,21 @@
-# Installation flow, part 1 of 2: from the command to the qualification of
-# the machine (installation steps 1-7). Content follows chapters "Одна
-# команда" and "Шаги и результат каждого шага". Messages are numbered in
-# order across both parts; part 2 continues with 13. The whole flow does not
-# fit one box; it is split at the change of phase after qualification, when
-# the installer hands over to Curator. The phone talks to the operator
-# account, not to the keyholder, so the keyholder's root goes through the
-# installer. Density keys from editorial/diagram-style.ru.md.
+# Installation flow, part 1 of 4: from the first-install file to the platform
+# root (the stop before step 1 and installation steps 1-4). Content follows
+# chapters "Одна команда" and "Шаги и результат каждого шага" and the
+# first-install invariant of "Как обновляется Swarma" ("Первая установка и
+# каналы пакетов"): the owner compares the digest of the root-only copy
+# before the OS installer gets it, and the binding plan is shown and approved
+# in the OS-started administrator session, never in the owner's session.
+# Messages are numbered in order across all four parts. The whole flow does
+# not fit one box; it is split by phase (first install and plan, operator and
+# services, profiles and registry, keeper), per diagram-style. Density keys
+# from editorial/diagram-style.ru.md.
 layout = "sequence"
-alt = "Установка, часть 1: от команды до квалификации машины. Пароль администратора спрашивается один раз, до первого изменения."
+alt = "Установка, часть 1: от файла первой установки до корня платформы. Сверка дайджеста, план и пароль проходят в сеансе администратора, который запускает ОС."
 
 [theme.space]
 seq_node_width = 130
-seq_label_width = 160
-seq_self_width = 170
+seq_label_width = 150
+seq_self_width = 150
 seq_column_gap = 20
 
 [groups.host]
@@ -23,9 +26,10 @@ role = "service"
 role = "human"
 name = "Владелец"
 
-[nodes.phone]
-role = "key"
-name = "Телефон оператора"
+[nodes.session]
+group = "host"
+role = "service"
+name = "Сеанс администратора ОС"
 
 [nodes.installer]
 group = "host"
@@ -37,88 +41,56 @@ group = "host"
 role = "service"
 name = "Swarma Curator"
 
-[nodes.keyholder]
-group = "host"
-role = "key"
-name = "Ключник"
-
-[nodes.services]
-group = "host"
-role = "service"
-name = "Службы хоста"
-
 [[seq]]
-from = "installer"
-to = "installer"
+from = "owner"
+to = "session"
 step = 1
-label = "проверить подпись манифеста"
+label = "пароль, один раз"
 
 [[seq]]
-from = "installer"
-to = "owner"
+from = "session"
+to = "session"
 step = 2
-label = "план: пакеты, `sudo`, ссылки"
+label = "копия файла только для root, дайджест"
 
 [[seq]]
 from = "owner"
-to = "installer"
+to = "session"
 step = 3
-label = "одобрение и пароль, один раз"
+label = "дайджест и отпечаток корня сверены"
 
 [[seq]]
-from = "installer"
-to = "curator"
+from = "session"
+to = "installer"
 step = 4
-label = "поставить под учёткой владельца"
+label = "установщик ОС ставит копию"
 
 [[seq]]
 from = "installer"
 to = "installer"
 step = 5
-label = "корень, учётки, запрет сети"
+label = "манифест по корню обновлений"
 
 [[seq]]
 from = "installer"
-to = "phone"
+to = "owner"
 step = 6
-label = "сопряжение ключа оператора"
+label = "план в сеансе администратора"
 
 [[seq]]
-from = "installer"
-to = "keyholder"
+from = "owner"
+to = "installer"
 step = 7
-label = "запустить ключника"
+label = "одобрение плана"
 
 [[seq]]
-from = "keyholder"
-to = "installer"
+from = "installer"
+to = "curator"
 step = 8
-label = "публичный корень"
-
-[[seq]]
-from = "installer"
-to = "phone"
-step = 9
-label = "корень на подтверждение"
-
-[[seq]]
-from = "installer"
-to = "services"
-step = 10
-label = "запустить службы, допуск закрыт"
+label = "поставить под учёткой владельца"
 
 [[seq]]
 from = "installer"
 to = "installer"
-step = 11
-label = "проверить привязки и запрет сети"
-
-[[seq]]
-from = "installer"
-to = "services"
-step = 12
-label = "подписанная аттестация"
-
-[[seq]]
-note = "Диспетчер открывает допуск по свидетельствам аттестации."
-on = "services"
+step = 9
+label = "корень, замыкание, учётки, запрет сети"

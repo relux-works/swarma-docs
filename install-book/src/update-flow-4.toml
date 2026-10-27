@@ -1,0 +1,65 @@
+# One update, part 4 of 5: the continuation check and the effects, with the
+# optional closure switch and its handoff. Content follows chapter "Как
+# обновляется Swarma" (sections "Обновление в окне обслуживания",
+# "Прерывание и забор операции"). Every effect has a synced start record
+# before it and an observation record after it. A refusal before any start
+# record is terminal; after one, an operation that does not reach an accepted
+# outcome stays interrupted. At the closure switch the outgoing execution
+# retires, and the selected closure owns the operation only after the
+# outgoing fence is complete. Admission stays closed throughout. Step numbers
+# continue update-flow-3.
+layout = "sequence"
+alt = "Обновление, часть 4: проверка продолжения, эффекты и смена замыкания. Номера сообщений продолжают третью часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 170
+seq_column_gap = 20
+seq_row_gap = 8
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.applier]
+group = "host"
+role = "service"
+name = "Применитель"
+
+[nodes.admission]
+group = "host"
+role = "service"
+name = "Владелец допуска"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 18
+label = "проверка продолжения: своя операция, стоп, ключ, время, отзывы"
+
+[[seq]]
+note = "Отказ до первой записи о начале окончателен; допуск остаётся закрытым."
+over = ["applier", "admission"]
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 19
+label = "каждый эффект: запись о начале, исполнение, наблюдение"
+
+[[seq]]
+opt = "набор меняет замыкание"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 20
+label = "изолированная проверка кандидата, переключение последним эффектом"
+
+[[seq]]
+note = "Операцией владеет выбранное замыкание после завершения забора уходящего."
+over = ["applier", "admission"]
+
+[[seq]]
+end = true

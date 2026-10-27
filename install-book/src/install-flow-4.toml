@@ -1,0 +1,83 @@
+# Installation flow, part 4 of 4: from the machine registry to the owner's
+# private room (installation steps 9-10). Content follows chapter "Шаги и
+# результат каждого шага". Message numbers continue part 3. The machine
+# registry (a reviewed git store) and the registrar (a service next to the
+# carrier server) are separate participants; the operator, not the registry,
+# raises the pinned registry revision at the registrar (and at the
+# keyholder). Density keys from editorial/diagram-style.ru.md.
+layout = "sequence"
+alt = "Установка, часть 4: от записи в реестре машин до личной комнаты владельца. Номера сообщений продолжают третью часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 150
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.registry]
+role = "store"
+name = "Реестр машин"
+
+[nodes.registrar]
+role = "service"
+name = "Регистратор"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Службы хоста"
+
+[nodes.keeper]
+group = "host"
+role = "agent"
+name = "Кипер узла"
+
+[[seq]]
+from = "owner"
+to = "registry"
+step = 21
+label = "подписанная запись о машине"
+
+[[seq]]
+from = "owner"
+to = "registrar"
+step = 22
+label = "поднять ревизию реестра"
+
+[[seq]]
+from = "services"
+to = "keeper"
+step = 23
+label = "учётка и сессия кипера"
+
+[[seq]]
+from = "keeper"
+to = "registrar"
+step = 24
+label = "допуск к носителю"
+
+[[seq]]
+from = "keeper"
+to = "owner"
+step = 25
+label = "приглашение в личную комнату"
+
+[[seq]]
+from = "owner"
+to = "keeper"
+step = 26
+label = "принять приглашение"
+
+[[seq]]
+from = "keeper"
+to = "owner"
+step = 27
+label = "первое сообщение"

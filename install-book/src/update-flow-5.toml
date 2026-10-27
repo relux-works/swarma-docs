@@ -1,0 +1,81 @@
+# One update, part 5 of 5: qualification of the selected closure, the final
+# check and the admission owner's own decision. Content follows chapter "Как
+# обновляется Swarma" (sections "Обновление в окне обслуживания",
+# "Прерывание и забор операции"). After the first start record a failed
+# final check is not terminal: the operation stays interrupted and its
+# effects stay pending behind the operation fence. Both outcomes of step 25
+# carry the same number; the refusal is drawn in the alert role. Step numbers
+# continue update-flow-4.
+layout = "sequence"
+alt = "Обновление, часть 5: квалификация, сверка итога и решение владельца допуска. Номера сообщений продолжают четвёртую часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.applier]
+group = "host"
+role = "service"
+name = "Применитель"
+
+[nodes.usermgr]
+group = "host"
+role = "service"
+name = "Менеджер пользователей"
+
+[nodes.admission]
+group = "host"
+role = "service"
+name = "Владелец допуска"
+
+[[seq]]
+from = "applier"
+to = "usermgr"
+step = 21
+label = "квалификация входов и выбранного замыкания"
+
+[[seq]]
+from = "usermgr"
+to = "applier"
+step = 22
+label = "новая аттестация"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 23
+label = "сверка итога: принятый исход или прерывание"
+
+[[seq]]
+from = "applier"
+to = "admission"
+step = 24
+label = "исход операции"
+
+[[seq]]
+alt = "принятый исход, нет стопа, отзыва и заборов"
+
+[[seq]]
+from = "admission"
+to = "admission"
+step = 25
+label = "своё решение: допуск открыт"
+
+[[seq]]
+else = "прерывание, стоп или отзыв"
+
+[[seq]]
+from = "admission"
+to = "admission"
+step = 25
+label = "допуск закрыт; эффекты ждут сверки за забором операции"
+color = "alert"
+
+[[seq]]
+end = true

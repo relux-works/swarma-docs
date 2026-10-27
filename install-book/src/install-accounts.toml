@@ -4,11 +4,17 @@
 # the machine is the outer boundary, each account class that holds a part of
 # the launch path is a nested boundary; services that run under their own
 # service account stand directly in the machine container and name their
-# account in the description. No order, so no step numbers.
+# account in the description. The dispatcher and the manager share a rank,
+# so the `sudo` arrow enters the root boundary from the side and clears its
+# label. No order, so no step numbers.
 layout = "graph"
 direction = "TB"
 uniform_width = true
+same_rank = [["dispatcher", "manager"]]
 alt = "Учётки на машине и путь запуска агента через них."
+
+[theme.space]
+graph_nodesep = 0.9
 
 [groups.host]
 label = "Машина владельца"

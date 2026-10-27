@@ -1,0 +1,51 @@
+# Installation flow, part 3 of 4: Curator takes over the profiles and the
+# owner connects provider subscriptions (installation step 8). Content
+# follows chapter "Шаги и результат каждого шага". Message numbers continue
+# part 2. The owner's phone confirmation of subscriptions is a physical
+# action on a device, so it is dashed. Density keys from
+# editorial/diagram-style.ru.md.
+layout = "sequence"
+alt = "Установка, часть 3: профили Curator, подписки провайдеров и первый план запуска. Номера сообщений продолжают вторую часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 150
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.curator]
+group = "host"
+role = "service"
+name = "Swarma Curator"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Службы хоста"
+
+[[seq]]
+from = "curator"
+to = "curator"
+step = 18
+label = "профили из закреплённых источников"
+
+[[seq]]
+from = "owner"
+to = "services"
+step = 19
+style = "dashed"
+label = "подписки, подтверждение телефоном"
+
+[[seq]]
+from = "curator"
+to = "services"
+step = 20
+label = "план запуска роли"

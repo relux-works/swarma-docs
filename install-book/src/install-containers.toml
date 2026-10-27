@@ -5,13 +5,21 @@
 # nested boundaries; the dispatcher and the remaining host services run under
 # their own service accounts and stand directly in the machine container, as
 # in install-accounts. The remaining services and their network are drawn in
-# install-services. Swarma Updater has no authority: the root one-operation
-# programs change the installation, and the dispatcher alone reopens
-# admission. No order, so no step numbers.
+# install-services. Swarma Updater has no authority: the three root
+# one-operation programs (metadata committer, applier, boot reconciler)
+# change the installation, and only under an act the operator signs on the
+# phone (stated in the node, not drawn: the phone is outside this view). Which service is the admission owner during an update is open, so
+# this view draws no admission link. No order, so no step numbers.
 layout = "graph"
 direction = "TB"
 uniform_width = true
+same_rank = [["curator", "keeper", "updater"], ["services", "protected"], ["dispatcher", "sets"]]
 alt = "Учётки и программы на машине: что делает Updater и кто меняет установку."
+
+[theme.space]
+node_text_width = 180
+label_max_width = 150
+graph_ranksep = 0.25
 
 [groups.host]
 label = "Машина владельца"
@@ -59,13 +67,13 @@ text = "скачивает и предпроверяет, полномочий �
 group = "host"
 role = "service"
 name = "Службы хоста"
-text = "ключник, брокер, прокси, хост сессий, мост; у каждой своя учётка"
+text = "ключник, брокер, прокси, хост сессий, мост, каждая под своей учёткой"
 
 [nodes.dispatcher]
 group = "host"
 role = "service"
 name = "Диспетчер"
-text = "учётка `swarma-dispatcher`; открывает допуск"
+text = "учётка `swarma-dispatcher`"
 
 [nodes.manager]
 group = "root"
@@ -76,8 +84,8 @@ text = "учётки агентов, одобренные программы"
 [nodes.protected]
 group = "root"
 role = "service"
-name = "Фиксатор и применитель"
-text = "метаданные, план, эффекты по журналу"
+name = "Фиксатор, применитель и сверщик"
+text = "метаданные, эффекты по журналу, сверка при загрузке; только по акту оператора"
 
 [nodes.sets]
 group = "host"
@@ -114,15 +122,3 @@ label = "номер набора, подсказка"
 from = "protected"
 to = "sets"
 label = "эффекты по журналу"
-
-[[links]]
-from = "protected"
-to = "dispatcher"
-label = "исход операции"
-constraint = false
-
-[[links]]
-from = "sets"
-to = "services"
-label = "бинарники набора"
-constraint = false
