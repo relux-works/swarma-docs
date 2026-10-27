@@ -1,0 +1,93 @@
+# System context of one installation (C4 level 1). Content follows chapter
+# "Что ставится и зачем" (section "Что нужно вне машины") and chapter
+# "Как обновляется Swarma". The owner's machine is one element here; its
+# containers are in install-containers and install-services. Release sources
+# stand for mirrors, update metadata and the transparency log: they carry
+# bytes and proofs and decide nothing. The owner's actions on devices are
+# physical actions, so they are dashed. No order, so no step numbers.
+layout = "graph"
+direction = "TB"
+same_rank = [["owner", "phone"], ["release", "host", "trustnode"]]
+alt = "Машина владельца и то, с чем она работает вне себя."
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+text = "ставит машину, сверяет отпечаток корня и дайджест"
+
+[nodes.phone]
+role = "key"
+name = "Телефон оператора"
+text = "подписывает расширяющие действия и акты обновления"
+
+[nodes.release]
+role = "external"
+name = "Источники выпуска"
+text = "зеркала, метаданные выпуска, журнал прозрачности"
+
+[nodes.host]
+role = "service"
+name = "Машина владельца"
+text = "Swarma Runtime, Curator и Updater"
+
+[nodes.trustnode]
+role = "store"
+name = "Узел доверия"
+text = "реестр владельца и свидетель отката"
+
+[nodes.carrier]
+role = "external"
+name = "Сервер носителя"
+text = "регистратор и учётки агентов"
+
+[nodes.codehost]
+role = "external"
+name = "Хостинг кода"
+text = "репозитории и раннеры"
+
+[nodes.providers]
+role = "external"
+name = "Провайдеры и службы"
+text = "модели и службы работы агентов"
+
+[[links]]
+from = "owner"
+to = "phone"
+label = "подтверждение"
+style = "dashed"
+
+[[links]]
+from = "owner"
+to = "host"
+label = "установка, сверка дайджеста"
+style = "dashed"
+
+[[links]]
+from = "phone"
+to = "host"
+label = "подписанные действия и акты"
+
+[[links]]
+from = "release"
+to = "host"
+label = "метаданные, артефакты, доказательства"
+
+[[links]]
+from = "host"
+to = "trustnode"
+label = "записи реестра"
+
+[[links]]
+from = "host"
+to = "carrier"
+label = "сообщения станций"
+
+[[links]]
+from = "host"
+to = "codehost"
+label = "публикация и приземление"
+
+[[links]]
+from = "host"
+to = "providers"
+label = "выход агентов через прокси"

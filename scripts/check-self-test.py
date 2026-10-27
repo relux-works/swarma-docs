@@ -107,9 +107,10 @@ class HygieneTests(unittest.TestCase):
 
     # The installation book is held to the book's rules: a planted marker,
     # hedge, dash, guillemet, local path or missing heading fails an
-    # install-book chapter; only the exact state chapter 06-gde-my.md may carry
-    # markers and hedges, and the other books' state chapter names give no
-    # exemption there. A clean chapter passes.
+    # install-book chapter; only the exact state chapter 07-gde-my.md may carry
+    # markers and hedges; the other books' state chapter names and the state
+    # chapter's earlier name 06-gde-my.md give no exemption there. A clean
+    # chapter passes.
     def test_install_book(self):
         d = self.root / 'install-book/ru'
         d.mkdir(parents=True)
@@ -129,7 +130,7 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('chapter without a level-1 heading: install-book/ru/03-shagi.md', r.stdout)
         ch.write_text('# Шаги\n')
-        state = d / '06-gde-my.md'
+        state = d / '07-gde-my.md'
         state.write_text('# Где мы\n\n⟦решено⟧ пока не реализовано\n')
         r = self.run_check()
         self.assertEqual(r.returncode, 0, r.stdout)
@@ -139,7 +140,7 @@ class HygieneTests(unittest.TestCase):
         self.assertIn('== dash in prose', r.stdout)
         self.assertNotIn('== delivery hedge', r.stdout)
         state.unlink()
-        for name in ('09-gde-my.md', '29-gde-my.md'):
+        for name in ('06-gde-my.md', '09-gde-my.md', '29-gde-my.md'):
             with self.subTest(name=name):
                 other = d / name
                 other.write_text('# Где мы\n\nпока\n')

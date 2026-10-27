@@ -1,0 +1,111 @@
+# One update, part 1 of 2: fetch, pre-check, metadata acceptance, protected
+# copy, plan and the act content sent to the phone. Content follows chapter
+# "Как обновляется Swarma" (sections "Проверка до активации", "Акт
+# оператора", "Обновление в окне обслуживания"). Each root, snapshot and
+# targets version is stored with its inclusion proof and checkpoint; the
+# timestamp is not logged. The metadata commit happens even if the owner
+# never approves, and a later failure keeps every role already accepted.
+# Split by phase (verification and approval/apply), per diagram-style; step
+# numbers continue in update-flow-2.
+layout = "sequence"
+alt = "Обновление, часть 1: проверка метаданных, защищённая копия, план и содержание акта."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 190
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.mirror]
+role = "external"
+name = "Зеркала и журнал"
+
+[nodes.updater]
+group = "host"
+role = "service"
+name = "Swarma Updater"
+
+[nodes.root]
+group = "host"
+role = "service"
+name = "Фиксатор и применитель"
+
+[nodes.phone]
+role = "key"
+name = "Телефон оператора"
+
+[[seq]]
+from = "updater"
+to = "mirror"
+step = 1
+label = "`root`, `timestamp`, `snapshot`, `targets`"
+
+[[seq]]
+from = "mirror"
+to = "updater"
+step = 2
+label = "метаданные и доказательства журнала"
+
+[[seq]]
+from = "updater"
+to = "updater"
+step = 3
+label = "предпроверка в пределах лимитов"
+
+[[seq]]
+from = "updater"
+to = "root"
+step = 4
+label = "метаданные на фиксацию"
+
+[[seq]]
+from = "root"
+to = "root"
+step = 5
+label = "роли с доказательством включения; полные отзывы"
+
+[[seq]]
+from = "updater"
+to = "mirror"
+step = 6
+label = "артефакты набора"
+
+[[seq]]
+from = "mirror"
+to = "updater"
+step = 7
+label = "байты в пределах длин"
+
+[[seq]]
+from = "updater"
+to = "root"
+step = 8
+label = "номер набора, подсказка"
+
+[[seq]]
+from = "root"
+to = "root"
+step = 9
+label = "защищённая копия и проверка в пределах ёмкости"
+
+[[seq]]
+from = "root"
+to = "root"
+step = 10
+label = "план из проверенного набора"
+
+[[seq]]
+from = "updater"
+to = "updater"
+step = 11
+label = "предпросмотр владельцу"
+
+[[seq]]
+from = "root"
+to = "phone"
+step = 12
+label = "машина, вид, прежнее состояние, набор, дайджест плана, окно"

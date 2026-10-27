@@ -1,0 +1,128 @@
+# Containers on one machine (C4 level 2), seen from who changes the
+# installation. Content follows chapter "Как обновляется Swarma" (section
+# "Updater на машине") and chapter "Что ставится и зачем" (table "Части и их
+# учётки"). Account classes that hold a part of the launch or update path are
+# nested boundaries; the dispatcher and the remaining host services run under
+# their own service accounts and stand directly in the machine container, as
+# in install-accounts. The remaining services and their network are drawn in
+# install-services. Swarma Updater has no authority: the root one-operation
+# programs change the installation, and the dispatcher alone reopens
+# admission. No order, so no step numbers.
+layout = "graph"
+direction = "TB"
+uniform_width = true
+alt = "Учётки и программы на машине: что делает Updater и кто меняет установку."
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[groups.owner]
+parent = "host"
+label = "Учётка владельца"
+role = "human"
+
+[groups.keeper]
+parent = "host"
+label = "Учётка кипера"
+role = "agent"
+
+[groups.updater]
+parent = "host"
+label = "Учётка swarma-updater"
+role = "service"
+
+[groups.root]
+parent = "host"
+label = "root на одну операцию"
+role = "service"
+
+[nodes.curator]
+group = "owner"
+role = "service"
+name = "Swarma Curator"
+text = "профили, дома, план запуска"
+
+[nodes.keeper]
+group = "keeper"
+role = "agent"
+name = "Кипер узла"
+text = "главный цикл машины"
+
+[nodes.updater]
+group = "updater"
+role = "service"
+name = "Swarma Updater"
+text = "скачивает и предпроверяет, полномочий нет"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Службы хоста"
+text = "ключник, брокер, прокси, хост сессий, мост; у каждой своя учётка"
+
+[nodes.dispatcher]
+group = "host"
+role = "service"
+name = "Диспетчер"
+text = "учётка `swarma-dispatcher`; открывает допуск"
+
+[nodes.manager]
+group = "root"
+role = "service"
+name = "Менеджер и запускатель"
+text = "учётки агентов, одобренные программы"
+
+[nodes.protected]
+group = "root"
+role = "service"
+name = "Фиксатор и применитель"
+text = "метаданные, план, эффекты по журналу"
+
+[nodes.sets]
+group = "host"
+role = "store"
+name = "Наборы в `/opt/swarma`"
+text = "неизменяемые; прежний для восстановления"
+
+[[links]]
+from = "curator"
+to = "dispatcher"
+label = "план запуска"
+
+[[links]]
+from = "keeper"
+to = "services"
+label = "просьба о запуске"
+
+[[links]]
+from = "services"
+to = "dispatcher"
+label = "`host_start`"
+
+[[links]]
+from = "dispatcher"
+to = "manager"
+label = "`sudo`, одна операция"
+
+[[links]]
+from = "updater"
+to = "protected"
+label = "номер набора, подсказка"
+
+[[links]]
+from = "protected"
+to = "sets"
+label = "эффекты по журналу"
+
+[[links]]
+from = "protected"
+to = "dispatcher"
+label = "исход операции"
+constraint = false
+
+[[links]]
+from = "sets"
+to = "services"
+label = "бинарники набора"
+constraint = false

@@ -3,7 +3,9 @@
 # и зачем" (table "Части и их учётки", column "Сеть"). Each service runs under
 # its own service account, named in its description; the machine is the only
 # boundary drawn. The keyholder and the broker have no listener and no
-# outbound link. No order, so no step numbers.
+# outbound link. Swarma Updater reaches only the release sources (chapter
+# "Как обновляется Swarma", section "Updater на машине"). No order, so no
+# step numbers.
 layout = "graph"
 direction = "LR"
 uniform_width = true
@@ -44,6 +46,12 @@ role = "service"
 name = "Исполнитель действий с репозиторием"
 text = "своя служебная учётка"
 
+[nodes.updater]
+group = "host"
+role = "service"
+name = "Swarma Updater"
+text = "учётка `swarma-updater`"
+
 [nodes.services]
 role = "external"
 name = "Службы в сети"
@@ -53,6 +61,11 @@ text = "провайдеры моделей и другие адресаты"
 role = "external"
 name = "Сервер носителя"
 text = "федеративный обмен сообщениями"
+
+[nodes.release]
+role = "external"
+name = "Источники выпуска"
+text = "зеркала, метаданные, журнал"
 
 [nodes.codehost]
 role = "external"
@@ -73,3 +86,8 @@ label = "сообщения станций"
 from = "repoactions"
 to = "codehost"
 label = "публикация и приземление"
+
+[[links]]
+from = "updater"
+to = "release"
+label = "метаданные и артефакты"

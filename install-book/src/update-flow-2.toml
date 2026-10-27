@@ -1,0 +1,145 @@
+# One update, part 2 of 2: first admission of the act, window, continuation
+# check, effects with start and observation records, the optional closure
+# switch, qualification, final check and the dispatcher's own admission
+# decision. Content follows chapter "Как обновляется Swarma" (sections
+# "Акт оператора", "Обновление в окне обслуживания", "Прерывание и забор
+# операции"). The operation fence is recorded at intent (step 14). All three
+# outcomes of step 24 carry the same number; refusals are drawn in the alert
+# role. A refusal before any start record is terminal; an interruption after
+# one leaves effects pending behind the operation fence. Step numbers
+# continue update-flow-1.
+layout = "sequence"
+alt = "Обновление, часть 2: допуск акта, эффекты под проверкой продолжения, квалификация и решение диспетчера. Номера сообщений продолжают первую часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 170
+seq_self_width = 190
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.phone]
+role = "key"
+name = "Телефон оператора"
+
+[nodes.applier]
+group = "host"
+role = "service"
+name = "Применитель"
+
+[nodes.dispatcher]
+group = "host"
+role = "service"
+name = "Диспетчер"
+
+[nodes.usermgr]
+group = "host"
+role = "service"
+name = "Менеджер пользователей"
+
+[[seq]]
+from = "phone"
+to = "applier"
+step = 13
+label = "одноразовый акт"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 14
+label = "первый допуск акта: намерение, открытая операция, забор операции"
+
+[[seq]]
+from = "applier"
+to = "dispatcher"
+step = 15
+label = "закрыть допуск, заборы на обновление"
+
+[[seq]]
+from = "dispatcher"
+to = "applier"
+step = 16
+label = "допуск закрыт, остановка подтверждена"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 17
+label = "проверка продолжения: своя операция, стоп, ключ, время, отзывы"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 18
+label = "каждый эффект: запись о начале, исполнение, наблюдение"
+
+[[seq]]
+opt = "набор меняет замыкание"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 19
+label = "изолированная проверка кандидата, переключение последним эффектом"
+
+[[seq]]
+end = true
+
+[[seq]]
+from = "applier"
+to = "usermgr"
+step = 20
+label = "квалификация входов и выбранного замыкания"
+
+[[seq]]
+from = "usermgr"
+to = "applier"
+step = 21
+label = "новая аттестация"
+
+[[seq]]
+from = "applier"
+to = "applier"
+step = 22
+label = "сверка итога, принятый исход"
+
+[[seq]]
+from = "applier"
+to = "dispatcher"
+step = 23
+label = "исход операции"
+
+[[seq]]
+alt = "принятый исход, нет стопа, отзыва и заборов"
+
+[[seq]]
+from = "dispatcher"
+to = "dispatcher"
+step = 24
+label = "своё решение: допуск открыт"
+
+[[seq]]
+else = "отказ до первой записи о начале"
+
+[[seq]]
+from = "dispatcher"
+to = "dispatcher"
+step = 24
+label = "допуск закрыт; исход окончательный"
+color = "alert"
+
+[[seq]]
+else = "прерывание после записи о начале, стоп или отзыв"
+
+[[seq]]
+from = "dispatcher"
+to = "dispatcher"
+step = 24
+label = "допуск закрыт; эффекты ждут сверки за забором операции"
+color = "alert"
+
+[[seq]]
+end = true
