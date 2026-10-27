@@ -105,6 +105,49 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('== delivery hedge', r.stdout)
 
+    # The installation book is held to the book's rules: a planted marker,
+    # hedge, dash, guillemet, local path or missing heading fails an
+    # install-book chapter; only the exact state chapter 06-gde-my.md may carry
+    # markers and hedges, and the other books' state chapter names give no
+    # exemption there. A clean chapter passes.
+    def test_install_book(self):
+        d = self.root / 'install-book/ru'
+        d.mkdir(parents=True)
+        ch = d / '03-shagi.md'
+        ch.write_text('# Шаги\n\nУстановщик проверяет подпись манифеста.\n')
+        self.assertEqual(self.run_check().returncode, 0)
+        for text, label in (('⟦решено⟧', 'status marker'), ('пока', 'delivery hedge'),
+                            ('Ключник — служба.', 'dash in prose'), ('Поле «to».', 'guillemets'),
+                            ('/home/example/project', 'local path')):
+            with self.subTest(label=label):
+                ch.write_text('# Шаги\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn('== ' + label, r.stdout)
+        ch.write_text('Без заголовка\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('chapter without a level-1 heading: install-book/ru/03-shagi.md', r.stdout)
+        ch.write_text('# Шаги\n')
+        state = d / '06-gde-my.md'
+        state.write_text('# Где мы\n\n⟦решено⟧ пока не реализовано\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        state.write_text('# Где мы\n\nпока\nКлючник — служба.\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('== dash in prose', r.stdout)
+        self.assertNotIn('== delivery hedge', r.stdout)
+        state.unlink()
+        for name in ('09-gde-my.md', '29-gde-my.md'):
+            with self.subTest(name=name):
+                other = d / name
+                other.write_text('# Где мы\n\nпока\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1)
+                self.assertIn('== delivery hedge', r.stdout)
+                other.unlink()
+
     # Every hedge form, in either case, fails a chapter other than the state
     # chapter; a precise design sentence nearby passes. Lexical, not semantic.
     def test_hedges(self):

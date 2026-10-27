@@ -1,0 +1,75 @@
+# Host services and what crosses the machine boundary, part 2 of the parts
+# figure (part 1 is install-accounts). Content follows chapter "Что ставится
+# и зачем" (table "Части и их учётки", column "Сеть"). Each service runs under
+# its own service account, named in its description; the machine is the only
+# boundary drawn. The keyholder and the broker have no listener and no
+# outbound link. No order, so no step numbers.
+layout = "graph"
+direction = "LR"
+uniform_width = true
+alt = "Службы хоста под своими учётками и то, что пересекает границу машины."
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.keyholder]
+group = "host"
+role = "key"
+name = "Ключник"
+text = "учётка `swarma-keymaker`"
+note = "Только Unix-сокеты: собеседника определяет ядро по UID."
+
+[nodes.broker]
+group = "host"
+role = "service"
+name = "Брокер учётных данных"
+text = "учётка `swarma-credential-broker`"
+
+[nodes.proxy]
+group = "host"
+role = "service"
+name = "Прокси"
+text = "своя служебная учётка"
+
+[nodes.bridge]
+group = "host"
+role = "service"
+name = "Мост"
+text = "общая учётка сообщений"
+
+[nodes.repoactions]
+group = "host"
+role = "service"
+name = "Исполнитель действий с репозиторием"
+text = "своя служебная учётка"
+
+[nodes.services]
+role = "external"
+name = "Службы в сети"
+text = "провайдеры моделей и другие адресаты"
+
+[nodes.carrier]
+role = "external"
+name = "Сервер носителя"
+text = "федеративный обмен сообщениями"
+
+[nodes.codehost]
+role = "external"
+name = "Хостинг кода"
+text = "репозитории и раннеры"
+
+[[links]]
+from = "proxy"
+to = "services"
+label = "выход агентов по профилю"
+
+[[links]]
+from = "bridge"
+to = "carrier"
+label = "сообщения станций"
+
+[[links]]
+from = "repoactions"
+to = "codehost"
+label = "публикация и приземление"

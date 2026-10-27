@@ -1,0 +1,124 @@
+# Installation flow, part 1 of 2: from the command to the qualification of
+# the machine (installation steps 1-7). Content follows chapters "Одна
+# команда" and "Шаги и результат каждого шага". Messages are numbered in
+# order across both parts; part 2 continues with 13. The whole flow does not
+# fit one box; it is split at the change of phase after qualification, when
+# the installer hands over to Curator. The phone talks to the operator
+# account, not to the keyholder, so the keyholder's root goes through the
+# installer. Density keys from editorial/diagram-style.ru.md.
+layout = "sequence"
+alt = "Установка, часть 1: от команды до квалификации машины. Пароль администратора спрашивается один раз, до первого изменения."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.phone]
+role = "key"
+name = "Телефон оператора"
+
+[nodes.installer]
+group = "host"
+role = "service"
+name = "Установщик"
+
+[nodes.curator]
+group = "host"
+role = "service"
+name = "Swarma Curator"
+
+[nodes.keyholder]
+group = "host"
+role = "key"
+name = "Ключник"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Службы хоста"
+
+[[seq]]
+from = "installer"
+to = "installer"
+step = 1
+label = "проверить подпись манифеста"
+
+[[seq]]
+from = "installer"
+to = "owner"
+step = 2
+label = "план: пакеты, `sudo`, ссылки"
+
+[[seq]]
+from = "owner"
+to = "installer"
+step = 3
+label = "одобрение и пароль, один раз"
+
+[[seq]]
+from = "installer"
+to = "curator"
+step = 4
+label = "поставить под учёткой владельца"
+
+[[seq]]
+from = "installer"
+to = "installer"
+step = 5
+label = "корень, учётки, запрет сети"
+
+[[seq]]
+from = "installer"
+to = "phone"
+step = 6
+label = "сопряжение ключа оператора"
+
+[[seq]]
+from = "installer"
+to = "keyholder"
+step = 7
+label = "запустить ключника"
+
+[[seq]]
+from = "keyholder"
+to = "installer"
+step = 8
+label = "публичный корень"
+
+[[seq]]
+from = "installer"
+to = "phone"
+step = 9
+label = "корень на подтверждение"
+
+[[seq]]
+from = "installer"
+to = "services"
+step = 10
+label = "запустить службы, допуск закрыт"
+
+[[seq]]
+from = "installer"
+to = "installer"
+step = 11
+label = "проверить привязки и запрет сети"
+
+[[seq]]
+from = "installer"
+to = "services"
+step = 12
+label = "подписанная аттестация"
+
+[[seq]]
+note = "Диспетчер открывает допуск по свидетельствам аттестации."
+on = "services"

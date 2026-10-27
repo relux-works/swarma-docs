@@ -1,0 +1,96 @@
+# Accounts on the machine and the launch path across them, part 1 of the
+# parts figure (part 2 is install-services). Content follows chapter
+# "Что ставится и зачем" (table "Части и их учётки"). Deployment topology:
+# the machine is the outer boundary, each account class that holds a part of
+# the launch path is a nested boundary; services that run under their own
+# service account stand directly in the machine container and name their
+# account in the description. No order, so no step numbers.
+layout = "graph"
+direction = "TB"
+uniform_width = true
+alt = "Учётки на машине и путь запуска агента через них."
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[groups.owner]
+parent = "host"
+label = "Учётка владельца"
+role = "human"
+
+[groups.root]
+parent = "host"
+label = "root на одну операцию"
+role = "service"
+
+[groups.agent]
+parent = "host"
+label = "Учётка агента"
+role = "agent"
+
+[groups.keeper]
+parent = "host"
+label = "Учётка кипера"
+role = "agent"
+
+[nodes.curator]
+group = "owner"
+role = "service"
+name = "Swarma Curator"
+text = "профили, дома, план запуска"
+
+[nodes.keeper]
+group = "keeper"
+role = "agent"
+name = "Кипер узла"
+text = "главный цикл машины"
+
+[nodes.sessionhost]
+group = "host"
+role = "service"
+name = "Хост сессий"
+text = "учётка `swarma-session-host`"
+
+[nodes.dispatcher]
+group = "host"
+role = "service"
+name = "Диспетчер"
+text = "учётка `swarma-dispatcher`"
+
+[nodes.manager]
+group = "root"
+role = "service"
+name = "Менеджер и запускатель"
+text = "учётки агентов, одобренные программы"
+
+[nodes.agent]
+group = "agent"
+role = "agent"
+name = "Агент"
+text = "`curator-run` исполняет план"
+
+[[links]]
+from = "curator"
+to = "dispatcher"
+label = "план запуска"
+
+[[links]]
+from = "keeper"
+to = "sessionhost"
+label = "просьба о запуске"
+
+[[links]]
+from = "sessionhost"
+to = "dispatcher"
+label = "`host_start`"
+
+[[links]]
+from = "dispatcher"
+to = "manager"
+label = "`sudo`, одна операция"
+
+[[links]]
+from = "manager"
+to = "agent"
+label = "учётка и запуск"

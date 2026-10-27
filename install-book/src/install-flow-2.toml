@@ -1,0 +1,108 @@
+# Installation flow, part 2 of 2: from the profiles to the owner's private
+# room (installation steps 8-10). Content follows chapter "Шаги и результат
+# каждого шага". Message numbers continue part 1. The machine registry (a
+# reviewed git store) and the registrar (a service next to the carrier
+# server) are separate participants; the operator, not the registry, raises
+# the pinned registry revision at the registrar (and at the keyholder). The owner's phone confirmation of
+# subscriptions is a physical action on a device, so it is dashed. Density
+# keys from editorial/diagram-style.ru.md.
+layout = "sequence"
+alt = "Установка, часть 2: от профилей до личной комнаты владельца. Номера сообщений продолжают первую часть."
+
+[theme.space]
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.host]
+label = "Машина владельца"
+role = "service"
+
+[nodes.owner]
+role = "human"
+name = "Владелец"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Службы хоста"
+
+[nodes.curator]
+group = "host"
+role = "service"
+name = "Swarma Curator"
+
+[nodes.keeper]
+group = "host"
+role = "agent"
+name = "Кипер узла"
+
+[nodes.registry]
+role = "store"
+name = "Реестр машин"
+
+[nodes.registrar]
+role = "service"
+name = "Регистратор"
+
+[[seq]]
+from = "curator"
+to = "curator"
+step = 13
+label = "профили из закреплённых источников"
+
+[[seq]]
+from = "curator"
+to = "services"
+step = 14
+label = "план запуска роли"
+
+[[seq]]
+from = "owner"
+to = "services"
+step = 15
+style = "dashed"
+label = "подписки, подтверждение телефоном"
+
+[[seq]]
+from = "owner"
+to = "registry"
+step = 16
+label = "подписанная запись о машине"
+
+[[seq]]
+from = "owner"
+to = "registrar"
+step = 17
+label = "поднять ревизию реестра"
+
+[[seq]]
+from = "services"
+to = "keeper"
+step = 18
+label = "учётка и сессия кипера"
+
+[[seq]]
+from = "keeper"
+to = "registrar"
+step = 19
+label = "допуск к носителю"
+
+[[seq]]
+from = "keeper"
+to = "owner"
+step = 20
+label = "приглашение в личную комнату"
+
+[[seq]]
+from = "owner"
+to = "keeper"
+step = 21
+label = "принять приглашение"
+
+[[seq]]
+from = "keeper"
+to = "owner"
+step = 22
+label = "первое сообщение"
