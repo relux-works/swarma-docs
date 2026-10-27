@@ -66,6 +66,45 @@ class HygieneTests(unittest.TestCase):
                 self.assertEqual(r.returncode, 1)
                 self.assertIn('== ' + label, r.stdout)
 
+    # The a2a book is held to the book's rules: a planted marker, hedge, dash,
+    # guillemet or missing heading fails an a2a chapter; only the exact a2a
+    # state chapter 09-gde-my.md may carry markers and hedges, and the book's
+    # state chapter name gives no exemption there. A clean a2a chapter passes.
+    def test_a2a_book(self):
+        d = self.root / 'a2a-book/ru'
+        d.mkdir(parents=True)
+        ch = d / '05-pochta.md'
+        ch.write_text('# Почта\n\nПотребитель сохраняет событие до курсора.\n')
+        self.assertEqual(self.run_check().returncode, 0)
+        for text, label in (('⟦решено⟧', 'status marker'), ('пока', 'delivery hedge'),
+                            ('Ящик — файл.', 'dash in prose'), ('Поле «to».', 'guillemets'),
+                            ('/home/example/project', 'local path')):
+            with self.subTest(label=label):
+                ch.write_text('# Почта\n\n' + text + '\n')
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn('== ' + label, r.stdout)
+        ch.write_text('Без заголовка\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('chapter without a level-1 heading: a2a-book/ru/05-pochta.md', r.stdout)
+        ch.write_text('# Почта\n')
+        state = d / '09-gde-my.md'
+        state.write_text('# Где мы\n\n⟦решено⟧ пока не реализовано\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        state.write_text('# Где мы\n\nпока\nЯщик — файл.\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('== dash in prose', r.stdout)
+        self.assertNotIn('== delivery hedge', r.stdout)
+        state.unlink()
+        other = d / '29-gde-my.md'
+        other.write_text('# Где мы\n\nпока\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('== delivery hedge', r.stdout)
+
     # Every hedge form, in either case, fails a chapter other than the state
     # chapter; a precise design sentence nearby passes. Lexical, not semantic.
     def test_hedges(self):
