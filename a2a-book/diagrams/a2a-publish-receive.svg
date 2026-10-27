@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="839.3" height="798" viewBox="0 0 839.3 798">
+<title>Публикация и приём в a2a: идентификатор события доказывает публикацию, потребитель сохраняет пачку в почтовый ящик до сдвига курсора, звонок несёт только счётчики, а квитанция ставится после записи вывода входящих.</title>
+<rect width="839.3" height="798" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(66.7 0)">
+<!-- group recipient -->
+<rect x="315.7" y="0" width="432.9" height="774" rx="16" fill="none" stroke="#7c4ddb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="recipient"/>
+<!-- group label recipient -->
+<rect x="327.7" y="10" width="237.1" height="18.9" fill="#ffffff" class="plate"/>
+<text x="333.7" y="24.4" font-size="13" fill="#6a3fc8" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ПОЛЬЗОВАТЕЛЬ ОС АДРЕСАТА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="766" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="166.7" y1="83.1" x2="166.7" y2="766" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="383.7" y1="83.1" x2="383.7" y2="766" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="570.6" y1="83.1" x2="570.6" y2="766" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="680.6" y1="83.1" x2="680.6" y2="766" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node post -->
+<rect x="-66.7" y="37.7" width="133.5" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="post"/>
+<text x="-50.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Отправитель</tspan></text>
+<!-- node carrier -->
+<rect x="113.8" y="37.7" width="105.7" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="carrier"/>
+<text x="129.8" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Носитель</tspan></text>
+<!-- node a2a -->
+<rect x="333.7" y="37.7" width="100" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="a2a"/>
+<text x="369.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">a2a</tspan></text>
+<!-- node mailbox -->
+<rect x="520.6" y="37.7" width="100" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="mailbox"/>
+<text x="549" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ящик</tspan></text>
+<!-- node session -->
+<rect x="630.6" y="37.7" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="session"/>
+<text x="653.8" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сессия</tspan></text>
+<!-- divider -->
+<line x1="-66.7" y1="121.2" x2="748.6" y2="121.2" stroke="#868e99" stroke-width="1.2"/>
+<rect x="323.7" y="107.1" width="100.8" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="337.7" y="125.4" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">публикация</tspan></text>
+<!-- message post -> carrier -->
+<path d="M 2 194.3 L 158.7 194.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="post" data-to="carrier" data-edge="m1"/>
+<polygon points="164.7,194.3 154.7,189.8 154.7,198.8" fill="#3a3f47"/>
+<rect x="24" y="147.3" width="118.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="37" cy="158.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="33.3" y="162.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="52" y="162.6" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">a2a</tspan><tspan x="82.8" font-family="PT Mono, monospace" font-weight="bold">post</tspan></text>
+<text x="52" y="182.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с заголовком</tspan></text>
+</g>
+<!-- message carrier -> post -->
+<path d="M 164.7 253.3 L 8 253.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="carrier" data-to="post" data-edge="m2"/>
+<polygon points="2,253.3 12,257.8 12,248.8" fill="#3a3f47"/>
+<rect x="16" y="206.3" width="134.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="29" cy="217.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="221.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="44" y="221.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">идентификатор</tspan></text>
+<text x="44" y="241.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">события</tspan></text>
+</g>
+<!-- divider -->
+<line x1="-66.7" y1="279.4" x2="748.6" y2="279.4" stroke="#868e99" stroke-width="1.2"/>
+<rect x="323.7" y="265.3" width="67.1" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="337.7" y="283.6" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">приём</tspan></text>
+<!-- message a2a -> carrier -->
+<path d="M 381.7 352.5 L 174.7 352.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="carrier" data-edge="m4"/>
+<polygon points="168.7,352.5 178.7,357 178.7,348" fill="#3a3f47"/>
+<rect x="174.7" y="305.5" width="133" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="187.7" cy="316.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="184" y="320.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="202.7" y="320.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">синхронизация</tspan></text>
+<text x="202.7" y="340.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с курсора</tspan></text>
+</g>
+<!-- message carrier -> a2a -->
+<path d="M 168.7 392 L 375.7 392" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="carrier" data-to="a2a" data-edge="m5"/>
+<polygon points="381.7,392 371.7,387.5 371.7,396.5" fill="#3a3f47"/>
+<rect x="176.5" y="364.5" width="129.3" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="189.5" cy="375.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="185.8" y="379.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="204.5" y="379.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пачка событий</tspan></text>
+</g>
+<!-- message a2a -> mailbox -->
+<path d="M 385.7 451 L 562.6 451" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="mailbox" data-edge="m6"/>
+<polygon points="568.6,451 558.6,446.5 558.6,455.5" fill="#3a3f47"/>
+<rect x="399.7" y="404" width="154.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="412.7" cy="414.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="409" y="419.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="427.7" y="419.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">события личности,</tspan></text>
+<text x="427.7" y="438.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">затем</tspan><tspan x="469.3" font-family="PT Mono, monospace" font-weight="bold">fsync</tspan></text>
+</g>
+<!-- self a2a -->
+<path d="M 385.7 467 L 415.7 467 L 415.7 516 L 392.7 516" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="a2a" data-edge="m7"/>
+<polygon points="386.7,516 396.7,520.5 396.7,511.5" fill="#3a3f47"/>
+<rect x="423.7" y="471" width="118.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="436.7" cy="481.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="433" y="486.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="451.7" y="486.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">курсор после</tspan></text>
+<text x="451.7" y="505.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сброса</tspan></text>
+</g>
+<!-- message a2a -> session -->
+<path d="M 385.7 571 L 672.6 571" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="session" data-edge="m8"/>
+<polygon points="678.6,571 668.6,566.5 668.6,575.5" fill="#3a3f47"/>
+<rect x="459.8" y="524" width="144.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<circle cx="472.8" cy="534.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="469.2" y="539.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="487.8" y="539.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">звонок: счётчики</tspan></text>
+<text x="487.8" y="558.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без текста</tspan></text>
+</g>
+<!-- message session -> a2a -->
+<path d="M 678.6 610.5 L 391.7 610.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="session" data-to="a2a" data-edge="m9"/>
+<polygon points="385.7,610.5 395.7,615 395.7,606" fill="#3a3f47"/>
+<rect x="478.2" y="583" width="107.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m9">
+<circle cx="491.2" cy="593.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="487.6" y="598.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="506.2" y="598.2" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">a2a</tspan><tspan x="537" font-family="PT Mono, monospace" font-weight="bold">inbox</tspan></text>
+</g>
+<!-- message a2a -> session -->
+<path d="M 385.7 689 L 672.6 689" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="session" data-edge="m10"/>
+<polygon points="678.6,689 668.6,684.5 668.6,693.5" fill="#3a3f47"/>
+<rect x="465.9" y="622.5" width="132.4" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m10">
+<circle cx="478.9" cy="633.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="475.3" y="637.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="493.9" y="637.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">записи в рамке</tspan></text>
+<text x="493.9" y="657.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">недоверенных</tspan></text>
+<text x="493.9" y="676.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">данных</tspan></text>
+</g>
+<!-- message a2a -> mailbox -->
+<path d="M 385.7 748 L 562.6 748" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a2a" data-to="mailbox" data-edge="m11"/>
+<polygon points="568.6,748 558.6,743.5 558.6,752.5" fill="#3a3f47"/>
+<rect x="403" y="701" width="148.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m11">
+<rect x="407" y="702.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="411.5" y="716.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="436.7" y="716.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">квитанция после</tspan></text>
+<text x="436.7" y="735.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">записи вывода</tspan></text>
+</g>
+</g>
+</g>
+</svg>

@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="825.6" height="758.8" viewBox="0 0 825.6 758.8">
-<title>Разовый запуск, исполнение: запускатель сбрасывает права, аренду исполнитель получает уже под UID агента, диспетчер сверяет эффекты.</title>
-<rect width="825.6" height="758.8" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="825.6" height="849.4" viewBox="0 0 825.6 849.4">
+<title>Разовый запуск, исполнение в режиме с читаемым токеном: запускатель сбрасывает права, аренду исполнитель получает уже под UID агента, диспетчер сверяет эффекты.</title>
+<rect width="825.6" height="849.4" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(60 0)">
-<line x1="0" y1="45.4" x2="0" y2="734.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="225.7" y1="45.4" x2="225.7" y2="734.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="444.9" y1="70.9" x2="444.9" y2="734.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="661.6" y1="68.8" x2="661.6" y2="734.8" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="45.4" x2="0" y2="825.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="225.7" y1="45.4" x2="225.7" y2="825.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="444.9" y1="70.9" x2="444.9" y2="825.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="661.6" y1="68.8" x2="661.6" y2="825.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node disp -->
 <rect x="-58.1" y="0" width="116.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="disp"/>
 <text x="-42.1" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
@@ -74,38 +74,43 @@
 <text x="522.4" y="438.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">разрешённый</tspan></text>
 <text x="522.4" y="458.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">материал</tspan></text>
 </g>
+<!-- note -->
+<rect x="384.9" y="490.4" width="336.8" height="78.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="434.9" y="515.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">В режиме без секретов у агента шагов</tspan></text>
+<text x="437.2" y="533.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">9 и 10 нет: харнес получает заглушку,</tspan></text>
+<text x="435.4" y="552.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">аренду держит шлюз учётных данных.</tspan></text>
 <!-- self exec -->
-<path d="M 446.9 494.4 L 476.9 494.4 L 476.9 523.9 L 453.9 523.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="exec" data-to="exec" data-edge="m5"/>
-<polygon points="447.9,523.9 457.9,528.4 457.9,519.4" fill="#3a3f47"/>
-<rect x="484.9" y="498.4" width="150.8" height="21.5" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m5">
-<rect x="488.9" y="500.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="493.4" y="513.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
-<text x="518.6" y="513.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запустить харнес</tspan></text>
+<path d="M 446.9 585 L 476.9 585 L 476.9 614.5 L 453.9 614.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="exec" data-to="exec" data-edge="m6"/>
+<polygon points="447.9,614.5 457.9,619 457.9,610" fill="#3a3f47"/>
+<rect x="484.9" y="589" width="150.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="488.9" y="590.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="493.4" y="604.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="518.6" y="604.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запустить харнес</tspan></text>
 </g>
 <!-- message exec -> disp -->
-<path d="M 442.9 567.4 L 8 567.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="exec" data-to="disp" data-edge="m6"/>
-<polygon points="2,567.4 12,571.9 12,562.9" fill="#3a3f47"/>
-<rect x="130.5" y="539.9" width="183.8" height="21.5" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m6">
-<rect x="134.5" y="541.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="139" y="555.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
-<text x="164.3" y="555.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат исполнения</tspan></text>
+<path d="M 442.9 658 L 8 658" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="exec" data-to="disp" data-edge="m7"/>
+<polygon points="2,658 12,662.5 12,653.5" fill="#3a3f47"/>
+<rect x="130.5" y="630.5" width="183.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<rect x="134.5" y="632.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="139" y="645.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="164.3" y="645.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат исполнения</tspan></text>
 </g>
 <!-- self disp -->
-<path d="M 2 591.4 L 32 591.4 L 32 640.4 L 9 640.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="disp" data-edge="m7"/>
-<polygon points="3,640.4 13,644.9 13,635.9" fill="#3a3f47"/>
-<rect x="40" y="595.4" width="159.7" height="41" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m7">
-<rect x="44" y="597.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="48.5" y="610.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
-<text x="73.7" y="610.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сверить эффекты</tspan></text>
-<text x="73.7" y="630.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и провести уборку</tspan></text>
+<path d="M 2 682 L 32 682 L 32 731 L 9 731" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="disp" data-edge="m8"/>
+<polygon points="3,731 13,735.5 13,726.5" fill="#3a3f47"/>
+<rect x="40" y="686" width="159.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<rect x="44" y="687.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="48.5" y="701.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="73.7" y="701.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сверить эффекты</tspan></text>
+<text x="73.7" y="720.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и провести уборку</tspan></text>
 </g>
 <!-- note -->
-<rect x="-60" y="656.4" width="781.6" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="199.8" y="681.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">При потере ответа сверяют тот же эффект.</tspan></text>
-<text x="181.9" y="699.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Неизвестный исход не разрешает новый запуск.</tspan></text>
+<rect x="-60" y="747" width="781.6" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="199.8" y="772.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">При потере ответа сверяют тот же эффект.</tspan></text>
+<text x="181.9" y="790.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Неизвестный исход не разрешает новый запуск.</tspan></text>
 </g>
 </g>
 </svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="772" height="792" viewBox="0 0 772 792">
+<title>Службы хоста под своими учётками и то, что пересекает границу машины.</title>
+<rect width="772" height="792" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(-8 -8)">
+<!-- graphviz 14.0.4 -->
+<!-- group host -->
+<rect x="8" y="8" width="284" height="768" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- node keyholder -->
+<rect x="26" y="687.5" width="248" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="keyholder"/>
+<text x="114.5" y="713.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключник</tspan></text>
+<text x="59.2" y="742.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan><tspan x="105.8" font-family="PT Mono, monospace">swarma-keymaker</tspan></text>
+<!-- node broker -->
+<rect x="26" y="456.8" width="248" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="broker"/>
+<text x="53.4" y="482.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер учётных данных</tspan></text>
+<text x="128.7" y="511.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan></text>
+<text x="42" y="531" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">swarma-credential-broker</tspan></text>
+<!-- node proxy -->
+<rect x="26" y="60.5" width="248" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="proxy"/>
+<text x="121.4" y="86.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Прокси</tspan></text>
+<text x="75.3" y="115.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя служебная учётка</tspan></text>
+<!-- node bridge -->
+<rect x="26" y="153.6" width="248" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="bridge"/>
+<text x="130.3" y="179.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Мост</tspan></text>
+<text x="66.6" y="208.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">общая учётка сообщений</tspan></text>
+<!-- node repoactions -->
+<rect x="26" y="246.8" width="248" height="94.3" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="repoactions"/>
+<text x="59.9" y="273" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Исполнитель действий</tspan></text>
+<text x="87.1" y="296.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с репозиторием</tspan></text>
+<text x="75.3" y="324.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя служебная учётка</tspan></text>
+<!-- node updater -->
+<rect x="26" y="363.6" width="248" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="updater"/>
+<text x="86.4" y="389.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Updater</tspan></text>
+<text x="63.7" y="418.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan><tspan x="110.3" font-family="PT Mono, monospace">swarma-updater</tspan></text>
+<!-- node services -->
+<rect x="508" y="32.8" width="248" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="services"/>
+<text x="574.4" y="58.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Службы в сети</tspan></text>
+<text x="561.1" y="87.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">провайдеры моделей</tspan></text>
+<text x="570.9" y="107" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и другие адресаты</tspan></text>
+<!-- node carrier -->
+<rect x="508" y="144.8" width="248" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="carrier"/>
+<text x="565.3" y="170.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервер носителя</tspan></text>
+<text x="583.5" y="199.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">федеративный</tspan></text>
+<text x="563.7" y="219" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">обмен сообщениями</tspan></text>
+<!-- node release -->
+<rect x="508" y="363.6" width="248" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="release"/>
+<text x="554.9" y="389.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Источники выпуска</tspan></text>
+<text x="535.1" y="418.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">зеркала, метаданные, журнал</tspan></text>
+<!-- node codehost -->
+<rect x="508" y="258.6" width="248" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="codehost"/>
+<text x="579.6" y="284.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хостинг кода</tspan></text>
+<text x="552.7" y="313.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">репозитории и раннеры</tspan></text>
+<!-- note keyholder -->
+<rect x="62.2" y="569.7" width="175.6" height="74.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_keyholder"/>
+<text x="87.5" y="593" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Только Unix-сокеты:</tspan></text>
+<text x="110.9" y="611.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">собеседника</tspan></text>
+<text x="74.2" y="629.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">определяет ядро по UID.</tspan></text>
+<path d="M 150 687.5 L 150 644.3" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="keyholder" data-to="note_keyholder"/>
+<!-- link proxy -> services -->
+<path d="M 274.3 91.4 C 343.6 88.8 430 85.5 500.4 82.9 L 501.7 82.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="proxy" data-to="services" data-edge="e0"/>
+<polygon points="507.6,82.6 497.5,78.5 497.8,87.5" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="303.7" y="72.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выход агентов по профилю</tspan></text>
+</g>
+<!-- link bridge -> carrier -->
+<path d="M 274.3 189.3 C 343.6 189.4 430 189.6 500.4 189.7 L 501.7 189.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="carrier" data-edge="e1"/>
+<polygon points="507.6,189.7 497.7,185.2 497.6,194.2" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="329.5" y="178.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сообщения станций</tspan></text>
+</g>
+<!-- link repoactions -> codehost -->
+<path d="M 274.3 294 C 343.6 294 430 294 500.4 294 L 501.6 294" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="repoactions" data-to="codehost" data-edge="e2"/>
+<polygon points="507.6,294 497.6,289.5 497.6,298.5" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="304.1" y="282.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">публикация и приземление</tspan></text>
+</g>
+<!-- link updater -> release -->
+<path d="M 274.3 399 C 343.6 399 430 399 500.4 399 L 501.6 399" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="release" data-edge="e3"/>
+<polygon points="507.6,399 497.6,394.5 497.6,403.5" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="310.3" y="387.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">метаданные и артефакты</tspan></text>
+</g>
+<!-- group label host -->
+<rect x="20" y="18" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="26" y="32.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+</g>
+</g>
+</svg>

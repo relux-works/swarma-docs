@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="668.4" height="585.5" viewBox="0 0 668.4 585.5">
+<title>Обновление, часть 1: загрузка, предпроверка и фиксация метаданных.</title>
+<rect width="668.4" height="585.5" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(52.5 0)">
+<!-- group host -->
+<rect x="175.6" y="0" width="416.3" height="561.5" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="187.6" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="193.6" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="106.5" x2="0" y2="553.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="273.2" y1="83.1" x2="273.2" y2="553.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="508.8" y1="106.5" x2="508.8" y2="553.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node mirror -->
+<rect x="-52.5" y="37.7" width="105" height="68.8" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="mirror"/>
+<text x="-32.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Зеркала</tspan></text>
+<text x="-36.5" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и журнал</tspan></text>
+<!-- node updater -->
+<rect x="193.6" y="37.7" width="159.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="updater"/>
+<text x="209.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Updater</tspan></text>
+<!-- node committer -->
+<rect x="443.8" y="37.7" width="130.2" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="committer"/>
+<text x="470.5" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Фиксатор</tspan></text>
+<text x="459.8" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">метаданных</tspan></text>
+<!-- message updater -> mirror -->
+<path d="M 271.2 197 L 8 197" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="mirror" data-edge="m0"/>
+<polygon points="2,197 12,201.5 12,192.5" fill="#3a3f47"/>
+<rect x="8" y="130.5" width="159.6" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="21" cy="141.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="17.3" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="36" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">root</tspan><tspan x="72" font-family="PT Sans, sans-serif" font-weight="bold">,</tspan><tspan x="79.2" font-family="PT Mono, monospace" font-weight="bold">timestamp</tspan><tspan x="160.2" font-family="PT Sans, sans-serif" font-weight="bold">,</tspan></text>
+<text x="36" y="165.2" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">snapshot</tspan><tspan x="108" font-family="PT Sans, sans-serif" font-weight="bold">,</tspan></text>
+<text x="36" y="184.8" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">targets</tspan></text>
+</g>
+<!-- message mirror -> updater -->
+<path d="M 2 283.5 L 265.2 283.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="mirror" data-to="updater" data-edge="m1"/>
+<polygon points="271.2,283.5 261.2,279 261.2,288" fill="#3a3f47"/>
+<rect x="14.8" y="217" width="146" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="27.8" cy="227.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="24.1" y="232.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="42.8" y="232.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">метаданные</tspan></text>
+<text x="42.8" y="251.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и доказательства</tspan></text>
+<text x="42.8" y="271.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">журнала</tspan></text>
+</g>
+<!-- self updater -->
+<path d="M 275.2 307.5 L 305.2 307.5 L 305.2 356.5 L 282.2 356.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="updater" data-edge="m2"/>
+<polygon points="276.2,356.5 286.2,361 286.2,352" fill="#3a3f47"/>
+<rect x="313.2" y="311.5" width="169.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="326.2" cy="322.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="322.5" y="326.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="341.2" y="326.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предпроверка</tspan></text>
+<text x="341.2" y="346.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в пределах ресурсов</tspan></text>
+</g>
+<!-- message updater -> committer -->
+<path d="M 275.2 419.5 L 500.8 419.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="committer" data-edge="m3"/>
+<polygon points="506.8,419.5 496.8,415 496.8,424" fill="#3a3f47"/>
+<rect x="331.6" y="372.5" width="118.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="344.6" cy="383.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="340.9" y="387.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="359.6" y="387.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">метаданные</tspan></text>
+<text x="359.6" y="407.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на фиксацию</tspan></text>
+</g>
+<!-- self committer -->
+<path d="M 506.8 443.5 L 476.8 443.5 L 476.8 531.5 L 499.8 531.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="committer" data-to="committer" data-edge="m4"/>
+<polygon points="505.8,531.5 495.8,527 495.8,536" fill="#3a3f47"/>
+<rect x="313.9" y="447.5" width="154.9" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="326.9" cy="458.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="323.3" y="462.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="341.9" y="462.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">роли</tspan></text>
+<text x="341.9" y="482.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с доказательством</tspan></text>
+<text x="341.9" y="501.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">включения;</tspan></text>
+<text x="341.9" y="521.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">полные отзывы</tspan></text>
+</g>
+</g>
+</g>
+</svg>

@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="781.9" height="643.4" viewBox="0 0 781.9 643.4">
-<title>Доставка setup-token, запуск: секрет извлекает окончательный исполнитель перед запуском Claude.</title>
-<rect width="781.9" height="643.4" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="781.9" height="698" viewBox="0 0 781.9 698">
+<title>Доставка setup-token в режиме с читаемым токеном, запуск: секрет извлекает окончательный исполнитель перед запуском Claude.</title>
+<rect width="781.9" height="698" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(80.3 0)">
-<line x1="0" y1="45.4" x2="0" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="168.2" y1="68.8" x2="168.2" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="346.5" y1="68.8" x2="346.5" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="617.5" y1="45.4" x2="617.5" y2="619.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="45.4" x2="0" y2="674" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="168.2" y1="68.8" x2="168.2" y2="674" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="346.5" y1="68.8" x2="346.5" y2="674" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="617.5" y1="45.4" x2="617.5" y2="674" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- frame alt -->
 <rect x="124.2" y="246.3" width="517.4" height="298.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
 <line x1="124.2" y1="355.5" x2="641.5" y2="355.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
@@ -81,8 +81,11 @@
 <text x="390.5" y="513" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">при запуске</tspan></text>
 </g>
 <!-- note -->
-<rect x="286.5" y="559.2" width="391" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<rect x="286.5" y="559.2" width="391" height="96.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
 <text x="335.1" y="584.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Только inference; Remote Control его отвергает.</tspan></text>
+<text x="343.5" y="602.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">В режиме без секретов у агента исполнитель</tspan></text>
+<text x="335.3" y="620.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">токена не извлекает: Claude получает заглушку,</tspan></text>
+<text x="329.3" y="639.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">а токен в аренду получает шлюз учётных данных.</tspan></text>
 </g>
 </g>
 </svg>

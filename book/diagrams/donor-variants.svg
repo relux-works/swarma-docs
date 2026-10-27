@@ -1,81 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="849.3" height="455.7" viewBox="0 0 849.3 455.7">
-<title>Варианты развёртывания донора: без разделения UID, с отдельными учётками и с песочницей; у каждого своя граница защиты.</title>
-<rect width="849.3" height="455.7" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="855.3" height="492.4" viewBox="0 0 855.3 492.4">
+<title>Варианты развёртывания донора: без разделения UID, с отдельными учётками и с песочницей; у каждого своя граница защиты, вариант A вне гарантии режима без секретов у агента, а границу C квалифицируют на каждой платформе.</title>
+<rect width="855.3" height="492.4" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <!-- graphviz 14.0.4 -->
 <!-- node b -->
-<rect x="6.6" y="131.5" width="243" height="148.9" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="b"/>
-<text x="39.5" y="157.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">B: две учётные записи</tspan></text>
-<text x="44.1" y="186.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">мост под служебным UID,</tspan></text>
-<text x="30.3" y="205.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">харнес под рабочим; граница</tspan></text>
-<text x="43.4" y="225.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">чтения и файрвол по UID;</tspan></text>
-<text x="70.4" y="244.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">нужен компонент</tspan></text>
-<text x="22.6" y="264.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">привилегированной подготовки</tspan></text>
+<rect x="1.6" y="129.8" width="258.9" height="90.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="b"/>
+<text x="42.5" y="155.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">B: две учётные записи</tspan></text>
+<text x="17.6" y="184.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">мост и держатель учётных данных</tspan></text>
+<text x="66.6" y="203.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не под UID харнеса</tspan></text>
 <!-- node a -->
-<rect x="0" y="0" width="256.2" height="109.9" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="a"/>
-<text x="52.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">A: запертый запуск</tspan></text>
-<text x="16" y="54.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без административной установки;</tspan></text>
-<text x="40.3" y="74.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">один UID донора; границы</tspan></text>
-<text x="16.8" y="93.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ОС между мостом и харнесом нет</tspan></text>
+<rect x="12.6" y="13.8" width="237" height="90.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="a"/>
+<text x="55.4" y="39.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">A: запертый запуск</tspan></text>
+<text x="28.6" y="68.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без администратора; один UID,</tspan></text>
+<text x="79.1" y="87.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">границы ОС нет</tspan></text>
 <!-- node c -->
-<rect x="9.6" y="302.3" width="237" height="129.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="c"/>
-<text x="76.5" y="328.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">C: песочница</tspan></text>
-<text x="25.6" y="356.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">без администратора; один UID,</tspan></text>
-<text x="27.9" y="376.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">харнес ограничен песочницей</tspan></text>
-<text x="45.3" y="395.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ОС; нужна квалификация</tspan></text>
-<text x="34.5" y="415.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">границы каждой платформы</tspan></text>
+<rect x="0" y="249.8" width="262.2" height="90.4" rx="12" fill="#f6f7f9" stroke="#8b929c" stroke-width="2" class="box" data-id="c"/>
+<text x="79.5" y="275.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">C: песочница</tspan></text>
+<text x="16" y="304.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">харнес в песочнице ОС, держатель</tspan></text>
+<text x="54.4" y="323.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётных данных вне её</tspan></text>
 <!-- node provider -->
-<rect x="631" y="315.3" width="184.5" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="provider"/>
-<text x="647" y="341.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Провайдер модели</tspan></text>
+<rect x="637" y="286.3" width="184.5" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="provider"/>
+<text x="653" y="312.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Провайдер модели</tspan></text>
 <!-- node project -->
-<rect x="627.4" y="29" width="191.8" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="project"/>
-<text x="647.5" y="55.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проектная сторона</tspan></text>
-<text x="643.4" y="83.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">изолированное рабочее</tspan></text>
-<text x="647.1" y="103.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">место; принудительная</tspan></text>
-<text x="654.3" y="122.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сеть и квалификация</tspan></text>
+<rect x="633.4" y="0" width="191.8" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="project"/>
+<text x="653.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проектная сторона</tspan></text>
+<text x="649.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">изолированное рабочее</tspan></text>
+<text x="653.1" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">место; принудительная</tspan></text>
+<text x="660.3" y="93.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сеть и квалификация</tspan></text>
+<!-- note provider -->
+<rect x="628.7" y="375.6" width="201" height="92.8" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_provider"/>
+<text x="661.8" y="398.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">В режиме с читаемым</tspan></text>
+<text x="640.7" y="417.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">токеном прокси B и C задаёт</tspan></text>
+<text x="655.5" y="435.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">только маршрут: харнес</tspan></text>
+<text x="656.9" y="453.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">получает токен донора.</tspan></text>
+<path d="M 729.2 331.7 L 729.2 375.6" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="provider" data-to="note_provider"/>
 <!-- note project -->
-<rect x="621.2" y="182.4" width="204.1" height="111" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_project"/>
-<text x="652.8" y="205.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Варианты не заменяют</tspan></text>
-<text x="640.8" y="223.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">квалификацию проектного</tspan></text>
-<text x="633.2" y="242.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">рабочего места. Неизвестное</tspan></text>
-<text x="666.1" y="260.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">покрытие границы</tspan></text>
-<text x="651.9" y="278.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не считается допуском.</tspan></text>
-<path d="M 723.2 138.9 L 723.2 182.4" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="project" data-to="note_project"/>
+<rect x="627.2" y="153.5" width="204.1" height="111" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_project"/>
+<text x="658.8" y="176.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Варианты не заменяют</tspan></text>
+<text x="646.8" y="195" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">квалификацию проектного</tspan></text>
+<text x="639.2" y="213.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">рабочего места. Неизвестное</tspan></text>
+<text x="672.1" y="231.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">покрытие границы</tspan></text>
+<text x="657.9" y="249.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">не считается допуском.</tspan></text>
+<path d="M 729.2 109.9 L 729.2 153.5" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="project" data-to="note_project"/>
 <!-- link a -> provider -->
-<path d="M 256.5 90.8 C 275.8 95.8 295.5 100.7 314.2 104.9 C 423.9 129.9 476.9 78.7 563.2 150.9 C 619.3 197.9 568.4 254.4 621.2 304.9 C 623.4 307 625.7 309 628.1 310.8 L 629 311.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a" data-to="provider" data-edge="e0"/>
-<polygon points="633.9,314.8 628.3,305.5 623.1,312.8" fill="#3a3f47"/>
+<path d="M 249.9 77.2 C 377.2 97.1 562.9 126.9 569.2 132 C 623 175.2 576.8 228.8 627.2 276 C 629.5 278.1 631.9 280.1 634.4 281.9 L 635.5 282.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a" data-to="provider" data-edge="e0"/>
+<polygon points="640.5,286 634.7,276.7 629.7,284.2" fill="#3a3f47"/>
 <g class="label" data-edge="e0">
-<text x="319.4" y="94.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">A: нет гарантии закрытого egress ОС</tspan></text>
+<text x="318.3" y="76.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">A: нет гарантии закрытого egress ОС</tspan></text>
 </g>
 <!-- link b -> provider -->
-<path d="M 249.9 277.9 C 270.8 287.8 292.7 296.7 314.2 302.9 C 370.1 319.3 521.5 329 623.4 334 L 624.6 334" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="b" data-to="provider" data-edge="e1"/>
-<polygon points="630.6,334.3 620.8,329.3 620.4,338.3" fill="#3a3f47"/>
+<path d="M 226.8 220.6 C 263.5 237.5 301.1 253.8 320.2 259 C 427.7 287.8 458.8 270.9 569.2 285 C 588.7 287.4 609.5 290.4 629.4 293.3 L 630.7 293.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="b" data-to="provider" data-edge="e1"/>
+<polygon points="636.7,294.4 627.4,288.5 626.1,297.4" fill="#3a3f47"/>
 <g class="label" data-edge="e1">
-<text x="333.9" y="296.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">B: только допущенный прокси</tspan></text>
+<text x="343" y="253.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">B: только допущенный прокси</tspan></text>
 </g>
 <!-- link c -> provider -->
-<path d="M 246.7 366.7 C 334.1 365.9 456.2 363.3 563.2 356 C 582.7 354.6 603.5 352.6 623.4 350.5 L 624.7 350.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c" data-to="provider" data-edge="e2"/>
-<polygon points="630.7,349.7 620.3,346.3 621.2,355.3" fill="#3a3f47"/>
+<path d="M 262.6 306.7 C 281.9 308.1 301.5 309.2 320.2 310 C 430.8 314.4 458.5 310.3 569.2 310 C 588.6 309.9 609.4 309.8 629.3 309.7 L 630.6 309.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c" data-to="provider" data-edge="e2"/>
+<polygon points="636.6,309.6 626.5,305.2 626.6,314.2" fill="#3a3f47"/>
 <g class="label" data-edge="e2">
-<text x="337.9" y="346" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">C: квалифицированный прокси</tspan></text>
+<text x="341.8" y="298.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">C: квалифицированный прокси</tspan></text>
 </g>
 <!-- link a -> project -->
-<path d="M 256.4 61.2 C 364.9 66.5 519.1 74 619.9 78.9 L 621.3 79" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a" data-to="project" data-edge="e3"/>
-<polygon points="627.3,79.3 617.6,74.3 617.1,83.3" fill="#3a3f47"/>
+<path d="M 249.9 58.2 C 359.6 57.4 521.4 56.3 625.9 55.6 L 627.3 55.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="a" data-to="project" data-edge="e3"/>
+<polygon points="633.3,55.6 623.2,51.2 623.3,60.2" fill="#3a3f47"/>
 <g class="label" data-edge="e3">
-<text x="389.9" y="56.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
+<text x="395.3" y="45.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
 </g>
 <!-- link b -> project -->
-<path d="M 249.7 212.1 C 338.3 213.1 460.6 207.3 563.2 175.9 C 588.3 168.3 613.7 156 636.6 142.9 L 637.8 142.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="b" data-to="project" data-edge="e4"/>
-<polygon points="643,139.2 632.1,140.4 636.6,148.2" fill="#3a3f47"/>
+<path d="M 261.1 177.1 C 369 177.4 513.9 174.4 569.2 157 C 598.7 147.6 628.1 131.3 653.5 114.4 L 654.5 113.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="b" data-to="project" data-edge="e4"/>
+<polygon points="659.5,110.3 648.7,112.2 653.7,119.7" fill="#3a3f47"/>
 <g class="label" data-edge="e4">
-<text x="396" y="181.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
+<text x="397" y="158.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
 </g>
 <!-- link c -> project -->
-<path d="M 247 303.9 C 268.9 294 291.9 284.8 314.2 277.9 C 421.2 244.9 465.6 294.8 563.2 239.9 C 598.1 220.3 593 199.4 621.2 170.9 C 630.1 162 639.7 152.9 649.4 144.2 L 650.4 143.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c" data-to="project" data-edge="e5"/>
-<polygon points="654.8,139.3 644.4,142.6 650.4,149.4" fill="#3a3f47"/>
+<path d="M 261.2 249.3 C 280.8 243.5 300.9 238.1 320.2 234 C 429.1 210.4 470.1 256.7 569.2 206 C 603.4 188.5 599.7 168.8 627.2 142 C 636.4 133 646.3 123.9 656.2 115.1 L 657.2 114.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="c" data-to="project" data-edge="e5"/>
+<polygon points="661.7,110.2 651.2,113.4 657.2,120.2" fill="#3a3f47"/>
 <g class="label" data-edge="e5">
-<text x="390.6" y="254.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
+<text x="393.2" y="215.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">SSH от донора</tspan></text>
 </g>
 </g>
 </svg>

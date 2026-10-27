@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="865.9" height="308.9" viewBox="0 0 865.9 308.9">
-<title>Доставка setup-token, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка.</title>
-<rect width="865.9" height="308.9" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="871.7" height="363.1" viewBox="0 0 871.7 363.1">
+<title>Доставка setup-token в режиме с читаемым токеном, подключение: токен ложится в защищённое хранилище, а в план идёт только ссылка.</title>
+<rect width="871.7" height="363.1" fill="#ffffff"/>
 <g transform="translate(12 12)">
-<g transform="translate(54.2 0)">
-<line x1="0" y1="45.4" x2="0" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="227.3" y1="45.4" x2="227.3" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="484" y1="45.4" x2="484" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="707.4" y1="45.4" x2="707.4" y2="284.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<g transform="translate(60 0)">
+<line x1="0" y1="45.4" x2="0" y2="339.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="227.3" y1="45.4" x2="227.3" y2="339.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="484" y1="45.4" x2="484" y2="339.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="707.4" y1="45.4" x2="707.4" y2="339.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node operator -->
 <rect x="-54.2" y="0" width="108.3" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="operator"/>
 <text x="-38.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оператор</tspan></text>
@@ -56,6 +56,9 @@
 <text x="413.4" y="246.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
 <text x="432" y="246.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только ссылка</tspan></text>
 </g>
+<!-- note -->
+<rect x="-60" y="278.9" width="827.4" height="42.2" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="7.3" y="304.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">В режиме без секретов у агента токен заводят у брокера, и в аренду его получает только шлюз учётных данных.</tspan></text>
 </g>
 </g>
 </svg>

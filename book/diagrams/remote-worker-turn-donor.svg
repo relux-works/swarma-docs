@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="844.9" height="838" viewBox="0 0 844.9 838">
+<svg xmlns="http://www.w3.org/2000/svg" width="844.9" height="856.2" viewBox="0 0 844.9 856.2">
 <title>Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему SSH-соединению донора.</title>
-<rect width="844.9" height="838" fill="#ffffff"/>
+<rect width="844.9" height="856.2" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(70.7 0)">
 <!-- group donor -->
-<rect x="-70.7" y="0" width="482.3" height="723.4" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="donor"/>
+<rect x="-70.7" y="0" width="482.3" height="691.4" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="donor"/>
 <!-- group ours -->
-<rect x="584.8" y="0" width="165.4" height="723.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="ours"/>
+<rect x="584.8" y="0" width="165.4" height="691.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="ours"/>
 <!-- group label donor -->
 <rect x="-58.7" y="10" width="144.9" height="18.9" fill="#ffffff" class="plate"/>
 <text x="-52.7" y="24.4" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ДОНОРА</tspan></text>
 <!-- group label ours -->
 <rect x="596.8" y="10" width="129.4" height="18.9" fill="#ffffff" class="plate"/>
 <text x="602.8" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НАША СТОРОНА</tspan></text>
-<line x1="0" y1="106.5" x2="0" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="153.4" y1="106.5" x2="153.4" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="326.6" y1="83.1" x2="326.6" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="663.3" y1="129.9" x2="663.3" y2="715.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="106.5" x2="0" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="153.4" y1="106.5" x2="153.4" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="326.6" y1="83.1" x2="326.6" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="663.3" y1="129.9" x2="663.3" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node harness -->
 <rect x="-52.7" y="37.7" width="105.5" height="68.8" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="harness"/>
 <text x="-28.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Харнес</tspan></text>
@@ -45,80 +45,83 @@
 <text x="455.1" y="208.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">донора</tspan></text>
 </g>
 <!-- message harness -> relay -->
-<path d="M 2 287.4 L 145.4 287.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="harness" data-to="relay" data-edge="m1"/>
-<polygon points="151.4,287.4 141.4,282.9 141.4,291.9" fill="#3a3f47"/>
-<rect x="18.9" y="240.4" width="115.6" height="41" fill="#ffffff" class="plate"/>
+<path d="M 2 283.4 L 145.4 283.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="harness" data-to="relay" data-edge="m1"/>
+<polygon points="151.4,283.4 141.4,278.9 141.4,287.9" fill="#3a3f47"/>
+<rect x="18.9" y="236.4" width="115.6" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
-<circle cx="31.9" cy="251.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="28.2" y="255.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
-<text x="46.9" y="255.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
-<text x="46.9" y="275.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инструмента</tspan></text>
+<circle cx="31.9" cy="247.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="28.2" y="251.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="46.9" y="251.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
+<text x="46.9" y="271.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инструмента</tspan></text>
 </g>
 <!-- message relay -> bridge -->
-<path d="M 155.4 373.9 L 318.6 373.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="relay" data-to="bridge" data-edge="m2"/>
-<polygon points="324.6,373.9 314.6,369.4 314.6,378.4" fill="#3a3f47"/>
-<rect x="169.4" y="307.4" width="141.2" height="60.5" fill="#ffffff" class="plate"/>
+<path d="M 155.4 365.9 L 318.6 365.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="relay" data-to="bridge" data-edge="m2"/>
+<polygon points="324.6,365.9 314.6,361.4 314.6,370.4" fill="#3a3f47"/>
+<rect x="169.4" y="299.4" width="141.2" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
-<circle cx="182.4" cy="318.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="178.7" y="322.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
-<text x="197.4" y="322.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">передать запрос</tspan></text>
-<text x="197.4" y="342.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без локального</tspan></text>
-<text x="197.4" y="361.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнения</tspan></text>
+<circle cx="182.4" cy="310.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="178.7" y="314.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="197.4" y="314.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">передать запрос</tspan></text>
+<text x="197.4" y="334.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">без локального</tspan></text>
+<text x="197.4" y="353.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">исполнения</tspan></text>
 </g>
 <!-- message bridge -> ssh -->
-<path d="M 328.6 440.9 L 655.3 440.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="ssh" data-edge="m3"/>
-<polygon points="661.3,440.9 651.3,436.4 651.3,445.4" fill="#3a3f47"/>
-<rect x="426.2" y="393.9" width="143.9" height="41" fill="#ffffff" class="plate"/>
+<path d="M 328.6 428.9 L 655.3 428.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="ssh" data-edge="m3"/>
+<polygon points="661.3,428.9 651.3,424.4 651.3,433.4" fill="#3a3f47"/>
+<rect x="426.2" y="381.9" width="143.9" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="439.2" cy="404.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="435.5" y="409.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="454.2" y="409.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команда по тому</tspan></text>
-<text x="454.2" y="428.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
+<circle cx="439.2" cy="392.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="435.5" y="397.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="454.2" y="397.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команда по тому</tspan></text>
+<text x="454.2" y="416.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
 </g>
 <!-- message ssh -> bridge -->
-<path d="M 661.3 507.9 L 334.6 507.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="ssh" data-to="bridge" data-edge="m4"/>
-<polygon points="328.6,507.9 338.6,512.4 338.6,503.4" fill="#3a3f47"/>
-<rect x="419.5" y="460.9" width="157.3" height="41" fill="#ffffff" class="plate"/>
+<path d="M 661.3 491.9 L 334.6 491.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="ssh" data-to="bridge" data-edge="m4"/>
+<polygon points="328.6,491.9 338.6,496.4 338.6,487.4" fill="#3a3f47"/>
+<rect x="419.5" y="444.9" width="157.3" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m4">
-<rect x="423.5" y="462.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="428" y="476.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
-<text x="453.3" y="476.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат по тому</tspan></text>
-<text x="453.3" y="495.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
+<rect x="423.5" y="446.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="428" y="460.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="453.3" y="460.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат по тому</tspan></text>
+<text x="453.3" y="479.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
 </g>
 <!-- message bridge -> relay -->
-<path d="M 324.6 555.4 L 161.4 555.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="relay" data-edge="m5"/>
-<polygon points="155.4,555.4 165.4,559.9 165.4,550.9" fill="#3a3f47"/>
-<rect x="188.9" y="527.9" width="102.2" height="21.5" fill="#ffffff" class="plate"/>
+<path d="M 324.6 535.4 L 161.4 535.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="relay" data-edge="m5"/>
+<polygon points="155.4,535.4 165.4,539.9 165.4,530.9" fill="#3a3f47"/>
+<rect x="188.9" y="507.9" width="102.2" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m5">
-<rect x="192.9" y="529.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="197.4" y="543.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
-<text x="222.7" y="543.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат</tspan></text>
+<rect x="192.9" y="509.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="197.4" y="523.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="222.7" y="523.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">результат</tspan></text>
 </g>
 <!-- message relay -> harness -->
-<path d="M 151.4 622.4 L 8 622.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="relay" data-to="harness" data-edge="m6"/>
-<polygon points="2,622.4 12,626.9 12,617.9" fill="#3a3f47"/>
-<rect x="16" y="575.4" width="121.4" height="41" fill="#ffffff" class="plate"/>
+<path d="M 151.4 598.4 L 8 598.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="relay" data-to="harness" data-edge="m6"/>
+<polygon points="2,598.4 12,602.9 12,593.9" fill="#3a3f47"/>
+<rect x="16" y="551.4" width="121.4" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m6">
-<rect x="20" y="577.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="24.5" y="590.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
-<text x="49.7" y="590.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вывод</tspan></text>
-<text x="49.7" y="610.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инструмента</tspan></text>
+<rect x="20" y="553.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="24.5" y="566.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="49.7" y="566.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вывод</tspan></text>
+<text x="49.7" y="586.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">инструмента</tspan></text>
 </g>
 <!-- message bridge -> ssh -->
-<path d="M 328.6 689.4 L 655.3 689.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="ssh" data-edge="m7"/>
-<polygon points="661.3,689.4 651.3,684.9 651.3,693.9" fill="#3a3f47"/>
-<rect x="427.5" y="642.4" width="141.3" height="41" fill="#ffffff" class="plate"/>
+<path d="M 328.6 661.4 L 655.3 661.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bridge" data-to="ssh" data-edge="m7"/>
+<polygon points="661.3,661.4 651.3,656.9 651.3,665.9" fill="#3a3f47"/>
+<rect x="427.5" y="614.4" width="141.3" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m7">
-<rect x="431.5" y="644.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="436" y="657.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
-<text x="461.2" y="657.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">почта по тому</tspan></text>
-<text x="461.2" y="677.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
+<rect x="431.5" y="616.1" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="436" y="629.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="461.2" y="629.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">почта по тому</tspan></text>
+<text x="461.2" y="649.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">же соединению</tspan></text>
 </g>
 <!-- note -->
-<rect x="-60" y="735.4" width="783.3" height="78.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="180" y="760.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">На доноре нет локальных инструментов харнеса.</tspan></text>
-<text x="176.9" y="778.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Наша сторона не подключается обратно к донору.</tspan></text>
-<text x="171.3" y="797.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Сквозной путь требует квалификации обеих сторон.</tspan></text>
+<rect x="-60" y="703.4" width="783.3" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="76.7" y="728.7" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">На доноре нет локальных инструментов харнеса, а наша сторона не подключается</tspan></text>
+<text x="113.6" y="746.9" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">к донору обратно. Сквозной путь требует квалификации обеих сторон.</tspan></text>
+<!-- note -->
+<rect x="-60" y="771.8" width="783.3" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="-23.6" y="797.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Учётные данные провайдера и их держатель остаются у донора. В режиме без секретов у агента держатель в B и C</tspan></text>
+<text x="-17.3" y="815.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">стоит вне квалифицированной границы харнеса, а в режиме с читаемым токеном харнес получает токен донора.</tspan></text>
 </g>
 </g>
 </svg>

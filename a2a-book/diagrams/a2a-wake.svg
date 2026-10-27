@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="678.8" height="544.1" viewBox="0 0 678.8 544.1">
+<title>Пробуждение в a2a: почтовый ящик звонит через общий интервал уведомлений одним из трёх путей, хуками среды, родным входом Codex или терминальным путём; пробуждение и реестр сессий принадлежат хосту сессий, а текст агент забирает сам.</title>
+<rect width="678.8" height="544.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(32.9 0)">
+<!-- graphviz 14.0.4 -->
+<!-- node mailbox -->
+<rect x="200" y="0" width="247.9" height="70.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="mailbox"/>
+<text x="261.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Почтовый ящик</tspan></text>
+<text x="216" y="54.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">непрочитанные записи личности</tspan></text>
+<!-- node spacing -->
+<rect x="207.9" y="130.9" width="232" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="spacing"/>
+<text x="230.8" y="157" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Интервал уведомлений</tspan></text>
+<text x="255.5" y="185.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">одно окно 30 секунд</tspan></text>
+<text x="223.9" y="205.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">на личность, резерв до звонка</tspan></text>
+<!-- node hooks -->
+<rect x="431.9" y="281.3" width="190" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="hooks"/>
+<text x="480.6" y="307.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хуки среды</tspan></text>
+<text x="447.9" y="336" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">шаблон в контексте или</tspan></text>
+<text x="457.8" y="355.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">в причине остановки</tspan></text>
+<!-- node native -->
+<rect x="6.5" y="281.3" width="190.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="native"/>
+<text x="24.5" y="307.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Родной вход Codex</tspan></text>
+<text x="29.2" y="336" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">пустой ход с выводом</tspan></text>
+<text x="22.5" y="355.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">инструмента</tspan><tspan x="109.4" font-family="PT Mono, monospace">doorbell</tspan></text>
+<!-- node tmux -->
+<rect x="219.5" y="281.3" width="190.8" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="tmux"/>
+<text x="235.5" y="307.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Терминальный путь</tspan></text>
+<text x="236.2" y="336" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">два пустых наблюдения</tspan></text>
+<text x="251.1" y="355.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и готовность среды</tspan></text>
+<!-- node host -->
+<rect x="0" y="130.9" width="185.8" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="host"/>
+<text x="46.4" y="157" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<text x="16" y="185.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">владелец пробуждения</tspan></text>
+<text x="36.9" y="205.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и реестра сессий</tspan></text>
+<!-- node session -->
+<rect x="226.5" y="429.7" width="176.8" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="session"/>
+<text x="260.3" y="455.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сессия агента</tspan></text>
+<text x="266.5" y="484.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">текст забирает</tspan></text>
+<text x="242.5" y="503.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">командой</tspan><tspan x="311.3" font-family="PT Mono, monospace">a2a</tspan><tspan x="342.3" font-family="PT Mono, monospace">inbox</tspan></text>
+<!-- link mailbox -> spacing -->
+<path d="M 323.9 71.1 C 323.9 86.8 323.9 105.7 323.9 123.1 L 323.9 124.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="mailbox" data-to="spacing" data-edge="e0"/>
+<polygon points="323.9,130.4 328.4,120.4 319.4,120.4" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<circle cx="340.9" cy="101.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="337.2" y="106.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="355.9" y="106.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">счётчики</tspan></text>
+</g>
+<!-- link spacing -> hooks -->
+<path d="M 384.8 221.6 C 408.6 239 436 259 460.3 276.8 L 461.2 277.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="spacing" data-to="hooks" data-edge="e1"/>
+<polygon points="466.1,281 460.6,271.5 455.3,278.7" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<circle cx="441.6" cy="242.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="437.9" y="247.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+</g>
+<!-- link spacing -> native -->
+<path d="M 282.4 221.7 C 267.6 236.1 250.3 251.4 232.9 263.3 C 223.9 269.5 214.2 275.4 204.2 280.9 L 202.9 281.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="spacing" data-to="native" data-edge="e2"/>
+<polygon points="197.6,284.4 208.6,283.6 204.3,275.7" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<circle cx="263.6" cy="262.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="259.9" y="267.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+</g>
+<!-- link spacing -> tmux -->
+<path d="M 321.2 221.6 C 320.2 238.1 319.1 256.8 318.1 273.8 L 318 275" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="spacing" data-to="tmux" data-edge="e3"/>
+<polygon points="317.6,281 322.7,271.3 313.7,270.8" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<circle cx="337.1" cy="250.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="333.4" y="254.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+</g>
+<!-- link hooks -> session -->
+<path d="M 462.4 372 C 438.1 388.9 410.2 408.1 385.4 425.3 L 384.4 425.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="hooks" data-to="session" data-edge="e4"/>
+<polygon points="379.4,429.3 390.2,427.4 385.1,420" fill="#3a3f47"/>
+<g class="label" data-edge="e4">
+<circle cx="439.7" cy="408.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="436.1" y="412.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+</g>
+<!-- link native -> session -->
+<path d="M 166.7 372 C 191.2 388.9 219.1 408.1 244.1 425.3 L 245.1 426" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="native" data-to="session" data-edge="e5"/>
+<polygon points="250.1,429.3 244.4,420 239.3,427.4" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<circle cx="224.9" cy="391.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="221.2" y="396.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+</g>
+<!-- link tmux -> session -->
+<path d="M 314.9 371.8 C 314.9 387.6 314.9 405.5 314.9 421.8 L 314.9 423.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="tmux" data-to="session" data-edge="e6"/>
+<polygon points="314.9,429.2 319.4,419.2 310.4,419.2" fill="#3a3f47"/>
+<g class="label" data-edge="e6">
+<circle cx="331.9" cy="401.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="328.2" y="406.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+</g>
+<!-- link host -> native -->
+<path d="M 95.6 221.6 C 96.6 238.1 97.8 256.8 98.8 273.8 L 98.9 275" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="host" data-to="native" data-edge="e7"/>
+<polygon points="99.2,281 103.1,270.8 94.1,271.3" fill="#3a3f47"/>
+<g class="label" data-edge="e7">
+<text x="-32.9" y="260" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязка и ворота</tspan></text>
+</g>
+</g>
+</g>
+</svg>

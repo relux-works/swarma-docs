@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="818.5" height="859.4" viewBox="0 0 818.5 859.4">
+<title>Установка, часть 1: от файла первой установки до корня платформы. Сверка дайджеста, план и пароль проходят в сеансе администратора, который запускает ОС.</title>
+<rect width="818.5" height="859.4" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.3 0)">
+<!-- group host -->
+<rect x="160.5" y="0" width="579.6" height="835.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="172.5" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="178.5" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="827.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="259.6" y1="129.9" x2="259.6" y2="827.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="454.9" y1="83.1" x2="454.9" y2="827.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="644.6" y1="83.1" x2="644.6" y2="827.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node owner -->
+<rect x="-54.3" y="37.7" width="108.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
+<text x="-38.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
+<!-- node session -->
+<rect x="178.5" y="37.7" width="162.2" height="92.2" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="session"/>
+<text x="236.8" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сеанс</tspan></text>
+<text x="194.5" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">администратора</tspan></text>
+<text x="248.5" y="110.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ОС</tspan></text>
+<!-- node installer -->
+<rect x="391.1" y="37.7" width="127.6" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="installer"/>
+<text x="407.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Установщик</tspan></text>
+<!-- node curator -->
+<rect x="567.1" y="37.7" width="155" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="curator"/>
+<text x="583.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Curator</tspan></text>
+<!-- message owner -> session -->
+<path d="M 2 181.4 L 251.6 181.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="session" data-edge="m0"/>
+<polygon points="257.6,181.4 247.6,176.9 247.6,185.9" fill="#3a3f47"/>
+<rect x="8" y="153.9" width="144.5" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="21" cy="164.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="17.3" y="169.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="36" y="169.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пароль, один раз</tspan></text>
+</g>
+<!-- self session -->
+<path d="M 261.6 205.4 L 291.6 205.4 L 291.6 273.9 L 268.6 273.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="session" data-to="session" data-edge="m1"/>
+<polygon points="262.6,273.9 272.6,278.4 272.6,269.4" fill="#3a3f47"/>
+<rect x="299.6" y="209.4" width="129.3" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="312.6" cy="220.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="308.9" y="224.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="327.6" y="224.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">копия файла</tspan></text>
+<text x="327.6" y="244.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">только для</tspan></text>
+<text x="327.6" y="263.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">root, дайджест</tspan></text>
+</g>
+<!-- message owner -> session -->
+<path d="M 2 356.4 L 251.6 356.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="session" data-edge="m2"/>
+<polygon points="257.6,356.4 247.6,351.9 247.6,360.9" fill="#3a3f47"/>
+<rect x="14.8" y="289.9" width="130.9" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="27.8" cy="300.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="24.1" y="305.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="42.8" y="305.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">дайджест</tspan></text>
+<text x="42.8" y="324.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и отпечаток</tspan></text>
+<text x="42.8" y="344.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">корня сверены</tspan></text>
+</g>
+<!-- message session -> installer -->
+<path d="M 261.6 423.4 L 446.9 423.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="session" data-to="installer" data-edge="m3"/>
+<polygon points="452.9,423.4 442.9,418.9 442.9,427.9" fill="#3a3f47"/>
+<rect x="285.8" y="376.4" width="142.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="298.8" cy="387.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="295.1" y="391.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="313.8" y="391.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">установщик</tspan></text>
+<text x="313.8" y="411.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ОС ставит копию</tspan></text>
+</g>
+<!-- self installer -->
+<path d="M 456.9 447.4 L 486.9 447.4 L 486.9 515.9 L 463.9 515.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="installer" data-edge="m4"/>
+<polygon points="457.9,515.9 467.9,520.4 467.9,511.4" fill="#3a3f47"/>
+<rect x="494.9" y="451.4" width="111.5" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="507.9" cy="462.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="504.2" y="466.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="522.9" y="466.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">манифест</tspan></text>
+<text x="522.9" y="486.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">по корню</tspan></text>
+<text x="522.9" y="505.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">обновлений</tspan></text>
+</g>
+<!-- message installer -> owner -->
+<path d="M 452.9 578.9 L 8 578.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="owner" data-edge="m5"/>
+<polygon points="2,578.9 12,583.4 12,574.4" fill="#3a3f47"/>
+<rect x="237.4" y="531.9" width="140.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="250.4" cy="542.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="246.7" y="547.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="265.4" y="547.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">план в сеансе</tspan></text>
+<text x="265.4" y="566.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">администратора</tspan></text>
+</g>
+<!-- message owner -> installer -->
+<path d="M 2 626.4 L 446.9 626.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="installer" data-edge="m6"/>
+<polygon points="452.9,626.4 442.9,621.9 442.9,630.9" fill="#3a3f47"/>
+<rect x="234.3" y="598.9" width="146.7" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="247.3" cy="609.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="243.6" y="614.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="262.3" y="614.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одобрение плана</tspan></text>
+</g>
+<!-- message installer -> curator -->
+<path d="M 456.9 693.4 L 636.6 693.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="curator" data-edge="m7"/>
+<polygon points="642.6,693.4 632.6,688.9 632.6,697.9" fill="#3a3f47"/>
+<rect x="470.9" y="646.4" width="157.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="483.9" cy="657.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="480.2" y="661.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="498.9" y="661.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поставить под</tspan></text>
+<text x="498.9" y="681.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учёткой владельца</tspan></text>
+</g>
+<!-- self installer -->
+<path d="M 456.9 717.4 L 486.9 717.4 L 486.9 805.4 L 463.9 805.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="installer" data-edge="m8"/>
+<polygon points="457.9,805.4 467.9,809.9 467.9,800.9" fill="#3a3f47"/>
+<rect x="494.9" y="721.4" width="108.5" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<circle cx="507.9" cy="732.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="504.2" y="736.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="522.9" y="736.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">корень,</tspan></text>
+<text x="522.9" y="756.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">замыкание,</tspan></text>
+<text x="522.9" y="775.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учётки,</tspan></text>
+<text x="522.9" y="795.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрет сети</tspan></text>
+</g>
+</g>
+</g>
+</svg>

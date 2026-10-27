@@ -19,7 +19,7 @@ alt = "Учётки и программы на машине: что делает
 
 [theme.space]
 node_text_width = 180
-label_max_width = 150
+label_max_width = 170
 graph_ranksep = 0.25
 
 [groups.host]

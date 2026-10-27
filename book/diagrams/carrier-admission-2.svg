@@ -1,22 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="842" height="886.2" viewBox="0 0 842 886.2">
+<svg xmlns="http://www.w3.org/2000/svg" width="842" height="878.7" viewBox="0 0 842 878.7">
 <title>Допуск к носителю: агент не держит ни общего секрета, ни пароля; сервер носителя доверяет только ключу регистратора.</title>
-<rect width="842" height="886.2" fill="#ffffff"/>
+<rect width="842" height="878.7" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(60 0)">
-<line x1="0" y1="45.4" x2="0" y2="862.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="230" y1="45.4" x2="230" y2="862.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="463.3" y1="90.4" x2="463.3" y2="862.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="698" y1="68.8" x2="698" y2="862.2" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="90.4" x2="0" y2="854.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="230" y1="45.4" x2="230" y2="854.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="463.3" y1="90.4" x2="463.3" y2="854.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="698" y1="68.8" x2="698" y2="854.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- frame alt -->
-<rect x="-44" y="317.4" width="766" height="452.4" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
-<line x1="-44" y1="424.6" x2="722" y2="424.6" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
-<rect x="-36" y="324.4" width="45.2" height="20.2" fill="#ffffff" class="plate"/>
-<text x="-30" y="338.7" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
-<rect x="-36" y="429.6" width="74.7" height="20.2" fill="#ffffff" class="plate"/>
-<text x="-30" y="443.9" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущено</tspan></text>
+<rect x="-44" y="308.4" width="766" height="456.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="412.6" x2="722" y2="412.6" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="315.4" width="45.2" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="329.7" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+<rect x="-36" y="417.6" width="74.7" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="431.9" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущено</tspan></text>
 <!-- node agent -->
-<rect x="-50" y="0" width="100" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<rect x="-55.7" y="0" width="111.4" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
 <text x="-22" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<text x="-29.5" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">личность</tspan></text>
+<text x="-39.7" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">на носителе</tspan></text>
 <!-- node registrar -->
 <rect x="165.6" y="0" width="128.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="registrar"/>
 <text x="181.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Регистратор</tspan></text>
@@ -39,82 +41,83 @@
 <text x="44" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">HTTPS: запрос и подпись</tspan></text>
 </g>
 <!-- message registrar -> registry -->
-<path d="M 232 208.9 L 455.3 208.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="registry" data-edge="m1"/>
-<polygon points="461.3,208.9 451.3,204.4 451.3,213.4" fill="#3a3f47"/>
-<rect x="246" y="161.9" width="201.3" height="41" fill="#ffffff" class="plate"/>
+<path d="M 232 205.9 L 455.3 205.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="registry" data-edge="m1"/>
+<polygon points="461.3,205.9 451.3,201.4 451.3,210.4" fill="#3a3f47"/>
+<rect x="246" y="158.9" width="201.3" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m1">
-<circle cx="259" cy="172.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="255.3" y="177.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="274" y="177.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключ машины действует?</tspan></text>
-<text x="274" y="196.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">имя по правилам?</tspan></text>
+<circle cx="259" cy="169.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="255.3" y="174.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="274" y="174.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключ машины действует?</tspan></text>
+<text x="274" y="193.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">имя по правилам?</tspan></text>
 </g>
 <!-- self registrar -->
-<path d="M 232 232.9 L 262 232.9 L 262 301.4 L 239 301.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="registrar" data-edge="m2"/>
-<polygon points="233,301.4 243,305.9 243,296.9" fill="#3a3f47"/>
-<rect x="270" y="236.9" width="159.8" height="60.5" fill="#ffffff" class="plate"/>
+<path d="M 232 226.9 L 262 226.9 L 262 295.4 L 239 295.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="registrar" data-edge="m2"/>
+<polygon points="233,295.4 243,299.9 243,290.9" fill="#3a3f47"/>
+<rect x="270" y="230.9" width="159.8" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
-<circle cx="283" cy="247.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="279.3" y="252.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
-<text x="298" y="252.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одноразовое число</tspan></text>
-<text x="298" y="271.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">свежее; срок</tspan></text>
-<text x="298" y="291.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">не больше 120 с</tspan></text>
+<circle cx="283" cy="241.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="279.3" y="246.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="298" y="246.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одноразовое число</tspan></text>
+<text x="298" y="265.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">свежее; срок</tspan></text>
+<text x="298" y="285.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">не больше 120 с</tspan></text>
 </g>
 <!-- message registrar -> agent -->
-<path d="M 228 400.6 L 8 400.6" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registrar" data-to="agent" data-edge="m3"/>
-<polygon points="2,400.6 12,405.1 12,396.1" fill="#c8285f"/>
-<rect x="39.9" y="353.6" width="150.3" height="41" fill="#ffffff" class="plate"/>
+<path d="M 228 391.6 L 8 391.6" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="registrar" data-to="agent" data-edge="m3"/>
+<polygon points="2,391.6 12,396.1 12,387.1" fill="#c8285f"/>
+<rect x="39.9" y="344.6" width="150.3" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="52.9" cy="364.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="49.2" y="369" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="67.9" y="368.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ с причиной;</tspan></text>
-<text x="67.9" y="388.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">строка аудита</tspan></text>
+<circle cx="52.9" cy="355.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.2" y="360" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="67.9" y="359.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ с причиной;</tspan></text>
+<text x="67.9" y="379.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">строка аудита</tspan></text>
 </g>
 <!-- message registrar -> agent -->
-<path d="M 228 507.8 L 8 507.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="agent" data-edge="m4"/>
-<polygon points="2,507.8 12,512.3 12,503.3" fill="#3a3f47"/>
-<rect x="40.6" y="460.8" width="148.8" height="41" fill="#ffffff" class="plate"/>
+<path d="M 228 495.8 L 8 495.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="registrar" data-to="agent" data-edge="m4"/>
+<polygon points="2,495.8 12,500.3 12,491.3" fill="#3a3f47"/>
+<rect x="40.6" y="448.8" width="148.8" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m4">
-<circle cx="53.6" cy="471.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="49.9" y="476.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
-<text x="68.6" y="476" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">JWT на 120 с,</tspan></text>
-<text x="68.6" y="495.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись Ed25519</tspan></text>
+<circle cx="53.6" cy="459.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.9" y="464.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="68.6" y="464" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">JWT на 120 с,</tspan></text>
+<text x="68.6" y="483.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись Ed25519</tspan></text>
 </g>
 <!-- message agent -> server -->
-<path d="M 2 574.8 L 690 574.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="server" data-edge="m5"/>
-<polygon points="696,574.8 686,570.3 686,579.3" fill="#3a3f47"/>
-<rect x="243" y="527.8" width="212" height="41" fill="#ffffff" class="plate"/>
+<path d="M 2 559.8 L 690 559.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agent" data-to="server" data-edge="m5"/>
+<polygon points="696,559.8 686,555.3 686,564.3" fill="#3a3f47"/>
+<rect x="243" y="512.8" width="212" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m5">
-<circle cx="256" cy="538.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="252.3" y="543.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
-<text x="271" y="543" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вход</tspan></text>
-<text x="271" y="562.5" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">org.matrix.login.jwt</tspan></text>
+<circle cx="256" cy="523.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="252.3" y="528.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="271" y="528" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вход</tspan></text>
+<text x="271" y="547.5" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">org.matrix.login.jwt</tspan></text>
 </g>
 <!-- self server -->
-<path d="M 696 598.8 L 666 598.8 L 666 686.8 L 689 686.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="server" data-to="server" data-edge="m6"/>
-<polygon points="695,686.8 685,682.3 685,691.3" fill="#3a3f47"/>
-<rect x="489.3" y="602.8" width="168.7" height="80" fill="#ffffff" class="plate"/>
+<path d="M 696 580.8 L 666 580.8 L 666 668.8 L 689 668.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="server" data-to="server" data-edge="m6"/>
+<polygon points="695,668.8 685,664.3 685,673.3" fill="#3a3f47"/>
+<rect x="489.3" y="584.8" width="168.7" height="80" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m6">
-<circle cx="502.3" cy="613.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="498.6" y="618.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
-<text x="517.3" y="618" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверяет только</tspan></text>
-<text x="517.3" y="637.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключу регистратора;</tspan></text>
-<text x="517.3" y="657" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учётка создаётся</tspan></text>
-<text x="517.3" y="676.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">при первом входе</tspan></text>
+<circle cx="502.3" cy="595.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="498.6" y="600.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="517.3" y="600" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверяет только</tspan></text>
+<text x="517.3" y="619.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключу регистратора;</tspan></text>
+<text x="517.3" y="639" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учётка создаётся</tspan></text>
+<text x="517.3" y="658.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">при первом входе</tspan></text>
 </g>
 <!-- message server -> agent -->
-<path d="M 696 749.8 L 8 749.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="server" data-to="agent" data-edge="m7"/>
-<polygon points="2,749.8 12,754.3 12,745.3" fill="#3a3f47"/>
-<rect x="266.3" y="702.8" width="165.4" height="41" fill="#ffffff" class="plate"/>
+<path d="M 696 748.3 L 8 748.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="server" data-to="agent" data-edge="m7"/>
+<polygon points="2,748.3 12,752.8 12,743.8" fill="#3a3f47"/>
+<rect x="266.3" y="681.8" width="165.4" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m7">
-<rect x="270.3" y="704.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="274.8" y="718.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
-<text x="300" y="718" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">токен доступа</tspan></text>
-<text x="300" y="737.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на 24 ч, без пароля</tspan></text>
+<rect x="270.3" y="683.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="274.8" y="697.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="300" y="697" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">клиенту носителя:</tspan></text>
+<text x="300" y="716.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">токен доступа</tspan></text>
+<text x="300" y="736" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на 24 ч, без пароля</tspan></text>
 </g>
 <!-- note -->
-<rect x="-60" y="783.8" width="818" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
-<text x="140.3" y="809.1" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Истёк токен или сервер ответил 401: агент повторяет путь с начала.</tspan></text>
-<text x="259.8" y="827.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Refresh-токенов агентам нет.</tspan></text>
+<rect x="-60" y="779.3" width="818" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="40.6" y="804.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Пропуск предъявляет и токен держит клиент носителя под учёткой сообщений, а не процесс агента.</tspan></text>
+<text x="96.2" y="822.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">При истёкшем токене или ответе 401 путь проходят с начала: refresh-токенов нет.</tspan></text>
 </g>
 </g>
 </svg>

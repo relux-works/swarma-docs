@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="853.1" height="794.4" viewBox="0 0 853.1 794.4">
+<title>Установка, часть 2: оператор, ключник, службы хоста и квалификация машины. Номера сообщений продолжают первую часть.</title>
+<rect width="853.1" height="794.4" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(57.4 0)">
+<!-- group host -->
+<rect x="177.5" y="0" width="594.2" height="770.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="189.5" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="195.5" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="106.5" x2="0" y2="762.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="259.3" y1="83.1" x2="259.3" y2="762.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="451.3" y1="83.1" x2="451.3" y2="762.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="682.4" y1="83.1" x2="682.4" y2="762.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node phone -->
+<rect x="-57.4" y="37.7" width="114.9" height="68.8" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="phone"/>
+<text x="-34.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Телефон</tspan></text>
+<text x="-41.4" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">оператора</tspan></text>
+<!-- node installer -->
+<rect x="195.5" y="37.7" width="127.6" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="installer"/>
+<text x="211.5" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Установщик</tspan></text>
+<!-- node keyholder -->
+<rect x="399.8" y="37.7" width="103" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="keyholder"/>
+<text x="415.8" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключник</tspan></text>
+<!-- node services -->
+<rect x="611.1" y="37.7" width="142.6" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="services"/>
+<text x="627.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Службы хоста</tspan></text>
+<!-- message installer -> phone -->
+<path d="M 257.3 177.5 L 8 177.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="phone" data-edge="m0"/>
+<polygon points="2,177.5 12,182 12,173" fill="#3a3f47"/>
+<rect x="12.9" y="130.5" width="151.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<rect x="16.9" y="132.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="21.4" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="46.7" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сопряжение</tspan></text>
+<text x="46.7" y="165.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключа оператора</tspan></text>
+</g>
+<!-- message installer -> keyholder -->
+<path d="M 261.3 244.5 L 443.3 244.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="keyholder" data-edge="m1"/>
+<polygon points="449.3,244.5 439.3,240 439.3,249" fill="#3a3f47"/>
+<rect x="304.1" y="197.5" width="102.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<rect x="308.1" y="199.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="312.6" y="212.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="337.9" y="212.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запустить</tspan></text>
+<text x="337.9" y="232.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ключника</tspan></text>
+</g>
+<!-- message keyholder -> installer -->
+<path d="M 449.3 311.5 L 267.3 311.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keyholder" data-to="installer" data-edge="m2"/>
+<polygon points="261.3,311.5 271.3,316 271.3,307" fill="#3a3f47"/>
+<rect x="299.7" y="264.5" width="111.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<rect x="303.7" y="266.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="308.2" y="279.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="333.5" y="279.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">публичный</tspan></text>
+<text x="333.5" y="299.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">корень</tspan></text>
+</g>
+<!-- message installer -> phone -->
+<path d="M 257.3 378.5 L 8 378.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="phone" data-edge="m3"/>
+<polygon points="2,378.5 12,383 12,374" fill="#3a3f47"/>
+<rect x="8" y="331.5" width="161.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="12" y="333.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="16.5" y="346.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="41.7" y="346.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">корень</tspan></text>
+<text x="41.7" y="366.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на подтверждение</tspan></text>
+</g>
+<!-- message installer -> services -->
+<path d="M 261.3 465 L 674.4 465" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="services" data-edge="m4"/>
+<polygon points="680.4,465 670.4,460.5 670.4,469.5" fill="#3a3f47"/>
+<rect x="404.2" y="398.5" width="133.3" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="408.2" y="400.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="412.7" y="413.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="438" y="413.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запустить</tspan></text>
+<text x="438" y="433.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">службы,</tspan></text>
+<text x="438" y="452.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуск закрыт</tspan></text>
+</g>
+<!-- message phone -> services -->
+<path d="M 2 512.5 L 674.4 512.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="services" data-edge="m5"/>
+<polygon points="680.4,512.5 670.4,508 670.4,517" fill="#3a3f47"/>
+<rect x="353.5" y="485" width="152.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="357.5" y="486.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="362" y="500.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="387.3" y="500.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">грант диспетчера</tspan></text>
+</g>
+<!-- self installer -->
+<path d="M 261.3 536.5 L 291.3 536.5 L 291.3 605 L 268.3 605" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="installer" data-edge="m6"/>
+<polygon points="262.3,605 272.3,609.5 272.3,600.5" fill="#3a3f47"/>
+<rect x="299.3" y="540.5" width="126" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="303.3" y="542.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="307.8" y="555.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">16</tspan></text>
+<text x="333.1" y="555.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить</tspan></text>
+<text x="333.1" y="575.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязки</tspan></text>
+<text x="333.1" y="594.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и запрет сети</tspan></text>
+</g>
+<!-- message installer -> services -->
+<path d="M 261.3 668 L 674.4 668" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="installer" data-to="services" data-edge="m7"/>
+<polygon points="680.4,668 670.4,663.5 670.4,672.5" fill="#3a3f47"/>
+<rect x="409.1" y="621" width="123.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<rect x="413.1" y="622.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="417.6" y="636.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">17</tspan></text>
+<text x="442.9" y="636.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная</tspan></text>
+<text x="442.9" y="655.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация</tspan></text>
+</g>
+<!-- note -->
+<rect x="459.3" y="688" width="213.1" height="56.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="476.9" y="711.3" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Диспетчер открывает допуск</tspan></text>
+<text x="471.3" y="729.5" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">по свидетельствам аттестации.</tspan></text>
+</g>
+</g>
+</svg>

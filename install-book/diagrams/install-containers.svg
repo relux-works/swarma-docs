@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="869" height="870.7" viewBox="0 0 869 870.7">
+<title>Учётки и программы на машине: что делает Updater и кто меняет установку.</title>
+<rect width="869" height="870.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(-8 -8)">
+<!-- graphviz 14.0.4 -->
+<!-- group host -->
+<rect x="8" y="8" width="845" height="846.7" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group owner -->
+<rect x="26" y="70.8" width="236" height="161.4" rx="16" fill="none" stroke="#8b929c" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="owner"/>
+<!-- group keeper -->
+<rect x="280" y="80.5" width="236" height="141.9" rx="16" fill="none" stroke="#7c4ddb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="keeper"/>
+<!-- group updater -->
+<rect x="534" y="61" width="236" height="180.9" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="updater"/>
+<!-- group root -->
+<rect x="381" y="281.9" width="236" height="554.8" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="root"/>
+<!-- node curator -->
+<rect x="43.9" y="123.8" width="200.3" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="curator"/>
+<text x="82.5" y="149.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Curator</tspan></text>
+<text x="93.3" y="178.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">профили, дома,</tspan></text>
+<text x="101.2" y="197.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">план запуска</tspan></text>
+<!-- node keeper -->
+<rect x="297.9" y="133.5" width="200.3" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="keeper"/>
+<text x="353.7" y="159.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кипер узла</tspan></text>
+<text x="324.2" y="188.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">главный цикл машины</tspan></text>
+<!-- node updater -->
+<rect x="551.9" y="114" width="200.3" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="updater"/>
+<text x="588.4" y="140.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Updater</tspan></text>
+<text x="619.3" y="168.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">скачивает</tspan></text>
+<text x="594.5" y="188.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и предпроверяет,</tspan></text>
+<text x="598.6" y="207.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">полномочий нет</tspan></text>
+<!-- node services -->
+<rect x="162.9" y="333.1" width="200.3" height="109.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="services"/>
+<text x="207.7" y="359.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Службы хоста</tspan></text>
+<text x="179.8" y="387.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключник, брокер, прокси,</tspan></text>
+<text x="178.9" y="407.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">хост сессий, мост, каждая</tspan></text>
+<text x="202.2" y="426.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">под своей учёткой</tspan></text>
+<!-- node dispatcher -->
+<rect x="162.9" y="527.8" width="200.3" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="dispatcher"/>
+<text x="220.9" y="553.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
+<text x="241.7" y="582.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan></text>
+<text x="186.5" y="602" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">swarma-dispatcher</tspan></text>
+<!-- node manager -->
+<rect x="398.9" y="669.9" width="200.3" height="113.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="manager"/>
+<text x="457" y="696" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Менеджер</tspan></text>
+<text x="444.2" y="719.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и запускатель</tspan></text>
+<text x="448.8" y="748" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётки агентов,</tspan></text>
+<text x="418.9" y="767.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">одобренные программы</tspan></text>
+<!-- node protected -->
+<rect x="398.9" y="299.9" width="200.3" height="176.2" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="protected"/>
+<text x="458.6" y="326" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Фиксатор,</tspan></text>
+<text x="446.8" y="349.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">применитель</tspan></text>
+<text x="457.6" y="372.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и сверщик</tspan></text>
+<text x="426.5" y="401.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">метаданные, эффекты</tspan></text>
+<text x="435.7" y="420.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">по журналу, сверка</tspan></text>
+<text x="431" y="440.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">при загрузке; только</tspan></text>
+<text x="438.8" y="459.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">по акту оператора</tspan></text>
+<!-- node sets -->
+<rect x="634.9" y="516.1" width="200.3" height="113.8" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="sets"/>
+<text x="703.8" y="542.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Наборы</tspan></text>
+<text x="668.8" y="565.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в</tspan><tspan x="682.4" font-family="PT Mono, monospace" font-weight="bold">/opt/swarma</tspan></text>
+<text x="653.1" y="594.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">неизменяемые; прежний</tspan></text>
+<text x="669.3" y="613.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">для восстановления</tspan></text>
+<!-- link curator -> dispatcher -->
+<path d="M 99.6 214.4 C 83.5 233.5 67.3 257.2 59 281.9 C 31.5 363.7 12.7 403.2 59 476.1 C 80.8 510.4 118.4 532.6 155.5 547 L 156.8 547.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="curator" data-to="dispatcher" data-edge="e0"/>
+<polygon points="162.4,549.6 154.6,541.8 151.5,550.3" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="41.3" y="382.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">план запуска</tspan></text>
+</g>
+<!-- link keeper -> services -->
+<path d="M 376.3 204.8 C 355.9 237.6 325 287.3 300.6 326.5 L 299.9 327.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="services" data-edge="e1"/>
+<polygon points="296.8,332.7 305.9,326.6 298.2,321.9" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="350.7" y="266.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">просьба о запуске</tspan></text>
+</g>
+<!-- link services -> dispatcher -->
+<path d="M 263 443.4 C 263 467.7 263 496.1 263 520.1 L 263 521.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="services" data-to="dispatcher" data-edge="e2"/>
+<polygon points="263,527.3 267.5,517.3 258.5,517.3" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="271" y="502" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">host_start</tspan></text>
+</g>
+<!-- link dispatcher -> manager -->
+<path d="M 332.2 618.5 C 355.2 633.3 381.1 650 405.6 665.7 L 406.7 666.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dispatcher" data-to="manager" data-edge="e3"/>
+<polygon points="411.7,669.7 405.8,660.5 400.9,668" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="398.9" y="654.4" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">sudo</tspan><tspan x="434.9" font-family="PT Sans, sans-serif" font-weight="bold">, одна операция</tspan></text>
+</g>
+<!-- link updater -> protected -->
+<path d="M 613.8 224.2 C 598.9 245.2 581.5 270 564.8 293.7 L 564 294.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="protected" data-edge="e4"/>
+<polygon points="560.5,299.8 569.9,294.2 562.6,289" fill="#3a3f47"/>
+<g class="label" data-edge="e4">
+<text x="597.7" y="266.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">номер набора, подсказка</tspan></text>
+</g>
+<!-- link protected -> sets -->
+<path d="M 599.4 466.9 C 618.6 481.8 638.5 497.2 656.9 511.4 L 657.8 512.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="protected" data-to="sets" data-edge="e5"/>
+<polygon points="662.5,515.8 657.4,506.1 651.9,513.2" fill="#3a3f47"/>
+<g class="label" data-edge="e5">
+<text x="655.8" y="500.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">эффекты по журналу</tspan></text>
+</g>
+<!-- group label host -->
+<rect x="20" y="18" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="26" y="32.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<!-- group label owner -->
+<rect x="38" y="80.8" width="163.5" height="18.9" fill="#ffffff" class="plate"/>
+<text x="44" y="95.1" font-size="13" fill="#5f6670" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА ВЛАДЕЛЬЦА</tspan></text>
+<!-- group label keeper -->
+<rect x="292" y="90.5" width="132.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="298" y="104.9" font-size="13" fill="#6a3fc8" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА КИПЕРА</tspan></text>
+<!-- group label updater -->
+<rect x="546" y="71" width="212.8" height="18.9" fill="#ffffff" class="plate"/>
+<text x="552" y="85.3" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА SWARMA-UPDATER</tspan></text>
+<!-- group label root -->
+<rect x="393" y="807.8" width="214.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="399" y="822.2" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ROOT НА ОДНУ ОПЕРАЦИЮ</tspan></text>
+</g>
+</g>
+</svg>

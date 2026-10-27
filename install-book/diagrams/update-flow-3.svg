@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="847" height="526.5" viewBox="0 0 847 526.5">
+<title>Обновление, часть 3: допуск акта и окно обслуживания. Номера сообщений продолжают вторую часть.</title>
+<rect width="847" height="526.5" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(57.4 0)">
+<!-- group host -->
+<rect x="167.6" y="0" width="598" height="502.5" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="179.6" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="185.6" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="106.5" x2="0" y2="494.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="254.8" y1="83.1" x2="254.8" y2="494.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="490.7" y1="106.5" x2="490.7" y2="494.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="685.2" y1="106.5" x2="685.2" y2="494.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node phone -->
+<rect x="-57.4" y="37.7" width="114.9" height="68.8" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="phone"/>
+<text x="-34.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Телефон</tspan></text>
+<text x="-41.4" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">оператора</tspan></text>
+<!-- node applier -->
+<rect x="185.6" y="37.7" width="138.4" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="applier"/>
+<text x="201.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Применитель</tspan></text>
+<!-- node admission -->
+<rect x="436.3" y="37.7" width="108.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="admission"/>
+<text x="452.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
+<text x="458.9" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуска</tspan></text>
+<!-- node services -->
+<rect x="622.7" y="37.7" width="124.9" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="services"/>
+<text x="638.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Затронутые</tspan></text>
+<text x="654.9" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">службы</tspan></text>
+<!-- message phone -> applier -->
+<path d="M 2 158 L 246.8 158" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="applier" data-edge="m0"/>
+<polygon points="252.8,158 242.8,153.5 242.8,162.5" fill="#3a3f47"/>
+<rect x="8" y="130.5" width="151.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<rect x="12" y="132.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="16.5" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="41.7" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">одноразовый акт</tspan></text>
+</g>
+<!-- self applier -->
+<path d="M 256.8 178 L 286.8 178 L 286.8 266 L 263.8 266" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="applier" data-to="applier" data-edge="m1"/>
+<polygon points="257.8,266 267.8,270.5 267.8,261.5" fill="#3a3f47"/>
+<rect x="294.8" y="182" width="169.8" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<rect x="298.8" y="183.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="303.3" y="197.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="328.6" y="197.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">первый допуск:</tspan></text>
+<text x="328.6" y="216.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">намерение,</tspan></text>
+<text x="328.6" y="236.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">открытая операция,</tspan></text>
+<text x="328.6" y="255.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">забор операции</tspan></text>
+</g>
+<!-- self admission -->
+<path d="M 492.7 282 L 522.7 282 L 522.7 331 L 499.7 331" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="admission" data-to="admission" data-edge="m2"/>
+<polygon points="493.7,331 503.7,335.5 503.7,326.5" fill="#3a3f47"/>
+<rect x="530.7" y="286" width="128.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<rect x="534.7" y="287.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="539.2" y="301.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="564.4" y="301.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">новые старты</tspan></text>
+<text x="564.4" y="320.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">закрыты</tspan></text>
+</g>
+<!-- message phone -> services -->
+<path d="M 2 409.5 L 677.2 409.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="phone" data-to="services" data-edge="m3"/>
+<polygon points="683.2,409.5 673.2,405 673.2,414" fill="#3a3f47"/>
+<rect x="355.4" y="343" width="142.1" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="359.4" y="344.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="363.9" y="358.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">16</tspan></text>
+<text x="389.1" y="358.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запись</tspan></text>
+<text x="389.1" y="377.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">"заблокирован</tspan></text>
+<text x="389.1" y="397.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на обновление"</tspan></text>
+</g>
+<!-- message services -> applier -->
+<path d="M 683.2 472.5 L 262.8 472.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="services" data-to="applier" data-edge="m4"/>
+<polygon points="256.8,472.5 266.8,477 266.8,468" fill="#3a3f47"/>
+<rect x="403.1" y="425.5" width="133.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="407.1" y="427.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="411.6" y="440.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">17</tspan></text>
+<text x="436.8" y="440.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">остановка</tspan></text>
+<text x="436.8" y="460.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подтверждена</tspan></text>
+</g>
+</g>
+</g>
+</svg>

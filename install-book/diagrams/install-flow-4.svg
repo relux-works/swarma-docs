@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840.5" height="614.1" viewBox="0 0 840.5 614.1">
+<title>Установка, часть 4: от записи в реестре машин до личной комнаты владельца. Номера сообщений продолжают третью часть.</title>
+<rect width="840.5" height="614.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(54.3 0)">
+<!-- group host -->
+<rect x="422.9" y="0" width="339.3" height="590.1" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="434.9" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="440.9" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="582.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="181.9" y1="83.1" x2="181.9" y2="582.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="338.4" y1="83.1" x2="338.4" y2="582.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="512.2" y1="83.1" x2="512.2" y2="582.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="683.9" y1="83.1" x2="683.9" y2="582.1" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node owner -->
+<rect x="-54.3" y="37.7" width="108.7" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="owner"/>
+<text x="-38.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Владелец</tspan></text>
+<!-- node registry -->
+<rect x="109.8" y="37.7" width="144.1" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="registry"/>
+<text x="125.8" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Реестр машин</tspan></text>
+<!-- node registrar -->
+<rect x="274" y="37.7" width="128.9" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="registrar"/>
+<text x="290" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Регистратор</tspan></text>
+<!-- node services -->
+<rect x="440.9" y="37.7" width="142.6" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="services"/>
+<text x="456.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Службы хоста</tspan></text>
+<!-- node keeper -->
+<rect x="623.7" y="37.7" width="120.5" height="45.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="keeper"/>
+<text x="639.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кипер узла</tspan></text>
+<!-- message owner -> registry -->
+<path d="M 2 154.1 L 173.9 154.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registry" data-edge="m0"/>
+<polygon points="179.9,154.1 169.9,149.6 169.9,158.6" fill="#3a3f47"/>
+<rect x="16" y="107.1" width="149.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<rect x="20" y="108.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="24.5" y="122.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">21</tspan></text>
+<text x="49.7" y="122.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанная</tspan></text>
+<text x="49.7" y="141.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запись о машине</tspan></text>
+</g>
+<!-- message owner -> registrar -->
+<path d="M 2 221.1 L 330.4 221.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="registrar" data-edge="m1"/>
+<polygon points="336.4,221.1 326.4,216.6 326.4,225.6" fill="#3a3f47"/>
+<rect x="94" y="174.1" width="150.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<rect x="98" y="175.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="102.5" y="189.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">22</tspan></text>
+<text x="127.8" y="189.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поднять</tspan></text>
+<text x="127.8" y="208.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ревизию реестра</tspan></text>
+</g>
+<!-- message services -> keeper -->
+<path d="M 514.2 288.1 L 675.9 288.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="services" data-to="keeper" data-edge="m2"/>
+<polygon points="681.9,288.1 671.9,283.6 671.9,292.6" fill="#3a3f47"/>
+<rect x="528.2" y="241.1" width="139.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<rect x="532.2" y="242.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="536.7" y="256.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">23</tspan></text>
+<text x="561.9" y="256.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учётка и сессия</tspan></text>
+<text x="561.9" y="275.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">кипера</tspan></text>
+</g>
+<!-- message keeper -> registrar -->
+<path d="M 681.9 355.1 L 346.4 355.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="registrar" data-edge="m3"/>
+<polygon points="340.4,355.1 350.4,359.6 350.4,350.6" fill="#3a3f47"/>
+<rect x="497.3" y="308.1" width="112.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="501.3" y="309.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="505.8" y="323.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">24</tspan></text>
+<text x="531" y="323.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуск</tspan></text>
+<text x="531" y="342.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">к носителю</tspan></text>
+</g>
+<!-- message keeper -> owner -->
+<path d="M 681.9 422.1 L 8 422.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="owner" data-edge="m4"/>
+<polygon points="2,422.1 12,426.6 12,417.6" fill="#3a3f47"/>
+<rect x="133" y="375.1" width="156.9" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="137" y="376.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="141.5" y="390.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">25</tspan></text>
+<text x="166.7" y="390.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">приглашение</tspan></text>
+<text x="166.7" y="409.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в личную комнату</tspan></text>
+</g>
+<!-- message owner -> keeper -->
+<path d="M 2 489.1 L 675.9 489.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="owner" data-to="keeper" data-edge="m5"/>
+<polygon points="681.9,489.1 671.9,484.6 671.9,493.6" fill="#3a3f47"/>
+<rect x="148.6" y="442.1" width="125.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="152.6" y="443.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="157.1" y="457.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">26</tspan></text>
+<text x="182.4" y="457.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">принять</tspan></text>
+<text x="182.4" y="476.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">приглашение</tspan></text>
+</g>
+<!-- message keeper -> owner -->
+<path d="M 681.9 556.1 L 8 556.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="owner" data-edge="m6"/>
+<polygon points="2,556.1 12,560.6 12,551.6" fill="#3a3f47"/>
+<rect x="155.6" y="509.1" width="111.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="159.6" y="510.9" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="164.1" y="524.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">27</tspan></text>
+<text x="189.4" y="524.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">первое</tspan></text>
+<text x="189.4" y="543.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сообщение</tspan></text>
+</g>
+</g>
+</g>
+</svg>

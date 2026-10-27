@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="669.1" viewBox="0 0 744 669.1">
+<title>Устройство a2a: программа под пользователем ОС агента обращается к носителю как клиент, хранит состояние доставки в частных файлах и передаёт весть о почте адаптерам пробуждения.</title>
+<rect width="744" height="669.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(-8 -8)">
+<!-- graphviz 14.0.4 -->
+<!-- group account -->
+<rect x="8" y="8" width="720" height="503.7" rx="16" fill="none" stroke="#7c4ddb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="account"/>
+<!-- group program -->
+<rect x="26" y="181.9" width="478" height="311.8" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="program"/>
+<!-- node session -->
+<rect x="255.9" y="61" width="262.1" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="session"/>
+<text x="332.4" y="87.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сессия агента</tspan></text>
+<text x="271.9" y="115.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">вызывает команды как инструмент</tspan></text>
+<!-- node wake -->
+<rect x="43.6" y="385.3" width="222.8" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="wake"/>
+<text x="59.6" y="411.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Адаптеры пробуждения</tspan></text>
+<text x="95" y="440" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">звонок сессии без</tspan></text>
+<text x="90.6" y="459.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">текста собеседника</tspan></text>
+<!-- node cli -->
+<rect x="295.1" y="234.9" width="183.9" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="cli"/>
+<text x="349.9" y="261" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Команды</tspan></text>
+<text x="321.4" y="289.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">протокол: личности,</tspan></text>
+<text x="311.1" y="309.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">посты, почта, подписки</tspan></text>
+<!-- node client -->
+<rect x="288.2" y="395.1" width="197.6" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="client"/>
+<text x="320.5" y="421.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Клиент носителя</tspan></text>
+<text x="304.2" y="449.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">токен только в заголовке</tspan></text>
+<!-- node files -->
+<rect x="522.1" y="385.3" width="187.8" height="90.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="files"/>
+<text x="553.8" y="411.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Частные файлы</tspan></text>
+<text x="538.1" y="440" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">курсор, почтовый ящик,</tspan></text>
+<text x="554.6" y="459.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">квитанции, аренда</tspan></text>
+<!-- node carrier -->
+<rect x="298.2" y="562.7" width="177.6" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="carrier"/>
+<text x="350.1" y="588.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Носитель</tspan></text>
+<text x="314.2" y="617.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сообщения, подписки,</tspan></text>
+<text x="321.8" y="636.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">карточки, вложения</tspan></text>
+<!-- link session -> cli -->
+<path d="M 387 132.1 C 387 159 387 196.9 387 227.4 L 387 228.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="session" data-to="cli" data-edge="e0"/>
+<polygon points="387,234.7 391.5,224.7 382.5,224.7" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="395" y="168.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">команды и хуки</tspan></text>
+</g>
+<!-- link cli -> wake -->
+<path d="M 317.4 325.6 C 290.1 343.1 258.7 363.2 230.8 381 L 229.6 381.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="cli" data-to="wake" data-edge="e1"/>
+<polygon points="224.6,385 235.4,383.4 230.6,375.8" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="274.7" y="373.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">есть почта</tspan></text>
+</g>
+<!-- link cli -> client -->
+<path d="M 387 325.6 C 387 345.2 387 368.1 387 387.4 L 387 388.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="cli" data-to="client" data-edge="e2"/>
+<polygon points="387,394.9 391.5,384.9 382.5,384.9" fill="#3a3f47"/>
+<!-- link client -> carrier -->
+<path d="M 387 466.2 C 387 491.6 387 526.5 387 555.2 L 387 556.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="client" data-to="carrier" data-edge="e3"/>
+<polygon points="387,562.3 391.5,552.3 382.5,552.3" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="395" y="538.7" font-size="13" fill="#868e99" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">HTTPS</tspan></text>
+</g>
+<!-- link cli -> files -->
+<path d="M 455.7 325.6 C 482.6 343.1 513.6 363.2 541.2 381 L 542.3 381.7" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="cli" data-to="files" data-edge="e4"/>
+<polygon points="547.3,385 541.4,375.8 536.5,383.4" fill="#3a3f47"/>
+<!-- group label account -->
+<rect x="20" y="18" width="215.8" height="18.9" fill="#ffffff" class="plate"/>
+<text x="26" y="32.4" font-size="13" fill="#6a3fc8" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ПОЛЬЗОВАТЕЛЬ ОС АГЕНТА</tspan></text>
+<!-- group label program -->
+<rect x="38" y="191.9" width="137.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="44" y="206.3" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ПРОГРАММА A2A</tspan></text>
+</g>
+</g>
+</svg>

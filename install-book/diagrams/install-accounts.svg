@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="792" height="802.1" viewBox="0 0 792 802.1">
+<title>Учётки на машине и путь запуска агента через них.</title>
+<rect width="792" height="802.1" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(-8 -8)">
+<!-- graphviz 14.0.4 -->
+<!-- group host -->
+<rect x="8" y="8" width="768" height="778.1" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group owner -->
+<rect x="26" y="242.9" width="286" height="141.9" rx="16" fill="none" stroke="#8b929c" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="owner"/>
+<!-- group root -->
+<rect x="472" y="424.8" width="286" height="161.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="root"/>
+<!-- group agent -->
+<rect x="472" y="626.2" width="286" height="141.9" rx="16" fill="none" stroke="#7c4ddb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="agent"/>
+<!-- group keeper -->
+<rect x="341" y="61" width="286" height="141.9" rx="16" fill="none" stroke="#7c4ddb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="keeper"/>
+<!-- node curator -->
+<rect x="44.2" y="295.9" width="249.5" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="curator"/>
+<text x="107.5" y="322" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Curator</tspan></text>
+<text x="73.5" y="350.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">профили, дома, план запуска</tspan></text>
+<!-- node keeper -->
+<rect x="359.2" y="114" width="249.5" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="keeper"/>
+<text x="439.7" y="140.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кипер узла</tspan></text>
+<text x="410.2" y="168.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">главный цикл машины</tspan></text>
+<!-- node sessionhost -->
+<rect x="359.2" y="295.9" width="249.5" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="sessionhost"/>
+<text x="437.5" y="322" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
+<text x="375.2" y="350.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan><tspan x="421.8" font-family="PT Mono, monospace">swarma-session-host</tspan></text>
+<!-- node dispatcher -->
+<rect x="26.2" y="487.6" width="249.5" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="dispatcher"/>
+<text x="108.9" y="513.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
+<text x="51.2" y="542.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётка</tspan><tspan x="97.8" font-family="PT Mono, monospace">swarma-dispatcher</tspan></text>
+<!-- node manager -->
+<rect x="490.2" y="477.8" width="249.5" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="manager"/>
+<text x="516" y="503.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Менеджер и запускатель</tspan></text>
+<text x="564.8" y="532.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">учётки агентов,</tspan></text>
+<text x="534.9" y="552" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">одобренные программы</tspan></text>
+<!-- node agent -->
+<rect x="490.2" y="644.2" width="249.5" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agent"/>
+<text x="593" y="670.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агент</tspan></text>
+<text x="512.3" y="698.8" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">curator-run</tspan><tspan x="615.3" font-family="PT Sans, sans-serif">исполняет план</tspan></text>
+<!-- link curator -> dispatcher -->
+<path d="M 165.7 367.1 C 162.7 398.9 158.2 445.8 155 479.7 L 154.9 481.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="curator" data-to="dispatcher" data-edge="e0"/>
+<polygon points="154.3,487.1 159.7,477.6 150.8,476.7" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="171.7" y="403.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">план запуска</tspan></text>
+</g>
+<!-- link keeper -> sessionhost -->
+<path d="M 484 185.1 C 484 214.5 484 256.8 484 288.1 L 484 289.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="keeper" data-to="sessionhost" data-edge="e1"/>
+<polygon points="484,295.5 488.5,285.5 479.5,285.5" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="492" y="229.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">просьба о запуске</tspan></text>
+</g>
+<!-- link sessionhost -> dispatcher -->
+<path d="M 422.9 367.1 C 365.1 400.1 278.6 449.4 218.7 483.5 L 217.5 484.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="sessionhost" data-to="dispatcher" data-edge="e2"/>
+<polygon points="212.2,487.1 223.2,486.1 218.7,478.3" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="362.8" y="422.1" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">host_start</tspan></text>
+</g>
+<!-- link dispatcher -> manager -->
+<path d="M 276.3 523 C 340.1 523 417.7 523 482.5 523 L 484 523" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="dispatcher" data-to="manager" data-edge="e3"/>
+<polygon points="490,523 480,518.5 480,527.5" fill="#3a3f47"/>
+<g class="label" data-edge="e3">
+<text x="311.4" y="511.7" font-size="15" fill="#1f2328"><tspan font-family="PT Mono, monospace" font-weight="bold">sudo</tspan><tspan x="347.4" font-family="PT Sans, sans-serif" font-weight="bold">, одна операция</tspan></text>
+</g>
+<!-- link manager -> agent -->
+<path d="M 615 568.3 C 615 589.9 615 615.7 615 636.9 L 615 638.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="manager" data-to="agent" data-edge="e4"/>
+<polygon points="615,644.2 619.5,634.2 610.5,634.2" fill="#3a3f47"/>
+<g class="label" data-edge="e4">
+<text x="623" y="610.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">учётка и запуск</tspan></text>
+</g>
+<!-- group label host -->
+<rect x="20" y="18" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="26" y="32.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<!-- group label owner -->
+<rect x="38" y="252.9" width="163.5" height="18.9" fill="#ffffff" class="plate"/>
+<text x="44" y="267.2" font-size="13" fill="#5f6670" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА ВЛАДЕЛЬЦА</tspan></text>
+<!-- group label root -->
+<rect x="484" y="434.8" width="214.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="490" y="449.2" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ROOT НА ОДНУ ОПЕРАЦИЮ</tspan></text>
+<!-- group label agent -->
+<rect x="484" y="739.2" width="129.9" height="18.9" fill="#ffffff" class="plate"/>
+<text x="490" y="753.6" font-size="13" fill="#6a3fc8" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА АГЕНТА</tspan></text>
+<!-- group label keeper -->
+<rect x="353" y="71" width="132.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="359" y="85.3" font-size="13" fill="#6a3fc8" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">УЧЁТКА КИПЕРА</tspan></text>
+</g>
+</g>
+</svg>

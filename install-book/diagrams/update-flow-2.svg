@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="865.9" height="741" viewBox="0 0 865.9 741">
+<title>Обновление, часть 2: защищённая копия набора, план и содержание акта. Номера сообщений продолжают первую часть.</title>
+<rect width="865.9" height="741" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(50 0)">
+<!-- group host -->
+<rect x="170.5" y="0" width="399.9" height="717" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group label host -->
+<rect x="182.5" y="10" width="172.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="188.5" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ВЛАДЕЛЬЦА</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="709" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="268" y1="83.1" x2="268" y2="709" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="483.1" y1="83.1" x2="483.1" y2="709" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="734.4" y1="106.5" x2="734.4" y2="709" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node mirror -->
+<rect x="-50" y="37.7" width="100" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="mirror"/>
+<text x="-32.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Зеркала</tspan></text>
+<!-- node updater -->
+<rect x="188.5" y="37.7" width="159.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="updater"/>
+<text x="204.5" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Swarma Updater</tspan></text>
+<!-- node applier -->
+<rect x="413.9" y="37.7" width="138.4" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="applier"/>
+<text x="429.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Применитель</tspan></text>
+<!-- node phone -->
+<rect x="677" y="37.7" width="114.9" height="68.8" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="phone"/>
+<text x="699.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Телефон</tspan></text>
+<text x="693" y="87.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">оператора</tspan></text>
+<!-- message updater -> mirror -->
+<path d="M 266 158 L 8 158" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="mirror" data-edge="m0"/>
+<polygon points="2,158 12,162.5 12,153.5" fill="#3a3f47"/>
+<rect x="8" y="130.5" width="154.5" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="21" cy="141.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="17.3" y="145.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="36" y="145.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">артефакты набора</tspan></text>
+</g>
+<!-- message mirror -> updater -->
+<path d="M 2 225 L 260 225" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="mirror" data-to="updater" data-edge="m1"/>
+<polygon points="266,225 256,220.5 256,229.5" fill="#3a3f47"/>
+<rect x="14" y="178" width="142.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="27" cy="188.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="23.3" y="193.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="42" y="193.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">байты</tspan></text>
+<text x="42" y="212.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в пределах длин</tspan></text>
+</g>
+<!-- message updater -> applier -->
+<path d="M 270 292 L 475.1 292" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="applier" data-edge="m2"/>
+<polygon points="481.1,292 471.1,287.5 471.1,296.5" fill="#3a3f47"/>
+<rect x="311.5" y="245" width="128.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="324.5" cy="255.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="320.8" y="260.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">8</tspan></text>
+<text x="339.5" y="260.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">номер набора,</tspan></text>
+<text x="339.5" y="279.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подсказка</tspan></text>
+</g>
+<!-- self applier -->
+<path d="M 481.1 316 L 451.1 316 L 451.1 404 L 474.1 404" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="applier" data-to="applier" data-edge="m3"/>
+<polygon points="480.1,404 470.1,399.5 470.1,408.5" fill="#3a3f47"/>
+<rect x="294.1" y="320" width="149.1" height="80" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="307.1" cy="330.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="303.4" y="335.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">9</tspan></text>
+<text x="322.1" y="335.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">защищённая</tspan></text>
+<text x="322.1" y="354.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">копия и проверка</tspan></text>
+<text x="322.1" y="374.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в пределах</tspan></text>
+<text x="322.1" y="393.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ёмкости</tspan></text>
+</g>
+<!-- self applier -->
+<path d="M 481.1 424 L 451.1 424 L 451.1 492.5 L 474.1 492.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="applier" data-to="applier" data-edge="m4"/>
+<polygon points="480.1,492.5 470.1,488 470.1,497" fill="#3a3f47"/>
+<rect x="294" y="428" width="149.1" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="298" y="429.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="302.5" y="443.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">10</tspan></text>
+<text x="327.8" y="443.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">план</tspan></text>
+<text x="327.8" y="462.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">из проверенного</tspan></text>
+<text x="327.8" y="482.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">набора</tspan></text>
+</g>
+<!-- self updater -->
+<path d="M 270 512.5 L 300 512.5 L 300 561.5 L 277 561.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="updater" data-to="updater" data-edge="m5"/>
+<polygon points="271,561.5 281,566 281,557" fill="#3a3f47"/>
+<rect x="308" y="516.5" width="133" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="312" y="518.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="316.5" y="531.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">11</tspan></text>
+<text x="341.8" y="531.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">предпросмотр</tspan></text>
+<text x="341.8" y="551.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">владельцу</tspan></text>
+</g>
+<!-- message applier -> phone -->
+<path d="M 485.1 683 L 726.4 683" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="applier" data-to="phone" data-edge="m6"/>
+<polygon points="732.4,683 722.4,678.5 722.4,687.5" fill="#3a3f47"/>
+<rect x="578.3" y="577.5" width="148.1" height="99.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="582.3" y="579.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="586.8" y="592.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="612.1" y="592.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">машина, вид,</tspan></text>
+<text x="612.1" y="612.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">прежнее</tspan></text>
+<text x="612.1" y="631.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">состояние,</tspan></text>
+<text x="612.1" y="651.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">набор, дайджест</tspan></text>
+<text x="612.1" y="670.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">плана, окно</tspan></text>
+</g>
+</g>
+</g>
+</svg>
