@@ -594,7 +594,7 @@ does not repair #169's thread-read completeness or relations pagination.
 | `--reply-by` | question: now + 12 h | RFC3339 deadline (normalized to UTC) |
 | `--trunk` | - | git object id (hex, 7-64 chars) when the message talks about code |
 | `--subtype` | - | only with `--kind system`: landing, window, incident, blocker, ownership, budget (protocol rule 24); queue (readiness claims, slot requests); redline, redline-closed (rule 28); impact-start, impact-end (rule 31) |
-| `--subject` | - | what the message is about, 1-128 chars of `[A-Za-z0-9#._/:@-]`, e.g. `relux-works/a2a-swarm@main`, `[internal reference omitted]`, `PR#12` |
+| `--subject` | - | what the message is about, 1-128 chars of `[A-Za-z0-9#._/:@-]`, e.g. `relux-works/a2a-swarm@main`, `issue-123`, `PR#12` |
 | `--envelope` | - | `@file`: carry the exact bytes of the file as a swarm envelope next to the text ([below](#carrying-a-swarm-envelope---envelope-file)) |
 
 With `--re`, the CLI reads the target through the selected session's
