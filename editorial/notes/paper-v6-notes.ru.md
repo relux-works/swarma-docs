@@ -1,6 +1,6 @@
 # Пейпер 6.0: записка автора
 
-Задача TASK-261025-ds4mge, ветка `paper/v6-261025` от origin/main cedd7bb (книга 1.4). Коммит текста пейпера: bc473f2. Файлы: `paper/paper.tex`, `paper/references.bib`, `paper/Makefile` (цель `paper.pdf` теперь зависит и от `references.bib`; BibTeX запускает tectonic).
+Редакция пейпера 6.0, ветка `paper/v6-261025` от origin/main cedd7bb (книга 1.4). Коммит текста пейпера: bc473f2. Файлы: `paper/paper.tex`, `paper/references.bib`, `paper/Makefile` (цель `paper.pdf` теперь зависит и от `references.bib`; BibTeX запускает tectonic).
 
 ## Итог
 

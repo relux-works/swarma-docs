@@ -1,6 +1,6 @@
 # Книжная волна диаграмм
 
-Задача TASK-261025-e493tn, книжная волна, 25 октября 2026 года. Все 39 рисунков книги из `book/src/*.puml` перерисованы генератором `scripts/diagram-kit/` по `editorial/diagram-style.ru.md`. Исходник каждого рисунка теперь `book/src/<имя>.toml`, рендер `book/diagrams/<имя>.svg`; прежние `.puml` и PNG удалены, когда их замена прошла lint, `--require-fit` и просмотр. Записка о подписях (`editorial/notes/signing-auth/`) не тронута.
+Книжная волна, 25 октября 2026 года. Все 39 рисунков книги из `book/src/*.puml` перерисованы генератором `scripts/diagram-kit/` по `editorial/diagram-style.ru.md`. Исходник каждого рисунка теперь `book/src/<имя>.toml`, рендер `book/diagrams/<имя>.svg`; прежние `.puml` и PNG удалены, когда их замена прошла lint, `--require-fit` и просмотр. Записка о подписях (`editorial/notes/signing-auth/`) не тронута.
 
 ## Итог
 

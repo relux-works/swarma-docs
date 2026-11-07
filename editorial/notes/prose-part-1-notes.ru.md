@@ -1,6 +1,6 @@
 # Проход прозы, часть 1: главы 00–10
 
-Задача TASK-261025-fvwaug, часть 1 из 3. Ветка `editorial/prose-part-1-261025` от `origin/editorial/target-state-voice-261025` (a9ada4d). Перенесённые статусы лежат в `editorial/notes/status-ledger-part-1.ru.md` (83 строки после r1, 87 после r2).
+Задача по проходу прозы, часть 1 из 3. Ветка `editorial/prose-part-1-261025` от `origin/editorial/target-state-voice-261025` (a9ada4d). Перенесённые статусы лежат в `editorial/notes/status-ledger-part-1.ru.md` (83 строки после r1, 87 после r2).
 
 ## Готовые файлы
 
