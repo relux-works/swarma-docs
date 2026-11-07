@@ -10,7 +10,7 @@
 #
 # Figures live in forum-book/src/<name>.toml and render to
 # forum-book/diagrams/<name>.svg with scripts/diagram-kit/render.py; the
-# orchestrator renders them after review. Before the build:
+# rendered after review. Before the build:
 #  - structural pass (always): every figure a chapter links has a TOML source,
 #    every TOML source has its SVG, and diagrams/ holds no SVG without a source;
 #  - render pass: every SVG equals a fresh render of its source and passes

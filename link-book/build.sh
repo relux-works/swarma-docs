@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-# Build the identity book: Markdown chapters -> HTML (pandoc) -> PDF (WeasyPrint).
+# Build the Swarma Link book: Markdown chapters -> HTML (pandoc) -> PDF (WeasyPrint).
 #
-#   identity-book/build.sh          builds identity-book/swarma-identity.ru.pdf from identity-book/ru/
-#   identity-book/build.sh ru OUT   writes the PDF to OUT instead
+#   link-book/build.sh          builds link-book/swarma-link.ru.pdf from link-book/ru/
+#   link-book/build.sh ru OUT   writes the PDF to OUT instead
 #
 # Reuses the Swarma book's template, stylesheet and Lua filter (book/), so the
 # two books look the same. Needs pandoc 3.x and WeasyPrint 69+, and the PT
 # Serif, PT Sans and PT Mono fonts.
 #
-# Figures live in identity-book/src/<name>.toml and render to
-# identity-book/diagrams/<name>.svg with scripts/diagram-kit/render.py; the
-# orchestrator renders them after review. Before the build:
+# Figures live in link-book/src/<name>.toml and render to
+# link-book/diagrams/<name>.svg with scripts/diagram-kit/render.py; the
+# rendered after review. Before the build:
 #  - structural pass (always): every figure a chapter links has a TOML source,
 #    every TOML source has its SVG, and diagrams/ holds no SVG without a source;
 #  - render pass: every SVG equals a fresh render of its source and passes
 #    --require-fit for its box ({.tall} links: tall, others: normal). It needs
-#    the Graphviz the diagram kit pins. identity_BOOK_SKIP_FIGURE_RENDER=1 skips
+#    the Graphviz the diagram kit pins. link_BOOK_SKIP_FIGURE_RENDER=1 skips
 #    only this pass, with a warning.
 # An image WeasyPrint cannot load also fails the build.
 set -euo pipefail
@@ -25,7 +25,7 @@ book="$here/../book"
 kit="$here/../scripts/diagram-kit/render.py"
 lang="${1:-ru}"
 src="$here/$lang"
-out="${2:-$here/swarma-identity.$lang.pdf}"
+out="${2:-$here/swarma-link.$lang.pdf}"
 
 for tool in pandoc weasyprint python3; do
   command -v "$tool" >/dev/null || { echo "build.sh: $tool not found" >&2; exit 1; }
@@ -38,7 +38,7 @@ if (( ${#chapters[@]} == 0 )); then
   exit 1
 fi
 
-tmp="$(mktemp -d "${TMPDIR:-/tmp}/swarma-identity.XXXXXX")"
+tmp="$(mktemp -d "${TMPDIR:-/tmp}/swarma-link.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT
 
 # One line per chapter link: "<stem> <box>", box is tall or normal.
@@ -63,8 +63,8 @@ for svg in "$here"/diagrams/*.svg; do
 done
 (( fail == 0 )) || { echo "build.sh: figure check failed" >&2; exit 1; }
 
-if [ "${identity_BOOK_SKIP_FIGURE_RENDER:-}" = 1 ]; then
-  echo "build.sh: WARNING: identity_BOOK_SKIP_FIGURE_RENDER=1, figure freshness and fit are not checked" >&2
+if [ "${link_BOOK_SKIP_FIGURE_RENDER:-}" = 1 ]; then
+  echo "build.sh: WARNING: link_BOOK_SKIP_FIGURE_RENDER=1, figure freshness and fit are not checked" >&2
 else
   for toml in "$here"/src/*.toml; do
     stem="$(basename "$toml" .toml)"
