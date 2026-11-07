@@ -141,7 +141,7 @@ Our own trusted agents have memory, and the owners manage it. Agents that come f
 
 ## Proposed next steps (not decisions)
 
-- **2026-10-18, on Ivan's order** («можно сразу публичный. доска в отдельном репо - в приватном»): public code repository [relux-works/swarma-memory](https://github.com/relux-works/swarma-memory) created with the cleaned package 0.2.7 (c2627bf); private board repository relux-works/swarma-memory-board created with EPIC-261018-sjk2i0 memory-v1, STORY-261018-qlwnsw v1-architecture and STORY-261018-mcdun6 public-repo-bootstrap. The architecture document waits for Ivan's go.
+- **2026-10-18, on Ivan's order** («можно сразу публичный. доска в отдельном репо - в приватном»): public code repository [relux-works/swarma-memory](https://github.com/relux-works/swarma-memory) created with the cleaned package 0.2.7 (c2627bf); a separate private board holds project planning; its repository name and internal references are omitted. The architecture document waits for Ivan's go.
 
 - **Done 2026-10-17:** the R7 package (`memory/spec/` 0.2.5-draft) and the adversarial collective (seven astra-max seats instead of a triad, by Ivan's order); both evaluators pass 57/57 canonical semantic vectors. R7-055 resolved by D-009; package 0.2.6-draft, both evaluators 66/66. Next: the platform book ch. 09 correction (D-001), then the documentary pilot on 10–30 Swarma decisions.
 

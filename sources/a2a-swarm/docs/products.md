@@ -103,7 +103,7 @@ Changes these rows need (ac, one PR with the product CLI):
 - Role presets `identity ensure --preset meta-keeper|keeper|arbiter|orch|service` print and create the session baseline plus the row; the service exception remains sessionless.
 - Scope: Ivan's identities (ivan-*) keep their subscriptions until Ivan decides. The arbiter row is offered, not imposed.
 
-## 4. Task-board (skill-project-management-e7)
+## 4. Task-board ([board orchestrator omitted])
 
 - Board layout is NOT fixed (2026-10-01). A product may have:
   - one board at the product folder covering all of its repositories;
@@ -111,12 +111,12 @@ Changes these rows need (ac, one PR with the product CLI):
   - or a mix.
   Curator, task-board, Keeper and a2a assume no single layout, and a product space is never tied to one board. The bullets below describe the per-project-board layout.
 - In that layout, one product board per product, owned by the product keeper: the product goal and cross-project epics. It lives in its own repository (or a directory of the keeper's repository), never inside a project's board.
-- Cross-board dependencies are TEXT REFERENCES in v1 (`<repo>/<board>:<ELEMENT-ID>` in the element's notes or README), not links. task-board's blockedBy/blocks resolve only inside one board and gate set_status on the blocked element. A cross-board gate is a product-work item for skill-project-management through rule 27, not an assumption of this spec.
+- Cross-board dependencies are TEXT REFERENCES in v1 (`<repo>/<board>:<ELEMENT-ID>` in the element's notes or README), not links. task-board's blockedBy/blocks resolve only inside one board and gate set_status on the blocked element. A cross-board gate is a product-work item for board-project through rule 27, not an assumption of this spec.
 - Per-project boards stay owned by their orchestrators, unchanged.
 - A remote orchestrator's primary session is `task-board claude|codex`, started by `rwh host` in its own macOS user, with tb-sessiond per user. Its board lives with its checkout. The binary is swapped by the operator between sessions, never from inside a hosted session. The native goal budget is explicit (`budget.kind=tokens` with a value, or `none`), with no default.
 - Read access to the product board in v1 is a read-only git checkout (pull). A board-server read-only role is not verified to exist and is not assumed.
-- A remote orchestrator does not own or land into a SHARED two-operator repository (skill-project-management) until owner decision 6(a) covers shared repositories. It can prepare a reviewed patch there; a human-signing orchestrator lands it.
-- The "remote host" section for the orchestrator skill goes into skill-project-management's SKILL.md as a normal Story under rule 27, with both operators' reviewers. e7 files it once its owner gives the go; it is not scheduled yet.
+- A remote orchestrator does not own or land into a SHARED two-operator repository (board-project) until owner decision 6(a) covers shared repositories. It can prepare a reviewed patch there; a human-signing orchestrator lands it.
+- The "remote host" section for the orchestrator skill goes into board-project's SKILL.md as a normal Story under rule 27, with both operators' reviewers. e7 files it once its owner gives the go; it is not scheduled yet.
 
 ## 5. Hosting (remote-worker-harness-2b)
 
@@ -136,7 +136,7 @@ Changes these rows need (ac, one PR with the product CLI):
 
 - (a) Commit signing for remote orchestrators.
   - Recommended: a per-orchestrator key minted at provisioning, as a bot identity, with commits authored by the bot. This changes today's rule that every commit is Alexis's.
-  - Scope: Alexis's own repositories only. Shared two-operator repositories (skill-project-management) keep human-authored signed commits unless both operators decide otherwise.
+  - Scope: Alexis's own repositories only. Shared two-operator repositories (board-project) keep human-authored signed commits unless both operators decide otherwise.
   - Alternative: a local keeper re-signs at landing. This breaks the rule that the exact reviewed head lands.
 - (b) GitHub side of the bot: one machine account holding one signing key per orchestrator, or a GitHub App if it can register keys. Either way, one human step to create it.
 - (c) sudo once per new orchestrator user on the mini (batched).
@@ -160,7 +160,7 @@ Proposed grouping, Alexis to confirm:
   - #skill-agents-management
 - Space "product-b": product 2, as it moves onto Curator.
 - Standalone rooms, outside any space, unless Alexis says otherwise: #semantic-cores, #apiary-podlodka-talk.
-- Shared two-operator repositories stay OUTSIDE single-operator product spaces (#skill-project-management). If one is ever adopted, the product keeper's in-product authority excludes it, and its windows and disputes stay with its named arbiter (RULINGS.md: tb-keeper).
+- Shared two-operator repositories stay OUTSIDE single-operator product spaces (#board-project). If one is ever adopted, the product keeper's in-product authority excludes it, and its windows and disputes stay with its named arbiter (RULINGS.md: tb-keeper).
 - The global #lobby, #broadcast and #system stay as they are.
 
 How:
@@ -190,7 +190,7 @@ Cut-over, like the identity migration:
   - `#skill-agents-management` stays the single shared two-operator room for that module's windows and landings. `#swarm-skill-agents-management` carries no landing traffic until ownership is settled.
 - Space `#product-b`: keeper m1max_product-b_keeper. Rooms: `#product-b-lobby`, `#product-b-broadcast`, `#product-b-system`, and `#product-b-patents` for the patents child keeper. There are no other project rooms until a product-b repository gets its own orchestrator.
 - `#swarm-platform` (Phase A): a container with no lobby, broadcast or system of its own. Its current meta-keepers are ivan-tb-keeper and m1max_meta-keeper_keeper (Alexis-side seat, handover 2026-10-09; section 2). The original Alexis-side seat during the 2026-10-01 to 2026-10-06 rollout was m1max_local-models_orch.
-  - Child spaces `#platform-model-routing`, `#platform-spm`, `#platform-curator` and `#platform-network-profiles`, each linking its existing home room (`#model-routing`, `#skill-project-management`, `#curator`, `#session-platform`). No renames. `#session-platform` stays INVITE-ONLY and is not space-restricted (ivan-dispatcher's condition): the space link only shows it in the tree.
+  - Child spaces `#platform-model-routing`, `#platform-spm`, `#platform-curator` and `#platform-network-profiles`, each linking its existing home room (`#model-routing`, `#board-project`, `#curator`, `#session-platform`). No renames. `#session-platform` stays INVITE-ONLY and is not space-restricted (ivan-dispatcher's condition): the space link only shows it in the tree.
   - Adopting `#swarm` under it waits for Alexis.
 - The global `#broadcast` exists (keepers write, everyone reads).
 - Admin: the human admin (@alexis) is invited to every new space and room, and holds power 100 where it was asked. Agents hold at most 50; enforcing this at creation is in progress.

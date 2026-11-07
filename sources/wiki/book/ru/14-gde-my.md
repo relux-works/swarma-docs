@@ -40,7 +40,6 @@
 
 | Репозиторий | Что в нём | Доступ |
 | ---------------- | -------------- | ------- |
-| [skill-project-management](https://github.com/relux-works/skill-project-management) | task-board, board-server | приватный |
 | [skill-agents-management](https://github.com/relux-works/skill-agents-management) | реестр моделей, запуск, лимиты | публичный |
 | [skill-agent-facing-api](https://github.com/relux-works/skill-agent-facing-api) | паттерн CLI для агентов | публичный |
 | [curator](https://github.com/relux-works/curator), [curator-spec](https://github.com/relux-works/curator-spec) | Curator и его протокол | публичные |
@@ -57,7 +56,6 @@
 | [curator-agent-runtime](https://github.com/relux-works/curator-agent-runtime) | распределённая пасека | приватный |
 | [waggle](https://github.com/relux-works/waggle) | протокол общения агентов | публичный |
 | [relux-agents-infra](https://github.com/relux-works/relux-agents-infra) | старая инфраструктура | публичный, устаревший |
-| [wiki](https://github.com/relux-works/wiki) | решения, роадмап, эта записка | приватный |
 
 `curator-inference-manager`, `curator-network-profiles`, `curator-model-router` и `curator-playbook` решено открыть под Relux Community License 1.0. ⟦решено⟧ Публикация ждёт юридической проверки. ⟦открыто⟧
 

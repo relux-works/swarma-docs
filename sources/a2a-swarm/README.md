@@ -354,7 +354,7 @@ allowance even on setup failure. Observer-only readiness checks perform no
 Keychain operations and do not establish the platform status gate's behavior.
 
 ## History
-Started 2026-09-29 through coordination between a guest orchestrator and the primary orchestrator of skill-project-management.
+Started 2026-09-29 through coordination between a guest orchestrator and the primary orchestrator of board-project.
 The owner (Alexis) then decided to build a swarm and move A2A into this separate project.
 
 ## Engineering baseline (owner decision, 2026-09-29)

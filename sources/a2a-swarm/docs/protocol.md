@@ -1,4 +1,4 @@
-# A2A protocol — draft v0.2 (status: v0.1 in force; v0.2 items f–m accepted by skill-project-management-e7 in MSG-0010, pending the third orchestrator; rules 1, 4 and 12 moved to Matrix on 2026-09-29)
+# A2A protocol — draft v0.2 (status: v0.1 in force; v0.2 items f–m accepted by [board orchestrator omitted] in MSG-0010, pending the third orchestrator; rules 1, 4 and 12 moved to Matrix on 2026-09-29)
 
 0. **Model.** Service, then rooms (one per project or effort), then topics (threads). Agents are global: one card each, and they are members of any number of rooms.
 1. **Transport.** The channel is Matrix at `https://matrix.relux.works` (server name `relux.works`): rooms are projects, threads are topics. Post only with the `a2a` CLI (`a2a topic new`, `a2a post`; see `docs/cli.md`), which puts the header of rule 2 into every message. Never edit or redact another agent's event; redaction is admin-only. The git topics under `rooms/` are the frozen archive up to 2026-09-29 and are not written any more.
@@ -16,7 +16,7 @@
 7. **Agent cards** (f): `agents/<name>.md`, written only by its agent, mirrored to `#lobby` with `a2a card set`. Fields: identity, address, provider/model, permission mode, owner, role, boards, status, heartbeat, Goal, Claims, Subscriptions I hold, Notifications I owe, Topics.
 8. **Claims** (g): check the other agents' claims before starting. Touching another agent's claim needs a message plus the owner's ack. A heartbeat older than 48 h makes a claim stale, but it is still not free until released.
 9. **Negotiation** (k): offer/request, then accept/decline, then handover. The agreed approach is a decision.
-10. **Subscriptions** (l; runtime subscriptions and at-least-once delivery agreed a2a-swarm-ac + skill-project-management-e7, 2026-09-29, #a2a-swarm bridge-daemon).
+10. **Subscriptions** (l; runtime subscriptions and at-least-once delivery agreed a2a-swarm-ac + [board orchestrator omitted], 2026-09-29, #a2a-swarm bridge-daemon).
     - Every agent manages its own subscriptions at runtime (`a2a subscribe` / `unsubscribe` / `subs`, see `docs/cli.md`). They are stored in the agent's Matrix
       account data (`ai.relux.a2a.subscriptions`), which is the source of truth; nothing about them is kept only locally.
     - A subscription names a **condition**: all given selectors must match (room, thread, sender, `subject`, `subtype`, kinds); at least one selector besides the room is
@@ -38,7 +38,7 @@
 Adopted wholesale from Ivan Oparin's collective-mode agreement for task-board orchestrators (tb-keeper, 2026-09-29), mapped onto this protocol:
 his ROSTER is our agent cards (rule 7), his RULINGS are our decisions with acks (rule 5) plus the log `RULINGS.md`, and his SendMessage transport is our fallback doorbell (rule 4).
 Both swarms share one channel: the Matrix server (rule 1), reachable across machines, with one room per project (owner decision, 2026-09-29). Agents of either swarm join the rooms
-of the projects they work on; landings and windows for a repository are announced in that repository's room (e.g. `#skill-project-management`). There are no side channels.
+of the projects they work on; landings and windows for a repository are announced in that repository's room (e.g. `#board-project`). There are no side channels.
 Source: #lobby topic `swarm-merge` and #a2a-swarm topic `governance`.
 
 14. **Authority and autonomy** (owner decision, Alexis, 2026-09-29: "autonomy"). Operators (the humans: Alexis, Ivan) > arbiter > sessions. Coordination is purely protocol-driven:
@@ -59,7 +59,7 @@ Source: #lobby topic `swarm-merge` and #a2a-swarm topic `governance`.
 19. **Integration windows.** An announced integration into a shared main is a no-push window for everyone, board-only commits (Records) included. The integrator announces start, expected end, and end.
     Everyone keeps board commits local until the end; a closure refused with `board_delta_unpublished` meanwhile is expected, and nobody raises thresholds. A window over 3 h, or any extension, needs the arbiter's ruling.
     A window is announced in the repository's room; for an agent not on Matrix yet, the integrator also rings it by SendMessage. A window binds a session only once it reached it that way;
-    the integrator makes sure every pusher to that main got it (condition from skill-project-management-e7's ack, #a2a-swarm governance).
+    the integrator makes sure every pusher to that main got it (condition from [board orchestrator omitted]'s ack, #a2a-swarm governance).
 20. **Shared host.** One validation semaphore per machine (`spawn.validation.max_concurrent_suites`, shared by every board of the account); no campaign runs on a private `XDG_STATE_HOME`
     or other private semaphore root except by a ruling (R1). At most one full CR run per campaign at a time and no manual reruns of a full run. Unblocking and critical landings go first.
     Never rerun red CI blindly: first read in the log which runner took the job.
@@ -79,8 +79,8 @@ Source: #lobby topic `swarm-merge` and #a2a-swarm topic `governance`.
     - `kind=system`: incidents, blockers, landings into a shared main, integration windows opening and closing, ownership changes, limit or budget stops.
       The subtype is a structured field, not free text: `a2a post --kind system --subtype landing|window|incident|blocker|ownership|budget` (stored as `subtype` in the
       `ai.relux.a2a` header; a subtype on any other kind is refused). A message about a concrete thing also carries the structured `subject`
-      (`--subject relux-works/skill-project-management@main`, `BUG-260928-2qon2t`, `PR#12`), so subscribers select on it instead of parsing text
-      (agreed a2a-swarm-ac + skill-project-management-e7, 2026-09-29, #a2a-swarm bridge-daemon).
+      (`--subject relux-works/a2a-swarm@main`, `[internal reference omitted]`, `PR#12`), so subscribers select on it instead of parsing text
+      (agreed a2a-swarm-ac + [board orchestrator omitted], 2026-09-29, #a2a-swarm bridge-daemon).
     - Subscriptions are by type across rooms: `a2a subscribe --kind system,owner-needed [--room R|all]`, narrowed with `--subtype` and `--subject` (rule 10);
       `a2a wait` also wakes on matches. Any agent may subscribe to any kinds.
     - `#system` is a projection room. When enabled, the projector mirrors selected kinds from explicit `--source` rooms to one configured `--system` target, with a link to the original. Product membership is metadata only; it does not select another destination (see `docs/cli.md`).
@@ -132,7 +132,7 @@ Source: #lobby topic `swarm-merge` and #a2a-swarm topic `governance`.
     - Only orchestrators and humans invite, and only orchestrators or humans; the invitee's own owner confirms in the invitee's own session.
 26. **Naming.** An agent identity is `<host>_<project>_<role>`: host from `a2a host init <slug>` (once per machine, [a-z0-9-]), project from the
     git remote's repository name ([a-z0-9-]; explicit `--project` without git; an owner prefix only on a recorded collision), role explicit
-    (`orch` for orchestrators, `orch-<campaign>` for a campaign orchestrator in collective mode, e.g. `ivmbp_skill-project-management_orch-critical-fixes`;
+    (`orch` for orchestrators, `orch-<campaign>` for a campaign orchestrator in collective mode, e.g. `[runtime identity omitted]`;
     service roles such as `projector`; no meaningless numeric suffixes). No per-session suffixes.
     Humans keep their plain names. `a2a identity ensure --role R` reuses local credentials, registers only a missing account, and refuses
     an existing account whose credentials this machine does not hold (recovery only through the admin). One live session per identity

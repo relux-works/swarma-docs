@@ -68,7 +68,7 @@
 | ревью первой редакции | gpt-6.1-sol (high) и muse-spark (max), 12.10; оба отклоняют |
 | решения владельцев | 7–12 октября: пользователь ОС на агента, два канала в сессию, D-GOALS, F-4, F-20, F-21, F-23, постоянная команда |
 | решение R243 и переписка о ядре кипера | Matrix, `#swarm-lobby` и `#lobby`, 12.10 |
-| случаи | доска skill-project-management: STORY-261012-1frud4; BUG-261012-on69s4, -3grk0w, -1ikhxj, -2f684f, -3pgnyd, -wysevu, -1v1sw2 |
+| случаи | доска board-project: [internal reference omitted]; [internal reference omitted], -3grk0w, -1ikhxj, -2f684f, -3pgnyd, -wysevu, -1v1sw2 |
 | протокол a2a | `docs/protocol.md`, черновик v0.2 (в силе v0.1), a2a-swarm fa2e02a |
 | справочник a2a | `docs/cli.md`, a2a-swarm fa2e02a |
 | книга Swarma | wiki `book/swarma`, черновик v0.9, 7f1e731 |

@@ -6,11 +6,11 @@ Only the arbiter of a scope writes its entries (commit straight to `main`, then 
 ## Arbiters
 | scope | arbiter | operator |
 | --- | --- | --- |
-| relux-works/skill-project-management main (disputes and integration windows only), the shared host semaphore on Ivan's machine | tb-keeper (`@ivan-tb-keeper`) — settled 2026-09-29: ack from skill-project-management-e7 `$iVrZnK2tlDAx1wyopjumRPZ6UM94AExqSQ6FIhTlFVY`, decision `$lStnWRTZAaDqJ7Mt8nX-sOrWkcj7-ggEaxBUHF44Y68` (#skill-project-management) | Ivan |
+| the shared board repository main (disputes and integration windows only), the shared host semaphore on Ivan's machine | tb-keeper (`@ivan-tb-keeper`) — settled 2026-09-29: ack from [board orchestrator omitted] `[event reference omitted]`, decision `[event reference omitted]` (#board-project) | Ivan |
 | a2a-swarm protocol, this repo, the Matrix server (ac-R10) | m1max_a2a-swarm_orch (formerly a2a-swarm-ac) | Alexis |
 | anything between the two swarms that no arbiter above covers | a decision with acks in the project's room (rule 5) | an operator may override |
 
-## tb-keeper (arbiter; collective mode on Ivan's workstation and skill-project-management main)
+## tb-keeper (arbiter; collective mode on Ivan's workstation and board-project main)
 tb-keeper's entries mirror its log on Ivan's workstation, which stays authoritative until Ivan decides otherwise. tb-keeper writes every new entry to both, and only tb-keeper changes them.
 tb-R8, tb-R9 and tb-R20 were never issued.
 
@@ -18,14 +18,14 @@ tb-R8, tb-R9 and tb-R20 were never issued.
 - *Reason:* "unblockers first" without doubling the host load; the host runs at most the shared cap plus one.
 - *State:* in force. tb-muse withdrew its own private root.
 
-**tb-R2. Window for PR #421.** BUG-260923-1xlm9u — semaphore state-lock timeout fails CR publication. No pushes to skill-project-management main from 00:01Z until the landing, at most 01:15Z.
+**tb-R2. Window for PR #421.** [internal reference omitted] — semaphore state-lock timeout fails CR publication. No pushes to board-project main from 00:01Z until the landing, at most 01:15Z.
 - *State:* closed. Landed at 01:08Z as 8f9ec43d; the operator installed it at 01:14Z with `curator global upgrade`.
 
-**tb-R3. The runner `skill-project-management-Alexis-M1-Max` is out of use.** It times out on `internal/mirrorgate`. A job that lands on it is cancelled and re-run, and its result is not landing evidence.
+**tb-R3. The runner `[board runner omitted]` is out of use.** It times out on `internal/mirrorgate`. A job that lands on it is cancelled and re-run, and its result is not landing evidence.
 When it is the only free runner, wait for a `relux-ci` runner before cancelling (a gate allows 3 attempts). TASK-260929-uda3ab makes `ci.yml` and `release.yml` require `relux-ci` after #384 lands.
 - *State:* in force. Deregistering awaits the operator; the alternative is pausing it. It comes back by adding `relux-ci` once its launchd config sets `ProcessType`.
 
-**tb-R4. Window for #384.** TASK-260923-2szhhw — validation semaphore bindings and tests. No pushes to skill-project-management main, board Records included, from 01:34Z until "#384 on main", at most 04:10Z.
+**tb-R4. Window for #384.** [internal reference omitted] — validation semaphore bindings and tests. No pushes to board-project main, board Records included, from 01:34Z until "#384 on main", at most 04:10Z.
 - *State:* in force as imported; its end is recorded by tb-keeper.
 
 **tb-R5. Amendment 7 adopted** (integration windows, here protocol rule 19).
@@ -36,13 +36,13 @@ When it is the only free runner, wait for a `relux-ci` runner before cancelling 
 Not `~/.cache/huggingface`, not the zips in `~/Downloads`. The Go build cache is wiped only when no run is live, at most once per 12 h.
 - *State:* in force.
 
-**tb-R7. Cleanup of the skill-project-management root** (asked by the operator, executed by tb-critical-fixes): delete only where neither files nor board activity moved since 09-12.
+**tb-R7. Cleanup of the board-project root** (asked by the operator, executed by tb-critical-fixes): delete only where neither files nor board activity moved since 09-12.
 Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive/stale-worktrees-260929/`. One loss (~800 KB dirty diff of TASK-260829-12kn9a); archive patches are now keyed by full path.
 - *State:* done.
 
 **tb-R10. Landing order after #384** (05:28Z).
 1. All held board state is published first, with no window. A non-ff rejection means fetch, rebase the board-only commits and push again.
-2. Code landings on skill-project-management main go one at a time, each under an amendment-7 window:
+2. Code landings on board-project main go one at a time, each under an amendment-7 window:
    1. tb-tests: TASK-260929-uda3ab — route-ci-only-to-relux-ci-runners, bundled with PR #420 or right before it. It goes first because it protects every later CI run.
    2. tb-agents-infra-exit: STORY-260927-pbt17j (TASK-260927-6n171d, the research inventory) only.
    3. Then the first ready of: lane B rev6, TASK-260922-j947qg (#319; rev5 went stale on a trunk overlap and is reworked outside any window, 08:40Z), #410, and STORY-260927-nlbafo (tb-agents-infra-exit, the docs delta of TASK-260927-2u5z9o). Lane B and #410 are critical and win ties.
@@ -73,7 +73,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *State:* in force.
 
 **tb-R14. Main's red CI on d4402ef2 is a runner artefact, not a broken main.**
-- Runs 36530919351 and 36530826526 ran on skill-project-management-Alexis-M1-Max under the old selector and failed "Guard ledger-mirror production bindings".
+- Runs 36530919351 and 36530826526 ran on [board runner omitted] under the old selector and failed "Guard ledger-mirror production bindings".
 - The same guard passed on macbook-iv in run 36533947809, whose tree contains d4402ef2.
 - *State:* recorded. The relux-ci selector lands with PR #448.
 
@@ -116,7 +116,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - CI 36575599723 on 4370b4c4 had queued since 13:31Z. rose-air, the only online relux-ci runner, was running relux-works/curator's CI 36575322771, started 13:28Z. The relux-ci runners are org-level and shared with other repositories.
 - The window was kept rather than released: any push during the queue makes the head stale and wastes the job, and the next bundle would still ride the old selector.
 - If CI has not started by 15:00Z, add `relux-ci` temporarily to macbook-iv for this job only.
-- The single-runner landing pool is escalated to the operator: bring ivmbp back online, or reserve rose-air for skill-project-management.
+- The single-runner landing pool is escalated to the operator: bring [runtime identity omitted] back online, or reserve [runtime identity omitted] for board-project.
 - *State:* in force.
 
 **tb-R22. Temporary load ruling** (15:00Z).
@@ -133,20 +133,20 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *17:29Z:* ended. load5 stayed under 48 for 30 min (27.5 at the end), and thermal was nominal throughout. The 3-spawn cap is lifted, and codex-fix may go to 8/8. The machine ceiling of 2 (tb-R27) stays. ivmbp stays in the pool: the operator's pause decision covers load peaks only, so the pending stop was cancelled.
 - *State:* closed; guarded by tb-R30.
 
-**tb-R23. Shared Matrix channel with Alexey's swarm; cross-swarm arbiter of skill-project-management main** (15:30Z).
+**tb-R23. Shared Matrix channel with Alexey's swarm; cross-swarm arbiter of board-project main** (15:30Z).
 - *Operator decision:* Ivan, 2026-09-29: the Ivan-side orchestrators join the shared channel with Alexey's orchestrators, except cocoa and macos-sys.
 - *Channel:*
   - relux-works/a2a-swarm: Matrix server `a2a.local` on the dedicated Mac mini (`ssh relux`).
   - Reached from this workstation through tb-keeper's SSH tunnel on 127.0.0.1:8008 (API) and :8088 (Element).
   - CLI: `~/.local/bin/a2a`. Config: `~/.config/a2a-swarm` (0600).
   - Protocol: `docs/protocol.md`. Its rules 14–23 are this agreement, adopted by Alexis wholesale.
-- *Scope settled with skill-project-management-e7* (Alexey's primary orchestrator of the board):
-  - tb-keeper arbitrates disputes and integration windows on skill-project-management main, plus the shared semaphore on this workstation.
+- *Scope settled with [board orchestrator omitted]* (Alexey's primary orchestrator of the board):
+  - tb-keeper arbitrates disputes and integration windows on board-project main, plus the shared semaphore on this workstation.
   - Operators override. No takeover of elements. e7 keeps the order of its own queue.
   - Slots go first-ready-first-served after the gap; a critical unblocker goes first.
-  - Ack: e7 `$iVrZnK2tlDAx1wyopjumRPZ6UM94AExqSQ6FIhTlFVY`. Decision: `$lStnWRTZAaDqJ7Mt8nX-sOrWkcj7-ggEaxBUHF44Y68`, #skill-project-management orchestrator-channel.
+  - Ack: e7 `[event reference omitted]`. Decision: `[event reference omitted]`, #board-project orchestrator-channel.
 - *Windows:*
-  - Every Ivan-side window open, extension and close is posted to #skill-project-management as kind=system with the main OID.
+  - Every Ivan-side window open, extension and close is posted to #board-project as kind=system with the main OID.
   - tb-keeper relays for sessions that are not on Matrix yet.
   - A session joins only after Ivan confirms it in that session's own settings.
 - *Numbering:* settled 15:28Z. In the shared log (relux-works/a2a-swarm `RULINGS.md`), tb-keeper's rulings are `tb-R<n>` and a2a-swarm-ac's are `ac-R<n>`; a bare old `R<n>` resolves by its author. This file stays authoritative for tb-keeper's rulings until the operator decides otherwise. tb-R8, tb-R9 and tb-R20 were never issued.
@@ -154,7 +154,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 
 **tb-R24. tb-tests' #448 window may extend to 16:30Z** (15:31Z).
 - The window opened at 13:31Z, so its 3 h cap is 16:31Z. CI 36575599723 has been running on ivmbp since 14:51Z under a host load of 110–190.
-- If CI is still running at 16:00Z, the window extends to 16:30Z at most. tb-tests sends the new expected end and tb-keeper posts it in #skill-project-management.
+- If CI is still running at 16:00Z, the window extends to 16:30Z at most. tb-tests sends the new expected end and tb-keeper posts it in #board-project.
 - The slot after the window and its gap goes to BUG-260928-m6l5lt (e7); tb-critical-fixes yielded it. Its bundle (1bsv99 + 16drs9) follows once its CI on rose-air is green.
 - *State:* in force.
 
@@ -187,7 +187,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 **tb-R28. Binary swap to m6l5lt; ivmbp paused; tunnel moved to a LaunchAgent** (17:10Z). Operator decisions, 2026-09-29, in tb-keeper's session.
 - *Swap:* Ivan said "можно — через куратор".
   - tb-keeper ran `curator global upgrade` from its outside shell (iTerm, not hosted by tb-sessiond) at 17:03–17:08Z. task-board and tb-sessiond now build from main e2736418, which includes BUG-260928-m6l5lt.
-  - The three running tb-sessiond daemons were not restarted: ~ since 09-23, skill-project-management-muse (hosting tb-muse, attached), and tgfs.
+  - The three running tb-sessiond daemons were not restarted: ~ since 09-23, [board session omitted] (hosting tb-muse, attached), and tgfs.
   - Probe on a config copy: `machine_max_concurrent_suites` is accepted, and a misspelled key is still refused.
   - tb-R27 applies: each campaign adds the ceiling of 2 before its next spawn. tb-muse waits for its manager restart, which is the operator's call because it ends the hosted session.
 - *ivmbp:* Ivan said "да". The ivmbp runner service (`actions.runner.relux-works.ivmbp`, plist `~/Library/GitHubActions/ivmbp/manual-service.plist`) is booted out as soon as its current job finishes. It comes back with `launchctl bootstrap gui/$UID <plist>` when tb-R22 ends. Until then landing CI runs on rose-air, and tb-R26 stays for any job ivmbp already took. *17:29Z:* tb-R22 ended before ivmbp's job finished, so the pending stop was cancelled and ivmbp stayed in the pool. tb-R30 pauses it on the next peak.
@@ -200,11 +200,11 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - macmini-model-registry, Ivan's session on the Mac mini that maintains the model registry, asked for a priority window on relux-works/skill-agents-management@main at Ivan's request. The change is PR #42: one signed commit 64e4ee62 that adds the gpt-6.1-sol row and retargets the floating `sol` alias from gpt-6-sol to gpt-6.1-sol. It becomes tag v0.5.29.
 - *Slot:* granted from the end of tb-muse's gap, about 17:26Z, with a 30 min cap. It is announced in #skill-agents-management, the repository's room since 17:15Z.
 - *Tags:* tb-agents-infra-exit's #453 fix, planned as v0.5.29, rebases onto 64e4ee62 and becomes v0.5.30.
-- *Pin:* the skill-project-management bump of agents-management stays one change, owned by tb-agents-infra-exit (TASK-260929-20xo9i; corrected by infra-exit, 3mf83p is the children-fragments leaf), and targets v0.5.30, which contains both. macmini-model-registry carries no separate pin bump. The `sol` retarget's effects on task-board (display order, docs) are coordinated between the two in #skill-project-management.
+- *Pin:* the board-project bump of agents-management stays one change, owned by tb-agents-infra-exit ([internal reference omitted]; corrected by infra-exit, 3mf83p is the children-fragments leaf), and targets v0.5.30, which contains both. [runtime identity omitted] carries no separate pin bump. The `sol` retarget's effects on task-board (display order, docs) are coordinated between the two in #board-project.
 - *State:* in force.
 
 **tb-R30. Load guard after tb-R22** (17:30Z).
-- If the 5-min load stays above 96 for 10 minutes, or thermalState reaches serious (2) or critical (3), tb-keeper re-engages tb-R22 in full and pauses the ivmbp runner, per the operator's decision for load peaks (tb-R28). It announces both in #skill-project-management and by SendMessage to cocoa and macos-sys.
+- If the 5-min load stays above 96 for 10 minutes, or thermalState reaches serious (2) or critical (3), tb-keeper re-engages tb-R22 in full and pauses the [runtime identity omitted] runner, per the operator's decision for load peaks (tb-R28). It announces both in #board-project and by SendMessage to cocoa and macos-sys.
 - Watchers: thermal and load1 every 30 s, and load5 every 60 s.
 - *State:* in force.
 
@@ -212,7 +212,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - PR #454's CI 36601212209 on ivmbp (17:05–18:43Z) went red on two load artifacts: TestDeleteOfALeafOnAThousandElementBoardThroughRunMutate at 6.49 s against 5 s (BUG-260929-g7ijg3), and Test CLI timing out at 1 h 30 m. The bundle touches neither.
 - The host was back at load5 90, close to tb-R30's threshold, so the operator's pause-for-peaks decision applies. The ivmbp runner service was booted out at 18:46Z, which lets the re-run land only on rose-air (tb-R26, one re-run).
 - The window is extended from 19:55Z to 21:00Z, past the 3 h cap. Justification: a runner-only re-run of an unchanged exact head (9fe8d3b7) over an unmoved main (e2736418), with no rebase and no new review. #448 is next after its gap.
-- Evidence: ivmbp timed out Test CLI even at moderate host load. Until the host is quieter, rose-air is the landing runner for skill-project-management.
+- Evidence: [runtime identity omitted] timed out Test CLI even at moderate host load. Until the host is quieter, [runtime identity omitted] is the landing runner for board-project.
 - *Resume ivmbp:* `launchctl bootstrap gui/$UID ~/Library/GitHubActions/ivmbp/manual-service.plist`, once load5 has stayed under 48 for 30 min.
 - *State:* in force.
 
@@ -233,7 +233,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 **tb-R34. ivmbp stays paused through the next two landing CIs** (19:44Z).
 - ivmbp timed out Test CLI at 90 min even at moderate load (tb-R31). The next two landings, #410 and #448, run CI under the old `[self-hosted, macOS, ARM64]` selector, which ivmbp would match.
 - ivmbp therefore stays booted out until both landing CIs have run on rose-air.
-- Once #448's relux-ci selector is on main, tb-keeper removes the `relux-ci` label from ivmbp, so skill-project-management landings stop routing there. ivmbp's service is then bootstrapped again for the organisation's other repositories.
+- Once #448's relux-ci selector is on main, tb-keeper removes the `relux-ci` label from [runtime identity omitted], so board-project landings stop routing there. [runtime identity omitted]'s service is then bootstrapped again for the organisation's other repositories.
 - *State:* in force.
 
 **tb-R35. Alexis-M1-Max diagnosed and fixed; its route back to the landing pool** (20:16Z).
@@ -242,14 +242,14 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
   - CI evidence: three timeouts on the M1 Max, then two passes of 294 s and 114 s.
 - *Fix:* `ProcessType = Interactive` added to the runner plist, with a backup kept. The service stays booted out until #448, the relux-ci selector, is on main.
 - *Return:* after #448, the service is bootstrapped with the `relux-ci` label and runs one verification CI that covers internal/mirrorgate. If it is green, the runner is back in the landing pool with no further ruling. This retires the manual-cancel part of tb-R3.
-- *Follow-up for skill-project-management:* a per-child deadline for the mirrorgate gate's child `go test`, offered to tb-tests.
+- *Follow-up for board-project:* a per-child deadline for the mirrorgate gate's child `go test`, offered to tb-tests.
 - *State:* in force.
 
 **tb-R36. No ad-hoc wide test sweeps** (20:25Z).
 - *Evidence (macos-sys, at load5 14):* three concurrent uncached Go test runs wrote about 14 GB into go-build in about an hour: `./cmd -run ^TestS -count=1`, `-p 1 ./internal/... -count=1` and a `-mod=mod ./pkg/agentic` run.
   - Precision: `-count=1` disables only the test-result cache. The entries come from distinct source trees, distinct flag sets and freshly linked test binaries.
   - Such runs bypass the validation semaphore and its ceiling of 2, so tb-R27 cannot bound them.
-- *Rule,* as in skill-project-management's CLAUDE.md:
+- *Rule,* as in board-project's CLAUDE.md:
   - while iterating, test only the touched packages, plus the uncached guard targets that cover the files changed;
   - run the full suite exactly once, before the CR is published or the PR updated. The CR validation suite and the landing CI are the full runs.
   - No ad-hoc `./...` or `./internal/...` sweeps, and no repeated `-count=1` full passes per edit.
@@ -260,8 +260,8 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 **tb-R37. The M1 Max returns now; its first landing CI is the verification** (20:33Z). Supersedes tb-R35's hold.
 - *Asked by Alexis:* the second runner is critical. The ProcessType fix is bench-verified under load.
 - Rulings:
-  - skill-project-management-Alexis-M1-Max is bootstrapped now, and its default labels make it a second landing runner.
-  - The first skill-project-management landing CI it takes is the verification run, watched live by m1max_gha-runner_orch.
+  - [board runner omitted] is bootstrapped now, and its default labels make it a second landing runner.
+  - The first board-project landing CI it takes is the verification run, watched live by [runtime identity omitted].
   - If mirrorgate or Test CLI times out, the runner is booted out at once and the job is re-run on rose-air (tb-R26 budget).
   - If it passes, it stays in the pool and gets `relux-ci` once #448 is on main.
 - #410's CI is already on rose-air, so the verification job will be #448's or a later one.
@@ -302,7 +302,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - If the rose-air re-run is red again on g7ijg3 alone, the lander stops and asks; there is no third run.
 - *State:* in force.
 
-**tb-R43. macbook-iv paused for skill-project-management landings until #448** (23:05Z).
+**tb-R43. [runtime identity omitted] paused for board-project landings until #448** (23:05Z).
 - Old-selector branches (everything cut before #448) keep landing on macbook-iv. It is too slow for the cmd package (tb-R18) and flaky on g7ijg3, and it grabbed #410's re-run twice in a row (22:56Z and 22:59Z) while rose-air was free.
 - tb-keeper booted out the relux-works runner service on macbook-iv (host ivmbam1, plist `~/Library/GitHubActions/macbook-iv/manual-service.plist`). Its cocoaskills runner is untouched.
 - *Resume:* after #448 lands, when the relux-ci selector keeps it off landing jobs, with `launchctl bootstrap gui/$UID <plist>` on ivmbam1.
@@ -315,7 +315,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *#410 red on g7ijg3 alone:* the window closes when the result arrives. tb-tests' g7ijg3 fix lands first. Then tb-critical-fixes rebases the #410 + lane B stack once and runs a single CI. #448 keeps its turn after the stack.
 - *#410 red on anything else:* the window closes, and tb-critical-fixes reports the failure with evidence.
 - No third run of #410 without a tb-keeper ruling (tb-R42).
-- *Outcome:* #410 landed at 00:23Z, before the ruling reached its lander, on rose-air run 36623324102 (PR #457, exact-head fast-forward 2e7d611f..19def337). The window closed at 00:23Z, so the extension was not needed. Posted in #skill-project-management as a decision ($qhXHBhqJ…).
+- *Outcome:* #410 landed at 00:23Z, before the ruling reached its lander, on [runtime identity omitted] run 36623324102 (PR #457, exact-head fast-forward 2e7d611f..19def337). The window closed at 00:23Z, so the extension was not needed. Posted in #board-project as a decision ([event reference omitted]).
 - *M1 Max evidence (tb-R37):* the whole suite completed. Its only failure was the load-fragile bound, which also failed on macbook-iv (10.3 s and 11.91 s). So the ProcessType fix holds as far as runner health goes. Adding relux-ci to the M1 Max is still decided after #448.
 - *State:* in force.
 
@@ -335,7 +335,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
   - The new binary contains the #410 snapshot sweep, and the previous build c0332de2… does not.
   - `project_config()` answers.
   - All 8 running tb-sessiond daemons started before the swap and were not restarted.
-- The swap was announced before and after in #skill-project-management. macos-sys was told by SendMessage; it keeps one sweep on its side before retiring its write-boundary pass.
+- The swap was announced before and after in #board-project. macos-sys was told by SendMessage; it keeps one sweep on its side before retiring its write-boundary pass.
 - The same go also relayed Ivan's report that the Claude login on the Mac mini is done. remote-worker-harness-2b confirmed that both worker logins are done and that nothing is open for Ivan.
 - *State:* done.
 
@@ -351,12 +351,12 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 
 **tb-R48. Runner pool after #448: the M1 Max gets relux-ci; ivmbp and macbook-iv wait for curator's selector fix** (02:23Z, 2026-09-30).
 - *#448 landed* at 02:22Z (exact-head fast-forward 9244d071..5792416b). Its CI 36650900325 was green on ivmbp in 98 min at quiet host load (tb-R47). Landing jobs now require `relux-ci`.
-- *The M1 Max returns (tb-R45's condition is met).* The fix for BUG-260929-g7ijg3 — the delete test on a 1000-element board has a load-fragile absolute 5 s bound — is on main in #448, and its runner health was verified (tb-R37). tb-keeper added `relux-ci` to the repo runner skill-project-management-Alexis-M1-Max (id 21) at 02:23Z. It was already online.
+- *The M1 Max returns (tb-R45's condition is met).* The fix for [internal reference omitted] — the delete test on a 1000-element board has a load-fragile absolute 5 s bound — is on main in #448, and its runner health was verified (tb-R37). tb-keeper added `relux-ci` to the repo runner [board runner omitted] (id 21) at 02:23Z. It was already online.
 - *ivmbp is out again* (booted out at 02:22Z, once #448's job had ended), as promised to ivan-curator.
   - curator's `Test (rose-air)` job still has `runs-on: [self-hosted, macOS, ARM64]` on curator main. Every main push would route it to any idle org runner, and it fails off rose-air (the host's git signing config).
   - ivmbp returns when curator TASK-260930-38fjt0 (pinning that job to `rose-air`) is on curator main and the host is quiet (tb-R28/tb-R30).
   - tb-R34's plan to drop relux-ci from ivmbp is withdrawn. #448 proved ivmbp is a sound landing runner at quiet load.
-- *macbook-iv stays paused* (amends tb-R43's resume condition). It has no `relux-ci`, so skill-project-management landings would no longer reach it. But curator's old selector would, and that is where the original failure happened (the xcode-select gap and signing). It resumes when 38fjt0 lands.
+- *[runtime identity omitted] stays paused* (amends tb-R43's resume condition). It has no `relux-ci`, so board-project landings would no longer reach it. But curator's old selector would, and that is where the original failure happened (the xcode-select gap and signing). It resumes when 38fjt0 lands.
 - *Queue:* lane B (tb-critical-fixes: rebase once, one CI), then the first ready among 2qon2t, 31ckqk, 2hgfo9, nlbafo and 20xo9i. Landing runners: rose-air and the M1 Max.
 - *State:* in force.
 
@@ -384,7 +384,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 
 **tb-R51. BUG-260930-1rn0hw takes the next slot, after the gap closes** (04:44Z, 2026-09-30).
 - *Request (tb-tests):* BUG-260930-1rn0hw — mirrorgate child go test has no deadline and panics the package instead of failing the case. It was declared ready at 02:54Z: accepted, test-harness only, needing a rebase and one CI.
-- *First-ready check:* none of 2qon2t, 31ckqk, 2hgfo9, nlbafo or 20xo9i has declared itself ready in #skill-project-management, and no other ready claim is open. So 1rn0hw is first.
+- *First-ready check:* none of 2qon2t, 31ckqk, 2hgfo9, nlbafo or 20xo9i has declared itself ready in #board-project, and no other ready claim is open. So 1rn0hw is first.
 - *Decision:* tb-tests opens its window at 04:52Z, or after the last gap-done post, whichever is later. The gap covers tb-critical-fixes' Records for lane B and F1 and its infra-exit root, then tb-agents-infra-exit's, if it publishes them in this gap. Nobody pushes Records into the window.
 - *Next:* first-ready again. If a critical item (20xo9i, the v0.5.30 pin with #453 and gpt-6.1-sol) and a non-critical one are ready at the same moment, the critical one goes first.
 - *State:* in force.
@@ -424,12 +424,12 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
   - Before and after, it posts impact notices (rule 31), and it probes the new build.
   - Daemons are not restarted by this go. Each daemon restart still needs its own go, which ends hosted Claude sessions.
   - The Mac mini is not covered. Its swaps need Ivan's go in macmini-infra's own session.
-- *tb-muse:* go to restart its manager (the older tb-sessiond daemon of skill-project-management-muse). It runs from tb-keeper's outside shell after tb-muse is at a safe point, and then tb-muse's session is resumed.
+- *tb-muse:* go to restart its manager (the older tb-sessiond daemon of [board session omitted]). It runs from tb-keeper's outside shell after tb-muse is at a safe point, and then tb-muse's session is resumed.
 - *State:* in force. The standing go holds until Ivan withdraws it.
 
 **tb-R56. README and reference hunks are announced in the window; git identity is never changed by agents** (13:05Z, 2026-09-30). This follows tb-agents-infra-exit's two problems, raised on Ivan's request.
 - *README hotspot:*
-  - README.md and references/*.md on skill-project-management main go stale in almost every landing. Today TASK-260929-20xo9i went stale twice and STORY-260927-nlbafo once, each costing a republish, a 1–2 h validation wait and a re-review.
+  - README.md and references/*.md on board-project main go stale in almost every landing. Today [internal reference omitted] went stale twice and [internal reference omitted] once, each costing a republish, a 1–2 h validation wait and a re-review.
   - *Now (process):* a window-open post names every README.md, references/** or .specs/** hunk the landing carries, by path and section. A campaign whose CR touches the same file rebases and re-verifies BEFORE review, not after acceptance.
   - *Tool fix:* sent to tb-critical-fixes as a proposal. For doc-class paths (README.md, references/**, .specs/**, docs/**), a clean three-way merge, and trunk hunks that don't overlap the CR's own, task-board re-parents and revalidates instead of marking the revision stale, and records the junction diff for the next reviewer. Priority is theirs.
   - *Restructuring README into include files:* that is a shared-repository structure change, so it goes to both operators under rule 27, later.
@@ -437,7 +437,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
   - Codex producer runs (RUN-260929-81ed80, RUN-260929-4da4a6) ran `git config` in a binding clone and changed the repository's user email and signing key. That produced a mis-signed snapshot and a `code_landing_identity_mismatch` refusal.
   - *Rule for every campaign:* producers, reviewers and every spawned run never run `git config` to change identity or signing, in any scope. Briefs say so explicitly. Orchestrators check that the binding's identity equals the control root's before every landing and completion.
   - *Tool guard:* sent to tb-critical-fixes as a proposal. A spawn postflight check flags any change to repo-local user.*, gpg.*, commit.gpgsign or includeIf during a run. The write boundary does not cover .git/config today.
-  - *Finding (read-only sweep, 13:00Z):* 34 of 192 clones on ivmbp already carry a repo-local identity that differs from ivan@relux.works, most with the 'ivanopcode' signing key. skill-project-management's main clone and the wiki are among them. Which identity is canonical per repository is Ivan's call, and he has been asked. Until he answers, nobody "fixes" an identity anywhere: use what the control root is configured with, consistently. The personal email address is not written in any log.
+  - *Finding (read-only sweep, 13:00Z):* 34 of 192 clones on [runtime identity omitted] already carry a repo-local identity that differs from [author identity omitted], most with the 'ivanopcode' signing key. board-project's main clone and the wiki are among them. Which identity is canonical per repository is Ivan's call, and he has been asked. Until he answers, nobody "fixes" an identity anywhere: use what the control root is configured with, consistently. The personal email address is not written in any log.
 - *State:* in force.
 
 **tb-R57. Operator decision on git identity in relux-works repositories** (13:12Z, 2026-09-30). Ivan in tb-keeper's session, answering tb-R56's open question: option B, «Годятся обе личности, лишь бы внутри одной задачи клон-источник и рабочие клоны совпадали».
@@ -448,7 +448,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *Nothing changes globally.* ~/.gitconfig and the existing local overrides stay as they are.
 - *Mismatch handling:*
   - Spawned runs, producers and reviewers never run `git config` for identity or signing (tb-R56).
-  - If a binding differs from its control root, its ORCHESTRATOR restores the binding to the control root's identity, copying the control root's values and inventing none. It says so in #skill-project-management before the next landing or completion.
+  - If a binding differs from its control root, its ORCHESTRATOR restores the binding to the control root's identity, copying the control root's values and inventing none. It says so in #board-project before the next landing or completion.
 - *State:* in force. The personal address is not written in any log.
 
 **tb-R58. codex-fix may run three spawns in parallel** (13:27Z, 2026-09-30). This answers codex-fix's request, which the operator told it to bring to tb-keeper.
@@ -491,7 +491,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *No global rollback:* F1 (move/create atomicity), F3, 2qon2t and 39rnkn stay live.
 - *Workaround until the fix lands:*
   - (a) Land through the PR path plus close-landed, which does not call integrate. tb-critical-fixes does this.
-  - (b) Otherwise, run THAT ONE `worktree integrate` of an accepted leaf with the previous build by its explicit path: /Users/iv/.curator/cache/build/go-v1/0348fd5914b7290ee5798c87126344681a2db4e6ba031937288b158536ce79ba/bin/task-board (cache key 0348fd59, verified present and without lane B's check). Announce it in #skill-project-management. No other command runs on the old binary.
+  - (b) Otherwise, run THAT ONE `worktree integrate` of an accepted leaf with the previous build by its explicit path: [local path omitted] (cache key 0348fd59, verified present and without lane B's check). Announce it in #board-project. No other command runs on the old binary.
 - *Fix:* tb-critical-fixes takes it as critical. When the policy source is absent from the authoritative tree, it compares against the loaded config (the no-path branch), with a regression test on an untracked config.
   - It lands ahead of everything, and tb-critical-fixes may stack it on 27oqgd in one window.
   - Swap #4 follows at once under the standing go, batching 20xo9i if it is ready.
@@ -599,12 +599,12 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 
 **tb-R69. Operator rule: a green CI result carries across board-only junctions** (19:14Z, 2026-09-30).
 - *Source:* Ivan, through ivan-desk on card #8, at 19:13Z, verbatim: «А) Разрешить для коммитов только с доской. Мержить по зелёному результату, если git diff --name-only между протестированным head и head после ребейза показывает только .task-board/** и range-diff идентичен. Правило действует и дальше, а таких коммитов в main примерно 9 из 20. -- да разрешить». Ivan quoted card #8's option A without the number. The desk mapped the answer to #8, because that text appears on no other card.
-- *Rule (standing, for Ivan-side landers on skill-project-management main):* after a rebase over commits that touch only .task-board/**, the lander may land on the tested head's green CI result without a rerun, when both of these hold:
+- *Rule (standing, for Ivan-side landers on board-project main):* after a rebase over commits that touch only .task-board/**, the lander may land on the tested head's green CI result without a rerun, when both of these hold:
   - `git diff --name-only <tested head> <rebased head>` lists only paths under .task-board/;
   - `git range-diff <old base>..<tested head> <new base>..<rebased head>` shows every commit as identical.
 
   The lander records both outputs in its landing note. The review verdict carries along with the identical range-diff. Signing and the pre-landing checks (fetch, signatures, PR head equal to the local head, main an ancestor) still apply. This rule amends "repeat the checks on the new exact head" for this case only.
-- *Scope:* skill-project-management main, where BUG-260929-vipxum proved that no test or CI step reads .task-board. Another repository adopts the rule only after the same proof. Alexey's side applies it only under its own operator's rules.
+- *Scope:* board-project main, where [internal reference omitted] proved that no test or CI step reads .task-board. Another repository adopts the rule only after the same proof. Alexey's side applies it only under its own operator's rules.
 - *Applies now to:* PR #476 (TASK-260929-20xo9i). When its current run on b5e2877a is green, infra-exit rebases onto main (83651038 at 19:13Z), checks both conditions, and lands without a rerun. This resolves tb-R68 (3).
 - *State:* in force.
 
@@ -615,7 +615,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 - *Decision:*
   - (1) tb-critical-fixes runs 1dh28f's suite now in tb-R1's private priority lane, one suite: c73046 is cancelled and respawned on .temp/critical-260922/priority-state. A go-build sweep follows. If free space falls under 45 GiB, everyone else returns to ceiling 1, but this suite finishes.
   - (2) The order on spm main after infra-exit's #476 window:
-    - m1max_skill-project-management_orch's BUG-260926-31ckqk (ready at 19:30Z, a ~10-min hold with its substitute check);
+    - [runtime identity omitted]'s [internal reference omitted] (ready at 19:30Z, a ~10-min hold with its substitute check);
     - m1max_local-models_orch's BUG-260928-2hgfo9;
     - then first-ready, with 1dh28f ahead of anything non-critical the moment it is ready.
   - (3) The offload of work to the Mac mini (Ivan, 19:25Z) runs through tb-keeper in batches. ivan-ci-isolation on the mini owns the board-Records stages 1–3; ivan-tb-tests and ivan-tb-critical-fixes hand over the elements.
@@ -648,7 +648,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 
 **tb-R74. Binary swap #4: Sol 6.1 is on ivmbp** (20:04Z, 2026-09-30).
 - *Evidence:* PR #476 (TASK-260929-20xo9i, agents-management v0.5.30) landed at 19:59Z as c8084c4b under tb-R73. infra-exit's Record followed at 8f13f626.
-- *Action:* under tb-R55's standing go, tb-keeper ran 'curator global upgrade' from its unhosted shell, 19:59:36Z–20:03:09Z, rc=0. task-board moved to build 4404b59c and tb-sessiond to 94691714, from main 8f13f626. The shims were republished, and the binary carries gpt-6.1-sol. IMPACT START and END were posted in #skill-project-management.
+- *Action:* under tb-R55's standing go, tb-keeper ran 'curator global upgrade' from its unhosted shell, 19:59:36Z–20:03:09Z, rc=0. task-board moved to build 4404b59c and tb-sessiond to 94691714, from main 8f13f626. The shims were republished, and the binary carries gpt-6.1-sol. IMPACT START and END were posted in #board-project.
 - *Not done:* no daemon was restarted (tb-R55). The infra-exit manager restart (desk card #1) still waits for Ivan.
 - *State:* done.
 
@@ -703,7 +703,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
     - task-board does admission, the candidate resolver (A0/A1) and enforcement.
     - The operator files are models.toml and runtimes.toml.
   - D2: NO CodexBar dependency. Native probes go through each harness's public interfaces; CodexBar is prior art only.
-  - D3 and D4: the dedicated orchestrator ivan-model-routing on the mini, with Fable 5.1 max subagents and Opus reviews, lands its own PRs in curator-model-router, tb-R78-style, and uses PRs, rule-18 heads-ups and windows in skill-agents-management and skill-project-management. Ivan is accountable, but automation is maximal: the orchestrator decides everything the specs cover, and only genuine product forks reach Ivan, batched through tb-keeper.
+  - D3 and D4: the dedicated orchestrator ivan-model-routing on the mini, with Fable 5.1 max subagents and Opus reviews, lands its own PRs in curator-model-router, tb-R78-style, and uses PRs, rule-18 heads-ups and windows in skill-agents-management and board-project. Ivan is accountable, but automation is maximal: the orchestrator decides everything the specs cover, and only genuine product forks reach Ivan, batched through tb-keeper.
   - Requirements:
     - an internal, source-agnostic benchmark/evidence format: benchmark and version, the task categories covered, exact reasoning levels, metrics with provenance, internal observations per model (e.g. good for review, code or docs), and role suitability;
     - headroom-aware distribution: remaining capacity per subscription at any moment, with stale meaning unknown. The router weights candidates by headroom and time to reset, spreads load, and keeps a reserve for orchestrators and reviewers. The hard filters stay admission plus the reactive plane.
@@ -733,7 +733,7 @@ Backups: `refs/backup/stale-260929/*`, patches in `.temp/critical-260922/archive
 **ac-R10. The Matrix homeserver runs on the dedicated Mac mini.** tuwunel 1.9.3 (pinned image digest sha256:678b7f53…) in a lima VM on relux-works-dedicated-macmini, bound to 127.0.0.1:8008 there.
 Other hosts reach it through an SSH local-forward with a tunnel-only key (`restrict,port-forwarding,permitopen="127.0.0.1:8008",command="/usr/bin/false"`), so `A2A_MATRIX_URL` stays `http://127.0.0.1:8008` on every host.
 Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against archive main 0d61966, and media verified by sha256. The laptop container stays stopped until 2026-10-01T15:00Z as the fallback, then it is removed.
-- *Reason:* owner goal of 2026-09-29 (relayed by skill-project-management-e7); runbook reviewed by e7 in #a2a-swarm matrix-on-dedicated-mac.
+- *Reason:* owner goal of 2026-09-29 (relayed by [board orchestrator omitted]); runbook reviewed by e7 in #a2a-swarm matrix-on-dedicated-mac.
 - *Interim, with an exit condition (e7 R5):* token registration stays on with a rotated token only until `a2a admin bootstrap/provision` lands; then registration is closed server-side (owner decision: accounts only through the admin).
 - *Before public exposure (matrix.relux.works:443, a separate window):* the full list A in that topic, including log out all devices + re-provision (no laptop-era token survives), refresh tokens instead of stored passwords, log redaction, encrypted off-box backups, admin credentials only on the mini, and external negative probes.
 - *State:* in force.
@@ -911,8 +911,8 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
     - (b) the whole class of a finding, with every site, in one verdict;
     - (d) no acceptance criteria that demand a checker complete against adversarial code shapes.
     (c) is REJECTED: evidence-only findings get no bound, and #7's «нет» stands with no bounds.
-  - Lever 3A is YES: AX's heavy lanes move to GitHub-hosted runners. Standard hosted runners are free for public repositories. This reverses the 09-08 local-only CI rule for AX. The task-board side is skill-project-management#487; until it lands, the local gate stays.
-- *Instruction:* audit which other repositories can go public, excluding the board core (skill-project-management), which moves on 2026-10-16. ax-speed-audit is running it read-only. Ivan decides per repository, and no visibility changes without his answer.
+  - Lever 3A is YES: AX's heavy lanes move to GitHub-hosted runners. Standard hosted runners are free for public repositories. This reverses the 09-08 local-only CI rule for AX. The task-board side is board-project#487; until it lands, the local gate stays.
+- *Instruction:* audit which other repositories can go public, excluding the board core (board-project), which moves on 2026-10-16. ax-speed-audit is running it read-only. Ivan decides per repository, and no visibility changes without his answer.
 - *Done since:* AX main carries R80 as 5712474 (PR #67), which Ivan confirmed in ax's session.
 - *State:* in force.
 
@@ -1039,7 +1039,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 - *State:* done.
 
 **tb-R95. BUG-260927-3ib9pa gets the next free landing slot once it is READY; the README restale loop** (01:29Z, 2026-10-01).
-- *Evidence (m1max_skill-project-management_orch, 01:29Z):* BUG-260927-3ib9pa (close-landed records use wall-clock time, not the configured commit-time policy) went stale four times today, each time on README.md. Each lap costs a CR suite, a review and a landing suite: about 2 h and three Opus runs.
+- *Evidence ([runtime identity omitted], 01:29Z):* [internal reference omitted] (close-landed records use wall-clock time, not the configured commit-time policy) went stale four times today, each time on README.md. Each lap costs a CR suite, a review and a landing suite: about 2 h and three Opus runs.
 - *Decision:*
   - When its refreshed revision is accepted and posted READY, 3ib9pa takes the NEXT free window. It goes ahead of every non-critical item that is not yet in a window, and after any window already open and any R61-class critical item.
   - Its window post lists its README hunks per R56.
@@ -1162,7 +1162,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 - *Decision:*
   - **swarm-platform** (meta-keepers tb-keeper and m1max_local-models_orch), with children:
     - swarm (Alexis's);
-    - spm (home #skill-project-management);
+    - spm (home #board-project);
     - curator (home #curator);
     - model-routing;
     - network-profiles.
@@ -1270,7 +1270,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 - *Applied by tb-keeper and verified:*
   1. Fork-PR workflow approval is now all_external_contributors, org-wide; repos inherit it.
   2. An org interaction limit makes public repos collaborators-only (issues, PRs, comments) until 2027-04-01T22:05:33Z. It must be renewed before then.
-  3. Runner groups ivmbp-manual, macbook-iv-manual, rose-air-projects and runner-control-release-1-2-0 have allows_public_repositories=false and serve only private repos (skill-project-management; licenses on macbook-iv). Default already refused public repos. Fork-PR workflows in private repos stay disabled, and private forking stays off.
+  3. Runner groups [runtime identity omitted], [runtime identity omitted], [runtime identity omitted] and runner-control-release-1-2-0 have allows_public_repositories=false and serve only private repos (board-project; licenses on [runtime identity omitted]). Default already refused public repos. Fork-PR workflows in private repos stay disabled, and private forking stays off.
   4. curator's ROSE_AIR_RUNNER variable is now false, so its main-push self-hosted job is skipped.
   5. Migration issues: tgfs#65, relux-proxy#2, runner-control#3, curator#104. Until relux-proxy and tgfs migrate, their repo-level runners stay behind points 1 and 2.
 - *Rule from now:* public repositories use GitHub-hosted runners only. A private repo leaves self-hosted runners before it goes public, and the groups enforce this.
@@ -1282,7 +1282,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 
 **tb-R122. The short-suite lane is standing for every Ivan-side root** (23:03Z, 2026-10-01; a quick win of the process-efficiency analysis, approved by Ivan).
 - *Evidence:* the analysis (collective-mode/research/process-efficiency) found that suites running for minutes waited 2–5 h in the shared queue, and each needed a ruling of its own (tb-R99, tb-R104, tb-R106, tb-R113, tb-R115). Under tb-R113, nine lane suites ran in 2.4–21 min.
-- *Decision:* any root may run a validation suite in the shared short lane when the last run of that suite took under 15 min. The lane is infra-exit's lane root, `skill-project-management-infra-exit/.temp/module-lane`, with machine_max_concurrent_suites=1, and preflight is computed under the same state home. tb-R113's limits are unchanged: one at a time machine-wide, inside the ceiling; over 20 min back to the shared queue; launch at 45 GiB or more free AND CPU idle at 25% or more; never spm-sized. No ruling per suite.
+- *Decision:* any root may run a validation suite in the shared short lane when the last run of that suite took under 15 min. The lane is infra-exit's lane root, `board-project-infra-exit/.temp/module-lane`, with machine_max_concurrent_suites=1, and preflight is computed under the same state home. tb-R113's limits are unchanged: one at a time machine-wide, inside the ceiling; over 20 min back to the shared queue; launch at 45 GiB or more free AND CPU idle at 25% or more; never spm-sized. No ruling per suite.
 - *State:* in force; the Gate A trial report covers it.
 
 **tb-R123. Capacity work goes first** (23:03Z, 2026-10-01; approved quick win).
@@ -1587,7 +1587,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
   - relux-works/skill-agents-management is JOINT: the two operators agree its vision with each other and decide critical design questions together. Each side handles routine work and bugs on its own.
   - Its placement under Alexis's "swarm" space (tb-R108) is placement, not ownership. Its windows and landings stay in shared #skill-agents-management.
   - This matches Ivan's general scope of 2026-10-01: routine repository and process changes are his alone, with Alexey informed; significant architecture needs both.
-  - The decisions already taken go into a decision record in relux-works/wiki (the dispatcher compiles it; Alexis's side adds or corrects entries there).
+  - The decisions already taken go into a decision record in the private editorial knowledge base (the dispatcher compiles it; Alexis's side adds or corrects entries there).
 - *State:* Ivan's side in force. Confirmation from Alexis's side requested.
 
 **tb-R150. The whole Matrix server is backed up to ivmbp every 6 h** (07:02Z, 2026-10-02; desk #32 area; Ivan via his dispatcher at about 07:00Z, verbatim: «настроить надо бекапы матрикс - всех сообщений аккаунт и вот этого всего на мою машину (и потом на машину алексея тоже). досутп по ssh и бекап куда нибудь в директорию бекапов»).
@@ -1672,7 +1672,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 - *Evidence:* cocoa's CR suite is a ~1-min smoke gate with no compile and under 1 GiB of disk. RUN-261002-78fbaf (C1 rev4) and RUN-261002-64f5e5 (K25 rev2) finished their work at about 05:30–07:00Z, then waited over 12 h at positions 4–5 in the shared validation queue behind multi-hour spm suites, and were cancelled at idle_deadline 720 ("validation suite cancelled while queued"). Their candidates are intact. tb-R122's short lane exists, but tb-R112's launch gates (45 GiB, idle 25%) also blocked such suites today.
 - *Decision:*
   - A micro-suite = a validation suite with no compile step, a measured disk footprint under 1 GiB and a last run under 5 min. The owner posts the measured numbers once, at first use.
-  - Micro-suites never use the shared validation queue. They run in tb-R122's short lane (skill-project-management-infra-exit/.temp/module-lane, max 1) without tb-R112's launch gates and outside the tb-R72 ceiling.
+  - Micro-suites never use the shared validation queue. They run in tb-R122's short lane (board-project-infra-exit/.temp/module-lane, max 1) without tb-R112's launch gates and outside the tb-R72 ceiling.
   - Limits: one at a time in the short lane; no start under 25 GiB free or at thermal state 2 or more; a run over 10 min falls back to tb-R122's normal rules.
   - Other short-lane suites keep tb-R122's gates.
   - First user: cocoa (republish 78fbaf and 64f5e5 into the short lane, cancel their shared tickets).
@@ -1922,7 +1922,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
   5. a signed exact-head fast-forward.
 - *State:* in force.
 
-**tb-R198. No new test debt in skill-project-management** (14:02Z, 2026-10-05; the second operator's request, the operator's nod).
+**tb-R198. No new test debt in board-project** (14:02Z, 2026-10-05; the second operator's request, the operator's nod).
 - *Decision:* new or changed tests use no waits (fake clocks and deterministic seams instead), no literal mutant tables in the PR suite, and isolation by default (TempDir only, no fixed ports, no shared paths). There are no new slow serial tests without a stated reason. A mechanical ciguard check follows. A fixed port means one that is bound, listened on or dialled; an inert URL literal is allowed.
 - *State:* in force.
 
@@ -1942,7 +1942,7 @@ Federation off. Cutover window 14:57Z–15:00Z: all topic heads verified against
 - *Decision:* one workflow change raises the CLI test timeout so the sharding fix can pass its own CI. The bridge expires when the sharding wiring lands.
 - *State:* expired (W1 rev2 landed 22:09Z, 2026-10-06).
 
-**tb-R203. Test redline on skill-project-management main until the sharded CI is wired** (20:13Z, 2026-10-05; the second operator's proposal, imposed as an arbiter landing hold).
+**tb-R203. Test redline on board-project main until the sharded CI is wired** (20:13Z, 2026-10-05; the second operator's proposal, imposed as an arbiter landing hold).
 - *Decision:* only the timeout bridge, the sharding CRs, test-only hygiene, critical fixes and board-only records land. Everything else parks, with no re-runs. The release condition is simplified by tb-R208.
 - *State:* RELEASED (22:08Z, 2026-10-06; W1 rev2 green and landed).
 

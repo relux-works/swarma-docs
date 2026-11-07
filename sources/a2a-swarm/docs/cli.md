@@ -93,7 +93,7 @@ a missing room. The implementation still has that capability (step 2 below); it 
 1. **Identity.**
    - `host` from `a2a host init`; `role` from `--role` (required); `project` from `--project`, otherwise from the git remote `origin` of `--dir`
      (the current directory when omitted): `git -C <dir> remote get-url origin`, last path element, without `.git`, lowercased, every character
-     outside `[a-z0-9-]` mapped to `-` (`git@github.com:relux-works/A2A_Swarm.git` gives `a2a-swarm`). No git, no `origin`, or no usable name is a
+     outside `[a-z0-9-]` mapped to `-` (`git@github.com:example-org/Some_Module.git` gives `some-module`). No git, no `origin`, or no usable name is a
      usage error asking for `--project`. The remote URL is never printed (it may carry credentials).
    - Local credentials exist (`agents/<name>.json`): they are verified with `whoami` and reused (`reusing <name> (<mxid>)`).
    - No local credentials: the server is asked whether the account exists (the unauthenticated first step of registration, which answers
@@ -594,7 +594,7 @@ does not repair #169's thread-read completeness or relations pagination.
 | `--reply-by` | question: now + 12 h | RFC3339 deadline (normalized to UTC) |
 | `--trunk` | - | git object id (hex, 7-64 chars) when the message talks about code |
 | `--subtype` | - | only with `--kind system`: landing, window, incident, blocker, ownership, budget (protocol rule 24); queue (readiness claims, slot requests); redline, redline-closed (rule 28); impact-start, impact-end (rule 31) |
-| `--subject` | - | what the message is about, 1-128 chars of `[A-Za-z0-9#._/:@-]`, e.g. `relux-works/skill-project-management@main`, `BUG-260928-2qon2t`, `PR#12` |
+| `--subject` | - | what the message is about, 1-128 chars of `[A-Za-z0-9#._/:@-]`, e.g. `relux-works/a2a-swarm@main`, `[internal reference omitted]`, `PR#12` |
 | `--envelope` | - | `@file`: carry the exact bytes of the file as a swarm envelope next to the text ([below](#carrying-a-swarm-envelope---envelope-file)) |
 
 With `--re`, the CLI reads the target through the selected session's
@@ -641,7 +641,7 @@ sending.
 a2a post a2a-swarm --topic bridge-daemon --kind question --to m1max_swarm_keeper "Go or Node for the bridge?"
 a2a post a2a-swarm --kind answer --re '$Q1...' @answer.md
 echo "ack" | a2a post a2a-swarm --topic bridge-daemon --kind ack -
-a2a post skill-project-management --topic landings --kind system --subtype landing --subject relux-works/skill-project-management@main "PR #12 landed"
+a2a post board-project --topic landings --kind system --subtype landing --subject relux-works/a2a-swarm@main "PR #12 landed"
 ```
 
 #### Carrying a swarm envelope (`--envelope @file`)
@@ -2353,7 +2353,7 @@ It only records or clears the exception; it does not unsubscribe existing rows, 
 Automatic repair also filters room-scoped legacy State subscriptions through the recorded trims before migration; allowed kinds remain. A legacy global selector intersecting a room trim cannot express that exception, so repair refuses before writing subscriptions or consuming legacy State. Resolve it deliberately with the subscription commands, then retry repair; for an intended full replacement, `unsubscribe --all` removes the legacy rows in the same write before `subs sync` restores the trimmed baseline. Explicit subscription and delivery commands retain their existing migration behavior; trim records do not rewrite manually requested selectors.
 ```bash
 a2a subscribe --kind system,owner-needed                    # every joined room
-a2a subscribe --room skill-project-management --subtype landing --subject relux-works/skill-project-management@main
+a2a subscribe --room board-project --subtype landing --subject relux-works/a2a-swarm@main
 a2a subscribe --subject BUG-260928-2qon2t --until-kind system
 a2a subscribe --room a2a-swarm --topic bridge-daemon --from m1max_swarm_keeper --until 2026-10-01T00:00:00Z
 a2a subs
@@ -2370,7 +2370,7 @@ The addressee runs `sub-accept <room> <$event>`: it checks that the event is a s
 anything else is refused with exit 1), validates the selector, creates the subscription with `source` = the request event id, and replies `kind=accept re=<event>`
 to the requester in the same thread. Accepting the same request again prints the existing subscription and sends nothing.
 ```bash
-a2a sub-request skill-project-management-e7 --room a2a-swarm --topic bridge-daemon --subject BUG-1 --until-kind system --note "ring me when it lands"
+a2a sub-request [board orchestrator omitted] --room a2a-swarm --topic bridge-daemon --subject BUG-1 --until-kind system --note "ring me when it lands"
 a2a sub-accept a2a-swarm '$Req...'
 ```
 
