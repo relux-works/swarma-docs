@@ -641,7 +641,7 @@ sending.
 a2a post a2a-swarm --topic bridge-daemon --kind question --to m1max_swarm_keeper "Go or Node for the bridge?"
 a2a post a2a-swarm --kind answer --re '$Q1...' @answer.md
 echo "ack" | a2a post a2a-swarm --topic bridge-daemon --kind ack -
-a2a post board-project --topic landings --kind system --subtype landing --subject relux-works/a2a-swarm@main "PR #12 landed"
+a2a post a2a-swarm --topic landings --kind system --subtype landing --subject relux-works/a2a-swarm@main "PR #12 landed"
 ```
 
 #### Carrying a swarm envelope (`--envelope @file`)
@@ -2353,7 +2353,7 @@ It only records or clears the exception; it does not unsubscribe existing rows, 
 Automatic repair also filters room-scoped legacy State subscriptions through the recorded trims before migration; allowed kinds remain. A legacy global selector intersecting a room trim cannot express that exception, so repair refuses before writing subscriptions or consuming legacy State. Resolve it deliberately with the subscription commands, then retry repair; for an intended full replacement, `unsubscribe --all` removes the legacy rows in the same write before `subs sync` restores the trimmed baseline. Explicit subscription and delivery commands retain their existing migration behavior; trim records do not rewrite manually requested selectors.
 ```bash
 a2a subscribe --kind system,owner-needed                    # every joined room
-a2a subscribe --room board-project --subtype landing --subject relux-works/a2a-swarm@main
+a2a subscribe --room a2a-swarm --subtype landing --subject relux-works/a2a-swarm@main
 a2a subscribe --subject BUG-260928-2qon2t --until-kind system
 a2a subscribe --room a2a-swarm --topic bridge-daemon --from m1max_swarm_keeper --until 2026-10-01T00:00:00Z
 a2a subs
@@ -2369,8 +2369,11 @@ its thread `--sub-topic X`. Prints the event id. A request nobody accepted creat
 The addressee runs `sub-accept <room> <$event>`: it checks that the event is a subscription request addressed to it by name or user id (`all` does not count;
 anything else is refused with exit 1), validates the selector, creates the subscription with `source` = the request event id, and replies `kind=accept re=<event>`
 to the requester in the same thread. Accepting the same request again prints the existing subscription and sends nothing.
+
+`board-orchestrator` is an illustrative recipient; replace it with the actual recipient:
+
 ```bash
-a2a sub-request [board orchestrator omitted] --room a2a-swarm --topic bridge-daemon --subject BUG-1 --until-kind system --note "ring me when it lands"
+a2a sub-request board-orchestrator --room a2a-swarm --topic bridge-daemon --subject BUG-1 --until-kind system --note "ring me when it lands"
 a2a sub-accept a2a-swarm '$Req...'
 ```
 
