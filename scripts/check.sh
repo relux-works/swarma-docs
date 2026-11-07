@@ -17,7 +17,7 @@
 # line. The a2a, installation, identity and Talk books follow the book's
 # rules, each with its own state chapter (a2a-book/ru/09-gde-my.md,
 # install-book/ru/07-gde-my.md, identity-book/ru/10-gde-my.md,
-# talk-book/ru/10-gde-my.md) as the only place
+# talk-book/ru/10-gde-my.md, forum-book/ru/06-gde-my.md) as the only place
 # for markers and delivery hedges. sources/ and editorial/ are working material and are not checked,
 # except editorial/notes/*/ru/*.md: the signing note's blacklist is blocking,
 # the other notes get an advisory blacklist pass.
@@ -48,7 +48,7 @@ export LC_ALL
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root" || exit 2
 
-files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) 2>/dev/null | sort)
+files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru forum-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) 2>/dev/null | sort)
 [ -n "$files" ] || { echo "check.sh: nothing to check"; exit 0; }
 
 fail=0
@@ -71,14 +71,14 @@ hit "machine or seat name" '\b(ivmbp|rise1|macbook-iv|rose-air|astra-0[0-9]|orch
 hit "retired name" '([Ss]lopcore|пасек|\bульев?\b|диких? пчёл|Seraph|\bKeymaker\b|\bSwarm (Runtime|Protocol|Chain|Keeper|Curator|Signer)\b)'
 
 # Only the state chapter may carry markers, including split or unmatched ones.
-marker_files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'identity-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
+marker_files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru forum-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'identity-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
 [ -z "$marker_files" ] || hit "status marker" '[⟦⟧]' "$marker_files"
 hit "TeX status label" '\\status\{'
 
 # Delivery hedges belong to the state chapter only (style.ru.md, "Голос"),
 # in all five books alike.
 # The chain paper (paper/chain/*.tex) is held to the same voice.
-voice_files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru paper/chain -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'identity-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
+voice_files=$(find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru forum-book/ru paper/chain -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'identity-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
 if [ -n "$voice_files" ]; then
   out=$(grep -niE -- '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])' $voice_files 2>/dev/null)
   if [ -n "$out" ]; then
@@ -93,7 +93,7 @@ fi
 # editorial/notes/signing-auth/ru/;
 # STRICT_PROSE=0 turns those hits into reports. Other editorial notes in
 # editorial/notes/*/ru/ stay advisory until their own pass lands.
-prose_files=$( { find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru editorial/notes/signing-auth/ru -type f -name '*.md'; find paper/chain -type f -name '*.tex'; } 2>/dev/null | sort)
+prose_files=$( { find book/ru a2a-book/ru install-book/ru identity-book/ru talk-book/ru forum-book/ru editorial/notes/signing-auth/ru -type f -name '*.md'; find paper/chain -type f -name '*.tex'; } 2>/dev/null | sort)
 note_files=$(find editorial/notes -mindepth 3 -maxdepth 3 -type f -path 'editorial/notes/*/ru/*.md' ! -path 'editorial/notes/signing-auth/ru/*' 2>/dev/null | sort)
 prose() {
   # $1 label, $2 extended regex (case-insensitive)
@@ -178,7 +178,7 @@ if [ -n "$chain_tex" ]; then
 fi
 
 # Every book chapter starts with one level-1 heading (after front matter in 00).
-for f in book/ru/[0-9][0-9]*.md a2a-book/ru/[0-9][0-9]*.md install-book/ru/[0-9][0-9]*.md identity-book/ru/[0-9][0-9]*.md talk-book/ru/[0-9][0-9]*.md; do
+for f in book/ru/[0-9][0-9]*.md a2a-book/ru/[0-9][0-9]*.md install-book/ru/[0-9][0-9]*.md identity-book/ru/[0-9][0-9]*.md talk-book/ru/[0-9][0-9]*.md forum-book/ru/[0-9][0-9]*.md; do
   [ -e "$f" ] || continue
   n=$(grep -cE '^# ' "$f")
   if [ "$n" -lt 1 ]; then
