@@ -9,7 +9,7 @@
 # Serif, PT Sans and PT Mono fonts.
 #
 # Figures live in link-book/src/<name>.toml and render to
-# link-book/diagrams/<name>.svg with scripts/diagram-kit/render.py; the
+# link-book/diagrams/<name>.svg with scripts/diagram-kit/render.py; they are
 # rendered after review. Before the build:
 #  - structural pass (always): every figure a chapter links has a TOML source,
 #    every TOML source has its SVG, and diagrams/ holds no SVG without a source;
@@ -96,6 +96,7 @@ pandoc "${chapters[@]}" \
 weasyprint \
   --base-url "$src/" \
   --stylesheet "$book/style.css" \
+  --stylesheet "$here/style.css" \
   "$tmp/note.html" "$tmp/book.pdf" 2> "$tmp/weasyprint.log" || { cat "$tmp/weasyprint.log" >&2; exit 1; }
 cat "$tmp/weasyprint.log" >&2
 if grep -q 'Failed to load image' "$tmp/weasyprint.log"; then

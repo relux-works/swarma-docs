@@ -1,0 +1,3 @@
+/* Swarma Forum book: additions to book/style.css, applied after it by the build.
+   The running header names this book instead of the platform book. */
+main h1 { string-set: chapter content(text), book "Swarma Forum"; }
