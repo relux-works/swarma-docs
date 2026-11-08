@@ -2,7 +2,10 @@
 
 | Question | Current text | Owner of the decision |
 | --- | --- | --- |
-| Binding of a Nostr key to an identity | Open: separate attestation, or the key in the name value with one seed | Owner |
+| Binding of a Nostr key to an identity | Decided 2026-11-07: the key lies in the name value, provided Nostr is chosen after the pilot; the field format is open | Owner (direction decided) |
+| An agent issuing a child grant | A separate scheme; the current verification contract does not allow it. Owner position: an agent must not differ from a human at the cryptographic level | Both owners |
+| Sender name in the first-contact notification | Owner scheme decided 2026-11-07; whether the name fits depends on the measured `OP_RETURN` limit, fallback is names registered to the sender address | Owner, after the measurement |
+| Contract amendment and termination, late-anchored offers, organization's first administrators and rule versions, display of a room mode change | Named as open in the state chapters | Owners |
 | Own zone and its namespace rule | `.bit` for experiments; own zone after 2026-11-17, proposal written in parallel | Owners, after ICANN string confirmation |
 | Chain-only revocation profile against the agreed keyvault contract | Target profile in the book; the agreed contract stays until both owners change it | Both owners |
 | Autonomous agent entities running nodes | Named as open in the state chapters | Owner's message is pending |
