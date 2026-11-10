@@ -1,0 +1,124 @@
+# Chapter "Система и её описания", section "Описания". Typed replacement for
+# the former three-layers figure. Two groups, each of one stated kind with the
+# full member list of the chapter's tables: sets of descriptions on the left,
+# systems in operation on the right. A link reads "the system is built to this
+# set of descriptions"; it follows the column "Какие системы построены по нему"
+# of the descriptions table. Nothing is drawn as a layer that contains things.
+layout = "graph"
+direction = "LR"
+alt = "Системы и их описания: каждая система в работе построена по своим наборам описаний, и ни одно описание не входит в состав системы."
+
+[groups.desc]
+label = "Наборы описаний"
+role = "neutral"
+
+[groups.sys]
+label = "Системы в работе"
+role = "service"
+
+[nodes.d_mod]
+group = "desc"
+role = "store"
+name = "Спецификации модулей"
+
+[nodes.d_link]
+group = "desc"
+role = "store"
+name = "Swarma Link"
+
+[nodes.d_carrier]
+group = "desc"
+role = "store"
+name = "Контракт носителя"
+
+[nodes.d_protocol]
+group = "desc"
+role = "store"
+name = "Swarma Protocol"
+
+[nodes.d_policy]
+group = "desc"
+role = "store"
+name = "Политики проекта"
+
+[nodes.d_chain]
+group = "desc"
+role = "store"
+name = "Swarma Chain"
+
+[nodes.s_runtime]
+group = "sys"
+role = "service"
+name = "Установка, Swarma Runtime"
+text = "службы, агенты, мост"
+
+[nodes.s_carrier]
+group = "sys"
+role = "external"
+name = "Носитель"
+text = "серверы связи"
+
+[nodes.s_work]
+group = "sys"
+role = "agent"
+name = "Рабочая нода"
+
+[nodes.s_core]
+group = "sys"
+role = "service"
+name = "Кор-ноды"
+
+[nodes.s_env]
+group = "sys"
+role = "service"
+name = "Среда проекта"
+
+[nodes.s_chain]
+group = "sys"
+role = "external"
+name = "Цепочка имён"
+text = "сегодня Namecoin"
+
+[[links]]
+from = "d_mod"
+to = "s_runtime"
+
+[[links]]
+from = "d_link"
+to = "s_runtime"
+
+[[links]]
+from = "d_carrier"
+to = "s_runtime"
+
+[[links]]
+from = "d_carrier"
+to = "s_carrier"
+
+[[links]]
+from = "d_protocol"
+to = "s_work"
+
+[[links]]
+from = "d_protocol"
+to = "s_core"
+
+[[links]]
+from = "d_protocol"
+to = "s_env"
+
+[[links]]
+from = "d_policy"
+to = "s_core"
+
+[[links]]
+from = "d_policy"
+to = "s_env"
+
+[[links]]
+from = "d_chain"
+to = "s_chain"
+
+[[links]]
+from = "d_link"
+to = "s_chain"

@@ -1,0 +1,89 @@
+# Chapter "Внешние эффекты, остановка и федерация", section "Совместная работа
+# без общего журнала". Typed replacement for the former federation-picture
+# figure. One direction is drawn: an agent of owner B acts at a service of
+# owner A; the other direction is symmetric and the chapter says so. The steps
+# follow the check-chain table of the chapter: names, grant, issuance record,
+# seal, signed request, effect admission. Every participant is a system or a
+# party; no group is drawn as a layer.
+layout = "sequence"
+alt = "Работа двух владельцев по доверенности: владелец A выдаёт доверенность ключу агента владельца B, а сервис A проверяет каждое действие на своей ноде цепочки имён."
+
+[nodes.owner_a]
+role = "human"
+name = "Владелец A"
+
+[nodes.service_a]
+role = "service"
+name = "Сервис A"
+
+[nodes.chain]
+role = "external"
+name = "Цепочка имён"
+
+[nodes.agent_b]
+role = "agent"
+name = "Владелец B и его агент"
+
+[[seq]]
+from = "agent_b"
+to = "chain"
+step = 1
+label = "владелец B: ключ агента B\nв значении своего имени"
+
+[[seq]]
+from = "owner_a"
+to = "chain"
+step = 2
+label = "прочитать имя B на своей ноде\nи закрепить его"
+
+[[seq]]
+from = "owner_a"
+to = "chain"
+step = 3
+label = "транзакция выдачи и печать"
+
+[[seq]]
+from = "owner_a"
+to = "agent_b"
+step = 4
+label = "доверенность ключу агента B: действия, цель, окно"
+
+[[seq]]
+from = "agent_b"
+to = "service_a"
+step = 5
+label = "агент B: запрос с подписью своего ключа\nи доверенностью"
+
+[[seq]]
+from = "service_a"
+to = "chain"
+step = 6
+label = "имена, запись выдачи, печать\nна ноде A"
+
+[[seq]]
+alt = "печать потрачена или нода не ответила"
+
+[[seq]]
+from = "service_a"
+to = "agent_b"
+step = 7
+label = "отказ"
+color = "alert"
+
+[[seq]]
+else = "все звенья подтверждены"
+
+[[seq]]
+from = "service_a"
+to = "service_a"
+step = 7
+label = "допуск эффекта: проверки повторены\nна границе эффекта"
+
+[[seq]]
+from = "service_a"
+to = "agent_b"
+step = 8
+label = "результат"
+
+[[seq]]
+end = true
