@@ -39,13 +39,11 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | credential-lease-revocation-1 | `credential-lease-revocation-1.toml` | книга | — | обычное | Учётные данные и логины |
 | credential-lease-revocation-2 | `credential-lease-revocation-2.toml` | книга | — | tall | Учётные данные и логины |
 | credential-lease-revocation-3 | `credential-lease-revocation-3.toml` | книга | — | tall | Учётные данные и логины |
-| donor-variants | `donor-variants.toml` | книга | — | обычное | Удалённое рабочее место |
-| join-handshake-1 | `join-handshake-1.toml` | книга | — | tall | Удалённое рабочее место |
-| join-handshake-2 | `join-handshake-2.toml` | книга | — | tall | Удалённое рабочее место |
-| remote-worker-turn-donor | `remote-worker-turn-donor.toml` | книга | — | tall | Удалённое рабочее место |
-| remote-worker-turn-ours | `remote-worker-turn-ours.toml` | книга | — | tall | Удалённое рабочее место |
-| worker-code-path-1 | `worker-code-path-1.toml` | книга | — | tall | Удалённое рабочее место |
-| worker-code-path-2 | `worker-code-path-2.toml` | книга | — | tall | Удалённое рабочее место |
+| donor-variants | `donor-variants.toml` | книга | — | обычное | Слот: работа на машине проекта по доверенности |
+| remote-worker-turn-donor | `remote-worker-turn-donor.toml` | книга | — | tall | Слот: работа на машине проекта по доверенности |
+| remote-worker-turn-ours | `remote-worker-turn-ours.toml` | книга | — | tall | Слот: работа на машине проекта по доверенности |
+| worker-code-path-1 | `worker-code-path-1.toml` | книга | — | tall | Слот: работа на машине проекта по доверенности |
+| worker-code-path-2 | `worker-code-path-2.toml` | книга | — | tall | Слот: работа на машине проекта по доверенности |
 | board-components | `board-components.toml` | книга | — | tall | Доска задач и процесс |
 | board-transition-spawn-1 | `board-transition-spawn-1.toml` | книга | — | tall | Доска задач и процесс |
 | board-transition-spawn-2 | `board-transition-spawn-2.toml` | книга | — | обычное | Доска задач и процесс |

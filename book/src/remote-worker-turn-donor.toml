@@ -8,7 +8,7 @@
 # token. A row gap of 8 keeps the extra note inside the tall box.
 
 layout = "sequence"
-alt = "Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему SSH-соединению донора."
+alt = "Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему соединению донора."
 
 [theme.space]
 seq_node_width = 130
@@ -22,7 +22,7 @@ label = "Машина донора"
 role = "external"
 
 [groups.ours]
-label = "Наша сторона"
+label = "Сторона проекта"
 role = "service"
 
 [nodes.harness]
@@ -49,7 +49,7 @@ name = "Вход SSH и проверка допуска"
 from = "bridge"
 to = "ssh"
 step = 1
-label = "одно исходящее SSH-соединение донора"
+label = "одно исходящее соединение донора"
 
 [[seq]]
 from = "harness"

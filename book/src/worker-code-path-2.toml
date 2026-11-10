@@ -6,7 +6,7 @@
 # hand-over to the board (see part 1), step numbers stay those of the whole
 # flow. Dashes became colons, "diff/blob" became "diff и blob".
 layout = "sequence"
-alt = "Путь кода работника, кандидат: допущенный результат становится нашим кандидатом и проходит ревью точной ревизии до интеграции."
+alt = "Путь кода из слота, кандидат: допущенный результат становится кандидатом проекта и проходит ревью точной ревизии до интеграции."
 
 [nodes.board]
 role = "service"

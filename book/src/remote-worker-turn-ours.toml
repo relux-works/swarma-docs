@@ -3,7 +3,7 @@
 # stay those of the whole turn. Density keys from editorial/diagram-style.ru.md.
 
 layout = "sequence"
-alt = "Удалённый ход, наша сторона: вход SSH проверяет допуск, исполнитель работает в границах рабочего места."
+alt = "Удалённый ход, сторона проекта: вход слота проверяет доверенность, исполнитель работает в границах слота."
 
 [theme.space]
 seq_node_width = 130
@@ -12,13 +12,13 @@ seq_self_width = 170
 seq_column_gap = 20
 
 [groups.ours]
-label = "Наша сторона"
+label = "Сторона проекта"
 role = "service"
 
 [nodes.ssh]
 group = "ours"
 role = "service"
-name = "Вход SSH и проверка допуска"
+name = "Вход слота и проверка доверенности"
 
 [nodes.executor]
 group = "ours"
@@ -28,7 +28,7 @@ name = "Исполнитель"
 [nodes.workspace]
 group = "ours"
 role = "neutral"
-name = "Рабочее место"
+name = "Слот"
 
 [nodes.mailbox]
 group = "ours"
@@ -39,7 +39,7 @@ name = "Почтовый ящик"
 from = "ssh"
 to = "ssh"
 step = 5
-label = "проверить допуск и привязку рабочего места"
+label = "проверить доверенность и привязку слота"
 
 [[seq]]
 from = "ssh"
@@ -51,7 +51,7 @@ label = "допущенный запрос"
 from = "executor"
 to = "workspace"
 step = 7
-label = "команда в границах рабочего места"
+label = "команда в границах слота"
 
 [[seq]]
 from = "workspace"

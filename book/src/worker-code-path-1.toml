@@ -8,7 +8,7 @@
 # part it explains. The source's title is dropped. A branch keeps the number
 # of the step it replaces.
 layout = "sequence"
-alt = "Путь кода работника, выгрузка: результат выгружается после остановки всех процессов, запрещённые пути отклоняют выгрузку целиком."
+alt = "Путь кода из слота, выгрузка: результат выгружается после остановки всех процессов, запрещённые пути отклоняют выгрузку целиком."
 
 [nodes.worker]
 role = "agent"
