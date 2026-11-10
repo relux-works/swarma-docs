@@ -1176,11 +1176,12 @@ class FigureTests(Base):
 
         plants = {
             "missing source: src/nope.toml": lambda t: append(t, "\n![Нет](../diagrams/nope.svg)\n"),
-            "linked both with and without {.tall}: economy.svg":
-                lambda t: append(t, "\n![Ещё раз](../diagrams/economy.svg){.tall}\n"),
-            "manifest box differs from the link class: economy": lambda t: (t / "book/src/MANIFEST.md").write_text(
+            "linked both with and without {.tall}: one-shot-agent-1.svg":
+                lambda t: append(t, "\n![Ещё раз](../diagrams/one-shot-agent-1.svg){.tall}\n"),
+            "manifest box differs from the link class: one-shot-agent-1": lambda t: (t / "book/src/MANIFEST.md").write_text(
                 (t / "book/src/MANIFEST.md").read_text(encoding="utf-8").replace(
-                    "| economy | `economy.toml` | книга | — | обычное |", "| economy | `economy.toml` | книга | — | tall |"),
+                    "| one-shot-agent-1 | `one-shot-agent-1.toml` | книга | — | обычное |",
+                    "| one-shot-agent-1 | `one-shot-agent-1.toml` | книга | — | tall |"),
                 encoding="utf-8"),
         }
         for want, plant in plants.items():

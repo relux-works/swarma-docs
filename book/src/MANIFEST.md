@@ -14,7 +14,6 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 
 | Рисунок | Исходник | Происхождение | SHA-256 копии | Поле | Главы |
 | --- | --- | --- | --- | --- | --- |
-| three-layers | `three-layers.toml` | книга | — | обычное | Swarma целиком |
 | keeper-sign-1 | `keeper-sign-1.toml` | книга | — | обычное | Ключи и ключник |
 | keeper-sign-2 | `keeper-sign-2.toml` | книга | — | tall | Ключи и ключник |
 | grant-issue-and-check | `grant-issue-and-check.toml` | книга | — | tall | Доверенности и полномочия |
@@ -59,15 +58,6 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | authority-ladder | `authority-ladder.toml` | книга | — | обычное | Контракт задачи и правила валидаторов |
 | candidate-integration | `candidate-integration.toml` | книга | — | tall | Оркестратор по аренде и цикл задачи |
 | federation-picture | `federation-picture.toml` | книга | — | tall | Внешние эффекты, остановка и федерация |
-| portable-attestations-1 | `portable-attestations-1.toml` | книга | — | обычное | Аттестации и переносимая репутация |
-| portable-attestations-2 | `portable-attestations-2.toml` | книга | — | tall | Аттестации и переносимая репутация |
-| sublayers | `sublayers.toml` | книга | — | tall | Цепочка: устройство |
-| block-anatomy | `block-anatomy.toml` | книга | — | обычное | Цепочка: устройство |
-| history-holders | `history-holders.toml` | книга | — | обычное | Цепочка: устройство |
-| publish-flow-1 | `publish-flow-1.toml` | книга | — | обычное | Социальный слой, память сети и экономика |
-| publish-flow-2 | `publish-flow-2.toml` | книга | — | tall | Социальный слой, память сети и экономика |
-| curation | `curation.toml` | книга | — | tall | Социальный слой, память сети и экономика |
-| economy | `economy.toml` | книга | — | обычное | Социальный слой, память сети и экономика |
 
 `block-anatomy` и `history-holders` были копиями из `sources/`. При финализации дизайна книга взяла их на себя: в теле блока появились события личностей, в заголовке — корень состояния, лёгкий клиент читает заголовки от checkpoint. `decision-pipeline` и `curation` были копиями PlantUML из `sources/` до перерисовки генератором; теперь это рисунки книги, их содержание сверено с прежними копиями и главами (`editorial/notes/diagram-book-wave-notes.ru.md`).
 
