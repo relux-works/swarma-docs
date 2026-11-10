@@ -17,8 +17,8 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | three-layers | `three-layers.toml` | книга | — | обычное | Swarma целиком |
 | keeper-sign-1 | `keeper-sign-1.toml` | книга | — | обычное | Ключи и ключник |
 | keeper-sign-2 | `keeper-sign-2.toml` | книга | — | tall | Ключи и ключник |
-| grant-issue-and-check | `grant-issue-and-check.toml` | книга | — | tall | Гранты и полномочия |
-| action-namespace-registration | `action-namespace-registration.toml` | книга | — | tall | Гранты и полномочия |
+| grant-issue-and-check | `grant-issue-and-check.toml` | книга | — | tall | Доверенности и полномочия |
+| action-namespace-registration | `action-namespace-registration.toml` | книга | — | tall | Доверенности и полномочия |
 | mailbox-delivery-1 | `mailbox-delivery-1.toml` | книга | — | tall | Путь сообщения и мост |
 | mailbox-delivery-2 | `mailbox-delivery-2.toml` | книга | — | tall | Путь сообщения и мост |
 | bridge-components | `bridge-components.toml` | книга | — | tall | Путь сообщения и мост |

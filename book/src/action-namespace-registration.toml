@@ -3,7 +3,7 @@
 # Action registry: a handler publishes its manifest, the owner binds a
 # namespace to it, and only then grants and commands may use the name.
 # Content follows action-namespace-registration.puml. Deviations, by the
-# chapter "Гранты и полномочия": the handler's declaration is called a
+# chapter "Доверенности и полномочия": the handler's declaration is called a
 # manifest, and "уполномоченный агент" becomes "делегированный
 # администратор", the chapter's term for the holder of
 # registry.actions.register; seq_row_gap 6 keeps the taller header in the

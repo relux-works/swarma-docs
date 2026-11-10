@@ -4,7 +4,7 @@
 # a branch keeps the number of the step it replaces. The line break in step 3
 # follows the source; the note keeps only the mechanism (the delivery status
 # lives in the status chapter). Step 2 has an agent sign a child grant, which
-# only the broker v0 contract allows (chapter "Гранты и полномочия": the
+# only the broker v0 contract allows (chapter "Доверенности и полномочия": the
 # parent orchestrator signs the new one's caller grant; in the general grant
 # language an agent key is never the issuer of a link), so the note scopes the
 # figure with those two mechanism sentences.
