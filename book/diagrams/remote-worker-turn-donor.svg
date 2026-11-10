@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="844.9" height="856.2" viewBox="0 0 844.9 856.2">
+<svg xmlns="http://www.w3.org/2000/svg" width="870.3" height="856.2" viewBox="0 0 870.3 856.2">
 <title>Удалённый ход, сторона донора: запрос инструмента, результат и почта идут по одному исходящему SSH-соединению донора.</title>
-<rect width="844.9" height="856.2" fill="#ffffff"/>
+<rect width="870.3" height="856.2" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(70.7 0)">
 <!-- group donor -->
 <rect x="-70.7" y="0" width="482.3" height="691.4" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="donor"/>
 <!-- group ours -->
-<rect x="584.8" y="0" width="165.4" height="691.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="ours"/>
+<rect x="584.8" y="0" width="190.8" height="691.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="ours"/>
 <!-- group label donor -->
 <rect x="-58.7" y="10" width="144.9" height="18.9" fill="#ffffff" class="plate"/>
 <text x="-52.7" y="24.4" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">МАШИНА ДОНОРА</tspan></text>
 <!-- group label ours -->
-<rect x="596.8" y="10" width="129.4" height="18.9" fill="#ffffff" class="plate"/>
-<text x="602.8" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НАША СТОРОНА</tspan></text>
+<rect x="596.8" y="10" width="154.8" height="18.9" fill="#ffffff" class="plate"/>
+<text x="602.8" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СТОРОНА ПРОЕКТА</tspan></text>
 <line x1="0" y1="106.5" x2="0" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="153.4" y1="106.5" x2="153.4" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="326.6" y1="83.1" x2="326.6" y2="683.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>

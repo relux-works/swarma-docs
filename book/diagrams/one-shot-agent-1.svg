@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="812.9" height="502.9" viewBox="0 0 812.9 502.9">
+<svg xmlns="http://www.w3.org/2000/svg" width="824.1" height="502.9" viewBox="0 0 824.1 502.9">
 <title>Разовый запуск, заявка: план готовит вызывающий, диспетчер проверяет заявку, создаёт поколение учётки и привязывает права.</title>
-<rect width="812.9" height="502.9" fill="#ffffff"/>
+<rect width="824.1" height="502.9" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(70.3 0)">
 <line x1="0" y1="90.4" x2="0" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <line x1="234.8" y1="45.4" x2="234.8" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="463.7" y1="68.8" x2="463.7" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="638.6" y1="68.8" x2="638.6" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="474.9" y1="68.8" x2="474.9" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="649.8" y1="68.8" x2="649.8" y2="478.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- node caller -->
 <rect x="-70.3" y="0" width="140.7" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="caller"/>
 <text x="-54.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Вызывающий</tspan></text>
@@ -16,13 +16,13 @@
 <rect x="176.6" y="0" width="116.2" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="disp"/>
 <text x="192.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Диспетчер</tspan></text>
 <!-- node users -->
-<rect x="388.9" y="0" width="149.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="users"/>
-<text x="421.8" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Менеджер</tspan></text>
-<text x="404.9" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пользователей</tspan></text>
+<rect x="400.1" y="0" width="149.7" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="users"/>
+<text x="433" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Менеджер</tspan></text>
+<text x="416.1" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пользователей</tspan></text>
 <!-- node broker -->
-<rect x="558.6" y="0" width="160" height="68.8" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="broker"/>
-<text x="574.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер учётных</tspan></text>
-<text x="608.3" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">данных</tspan></text>
+<rect x="569.8" y="0" width="160" height="68.8" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="broker"/>
+<text x="585.8" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Брокер учётных</tspan></text>
+<text x="619.5" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">данных</tspan></text>
 <!-- self caller -->
 <path d="M 2 118.4 L 32 118.4 L 32 167.4 L 9 167.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="caller" data-to="caller" data-edge="m0"/>
 <polygon points="3,167.4 13,171.9 13,162.9" fill="#3a3f47"/>
@@ -46,33 +46,33 @@
 <!-- self disp -->
 <path d="M 236.8 254.4 L 266.8 254.4 L 266.8 322.9 L 243.8 322.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="disp" data-edge="m2"/>
 <polygon points="237.8,322.9 247.8,327.4 247.8,318.4" fill="#3a3f47"/>
-<rect x="274.8" y="258.4" width="163" height="60.5" fill="#ffffff" class="plate"/>
+<rect x="274.8" y="258.4" width="174.2" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m2">
 <circle cx="287.8" cy="269.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
 <text x="284.1" y="273.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
 <text x="302.8" y="273.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверить подпись,</tspan></text>
-<text x="302.8" y="293.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">гранты, отзыв,</tspan></text>
+<text x="302.8" y="293.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенности, отзыв,</tspan></text>
 <text x="302.8" y="312.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">квоты и ёмкость</tspan></text>
 </g>
 <!-- message disp -> users -->
-<path d="M 236.8 385.9 L 455.7 385.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="users" data-edge="m3"/>
-<polygon points="461.7,385.9 451.7,381.4 451.7,390.4" fill="#3a3f47"/>
-<rect x="274" y="338.9" width="150.6" height="41" fill="#ffffff" class="plate"/>
+<path d="M 236.8 385.9 L 466.9 385.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="users" data-edge="m3"/>
+<polygon points="472.9,385.9 462.9,381.4 462.9,390.4" fill="#3a3f47"/>
+<rect x="279.6" y="338.9" width="150.6" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="287" cy="349.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="283.3" y="354.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="302" y="354.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">создать активное</tspan></text>
-<text x="302" y="373.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколение учётки</tspan></text>
+<circle cx="292.6" cy="349.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="288.9" y="354.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="307.6" y="354.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">создать активное</tspan></text>
+<text x="307.6" y="373.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поколение учётки</tspan></text>
 </g>
 <!-- message disp -> broker -->
-<path d="M 236.8 452.9 L 630.6 452.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="broker" data-edge="m4"/>
-<polygon points="636.6,452.9 626.6,448.4 626.6,457.4" fill="#3a3f47"/>
-<rect x="366.1" y="405.9" width="141.2" height="41" fill="#ffffff" class="plate"/>
+<path d="M 236.8 452.9 L 641.8 452.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="disp" data-to="broker" data-edge="m4"/>
+<polygon points="647.8,452.9 637.8,448.4 637.8,457.4" fill="#3a3f47"/>
+<rect x="371.6" y="405.9" width="141.2" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m4">
-<circle cx="379.1" cy="416.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="375.4" y="421.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="394.1" y="421.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязать права</tspan></text>
-<text x="394.1" y="440.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">к поколению</tspan></text>
+<circle cx="384.6" cy="416.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="380.9" y="421.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="399.6" y="421.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">привязать права</tspan></text>
+<text x="399.6" y="440.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">к поколению</tspan></text>
 </g>
 </g>
 </g>
