@@ -31,6 +31,7 @@
 | `link-book/ru/` | книга Swarma Link, версия 0.4: личность, доверенности и договоры, сквозной пример аренды агента; [карта ключей](link-book/ru/03-klyuchi.md#карта-ключей) в главе о ключах; собственная глава "Где мы" в `10-gde-my.md`; сборка `link-book/build.sh` |
 | `talk-book/ru/` | книга Swarma Talk, черновик 0.3-rc1: опирается на Swarma Link; собственная глава "Где мы" в `10-gde-my.md`; сборка `talk-book/build.sh` |
 | `forum-book/ru/` | книга Swarma Forum, черновик 0.3-rc1: публичные записи memo на Namecoin; собственная глава "Где мы" в `06-gde-my.md`; сборка `forum-book/build.sh` |
+| `link-book/src/`, `link-book/diagrams/` | исходники TOML рисунков книги Swarma Link для `scripts/diagram-kit/` и их SVG, которые рендерит оркестратор; раскладки `stack` и `sequence`, Graphviz им не нужен |
 | `UNRESOLVED_QUESTIONS.md` | открытые решения новых книг; состояние реализации находится в главах «Где мы» |
 | `install-book/src/`, `install-book/diagrams/` | исходники TOML рисунков книги установки для `scripts/diagram-kit/` и их SVG, которые рендерит оркестратор |
 | `book/diagrams/`, `book/src/` | диаграммы книги (SVG) и их исходники TOML для `scripts/diagram-kit/` |

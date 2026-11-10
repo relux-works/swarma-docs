@@ -1,0 +1,32 @@
+# Merged mining: one SHA-256 work, two chains. Content follows the chapter
+# "Личность и имена" (section "Почему UTXO и почему Namecoin").
+layout = "stack"
+alt = "Объединённый майнинг: пул ищет одно доказательство работы, и оно может закрыть блок Bitcoin, блок Namecoin или оба."
+
+[nodes.pool]
+role = "external"
+name = "Пул майнеров"
+text = "перебирает SHA-256 один раз для обеих сетей"
+
+[nodes.bitcoin]
+role = "external"
+name = "Блок Bitcoin"
+text = "своя сложность, своя цепочка"
+
+[nodes.namecoin]
+role = "store"
+name = "Блок Namecoin"
+text = "своя сложность, своя цепочка\nимена, печати, записи выпуска"
+note = "Сети не координируются. Решение может подойти одной сети, если её сложность ниже."
+note_side = "left"
+
+[[links]]
+from = "pool"
+to = "bitcoin"
+label = "доказательство работы"
+
+[[links]]
+from = "pool"
+to = "namecoin"
+label = "та же работа"
+side = "right"

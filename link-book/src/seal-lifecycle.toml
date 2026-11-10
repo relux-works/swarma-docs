@@ -1,0 +1,79 @@
+# Seal lifecycle and revocation in the rental profile. Content follows the
+# chapters "Доверенность" (section "Печать и пул") and "Отзыв и наблюдение
+# цепочки" (sections "Отзыв", "Два профиля"). The verifier reads its own node;
+# the chain participant stands for the mempool and blocks that node sees.
+layout = "sequence"
+alt = "Жизнь печати: создана в пуле заранее, названа в доверенности, цела при допуске; трата в мемпуле закрывает доверенность навсегда."
+
+[theme.space]
+seq_row_gap = 8
+seq_node_width = 140
+seq_label_width = 170
+seq_self_width = 180
+seq_column_gap = 24
+
+[nodes.signer]
+role = "key"
+name = "Подписант"
+text = "ключ доверенностей"
+
+[nodes.chain]
+role = "external"
+name = "Namecoin"
+text = "мемпул и блоки"
+
+[nodes.verifier]
+role = "service"
+name = "Проверяющий"
+text = "своя нода, журнал закрытий"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 1
+label = "пополнение пула: выходы на ключ доверенностей"
+
+[[seq]]
+from = "signer"
+to = "signer"
+step = 2
+label = "резерв печати в журнале, подпись доверенности"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 3
+label = "транзакция выпуска; печать не тратится"
+
+[[seq]]
+from = "verifier"
+to = "chain"
+step = 4
+label = "печать подтверждена и цела: допуск"
+
+[[seq]]
+divider = "Досрочный отзыв"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 5
+label = "трата печати"
+color = "alert"
+
+[[seq]]
+from = "verifier"
+to = "chain"
+step = 6
+label = "трата в мемпуле или в блоке"
+
+[[seq]]
+from = "verifier"
+to = "verifier"
+step = 7
+label = "закрытие `SEAL_SPENT` записано на диск"
+color = "alert"
+
+[[seq]]
+note = "Закрытие не снимается, даже если трата исчезнет из мемпула. По концу окна доверенность заканчивается без транзакции."
+over = ["signer", "verifier"]

@@ -1,0 +1,113 @@
+# Rental, part 2 of 2: one message under the grant and the two ways the
+# rental ends. Content follows the chapters "Аренда агента: полный пример"
+# (sections "Работа в окне", "Конец аренды") and "Аренда изнутри" (sections
+# "Что шлюз делает с сообщением", "Слот"). Split from the whole rental along
+# the phase change; the renter and the gateway are in both parts and the step
+# numbers continue those of part 1 (rental-exchange). Chain reads are drawn as
+# the checker's own steps: every service reads its own node.
+layout = "sequence"
+alt = "Работа в окне: шлюз проверяет доверенность на каждом сообщении, прокси модели считает расход, а трата печати или конец окна останавливают слот."
+
+[theme.space]
+seq_row_gap = 8
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.landlord]
+label = "Службы арендодателя"
+role = "service"
+
+[nodes.renter]
+role = "human"
+name = "Арендатор"
+
+[nodes.gateway]
+group = "landlord"
+role = "service"
+name = "Шлюз"
+text = "своя нода"
+
+[nodes.slot]
+group = "landlord"
+role = "agent"
+name = "Слот"
+text = "экземпляр агента"
+
+[nodes.proxy]
+group = "landlord"
+role = "service"
+name = "Прокси модели"
+text = "ключ API"
+
+[[seq]]
+from = "renter"
+to = "gateway"
+step = 12
+label = "сообщение и доверенность"
+
+[[seq]]
+from = "gateway"
+to = "gateway"
+step = 13
+label = "имена, подписи, выпуск, печать, окно"
+
+[[seq]]
+alt = "допуск"
+
+[[seq]]
+from = "gateway"
+to = "slot"
+step = 14
+label = "запуск, сообщение"
+
+[[seq]]
+from = "slot"
+to = "proxy"
+step = 15
+label = "запрос с токеном слота"
+
+[[seq]]
+from = "proxy"
+to = "proxy"
+step = 16
+label = "резерв худшего случая, пределы"
+
+[[seq]]
+from = "proxy"
+to = "slot"
+step = 17
+label = "ответ модели"
+
+[[seq]]
+from = "slot"
+to = "gateway"
+step = 18
+label = "ответ агента"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 19
+label = "проверка получателя, подпись, ответ"
+
+[[seq]]
+else = "печать потрачена или окно закрыто"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 14
+label = "отказ"
+color = "alert"
+
+[[seq]]
+from = "gateway"
+to = "slot"
+step = 15
+label = "остановка и стирание"
+color = "alert"
+
+[[seq]]
+end = true

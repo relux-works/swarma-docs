@@ -1,0 +1,64 @@
+# Key map of the rental path: who holds which key and what it authorises.
+# Content follows the chapter "Ключи" (section "Карта ключей") and the
+# specification's key map. Drawn as a column of custody zones from the cold
+# name-owner key down to the renter; the funding, provider, receipt and
+# transport keys stay in the chapter's tables to keep the figure in the box.
+layout = "stack"
+alt = "Карта ключей аренды: холодный ключ владеет именами, подписант держит ключ доверенностей, шлюз держит ключ сообщений агента, у арендатора свой ключ."
+
+[groups.cold]
+label = "Холодное хранение"
+role = "key"
+
+[groups.signer]
+label = "Подписант"
+role = "key"
+
+[groups.gateway]
+label = "Шлюз"
+role = "service"
+
+[groups.renter]
+label = "Устройство арендатора"
+role = "external"
+
+[nodes.owner]
+group = "cold"
+role = "key"
+name = "Ключ владельца имён"
+text = "обновляет и передаёт имена `id/` и `d/`"
+
+[nodes.grantkey]
+group = "signer"
+role = "key"
+name = "Ключ доверенностей"
+text = "подписывает доверенности и хэш договора\nтратит печати"
+
+[nodes.agentkey]
+group = "gateway"
+role = "agent"
+name = "Ключ сообщений агента"
+text = "личные сообщения агента"
+
+[nodes.renterkey]
+group = "renter"
+role = "external"
+name = "Ключ арендатора"
+text = "согласие, сообщения, запросы"
+
+[[links]]
+from = "owner"
+to = "grantkey"
+label = "записан в имени арендодателя"
+
+[[links]]
+from = "owner"
+to = "agentkey"
+label = "записан в имени агента"
+side = "left"
+
+[[links]]
+from = "grantkey"
+to = "renterkey"
+label = "доверенность на этот ключ"
+side = "right"

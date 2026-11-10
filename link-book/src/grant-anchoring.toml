@@ -1,0 +1,66 @@
+# The grant and its anchoring: which document carries which hash. Content
+# follows the chapters "Доверенность" (sections "Документ", "Подпись",
+# "Выпуск", "Печать и пул") and "Договор и согласие" (section "Согласие").
+# Drawn as a record layout from the contract down to the chain; each arrow
+# names the value the lower record takes from the upper one.
+layout = "stack"
+alt = "Связь документов и цепочки: договор, согласие и доверенность лежат вне цепочки, в цепочке лежат хэш выпуска и печать."
+
+[groups.offchain]
+label = "Вне цепочки"
+role = "store"
+
+[groups.onchain]
+label = "Цепочка Namecoin"
+role = "external"
+
+[nodes.contract]
+group = "offchain"
+role = "store"
+name = "Договор"
+text = "точные байты условий\n`contract_sha256`"
+
+[nodes.consent]
+group = "offchain"
+role = "human"
+name = "Согласие"
+text = "событие 8181 ключом арендатора\n`landlord_sig` ключом доверенностей"
+
+[nodes.grant]
+group = "offchain"
+role = "key"
+name = "Доверенность"
+text = "получатель, действия, окно, бюджет, печать\nподпись ключом доверенностей, `grant_id`"
+
+[nodes.issuance]
+group = "onchain"
+role = "external"
+name = "Транзакция выпуска"
+text = "`OP_RETURN`, 72 байта\nхэш выпуска и `grant_id`"
+
+[nodes.seal]
+group = "onchain"
+role = "external"
+name = "Печать"
+text = "выход на ключ доверенностей\nтрата прекращает доверенность"
+
+[[links]]
+from = "contract"
+to = "consent"
+label = "хэш договора"
+
+[[links]]
+from = "consent"
+to = "grant"
+label = "согласие"
+
+[[links]]
+from = "grant"
+to = "issuance"
+label = "хэш выпуска"
+
+[[links]]
+from = "grant"
+to = "seal"
+label = "поле `seal`"
+side = "left"

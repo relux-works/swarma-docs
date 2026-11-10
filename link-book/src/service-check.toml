@@ -1,0 +1,91 @@
+# The check path of a grant-gated service. Content follows the chapter
+# "Сервисы по доверенности" (sections "Запрос", "Порядок приёма",
+# "Квитанция", "Журнал и бюджет"); the six admission steps of the wallet v1
+# profile are drawn in their order.
+layout = "sequence"
+alt = "Путь запроса в сервисе по доверенности: подпись получателя, журнал, своя проверка цепочки, резерв до действия и подписанная квитанция."
+
+[theme.space]
+seq_row_gap = 8
+seq_node_width = 130
+seq_label_width = 160
+seq_self_width = 180
+seq_column_gap = 20
+
+[groups.agentuser]
+label = "Учётка агента"
+role = "agent"
+
+[groups.serviceuser]
+label = "Учётка сервиса"
+role = "key"
+
+[nodes.agent]
+group = "agentuser"
+role = "agent"
+name = "Агент"
+text = "ключ запросов"
+
+[nodes.service]
+group = "serviceuser"
+role = "service"
+name = "Сервис"
+text = "секреты действия"
+
+[nodes.journal]
+group = "serviceuser"
+role = "store"
+name = "Журнал"
+
+[nodes.chain]
+role = "external"
+name = "Namecoin"
+text = "нода сервиса"
+
+[[seq]]
+from = "agent"
+to = "service"
+step = 1
+label = "подписанный запрос"
+
+[[seq]]
+from = "service"
+to = "service"
+step = 2
+label = "пользователь ОС, форма, подпись, ключ получателя"
+
+[[seq]]
+from = "service"
+to = "journal"
+step = 3
+label = "`nonce`: повтор или приём"
+
+[[seq]]
+from = "service"
+to = "chain"
+step = 4
+label = "доверенность, печать, окно"
+
+[[seq]]
+from = "service"
+to = "journal"
+step = 5
+label = "резерв расхода и действия"
+
+[[seq]]
+from = "service"
+to = "chain"
+step = 6
+label = "повторная проверка, действие"
+
+[[seq]]
+from = "service"
+to = "journal"
+step = 7
+label = "результат"
+
+[[seq]]
+from = "service"
+to = "agent"
+step = 8
+label = "квитанция, ключ сервиса"

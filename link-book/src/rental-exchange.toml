@@ -1,0 +1,109 @@
+# Rental, part 1 of 2: from the first message to the issued grant. Content
+# follows the chapter "Аренда агента: полный пример" (sections "Обмен до
+# доверенности", "Договор и согласие", "Оплата", "Выпуск") and the exchange
+# profile of the rental gateway. Split from the whole rental along the phase
+# change: this part ends with the grant in the renter's hands, part 2
+# (rental-work) starts with the first message under the grant. The renter and
+# the gateway are in both parts; step numbers continue in part 2. The booking
+# service is drawn inside the gateway column to keep the figure in the box.
+layout = "sequence"
+alt = "Обмен аренды: от условий до выпущенной доверенности. Доверенность появляется только после согласия и подтверждённой оплаты."
+
+[theme.space]
+seq_row_gap = 8
+seq_node_width = 130
+seq_label_width = 150
+seq_self_width = 170
+seq_column_gap = 20
+
+[groups.landlord]
+label = "Службы арендодателя"
+role = "service"
+
+[nodes.renter]
+role = "human"
+name = "Арендатор"
+text = "ключ Nostr"
+
+[nodes.gateway]
+group = "landlord"
+role = "service"
+name = "Шлюз"
+text = "с бронированием"
+
+[nodes.signer]
+group = "landlord"
+role = "key"
+name = "Подписант"
+text = "ключ доверенностей"
+
+[nodes.chain]
+role = "external"
+name = "Цепочки"
+text = "оплата, Namecoin"
+
+[[seq]]
+from = "renter"
+to = "gateway"
+step = 1
+label = "`terms`, работа по NIP-13"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 2
+label = "шаблоны, слоты, цены"
+
+[[seq]]
+from = "renter"
+to = "gateway"
+step = 3
+label = "`book` шаблон слот монета"
+
+[[seq]]
+from = "gateway"
+to = "gateway"
+step = 4
+label = "бронь слота"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 5
+label = "договор, `contract_sha256`"
+
+[[seq]]
+from = "renter"
+to = "gateway"
+step = 6
+label = "`consent`: событие 8181"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 7
+label = "адрес и сумма"
+
+[[seq]]
+from = "renter"
+to = "chain"
+step = 8
+label = "платёж"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 9
+label = "своя проверка платежа"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 10
+label = "транзакция выпуска"
+
+[[seq]]
+from = "gateway"
+to = "renter"
+step = 11
+label = "`issued`: доверенность и окно"
