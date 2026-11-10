@@ -28,7 +28,7 @@ name = "Исполнитель"
 [nodes.workspace]
 group = "ours"
 role = "neutral"
-name = "Слот"
+name = "Учётная запись слота"
 
 [nodes.mailbox]
 group = "ours"
@@ -51,7 +51,7 @@ label = "допущенный запрос"
 from = "executor"
 to = "workspace"
 step = 7
-label = "команда под учётной записью слота"
+label = "команда"
 
 [[seq]]
 from = "workspace"
