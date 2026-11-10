@@ -55,7 +55,6 @@ python3 scripts/diagram-kit/render.py book/src/<имя>.toml book/diagrams/<им
 | protocol-topology | `protocol-topology.toml` | книга | — | tall | Модель протокола |
 | authority-ladder | `authority-ladder.toml` | книга | — | обычное | Контракт задачи и правила валидаторов |
 | candidate-integration | `candidate-integration.toml` | книга | — | tall | Оркестратор по аренде и цикл задачи |
-| federation-picture | `federation-picture.toml` | книга | — | tall | Внешние эффекты, остановка и федерация |
 
 `block-anatomy` и `history-holders` были копиями из `sources/`. При финализации дизайна книга взяла их на себя: в теле блока появились события личностей, в заголовке — корень состояния, лёгкий клиент читает заголовки от checkpoint. `decision-pipeline` и `curation` были копиями PlantUML из `sources/` до перерисовки генератором; теперь это рисунки книги, их содержание сверено с прежними копиями и главами (`editorial/notes/diagram-book-wave-notes.ru.md`).
 
