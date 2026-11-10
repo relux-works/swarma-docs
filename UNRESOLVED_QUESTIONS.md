@@ -3,6 +3,7 @@
 | Question | Current text | Owner of the decision |
 | --- | --- | --- |
 | Binding of a Nostr key to an identity | The laboratory landlord/agent profile defines optional root Nostr metadata and a separate discovery mirror. The complete client identity document and general resolver remain open; transport selection still requires its own qualification | Owners; profile maintainers |
+| An agent issuing a child grant | Open general sub-delegation mechanism. Owner position: an agent must not differ from a human at the cryptographic level. The signer-service capability is separate and does not decide the child-grant contract. | Both owners |
 | Delegated grant issuance by a grant-gated signing service | Capability decided; explicit issuance authority, attenuation, parent closure, chain validation and byte format need a separate profile. The current v3 messaging key gains no issuance authority; the rental rehearsal does not exercise this capability | Specification owners |
 | Sender name in the first-contact notification | Owner scheme decided 2026-11-07; whether the name fits depends on the measured `OP_RETURN` limit, fallback is names registered to the sender address | Owner, after the measurement |
 | Contract amendment and termination, late-anchored offers, organization's first administrators and rule versions, display of a room mode change | Named as open in the state chapters | Owners |
@@ -16,30 +17,35 @@
 ## Grant v4 and service declarations
 
 The design requires signed per-rental limits mirrored by the contract, and
-name recipients bound to an arbitrary Namecoin name, its issuance-time output
-and output-owner key. The landlord name output is also bound. Every later
-confirmed operation on a bound name closes authority, including renewal;
-transfer-and-return cannot restore the old outpoint. Concrete executor name/key
+name recipients bound to an arbitrary Namecoin name plus its current owner key,
+without an exact recipient-output pin. Same-owner recipient renewal/rotation
+preserves the grant. The landlord name output is bound separately; every later
+confirmed issuer-name operation closes authority, including renewal and return.
+Current grantee-owner equality alone does not prove transfer-and-return history. Concrete executor name/key
 bindings, per-executor partitions and shared replica journals bound the budget.
 Draft LIP-0008 records these semantics without adopting bytes or code.
 
 Open profile choices: exact grant/consent/signature/issuance encoding; owner-key
 proof for supported scripts/current outputs and reorg handling; channel
-profiles and reissuance after updates; risk-tier freshness and node-health
+profiles and reissuance after issuer updates; risk-tier freshness and node-health
 criteria; recent-block construction bound; executor key/single-use encoding;
 typed limit units,
 bounds, prices and reservation/reconciliation rules. Draft LIP-0007 also leaves
 service-member placement, receipt-key/endpoint encoding, action schemas and
 strict-parser compatibility open. Current v3 and wallet v1 remain unchanged.
 
-The proposed 60/90-minute cutoffs remain under review. They do not change the
+The lead's proposed 60/90-minute cutoffs await Ivan's decision; the decided
+30-minute privileged-command stop remains current. The replacement remains under review. They do not change the
 historical normative v0.1 STOP rule. The reported 137.2-day block-gap sample
 is evidence about one observed chain history, not product availability.
 
 Any Namecoin name is a confirmed recipient rule, with no namespace confirmation
-pending. This is independent of the platform DNS-zone question. V4 witness-only
-seal/issuance funding needs exact input/signature policy and migration from
-current P2PKH funding; a legacy txid mismatch is fail-closed liveness loss.
+pending. This is independent of the platform DNS-zone question. V4 selects W/L
+construction through an authenticated chain pin. W permits only its validated
+linkage/payment dependencies; L uses confirmed references and separate seal/anchor
+stages. Exact pin/input/dependency validation, migration and vectors remain open.
+A changed parent requires fail-closed reissuance. L is spec-only until a
+non-SegWit chain is pinned; account-based chains need a separate seal design.
 
 ## Second external design review
 
@@ -49,7 +55,7 @@ current P2PKH funding; a legacy txid mismatch is fail-closed liveness loss.
 | Typed signing and migration | Static audit at chain-lab 839bdcca found both issuer paths recompute authenticated contract hashes, with no demonstrated oracle. Landlord/provider/detached-v2 domains need matched producer/verifier migration under new versions and no legacy fallback; standard NIP-01/transaction preimages stay intact. Exact tags/bytes remain open. |
 | Issuer mempool-spend evidence | A validated issuer-branch spend permanently closes for an observing executor across restart/replacement. Branch proof, replica propagation and anti-rollback recovery need a profile; grantee use and transient failure are distinct. |
 | Value-dependent confirmation minimum | MAX of signed minimum and operator risk floor, with explicit chain/evidence classes. Numerical tiers and cross-chain payment risk policies remain open. |
-| T/L/A dependent issuance and SW1 candidate | NMC payment may be evaluated as an A input; BTC/LTC require separate proofs. Native-input/name migration, confirmed-input exception for L, payment control, fees and consent remain open. No implementation result. |
+| T/L/A under W and Legacy | W permits validated unconfirmed linkage/payment dependencies; Legacy requires confirmed inputs and separate stages. Namecoin anchors spend only NMC; BTC/LTC keep separate proofs. Name-output migration/self-reference, payment control, fees, consent and exact proofs remain open. No implementation result. |
 | Topology and explicit no-block-wait mode | Chain evidence cannot constrain one operator against itself. A separate agreed profile needs signed mode selection; unavailable anchored evidence cannot trigger fallback. Data-operator trust remains external. |
 | Per-seal derived keys and endorsement | Bind key/script/exact outpoint/context under issuer signature; derivation, custody and recovery remain open. Public funding/names/anchors can still link seals. |
 | Next-format canonicalization and conformance | RFC8785 plan needs exact per-field integer ranges or decimal-string schemas, public canonical/signature/error/state vectors, runner and independent Swift implementation. No silent rounding or historical-byte migration. |
