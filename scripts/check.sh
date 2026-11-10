@@ -71,14 +71,14 @@ hit "machine or seat name" '\b(ivmbp|rise1|macbook-iv|rose-air|astra-0[0-9]|orch
 hit "retired name" '([Ss]lopcore|пасек|\bульев?\b|диких? пчёл|Seraph|\bKeymaker\b|\bSwarm (Runtime|Protocol|Chain|Keeper|Curator|Signer)\b)'
 
 # Only the state chapter may carry markers, including split or unmatched ones.
-marker_files=$(find book/ru a2a-book/ru install-book/ru link-book/ru talk-book/ru forum-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'forum-book/ru/06-gde-my.md' ! -path 'link-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
+marker_files=$(find book/ru a2a-book/ru install-book/ru link-book/ru talk-book/ru forum-book/ru paper -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/32-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'forum-book/ru/06-gde-my.md' ! -path 'link-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
 [ -z "$marker_files" ] || hit "status marker" '[⟦⟧]' "$marker_files"
 hit "TeX status label" '\\status\{'
 
 # Delivery hedges belong to the state chapter only (style.ru.md, "Голос"),
 # in all six books alike.
 # The chain paper (paper/chain/*.tex) is held to the same voice.
-voice_files=$(find book/ru a2a-book/ru install-book/ru link-book/ru talk-book/ru forum-book/ru paper/chain -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/29-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'forum-book/ru/06-gde-my.md' ! -path 'link-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
+voice_files=$(find book/ru a2a-book/ru install-book/ru link-book/ru talk-book/ru forum-book/ru paper/chain -type f \( -name '*.md' -o -name '*.tex' \) ! -path 'book/ru/32-gde-my.md' ! -path 'a2a-book/ru/09-gde-my.md' ! -path 'install-book/ru/07-gde-my.md' ! -path 'forum-book/ru/06-gde-my.md' ! -path 'link-book/ru/10-gde-my.md' ! -path 'talk-book/ru/10-gde-my.md' 2>/dev/null | sort)
 if [ -n "$voice_files" ]; then
   out=$(grep -niE -- '(^|[^[:alpha:]])(пока|[её]щ[её][[:space:]]+не|в[[:space:]]+v0|не[[:space:]]+реализован[[:alpha:]]*)($|[^[:alpha:]])' $voice_files 2>/dev/null)
   if [ -n "$out" ]; then

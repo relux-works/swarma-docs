@@ -27,6 +27,20 @@
 
 Из книги уходят целиком, без пометок в главах: «Идентичность агента» в форме ячейки личности, «Аттестации и переносимая репутация», «Цепочка: устройство», «Социальный слой, память сети и экономика» и все абзацы других глав, которые на них опираются (решение 102). О репутации остаётся одна фраза: её можно вывести из событий, и это за пределами книги.
 
+Файлы глав версии 2.0 в `book/ru/`, в порядке сборки:
+
+| Часть | Файлы |
+| --- | --- |
+| до частей | `00-dlya-kogo.md` |
+| I (`01-00-chast-1.md`) | `01-problema.md`, `02-sistema-i-opisaniya.md`, `03-swarma-celikom.md`, `04-principy.md` |
+| II (`05-00-chast-2.md`) | `05-polzovatel-i-set.md`, `06-klyuchi.md`, `07-zapusk-i-host-sessiy.md`, `08-curator.md`, `09-uchetnye-dannye.md`, `10-modeli.md`, `11-pamyat.md`, `12-interfeysy.md` |
+| III (`13-00-chast-3.md`) | `13-doverennosti.md`, `14-doverennosti-mezhdu-vladelcami.md`, `15-keeper.md`, `16-doska.md`, `17-model-protokola.md`, `18-zhurnal.md`, `19-kontrakt.md`, `20-orkestrator-i-cikl.md`, `21-proverka.md`, `22-effekty-ostanovka-federaciya.md`, `23-ugrozy.md` |
+| IV (`24-00-chast-4.md`) | `24-soobscheniya-i-most.md`, `25-dopusk-k-nositelyu.md`, `26-swarma-talk.md`, `27-swarma-forum.md` |
+| V (`28-00-chast-5.md`) | `28-servisy-po-doverennosti.md`, `29-slot.md`, `30-zamenyaemye-servisy.md` |
+| VI (`31-00-chast-6.md`) | `31-scenarii.md`, `32-gde-my.md`, `33-slovar.md` |
+
+Таблица файлов в разделе «План версии 1.0» ниже описывает состав версии 1.7.1 и сохранена как история.
+
 ## План версии 1.0
 
 Книга «Swarma» — внешний документ, который вводит в платформу читателя, ничего не знающего о нашем устройстве (`style.ru.md`), и описывает её от А до Я. Она объединяет книгу Swarma v0.12, книги о кипере, логинах, маршрутизаторе и подложке, техническую записку Apiary, работу 3.3 и руководство инженера 0.4, главы ревью архитектуры о памяти, MCP и домах агентов.

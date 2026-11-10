@@ -54,7 +54,7 @@ class HygieneTests(unittest.TestCase):
     # Only the exact state chapter is exempt from markers and hedges; the other
     # hygiene checks and the prose blacklist still fail there.
     def test_state_chapter(self):
-        p = self.root / 'book/ru/29-gde-my.md'
+        p = self.root / 'book/ru/32-gde-my.md'
         p.write_text('# State\n\n⟦решено⟧ пока не реализовано\n')
         r = self.run_check()
         self.assertEqual(r.returncode, 0, r.stdout)
@@ -65,6 +65,23 @@ class HygieneTests(unittest.TestCase):
                 r = self.run_check()
                 self.assertEqual(r.returncode, 1)
                 self.assertIn('== ' + label, r.stdout)
+
+    # The state chapter's former file name carries no exemption after the 2.0
+    # renumbering: a hedge planted in book/ru/29-gde-my.md fails as in any other
+    # chapter, while the same text in book/ru/32-gde-my.md passes (the positive
+    # control). Covers the two path filters of check.sh only.
+    def test_former_state_chapter_name_not_exempt(self):
+        text = '# State\n\nпока не реализовано\n'
+        current = self.root / 'book/ru/32-gde-my.md'
+        current.write_text(text)
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        current.unlink()
+        former = self.root / 'book/ru/29-gde-my.md'
+        former.write_text(text)
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('== delivery hedge', r.stdout)
 
     # The a2a book is held to the book's rules: a planted marker, hedge, dash,
     # guillemet or missing heading fails an a2a chapter; only the exact a2a
