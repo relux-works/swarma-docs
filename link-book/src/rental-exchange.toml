@@ -1,13 +1,13 @@
 # Rental, part 1 of 2: from the first message to the issued grant. Content
 # follows the chapter "Аренда агента: полный пример" (sections "Обмен до
-# доверенности", "Договор и согласие", "Оплата", "Выпуск") and the exchange
+# доверенности", "Договор и согласие", "Оплата", "Выдача") and the exchange
 # profile of the rental gateway. Split from the whole rental along the phase
 # change: this part ends with the grant in the renter's hands, part 2
 # (rental-work) starts with the first message under the grant. The renter and
 # the gateway are in both parts; step numbers continue in part 2. The booking
 # service is drawn inside the gateway column to keep the figure in the box.
 layout = "sequence"
-alt = "Обмен аренды: от условий до выпущенной доверенности. Доверенность появляется только после согласия и подтверждённой оплаты."
+alt = "Обмен аренды: от условий до выданной доверенности. Доверенность появляется только после согласия и подтверждённой оплаты."
 
 [theme.space]
 seq_row_gap = 8
@@ -100,7 +100,7 @@ label = "своя проверка платежа"
 from = "signer"
 to = "chain"
 step = 10
-label = "транзакция выпуска"
+label = "транзакция выдачи"
 
 [[seq]]
 from = "gateway"

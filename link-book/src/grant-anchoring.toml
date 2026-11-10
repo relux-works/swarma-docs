@@ -1,10 +1,10 @@
 # The grant and its anchoring: which document carries which hash. Content
 # follows the chapters "Доверенность" (sections "Документ", "Подпись",
-# "Выпуск", "Печать и пул") and "Договор и согласие" (section "Согласие").
+# "Выдача", "Печать и пул") and "Договор и согласие" (section "Согласие").
 # Drawn as a record layout from the contract down to the chain; each arrow
 # names the value the lower record takes from the upper one.
 layout = "stack"
-alt = "Связь документов и цепочки: договор, согласие и доверенность лежат вне цепочки, в цепочке лежат хэш выпуска и печать."
+alt = "Связь документов и цепочки: договор, согласие и доверенность лежат вне цепочки, в цепочке лежат хэш выдачи и печать."
 
 [groups.offchain]
 label = "Вне цепочки"
@@ -35,8 +35,8 @@ text = "получатель, действия, окно, бюджет, печа
 [nodes.issuance]
 group = "onchain"
 role = "external"
-name = "Транзакция выпуска"
-text = "`OP_RETURN`, 72 байта\nхэш выпуска и `grant_id`"
+name = "Транзакция выдачи"
+text = "`OP_RETURN`, 72 байта\nхэш выдачи и `grant_id`"
 
 [nodes.seal]
 group = "onchain"
@@ -57,7 +57,7 @@ label = "согласие"
 [[links]]
 from = "grant"
 to = "issuance"
-label = "хэш выпуска"
+label = "хэш выдачи"
 
 [[links]]
 from = "grant"
