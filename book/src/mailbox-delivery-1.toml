@@ -1,12 +1,10 @@
 # Mail delivery, part 1 of 2: admission at the trust gates. Content follows
-# the former mailbox-delivery.puml (removed in the book diagram wave) and the
-# chapter "Путь сообщения и мост". Split from the whole sequence after step 4:
-# part 2 repeats the two branches that reach the session host, the
-# metadata-only call of step 5 and the admitted body of step 4, so its queue
-# frame covers both calls. The puml title ("Предлагаемая доставка почты")
-# carried a status and is dropped.
+# the chapter "Путь сообщения и мост". Split from the whole sequence after
+# step 4: both bodies that leave the gates, the unsigned one and the admitted
+# one, go to the decision guard, and part 2 starts there. The gates send no
+# bell: a bell exists only after the guard allows the body.
 layout = "sequence"
-alt = "Допуск почты: неподписанное тело удерживается в карантине, отказ не доставляется, допущенное тело идёт к decision guard."
+alt = "Допуск почты: отказ ворот не доставляется, неподписанное тело удерживается как недоверенные данные, и оба тела, неподписанное и допущенное, идут во входящий конвейер guard."
 
 [theme.space]
 seq_node_width = 130
@@ -29,10 +27,6 @@ name = "Decision guard"
 [nodes.mailbox]
 role = "store"
 name = "Почтовый ящик"
-
-[nodes.host]
-role = "service"
-name = "Хост сессий"
 
 [[seq]]
 from = "provider"
@@ -57,15 +51,9 @@ alt = "нет подписи"
 
 [[seq]]
 from = "gate"
-to = "mailbox"
+to = "guard"
 step = 4
-label = "удержать тело в карантине"
-
-[[seq]]
-from = "gate"
-to = "host"
-step = 5
-label = "звонок только с метаданными"
+label = "тело как недоверенные данные"
 
 [[seq]]
 else = "подпись неверна или иная проверка провалена"

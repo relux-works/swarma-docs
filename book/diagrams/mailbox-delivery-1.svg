@@ -1,23 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="882.8" height="843.4" viewBox="0 0 882.8 843.4">
-<title>Допуск почты: неподписанное тело удерживается в карантине, отказ не доставляется, допущенное тело идёт к decision guard.</title>
-<rect width="882.8" height="843.4" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="737.7" height="795.9" viewBox="0 0 737.7 795.9">
+<title>Допуск почты: отказ ворот не доставляется, неподписанное тело удерживается как недоверенные данные, и оба тела, неподписанное и допущенное, идут во входящий конвейер guard.</title>
+<rect width="737.7" height="795.9" fill="#ffffff"/>
 <g transform="translate(12 12)">
 <g transform="translate(59.9 0)">
-<line x1="0" y1="68.8" x2="0" y2="819.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="210.2" y1="45.4" x2="210.2" y2="819.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="403.4" y1="45.4" x2="403.4" y2="819.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="575.2" y1="45.4" x2="575.2" y2="819.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
-<line x1="736.4" y1="45.4" x2="736.4" y2="819.4" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="0" y1="68.8" x2="0" y2="771.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="210.2" y1="45.4" x2="210.2" y2="771.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="403.4" y1="45.4" x2="403.4" y2="771.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="575.2" y1="45.4" x2="575.2" y2="771.9" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
 <!-- frame alt -->
-<rect x="166.2" y="414.8" width="594.1" height="384.6" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
-<line x1="166.2" y1="589" x2="760.4" y2="589" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
-<line x1="166.2" y1="696.2" x2="760.4" y2="696.2" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="166.2" y="414.8" width="432.9" height="337.1" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="166.2" y1="541.5" x2="599.2" y2="541.5" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<line x1="166.2" y1="648.7" x2="599.2" y2="648.7" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
 <rect x="174.2" y="421.8" width="87.7" height="20.2" fill="#ffffff" class="plate"/>
 <text x="180.2" y="436.1" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">нет подписи</tspan></text>
-<rect x="174.2" y="594" width="306.4" height="20.2" fill="#ffffff" class="plate"/>
-<text x="180.2" y="608.3" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись неверна или иная проверка провалена</tspan></text>
-<rect x="174.2" y="701.2" width="74.7" height="20.2" fill="#ffffff" class="plate"/>
-<text x="180.2" y="715.5" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущено</tspan></text>
+<rect x="174.2" y="546.5" width="306.4" height="20.2" fill="#ffffff" class="plate"/>
+<text x="180.2" y="560.8" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись неверна или иная проверка провалена</tspan></text>
+<rect x="174.2" y="653.7" width="74.7" height="20.2" fill="#ffffff" class="plate"/>
+<text x="180.2" y="668" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допущено</tspan></text>
 <!-- node provider -->
 <rect x="-59.9" y="0" width="119.8" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="provider"/>
 <text x="-43.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Провайдер</tspan></text>
@@ -31,9 +30,6 @@
 <!-- node mailbox -->
 <rect x="496.5" y="0" width="157.3" height="45.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="mailbox"/>
 <text x="512.5" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Почтовый ящик</tspan></text>
-<!-- node host -->
-<rect x="673.8" y="0" width="125.1" height="45.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="host"/>
-<text x="689.8" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Хост сессий</tspan></text>
 <!-- self provider -->
 <path d="M 2 96.8 L 32 96.8 L 32 184.8 L 9 184.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="provider" data-to="provider" data-edge="m0"/>
 <polygon points="3,184.8 13,189.3 13,180.3" fill="#3a3f47"/>
@@ -70,45 +66,36 @@
 <text x="278.2" y="369.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">повторы</tspan></text>
 <text x="278.2" y="388.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и привязка</tspan></text>
 </g>
-<!-- message gate -> mailbox -->
-<path d="M 212.2 498 L 567.2 498" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="mailbox" data-edge="m3"/>
-<polygon points="573.2,498 563.2,493.5 563.2,502.5" fill="#3a3f47"/>
-<rect x="328.5" y="451" width="128.3" height="41" fill="#ffffff" class="plate"/>
+<!-- message gate -> guard -->
+<path d="M 212.2 517.5 L 395.4 517.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="guard" data-edge="m3"/>
+<polygon points="401.4,517.5 391.4,513 391.4,522" fill="#3a3f47"/>
+<rect x="242.1" y="451" width="129.4" height="60.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m3">
-<circle cx="341.5" cy="461.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="337.9" y="466.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="356.5" y="466.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">удержать тело</tspan></text>
-<text x="356.5" y="485.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в карантине</tspan></text>
-</g>
-<!-- message gate -> host -->
-<path d="M 212.2 565 L 728.4 565" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="host" data-edge="m4"/>
-<polygon points="734.4,565 724.4,560.5 724.4,569.5" fill="#3a3f47"/>
-<rect x="406.1" y="518" width="134.4" height="41" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m4">
-<circle cx="419.1" cy="528.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="415.4" y="533.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
-<text x="434.1" y="533.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">звонок только</tspan></text>
-<text x="434.1" y="552.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с метаданными</tspan></text>
+<circle cx="255.1" cy="461.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="251.4" y="466.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="270.1" y="466.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">тело как</tspan></text>
+<text x="270.1" y="485.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">недоверенные</tspan></text>
+<text x="270.1" y="505.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">данные</tspan></text>
 </g>
 <!-- message gate -> mailbox -->
-<path d="M 212.2 672.2 L 567.2 672.2" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="gate" data-to="mailbox" data-edge="m5"/>
-<polygon points="573.2,672.2 563.2,667.7 563.2,676.7" fill="#c8285f"/>
-<rect x="305.1" y="625.2" width="175.3" height="41" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m5">
-<circle cx="318.1" cy="636" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="314.4" y="640.6" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="333.1" y="640.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">квитанция отказа</tspan></text>
-<text x="333.1" y="660" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и аудит; доставки нет</tspan></text>
+<path d="M 212.2 624.7 L 567.2 624.7" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="gate" data-to="mailbox" data-edge="m4"/>
+<polygon points="573.2,624.7 563.2,620.2 563.2,629.2" fill="#c8285f"/>
+<rect x="305.1" y="577.7" width="175.3" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="318.1" cy="588.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="314.4" y="593.1" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="333.1" y="593" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">квитанция отказа</tspan></text>
+<text x="333.1" y="612.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и аудит; доставки нет</tspan></text>
 </g>
 <!-- message gate -> guard -->
-<path d="M 212.2 779.4 L 395.4 779.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="guard" data-edge="m6"/>
-<polygon points="401.4,779.4 391.4,774.9 391.4,783.9" fill="#3a3f47"/>
-<rect x="246.2" y="732.4" width="121.4" height="41" fill="#ffffff" class="plate"/>
-<g class="label" data-edge="m6">
-<circle cx="259.2" cy="743.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="255.5" y="747.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
-<text x="274.2" y="747.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">тело и запись</tspan></text>
-<text x="274.2" y="767.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверки</tspan></text>
+<path d="M 212.2 731.9 L 395.4 731.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gate" data-to="guard" data-edge="m5"/>
+<polygon points="401.4,731.9 391.4,727.4 391.4,736.4" fill="#3a3f47"/>
+<rect x="246.2" y="684.9" width="121.4" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="259.2" cy="695.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="255.5" y="700.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="274.2" y="700.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">тело и запись</tspan></text>
+<text x="274.2" y="719.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверки</tspan></text>
 </g>
 </g>
 </g>

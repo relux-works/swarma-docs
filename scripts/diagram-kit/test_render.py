@@ -386,21 +386,121 @@ def acting_instance_problem(src):
     if len(senders) != 1:
         return f"expected one participant that calls the model proxy, found {sorted(senders)}"
     sender = senders.pop()
-    svg = render.render(src)
-    marker = f"<!-- node {sender} -->"
-    if svg.count(marker) != 1:
+    header = drawn_header(src, sender)
+    if header is None:
         return f"participant {sender} is not drawn once"
-    header = svg.split(marker)[1].split("<!-- ")[0]
-    name, subtitle = [], []
-    for run in re.findall(r"<tspan([^>]*)>([^<]*)</tspan>", header):
-        (name if 'font-weight="bold"' in run[0] else subtitle).append(run[1])
-    name, subtitle = " ".join(name).strip(), " ".join(subtitle).strip()
+    name, subtitle = header
     if re.search(r"(?i)\bслот", name):
         return f"the participant that calls the model proxy is headed '{name}': the slot stands for the instance"
     if not re.search(r"(?i)экземпляр", name):
         return f"the participant that calls the model proxy is headed '{name}', not as the agent instance"
     if not re.search(r"(?i)слот", subtitle):
         return f"the subtitle '{subtitle}' does not place the instance in its slot"
+    return None
+
+
+def drawn_header(src, node):
+    """The header of one participant as the rendered SVG shows it: (name,
+    subtitle), or None when the participant is not drawn exactly once."""
+    svg = render.render(src)
+    marker = f"<!-- node {node} -->"
+    if svg.count(marker) != 1:
+        return None
+    header = svg.split(marker)[1].split("<!-- ")[0]
+    name, subtitle = [], []
+    for run in re.findall(r"<tspan([^>]*)>([^<]*)</tspan>", header):
+        (name if 'font-weight="bold"' in run[0] else subtitle).append(run[1])
+    return " ".join(name).strip(), " ".join(subtitle).strip()
+
+
+def branch_messages(d):
+    """Every message of a sequence source with the labels of the frames it
+    sits in, outermost first: for an alt frame the label of the current
+    branch, for an opt frame its label."""
+    stack, out = [], []
+    for m in d.get("seq", []):
+        if "alt" in m:
+            stack.append(m["alt"])
+        elif "opt" in m:
+            stack.append(m["opt"])
+        elif "else" in m:
+            stack[-1] = m["else"]
+        elif m.get("end"):
+            stack.pop()
+        elif "from" in m:
+            out.append((m, tuple(stack)))
+    return out
+
+
+def unsigned_mail_guard_problem(part1, part2):
+    """Why the mail-delivery pair lets a body reach the session host without
+    the decision guard, or None. Relations are read from the parsed sources
+    that the renderer accepts; both parts must also render."""
+    def flat(label):
+        return " ".join(label.split())
+
+    def by_name(d, name):
+        ids = [k for k, n in d["nodes"].items() if n.get("name") == name]
+        return ids[0] if len(ids) == 1 else None
+
+    d1, d2 = render.load_source(part1), render.load_source(part2)
+    for part, src, d in (("part 1", part1, d1), ("part 2", part2, d2)):
+        guard = by_name(d, "Decision guard")
+        if guard is None or drawn_header(src, guard) is None:
+            return f"{part}: the decision guard is not drawn once"
+    guard1, host1 = by_name(d1, "Decision guard"), by_name(d1, "Хост сессий")
+    for m, frames in branch_messages(d1):
+        if host1 is not None and m["to"] == host1 and m["from"] != host1:
+            return f"part 1: '{flat(m['label'])}' rings the session host before the decision guard"
+        if frames and re.search(r"(?i)нет подписи", frames[-1]) and m["to"] != guard1:
+            target = d1["nodes"][m["to"]].get("name")
+            return f"part 1: the unsigned branch sends '{flat(m['label'])}' to '{target}', past the decision guard"
+    unsigned1 = [m for m, frames in branch_messages(d1) if frames and re.search(r"(?i)нет подписи", frames[-1])]
+    if not unsigned1:
+        return "part 1: no branch for an unsigned body"
+    guard2, host2 = by_name(d2, "Decision guard"), by_name(d2, "Хост сессий")
+    if host2 is None:
+        return "part 2: the session host is not a participant"
+    msgs = branch_messages(d2)
+    if not any(m["to"] == guard2 and m["from"] != guard2 and not frames for m, frames in msgs):
+        return "part 2: the body does not enter the decision guard before the branches"
+    refusal = [(m, f) for m, f in msgs if f and re.search(r"(?i)недоступен", f[-1]) and re.search(r"(?i)отказал", f[-1])]
+    if not refusal:
+        return "part 2: no branch for a refusing or unavailable guard"
+    bells = [(m, f) for m, f in msgs if m["to"] == host2 and m["from"] != host2]
+    for m, frames in bells:
+        if not any(re.search(r"(?i)guard разрешил", f) for f in frames):
+            return f"part 2: '{flat(m['label'])}' reaches the session host outside the 'guard разрешил' branch"
+    if not any(re.search(r"(?i)метаданн", m["label"]) for m, _ in bells):
+        return "part 2: no metadata-only bell for an unsigned body after the guard allows it"
+    return None
+
+
+def command_performer_problem(src):
+    """Why the composed figure at src mislabels the participant that runs the
+    command, or None. That participant is the target of the message labelled
+    "команда" and the sender of "вывод"; headers are read from the rendered
+    SVG, not from the source text."""
+    d = render.load_source(src)
+    runs = {m["to"] for m in d.get("seq", []) if m.get("label") == "команда"}
+    outs = {m["from"] for m in d.get("seq", []) if m.get("label") == "вывод"}
+    if len(runs) != 1 or runs != outs:
+        return f"expected one participant that takes the command and returns the output, found {sorted(runs | outs)}"
+    performer = runs.pop()
+    header = drawn_header(src, performer)
+    if header is None:
+        return f"participant {performer} is not drawn once"
+    name, subtitle = header
+    if re.search(r"(?i)уч[её]тн\w+ запис", name):
+        return f"the participant that runs the command is headed '{name}': an OS account stands for the process"
+    if not re.search(r"(?i)процесс", name):
+        return f"the participant that runs the command is headed '{name}', not as a process"
+    if not re.search(r"(?i)уч[её]тн\w+ запис\w+ слота", subtitle):
+        return f"the subtitle '{subtitle}' does not place the process under the slot account"
+    for sender in {m["from"] for m in d.get("seq", []) if m.get("label") == "команда"}:
+        checker = drawn_header(src, sender)
+        if checker is None or re.search(r"(?i)слот", " ".join(checker)):
+            return f"the checking service that sends the command is drawn inside the slot account: {checker}"
     return None
 
 
@@ -1146,6 +1246,70 @@ class FigureTests(Base):
         self.assertEqual(mutant.count('text = "экземпляр агента"'), 1)
         self.assertEqual(acting_instance_problem(self.src(mutant, "rental-work-mutant.toml")),
                          "the participant that calls the model proxy is headed 'Слот': the slot stands for the instance")
+
+    # Claim: in the mail-delivery pair of the platform book no body reaches
+    # the session host without the decision guard. In part 1 the unsigned
+    # branch hands the body to the guard and nothing rings the host. In
+    # part 2 the body enters the guard before any branch, a refusing or
+    # unavailable guard has its own branch without a bell, every bell sits in
+    # the "guard разрешил" branch, and the allowed unsigned body still gets
+    # its metadata-only bell (the valid neighbour).
+    # Negative controls keep the guard on the admitted path, so a search for
+    # the word "guard" passes them: (a) part 1 with the unsigned body held in
+    # the mailbox and a bell sent from the gates; (b) part 2 with a bell sent
+    # from the gates before the guard frame; (c) part 2 with a bell inside
+    # the refusal branch. Each must be reported with its own message.
+    # Limit: reads the relations of these two sources as the renderer parses
+    # them; it does not read the chapter prose and proves nothing about a
+    # running bridge.
+    def test_unsigned_mail_requires_incoming_guard(self):
+        p1, p2 = ROOT / "book/src/mailbox-delivery-1.toml", ROOT / "book/src/mailbox-delivery-2.toml"
+        t1, t2 = p1.read_text(encoding="utf-8"), p2.read_text(encoding="utf-8")
+        self.assertIsNone(unsigned_mail_guard_problem(p1, p2))
+
+        to_guard = 'from = "gate"\nto = "guard"\nstep = 4\nlabel = "тело как недоверенные данные"\n'
+        bypass = ('from = "gate"\nto = "mailbox"\nstep = 4\nlabel = "удержать тело в карантине"\n\n[[seq]]\n'
+                  'from = "gate"\nto = "host"\nstep = 5\nlabel = "звонок только с метаданными"\n')
+        self.assertEqual(t1.count(to_guard), 1)
+        host = '[nodes.host]\nrole = "service"\nname = "Хост сессий"\n\n[[seq]]\nfrom = "provider"\nto = "provider"'
+        m1 = t1.replace(to_guard, bypass).replace('[[seq]]\nfrom = "provider"\nto = "provider"', host, 1)
+        self.assertIn('to = "guard"', m1)  # the admitted path still goes to the guard
+        self.assertEqual(unsigned_mail_guard_problem(self.src(m1, "mail-1-mutant.toml"), p2),
+                         "part 1: the unsigned branch sends 'удержать тело в карантине' to 'Почтовый ящик', past the decision guard")
+
+        entry = '[[seq]]\nfrom = "gate"\nto = "guard"\nstep = 4\n'
+        self.assertEqual(t2.count(entry), 1)
+        early = '[[seq]]\nfrom = "gate"\nto = "host"\nstep = 5\nlabel = "звонок только с метаданными"\n\n' + entry
+        self.assertEqual(unsigned_mail_guard_problem(p1, self.src(t2.replace(entry, early), "mail-2-early.toml")),
+                         "part 2: 'звонок только с метаданными' reaches the session host outside the 'guard разрешил' branch")
+
+        allow = '[[seq]]\nelse = "guard разрешил"\n'
+        self.assertEqual(t2.count(allow), 1)
+        leak = '[[seq]]\nfrom = "mailbox"\nto = "host"\nstep = 6\nlabel = "звонок только с метаданными"\n\n' + allow
+        self.assertEqual(unsigned_mail_guard_problem(p1, self.src(t2.replace(allow, leak), "mail-2-refusal.toml")),
+                         "part 2: 'звонок только с метаданными' reaches the session host outside the 'guard разрешил' branch")
+
+    # Claim: in the project-side figure of the remote turn the lifeline that
+    # takes "команда" and returns "вывод" is headed as a process, the slot
+    # account is named only as the context that process runs under (its
+    # subtitle), and the service that sends the command is not drawn inside
+    # the slot account.
+    # Negative control: the same source with only the header changed back to
+    # "Учётная запись слота" and the words "процесс команды" moved to the
+    # subtitle is reported as an account standing for the process; both
+    # phrases are present there, so a token search would pass it.
+    # Limit: reads the headers of two participants in one figure as the SVG
+    # draws them; it does not check the prose or the donor-side figure.
+    def test_remote_command_lifeline_names_process(self):
+        src = ROOT / "book/src/remote-worker-turn-ours.toml"
+        text = src.read_text(encoding="utf-8")
+        self.assertIsNone(command_performer_problem(src))
+        mutant = text.replace('name = "Процесс команды"', 'name = "Учётная запись слота"').replace(
+            'text = "под учётной записью слота"', 'text = "процесс команды"')
+        self.assertEqual(mutant.count('name = "Учётная запись слота"'), 1)
+        self.assertEqual(mutant.count('text = "процесс команды"'), 1)
+        self.assertEqual(command_performer_problem(self.src(mutant, "remote-turn-mutant.toml")),
+                         "the participant that runs the command is headed 'Учётная запись слота': an OS account stands for the process")
 
     # Claim (book wave review, P2-5 and P3-14): the structural pass of
     # book/check-figures.sh, which book/build.sh runs before every build,
