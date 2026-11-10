@@ -9,6 +9,6 @@
 | Own zone and its namespace rule | `.bit` for experiments; own zone after 2026-11-17, proposal written in parallel | Owners, after ICANN string confirmation |
 | Chain-only revocation profile against the agreed keyvault contract | Target profile in the book; the agreed contract stays until both owners change it | Both owners |
 | Autonomous agent entities running nodes | Named as open in the state chapters | Owner's message is pending |
-| Reconciliation of landlord-grant and locator publication | Public LIP-0004/0005 text still describes bare output as the first implementation and predates optional root Nostr metadata; the landed rental profile writes framed output and supports that metadata | Specification owners |
-| General grant-gated service specification | A wallet service profile exists in the public laboratory; standalone LIP-0006 publication and real host qualification remain open | Specification and host owners |
+| Adoption of the landlord-grant and locator profiles | Specification 0.1.4 reconciled the LIP-0004/0005 drafts with the landed framed writer and the optional root Nostr metadata; both remain Draft and are not normatively adopted | Specification owners |
+| General grant-gated service specification | LIP-0006 is published as a Draft since specification 0.1.4 and describes the wallet service v1 profile only; a common action vocabulary, a registry of service types and real host qualification remain open | Specification and host owners |
 | Signing of release tags | Draft RCs: GitHub pre-release, unsigned tag on a signed commit; final releases signed by the owner | Decided |
