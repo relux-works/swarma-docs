@@ -375,6 +375,35 @@ def geo(svg):
     return render.read_geometry(svg, KIT)
 
 
+def acting_instance_problem(src):
+    """Why the composed figure at src mislabels the acting agent instance, or
+    None. The acting participant is the one that sends a message to the node
+    named "Прокси модели"; its header name and subtitle are read from the
+    rendered SVG, not from the source text."""
+    d = render.load_source(src)
+    proxies = {k for k, n in d["nodes"].items() if n.get("name") == "Прокси модели"}
+    senders = {m["from"] for m in d.get("seq", []) if m.get("to") in proxies and m.get("from") not in proxies}
+    if len(senders) != 1:
+        return f"expected one participant that calls the model proxy, found {sorted(senders)}"
+    sender = senders.pop()
+    svg = render.render(src)
+    marker = f"<!-- node {sender} -->"
+    if svg.count(marker) != 1:
+        return f"participant {sender} is not drawn once"
+    header = svg.split(marker)[1].split("<!-- ")[0]
+    name, subtitle = [], []
+    for run in re.findall(r"<tspan([^>]*)>([^<]*)</tspan>", header):
+        (name if 'font-weight="bold"' in run[0] else subtitle).append(run[1])
+    name, subtitle = " ".join(name).strip(), " ".join(subtitle).strip()
+    if re.search(r"(?i)\bслот", name):
+        return f"the participant that calls the model proxy is headed '{name}': the slot stands for the instance"
+    if not re.search(r"(?i)экземпляр", name):
+        return f"the participant that calls the model proxy is headed '{name}', not as the agent instance"
+    if not re.search(r"(?i)слот", subtitle):
+        return f"the subtitle '{subtitle}' does not place the instance in its slot"
+    return None
+
+
 class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(prefix="diagram-kit-")
@@ -1096,6 +1125,27 @@ class FigureTests(Base):
                 svg = render.render(src)
                 committed = src.parent.parent / "diagrams" / (src.stem + ".svg")
                 self.assertEqual(svg, committed.read_text(encoding="utf-8"), f"{committed} is stale")
+
+    # Claim: in the composed rental-work figure of the Link book the lifeline
+    # that sends the request to the model proxy is headed as the agent
+    # instance, and the slot is named only as the place of that instance
+    # (its subtitle). The glossary forbids calling the instance a slot.
+    # Negative control: the same source with only the header name changed
+    # back to "Слот", the words "экземпляр агента" kept in the subtitle, is
+    # reported as the slot standing for the instance; both words are present
+    # there, so a token search over the source would pass it.
+    # Limit: reads the header of one participant in one figure; it does not
+    # check the prose or other figures, and it renders in memory only.
+    def test_rental_work_keeps_instance_distinct_from_slot(self):
+        src = ROOT / "link-book/src/rental-work.toml"
+        text = src.read_text(encoding="utf-8")
+        self.assertIsNone(acting_instance_problem(src))
+        mutant = text.replace('name = "Экземпляр агента"', 'name = "Слот"').replace(
+            'text = "в слоте"', 'text = "экземпляр агента"')
+        self.assertEqual(mutant.count('name = "Слот"'), 1)
+        self.assertEqual(mutant.count('text = "экземпляр агента"'), 1)
+        self.assertEqual(acting_instance_problem(self.src(mutant, "rental-work-mutant.toml")),
+                         "the participant that calls the model proxy is headed 'Слот': the slot stands for the instance")
 
     # Claim (book wave review, P2-5 and P3-14): the structural pass of
     # book/check-figures.sh, which book/build.sh runs before every build,

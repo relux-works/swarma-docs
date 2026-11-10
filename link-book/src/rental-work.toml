@@ -4,13 +4,15 @@
 # "Что шлюз делает с сообщением", "Слот"). Split from the whole rental along
 # the phase change; the renter and the gateway are in both parts and the step
 # numbers continue those of part 1 (rental-exchange). Chain reads are drawn as
-# the checker's own steps: every service reads its own node.
+# the checker's own steps: every service reads its own node. The lifeline that
+# receives the message and calls the model is the agent instance; the slot is
+# the place of the rental and is named only as the location of that instance.
 layout = "sequence"
-alt = "Работа в окне: шлюз проверяет доверенность на каждом сообщении, прокси модели считает расход, а трата печати или конец окна останавливают слот."
+alt = "Работа в окне: шлюз проверяет доверенность на каждом сообщении, прокси модели считает расход, а трата печати или конец окна завершают слот."
 
 [theme.space]
 seq_row_gap = 8
-seq_node_width = 130
+seq_node_width = 150
 seq_label_width = 150
 seq_self_width = 170
 seq_column_gap = 20
@@ -29,11 +31,11 @@ role = "service"
 name = "Шлюз"
 text = "своя нода"
 
-[nodes.slot]
+[nodes.instance]
 group = "landlord"
 role = "agent"
-name = "Слот"
-text = "экземпляр агента"
+name = "Экземпляр агента"
+text = "в слоте"
 
 [nodes.proxy]
 group = "landlord"
@@ -58,12 +60,12 @@ alt = "допуск"
 
 [[seq]]
 from = "gateway"
-to = "slot"
+to = "instance"
 step = 14
 label = "запуск, сообщение"
 
 [[seq]]
-from = "slot"
+from = "instance"
 to = "proxy"
 step = 15
 label = "запрос с токеном слота"
@@ -76,12 +78,12 @@ label = "своя проверка доверенности, резерв, пр�
 
 [[seq]]
 from = "proxy"
-to = "slot"
+to = "instance"
 step = 17
 label = "ответ модели"
 
 [[seq]]
-from = "slot"
+from = "instance"
 to = "gateway"
 step = 18
 label = "ответ агента"
@@ -104,7 +106,7 @@ color = "alert"
 
 [[seq]]
 from = "gateway"
-to = "slot"
+to = "instance"
 step = 15
 label = "остановка и стирание"
 color = "alert"
