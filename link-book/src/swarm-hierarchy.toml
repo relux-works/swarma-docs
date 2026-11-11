@@ -1,0 +1,66 @@
+# Hierarchy of the swarm example. Content follows the chapter "Рой: иерархия
+# и полномочия" (sections "Иерархия внутри одного оператора" and "Граница
+# между операторами"). Two authority links inside one operator: the signer
+# gives the keeper an issuance capability, the keeper issues to an
+# orchestrator and to a worker agent. Access for another operator's agent is
+# issued by the signer itself, in one link. The orchestrator manages worker
+# agents and issues nothing, so that edge is not an authority link and is not
+# drawn.
+layout = "stack"
+alt = "Иерархия роя: подписант оператора выдаёт киперу право выдачи, кипер выдаёт доверенности оркестраторам и рабочим агентам, а доступ агенту другого оператора выдаёт сам подписант."
+
+[groups.signer]
+label = "Подписант Ивана"
+role = "key"
+
+[groups.keeper]
+label = "Звено 1"
+role = "service"
+
+[groups.agents]
+label = "Звено 2"
+role = "agent"
+
+[groups.other]
+label = "Хост Алексея"
+role = "external"
+
+[nodes.grantkey]
+group = "signer"
+role = "key"
+name = "Ключ доверенностей"
+text = "записан в имени `id/ivan`"
+
+[nodes.keeper]
+group = "keeper"
+role = "service"
+name = "Кипер"
+text = "право выдачи для одного ресурса"
+
+[nodes.orch]
+group = "agents"
+role = "agent"
+name = "Оркестраторы и рабочие агенты"
+text = "действие, пределы и срок; сами не выдают"
+
+[nodes.foreign]
+group = "other"
+role = "external"
+name = "Оркестратор Алексея"
+text = "получатель по имени `id/alexey-build`"
+
+[[links]]
+from = "grantkey"
+to = "keeper"
+label = "доверенность с правом выдачи"
+
+[[links]]
+from = "keeper"
+to = "orch"
+label = "дочерние доверенности"
+
+[[links]]
+from = "grantkey"
+to = "foreign"
+label = "доверенность на доступ к агенту Ивана"
+side = "left"

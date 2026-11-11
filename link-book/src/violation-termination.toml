@@ -1,0 +1,105 @@
+# Termination for violation, the whole flow off chain and on chain. Content
+# follows the chapter "Отзыв и наблюдение цепочки" (section "Прекращение по
+# нарушению"). The moderator is a model or a person and signs the verdict;
+# only the seal spend closes the grant; each verifier reads its own node, so
+# the chain participant stands for the nodes of the verifiers. The
+# flow is decided and not built.
+layout = "sequence"
+alt = "Прекращение по нарушению: вердикт подписывается вне цепочки, трата печати ссылается на него в цепочке, и проверяющий закрывает доверенность по трате."
+
+[theme.space]
+seq_row_gap = 3
+seq_node_width = 118
+seq_label_width = 155
+seq_self_width = 150
+seq_column_gap = 10
+
+[nodes.recipient]
+role = "external"
+name = "Получатель"
+
+[nodes.service]
+role = "service"
+name = "Служба выдавшего"
+
+[nodes.moderator]
+role = "agent"
+name = "Модератор"
+text = "модель или человек"
+
+[nodes.signer]
+role = "key"
+name = "Подписант"
+
+[nodes.chain]
+role = "external"
+name = "Namecoin"
+text = "ноды проверяющих"
+
+[[seq]]
+from = "recipient"
+to = "service"
+step = 1
+label = "подписанный запрос"
+
+[[seq]]
+from = "service"
+to = "moderator"
+step = 2
+label = "запрос и правила"
+
+[[seq]]
+from = "moderator"
+to = "moderator"
+step = 3
+label = "ответ; подписанный вердикт:\nхэш запроса, правило, хэш ответа"
+
+[[seq]]
+from = "moderator"
+to = "service"
+step = 4
+label = "вердикт"
+
+[[seq]]
+alt = "вердикт служит предупреждением"
+
+[[seq]]
+from = "service"
+to = "recipient"
+step = 5
+label = "идентификатор вердикта"
+
+[[seq]]
+else = "вердикт прекращает договор"
+
+[[seq]]
+from = "service"
+to = "signer"
+step = 5
+label = "вердикт"
+
+[[seq]]
+from = "signer"
+to = "signer"
+step = 6
+label = "сверка с договором, журнал"
+
+[[seq]]
+from = "signer"
+to = "chain"
+step = 7
+label = "трата печати со ссылкой на вердикт"
+color = "alert"
+
+[[seq]]
+from = "chain"
+to = "chain"
+step = 8
+label = "закрытие доверенности"
+
+[[seq]]
+end = true
+
+[[seq]]
+note = "Запрос и ответ модератора остаются вне цепочки.\nВ цепочке лежат хэш прекращения и идентификатор вердикта."
+over = ["moderator", "chain"]
