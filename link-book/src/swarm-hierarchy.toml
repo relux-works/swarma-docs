@@ -1,7 +1,7 @@
 # Hierarchy of the swarm example. Content follows the chapter "Рой: иерархия
 # и полномочия" (sections "Иерархия внутри одного оператора" and "Граница
 # между операторами"). Two authority links inside one operator: the signer
-# gives the keeper an issuance capability, the keeper issues to an
+# gives the keeper a grant with the right of re-delegation, the keeper issues to an
 # orchestrator and to a worker agent. Access for another operator's agent is
 # issued by the signer itself, in one link. The orchestrator manages worker
 # agents and issues nothing, so that edge is not an authority link and is not
@@ -9,7 +9,7 @@
 # agents run, the host of another operator. The depth of the authority path
 # is in the link labels, not in containers.
 layout = "stack"
-alt = "Иерархия роя: подписант оператора выдаёт киперу право выдачи, кипер выдаёт доверенности оркестраторам и рабочим агентам, а доступ агенту другого оператора выдаёт сам подписант."
+alt = "Иерархия роя: подписант оператора выдаёт киперу доверенность с правом передоверия, кипер выдаёт доверенности оркестраторам и рабочим агентам, а доступ агенту другого оператора выдаёт сам подписант."
 
 [groups.signer]
 label = "Подписант Ивана"
@@ -33,7 +33,7 @@ text = "записан в имени `id/ivan`"
 group = "hosts"
 role = "service"
 name = "Кипер"
-text = "право выдачи для одного ресурса"
+text = "право передоверия для одного ресурса"
 
 [nodes.orch]
 group = "hosts"
@@ -50,7 +50,7 @@ text = "получатель по имени `id/alexey-build`"
 [[links]]
 from = "grantkey"
 to = "keeper"
-label = "звено 1: право выдачи"
+label = "звено 1: передоверие"
 side = "right"
 
 [[links]]
