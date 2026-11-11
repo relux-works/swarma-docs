@@ -5,7 +5,9 @@
 # orchestrator and to a worker agent. Access for another operator's agent is
 # issued by the signer itself, in one link. The orchestrator manages worker
 # agents and issues nothing, so that edge is not an authority link and is not
-# drawn.
+# drawn. Containers are control domains: the signer, the hosts where Ivan's
+# agents run, the host of another operator. The depth of the authority path
+# is in the link labels, not in containers.
 layout = "stack"
 alt = "Иерархия роя: подписант оператора выдаёт киперу право выдачи, кипер выдаёт доверенности оркестраторам и рабочим агентам, а доступ агенту другого оператора выдаёт сам подписант."
 
@@ -13,13 +15,9 @@ alt = "Иерархия роя: подписант оператора выдаё
 label = "Подписант Ивана"
 role = "key"
 
-[groups.keeper]
-label = "Звено 1"
+[groups.hosts]
+label = "Хосты агентов Ивана"
 role = "service"
-
-[groups.agents]
-label = "Звено 2"
-role = "agent"
 
 [groups.other]
 label = "Хост Алексея"
@@ -32,13 +30,13 @@ name = "Ключ доверенностей"
 text = "записан в имени `id/ivan`"
 
 [nodes.keeper]
-group = "keeper"
+group = "hosts"
 role = "service"
 name = "Кипер"
 text = "право выдачи для одного ресурса"
 
 [nodes.orch]
-group = "agents"
+group = "hosts"
 role = "agent"
 name = "Оркестраторы и рабочие агенты"
 text = "действие, пределы и срок; сами не выдают"
@@ -52,12 +50,13 @@ text = "получатель по имени `id/alexey-build`"
 [[links]]
 from = "grantkey"
 to = "keeper"
-label = "доверенность с правом выдачи"
+label = "звено 1: право выдачи"
+side = "right"
 
 [[links]]
 from = "keeper"
 to = "orch"
-label = "дочерние доверенности"
+label = "звено 2"
 
 [[links]]
 from = "grantkey"

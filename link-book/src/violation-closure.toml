@@ -1,0 +1,86 @@
+# Termination for violation, second half of the flow: after the seal spend.
+# Content follows the chapter "Отзыв и наблюдение цепочки" (section
+# "Прекращение по нарушению"). Two independent readings of the same
+# transaction. The verifier (the executor that admits requests) sees the
+# spend on its own node, validates it and writes the closure into its own
+# journal; the chain supplies evidence and closes nothing. The reader (the
+# recipient or an arbiter) checks the reference: it starts from the grant and
+# its seal, requires the transaction to spend that seal by the issuer, then
+# fetches and checks the verdict. Closure does not depend on the reference.
+# The flow is proposed by LIP-0011 and not built.
+layout = "sequence"
+alt = "После траты печати: проверяющий видит трату на своей ноде и закрывает доверенность в своём журнале, а получатель или арбитр отдельно проверяет ссылку на вердикт."
+
+[theme.space]
+seq_row_gap = 3
+seq_node_width = 118
+seq_label_width = 155
+seq_self_width = 170
+seq_column_gap = 10
+
+[nodes.verifier]
+role = "service"
+name = "Проверяющий"
+text = "исполнитель"
+
+[nodes.chain]
+role = "external"
+name = "Namecoin"
+text = "цепочка и мемпул"
+
+[nodes.reader]
+role = "external"
+name = "Читатель ссылки"
+text = "получатель или арбитр"
+
+[nodes.store]
+role = "external"
+name = "Хранилище"
+text = "вердиктов"
+
+[[seq]]
+from = "chain"
+to = "verifier"
+step = 1
+label = "трата печати видна его ноде"
+color = "alert"
+
+[[seq]]
+from = "verifier"
+to = "verifier"
+step = 2
+label = "проверка: печать тратит выдавший; закрытие в своём журнале"
+
+[[seq]]
+from = "chain"
+to = "reader"
+step = 3
+label = "транзакция со ссылкой"
+
+[[seq]]
+from = "reader"
+to = "reader"
+step = 4
+label = "доверенность и её печать; транзакция тратит эту печать, тратит выдавший"
+
+[[seq]]
+from = "reader"
+to = "store"
+step = 5
+label = "идентификатор вердикта"
+
+[[seq]]
+from = "store"
+to = "reader"
+step = 6
+label = "вердикт и предыдущие"
+
+[[seq]]
+from = "reader"
+to = "reader"
+step = 7
+label = "хэш вердикта, хэш прекращения, поля, подпись модератора"
+
+[[seq]]
+note = "Закрытие от ссылки не зависит: шаги 1 и 2 идут без шагов с 3 по 7.\nЕсли вердикт не получен, свидетельство не установлено."
+over = ["verifier", "store"]

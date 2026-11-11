@@ -1,11 +1,13 @@
-# Termination for violation, the whole flow off chain and on chain. Content
-# follows the chapter "Отзыв и наблюдение цепочки" (section "Прекращение по
-# нарушению"). The moderator is a model or a person and signs the verdict;
-# only the seal spend closes the grant; each verifier reads its own node, so
-# the chain participant stands for the nodes of the verifiers. The
-# flow is decided and not built.
+# Termination for violation, first half of the flow: from the request to the
+# seal spend. Content follows the chapter "Отзыв и наблюдение цепочки"
+# (section "Прекращение по нарушению"). The moderator is a model or a person
+# and signs the verdict; the signer checks it against the contract and spends
+# the seal with the reference. The chain participant is the chain and its
+# mempool: it holds the transaction and closes nothing. Closure by the
+# verifier and the reading of the reference are in violation-closure.toml.
+# The flow is decided and not built.
 layout = "sequence"
-alt = "Прекращение по нарушению: вердикт подписывается вне цепочки, трата печати ссылается на него в цепочке, и проверяющий закрывает доверенность по трате."
+alt = "Прекращение по нарушению, от запроса до траты печати: модератор подписывает вердикт вне цепочки, подписант сверяет его с договором и тратит печать со ссылкой на вердикт."
 
 [theme.space]
 seq_row_gap = 3
@@ -34,7 +36,7 @@ name = "Подписант"
 [nodes.chain]
 role = "external"
 name = "Namecoin"
-text = "ноды проверяющих"
+text = "цепочка и мемпул"
 
 [[seq]]
 from = "recipient"
@@ -90,12 +92,6 @@ to = "chain"
 step = 7
 label = "трата печати со ссылкой на вердикт"
 color = "alert"
-
-[[seq]]
-from = "chain"
-to = "chain"
-step = 8
-label = "закрытие доверенности"
 
 [[seq]]
 end = true
