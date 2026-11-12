@@ -187,5 +187,17 @@ for f in book/ru/[0-9][0-9]*.md a2a-book/ru/[0-9][0-9]*.md install-book/ru/[0-9]
   fi
 done
 
+# Automatic hyphenation inserts U+2010 at a line end unless the stylesheet names
+# another character. No PT face has U+2010, so the hyphen would be drawn from a
+# fallback font. A stylesheet that hyphenates automatically must set
+# hyphenate-character to the ordinary hyphen-minus.
+for css in book/style.css; do
+  [ -e "$css" ] || continue
+  if grep -qE 'hyphens:[[:space:]]*auto' "$css" && ! grep -qE 'hyphenate-character:[[:space:]]*"-"' "$css"; then
+    echo "== line-end hyphen from a fallback font: $css hyphenates automatically without hyphenate-character: \"-\""
+    fail=1
+  fi
+done
+
 [ "$fail" -eq 0 ] && echo "check.sh: ok ($(echo "$files" | wc -l | tr -d ' ') files)"
 exit "$fail"

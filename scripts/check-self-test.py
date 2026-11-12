@@ -200,6 +200,31 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('chapter without a level-1 heading', r.stdout)
 
+    # A stylesheet with automatic hyphenation and no hyphenate-character fails
+    # with the fallback-font label; the same sheet with the hyphen-minus set,
+    # a sheet without automatic hyphenation, and no sheet at all pass. The
+    # check reads the declaration; it does not render or inspect fonts.
+    def test_line_end_hyphen_character(self):
+        css = self.root / 'book/style.css'
+        label = '== line-end hyphen from a fallback font'
+        self.assertEqual(self.run_check().returncode, 0)
+        css.write_text('html { hyphens: auto; }\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn(label, r.stdout)
+        css.write_text('html { hyphens: auto; hyphenate-character: "\u2010"; }\n')
+        r = self.run_check()
+        self.assertEqual(r.returncode, 1)
+        self.assertIn(label, r.stdout)
+        for text in ('html { hyphens: auto; hyphenate-character: "-"; }\n',
+                     'html { hyphens:auto;\n  hyphenate-character:"-"; }\n',
+                     'p { hyphens: manual; }\n'):
+            with self.subTest(text=text):
+                css.write_text(text)
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertNotIn(label, r.stdout)
+
     # Arbiter ruling ids of the a2a ruling log fail a chapter; words that only
     # contain the same letters pass. Lexical, not semantic.
     def test_ruling_identifier(self):
