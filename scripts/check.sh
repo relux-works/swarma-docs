@@ -187,24 +187,33 @@ for f in book/ru/[0-9][0-9]*.md a2a-book/ru/[0-9][0-9]*.md install-book/ru/[0-9]
   fi
 done
 
-# Automatic hyphenation inserts U+2010 at a line end unless a stylesheet names
-# another character. No PT face has U+2010, so the hyphen would be drawn from a
-# fallback font. When any book stylesheet hyphenates automatically, the
-# hyphen-minus must be the declared character.
+# Hyphenation inserts U+2010 at a line end unless a stylesheet names another
+# character. No PT face has U+2010, so the hyphen would be drawn from a
+# fallback font. The book stylesheets must make the hyphen-minus the declared
+# character.
 #
-# The guard reads CSS declarations; it does not match text. An awk reader drops
+# The guard reads CSS declarations; it does not match text, and it fails
+# closed: what it cannot read is a failure, not a pass. An awk reader drops
 # comments, keeps strings and parenthesised values whole, and splits each sheet
-# into rules and declarations. Property names and keywords are compared without
-# case, as CSS does; a custom property (`--name`) is another property; a
-# spelling inside a string or a comment is not a declaration.
-#   - book/style.css is loaded first by every build. Its top-level `html` rule
-#     must declare hyphenate-character: "-"; the property is inherited from it.
+# into rules and declarations. Property names are compared without case, as CSS
+# does; a custom property (`--name`) is another property; a spelling inside a
+# string or a comment is not a declaration.
+#   - book/style.css is loaded first by every book build. When it exists, its
+#     top-level `html` rule must declare hyphenate-character: "-". The rule is
+#     unconditional: the guard does not try to decide whether a sheet
+#     hyphenates, because that keyword can be written in ways it cannot read.
 #   - No sheet, book/style.css or a book's own style.css loaded after it, may
-#     declare hyphenate-character with another value, in any rule.
-#   - A property name written with a CSS escape is refused, not interpreted.
+#     declare hyphenate-character with another value, in any rule. A keyword,
+#     an escape or var() in the value is another value.
+#   - Refused because the guard does not interpret them: a property name
+#     written with a CSS escape, an `all` declaration (it resets the property),
+#     `@import` (the imported sheet is not read), an unclosed comment, string,
+#     parenthesis or rule, and a stray closing brace.
+#   - A reader that does not run or exits with an error is a failure too.
 # The guard is stricter than the cascade: it also refuses an override that
 # would be harmless. It does not render and does not inspect fonts, and it
-# does not read styles outside these sheets.
+# does not read styles outside these sheets (the HTML template, filters, the
+# two-pager's own stylesheet).
 if [ -e book/style.css ]; then
   sheets="book/style.css $(ls ./*-book/style.css 2>/dev/null | sed 's#^\./##' | sort | tr '\n' ' ')"
   # shellcheck disable=SC2086
@@ -212,16 +221,13 @@ if [ -e book/style.css ]; then
     function trim(t) { sub(/^[ \t\r\n]+/, "", t); sub(/[ \t\r\n]+$/, "", t); return t }
     function squeeze(t) { gsub(/[ \t\r\n]+/, " ", t); return trim(t) }
     function note(t) { if (!(t in seen)) { seen[t] = 1; reasons = reasons (reasons == "" ? "" : "; ") t } }
-    function declare(seg, colon, sel, depth, file,    prop, val, key) {
+    function declare(seg, colon, sel, depth, file,    prop, val) {
       if (colon == 0) return
       prop = tolower(trim(substr(seg, 1, colon - 1)))
       val = trim(substr(seg, colon + 1))
       if (prop == "") return
       if (index(prop, "\\") > 0) { note(file ": a property name uses a CSS escape, which the guard does not read: " prop); return }
-      key = tolower(val)
-      sub(/[ \t\r\n]*![ \t\r\n]*important$/, "", key)
-      key = trim(key)
-      if (prop == "hyphens" && key == "auto") automatic = 1
+      if (prop == "all") { note(file ": an `all` declaration resets hyphenate-character: all: " val); return }
       if (prop == "hyphenate-character") {
         sub(/[ \t\r\n]*![ \t\r\n]*[iI][mM][pP][oO][rR][tT][aA][nN][tT]$/, "", val)
         val = trim(val)
@@ -232,15 +238,21 @@ if [ -e book/style.css ]; then
         }
       }
     }
-    FNR == 1 {
-      if (NR > 1) finish()
-      file = FILENAME; if (base == "") base = file
-      state = 0; quote = ""; depth = 0; paren = 0; seg = ""; colon = 0
+    function statement(seg, file) {
+      if (tolower(substr(trim(seg), 1, 7)) == "@import") note(file ": @import is not followed by the guard")
     }
     function finish() {
+      if (file == "") return
       if (state == 1) note(file ": a comment is not closed")
       if (state == 2) note(file ": a string is not closed")
+      if (paren != 0) note(file ": a parenthesis is not closed")
       if (depth != 0) note(file ": a rule is not closed")
+    }
+    BEGIN { base = ARGV[1]; file = "" }
+    FNR == 1 {
+      finish()
+      file = FILENAME
+      state = 0; quote = ""; depth = 0; paren = 0; seg = ""; colon = 0
     }
     {
       line = $0 "\n"; n = length(line)
@@ -259,7 +271,10 @@ if [ -e book/style.css ]; then
         if (ch == ")") { if (paren > 0) paren--; seg = seg ch; continue }
         if (paren > 0) { seg = seg ch; continue }
         if (ch == "{") { depth++; sel[depth] = seg; seg = ""; colon = 0; continue }
-        if (ch == ";") { if (depth > 0) declare(seg, colon, sel[depth], depth, file); seg = ""; colon = 0; continue }
+        if (ch == ";") {
+          if (depth > 0) declare(seg, colon, sel[depth], depth, file); else statement(seg, file)
+          seg = ""; colon = 0; continue
+        }
         if (ch == "}") {
           if (depth > 0) { declare(seg, colon, sel[depth], depth, file); depth-- }
           else note(file ": a closing brace has no rule")
@@ -271,11 +286,15 @@ if [ -e book/style.css ]; then
     }
     END {
       finish()
-      if (automatic && !rooted) note(base ": the top-level html rule does not declare hyphenate-character: \"-\"")
-      if (automatic || reasons ~ /escape|not closed|no rule/) printf "%s", reasons
+      if (!rooted) note(base ": the top-level html rule does not declare hyphenate-character: \"-\"")
+      printf "%s", reasons
     }
   ' $sheets)
-  if [ -n "$why" ]; then
+  reader=$?
+  if [ "$reader" -ne 0 ]; then
+    echo "== line-end hyphen from a fallback font: the stylesheet reader did not finish (awk exit $reader); the sheets are not verified"
+    fail=1
+  elif [ -n "$why" ]; then
     echo "== line-end hyphen from a fallback font: $why"
     fail=1
   fi
