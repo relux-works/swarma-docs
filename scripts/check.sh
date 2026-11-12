@@ -189,12 +189,28 @@ done
 
 # Automatic hyphenation inserts U+2010 at a line end unless the stylesheet names
 # another character. No PT face has U+2010, so the hyphen would be drawn from a
-# fallback font. A stylesheet that hyphenates automatically must set
-# hyphenate-character to the ordinary hyphen-minus.
+# fallback font. A stylesheet that hyphenates automatically must make the
+# hyphen-minus the effective character. The check reads declarations, not
+# text: comments are removed first; the `html` rule must itself declare
+# hyphenate-character: "-" (the property is inherited from there); and no
+# declaration anywhere in the sheet may give another value, so a later rule
+# cannot override it. It does not resolve the cascade and does not render.
 for css in book/style.css; do
   [ -e "$css" ] || continue
-  if grep -qE 'hyphens:[[:space:]]*auto' "$css" && ! grep -qE 'hyphenate-character:[[:space:]]*"-"' "$css"; then
-    echo "== line-end hyphen from a fallback font: $css hyphenates automatically without hyphenate-character: \"-\""
+  flat=$(tr '\n' ' ' < "$css" | sed -E 's#/\*[^*]*\*+([^/*][^*]*\*+)*/# #g')
+  printf '%s' "$flat" | grep -qE 'hyphens[[:space:]]*:[[:space:]]*auto' || continue
+  why=
+  html_rule=$(printf '%s' "$flat" | grep -oE '(^|[};])[[:space:]]*html[[:space:]]*\{[^}]*\}')
+  if ! printf '%s' "$html_rule" | grep -qE 'hyphenate-character[[:space:]]*:[[:space:]]*"-"[[:space:]]*(![[:space:]]*important[[:space:]]*)?(;|\})'; then
+    why='the html rule does not declare hyphenate-character: "-"'
+  fi
+  other=$(printf '%s' "$flat" | grep -oE 'hyphenate-character[[:space:]]*:[^;}]*' \
+    | grep -vE '^hyphenate-character[[:space:]]*:[[:space:]]*"-"[[:space:]]*(![[:space:]]*important[[:space:]]*)?$')
+  if [ -n "$other" ]; then
+    why="${why:+$why; }a declaration gives another value: $(printf '%s' "$other" | head -n 1)"
+  fi
+  if [ -n "$why" ]; then
+    echo "== line-end hyphen from a fallback font: $css hyphenates automatically and $why"
     fail=1
   fi
 done

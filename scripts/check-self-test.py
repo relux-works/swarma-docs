@@ -200,30 +200,67 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('chapter without a level-1 heading', r.stdout)
 
-    # A stylesheet with automatic hyphenation and no hyphenate-character fails
-    # with the fallback-font label; the same sheet with the hyphen-minus set,
-    # a sheet without automatic hyphenation, and no sheet at all pass. The
-    # check reads the declaration; it does not render or inspect fonts.
+    # Toy sheets: automatic hyphenation with no hyphenate-character, with
+    # U+2010, with `auto`, or with the declaration outside the html rule fails
+    # with the fallback-font label; the hyphen-minus declared in the html rule
+    # (two spellings, with !important, repeated in another rule), a sheet
+    # whose only `hyphens: auto` is in a comment, a sheet without automatic
+    # hyphenation, and no sheet at all pass. The check reads declarations
+    # after removing comments; it does not resolve the cascade or render.
     def test_line_end_hyphen_character(self):
         css = self.root / 'book/style.css'
         label = '== line-end hyphen from a fallback font'
         self.assertEqual(self.run_check().returncode, 0)
-        css.write_text('html { hyphens: auto; }\n')
-        r = self.run_check()
-        self.assertEqual(r.returncode, 1)
-        self.assertIn(label, r.stdout)
-        css.write_text('html { hyphens: auto; hyphenate-character: "\u2010"; }\n')
-        r = self.run_check()
-        self.assertEqual(r.returncode, 1)
-        self.assertIn(label, r.stdout)
+        for text in ('html { hyphens: auto; }\n',
+                     'html { hyphens: auto; hyphenate-character: "‐"; }\n',
+                     'html { hyphens: auto; }\np { hyphenate-character: "-"; }\n',
+                     'html { hyphens: auto; hyphenate-character: auto; }\n'):
+            with self.subTest(fails=text):
+                css.write_text(text)
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn(label, r.stdout)
         for text in ('html { hyphens: auto; hyphenate-character: "-"; }\n',
-                     'html { hyphens:auto;\n  hyphenate-character:"-"; }\n',
+                     'html { hyphens:auto;\n  hyphenate-character:"-" }\n',
+                     'html { hyphens: auto; hyphenate-character: "-" !important; }\n',
+                     'html { hyphens: auto; hyphenate-character: "-"; }\ntd { hyphenate-character: "-"; }\n',
+                     '/* hyphens: auto */\np { hyphens: manual; }\n',
                      'p { hyphens: manual; }\n'):
-            with self.subTest(text=text):
+            with self.subTest(passes=text):
                 css.write_text(text)
                 r = self.run_check()
                 self.assertEqual(r.returncode, 0, r.stdout)
                 self.assertNotIn(label, r.stdout)
+
+    # The repository's own stylesheet passes unchanged. Four edits that keep
+    # the good spelling in the file must fail with the fallback-font label:
+    # the declaration turned into a comment (one line and several lines), a
+    # later html rule that sets U+2010 again, and a rule that resets one
+    # element to `auto`. Limit: the stylesheet is the one in this checkout;
+    # the test proves the guard's verdict, not what a renderer draws.
+    def test_line_end_hyphen_needs_effective_declaration(self):
+        actual = (Path(__file__).resolve().parents[1] / 'book/style.css').read_text()
+        good = 'hyphenate-character: "-";'
+        self.assertEqual(actual.count(good), 1)
+        css = self.root / 'book/style.css'
+        label = '== line-end hyphen from a fallback font'
+        css.write_text(actual)
+        r = self.run_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertNotIn(label, r.stdout)
+        witnesses = {
+            'commented out': actual.replace(good, '/* ' + good + ' */'),
+            'inside a multi-line comment': actual.replace(good, '/* disabled:\n  ' + good + '\n  */'),
+            'overridden by a later html rule': actual + '\nhtml { hyphenate-character: "‐"; }\n',
+            'reset for one element': actual + '\ntd { hyphenate-character: auto; }\n',
+        }
+        for name, text in witnesses.items():
+            with self.subTest(witness=name):
+                self.assertIn(good, text)
+                css.write_text(text)
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn(label, r.stdout)
 
     # Arbiter ruling ids of the a2a ruling log fail a chapter; words that only
     # contain the same letters pass. Lexical, not semantic.
