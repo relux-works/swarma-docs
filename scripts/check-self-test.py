@@ -200,13 +200,16 @@ class HygieneTests(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         self.assertIn('chapter without a level-1 heading', r.stdout)
 
-    # Toy sheets: automatic hyphenation with no hyphenate-character, with
-    # U+2010, with `auto`, or with the declaration outside the html rule fails
-    # with the fallback-font label; the hyphen-minus declared in the html rule
-    # (two spellings, with !important, repeated in another rule), a sheet
-    # whose only `hyphens: auto` is in a comment, a sheet without automatic
-    # hyphenation, and no sheet at all pass. The check reads declarations
-    # after removing comments; it does not resolve the cascade or render.
+    # Toy sheets through the public checker. Fail with the fallback-font label:
+    # automatic hyphenation with no hyphenate-character, with U+2010, with
+    # `auto`, with the declaration outside the html rule, inside an at-rule, as
+    # a custom property, or only spelled inside a string; an upper-case
+    # conflicting declaration; an escaped property name; an unclosed comment.
+    # Pass: the hyphen-minus in the top-level html rule (lower and upper case,
+    # single quotes, !important, repeated elsewhere), values that hold `;`,
+    # `{` or the spelling inside a string or url(), a commented or absent
+    # `hyphens: auto`, and no sheet. The guard reads declarations; it does not
+    # resolve the cascade, render or inspect fonts.
     def test_line_end_hyphen_character(self):
         css = self.root / 'book/style.css'
         label = '== line-end hyphen from a fallback font'
@@ -214,7 +217,14 @@ class HygieneTests(unittest.TestCase):
         for text in ('html { hyphens: auto; }\n',
                      'html { hyphens: auto; hyphenate-character: "‐"; }\n',
                      'html { hyphens: auto; }\np { hyphenate-character: "-"; }\n',
-                     'html { hyphens: auto; hyphenate-character: auto; }\n'):
+                     'html { hyphens: auto; hyphenate-character: auto; }\n',
+                     '@media print { html { hyphens: auto; hyphenate-character: "-"; } }\n',
+                     'html { hyphens: auto; --hyphenate-character: "-"; }\n',
+                     'html { hyphens: auto; --sample: \'hyphenate-character: "-";\'; }\n',
+                     'html { hyphens: auto; hyphenate-character: "-"; }\nhtml { HYPHENATE-CHARACTER: "‐"; }\n',
+                     'html { HYPHENS: AUTO; }\n',
+                     'html { hyphens: auto; hyphenate-character: "-"; }\ntd { hyphenate\\-character: "‐"; }\n',
+                     'html { hyphens: auto; hyphenate-character: "-"; }\n/* open\n'):
             with self.subTest(fails=text):
                 css.write_text(text)
                 r = self.run_check()
@@ -222,8 +232,12 @@ class HygieneTests(unittest.TestCase):
                 self.assertIn(label, r.stdout)
         for text in ('html { hyphens: auto; hyphenate-character: "-"; }\n',
                      'html { hyphens:auto;\n  hyphenate-character:"-" }\n',
+                     'HTML { HYPHENS: AUTO; HYPHENATE-CHARACTER: "-"; }\n',
+                     "html { hyphens: auto; hyphenate-character: '-'; }\n",
                      'html { hyphens: auto; hyphenate-character: "-" !important; }\n',
                      'html { hyphens: auto; hyphenate-character: "-"; }\ntd { hyphenate-character: "-"; }\n',
+                     'html { hyphens: auto; hyphenate-character: "-"; }\n'
+                     'p::after { content: "; } hyphenate-character: \\"x\\""; background: url(data:a;b{c}); }\n',
                      '/* hyphens: auto */\np { hyphens: manual; }\n',
                      'p { hyphens: manual; }\n'):
             with self.subTest(passes=text):
@@ -232,12 +246,13 @@ class HygieneTests(unittest.TestCase):
                 self.assertEqual(r.returncode, 0, r.stdout)
                 self.assertNotIn(label, r.stdout)
 
-    # The repository's own stylesheet passes unchanged. Four edits that keep
-    # the good spelling in the file must fail with the fallback-font label:
-    # the declaration turned into a comment (one line and several lines), a
-    # later html rule that sets U+2010 again, and a rule that resets one
-    # element to `auto`. Limit: the stylesheet is the one in this checkout;
-    # the test proves the guard's verdict, not what a renderer draws.
+    # The repository's own stylesheet passes unchanged. Edits that keep the
+    # good spelling somewhere in the file must fail with the fallback-font
+    # label: the declaration commented out (one line and several lines),
+    # renamed to a custom property, or moved into a string value; a later html
+    # rule that sets U+2010 again in lower or upper case; a reset for one
+    # element. Limit: the stylesheet is the one in this checkout; the test
+    # proves the guard's verdict, not what a renderer draws.
     def test_line_end_hyphen_needs_effective_declaration(self):
         actual = (Path(__file__).resolve().parents[1] / 'book/style.css').read_text()
         good = 'hyphenate-character: "-";'
@@ -251,7 +266,10 @@ class HygieneTests(unittest.TestCase):
         witnesses = {
             'commented out': actual.replace(good, '/* ' + good + ' */'),
             'inside a multi-line comment': actual.replace(good, '/* disabled:\n  ' + good + '\n  */'),
+            'renamed to a custom property': actual.replace(good, '--' + good),
+            'moved into a string value': actual.replace(good, "--sample: '" + good + "';"),
             'overridden by a later html rule': actual + '\nhtml { hyphenate-character: "‐"; }\n',
+            'overridden in upper case': actual + '\nhtml { HYPHENATE-CHARACTER: "‐"; }\n',
             'reset for one element': actual + '\ntd { hyphenate-character: auto; }\n',
         }
         for name, text in witnesses.items():
@@ -261,6 +279,31 @@ class HygieneTests(unittest.TestCase):
                 r = self.run_check()
                 self.assertEqual(r.returncode, 1, r.stdout)
                 self.assertIn(label, r.stdout)
+
+    # A book's own stylesheet is loaded after book/style.css. With a correct
+    # base sheet, a second sheet that declares another character fails with
+    # the fallback-font label and names that sheet; a second sheet without the
+    # property, or with the hyphen-minus, passes.
+    def test_line_end_hyphen_in_a_later_sheet(self):
+        base = self.root / 'book/style.css'
+        base.write_text('html { hyphens: auto; hyphenate-character: "-"; }\n')
+        (self.root / 'link-book').mkdir()
+        later = self.root / 'link-book/style.css'
+        label = '== line-end hyphen from a fallback font'
+        for text in ('main h1 { string-set: chapter content(text); }\n',
+                     'td { hyphenate-character: "-"; }\n'):
+            with self.subTest(passes=text):
+                later.write_text(text)
+                r = self.run_check()
+                self.assertEqual(r.returncode, 0, r.stdout)
+        for text in ('html { hyphenate-character: "‐"; }\n',
+                     'td { Hyphenate-Character: auto }\n'):
+            with self.subTest(fails=text):
+                later.write_text(text)
+                r = self.run_check()
+                self.assertEqual(r.returncode, 1, r.stdout)
+                self.assertIn(label, r.stdout)
+                self.assertIn('link-book/style.css', r.stdout)
 
     # Arbiter ruling ids of the a2a ruling log fail a chapter; words that only
     # contain the same letters pass. Lexical, not semantic.
