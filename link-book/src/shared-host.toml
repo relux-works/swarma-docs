@@ -1,13 +1,15 @@
-# The host that runs agents of three operators, as a deployment view (C4
-# deployment level): which operator's agents reach which service, and whose
-# grant opens the way. Content follows the chapter "Рой: иерархия и
+# The host where three operators meet, as a deployment view (C4 deployment
+# level): which agents reach which service, and whose grant opens the way.
+# On the host run the agents of Алиса and an orchestrator of Карл; no agent
+# operated by Боб runs there, and a worker agent of Алиса does a task for
+# the side of Боб. Content follows the chapter "Рой: иерархия и
 # полномочия", section "Один хост, три оператора". The boundaries are
 # control domains: the host of Алиса with the accounts of her agents and of
 # the agents of Карл inside it, and the services of Карл and of Боб outside.
 # Spacing is tightened to keep the figure in the tall box; it holds no more
 # elements.
 layout = "stack"
-alt = "Хост с агентами трёх операторов: путь к каждому сервису открывает доверенность владельца этого сервиса."
+alt = "Хост Алисы с её агентами и оркестратором Карла: путь к каждому сервису открывает доверенность владельца этого сервиса."
 
 [groups.carlsvc]
 label = "Карл"
