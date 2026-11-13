@@ -1,0 +1,83 @@
+# Trust between three operators, as a context view (C4 context level): who
+# gives which grant to whom. Content follows the chapter "Рой: иерархия и
+# полномочия", sections "Один хост, три оператора" and "Граница между
+# операторами". The operators carry the placeholder names Алиса, Боб and
+# Карл. Each operator's signer issues grants only for that operator's own
+# resources; the grant is checked by the service that performs the action.
+layout = "stack"
+alt = "Доверие между операторами: каждый оператор выдаёт доверенности только на своё, а проверяет их сервис, который исполняет действие."
+
+[groups.carl]
+label = "Карл"
+role = "external"
+
+[groups.alice]
+label = "Алиса"
+role = "service"
+
+[groups.bob]
+label = "Боб"
+role = "external"
+
+[nodes.carl_signer]
+group = "carl"
+role = "key"
+name = "Подписант Карла"
+text = "ключ доверенностей в имени `id/carl`"
+
+[nodes.carl_orch]
+group = "carl"
+role = "agent"
+name = "Оркестратор Карла"
+text = "`id/carl-lab`, работает на хосте Алисы"
+
+[nodes.alice_signer]
+group = "alice"
+role = "key"
+name = "Подписант Алисы"
+text = "ключ доверенностей в имени `id/alice`"
+
+[nodes.alice_agents]
+group = "alice"
+role = "agent"
+name = "Агенты Алисы"
+text = "кипер хоста, ревьювер, рабочие агенты"
+
+[nodes.bob_orch]
+group = "bob"
+role = "agent"
+name = "Оркестратор Боба"
+text = "`id/bob-build`"
+
+[nodes.bob_signer]
+group = "bob"
+role = "key"
+name = "Подписант Боба"
+text = "ключ доверенностей в имени `id/bob`"
+
+[[links]]
+from = "carl_signer"
+to = "carl_orch"
+label = "в сервисах Карла"
+
+[[links]]
+from = "alice_signer"
+to = "carl_orch"
+label = "обращаться к киперу хоста"
+
+[[links]]
+from = "alice_signer"
+to = "alice_agents"
+label = "через кипера"
+
+[[links]]
+from = "alice_signer"
+to = "bob_orch"
+label = "обращаться к ревьюверу Алисы"
+side = "right"
+
+[[links]]
+from = "bob_signer"
+to = "alice_agents"
+label = "рабочему агенту: действие в сервисе Боба"
+side = "left"

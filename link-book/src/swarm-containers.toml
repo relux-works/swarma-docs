@@ -1,0 +1,65 @@
+# One operator's swarm on grants, as containers: who holds which key and who
+# checks a grant (C4 container level). Content follows the chapter "Рой: иерархия и полномочия",
+# section "Тот же рой на доверенностях", and the chapter "Ключи": the signer
+# holds the grant key, the services hold the message keys and the model key,
+# the agents read no key, and every service checks a grant on its own node.
+# The two links of the authority path are drawn in authority-path.toml.
+layout = "stack"
+alt = "Рой одного оператора на доверенностях: ключ доверенностей держит подписант, ключи сообщений и ключ модели держат сервисы, агенты ключей не читают, и каждый сервис проверяет доверенность на своей ноде."
+
+[groups.signer]
+label = "Служба подписи"
+role = "key"
+
+[groups.host]
+label = "Хосты Алисы"
+role = "service"
+
+[groups.chain]
+label = "Нода цепочки"
+role = "store"
+
+[nodes.grantkey]
+group = "signer"
+role = "key"
+name = "Подписант Алисы"
+text = "держит ключ доверенностей,\nзаписанный в имени `id/alice`"
+
+[nodes.agents]
+group = "host"
+role = "agent"
+name = "Кипер, оркестраторы, рабочие агенты"
+text = "у каждого своя учётная запись ОС\nключей агенты не читают"
+
+[nodes.services]
+group = "host"
+role = "service"
+name = "Сервисы по доверенности"
+text = "демон a2a держит ключи сообщений\nпрокси модели держит ключ API модели"
+
+[nodes.node]
+group = "chain"
+role = "store"
+name = "Имена, записи выдачи, печати"
+text = "у цепочки нет оператора"
+
+[[links]]
+from = "grantkey"
+to = "agents"
+label = "доверенности, в два звена"
+
+[[links]]
+from = "agents"
+to = "services"
+label = "запрос"
+
+[[links]]
+from = "services"
+to = "node"
+label = "проверка на своей ноде"
+
+[[links]]
+from = "grantkey"
+to = "node"
+label = "выдача и отзыв"
+side = "right"

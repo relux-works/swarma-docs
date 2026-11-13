@@ -1,0 +1,70 @@
+# Authority path of two links with the notary. Content follows the chapter
+# "Доверенность", section "Передоверие и дочерние доверенности": the issuer
+# gives a grant with the right of re-delegation, its recipient gives a child
+# grant that is not broader, a notary named in the right of re-delegation
+# certifies the child, and the executor checks both links itself before it
+# looks at the attestation. The figure shows the v4 form, where the recipient
+# of the parent signs the child; the v3 form is described in the text.
+layout = "stack"
+alt = "Путь полномочий из двух звеньев: выдавший даёт право передоверия, его получатель выдаёт дочернюю доверенность, нотариус её заверяет, исполнитель сверяет оба звена и аттестацию."
+
+[groups.issuer]
+label = "Выдавший"
+role = "key"
+
+[groups.executor]
+label = "Исполнитель"
+role = "service"
+
+[groups.notary]
+label = "Нотариус"
+role = "key"
+
+[nodes.issuer]
+group = "issuer"
+role = "key"
+name = "Ключ доверенностей выдавшего"
+text = "записан в его имени"
+
+[nodes.delegator]
+role = "agent"
+name = "Получатель с правом передоверия"
+text = "в примере роя это кипер"
+
+[nodes.delegatee]
+role = "agent"
+name = "Получатель дочерней доверенности"
+text = "оркестратор или рабочий агент"
+
+[nodes.service]
+group = "executor"
+role = "service"
+name = "Сервис по доверенности"
+text = "сам сверяет оба звена,\nзатем аттестацию"
+
+[nodes.notary]
+group = "notary"
+role = "key"
+name = "Ключ аттестаций"
+text = "записан в имени нотариуса,\nназванного в праве передоверия"
+
+[[links]]
+from = "issuer"
+to = "delegator"
+label = "звено 1: право передоверия"
+
+[[links]]
+from = "delegator"
+to = "delegatee"
+label = "звено 2"
+
+[[links]]
+from = "delegatee"
+to = "service"
+label = "запрос"
+
+[[links]]
+from = "notary"
+to = "delegatee"
+label = "аттестация дочерней доверенности"
+side = "right"

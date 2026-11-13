@@ -1,0 +1,100 @@
+# The host that runs agents of three operators, as a deployment view (C4
+# deployment level): which operator's agents reach which service, and whose
+# grant opens the way. Content follows the chapter "Рой: иерархия и
+# полномочия", section "Один хост, три оператора". The boundaries are
+# control domains: the host of Алиса with the accounts of her agents and of
+# the agents of Карл inside it, and the services of Карл and of Боб outside.
+# Spacing is tightened to keep the figure in the tall box; it holds no more
+# elements.
+layout = "stack"
+alt = "Хост с агентами трёх операторов: путь к каждому сервису открывает доверенность владельца этого сервиса."
+
+[groups.carlsvc]
+label = "Карл"
+role = "external"
+
+[groups.host]
+label = "Хост Алисы"
+role = "service"
+
+[groups.h_carl]
+label = "Агенты Карла"
+role = "external"
+parent = "host"
+
+[groups.h_alice]
+label = "Агенты Алисы"
+role = "service"
+parent = "host"
+
+[groups.bobside]
+label = "Боб"
+role = "external"
+
+[nodes.carl_service]
+group = "carlsvc"
+role = "external"
+name = "Сервис Карла"
+compact = true
+
+[nodes.carl_orch]
+group = "h_carl"
+role = "agent"
+name = "Оркестратор Карла"
+text = "`id/carl-lab`"
+
+[nodes.keeper]
+group = "h_alice"
+role = "agent"
+name = "Кипер хоста"
+text = "диск, инструменты, учётные записи"
+
+[nodes.reviewer]
+group = "h_alice"
+role = "agent"
+name = "Ревьювер"
+text = "`id/alice-review`"
+
+[nodes.worker]
+group = "h_alice"
+role = "agent"
+name = "Рабочий агент"
+text = "назван в доверенности ключом"
+
+[nodes.bob_service]
+group = "bobside"
+role = "external"
+name = "Сервис Боба"
+compact = true
+
+[nodes.bob_orch]
+group = "bobside"
+role = "agent"
+name = "Оркестратор Боба"
+text = "`id/bob-build`"
+
+[[links]]
+from = "carl_orch"
+to = "carl_service"
+label = "доверенность Карла"
+
+[[links]]
+from = "carl_orch"
+to = "keeper"
+label = "доверенность Алисы"
+
+[[links]]
+from = "worker"
+to = "bob_service"
+label = "доверенность Боба"
+
+[[links]]
+from = "bob_orch"
+to = "reviewer"
+label = "доверенность Алисы"
+side = "right"
+
+[theme.space]
+gap_min = 30
+group_pad = 12
+box_pad_y = 8
