@@ -3,8 +3,10 @@
 # specification's key map. Drawn as a column of custody zones from the cold
 # name-owner key down to the renter; the funding, provider, receipt and
 # transport keys stay in the chapter's tables to keep the figure in the box.
+# The badge of a key is its danger level, as the chapter's tables and the
+# specification's key registry give it.
 layout = "stack"
-alt = "Карта ключей аренды: холодный ключ владеет именами, подписант держит ключ доверенностей, шлюз держит ключ сообщений агента, у арендатора свой ключ."
+alt = "Карта ключей аренды: холодный ключ владеет именами, подписант держит ключ доверенностей, шлюз держит ключ сообщений агента, у арендатора свой ключ. У каждого ключа назван уровень опасности."
 
 [groups.cold]
 label = "Холодное хранение"
@@ -26,24 +28,28 @@ role = "external"
 group = "cold"
 role = "key"
 name = "Ключ владельца имён"
+badge = "критический"
 text = "обновляет и передаёт имена `id/` и `d/`"
 
 [nodes.grantkey]
 group = "signer"
 role = "key"
 name = "Ключ доверенностей"
+badge = "критический"
 text = "подписывает доверенности и хэш договора\nтратит печати"
 
 [nodes.agentkey]
 group = "gateway"
 role = "agent"
 name = "Ключ сообщений агента"
+badge = "высокий"
 text = "личные сообщения агента"
 
 [nodes.renterkey]
 group = "renter"
 role = "external"
 name = "Ключ арендатора"
+badge = "высокий"
 text = "согласие, сообщения, запросы"
 
 [[links]]
