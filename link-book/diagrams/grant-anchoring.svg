@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="428.9" height="780.2" viewBox="0 0 428.9 780.2">
+<title>Связь документов и цепочки: договор, согласие и доверенность лежат вне цепочки, в цепочке лежат хэш выдачи и печать.</title>
+<rect width="428.9" height="780.2" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(45.5 0)">
+<!-- group offchain -->
+<rect x="0" y="0" width="359.4" height="423.3" rx="16" fill="none" stroke="#11826d" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="offchain"/>
+<!-- group onchain -->
+<rect x="0" y="473.3" width="359.4" height="282.9" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="onchain"/>
+<!-- node contract -->
+<rect x="18" y="37.7" width="323.4" height="90.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="contract"/>
+<text x="146.2" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Договор</tspan></text>
+<text x="105.8" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">точные байты условий</tspan></text>
+<text x="112.2" y="111.9" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">contract_sha256</tspan></text>
+<!-- node consent -->
+<rect x="30.5" y="178.1" width="298.3" height="90.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="consent"/>
+<text x="144" y="204.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Согласие</tspan></text>
+<text x="66.6" y="232.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">событие 8181 ключом арендатора</tspan></text>
+<text x="46.5" y="252.3" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">landlord_sig</tspan><tspan x="158.5" font-family="PT Sans, sans-serif">ключом доверенностей</tspan></text>
+<!-- node grant -->
+<rect x="18" y="318.5" width="323.4" height="90.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="grant"/>
+<text x="123.5" y="344.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Доверенность</tspan></text>
+<text x="36.8" y="373.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">получатель, действия, окно, бюджет, печать</tspan></text>
+<text x="34" y="392.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">подпись ключом доверенностей,</tspan><tspan x="253.4" font-family="PT Mono, monospace">grant_id</tspan></text>
+<!-- node issuance -->
+<rect x="18" y="511" width="323.4" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="issuance"/>
+<text x="101" y="537.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Транзакция выдачи</tspan></text>
+<text x="107" y="565.6" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">OP_RETURN</tspan><tspan x="188" font-family="PT Sans, sans-serif">, 72 байта</tspan></text>
+<text x="96.5" y="585.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">хэш выдачи и</tspan><tspan x="190.9" font-family="PT Mono, monospace">grant_id</tspan></text>
+<!-- node seal -->
+<rect x="18" y="651.4" width="323.4" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="seal"/>
+<text x="152.2" y="677.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Печать</tspan></text>
+<text x="79" y="706" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">выход на ключ доверенностей</tspan></text>
+<text x="73.4" y="725.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">трата прекращает доверенность</tspan></text>
+<!-- link contract -> consent -->
+<path d="M 179.7 128.1 L 179.7 172.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="contract" data-to="consent" data-edge="e0"/>
+<polygon points="179.7,178.1 184.2,168.1 175.2,168.1" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="191.7" y="157.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэш договора</tspan></text>
+</g>
+<!-- link consent -> grant -->
+<path d="M 179.7 268.5 L 179.7 312.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="consent" data-to="grant" data-edge="e1"/>
+<polygon points="179.7,318.5 184.2,308.5 175.2,308.5" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="191.7" y="298" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">согласие</tspan></text>
+</g>
+<!-- link grant -> issuance -->
+<path d="M 179.7 408.9 L 179.7 505" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grant" data-to="issuance" data-edge="e2"/>
+<polygon points="179.7,511 184.2,501 175.2,501" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="191.7" y="452.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэш выдачи</tspan></text>
+</g>
+<!-- side link grant -> seal -->
+<path d="M 18 363.7 L -18 363.7 L -18 696.6 L 12 696.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grant" data-to="seal" data-edge="e3"/>
+<polygon points="18,696.6 8,692.1 8,701.1" fill="#3a3f47"/>
+<g transform="translate(-26 565.7) rotate(-90)" class="label" data-edge="e3">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">поле</tspan><tspan x="35.2" font-family="PT Mono, monospace" font-weight="bold">seal</tspan></text>
+</g>
+<!-- group label offchain -->
+<rect x="12" y="10" width="116.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="24.4" font-size="13" fill="#0e6f5d" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ВНЕ ЦЕПОЧКИ</tspan></text>
+<!-- group label onchain -->
+<rect x="12" y="483.3" width="164.8" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="497.6" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ЦЕПОЧКА NAMECOIN</tspan></text>
+</g>
+</g>
+</svg>

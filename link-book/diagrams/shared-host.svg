@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="389.5" height="879.8" viewBox="0 0 389.5 879.8">
+<title>Хост Алисы с её агентами и оркестратором Карла: путь к каждому сервису открывает доверенность владельца этого сервиса.</title>
+<rect width="389.5" height="879.8" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- group carlsvc -->
+<rect x="0" y="0" width="320" height="83.1" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="carlsvc"/>
+<!-- group host -->
+<rect x="0" y="131.1" width="320" height="498.7" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group h_carl -->
+<rect x="12" y="165.2" width="296" height="108.6" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="h_carl"/>
+<!-- group h_alice -->
+<rect x="12" y="321.8" width="296" height="298.4" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="h_alice"/>
+<!-- group bobside -->
+<rect x="0" y="677.8" width="320" height="178" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="bobside"/>
+<!-- node carl_service -->
+<rect x="89.9" y="34.1" width="140.2" height="39.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="carl_service"/>
+<text x="105.9" y="57.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервис Карла</tspan></text>
+<!-- node carl_orch -->
+<rect x="24" y="199.3" width="272" height="64.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="carl_orch"/>
+<text x="83.4" y="222.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор Карла</tspan></text>
+<text x="110.5" y="250.9" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">id/carl-lab</tspan></text>
+<!-- node keeper -->
+<rect x="24" y="355.9" width="272" height="64.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="keeper"/>
+<text x="111.3" y="379" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кипер хоста</tspan></text>
+<text x="43.9" y="407.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">диск, инструменты, учётные записи</tspan></text>
+<!-- node reviewer -->
+<rect x="24" y="450.8" width="272" height="64.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="reviewer"/>
+<text x="120.7" y="473.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ревьювер</tspan></text>
+<text x="92.5" y="502.5" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">id/alice-review</tspan></text>
+<!-- node worker -->
+<rect x="24" y="545.7" width="272" height="64.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="worker"/>
+<text x="103.1" y="568.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Рабочий агент</tspan></text>
+<text x="56.3" y="597.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">назван в доверенности ключом</tspan></text>
+<!-- node bob_service -->
+<rect x="94.7" y="711.9" width="130.7" height="39.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="bob_service"/>
+<text x="110.7" y="735" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервис Боба</tspan></text>
+<!-- node bob_orch -->
+<rect x="12" y="781.3" width="296" height="64.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="bob_orch"/>
+<text x="88.2" y="804.4" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор Боба</tspan></text>
+<text x="106" y="833" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">id/bob-build</tspan></text>
+<!-- link carl_orch -> carl_service -->
+<path d="M 160 199.3 L 160 79.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="carl_orch" data-to="carl_service" data-edge="e0"/>
+<polygon points="160,73.5 155.5,83.5 164.5,83.5" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="172" y="111.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенность Карла</tspan></text>
+</g>
+<!-- link carl_orch -> keeper -->
+<path d="M 160 264.2 L 160 349.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="carl_orch" data-to="keeper" data-edge="e1"/>
+<polygon points="160,355.9 164.5,345.9 155.5,345.9" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="172" y="302.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенность Алисы</tspan></text>
+</g>
+<!-- link worker -> bob_service -->
+<path d="M 160 610.6 L 160 705.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="worker" data-to="bob_service" data-edge="e2"/>
+<polygon points="160,711.9 164.5,701.9 155.5,701.9" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="172" y="658.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенность Боба</tspan></text>
+</g>
+<!-- side link bob_orch -> reviewer -->
+<path d="M 308 813.8 L 338 813.8 L 338 483.3 L 302 483.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bob_orch" data-to="reviewer" data-edge="e3"/>
+<polygon points="296,483.3 306,487.8 306,478.8" fill="#3a3f47"/>
+<g transform="translate(365.5 717.3) rotate(-90)" class="label" data-edge="e3">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенность Алисы</tspan></text>
+</g>
+<!-- group label carlsvc -->
+<rect x="6" y="10" width="49.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="12" y="24.4" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">КАРЛ</tspan></text>
+<!-- group label host -->
+<rect x="6" y="141.1" width="107.9" height="18.9" fill="#ffffff" class="plate"/>
+<text x="12" y="155.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ХОСТ АЛИСЫ</tspan></text>
+<!-- group label h_carl -->
+<rect x="18" y="175.2" width="124.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="24" y="189.5" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">АГЕНТЫ КАРЛА</tspan></text>
+<!-- group label h_alice -->
+<rect x="18" y="331.8" width="127.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="24" y="346.2" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">АГЕНТЫ АЛИСЫ</tspan></text>
+<!-- group label bobside -->
+<rect x="6" y="687.8" width="39.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="12" y="702.2" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">БОБ</tspan></text>
+</g>
+</svg>

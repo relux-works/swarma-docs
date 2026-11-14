@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860.8" height="875.5" viewBox="0 0 860.8 875.5">
+<title>Работа в окне: шлюз проверяет доверенность на каждом сообщении, прокси модели считает расход, а трата печати или конец окна завершают слот.</title>
+<rect width="860.8" height="875.5" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(58.7 0)">
+<!-- group landlord -->
+<rect x="157.5" y="0" width="620.5" height="851.5" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="landlord"/>
+<!-- group label landlord -->
+<rect x="169.5" y="10" width="199.1" height="18.9" fill="#ffffff" class="plate"/>
+<text x="175.5" y="24.4" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СЛУЖБЫ АРЕНДОДАТЕЛЯ</tspan></text>
+<line x1="0" y1="83.1" x2="0" y2="843.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="225.5" y1="108.6" x2="225.5" y2="843.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="468.5" y1="108.6" x2="468.5" y2="843.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="683" y1="108.6" x2="683" y2="843.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="-44" y="260.6" width="751" height="562.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="680.8" x2="707" y2="680.8" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="267.6" width="54.5" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="281.9" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">допуск</tspan></text>
+<rect x="165.5" y="685.8" width="233.9" height="20.2" fill="#ffffff" class="plate"/>
+<text x="171.5" y="700.1" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">печать потрачена или окно закрыто</tspan></text>
+<!-- node renter -->
+<rect x="-58.7" y="37.7" width="117.5" height="45.4" rx="12" fill="#f1f2f4" stroke="#8b929c" stroke-width="2" class="box" data-id="renter"/>
+<text x="-42.7" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Арендатор</tspan></text>
+<!-- node gateway -->
+<rect x="175.5" y="37.7" width="100" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="gateway"/>
+<text x="202.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Шлюз</tspan></text>
+<text x="192.9" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя нода</tspan></text>
+<!-- node instance -->
+<rect x="381.9" y="37.7" width="173.2" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="instance"/>
+<text x="397.9" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Экземпляр агента</tspan></text>
+<text x="444.8" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">в слоте</tspan></text>
+<!-- node proxy -->
+<rect x="606.1" y="37.7" width="153.9" height="70.9" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="proxy"/>
+<text x="622.1" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Прокси модели</tspan></text>
+<text x="653.9" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ API</tspan></text>
+<!-- message renter -> gateway -->
+<path d="M 2 179.6 L 217.5 179.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="renter" data-to="gateway" data-edge="m0"/>
+<polygon points="223.5,179.6 213.5,175.1 213.5,184.1" fill="#3a3f47"/>
+<rect x="8" y="132.6" width="141.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<rect x="12" y="134.4" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="16.5" y="148" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">12</tspan></text>
+<text x="41.7" y="147.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сообщение</tspan></text>
+<text x="41.7" y="167.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и доверенность</tspan></text>
+</g>
+<!-- self gateway -->
+<path d="M 227.5 199.6 L 257.5 199.6 L 257.5 248.6 L 234.5 248.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gateway" data-to="gateway" data-edge="m1"/>
+<polygon points="228.5,248.6 238.5,253.1 238.5,244.1" fill="#3a3f47"/>
+<rect x="265.5" y="203.6" width="177" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<rect x="269.5" y="205.4" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="274" y="219" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">13</tspan></text>
+<text x="299.2" y="218.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">имена, подписи,</tspan></text>
+<text x="299.2" y="238.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выдача, печать, окно</tspan></text>
+</g>
+<!-- message gateway -> instance -->
+<path d="M 227.5 343.8 L 460.5 343.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gateway" data-to="instance" data-edge="m2"/>
+<polygon points="466.5,343.8 456.5,339.3 456.5,348.3" fill="#3a3f47"/>
+<rect x="291.2" y="296.8" width="111.6" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<rect x="295.2" y="298.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="299.7" y="312.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="324.9" y="312.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запуск,</tspan></text>
+<text x="324.9" y="331.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сообщение</tspan></text>
+</g>
+<!-- message instance -> proxy -->
+<path d="M 470.5 406.8 L 675 406.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="instance" data-to="proxy" data-edge="m3"/>
+<polygon points="681,406.8 671,402.3 671,411.3" fill="#3a3f47"/>
+<rect x="504.2" y="359.8" width="143.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<rect x="508.2" y="361.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="512.7" y="375.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="537.9" y="375.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
+<text x="537.9" y="394.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с токеном слота</tspan></text>
+</g>
+<!-- self proxy -->
+<path d="M 681 426.8 L 651 426.8 L 651 495.3 L 674 495.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="proxy" data-to="proxy" data-edge="m4"/>
+<polygon points="680,495.3 670,490.8 670,499.8" fill="#3a3f47"/>
+<rect x="494.5" y="430.8" width="148.6" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<rect x="498.5" y="432.6" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="503" y="446.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">16</tspan></text>
+<text x="528.2" y="446.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">своя проверка</tspan></text>
+<text x="528.2" y="465.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенности,</tspan></text>
+<text x="528.2" y="485.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">резерв, пределы</tspan></text>
+</g>
+<!-- message proxy -> instance -->
+<path d="M 681 534.8 L 476.5 534.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="proxy" data-to="instance" data-edge="m5"/>
+<polygon points="470.5,534.8 480.5,539.3 480.5,530.3" fill="#3a3f47"/>
+<rect x="512.1" y="507.3" width="127.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<rect x="516.1" y="509" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="520.6" y="522.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">17</tspan></text>
+<text x="545.8" y="522.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ответ модели</tspan></text>
+</g>
+<!-- message instance -> gateway -->
+<path d="M 466.5 578.3 L 233.5 578.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="instance" data-to="gateway" data-edge="m6"/>
+<polygon points="227.5,578.3 237.5,582.8 237.5,573.8" fill="#3a3f47"/>
+<rect x="287.1" y="550.8" width="119.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<rect x="291.1" y="552.5" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="295.6" y="566.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">18</tspan></text>
+<text x="320.8" y="566" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ответ агента</tspan></text>
+</g>
+<!-- message gateway -> renter -->
+<path d="M 223.5 660.8 L 8 660.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="gateway" data-to="renter" data-edge="m7"/>
+<polygon points="2,660.8 12,665.3 12,656.3" fill="#3a3f47"/>
+<rect x="11.1" y="594.3" width="135.3" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<rect x="15.1" y="596" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="19.6" y="609.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">19</tspan></text>
+<text x="44.8" y="609.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверка</tspan></text>
+<text x="44.8" y="629" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">получателя,</tspan></text>
+<text x="44.8" y="648.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подпись, ответ</tspan></text>
+</g>
+<!-- message gateway -> renter -->
+<path d="M 223.5 744.5 L 8 744.5" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="gateway" data-to="renter" data-edge="m8"/>
+<polygon points="2,744.5 12,749 12,740" fill="#c8285f"/>
+<rect x="42.1" y="717" width="73.3" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m8">
+<rect x="46.1" y="718.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="50.6" y="732.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="75.8" y="732.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
+</g>
+<!-- message gateway -> instance -->
+<path d="M 227.5 807.5 L 460.5 807.5" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="gateway" data-to="instance" data-edge="m9"/>
+<polygon points="466.5,807.5 456.5,803 456.5,812" fill="#c8285f"/>
+<rect x="292" y="760.5" width="110" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m9">
+<rect x="296" y="762.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="300.5" y="775.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="325.7" y="775.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">остановка</tspan></text>
+<text x="325.7" y="795.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и стирание</tspan></text>
+</g>
+</g>
+</g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="649.2" height="356.2" viewBox="0 0 649.2 356.2">
+<title>Объединённый майнинг: пул ищет одно доказательство работы, и оно может закрыть блок Bitcoin, блок Namecoin или оба.</title>
+<rect width="649.2" height="356.2" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(237 0)">
+<!-- node pool -->
+<rect x="0" y="0" width="342.7" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="pool"/>
+<text x="115.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Пул майнеров</tspan></text>
+<text x="16" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">перебирает SHA-256 один раз для обеих сетей</tspan></text>
+<!-- node bitcoin -->
+<rect x="0" y="120.9" width="342.7" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="bitcoin"/>
+<text x="123.1" y="147" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Блок Bitcoin</tspan></text>
+<text x="73.5" y="175.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя сложность, своя цепочка</tspan></text>
+<!-- node namecoin -->
+<rect x="0" y="241.8" width="342.7" height="90.4" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="namecoin"/>
+<text x="111.8" y="267.9" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Блок Namecoin</tspan></text>
+<text x="73.5" y="296.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя сложность, своя цепочка</tspan></text>
+<text x="72.8" y="315.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">имена, печати, записи выдачи</tspan></text>
+<!-- link pool -> bitcoin -->
+<path d="M 171.3 70.9 L 171.3 114.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="pool" data-to="bitcoin" data-edge="e0"/>
+<polygon points="171.3,120.9 175.8,110.9 166.8,110.9" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="183.3" y="100.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доказательство работы</tspan></text>
+</g>
+<!-- side link pool -> namecoin -->
+<path d="M 342.7 35.5 L 360.7 35.5 L 360.7 287 L 348.7 287" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="pool" data-to="namecoin" data-edge="e1"/>
+<polygon points="342.7,287 352.7,291.5 352.7,282.5" fill="#3a3f47"/>
+<g transform="translate(388.2 203.6) rotate(-90)" class="label" data-edge="e1">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">та же работа</tspan></text>
+</g>
+<!-- note namecoin -->
+<rect x="-237" y="249.7" width="217" height="74.6" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note" data-id="note_namecoin"/>
+<text x="-206.4" y="273" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Сети не координируются.</tspan></text>
+<text x="-225" y="291.2" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Решение может подойти одной</tspan></text>
+<text x="-220.9" y="309.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сети, если её сложность ниже.</tspan></text>
+<path d="M 0 287 L -20 287" fill="none" stroke="#d5d9df" stroke-width="1.5" stroke-dasharray="4 4" class="connector" data-from="namecoin" data-to="note_namecoin"/>
+</g>
+</g>
+</svg>

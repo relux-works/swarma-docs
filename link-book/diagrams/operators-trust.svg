@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="472.4" height="855.7" viewBox="0 0 472.4 855.7">
+<title>Доверие между операторами: каждый оператор выдаёт доверенности только на своё, а проверяет их сервис, который исполняет действие.</title>
+<rect width="472.4" height="855.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(65 0)">
+<!-- group carl -->
+<rect x="0" y="0" width="337.9" height="243.9" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="carl"/>
+<!-- group alice -->
+<rect x="0" y="293.9" width="337.9" height="243.9" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="alice"/>
+<!-- group bob -->
+<rect x="0" y="587.8" width="337.9" height="243.9" rx="16" fill="none" stroke="#d9690f" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="bob"/>
+<!-- node carl_signer -->
+<rect x="18" y="37.7" width="301.9" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="carl_signer"/>
+<text x="100.3" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант Карла</tspan></text>
+<text x="38.5" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ доверенностей в имени</tspan><tspan x="236.4" font-family="PT Mono, monospace">id/carl</tspan></text>
+<!-- node carl_orch -->
+<rect x="18" y="158.6" width="301.9" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="carl_orch"/>
+<text x="92.4" y="184.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор Карла</tspan></text>
+<text x="34.3" y="213.3" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">id/carl-lab</tspan><tspan x="133.3" font-family="PT Sans, sans-serif">, работает на хосте Алисы</tspan></text>
+<!-- node alice_signer -->
+<rect x="18" y="331.6" width="301.9" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="alice_signer"/>
+<text x="99.1" y="357.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант Алисы</tspan></text>
+<text x="34" y="386.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ доверенностей в имени</tspan><tspan x="231.9" font-family="PT Mono, monospace">id/alice</tspan></text>
+<!-- node alice_agents -->
+<rect x="18" y="452.5" width="301.9" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="alice_agents"/>
+<text x="113.1" y="478.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Агенты Алисы</tspan></text>
+<text x="38.7" y="507.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">кипер хоста, ревьювер, рабочие агенты</tspan></text>
+<!-- node bob_orch -->
+<rect x="18" y="625.5" width="301.9" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="bob_orch"/>
+<text x="97.1" y="651.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Оркестратор Боба</tspan></text>
+<text x="114.9" y="680.1" font-size="15" fill="#4b5260"><tspan font-family="PT Mono, monospace">id/bob-build</tspan></text>
+<!-- node bob_signer -->
+<rect x="18" y="746.4" width="301.9" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="bob_signer"/>
+<text x="105.1" y="772.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант Боба</tspan></text>
+<text x="43" y="801" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ доверенностей в имени</tspan><tspan x="240.9" font-family="PT Mono, monospace">id/bob</tspan></text>
+<!-- link carl_signer -> carl_orch -->
+<path d="M 168.9 108.6 L 168.9 152.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="carl_signer" data-to="carl_orch" data-edge="e0"/>
+<polygon points="168.9,158.6 173.4,148.6 164.4,148.6" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="180.9" y="138.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в сервисах Карла</tspan></text>
+</g>
+<!-- link alice_signer -> carl_orch -->
+<path d="M 168.9 331.6 L 168.9 235.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="alice_signer" data-to="carl_orch" data-edge="e1"/>
+<polygon points="168.9,229.5 164.4,239.5 173.4,239.5" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="180.9" y="273.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">обращаться к киперу хоста</tspan></text>
+</g>
+<!-- link alice_signer -> alice_agents -->
+<path d="M 168.9 402.5 L 168.9 446.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="alice_signer" data-to="alice_agents" data-edge="e2"/>
+<polygon points="168.9,452.5 173.4,442.5 164.4,442.5" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="180.9" y="432" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">через кипера</tspan></text>
+</g>
+<!-- side link alice_signer -> bob_orch -->
+<path d="M 319.9 367.1 L 355.9 367.1 L 355.9 661 L 325.9 661" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="alice_signer" data-to="bob_orch" data-edge="e3"/>
+<polygon points="319.9,661 329.9,665.5 329.9,656.5" fill="#3a3f47"/>
+<g transform="translate(383.4 619.7) rotate(-90)" class="label" data-edge="e3">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">обращаться к ревьюверу Алисы</tspan></text>
+</g>
+<!-- side link bob_signer -> alice_agents -->
+<path d="M 18 781.9 L -18 781.9 L -18 487.9 L 12 487.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="bob_signer" data-to="alice_agents" data-edge="e4"/>
+<polygon points="18,487.9 8,483.4 8,492.4" fill="#3a3f47"/>
+<g transform="translate(-26 716.7) rotate(-90)" class="label" data-edge="e4">
+<text x="0" y="-24.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">рабочему агенту:</tspan></text>
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">действие в сервисе Боба</tspan></text>
+</g>
+<!-- group label carl -->
+<rect x="12" y="10" width="49.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="24.4" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">КАРЛ</tspan></text>
+<!-- group label alice -->
+<rect x="12" y="303.9" width="60.1" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="318.3" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">АЛИСА</tspan></text>
+<!-- group label bob -->
+<rect x="12" y="597.8" width="39.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="612.1" font-size="13" fill="#b9580b" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">БОБ</tspan></text>
+</g>
+</g>
+</svg>

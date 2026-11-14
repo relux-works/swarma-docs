@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440.3" height="672.4" viewBox="0 0 440.3 672.4">
+<title>Рой одного оператора на доверенностях: ключ доверенностей держит подписант, ключи сообщений и ключ модели держат сервисы, агенты ключей не читают, и каждый сервис проверяет доверенность на своей ноде.</title>
+<rect width="440.3" height="672.4" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- group signer -->
+<rect x="0" y="0" width="370.8" height="142.5" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="signer"/>
+<!-- group host -->
+<rect x="0" y="192.5" width="370.8" height="282.9" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="host"/>
+<!-- group chain -->
+<rect x="0" y="525.4" width="370.8" height="123" rx="16" fill="none" stroke="#11826d" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="chain"/>
+<!-- node grantkey -->
+<rect x="18" y="37.7" width="334.8" height="90.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="grantkey"/>
+<text x="115.6" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант Алисы</tspan></text>
+<text x="89.7" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">держит ключ доверенностей,</tspan></text>
+<text x="79.4" y="111.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">записанный в имени</tspan><tspan x="219.4" font-family="PT Mono, monospace">id/alice</tspan></text>
+<!-- node agents -->
+<rect x="18" y="230.2" width="334.8" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="agents"/>
+<text x="34" y="256.3" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Кипер, оркестраторы, рабочие агенты</tspan></text>
+<text x="73.4" y="284.9" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">у каждого своя учётная запись ОС</tspan></text>
+<text x="102.1" y="304.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключей агенты не читают</tspan></text>
+<!-- node services -->
+<rect x="18" y="370.6" width="334.8" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="services"/>
+<text x="81.6" y="396.7" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервисы по доверенности</tspan></text>
+<text x="63.5" y="425.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">демон a2a держит ключи сообщений</tspan></text>
+<text x="51.9" y="444.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">прокси модели держит ключ API модели</tspan></text>
+<!-- node node -->
+<rect x="18" y="563.1" width="334.8" height="70.9" rx="12" fill="#e7f5f1" stroke="#11826d" stroke-width="2" class="box" data-id="node"/>
+<text x="64.9" y="589.2" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Имена, записи выдачи, печати</tspan></text>
+<text x="103.4" y="617.8" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">у цепочки нет оператора</tspan></text>
+<!-- link grantkey -> agents -->
+<path d="M 185.4 128.1 L 185.4 224.2" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grantkey" data-to="agents" data-edge="e0"/>
+<polygon points="185.4,230.2 189.9,220.2 180.9,220.2" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="197.4" y="172" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенности, в два звена</tspan></text>
+</g>
+<!-- link agents -> services -->
+<path d="M 185.4 320.6 L 185.4 364.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="agents" data-to="services" data-edge="e1"/>
+<polygon points="185.4,370.6 189.9,360.6 180.9,360.6" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="197.4" y="350.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
+</g>
+<!-- link services -> node -->
+<path d="M 185.4 461 L 185.4 557.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="services" data-to="node" data-edge="e2"/>
+<polygon points="185.4,563.1 189.9,553.1 180.9,553.1" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="197.4" y="504.9" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">проверка на своей ноде</tspan></text>
+</g>
+<!-- side link grantkey -> node -->
+<path d="M 352.8 82.9 L 388.8 82.9 L 388.8 598.6 L 358.8 598.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="grantkey" data-to="node" data-edge="e3"/>
+<polygon points="352.8,598.6 362.8,603.1 362.8,594.1" fill="#3a3f47"/>
+<g transform="translate(416.3 392.6) rotate(-90)" class="label" data-edge="e3">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выдача и отзыв</tspan></text>
+</g>
+<!-- group label signer -->
+<rect x="12" y="10" width="150.2" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">СЛУЖБА ПОДПИСИ</tspan></text>
+<!-- group label host -->
+<rect x="12" y="202.5" width="120.3" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="216.9" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ХОСТЫ АЛИСЫ</tspan></text>
+<!-- group label chain -->
+<rect x="12" y="535.4" width="129.5" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="549.8" font-size="13" fill="#0e6f5d" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НОДА ЦЕПОЧКИ</tspan></text>
+</g>
+</svg>

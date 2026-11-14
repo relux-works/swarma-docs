@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="663.1" height="721.5" viewBox="0 0 663.1 721.5">
+<title>Жизнь печати: создана в пуле заранее, названа в доверенности, цела при допуске; трата в мемпуле закрывает доверенность навсегда.</title>
+<rect width="663.1" height="721.5" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(84.3 0)">
+<line x1="0" y1="70.9" x2="0" y2="697.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="227.6" y1="70.9" x2="227.6" y2="697.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="481.4" y1="90.4" x2="481.4" y2="697.5" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- node signer -->
+<rect x="-84.3" y="0" width="168.6" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="signer"/>
+<text x="-42.3" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант</tspan></text>
+<text x="-68.3" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">ключ доверенностей</tspan></text>
+<!-- node chain -->
+<rect x="159.3" y="0" width="136.7" height="70.9" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="chain"/>
+<text x="189.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Namecoin</tspan></text>
+<text x="175.3" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">мемпул и блоки</tspan></text>
+<!-- node verifier -->
+<rect x="408" y="0" width="146.8" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="verifier"/>
+<text x="424" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Проверяющий</tspan></text>
+<text x="447.4" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">своя нода,</tspan></text>
+<text x="424.6" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">журнал закрытий</tspan></text>
+<!-- message signer -> chain -->
+<path d="M 2 180.9 L 219.6 180.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="chain" data-edge="m0"/>
+<polygon points="225.6,180.9 215.6,176.4 215.6,185.4" fill="#3a3f47"/>
+<rect x="39.1" y="114.4" width="149.5" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="52.1" cy="125.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="48.4" y="129.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="67.1" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">пополнение пула:</tspan></text>
+<text x="67.1" y="149.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выходы на ключ</tspan></text>
+<text x="67.1" y="168.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенностей</tspan></text>
+</g>
+<!-- self signer -->
+<path d="M 2 200.9 L 32 200.9 L 32 269.4 L 9 269.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="signer" data-edge="m1"/>
+<polygon points="3,269.4 13,273.9 13,264.9" fill="#3a3f47"/>
+<rect x="40" y="204.9" width="161.6" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="53" cy="215.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="49.3" y="220.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="68" y="220.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">резерв печати</tspan></text>
+<text x="68" y="239.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">в журнале, подпись</tspan></text>
+<text x="68" y="259.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">доверенности</tspan></text>
+</g>
+<!-- message signer -> chain -->
+<path d="M 2 328.4 L 219.6 328.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="chain" data-edge="m2"/>
+<polygon points="225.6,328.4 215.6,323.9 215.6,332.9" fill="#3a3f47"/>
+<rect x="31.2" y="281.4" width="165.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="44.2" cy="292.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="40.5" y="296.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="59.2" y="296.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">транзакция выдачи;</tspan></text>
+<text x="59.2" y="316.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">печать не тратится</tspan></text>
+</g>
+<!-- message verifier -> chain -->
+<path d="M 479.4 391.4 L 235.6 391.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="verifier" data-to="chain" data-edge="m3"/>
+<polygon points="229.6,391.4 239.6,395.9 239.6,386.9" fill="#3a3f47"/>
+<rect x="266.4" y="344.4" width="176.2" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="279.4" cy="355.1" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="275.7" y="359.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="294.4" y="359.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">печать подтверждена</tspan></text>
+<text x="294.4" y="379.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и цела: допуск</tspan></text>
+</g>
+<!-- divider -->
+<line x1="-84.3" y1="421.5" x2="554.8" y2="421.5" stroke="#868e99" stroke-width="1.2"/>
+<rect x="171.6" y="407.4" width="138.3" height="28.2" rx="14.1" fill="#f6f7f9" stroke="#868e99" stroke-width="1.2" class="plate"/>
+<text x="185.6" y="425.7" font-size="14" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Досрочный отзыв</tspan></text>
+<!-- message signer -> chain -->
+<path d="M 2 479.1 L 219.6 479.1" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="signer" data-to="chain" data-edge="m5"/>
+<polygon points="225.6,479.1 215.6,474.6 215.6,483.6" fill="#c8285f"/>
+<rect x="55.6" y="451.6" width="116.4" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="68.6" cy="462.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="64.9" y="467" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="83.6" y="466.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">трата печати</tspan></text>
+</g>
+<!-- message verifier -> chain -->
+<path d="M 479.4 542.1 L 235.6 542.1" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="verifier" data-to="chain" data-edge="m6"/>
+<polygon points="229.6,542.1 239.6,546.6 239.6,537.6" fill="#3a3f47"/>
+<rect x="284.1" y="495.1" width="140.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="297.1" cy="505.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="293.4" y="510.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="312.1" y="510.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">трата в мемпуле</tspan></text>
+<text x="312.1" y="529.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">или в блоке</tspan></text>
+</g>
+<!-- self verifier -->
+<path d="M 479.4 562.1 L 449.4 562.1 L 449.4 611.1 L 472.4 611.1" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="verifier" data-to="verifier" data-edge="m7"/>
+<polygon points="478.4,611.1 468.4,606.6 468.4,615.6" fill="#c8285f"/>
+<rect x="253.6" y="566.1" width="187.8" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="266.6" cy="576.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="263" y="581.5" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="281.6" y="581.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">закрытие</tspan><tspan x="347.4" font-family="PT Mono, monospace" font-weight="bold">SEAL_SPENT</tspan></text>
+<text x="281.6" y="600.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">записано на диск</tspan></text>
+</g>
+<!-- note -->
+<rect x="-60" y="623.1" width="601.4" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="48.4" y="648.4" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Закрытие не снимается, даже если трата исчезнет из мемпула.</tspan></text>
+<text x="55.1" y="666.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">По концу окна доверенность заканчивается без транзакции.</tspan></text>
+</g>
+</g>
+</svg>

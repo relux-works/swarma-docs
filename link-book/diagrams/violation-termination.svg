@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="862.6" height="824.7" viewBox="0 0 862.6 824.7">
+<title>Прекращение по нарушению, от запроса до траты печати: модератор подписывает вердикт вне цепочки, подписант сверяет его с договором и тратит печать со ссылкой на вердикт.</title>
+<rect width="862.6" height="824.7" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<g transform="translate(61.9 0)">
+<line x1="0" y1="45.4" x2="0" y2="800.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="166.7" y1="68.8" x2="166.7" y2="800.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="345.4" y1="90.4" x2="345.4" y2="800.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="532.9" y1="45.4" x2="532.9" y2="800.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<line x1="716.7" y1="90.4" x2="716.7" y2="800.7" stroke="#c3c8cf" stroke-width="1.5" stroke-dasharray="4 5"/>
+<!-- frame alt -->
+<rect x="-44" y="387.4" width="784.7" height="329.9" rx="10" fill="none" stroke="#868e99" stroke-width="1.5" stroke-dasharray="7 5" class="frame" data-kind="alt"/>
+<line x1="-44" y1="485.6" x2="740.7" y2="485.6" stroke="#868e99" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="-36" y="394.4" width="227.5" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="408.7" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт служит предупреждением</tspan></text>
+<rect x="-36" y="490.6" width="193.8" height="20.2" fill="#ffffff" class="plate"/>
+<text x="-30" y="504.9" font-size="14" fill="#868e99"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт прекращает договор</tspan></text>
+<!-- node recipient -->
+<rect x="-61.9" y="0" width="123.8" height="45.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="recipient"/>
+<text x="-45.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель</tspan></text>
+<!-- node service -->
+<rect x="106.1" y="0" width="121.1" height="68.8" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="service"/>
+<text x="137.2" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Служба</tspan></text>
+<text x="122.1" y="49.5" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">выдавшего</tspan></text>
+<!-- node moderator -->
+<rect x="284.9" y="0" width="121" height="90.4" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="moderator"/>
+<text x="300.9" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Модератор</tspan></text>
+<text x="307.5" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">модель или</tspan></text>
+<text x="319" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">человек</tspan></text>
+<!-- node signer -->
+<rect x="474.6" y="0" width="116.7" height="45.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="signer"/>
+<text x="490.6" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Подписант</tspan></text>
+<!-- node chain -->
+<rect x="662.4" y="0" width="108.5" height="90.4" rx="12" fill="#fff2e6" stroke="#d9690f" stroke-width="2" class="box" data-id="chain"/>
+<text x="678.4" y="26.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Namecoin</tspan></text>
+<text x="689.7" y="54.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">цепочка</tspan></text>
+<text x="685.8" y="74.2" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">и мемпул</tspan></text>
+<!-- message recipient -> service -->
+<path d="M 2 161.4 L 158.7 161.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="recipient" data-to="service" data-edge="m0"/>
+<polygon points="164.7,161.4 154.7,156.9 154.7,165.9" fill="#3a3f47"/>
+<rect x="22.6" y="114.4" width="121.5" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m0">
+<circle cx="35.6" cy="125.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="31.9" y="129.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">1</tspan></text>
+<text x="50.6" y="129.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный</tspan></text>
+<text x="50.6" y="149.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
+</g>
+<!-- message service -> moderator -->
+<path d="M 168.7 199.9 L 337.4 199.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="service" data-to="moderator" data-edge="m1"/>
+<polygon points="343.4,199.9 333.4,195.4 333.4,204.4" fill="#3a3f47"/>
+<rect x="182.7" y="172.4" width="146.8" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m1">
+<circle cx="195.7" cy="183.2" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="192" y="187.8" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">2</tspan></text>
+<text x="210.7" y="187.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос и правила</tspan></text>
+</g>
+<!-- self moderator -->
+<path d="M 347.4 214.9 L 377.4 214.9 L 377.4 341.9 L 354.4 341.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="moderator" data-to="moderator" data-edge="m2"/>
+<polygon points="348.4,341.9 358.4,346.4 358.4,337.4" fill="#3a3f47"/>
+<rect x="385.4" y="218.9" width="121.5" height="119" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m2">
+<circle cx="398.4" cy="229.7" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="394.8" y="234.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">3</tspan></text>
+<text x="413.4" y="234.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ответ;</tspan></text>
+<text x="413.4" y="253.7" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">подписанный</tspan></text>
+<text x="413.4" y="273.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт:</tspan></text>
+<text x="413.4" y="292.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэш запроса,</tspan></text>
+<text x="413.4" y="312.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">правило,</tspan></text>
+<text x="413.4" y="331.6" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">хэш ответа</tspan></text>
+</g>
+<!-- message moderator -> service -->
+<path d="M 343.4 376.4 L 174.7 376.4" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="moderator" data-to="service" data-edge="m3"/>
+<polygon points="168.7,376.4 178.7,380.9 178.7,371.9" fill="#3a3f47"/>
+<rect x="213.3" y="348.9" width="85.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m3">
+<circle cx="226.3" cy="359.6" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="222.6" y="364.3" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">4</tspan></text>
+<text x="241.3" y="364.1" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт</tspan></text>
+</g>
+<!-- message service -> recipient -->
+<path d="M 164.7 470.6 L 8 470.6" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="service" data-to="recipient" data-edge="m4"/>
+<polygon points="2,470.6 12,475.1 12,466.1" fill="#3a3f47"/>
+<rect x="16" y="423.6" width="134.7" height="41" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m4">
+<circle cx="29" cy="434.3" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="25.3" y="439" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="44" y="438.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">идентификатор</tspan></text>
+<text x="44" y="458.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикта</tspan></text>
+</g>
+<!-- message service -> signer -->
+<path d="M 168.7 549.3 L 524.9 549.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="service" data-to="signer" data-edge="m5"/>
+<polygon points="530.9,549.3 520.9,544.8 520.9,553.8" fill="#3a3f47"/>
+<rect x="307" y="521.8" width="85.6" height="21.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m5">
+<circle cx="320" cy="532.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="316.3" y="537.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">5</tspan></text>
+<text x="335" y="537" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">вердикт</tspan></text>
+</g>
+<!-- self signer -->
+<path d="M 534.9 564.3 L 564.9 564.3 L 564.9 632.8 L 541.9 632.8" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="signer" data-to="signer" data-edge="m6"/>
+<polygon points="535.9,632.8 545.9,637.3 545.9,628.3" fill="#3a3f47"/>
+<rect x="572.9" y="568.3" width="117.8" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m6">
+<circle cx="585.9" cy="579" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="582.2" y="583.7" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">6</tspan></text>
+<text x="600.9" y="583.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">сверка</tspan></text>
+<text x="600.9" y="603" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">с договором,</tspan></text>
+<text x="600.9" y="622.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">журнал</tspan></text>
+</g>
+<!-- message signer -> chain -->
+<path d="M 534.9 706.3 L 708.7 706.3" fill="none" stroke="#c8285f" stroke-width="2" class="edge" data-from="signer" data-to="chain" data-edge="m7"/>
+<polygon points="714.7,706.3 704.7,701.8 704.7,710.8" fill="#c8285f"/>
+<rect x="566.6" y="639.8" width="116.4" height="60.5" fill="#ffffff" class="plate"/>
+<g class="label" data-edge="m7">
+<circle cx="579.6" cy="650.5" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
+<text x="575.9" y="655.2" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">7</tspan></text>
+<text x="594.6" y="655" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">трата печати</tspan></text>
+<text x="594.6" y="674.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">со ссылкой</tspan></text>
+<text x="594.6" y="694" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">на вердикт</tspan></text>
+</g>
+<!-- note -->
+<rect x="285.4" y="731.3" width="491.2" height="60.4" rx="10" fill="#f6f7f9" stroke="#d5d9df" stroke-width="1.2" class="note"/>
+<text x="376" y="756.6" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">Запрос и ответ модератора остаются вне цепочки.</tspan></text>
+<text x="336.6" y="774.8" font-size="14" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">В цепочке лежат хэш прекращения и идентификатор вердикта.</tspan></text>
+</g>
+</g>
+</svg>

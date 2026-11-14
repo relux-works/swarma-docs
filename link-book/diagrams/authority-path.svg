@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="398.7" height="773.8" viewBox="0 0 398.7 773.8">
+<title>Путь полномочий из двух звеньев в версии 4: выдавший даёт право передоверия, его получатель выдаёт дочернюю доверенность, нотариус её заверяет, исполнитель сверяет оба звена и аттестацию.</title>
+<rect width="398.7" height="773.8" fill="#ffffff"/>
+<g transform="translate(12 12)">
+<!-- group issuer -->
+<rect x="0" y="0" width="329.2" height="123" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="issuer"/>
+<!-- group executor -->
+<rect x="0" y="414.8" width="329.2" height="142.5" rx="16" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="executor"/>
+<!-- group notary -->
+<rect x="0" y="607.3" width="329.2" height="142.5" rx="16" fill="none" stroke="#a8740a" stroke-width="2" stroke-dasharray="8 6" class="group" data-id="notary"/>
+<!-- node issuer -->
+<rect x="18" y="37.7" width="293.2" height="70.9" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="issuer"/>
+<text x="34" y="63.8" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ доверенностей выдавшего</tspan></text>
+<text x="97.1" y="92.4" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">записан в его имени</tspan></text>
+<!-- node delegator -->
+<rect x="0" y="173" width="329.2" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="delegator"/>
+<text x="26.3" y="199.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель с правом передоверия</tspan></text>
+<text x="82.5" y="227.7" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">в примере роя это кипер</tspan></text>
+<!-- node delegatee -->
+<rect x="0" y="293.9" width="329.2" height="70.9" rx="12" fill="#f3effd" stroke="#7c4ddb" stroke-width="2" class="box" data-id="delegatee"/>
+<text x="20.4" y="320" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Получатель дочерней доверенности</tspan></text>
+<text x="61" y="348.5" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">оркестратор или рабочий агент</tspan></text>
+<!-- node service -->
+<rect x="18" y="452.5" width="293.2" height="90.4" rx="12" fill="#ebf2ff" stroke="#2f6fdb" stroke-width="2" class="box" data-id="service"/>
+<text x="67.1" y="478.6" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Сервис по доверенности</tspan></text>
+<text x="89.5" y="507.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">сам сверяет оба звена,</tspan></text>
+<text x="106.8" y="526.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">затем аттестацию</tspan></text>
+<!-- node notary -->
+<rect x="18" y="645" width="293.2" height="90.4" rx="12" fill="#fff8e1" stroke="#a8740a" stroke-width="2" class="box" data-id="notary"/>
+<text x="97.4" y="671.1" font-size="18" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">Ключ аттестаций</tspan></text>
+<text x="72.7" y="699.6" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">записан в имени нотариуса,</tspan></text>
+<text x="55" y="719.1" font-size="15" fill="#4b5260"><tspan font-family="PT Sans, sans-serif">названного в праве передоверия</tspan></text>
+<!-- link issuer -> delegator -->
+<path d="M 164.6 123 L 164.6 167" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="issuer" data-to="delegator" data-edge="e0"/>
+<polygon points="164.6,173 169.1,163 160.1,163" fill="#3a3f47"/>
+<g class="label" data-edge="e0">
+<text x="176.6" y="152.5" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">звено 1: право передоверия</tspan></text>
+</g>
+<!-- link delegator -> delegatee -->
+<path d="M 164.6 243.9 L 164.6 287.9" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="delegator" data-to="delegatee" data-edge="e1"/>
+<polygon points="164.6,293.9 169.1,283.9 160.1,283.9" fill="#3a3f47"/>
+<g class="label" data-edge="e1">
+<text x="176.6" y="273.4" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">звено 2</tspan></text>
+</g>
+<!-- link delegatee -> service -->
+<path d="M 164.6 364.8 L 164.6 446.5" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="delegatee" data-to="service" data-edge="e2"/>
+<polygon points="164.6,452.5 169.1,442.5 160.1,442.5" fill="#3a3f47"/>
+<g class="label" data-edge="e2">
+<text x="176.6" y="394.3" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">запрос</tspan></text>
+</g>
+<!-- side link notary -> delegatee -->
+<path d="M 311.2 690.2 L 347.2 690.2 L 347.2 329.3 L 335.2 329.3" fill="none" stroke="#3a3f47" stroke-width="2" class="edge" data-from="notary" data-to="delegatee" data-edge="e3"/>
+<polygon points="329.2,329.3 339.2,333.8 339.2,324.8" fill="#3a3f47"/>
+<g transform="translate(374.7 627.7) rotate(-90)" class="label" data-edge="e3">
+<text x="0" y="-5.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">аттестация дочерней доверенности</tspan></text>
+</g>
+<!-- group label issuer -->
+<rect x="12" y="10" width="97.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="24.4" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ВЫДАВШИЙ</tspan></text>
+<!-- group label executor -->
+<rect x="12" y="424.8" width="120.6" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="439.1" font-size="13" fill="#2a62c4" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">ИСПОЛНИТЕЛЬ</tspan></text>
+<!-- group label notary -->
+<rect x="12" y="617.3" width="89.7" height="18.9" fill="#ffffff" class="plate"/>
+<text x="18" y="631.6" font-size="13" fill="#8f6208" letter-spacing="2.1"><tspan font-family="PT Sans, sans-serif" font-weight="bold">НОТАРИУС</tspan></text>
+</g>
+</svg>
