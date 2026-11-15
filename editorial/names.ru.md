@@ -333,4 +333,6 @@ Keybase допускается как ссылка на предшествующ
 | keeper | кипер (Swarma Keeper) |
 | hash rate, compute power (of a mining pool or of a chain) | хэшрейт |
 | release candidate | релиз-кандидат |
+| session (admitted by a service whose client cannot sign requests) | сеанс; запрос на открытие сеанса; не путать с сессией агента |
+| reading node, comparison node | читающая нода, нода сравнения |
 | working build (a PDF built from a commit that no release tag names, or from changed sources) | рабочая сборка |
