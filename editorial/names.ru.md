@@ -331,3 +331,6 @@ Keybase допускается как ссылка на предшествующ
 | session host | хост сессий |
 | key holder | ключник (Swarma Keyholder) |
 | keeper | кипер (Swarma Keeper) |
+| hash rate, compute power (of a mining pool or of a chain) | хэшрейт |
+| release candidate | релиз-кандидат |
+| working build (a PDF built from a commit that no release tag names, or from changed sources) | рабочая сборка |
