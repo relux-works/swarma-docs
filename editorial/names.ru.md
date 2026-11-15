@@ -335,4 +335,12 @@ Keybase допускается как ссылка на предшествующ
 | release candidate | релиз-кандидат |
 | session (admitted by a service whose client cannot sign requests) | сеанс; запрос на открытие сеанса; не путать с сессией агента |
 | reading node, comparison node | читающая нода, нода сравнения |
+| first sight (of a block at the tip of the reading node) | первое наблюдение вершины; запись о первом наблюдении вершины |
+| clock mark (the largest clock reading that a verifier has used) | отметка часов |
+| shared journal (of the copies of one executor) | общий журнал |
+| consensus log, consensus cluster, consensus round | журнал с консенсусом, кластер консенсуса, раунд консенсуса |
+| instance (of a service), logical service | экземпляр (сервиса), логический сервис |
+| network partition; minority side | разделение сети; сторона без большинства |
+| anchoring the journal root | закрепление корня журнала |
+| direction (named for the future, with no design) | направление |
 | working build (a PDF built from a commit that no release tag names, or from changed sources) | рабочая сборка |
