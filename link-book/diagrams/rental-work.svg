@@ -120,7 +120,7 @@
 <rect x="42.1" y="717" width="73.3" height="21.5" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m8">
 <rect x="46.1" y="718.8" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="50.6" y="732.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">14</tspan></text>
+<text x="50.6" y="732.4" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">20</tspan></text>
 <text x="75.8" y="732.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">отказ</tspan></text>
 </g>
 <!-- message gateway -> instance -->
@@ -129,7 +129,7 @@
 <rect x="292" y="760.5" width="110" height="41" fill="#ffffff" class="plate"/>
 <g class="label" data-edge="m9">
 <rect x="296" y="762.2" width="23.7" height="18" rx="9" fill="#ffffff" stroke="#1f2328" stroke-width="1.5" class="step"/>
-<text x="300.5" y="775.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">15</tspan></text>
+<text x="300.5" y="775.9" font-size="13" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">21</tspan></text>
 <text x="325.7" y="775.8" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">остановка</tspan></text>
 <text x="325.7" y="795.2" font-size="15" fill="#1f2328"><tspan font-family="PT Sans, sans-serif" font-weight="bold">и стирание</tspan></text>
 </g>

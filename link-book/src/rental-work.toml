@@ -7,6 +7,8 @@
 # the checker's own steps: every service reads its own node. The lifeline that
 # receives the message and calls the model is the agent instance; the slot is
 # the place of the rental and is named only as the location of that instance.
+# Both branches of the frame have more than one step, so the second branch
+# continues the numbering (20, 21) and no number repeats in the figure.
 layout = "sequence"
 alt = "Работа в окне: шлюз проверяет доверенность на каждом сообщении, прокси модели считает расход, а трата печати или конец окна завершают слот."
 
@@ -100,14 +102,14 @@ else = "печать потрачена или окно закрыто"
 [[seq]]
 from = "gateway"
 to = "renter"
-step = 14
+step = 20
 label = "отказ"
 color = "alert"
 
 [[seq]]
 from = "gateway"
 to = "instance"
-step = 15
+step = 21
 label = "остановка и стирание"
 color = "alert"
 

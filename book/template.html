@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <title>$pagetitle$</title>
+$if(build-meta)$
+<meta name="description" content="$date/nowrap$$if(release)$ · $release/nowrap$$endif$ · $build-meta/nowrap$">
+$endif$
+$if(build-date)$
+<meta name="dcterms.created" content="$build-date$">
+<meta name="dcterms.modified" content="$build-date$">
+$endif$
 </head>
 <body>
 <section class="titlepage">
@@ -16,7 +23,10 @@ $if(author)$
 $endif$
   <div class="tp-meta">
 $if(date)$
-    <p class="tp-date">$date$</p>
+    <p class="tp-date">$date$$if(release)$ · $release$$endif$</p>
+$endif$
+$if(build)$
+    <p class="tp-build">$build$</p>
 $endif$
 $for(notes)$
     <p class="tp-note">$notes$</p>
