@@ -94,9 +94,9 @@ An agent never gets its identity key: a separate service, the key holder (Swarma
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">message<br>channel</span><span class="ar">→</span><span class="bx">bridge: signature,<br>key, grant</span><span class="ar">─ valid signature →</span><span class="bx">agent mailbox</span></div>
+  <div class="row"><span class="bx">message<br>channel</span><span class="ar">→</span><span class="bx">bridge: signature,<br>key, grant</span><span class="ar">─ yes →</span><span class="bx">agent mailbox</span></div>
   <div class="row"><span class="sp2"></span><span class="ar">└ unsigned →</span><span class="cap">during the transition: to the model as untrusted text; after it: refused</span></div>
-  <div class="row"><span class="sp2"></span><span class="ar">└ invalid signature or key →</span><span class="cap">refused, not delivered</span></div>
+  <div class="row"><span class="sp2"></span><span class="ar">└ bad signature, key or grant →</span><span class="cap">refused, not delivered</span></div>
 </div>
 ```
 
