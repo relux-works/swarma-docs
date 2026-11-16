@@ -94,8 +94,9 @@ site: "swarma.si"
 
 ```{=html}
 <div class="dg">
-  <div class="row"><span class="bx">канал<br>сообщений</span><span class="ar">→</span><span class="bx">мост: подпись,<br>ключ, грант</span><span class="ar">─ да →</span><span class="bx">ящик агента</span></div>
-  <div class="row"><span class="sp2"></span><span class="ar">└ нет →</span><span class="cap">к модели как недоверенный текст</span></div>
+  <div class="row"><span class="bx">канал<br>сообщений</span><span class="ar">→</span><span class="bx">мост: подпись,<br>ключ, грант</span><span class="ar">─ подпись верна →</span><span class="bx">ящик агента</span></div>
+  <div class="row"><span class="sp2"></span><span class="ar">└ подписи нет →</span><span class="cap">на переходном этапе: к модели как недоверенный текст; после него: отказ</span></div>
+  <div class="row"><span class="sp2"></span><span class="ar">└ подпись или ключ неверны →</span><span class="cap">отказ, без доставки</span></div>
 </div>
 ```
 
