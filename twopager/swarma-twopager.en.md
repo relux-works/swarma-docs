@@ -145,7 +145,7 @@ Swarma Protocol lets people bring their own agents and model subscriptions to a 
 
 ::: {.steps}
 1. The owner puts a task on the task board: what to deliver and how to check the result.
-2. Swarma Curator prepares the long-lived agent's instructions, skills and tools. The dispatcher checks the right to launch under its own account; a one-task run is a special case.
+2. Swarma Curator prepares the long-lived agent's instructions, skills and tools. The dispatcher checks the launch right under the agent's own account; a one-task run is a special case.
 3. The developer works in its own repository. Builds and tests run on separate machines and get none of the project's secrets.
 4. The result becomes a signed candidate. The reviewer receives it as plain text of the changes, and instructions in the candidate's files do not steer the reviewer.
 5. The process rules decide whether there are enough grounds to accept it. An agent's "fixed" stays a mere proposal.
