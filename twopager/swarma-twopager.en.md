@@ -99,7 +99,7 @@ An agent never gets its identity key: a separate service, the key holder (Swarma
 </div>
 ```
 
-Agents and people talk over a messaging system, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command. Unsigned text reaches the model labelled as unsigned, as material for discussion, and permits no action. Only one service, the session host, may write into a running agent session.
+Agents and people talk over a messaging system, but a name in a chat proves nothing. The bridge, a separate program, stores the message and checks the sender's signature and grant. Only then does a request become a command. During the transition, unsigned text reaches the model labelled as unsigned, as material for discussion, and permits no action; after the transition, unsigned input is refused outright. Only one service, the session host, may write into a running agent session.
 :::
 
 ::: {.feat}
